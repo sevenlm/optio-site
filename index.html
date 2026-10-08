@@ -2,323 +2,430 @@
 <html lang="fr">
 <head>
 <meta charset="utf-8">
-<title>Optio — Voie libre</title>
-<script src="./vendor/react.js"></script>
-<script src="./vendor/react-dom.js"></script>
-<script src="./support.js"></script>
-</head>
-<body>
-<x-dc>
-<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Optio — Indépendance numérique, par la preuve</title>
+<meta name="description" content="Optio vous libère de la dépendance à vos fournisseurs d'infrastructure critiques : nous mesurons en combien de temps et pour quel coût vous pouvez partir, ou redémarrer ailleurs en cas de crise.">
+<meta property="og:title" content="Optio — Indépendance numérique, par la preuve">
+<meta property="og:description" content="Nous prouvons en combien de temps et pour quel coût vous pouvez quitter vos fournisseurs d'infrastructure critiques.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 28'%3E%3Ccircle cx='12' cy='14' r='8.5' fill='none' stroke='%230B2A3C' stroke-width='3'/%3E%3Cpath d='M20.5 14H27L35 7' fill='none' stroke='%2300A37A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M27 14L35 21' fill='none' stroke='%235A6E7A' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&amp;family=Instrument+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
 <style>
-body{margin:0}
-a{color:#0B2A3C}a:hover{color:#00775A}
-</style>
-</helmet>
-<div id="haut" style="font-family: 'Instrument Sans', 'Helvetica Neue', sans-serif; color: #0B2A3C; background: #EEF2F3; min-height: 100vh;">
+:root{
+  --encre:#0B2A3C; --encre-profonde:#07202E; --calque:#EEF2F3; --blanc:#F8FAFA;
+  --signal:#00A37A; --vert-lisible:#00775A; --balise:#F2C230;
+  --texte-2:#3E5563; --texte-3:#5A6E7A; --trait:#C7D3D8; --trait-sombre:#1E4255;
+  --sur-sombre:#C9D6DC; --sur-sombre-2:#AFC0C9;
+  --titre:'Archivo','Helvetica Neue',sans-serif;
+  --corps:'Instrument Sans','Helvetica Neue',sans-serif;
+  --mesure:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:var(--corps);color:var(--encre);background:var(--calque);line-height:1.5}
+a{color:inherit}
+a:focus-visible,button:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+.conteneur{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+h1,h2,h3{margin:0}
+p{margin:0}
+.titre{font-family:var(--titre);font-weight:800;letter-spacing:-0.02em;font-stretch:116%}
+h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
+.intro{display:flex;flex-direction:column;gap:16px;max-width:760px;margin-bottom:48px}
+.repere{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--texte-3)}
+.repere::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--signal);flex:none}
+.repere.balise::before{background:var(--balise);border:1px solid #C79A12}
+.chapo{font-size:18px;line-height:1.6;color:var(--texte-2)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:6px;font-weight:600;font-size:17px;text-decoration:none;border:1.5px solid transparent}
+.btn-signal{background:var(--signal);color:var(--encre)}
+.btn-signal:hover{background:#00B386}
+.btn-contour{border-color:var(--encre);color:var(--encre)}
+.btn-contour:hover{background:var(--encre);color:var(--blanc)}
+.btn-contour-clair{border-color:var(--blanc);color:var(--blanc)}
+.btn-contour-clair:hover{background:var(--blanc);color:var(--encre)}
 
-<header style="position: sticky; top: 0; z-index: 10; background: #0B2A3C; border-bottom: 1px solid #1E4255;">
-<div style="max-width: 1200px; margin: 0 auto; padding: 14px 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px;">
-<a href="#haut" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: #F8FAFA;">
-<svg width="44" height="31" viewBox="0 0 40 28" aria-hidden="true"><circle cx="12" cy="14" r="8.5" fill="none" stroke="#F8FAFA" stroke-width="3"></circle><path d="M20.5 14 H27 L35 7" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M27 14 L35 21" fill="none" stroke="#5A6E7A" stroke-width="3" stroke-linecap="round"></path></svg>
-<span style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 26px; letter-spacing: -0.02em;">Optio</span>
+/* En-tête */
+.entete{position:sticky;top:0;z-index:10;background:var(--encre);border-bottom:1px solid var(--trait-sombre)}
+.entete .conteneur{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.marque{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--blanc)}
+.marque span{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:26px;letter-spacing:-0.02em}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-size:15px;font-weight:500}
+.nav a{text-decoration:none;color:#DCE5E8}
+.nav a:hover{color:var(--blanc)}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+
+/* Accroche */
+.accroche{background-color:var(--encre);background-image:linear-gradient(rgba(248,250,250,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,250,.05) 1px,transparent 1px);background-size:40px 40px;color:var(--blanc)}
+.accroche .conteneur{padding-top:104px;padding-bottom:96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:56px;align-items:center}
+.accroche-texte{display:flex;flex-direction:column;gap:28px}
+.accroche h1{font-family:var(--titre);font-stretch:118%;font-weight:800;font-size:clamp(38px,5vw,68px);line-height:1.02;letter-spacing:-0.025em}
+.accroche .chapo{font-size:20px;color:var(--sur-sombre);max-width:560px}
+.accroche .repere{color:var(--sur-sombre-2)}
+.actions{display:flex;flex-wrap:wrap;gap:14px}
+.cible{font-size:15px;color:var(--sur-sombre-2);max-width:520px}
+.resultat{background:var(--blanc);color:var(--encre);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:24px}
+.resultat-citation{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:28px;line-height:1.2;letter-spacing:-0.01em}
+.indicateurs{list-style:none;margin:0;padding:0}
+.indicateurs li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--trait)}
+.indicateurs li:last-child{border-bottom:1px solid var(--trait)}
+.indicateurs strong{font-size:16px;color:var(--vert-lisible)}
+.avant-apres{display:flex;flex-wrap:wrap;align-items:center;gap:20px;font-size:14px;color:var(--texte-2)}
+.etat{display:inline-flex;align-items:center;gap:8px}
+.pastille{width:10px;height:10px;border-radius:50%;flex:none}
+.pastille.balise{background:var(--balise);border:1px solid #C79A12}
+.pastille.signal{background:var(--signal)}
+
+/* Problème */
+.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px}
+.chiffre{background:var(--blanc);border:1px solid var(--trait);border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:14px}
+.chiffre .valeur{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:52px;line-height:1;letter-spacing:-0.02em}
+.chiffre p:last-child{font-size:17px;line-height:1.55;color:var(--texte-2)}
+
+/* Conviction */
+.conviction{background:var(--encre);color:var(--blanc)}
+.conviction .conteneur{max-width:1040px}
+.conviction blockquote{margin:0;display:flex;flex-direction:column;gap:24px}
+.conviction blockquote p:first-child{font-family:var(--titre);font-stretch:116%;font-weight:700;font-size:clamp(28px,3.3vw,44px);line-height:1.18;letter-spacing:-0.02em}
+.conviction blockquote p:last-child{font-size:19px;color:var(--sur-sombre)}
+
+/* Méthode */
+.etapes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));border:1px solid var(--trait);border-radius:8px;overflow:hidden;background:var(--blanc)}
+.etape{padding:28px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--trait);border-bottom:1px solid var(--trait)}
+.etape.coeur{background:#E6EEF0}
+.etape .lettre{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:60px;line-height:1;color:var(--vert-lisible)}
+.etape h3{font-size:19px;font-weight:600}
+.duree{font-family:var(--mesure);font-size:13px;color:var(--texte-3)}
+.etape p:last-child{font-size:15px;line-height:1.55;color:var(--texte-2)}
+
+/* Offres */
+.offres{background:var(--blanc);border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
+.cartes-offres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
+.offre{background:var(--calque);border:1px solid var(--trait);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:18px}
+.offre.phare{background:var(--encre);color:var(--blanc);border-color:var(--encre)}
+.offre .pour-qui{font-size:15px;font-weight:600;color:var(--texte-3)}
+.offre.phare .pour-qui{color:var(--sur-sombre-2)}
+.offre h3{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:30px;letter-spacing:-0.01em}
+.offre .description{font-size:16px;line-height:1.55;color:var(--texte-2)}
+.offre.phare .description{color:var(--sur-sombre)}
+.offre ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.offre .tarif{margin-top:auto;font-family:var(--mesure);font-size:14px}
+.offre.phare .btn-contour{border-color:var(--signal);background:var(--signal);color:var(--encre)}
+.offre.phare .btn-contour:hover{background:#00B386}
+
+/* Retour sur investissement */
+.leviers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px}
+.levier{background:var(--blanc);border:1px solid var(--trait);border-top:4px solid var(--signal);border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:12px}
+.levier h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:24px;letter-spacing:-0.01em}
+.levier p{font-size:16px;line-height:1.55;color:var(--texte-2)}
+
+/* Collectif */
+.collectif{background:var(--blanc);border-top:1px solid var(--trait)}
+.collectif .conteneur{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px}
+.collectif-texte{display:flex;flex-direction:column;gap:16px;max-width:760px}
+
+/* Pourquoi */
+.raisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));column-gap:48px;row-gap:36px}
+.raison{display:flex;flex-direction:column;gap:8px;padding-top:20px;border-top:2px solid var(--encre)}
+.raison h3{font-size:20px;font-weight:600}
+.raison p{font-size:16px;line-height:1.55;color:var(--texte-2)}
+
+/* Calendrier */
+.calendrier{background-color:var(--blanc);background-image:linear-gradient(#DCE5E8 1px,transparent 1px),linear-gradient(90deg,#DCE5E8 1px,transparent 1px);background-size:32px 32px;border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
+.jalons{list-style:none;margin:0 0 40px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px}
+.jalon{background:var(--blanc);border:1px solid var(--trait);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:10px}
+.jalon .date{align-self:flex-start;padding:6px 10px;border-radius:4px;background:var(--encre);color:var(--balise);font-family:var(--mesure);font-size:13px}
+.jalon p{font-size:16px;line-height:1.55;color:var(--texte-2)}
+.jalon strong{color:var(--encre)}
+.fenetre{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:24px;line-height:1.3}
+
+/* FAQ */
+.faq .conteneur{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:48px}
+.faq .intro{margin-bottom:0}
+.questions{display:flex;flex-direction:column}
+.question{padding:22px 0;border-top:1px solid var(--trait);display:flex;flex-direction:column;gap:8px}
+.question:last-child{border-bottom:1px solid var(--trait)}
+.question h3{font-size:18px;font-weight:600}
+.question p{font-size:16px;line-height:1.55;color:var(--texte-2)}
+
+/* Contact */
+.contact{background:var(--encre);color:var(--blanc)}
+.contact .conteneur{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:start}
+.contact-texte{display:flex;flex-direction:column;gap:20px}
+.contact .repere{color:var(--sur-sombre-2)}
+.contact h2{font-family:var(--titre);font-stretch:118%;font-weight:800;font-size:clamp(34px,4vw,54px);line-height:1.04;letter-spacing:-0.02em}
+.contact .chapo{color:var(--sur-sombre)}
+.contact a{color:var(--blanc)}
+.formulaire{background:var(--blanc);color:var(--encre);border-radius:8px;padding:28px 28px 20px}
+.formulaire iframe{display:block;width:100%;border:0;min-height:520px}
+.rgpd{margin-top:16px;font-size:13px;line-height:1.5;color:var(--texte-3)}
+.rgpd a{color:var(--encre)}
+
+/* Pied de page */
+.pied{background:var(--encre-profonde);color:var(--sur-sombre-2);border-top:1px solid var(--trait-sombre)}
+.pied .conteneur{padding-top:48px;padding-bottom:48px;display:flex;flex-direction:column;gap:24px}
+.pied-haut{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
+.pied-marque{display:flex;align-items:center;gap:12px;font-size:15px}
+.pied-marque strong{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:22px;color:var(--blanc)}
+.pied a{color:var(--sur-sombre-2)}
+.sources,.mentions{font-size:13px;line-height:1.6;color:#8FA3AE}
+.mentions h2{font-size:15px;font-weight:600;color:var(--sur-sombre);margin-bottom:6px}
+
+@media (max-width:640px){
+  .section{padding:72px 0}
+  .indicateurs li{grid-template-columns:1fr;gap:4px}
+  .nav{gap:16px}
+}
+</style>
+</head>
+<body>
+
+<header class="entete">
+<div class="conteneur">
+<a class="marque" href="#haut" aria-label="Optio, retour en haut de page">
+<svg width="44" height="31" viewBox="0 0 40 28" aria-hidden="true"><circle cx="12" cy="14" r="8.5" fill="none" stroke="#F8FAFA" stroke-width="3"/><path d="M20.5 14 H27 L35 7" fill="none" stroke="#00A37A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 14 L35 21" fill="none" stroke="#5A6E7A" stroke-width="3" stroke-linecap="round"/></svg>
+<span>Optio</span>
 </a>
-<nav aria-label="Navigation principale" style="display: flex; flex-wrap: wrap; align-items: center; gap: 24px; font-size: 15px; font-weight: 500;">
-<a href="#probleme" style="text-decoration: none; color: #DCE5E8;">Le problème</a>
-<a href="#methode" style="text-decoration: none; color: #DCE5E8;">La méthode</a>
-<a href="#offres" style="text-decoration: none; color: #DCE5E8;">Nos offres</a>
-<a href="#pourquoi" style="text-decoration: none; color: #DCE5E8;">Pourquoi Optio</a>
-<a href="#contact" style="display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 6px; background: {{accent}}; color: #0B2A3C; text-decoration: none; font-weight: 600;">Réserver un échange</a>
+<nav class="nav" aria-label="Navigation principale">
+<a href="#probleme">Le problème</a>
+<a href="#methode">La méthode</a>
+<a href="#offres">Nos offres</a>
+<a href="#pourquoi">Pourquoi Optio</a>
+<a href="#collectif">Nous rejoindre</a>
+<a class="btn btn-signal" href="#contact">Réserver un échange</a>
 </nav>
 </div>
 </header>
 
-<section style="background-color: #0B2A3C; background-image: linear-gradient(rgba(248,250,250,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(248,250,250,0.05) 1px, transparent 1px); background-size: 40px 40px; color: #F8FAFA;">
-<div style="max-width: 1200px; margin: 0 auto; padding: 104px 24px 96px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 56px; align-items: center;">
-<div style="display: flex; flex-direction: column; gap: 28px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #AFC0C9;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>INDÉPENDANCE NUMÉRIQUE, PAR LA PREUVE</p>
-<h1 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 118%; font-weight: 800; font-size: clamp(38px, 5vw, 68px); line-height: 1.02; letter-spacing: -0.025em;">Vos fournisseurs critiques ne devraient pas décider à votre place.</h1>
-<p style="margin: 0; font-size: 20px; line-height: 1.55; color: #C9D6DC; max-width: 560px;">Optio déverrouille votre dépendance à vos fournisseurs d'infrastructure. En quelques semaines, nous prouvons en combien de temps et pour quel coût vous pouvez partir. Vous négociez en position de force, ou vous sortez.</p>
-<div style="display: flex; flex-wrap: wrap; gap: 14px;">
-<a href="#contact" style="display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 6px; background: {{accent}}; color: #0B2A3C; text-decoration: none; font-weight: 600; font-size: 17px;">Réserver un design sprint <span aria-hidden="true">→</span></a>
-<a href="#methode" style="display: inline-flex; align-items: center; min-height: 52px; padding: 0 24px; border-radius: 6px; border: 1.5px solid #F8FAFA; color: #F8FAFA; text-decoration: none; font-weight: 600; font-size: 17px;">Découvrir la méthode</a>
-</div>
-<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #AFC0C9; max-width: 520px;">Pour les organismes publics et les établissements financiers soumis à DORA, au plan de réduction des dépendances de l'État et à NIS 2.</p>
-</div>
-<div style="background: #F8FAFA; color: #0B2A3C; border-radius: 8px; padding: 36px; display: flex; flex-direction: column; gap: 24px;">
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #5A6E7A;">CE QUE VOUS OBTENEZ</p>
-<p style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 112%; font-weight: 700; font-size: 28px; line-height: 1.2; letter-spacing: -0.01em;">« Je sais en combien de temps et pour quel coût je peux partir. Et je l'ai prouvé. »</p>
-<div style="display: flex; flex-direction: column;">
-<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #C7D3D8;">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A; padding-top: 3px;">PRIX</span>
-<span style="font-size: 16px; line-height: 1.45;">La hausse évitée par rapport à l'offre du fournisseur.</span>
-</div>
-<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #C7D3D8;">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A; padding-top: 3px;">DURÉE</span>
-<span style="font-size: 16px; line-height: 1.45;">Un engagement plus court, avec des clauses de sortie.</span>
-</div>
-<div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 16px 0; border-top: 1px solid #C7D3D8; border-bottom: 1px solid #C7D3D8;">
-<span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A; padding-top: 3px;">SORTIE</span>
-<span style="font-size: 16px; line-height: 1.45;">Un délai et un coût de sortie mesurés, testés.</span>
-</div>
-</div>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #3E5563;">
-<span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #F2C230; border: 1px solid #C79A12;"></span>AVANT : ÉCHÉANCE SUBIE</span>
-<span aria-hidden="true">→</span>
-<span style="display: inline-flex; align-items: center; gap: 8px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: {{accent}};"></span>APRÈS : VOIE LIBRE</span>
-</div>
-</div>
-</div>
-</section>
+<main id="haut">
 
-<section id="probleme" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #5A6E7A;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>01 — LE PROBLÈME</p>
-<h2 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em;">À chaque échéance, la même impasse.</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3E5563;">Vingt ans de choix technologiques empilés ont créé des dépendances que personne n'a pilotées. Les fournisseurs le savent, et durcissent leurs conditions. Sans alternative prouvée, vous re-signez sous contrainte.</p>
+<section class="accroche">
+<div class="conteneur">
+<div class="accroche-texte">
+<p class="repere">Indépendance numérique, par la preuve</p>
+<h1>Vos fournisseurs critiques ne devraient pas décider à votre place.</h1>
+<p class="chapo">Optio vous libère de la dépendance à vos fournisseurs d'infrastructure critiques. Nous mesurons en combien de temps et pour quel coût vous pouvez partir, ou redémarrer ailleurs en cas de crise. Vous garantissez la continuité de votre activité, et vous négociez en position de force.</p>
+<div class="actions">
+<a class="btn btn-signal" href="#contact">Demander un diagnostic</a>
+<a class="btn btn-contour-clair" href="#methode">Découvrir la méthode</a>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px;">
-<div style="background: #F8FAFA; border: 1px solid #C7D3D8; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
-<p style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: #0B2A3C;">2 à 3×</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3E5563;">Les hausses de prix courantes observées par Gartner chez les clients VMware en renégociation.</p>
+<p class="cible">Pour les DSI, RSSI et directions des risques des organismes publics et des établissements financiers, soumis à DORA, au plan de réduction des dépendances de l'État et à NIS 2.</p>
 </div>
-<div style="background: #F8FAFA; border: 1px solid #C7D3D8; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
-<p style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: #0B2A3C;">3 ans</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3E5563;">La durée pour laquelle on re-signe, faute d'alternative chiffrée et exploitable avant l'échéance.</p>
-</div>
-<div style="background: #F8FAFA; border: 1px solid #C7D3D8; border-radius: 8px; padding: 32px; display: flex; flex-direction: column; gap: 14px;">
-<p style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 52px; line-height: 1; letter-spacing: -0.02em; color: #0B2A3C;">Testés</p>
-<p style="margin: 0; font-size: 17px; line-height: 1.55; color: #3E5563;">Les plans de sortie qu'exige désormais DORA. L'État, lui, impose des plans de réduction des dépendances.</p>
-</div>
-</div>
-</section>
-
-<section style="background: #0B2A3C; color: #F8FAFA;">
-<div style="max-width: 1040px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 24px;">
-<p style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 700; font-size: clamp(28px, 3.3vw, 44px); line-height: 1.18; letter-spacing: -0.02em;">On peut toujours sortir d'une technologie. La seule question : <span style="color: {{accent}};">en combien de temps, et pour quel coût ?</span></p>
-<p style="margin: 0; font-size: 19px; line-height: 1.5; color: #C9D6DC;">Notre métier : rendre cette réponse lisible, prouvée et rapide.</p>
-</div>
-</section>
-
-<section id="methode" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #5A6E7A;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>02 — LA MÉTHODE LIBRE</p>
-<h2 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em;">Cinq étapes. Chacune se suffit à elle-même, et vous restez libre à chacune.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0; border: 1px solid #C7D3D8; border-radius: 8px; overflow: hidden; background: #F8FAFA;">
-<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px; border-right: 1px solid #C7D3D8;">
-<span style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 60px; line-height: 1; color: #00775A;">L</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600;">Lire la dépendance</h3>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6E7A;">1 À 2 SEM.</p>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3E5563;">Cartographier vos fournisseurs critiques, vos usages, vos contrats et vos échéances.</p>
-</div>
-<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px; border-right: 1px solid #C7D3D8;">
-<span style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 60px; line-height: 1; color: #00775A;">I</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600;">Imaginer l'alternative</h3>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6E7A;">3 JOURS</p>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3E5563;">Un design sprint avec vos experts sur votre dépendance la plus critique.</p>
-</div>
-<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px; border-right: 1px solid #C7D3D8; background: #E6EEF0;">
-<span style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 60px; line-height: 1; color: #00775A;">B</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600;">Bâtir la preuve</h3>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6E7A;">4 À 6 SEM.</p>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3E5563;">Une bascule ou une migration réelle, sur un périmètre limité, chronométrée.</p>
-</div>
-<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px; border-right: 1px solid #C7D3D8;">
-<span style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 60px; line-height: 1; color: #00775A;">R</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600;">Réaliser la sortie</h3>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6E7A;">3 À 12 MOIS</p>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3E5563;">Une migration planifiée par étapes, sans rupture, avec vos équipes formées.</p>
-</div>
-<div style="padding: 28px; display: flex; flex-direction: column; gap: 12px;">
-<span style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 60px; line-height: 1; color: #00775A;">E</span>
-<h3 style="margin: 0; font-size: 19px; font-weight: 600;">Entretenir la liberté</h3>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #5A6E7A;">EN CONTINU</p>
-<p style="margin: 0; font-size: 15px; line-height: 1.55; color: #3E5563;">Tests de bascule, alertes avant chaque échéance, maintenance de votre nouvel environnement.</p>
-</div>
-</div>
-</section>
-
-<section id="offres" style="background: #F8FAFA; border-top: 1px solid #C7D3D8; border-bottom: 1px solid #C7D3D8;">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #5A6E7A;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>03 — NOS OFFRES POUR COMMENCER</p>
-<h2 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em;">Commencez petit. Repartez avec une preuve.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; align-items: stretch;">
-<div style="background: #EEF2F3; border: 1px solid #C7D3D8; border-radius: 8px; padding: 36px; display: flex; flex-direction: column; gap: 18px;">
-<span style="align-self: flex-start; padding: 6px 10px; border-radius: 4px; background: #DCE5E8; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #0B2A3C;">POINT D'ENTRÉE · 3 JOURS</span>
-<h3 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: 30px; letter-spacing: -0.01em;">Design sprint</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Vos décideurs et vos experts autour de la table : situation actuelle, cible, écart, et le périmètre de votre preuve.</p>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.5;">
-<li>Un scénario cible validé par vos experts</li>
-<li>Le backlog de la preuve de concept</li>
-<li>Le plan de bascule</li>
+<div class="resultat">
+<p class="repere">Ce que vous obtenez</p>
+<p class="resultat-citation">« Je sais en combien de temps et pour quel coût je peux partir, ou redémarrer ailleurs. Et je l'ai prouvé. »</p>
+<ul class="indicateurs">
+<li><strong>La continuité</strong><span>Un temps de reprise ailleurs, mesuré et testé, si un fournisseur fait défaut.</span></li>
+<li><strong>Le coût</strong><span>La hausse évitée et les économies obtenues, chiffrées.</span></li>
+<li><strong>Le choix</strong><span>Un délai et un coût de sortie connus, et un engagement plus court.</span></li>
 </ul>
-<div style="flex-grow: 1;"></div>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px;">FORFAIT · [TARIF]</p>
-<a href="#contact" style="display: inline-flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 6px; border: 1.5px solid #0B2A3C; color: #0B2A3C; text-decoration: none; font-weight: 600;">En parler</a>
-</div>
-<div style="background: #0B2A3C; color: #F8FAFA; border-radius: 8px; padding: 36px; display: flex; flex-direction: column; gap: 18px;">
-<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 4px; background: #163B50; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #F8FAFA;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>ORGANISATIONS RÉGULÉES · 6 SEM.</span>
-<h3 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: 30px; letter-spacing: -0.01em;">Plan B testé</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #C9D6DC;">Un environnement de secours hors de votre fournisseur principal, et un test de bascule réel de votre service critique.</p>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.5;">
-<li>Un environnement de secours opérationnel</li>
-<li>Un temps de reprise mesuré</li>
-<li>Un plan de sortie testé, présentable au régulateur</li>
-</ul>
-<div style="flex-grow: 1;"></div>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px;">FORFAIT · [TARIF]</p>
-<a href="#contact" style="display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 48px; border-radius: 6px; background: {{accent}}; color: #0B2A3C; text-decoration: none; font-weight: 600;">En parler <span aria-hidden="true">→</span></a>
-</div>
-<div style="background: #EEF2F3; border: 1px solid #C7D3D8; border-radius: 8px; padding: 36px; display: flex; flex-direction: column; gap: 18px;">
-<span style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 4px; background: #DCE5E8; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #0B2A3C;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #F2C230; border: 1px solid #C79A12;"></span>ÉCHÉANCE CONTRACTUELLE · 6 SEM.</span>
-<h3 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: 30px; letter-spacing: -0.01em;">Pilote de sortie</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Une partie réelle de votre infrastructure migrée vers l'alternative de votre choix, et la sortie complète chiffrée à partir du réel.</p>
-<ul style="margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 8px; font-size: 15px; line-height: 1.5;">
-<li>Un périmètre pilote en production</li>
-<li>Le temps et le coût de sortie, mesurés</li>
-<li>Vos équipes formées à l'alternative</li>
-</ul>
-<div style="flex-grow: 1;"></div>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 14px;">FORFAIT · [TARIF]</p>
-<a href="#contact" style="display: inline-flex; justify-content: center; align-items: center; min-height: 48px; border-radius: 6px; border: 1.5px solid #0B2A3C; color: #0B2A3C; text-decoration: none; font-weight: 600;">En parler</a>
+<div class="avant-apres">
+<span class="etat"><span class="pastille balise" aria-hidden="true"></span>Avant : une échéance subie</span>
+<span class="etat"><span class="pastille signal" aria-hidden="true"></span>Après : voie libre</span>
 </div>
 </div>
 </div>
 </section>
 
-<section id="pourquoi" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 48px;">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #5A6E7A;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>04 — POURQUOI OPTIO</p>
-<h2 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em;">Nous construisons la preuve, pas un rapport.</h2>
+<section id="probleme" class="section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Le problème</p>
+<h2 class="titre">À chaque échéance, la même impasse.</h2>
+<p class="chapo">Vingt ans de choix technologiques empilés ont créé des dépendances que personne n'a pilotées. Les fournisseurs le savent, et durcissent leurs conditions. Sans alternative prouvée, vous re-signez sous contrainte.</p>
 </div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); column-gap: 48px; row-gap: 36px;">
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 2px solid #0B2A3C;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A;">01</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Une preuve, pas un document</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Un environnement qui tourne et un chiffre mesuré, utilisable en négociation dès le lendemain.</p></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 2px solid #0B2A3C;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A;">02</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Vous choisissez l'alternative</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Plusieurs technologies maîtrisées, aucune commission des éditeurs. Rester, à de meilleures conditions, est une issue possible.</p></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 2px solid #0B2A3C;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A;">03</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Spécialistes de l'infrastructure</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Virtualisation, cloud, réseau, stockage : nous savons ce que coûte réellement une sortie.</p></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 2px solid #0B2A3C;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A;">04</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Accélérés par l'IA</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Inventaire, conversion, documentation : nos accélérateurs vont plus vite, là où l'infrastructure travaille encore à la main.</p></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 2px solid #0B2A3C;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A;">05</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Zéro risque pour votre production</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Des périmètres limités et réversibles, et une décision que vous pouvez défendre devant votre direction.</p></div>
-<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 20px; border-top: 2px solid #0B2A3C;"><span style="font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #00775A;">06</span><h3 style="margin: 0; font-size: 20px; font-weight: 600;">Un écosystème, pas un ego</h3><p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Nous travaillons avec vos équipes, vos intégrateurs et les alternatives européennes.</p></div>
-</div>
-</section>
-
-<section style="background-color: #F8FAFA; background-image: linear-gradient(#DCE5E8 1px, transparent 1px), linear-gradient(90deg, #DCE5E8 1px, transparent 1px); background-size: 32px 32px; border-top: 1px solid #C7D3D8; border-bottom: 1px solid #C7D3D8;">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: flex; flex-direction: column; gap: 40px;">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #5A6E7A;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #F2C230; border: 1px solid #C79A12;"></span>05 — POURQUOI MAINTENANT</p>
-<h2 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em;">Le calendrier joue pour vous.</h2>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px;">
-<div style="background: #F8FAFA; border: 1px solid #C7D3D8; border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-<span style="align-self: flex-start; padding: 6px 10px; border-radius: 4px; background: #0B2A3C; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #F2C230;">DÉJÀ APPLICABLE</span>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;"><strong style="color: #0B2A3C;">DORA</strong> exige des plans de sortie documentés et testés pour les fonctions critiques.</p>
-</div>
-<div style="background: #F8FAFA; border: 1px solid #C7D3D8; border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-<span style="align-self: flex-start; padding: 6px 10px; border-radius: 4px; background: #0B2A3C; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #F2C230;">AUTOMNE 2026</span>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;"><strong style="color: #0B2A3C;">Plans ministériels</strong> de réduction des dépendances, coordonnés par la Dinum.</p>
-</div>
-<div style="background: #F8FAFA; border: 1px solid #C7D3D8; border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-<span style="align-self: flex-start; padding: 6px 10px; border-radius: 4px; background: #0B2A3C; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #F2C230;">EN COURS D'ADOPTION</span>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;"><strong style="color: #0B2A3C;">Loi Résilience (NIS 2)</strong> : la sécurité de la chaîne d'approvisionnement devient une obligation.</p>
-</div>
-<div style="background: #F8FAFA; border: 1px solid #C7D3D8; border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 10px;">
-<span style="align-self: flex-start; padding: 6px 10px; border-radius: 4px; background: #0B2A3C; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.06em; color: #F2C230;">12.01.2027</span>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;"><strong style="color: #0B2A3C;">Data Act</strong> : fin des frais de changement de fournisseur cloud.</p>
-</div>
-</div>
-<p style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 112%; font-weight: 700; font-size: 24px; line-height: 1.3;">Re-signer pour trois ans aujourd'hui, c'est renoncer à cette fenêtre.</p>
-</div>
-</section>
-
-<section id="faq" style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 48px;">
-<div style="display: flex; flex-direction: column; gap: 16px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #5A6E7A;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>06 — QUESTIONS FRÉQUENTES</p>
-<h2 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 116%; font-weight: 800; font-size: clamp(30px, 3.4vw, 46px); line-height: 1.08; letter-spacing: -0.02em;">Ce que les DSI nous demandent.</h2>
-</div>
-<div style="display: flex; flex-direction: column;">
-<div style="padding: 22px 0; border-top: 1px solid #C7D3D8; display: flex; flex-direction: column; gap: 8px;">
-<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Faut-il forcément quitter notre fournisseur ?</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Non. La preuve peut servir à renégocier : un meilleur prix, un engagement plus court, des clauses de sortie.</p>
-</div>
-<div style="padding: 22px 0; border-top: 1px solid #C7D3D8; display: flex; flex-direction: column; gap: 8px;">
-<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Intervenez-vous sur notre production ?</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Le plan B testé ne touche pas à votre production. Le pilote de sortie porte sur un périmètre limité et non critique.</p>
-</div>
-<div style="padding: 22px 0; border-top: 1px solid #C7D3D8; display: flex; flex-direction: column; gap: 8px;">
-<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Recevez-vous des commissions des éditeurs ?</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Jamais. Nos partenaires ne nous rémunèrent pas, et c'est vous qui choisissez l'alternative.</p>
-</div>
-<div style="padding: 22px 0; border-top: 1px solid #C7D3D8; border-bottom: 1px solid #C7D3D8; display: flex; flex-direction: column; gap: 8px;">
-<h3 style="margin: 0; font-size: 18px; font-weight: 600;">Qui réalise la migration complète ?</h3>
-<p style="margin: 0; font-size: 16px; line-height: 1.55; color: #3E5563;">Nous pouvons la réaliser, ou la piloter avec l'intégrateur de votre choix. Vous restez libre à chaque étape.</p>
+<div class="chiffres">
+<div class="chiffre"><p class="valeur">2 à 3×</p><p>Les hausses de prix courantes observées par Gartner chez les clients VMware en renégociation.</p></div>
+<div class="chiffre"><p class="valeur">3 ans</p><p>La durée pour laquelle on re-signe, faute d'alternative chiffrée et exploitable avant l'échéance.</p></div>
+<div class="chiffre"><p class="valeur">Testés</p><p>Les plans de sortie qu'exige désormais DORA. L'État, lui, impose des plans de réduction des dépendances.</p></div>
 </div>
 </div>
 </section>
 
-<section id="contact" style="background: #0B2A3C; color: #F8FAFA;">
-<div style="max-width: 1200px; margin: 0 auto; padding: 96px 24px; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 56px; align-items: start;">
-<div style="display: flex; flex-direction: column; gap: 20px;">
-<p style="margin: 0; display: flex; align-items: center; gap: 10px; font-family: 'JetBrains Mono', monospace; font-size: 13px; letter-spacing: 0.1em; color: #AFC0C9;"><span style="width: 8px; height: 8px; border-radius: 50%; background: {{accent}};"></span>07 — CONTACT</p>
-<h2 style="margin: 0; font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 118%; font-weight: 800; font-size: clamp(34px, 4vw, 54px); line-height: 1.04; letter-spacing: -0.02em;">Quelle est votre prochaine échéance ?</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C9D6DC;">Parlons-en trente minutes. Vous repartez avec une première lecture de votre exposition, sans engagement.</p>
-<p style="margin: 0; font-family: 'JetBrains Mono', monospace; font-size: 15px;">contact@[DOMAINE]</p>
-</div>
-<form style="background: #F8FAFA; color: #0B2A3C; border-radius: 8px; padding: 36px; display: flex; flex-direction: column; gap: 18px;">
-<div style="display: flex; flex-direction: column; gap: 6px;">
-<label for="nom2" style="font-size: 14px; font-weight: 600;">Nom</label>
-<input id="nom2" type="text" autocomplete="name" style="min-height: 48px; padding: 0 14px; border: 1px solid #9FB1BA; border-radius: 6px; background: #FFFFFF; font-size: 16px; font-family: inherit;">
-</div>
-<div style="display: flex; flex-direction: column; gap: 6px;">
-<label for="organisation2" style="font-size: 14px; font-weight: 600;">Organisation</label>
-<input id="organisation2" type="text" autocomplete="organization" style="min-height: 48px; padding: 0 14px; border: 1px solid #9FB1BA; border-radius: 6px; background: #FFFFFF; font-size: 16px; font-family: inherit;">
-</div>
-<div style="display: flex; flex-direction: column; gap: 6px;">
-<label for="email2" style="font-size: 14px; font-weight: 600;">E-mail professionnel</label>
-<input id="email2" type="email" autocomplete="email" style="min-height: 48px; padding: 0 14px; border: 1px solid #9FB1BA; border-radius: 6px; background: #FFFFFF; font-size: 16px; font-family: inherit;">
-</div>
-<div style="display: flex; flex-direction: column; gap: 6px;">
-<label for="echeance2" style="font-size: 14px; font-weight: 600;">Prochaine échéance contractuelle</label>
-<select id="echeance2" style="min-height: 48px; padding: 0 12px; border: 1px solid #9FB1BA; border-radius: 6px; background: #FFFFFF; font-size: 16px; font-family: inherit;">
-<option>Moins de 6 mois</option>
-<option>6 à 12 mois</option>
-<option>12 à 24 mois</option>
-<option>Pas d'échéance identifiée</option>
-</select>
-</div>
-<div style="display: flex; flex-direction: column; gap: 6px;">
-<label for="fournisseur2" style="font-size: 14px; font-weight: 600;">Fournisseur concerné</label>
-<input id="fournisseur2" type="text" style="min-height: 48px; padding: 0 14px; border: 1px solid #9FB1BA; border-radius: 6px; background: #FFFFFF; font-size: 16px; font-family: inherit;">
-</div>
-<button type="button" style="display: inline-flex; justify-content: center; align-items: center; gap: 10px; min-height: 52px; border: none; border-radius: 6px; background: {{accent}}; color: #0B2A3C; font-size: 17px; font-weight: 600; font-family: inherit; cursor: pointer;">Demander un échange <span aria-hidden="true">→</span></button>
-<p style="margin: 0; font-size: 13px; line-height: 1.5; color: #5A6E7A;">Vos informations servent uniquement à vous recontacter.</p>
-</form>
+<section class="conviction section">
+<div class="conteneur">
+<blockquote>
+<p>On peut toujours sortir d'une technologie. La seule question : en combien de temps, et pour quel coût ?</p>
+<p>Notre métier : rendre cette réponse lisible, prouvée et rapide.</p>
+</blockquote>
 </div>
 </section>
 
-<footer style="background: #07202E; color: #AFC0C9; border-top: 1px solid #1E4255;">
-<div style="max-width: 1200px; margin: 0 auto; padding: 48px 24px; display: flex; flex-direction: column; gap: 24px;">
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px;">
-<div style="display: flex; align-items: center; gap: 12px;">
-<svg width="40" height="28" viewBox="0 0 40 28" aria-hidden="true"><circle cx="12" cy="14" r="8.5" fill="none" stroke="#F8FAFA" stroke-width="3"></circle><path d="M20.5 14 H27 L35 7" fill="none" stroke="{{accent}}" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path><path d="M27 14 L35 21" fill="none" stroke="#5A6E7A" stroke-width="3" stroke-linecap="round"></path></svg>
-<p style="margin: 0; font-size: 15px;"><span style="font-family: 'Archivo', 'Helvetica Neue', sans-serif; font-stretch: 122%; font-weight: 800; font-size: 22px; color: #F8FAFA;">Optio</span> · Indépendance numérique, par la preuve.</p>
+<section id="methode" class="section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">La méthode LIBRE</p>
+<h2 class="titre">Cinq étapes. Chacune se suffit à elle-même, et vous restez libre à chacune.</h2>
+<p class="chapo">Un conseil outillé, qui débouche sur une preuve concrète, puis sur l'exécution si vous le décidez.</p>
 </div>
-<p style="margin: 0; font-size: 14px;">© 2026 Optio · [MENTIONS LÉGALES]</p>
+<ol class="etapes">
+<li class="etape"><span class="lettre" aria-hidden="true">L</span><h3>Lire la dépendance</h3><p class="duree">1 à 2 semaines</p><p>Relier vos points chauds techniques à vos enjeux métier : quels fournisseurs mettraient votre activité en jeu s'ils faisaient défaut demain ?</p></li>
+<li class="etape"><span class="lettre" aria-hidden="true">I</span><h3>Imaginer l'alternative</h3><p class="duree">3 jours</p><p>Un design sprint avec vos experts sur votre dépendance la plus critique.</p></li>
+<li class="etape coeur"><span class="lettre" aria-hidden="true">B</span><h3>Bâtir la preuve</h3><p class="duree">4 à 6 semaines</p><p>Une bascule ou une migration réelle, sur un périmètre limité, chronométrée.</p></li>
+<li class="etape"><span class="lettre" aria-hidden="true">R</span><h3>Réaliser la sortie</h3><p class="duree">3 à 12 mois</p><p>Une migration planifiée par étapes, sans rupture, avec vos équipes formées.</p></li>
+<li class="etape"><span class="lettre" aria-hidden="true">E</span><h3>Entretenir la liberté</h3><p class="duree">En continu</p><p>Tests de bascule, alertes avant chaque échéance, maintenance de votre nouvel environnement.</p></li>
+</ol>
 </div>
-<p style="margin: 0; font-size: 13px; line-height: 1.6; color: #8FA3AE;">Sources : Gartner, cité par la presse spécialisée (hausses VMware) ; règlement (UE) 2022/2554, article 28 (DORA) ; règlement (UE) 2023/2854, article 29 (Data Act).</p>
+</section>
+
+<section id="offres" class="offres section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Nos offres pour commencer</p>
+<h2 class="titre">Commencez petit. Repartez avec une preuve.</h2>
+</div>
+<div class="cartes-offres">
+<article class="offre">
+<p class="pour-qui">Point d'entrée, 2 semaines</p>
+<h3>Diagnostic de dépendance</h3>
+<p class="description">Une lecture outillée de vos dépendances critiques, traduite en enjeux de continuité que votre direction comprend.</p>
+<ul><li>La carte de vos dépendances critiques, priorisée</li><li>L'exposition chiffrée, fournisseur par fournisseur</li><li>Les arguments pour votre comité de direction</li></ul>
+<p class="tarif">Forfait : [TARIF]</p>
+<a class="btn btn-contour" href="#contact">Parler du diagnostic</a>
+</article>
+<article class="offre">
+<p class="pour-qui">Étape suivante, 3 jours</p>
+<h3>Design sprint</h3>
+<p class="description">Vos décideurs et vos experts autour de la table : situation actuelle, cible, écart, et le périmètre de votre preuve.</p>
+<ul><li>Un scénario cible validé par vos experts</li><li>Le backlog de la preuve de concept</li><li>Le plan de bascule</li></ul>
+<p class="tarif">Forfait : [TARIF]</p>
+<a class="btn btn-contour" href="#contact">Parler du design sprint</a>
+</article>
+<article class="offre phare">
+<p class="pour-qui">Organisations régulées, 6 semaines</p>
+<h3>Plan B testé</h3>
+<p class="description">Un environnement de secours hors de votre fournisseur principal, et un test de bascule réel de votre service critique.</p>
+<ul><li>Un environnement de secours opérationnel</li><li>Un temps de reprise mesuré</li><li>Un plan de sortie testé, présentable au régulateur</li></ul>
+<p class="tarif">Forfait : [TARIF]</p>
+<a class="btn btn-contour" href="#contact">Parler du plan B testé</a>
+</article>
+<article class="offre">
+<p class="pour-qui">Échéance contractuelle, 6 semaines</p>
+<h3>Pilote de sortie</h3>
+<p class="description">Une partie réelle de votre infrastructure migrée vers l'alternative de votre choix, et la sortie complète chiffrée à partir du réel.</p>
+<ul><li>Un périmètre pilote en production</li><li>Le temps et le coût de sortie, mesurés</li><li>Vos équipes formées à l'alternative</li></ul>
+<p class="tarif">Forfait : [TARIF]</p>
+<a class="btn btn-contour" href="#contact">Parler du pilote de sortie</a>
+</article>
+</div>
+</div>
+</section>
+
+<section id="roi" class="section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Le retour sur investissement</p>
+<h2 class="titre">Un projet qui se finance par ce qu'il fait gagner.</h2>
+</div>
+<div class="leviers">
+<div class="levier"><h3>Ce que vous économisez</h3><p>Débrancher un contrat, limiter une consommation, renégocier avec une alternative crédible : le gain se calcule, son délai d'amortissement aussi.</p></div>
+<div class="levier"><h3>Ce que vous sécurisez</h3><p>Si un fournisseur fait défaut ou subit une compromission, vous savez en combien de temps votre activité redémarre ailleurs.</p></div>
+<div class="levier"><h3>D'une poche à l'autre</h3><p>Les premières économies financent les étapes suivantes. Le budget se débloque sans attendre un nouvel arbitrage.</p></div>
+</div>
+</div>
+</section>
+
+<section id="pourquoi" class="section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Pourquoi Optio</p>
+<h2 class="titre">Nous construisons la preuve, pas un rapport.</h2>
+</div>
+<div class="raisons">
+<div class="raison"><h3>Une preuve, pas un document</h3><p>Un environnement qui tourne et un chiffre mesuré, utilisable en négociation dès le lendemain.</p></div>
+<div class="raison"><h3>Vous choisissez l'alternative</h3><p>Plusieurs technologies maîtrisées, aucune commission des éditeurs. Rester, à de meilleures conditions, est une issue possible.</p></div>
+<div class="raison"><h3>Spécialistes de l'infrastructure</h3><p>Virtualisation, cloud, réseau, stockage : nous savons ce que coûte réellement une sortie.</p></div>
+<div class="raison"><h3>Open source, IA et outillage</h3><p>Des alternatives open source, des accélérateurs d'IA là où l'infrastructure travaille encore à la main, et une méthode outillée de bout en bout.</p></div>
+<div class="raison"><h3>Sans surcharger vos équipes</h3><p>Des périmètres limités et réversibles. Nous apportons la capacité, vos équipes restent concentrées sur l'exploitation.</p></div>
+<div class="raison"><h3>Un écosystème, pas un ego</h3><p>Nous construisons avec l'écosystème européen un référentiel ouvert de la réversibilité, et nous travaillons avec vos équipes et vos intégrateurs.</p></div>
+</div>
+</div>
+</section>
+
+<section class="calendrier section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere balise">Pourquoi maintenant</p>
+<h2 class="titre">Le calendrier joue pour vous.</h2>
+</div>
+<ol class="jalons">
+<li class="jalon"><span class="date">Déjà applicable</span><p><strong>DORA</strong> exige des plans de sortie documentés et testés pour les fonctions critiques.</p></li>
+<li class="jalon"><span class="date">Automne 2026</span><p><strong>Plans ministériels</strong> de réduction des dépendances, coordonnés par la Dinum.</p></li>
+<li class="jalon"><span class="date">En cours d'adoption</span><p><strong>Loi Résilience (NIS 2)</strong> : la sécurité de la chaîne d'approvisionnement devient une obligation.</p></li>
+<li class="jalon"><span class="date">12 janvier 2027</span><p><strong>Data Act</strong> : fin des frais de changement de fournisseur cloud.</p></li>
+</ol>
+<p class="fenetre">Re-signer pour trois ans aujourd'hui, c'est renoncer à cette fenêtre.</p>
+</div>
+</section>
+
+<section id="faq" class="faq section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Questions fréquentes</p>
+<h2 class="titre">Ce que les DSI nous demandent.</h2>
+</div>
+<div class="questions">
+<div class="question"><h3>Faut-il forcément quitter notre fournisseur ?</h3><p>Non. La preuve peut servir à renégocier : un meilleur prix, un engagement plus court, des clauses de sortie.</p></div>
+<div class="question"><h3>Nos métiers ne financeront pas un sujet technique. Comment faire ?</h3><p>Nous ne vendons pas un sujet technique, mais la continuité de votre activité. Et les premières économies obtenues financent les étapes suivantes.</p></div>
+<div class="question"><h3>Qui porte le sujet chez nous ?</h3><p>Souvent le RSSI, au titre de NIS 2 ou de DORA, avec le DSI qui pilote et la direction qui arbitre. Notre diagnostic donne à chacun les arguments pour décider.</p></div>
+<div class="question"><h3>Intervenez-vous sur notre production ?</h3><p>Le plan B testé ne touche pas à votre production. Le pilote de sortie porte sur un périmètre limité et non critique.</p></div>
+<div class="question"><h3>Recevez-vous des commissions des éditeurs ?</h3><p>Jamais. Nos partenaires ne nous rémunèrent pas, et c'est vous qui choisissez l'alternative.</p></div>
+<div class="question"><h3>Qui réalise la migration complète ?</h3><p>Nous pouvons la réaliser, ou la piloter avec l'intégrateur de votre choix. Vous restez libre à chaque étape.</p></div>
+</div>
+</div>
+</section>
+
+<section id="collectif" class="collectif section">
+<div class="conteneur">
+<div class="collectif-texte">
+<p class="repere">Rejoindre le collectif</p>
+<h2 class="titre">Experts de l'infrastructure : ne restez pas seuls.</h2>
+<p class="chapo">Optio se construit comme un collectif d'experts, salariés ou indépendants, autour d'un pacte clair : une rémunération juste, une redistribution de la valeur créée, et une vraie communauté de pratique autour de l'open source et des alternatives européennes.</p>
+</div>
+<a class="btn btn-contour" href="mailto:contact@[DOMAINE]?subject=Rejoindre%20le%20collectif%20Optio">Nous écrire</a>
+</div>
+</section>
+
+<section id="contact" class="contact section">
+<div class="conteneur">
+<div class="contact-texte">
+<p class="repere">Contact</p>
+<h2>Quelle est votre prochaine échéance ?</h2>
+<p class="chapo">Parlons-en trente minutes. Vous repartez avec une première lecture de votre exposition, sans engagement.</p>
+<p>Ou écrivez-nous directement : <a href="mailto:contact@[DOMAINE]">contact@[DOMAINE]</a></p>
+</div>
+<div class="formulaire">
+<!-- Formulaire Tally : remplacez VOTRE_ID_TALLY par l'identifiant de votre formulaire (voir GUIDE.md) -->
+<iframe data-tally-src="https://tally.so/embed/VOTRE_ID_TALLY?alignLeft=1&amp;hideTitle=1&amp;transparentBackground=1&amp;dynamicHeight=1" loading="lazy" width="100%" height="520" title="Demander un échange avec Optio"></iframe>
+<p class="rgpd">Ce formulaire est hébergé par Tally. Les informations transmises servent uniquement à vous recontacter et sont conservées [DURÉE DE CONSERVATION]. Vous pouvez demander leur consultation ou leur suppression à <a href="mailto:contact@[DOMAINE]">contact@[DOMAINE]</a>.</p>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="pied">
+<div class="conteneur">
+<div class="pied-haut">
+<div class="pied-marque">
+<svg width="40" height="28" viewBox="0 0 40 28" aria-hidden="true"><circle cx="12" cy="14" r="8.5" fill="none" stroke="#F8FAFA" stroke-width="3"/><path d="M20.5 14 H27 L35 7" fill="none" stroke="#00A37A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 14 L35 21" fill="none" stroke="#5A6E7A" stroke-width="3" stroke-linecap="round"/></svg>
+<p><strong>Optio</strong>, l'indépendance numérique par la preuve.</p>
+</div>
+<p>© 2026 Optio</p>
+</div>
+<div class="mentions" id="mentions">
+<h2>Mentions légales</h2>
+<p>Éditeur : [RAISON SOCIALE], [FORME JURIDIQUE] au capital de [CAPITAL], [ADRESSE], SIREN [NUMÉRO]. Directeur de la publication : [NOM]. Hébergeur : [NOM ET ADRESSE DE L'HÉBERGEUR].</p>
+</div>
+<p class="sources">Sources : Gartner, cité par la presse spécialisée (hausses VMware) ; règlement (UE) 2022/2554, article 28 (DORA) ; règlement (UE) 2023/2854, article 29 (Data Act).</p>
 </div>
 </footer>
 
-</div>
-</x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"accent":{"editor":"color","default":"#00A37A","options":["#00A37A","#1FB89A","#3CC27A"]},"$preview":{"width":1440,"height":6000}}'>
-class Component extends DCLogic {
-renderVals() {
-return { accent: this.props.accent ?? '#00A37A' };
-}
-}
+<script>
+// Chargement du formulaire Tally (code d'intégration standard de Tally)
+var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function(e){e.src=e.dataset.tallySrc})};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s)}
 </script>
 </body>
 </html>
