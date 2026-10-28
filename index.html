@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Optio — Indépendance numérique, par la preuve</title>
-<meta name="description" content="Optio vous libère de la dépendance à vos fournisseurs d'infrastructure critiques : nous mesurons en combien de temps et pour quel coût vous pouvez partir, ou redémarrer ailleurs en cas de crise.">
-<meta property="og:title" content="Optio — Indépendance numérique, par la preuve">
-<meta property="og:description" content="Nous prouvons en combien de temps et pour quel coût vous pouvez quitter vos fournisseurs d'infrastructure critiques.">
+<title>Optio — Reprenez le contrôle de vos dépendances numériques</title>
+<meta name="description" content="Optio mesure ce que vous coûtent vraiment vos dépendances numériques, identifie vos alternatives et prouve, sur un périmètre réel, en combien de temps et pour quel coût vous pourriez partir.">
+<meta property="og:title" content="Optio — Reprenez le contrôle de vos dépendances numériques">
+<meta property="og:description" content="Lire vos dépendances, identifier les alternatives, bâtir la preuve. Pour décider en connaissance de cause : rester, renégocier, transformer ou migrer.">
 <meta property="og:type" content="website">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 28'%3E%3Ccircle cx='12' cy='14' r='8.5' fill='none' stroke='%230B2A3C' stroke-width='3'/%3E%3Cpath d='M20.5 14H27L35 7' fill='none' stroke='%2300A37A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M27 14L35 21' fill='none' stroke='%235A6E7A' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,13 +14,11 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&amp;family=Instrument+Sans:wght@400;500;600&amp;family=JetBrains+Mono:wght@500&amp;display=swap">
 <style>
 :root{
-  --encre:#0B2A3C; --encre-profonde:#07202E; --calque:#EEF2F3; --blanc:#F8FAFA;
-  --signal:#00A37A; --vert-lisible:#00775A; --balise:#F2C230;
+  --encre:#0B2A3C; --encre-profonde:#07202E; --encre-claire:#12364A; --calque:#EEF2F3; --blanc:#F8FAFA; --calque-2:#E6EEF0;
+  --signal:#00A37A; --vert-lisible:#00775A; --vert-clair:#2BD49B; --balise:#F2C230;
   --texte-2:#3E5563; --texte-3:#5A6E7A; --trait:#C7D3D8; --trait-sombre:#1E4255;
   --sur-sombre:#C9D6DC; --sur-sombre-2:#AFC0C9;
-  --titre:'Archivo','Helvetica Neue',sans-serif;
-  --corps:'Instrument Sans','Helvetica Neue',sans-serif;
-  --mesure:'JetBrains Mono',ui-monospace,monospace;
+  --titre:'Archivo','Helvetica Neue',sans-serif; --corps:'Instrument Sans','Helvetica Neue',sans-serif; --mesure:'JetBrains Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -28,48 +26,56 @@ html{scroll-behavior:smooth}
 body{margin:0;font-family:var(--corps);color:var(--encre);background:var(--calque);line-height:1.5}
 a{color:inherit}
 a:focus-visible,button:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+h1,h2,h3,p,ul,ol,blockquote{margin:0}
 .conteneur{max-width:1200px;margin:0 auto;padding:0 24px}
 .section{padding:96px 0}
-h1,h2,h3{margin:0}
-p{margin:0}
 .titre{font-family:var(--titre);font-weight:800;letter-spacing:-0.02em;font-stretch:116%}
 h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
-.intro{display:flex;flex-direction:column;gap:16px;max-width:760px;margin-bottom:48px}
+.intro{display:flex;flex-direction:column;gap:16px;max-width:780px;margin-bottom:48px}
 .repere{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600;color:var(--texte-3)}
 .repere::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--signal);flex:none}
 .repere.balise::before{background:var(--balise);border:1px solid #C79A12}
 .chapo{font-size:18px;line-height:1.6;color:var(--texte-2)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:6px;font-weight:600;font-size:17px;text-decoration:none;border:1.5px solid transparent}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 24px;border-radius:6px;font-weight:600;font-size:17px;text-decoration:none;border:1.5px solid transparent;text-align:center}
 .btn-signal{background:var(--signal);color:var(--encre)}
 .btn-signal:hover{background:#00B386}
 .btn-contour{border-color:var(--encre);color:var(--encre)}
 .btn-contour:hover{background:var(--encre);color:var(--blanc)}
 .btn-contour-clair{border-color:var(--blanc);color:var(--blanc)}
 .btn-contour-clair:hover{background:var(--blanc);color:var(--encre)}
+.grille{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(min(380px,100%),1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr))}
+.g4{grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr))}
+.carte{background:var(--blanc);border:1px solid var(--trait);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px}
+.carte h3{font-size:20px;font-weight:600}
+.carte p{font-size:16px;line-height:1.55;color:var(--texte-2)}
+.qui{font-size:14px;font-weight:600;color:var(--vert-lisible)}
+.phrase-forte{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:clamp(22px,2.2vw,28px);line-height:1.3;margin-top:40px;max-width:900px}
 
 /* En-tête */
 .entete{position:sticky;top:0;z-index:10;background:var(--encre);border-bottom:1px solid var(--trait-sombre)}
 .entete .conteneur{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
 .marque{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--blanc)}
 .marque span{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:26px;letter-spacing:-0.02em}
-.nav{display:flex;flex-wrap:wrap;align-items:center;gap:24px;font-size:15px;font-weight:500}
+.nav{display:flex;flex-wrap:wrap;align-items:center;gap:22px;font-size:15px;font-weight:500}
 .nav a{text-decoration:none;color:#DCE5E8}
 .nav a:hover{color:var(--blanc)}
-.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px;color:var(--encre)}
 
 /* Accroche */
 .accroche{background-color:var(--encre);background-image:linear-gradient(rgba(248,250,250,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(248,250,250,.05) 1px,transparent 1px);background-size:40px 40px;color:var(--blanc)}
 .accroche .conteneur{padding-top:104px;padding-bottom:96px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(340px,100%),1fr));gap:56px;align-items:center}
 .accroche-texte{display:flex;flex-direction:column;gap:28px}
-.accroche h1{font-family:var(--titre);font-stretch:118%;font-weight:800;font-size:clamp(38px,5vw,68px);line-height:1.02;letter-spacing:-0.025em}
-.accroche .chapo{font-size:20px;color:var(--sur-sombre);max-width:560px}
+.accroche h1{font-family:var(--titre);font-stretch:118%;font-weight:800;font-size:clamp(38px,5vw,66px);line-height:1.03;letter-spacing:-0.025em}
+.accroche .chapo{font-size:19px;color:var(--sur-sombre);max-width:580px}
 .accroche .repere{color:var(--sur-sombre-2)}
 .actions{display:flex;flex-wrap:wrap;gap:14px}
-.cible{font-size:15px;color:var(--sur-sombre-2);max-width:520px}
+.cible{font-size:15px;color:var(--sur-sombre-2);max-width:540px}
 .resultat{background:var(--blanc);color:var(--encre);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:24px}
-.resultat-citation{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:28px;line-height:1.2;letter-spacing:-0.01em}
-.indicateurs{list-style:none;margin:0;padding:0}
-.indicateurs li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--trait)}
+.resultat-citation{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:26px;line-height:1.22;letter-spacing:-0.01em}
+.indicateurs{list-style:none;padding:0}
+.indicateurs li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:15px 0;border-top:1px solid var(--trait)}
 .indicateurs li:last-child{border-bottom:1px solid var(--trait)}
 .indicateurs strong{font-size:16px;color:var(--vert-lisible)}
 .avant-apres{display:flex;flex-wrap:wrap;align-items:center;gap:20px;font-size:14px;color:var(--texte-2)}
@@ -78,106 +84,130 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 .pastille.balise{background:var(--balise);border:1px solid #C79A12}
 .pastille.signal{background:var(--signal)}
 
-/* Problème */
-.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:16px}
-.chiffre{background:var(--blanc);border:1px solid var(--trait);border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:14px}
-.chiffre .valeur{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:52px;line-height:1;letter-spacing:-0.02em}
-.chiffre p:last-child{font-size:17px;line-height:1.55;color:var(--texte-2)}
+/* Constat */
+.hier{background:var(--encre);color:var(--blanc);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:18px}
+.hier h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:24px}
+.hier ul{padding-left:20px;display:flex;flex-direction:column;gap:10px;color:var(--sur-sombre);font-size:17px}
+.aujourdhui{display:flex;flex-direction:column}
+.aujourdhui h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:24px;margin-bottom:8px}
+.repere-chiffre{display:grid;grid-template-columns:150px minmax(0,1fr);gap:20px;align-items:center;padding:16px 0;border-bottom:1px solid var(--trait)}
+.repere-chiffre:last-child{border-bottom:none}
+.repere-chiffre .valeur{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:34px;line-height:1;color:var(--vert-lisible)}
+.repere-chiffre p{font-size:16px;line-height:1.5;color:var(--texte-2)}
 
-/* Conviction */
-.conviction{background:var(--encre);color:var(--blanc)}
-.conviction .conteneur{max-width:1040px}
-.conviction blockquote{margin:0;display:flex;flex-direction:column;gap:24px}
-.conviction blockquote p:first-child{font-family:var(--titre);font-stretch:116%;font-weight:700;font-size:clamp(28px,3.3vw,44px);line-height:1.18;letter-spacing:-0.02em}
-.conviction blockquote p:last-child{font-size:19px;color:var(--sur-sombre)}
+/* Réversibilité */
+.reversibilite{background:var(--encre);color:var(--blanc)}
+.reversibilite blockquote p{font-family:var(--titre);font-stretch:116%;font-weight:700;font-size:clamp(26px,3.2vw,42px);line-height:1.2;letter-spacing:-0.02em;max-width:980px}
+.reversibilite blockquote p span{color:var(--vert-clair)}
+.reversibilite .grille{margin-top:48px}
+.carte-sombre{background:var(--encre-claire);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.carte-sombre h3{font-size:20px;font-weight:600;color:var(--vert-clair)}
+.carte-sombre p{font-size:16px;line-height:1.55;color:var(--sur-sombre)}
+.reversibilite .phrase-forte{color:var(--blanc)}
+
+/* Coût total */
+.cout{background:var(--blanc);border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
+.iceberg{display:flex;flex-direction:column;border-radius:8px;overflow:hidden;border:1px solid var(--trait)}
+.iceberg-haut{background:var(--calque);padding:28px;display:flex;flex-direction:column;gap:6px}
+.flottaison{height:5px;background:var(--signal)}
+.iceberg-bas{background:var(--encre);color:var(--blanc);padding:28px;display:flex;flex-direction:column;gap:18px}
+.iceberg .etiquette{font-size:14px;font-weight:600;color:var(--texte-3)}
+.iceberg-bas .etiquette{color:var(--sur-sombre-2)}
+.iceberg h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px}
+.iceberg-bas h3{color:var(--vert-clair)}
+.iceberg p{font-size:16px;line-height:1.5;color:var(--texte-2)}
+.iceberg-bas p{color:var(--sur-sombre)}
+.formule{display:flex;flex-direction:column;gap:16px}
+.formule .carte{border-color:var(--signal);border-width:2px}
+.formule .carte strong{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:22px;line-height:1.3;color:var(--encre)}
 
 /* Méthode */
-.etapes{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));border:1px solid var(--trait);border-radius:8px;overflow:hidden;background:var(--blanc)}
-.etape{padding:28px;display:flex;flex-direction:column;gap:12px;border-right:1px solid var(--trait);border-bottom:1px solid var(--trait)}
-.etape.coeur{background:#E6EEF0}
-.etape .lettre{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:60px;line-height:1;color:var(--vert-lisible)}
+.etapes{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(200px,100%),1fr));gap:12px}
+.etape{padding:26px;display:flex;flex-direction:column;gap:10px;border-radius:8px;background:var(--blanc);border:2px solid var(--signal)}
+.etape.ensuite{background:var(--calque-2);border:1px solid var(--trait)}
+.etape .lettre{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:56px;line-height:1;color:var(--vert-lisible)}
+.etape.ensuite .lettre,.etape.ensuite h3{color:var(--texte-3)}
 .etape h3{font-size:19px;font-weight:600}
-.duree{font-family:var(--mesure);font-size:13px;color:var(--texte-3)}
+.etape .portee{font-size:13px;font-weight:600;color:var(--vert-lisible)}
+.etape.ensuite .portee{color:var(--texte-3)}
 .etape p:last-child{font-size:15px;line-height:1.55;color:var(--texte-2)}
 
 /* Offres */
 .offres{background:var(--blanc);border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
-.cartes-offres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
-.offre{background:var(--calque);border:1px solid var(--trait);border-radius:8px;padding:36px;display:flex;flex-direction:column;gap:18px}
+.offre{background:var(--calque);border:1px solid var(--trait);border-radius:8px;padding:34px;display:flex;flex-direction:column;gap:16px}
 .offre.phare{background:var(--encre);color:var(--blanc);border-color:var(--encre)}
-.offre .pour-qui{font-size:15px;font-weight:600;color:var(--texte-3)}
-.offre.phare .pour-qui{color:var(--sur-sombre-2)}
-.offre h3{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:30px;letter-spacing:-0.01em}
+.offre .duree{font-family:var(--mesure);font-size:14px;color:var(--vert-lisible)}
+.offre.phare .duree{color:var(--vert-clair)}
+.offre h3{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:28px;letter-spacing:-0.01em}
 .offre .description{font-size:16px;line-height:1.55;color:var(--texte-2)}
 .offre.phare .description{color:var(--sur-sombre)}
-.offre ul{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:8px;font-size:15px}
+.offre .sous-titre{font-size:14px;font-weight:600;color:var(--texte-3)}
+.offre.phare .sous-titre{color:var(--sur-sombre-2)}
+.offre ul{padding-left:20px;display:flex;flex-direction:column;gap:6px;font-size:15px}
 .offre .tarif{margin-top:auto;font-family:var(--mesure);font-size:14px}
 .offre.phare .btn-contour{border-color:var(--signal);background:var(--signal);color:var(--encre)}
-.offre.phare .btn-contour:hover{background:#00B386}
 
-/* Retour sur investissement */
-.leviers{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px}
-.levier{background:var(--blanc);border:1px solid var(--trait);border-top:4px solid var(--signal);border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:12px}
-.levier h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:24px;letter-spacing:-0.01em}
-.levier p{font-size:16px;line-height:1.55;color:var(--texte-2)}
+/* Dispositif */
+.binome{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,220px) minmax(0,1fr);gap:16px;align-items:center}
+.binome + .binome{margin-top:12px}
+.binome .carte{padding:22px}
+.lien{display:flex;flex-direction:column;align-items:center;gap:6px;text-align:center;font-size:14px;color:var(--texte-2)}
+.lien::after{content:"";width:100%;height:3px;background:var(--encre)}
+.binome.sherpa .carte{background:var(--encre);border-color:var(--encre)}
+.binome.sherpa .carte h3{color:var(--vert-clair)}
+.binome.sherpa .carte p{color:var(--sur-sombre)}
+.binome.sherpa .lien{font-weight:700;color:var(--vert-lisible)}
+.binome.sherpa .lien::after{height:5px;background:var(--signal)}
+.cote{font-size:14px;font-weight:600;color:var(--texte-3);display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,220px) minmax(0,1fr);gap:16px;margin-bottom:12px}
+@media (max-width:720px){.binome,.cote{grid-template-columns:1fr}.cote span:nth-child(2),.cote span:nth-child(3){display:none}.lien::after{display:none}}
 
-/* Collectif */
-.collectif{background:var(--blanc);border-top:1px solid var(--trait)}
-.collectif .conteneur{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px}
-.collectif-texte{display:flex;flex-direction:column;gap:16px;max-width:760px}
+/* Paroles */
+.parole{background:var(--blanc);border:1px solid var(--trait);border-radius:8px;padding:32px;display:flex;flex-direction:column;gap:20px;margin:0}
+.parole blockquote p{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:21px;line-height:1.35}
+.parole figcaption{display:flex;flex-direction:column;gap:2px;padding-top:16px;border-top:1px solid var(--trait)}
+.parole figcaption strong{font-size:16px}
+.parole figcaption span{font-size:14px;color:var(--texte-3)}
+.avertissement{margin-top:20px;font-size:14px;color:var(--texte-3)}
 
-/* Pourquoi */
-.raisons{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));column-gap:48px;row-gap:36px}
+/* Leviers, raisons, calendrier, FAQ */
+.levier{border-top:4px solid var(--signal)}
+.levier h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px}
 .raison{display:flex;flex-direction:column;gap:8px;padding-top:20px;border-top:2px solid var(--encre)}
 .raison h3{font-size:20px;font-weight:600}
 .raison p{font-size:16px;line-height:1.55;color:var(--texte-2)}
-
-/* Calendrier */
 .calendrier{background-color:var(--blanc);background-image:linear-gradient(#DCE5E8 1px,transparent 1px),linear-gradient(90deg,#DCE5E8 1px,transparent 1px);background-size:32px 32px;border-top:1px solid var(--trait);border-bottom:1px solid var(--trait)}
-.jalons{list-style:none;margin:0 0 40px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px}
-.jalon{background:var(--blanc);border:1px solid var(--trait);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:10px}
 .jalon .date{align-self:flex-start;padding:6px 10px;border-radius:4px;background:var(--encre);color:var(--balise);font-family:var(--mesure);font-size:13px}
-.jalon p{font-size:16px;line-height:1.55;color:var(--texte-2)}
 .jalon strong{color:var(--encre)}
-.fenetre{font-family:var(--titre);font-stretch:112%;font-weight:700;font-size:24px;line-height:1.3}
-
-/* FAQ */
 .faq .conteneur{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:48px}
 .faq .intro{margin-bottom:0}
-.questions{display:flex;flex-direction:column}
 .question{padding:22px 0;border-top:1px solid var(--trait);display:flex;flex-direction:column;gap:8px}
 .question:last-child{border-bottom:1px solid var(--trait)}
 .question h3{font-size:18px;font-weight:600}
 .question p{font-size:16px;line-height:1.55;color:var(--texte-2)}
 
-/* Contact */
+/* Collectif, contact, pied */
+.collectif{background:var(--blanc);border-top:1px solid var(--trait)}
+.collectif .conteneur{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px}
+.collectif-texte{display:flex;flex-direction:column;gap:16px;max-width:760px}
 .contact{background:var(--encre);color:var(--blanc)}
 .contact .conteneur{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(320px,100%),1fr));gap:56px;align-items:start}
 .contact-texte{display:flex;flex-direction:column;gap:20px}
 .contact .repere{color:var(--sur-sombre-2)}
-.contact h2{font-family:var(--titre);font-stretch:118%;font-weight:800;font-size:clamp(34px,4vw,54px);line-height:1.04;letter-spacing:-0.02em}
+.contact h2{font-family:var(--titre);font-stretch:118%;font-weight:800;font-size:clamp(34px,4vw,52px);line-height:1.04;letter-spacing:-0.02em}
 .contact .chapo{color:var(--sur-sombre)}
 .contact a{color:var(--blanc)}
 .formulaire{background:var(--blanc);color:var(--encre);border-radius:8px;padding:28px 28px 20px}
 .formulaire iframe{display:block;width:100%;border:0;min-height:520px}
 .rgpd{margin-top:16px;font-size:13px;line-height:1.5;color:var(--texte-3)}
 .rgpd a{color:var(--encre)}
-
-/* Pied de page */
 .pied{background:var(--encre-profonde);color:var(--sur-sombre-2);border-top:1px solid var(--trait-sombre)}
 .pied .conteneur{padding-top:48px;padding-bottom:48px;display:flex;flex-direction:column;gap:24px}
 .pied-haut{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px}
 .pied-marque{display:flex;align-items:center;gap:12px;font-size:15px}
 .pied-marque strong{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:22px;color:var(--blanc)}
-.pied a{color:var(--sur-sombre-2)}
 .sources,.mentions{font-size:13px;line-height:1.6;color:#8FA3AE}
 .mentions h2{font-size:15px;font-weight:600;color:var(--sur-sombre);margin-bottom:6px}
-
-@media (max-width:640px){
-  .section{padding:72px 0}
-  .indicateurs li{grid-template-columns:1fr;gap:4px}
-  .nav{gap:16px}
-}
+@media (max-width:640px){.section{padding:72px 0}.indicateurs li,.repere-chiffre{grid-template-columns:1fr;gap:6px}.nav{gap:14px}}
 </style>
 </head>
 <body>
@@ -189,12 +219,13 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <span>Optio</span>
 </a>
 <nav class="nav" aria-label="Navigation principale">
-<a href="#probleme">Le problème</a>
+<a href="#constat">Le constat</a>
+<a href="#quotidien">Au quotidien</a>
 <a href="#methode">La méthode</a>
 <a href="#offres">Nos offres</a>
 <a href="#pourquoi">Pourquoi Optio</a>
 <a href="#collectif">Nous rejoindre</a>
-<a class="btn btn-signal" href="#contact">Réserver un échange</a>
+<a class="btn btn-signal" href="#contact">Réserver un atelier</a>
 </nav>
 </div>
 </header>
@@ -205,21 +236,21 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <div class="conteneur">
 <div class="accroche-texte">
 <p class="repere">Indépendance numérique, par la preuve</p>
-<h1>Vos fournisseurs critiques ne devraient pas décider à votre place.</h1>
-<p class="chapo">Optio vous libère de la dépendance à vos fournisseurs d'infrastructure critiques. Nous mesurons en combien de temps et pour quel coût vous pouvez partir, ou redémarrer ailleurs en cas de crise. Vous garantissez la continuité de votre activité, et vous négociez en position de force.</p>
+<h1>Reprenez le contrôle de vos dépendances numériques.</h1>
+<p class="chapo">Vos dépendances sont l’héritage de choix rationnels. Le contexte, lui, a changé. Optio mesure ce qu’elles vous coûtent vraiment, identifie vos alternatives et prouve, sur un périmètre réel, en combien de temps et pour quel coût vous pourriez partir. Vous décidez ensuite : rester, renégocier, transformer ou migrer.</p>
 <div class="actions">
-<a class="btn btn-signal" href="#contact">Demander un diagnostic</a>
+<a class="btn btn-signal" href="#offres">Réserver un atelier de découverte</a>
 <a class="btn btn-contour-clair" href="#methode">Découvrir la méthode</a>
 </div>
-<p class="cible">Pour les DSI, RSSI et directions des risques des organismes publics et des établissements financiers, soumis à DORA, au plan de réduction des dépendances de l'État et à NIS 2.</p>
+<p class="cible">Pour les DSI, RSSI et directions des risques des organismes publics et des établissements financiers.</p>
 </div>
 <div class="resultat">
 <p class="repere">Ce que vous obtenez</p>
-<p class="resultat-citation">« Je sais en combien de temps et pour quel coût je peux partir, ou redémarrer ailleurs. Et je l'ai prouvé. »</p>
+<p class="resultat-citation">« Je sais en combien de temps et pour quel coût je peux partir, ou redémarrer ailleurs. Et je l’ai prouvé. »</p>
 <ul class="indicateurs">
 <li><strong>La continuité</strong><span>Un temps de reprise ailleurs, mesuré et testé, si un fournisseur fait défaut.</span></li>
-<li><strong>Le coût</strong><span>La hausse évitée et les économies obtenues, chiffrées.</span></li>
-<li><strong>Le choix</strong><span>Un délai et un coût de sortie connus, et un engagement plus court.</span></li>
+<li><strong>Le coût complet</strong><span>Ce que vous coûte vraiment la dépendance, au-delà de la facture.</span></li>
+<li><strong>Le choix</strong><span>Un délai et un coût de sortie connus, et un pouvoir de négociation retrouvé.</span></li>
 </ul>
 <div class="avant-apres">
 <span class="etat"><span class="pastille balise" aria-hidden="true"></span>Avant : une échéance subie</span>
@@ -229,27 +260,89 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 </div>
 </section>
 
-<section id="probleme" class="section">
+<section id="constat" class="section">
 <div class="conteneur">
 <div class="intro">
-<p class="repere">Le problème</p>
-<h2 class="titre">À chaque échéance, la même impasse.</h2>
-<p class="chapo">Vingt ans de choix technologiques empilés ont créé des dépendances que personne n'a pilotées. Les fournisseurs le savent, et durcissent leurs conditions. Sans alternative prouvée, vous re-signez sous contrainte.</p>
+<p class="repere">Le constat</p>
+<h2 class="titre">Vos dépendances, héritage de choix rationnels.</h2>
+<p class="chapo">Personne ne s’est trompé. Mais des décisions rationnelles, prises une à une pendant vingt ans, ont fini par réduire votre liberté de choix. Et le contexte a changé.</p>
 </div>
-<div class="chiffres">
-<div class="chiffre"><p class="valeur">2 à 3×</p><p>Les hausses de prix courantes observées par Gartner chez les clients VMware en renégociation.</p></div>
-<div class="chiffre"><p class="valeur">3 ans</p><p>La durée pour laquelle on re-signe, faute d'alternative chiffrée et exploitable avant l'échéance.</p></div>
-<div class="chiffre"><p class="valeur">Testés</p><p>Les plans de sortie qu'exige désormais DORA. L'État, lui, impose des plans de réduction des dépendances.</p></div>
+<div class="grille g2">
+<div class="hier">
+<h3>Hier, chaque choix avait du sens</h3>
+<ul>
+<li>Une solution complète, disponible tout de suite.</li>
+<li>Un seul fournisseur, plus simple à exploiter.</li>
+<li>Des économies au démarrage.</li>
+<li>Des compétences faciles à trouver.</li>
+</ul>
+</div>
+<div class="aujourdhui">
+<h3>Aujourd’hui, le contexte a changé</h3>
+<div class="repere-chiffre"><p class="valeur">2 à 3×</p><p>Les hausses de prix courantes chez les clients d’un grand éditeur de virtualisation, à leur renouvellement.</p></div>
+<div class="repere-chiffre"><p class="valeur">48 %</p><p>Des violations de données impliquent désormais un tiers : fournisseur, prestataire ou hébergeur.</p></div>
+<div class="repere-chiffre"><p class="valeur">220 Md$</p><p>D’obligations émises en 2026 par les grands fournisseurs du cloud pour financer l’IA. Leurs clients en financeront le remboursement.</p></div>
+<div class="repere-chiffre"><p class="valeur">DORA</p><p>Avec NIS 2 et le Data Act, les régulateurs demandent désormais de savoir sortir.</p></div>
+</div>
 </div>
 </div>
 </section>
 
-<section class="conviction section">
+<section class="reversibilite section">
 <div class="conteneur">
 <blockquote>
-<p>On peut toujours sortir d'une technologie. La seule question : en combien de temps, et pour quel coût ?</p>
-<p>Notre métier : rendre cette réponse lisible, prouvée et rapide.</p>
+<p>On peut toujours sortir d’une technologie. La seule question : <span>en combien de temps, et pour quel coût ?</span></p>
 </blockquote>
+<div class="grille g3">
+<div class="carte-sombre"><h3>Maîtriser plutôt que supprimer</h3><p>Les dépendances sont inévitables. Le risque, c’est d’en perdre la maîtrise : coûts, choix techniques, pouvoir de négociation.</p></div>
+<div class="carte-sombre"><h3>Le stock</h3><p>Les dépendances héritées : les identifier, les prioriser, et les réduire là où c’est utile.</p></div>
+<div class="carte-sombre"><h3>Le flux</h3><p>Les dépendances créées aujourd’hui : les choisir en connaissance de cause, avec une sortie possible.</p></div>
+</div>
+<p class="phrase-forte">Être réversible, c’est garder le choix : rester, renégocier, transformer ou migrer.</p>
+</div>
+</section>
+
+<section id="quotidien" class="section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">La dépendance au quotidien</p>
+<h2 class="titre">Une dépendance ne se voit pas seulement sur la facture.</h2>
+<p class="chapo">Elle se vit au quotidien, dans ce que vos équipes subissent sans l’avoir choisi.</p>
+</div>
+<div class="grille g3">
+<div class="carte"><h3>La roadmap imposée</h3><p>Vos priorités passent après celles de l’éditeur.</p><p class="qui">Métiers, CTO</p></div>
+<div class="carte"><h3>Les mises à jour forcées</h3><p>Des montées de version au calendrier du fournisseur.</p><p class="qui">Production, DSI</p></div>
+<div class="carte"><h3>Les formations imposées</h3><p>Recertifications, nouvelles interfaces à réapprendre.</p><p class="qui">RH, DSI</p></div>
+<div class="carte"><h3>L’obsolescence</h3><p>Fins de support, extensions payantes.</p><p class="qui">DSI, RSSI</p></div>
+<div class="carte"><h3>Les compétences rares</h3><p>Une dépendance aux experts de l’éditeur, des recrutements difficiles.</p><p class="qui">RH, CTO</p></div>
+<div class="carte"><h3>L’écosystème imposé</h3><p>Des outils annexes et des intégrations obligatoires.</p><p class="qui">DAF, architectes</p></div>
+</div>
+<p class="phrase-forte">Ce sont souvent ces irritants, plus que la facture, qui font bouger vos équipes. Nous les mesurons.</p>
+</div>
+</section>
+
+<section class="cout section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Le coût total de la dépendance</p>
+<h2 class="titre">Ce que coûte vraiment une dépendance.</h2>
+</div>
+<div class="grille g2">
+<div class="iceberg">
+<div class="iceberg-haut"><p class="etiquette">Ce que montre la facture</p><h3>Les coûts directs</h3><p>Licences, abonnements, support, hausses à l’échéance.</p></div>
+<div class="flottaison" aria-hidden="true"></div>
+<div class="iceberg-bas">
+<p class="etiquette">Ce que la facture ne montre pas</p>
+<div><h3>Les coûts opérationnels</h3><p>Le temps passé à subir la roadmap, les mises à jour, les formations, l’obsolescence et les experts rares.</p></div>
+<div><h3>Les coûts de risque</h3><p>Interruption, compromission, arrêt du service : la probabilité multipliée par l’impact sur votre activité.</p></div>
+</div>
+</div>
+<div class="formule">
+<div class="carte"><p class="qui">Le coût total de la dépendance</p><strong>Coûts directs + coûts opérationnels + coûts de risque, sur cinq ans.</strong></div>
+<div class="carte"><p class="qui">Face à lui, le coût du changement</p><p>Financier, organisationnel, technique et humain.</p></div>
+<p class="chapo">Notre calculateur et notre radar de dépendance comparent ces coûts sur trois scénarios. La bonne décision n’est pas toujours de partir : nous la rendons objective.</p>
+</div>
+</div>
 </div>
 </section>
 
@@ -257,15 +350,15 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <div class="conteneur">
 <div class="intro">
 <p class="repere">La méthode LIBRE</p>
-<h2 class="titre">Cinq étapes. Chacune se suffit à elle-même, et vous restez libre à chacune.</h2>
-<p class="chapo">Un conseil outillé, qui débouche sur une preuve concrète, puis sur l'exécution si vous le décidez.</p>
+<h2 class="titre">Cinq étapes. Notre offre se concentre sur les trois premières.</h2>
+<p class="chapo">Chaque étape se suffit à elle-même : vous restez libre à chacune. Toutes sont accélérées et outillées par l’IA.</p>
 </div>
 <ol class="etapes">
-<li class="etape"><span class="lettre" aria-hidden="true">L</span><h3>Lire la dépendance</h3><p class="duree">1 à 2 semaines</p><p>Relier vos points chauds techniques à vos enjeux métier : quels fournisseurs mettraient votre activité en jeu s'ils faisaient défaut demain ?</p></li>
-<li class="etape"><span class="lettre" aria-hidden="true">I</span><h3>Imaginer l'alternative</h3><p class="duree">3 jours</p><p>Un design sprint avec vos experts sur votre dépendance la plus critique.</p></li>
-<li class="etape coeur"><span class="lettre" aria-hidden="true">B</span><h3>Bâtir la preuve</h3><p class="duree">4 à 6 semaines</p><p>Une bascule ou une migration réelle, sur un périmètre limité, chronométrée.</p></li>
-<li class="etape"><span class="lettre" aria-hidden="true">R</span><h3>Réaliser la sortie</h3><p class="duree">3 à 12 mois</p><p>Une migration planifiée par étapes, sans rupture, avec vos équipes formées.</p></li>
-<li class="etape"><span class="lettre" aria-hidden="true">E</span><h3>Entretenir la liberté</h3><p class="duree">En continu</p><p>Tests de bascule, alertes avant chaque échéance, maintenance de votre nouvel environnement.</p></li>
+<li class="etape"><span class="lettre" aria-hidden="true">L</span><p class="portee">Mission de découverte</p><h3>Lire les dépendances</h3><p>Coûts, irritants du quotidien, impact business, matrice de risques.</p></li>
+<li class="etape"><span class="lettre" aria-hidden="true">I</span><p class="portee">Mission de découverte</p><h3>Identifier les alternatives</h3><p>Le champ des possibles, priorisé selon le coût et l’impact.</p></li>
+<li class="etape"><span class="lettre" aria-hidden="true">B</span><p class="portee">Pilote de sortie</p><h3>Bâtir la preuve</h3><p>Un pilote qui mesure le temps, l’effort, le coût et le risque d’une sortie.</p></li>
+<li class="etape ensuite"><span class="lettre" aria-hidden="true">R</span><p class="portee">Ensuite, si vous le décidez</p><h3>Réaliser la sortie</h3><p>La migration, par étapes, sans rupture.</p></li>
+<li class="etape ensuite"><span class="lettre" aria-hidden="true">E</span><p class="portee">Ensuite, si vous le décidez</p><h3>Entretenir la liberté</h3><p>Piloter, conduire le changement, maintenir.</p></li>
 </ol>
 </div>
 </section>
@@ -273,56 +366,101 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <section id="offres" class="offres section">
 <div class="conteneur">
 <div class="intro">
-<p class="repere">Nos offres pour commencer</p>
-<h2 class="titre">Commencez petit. Repartez avec une preuve.</h2>
+<p class="repere">Nos offres</p>
+<h2 class="titre">Commencez par trois heures. Repartez avec une preuve.</h2>
 </div>
-<div class="cartes-offres">
+<div class="grille g3">
 <article class="offre">
-<p class="pour-qui">Point d'entrée, 2 semaines</p>
-<h3>Diagnostic de dépendance</h3>
-<p class="description">Une lecture outillée de vos dépendances critiques, traduite en enjeux de continuité que votre direction comprend.</p>
-<ul><li>La carte de vos dépendances critiques, priorisée</li><li>L'exposition chiffrée, fournisseur par fournisseur</li><li>Les arguments pour votre comité de direction</li></ul>
-<p class="tarif">Forfait : [TARIF]</p>
-<a class="btn btn-contour" href="#contact">Parler du diagnostic</a>
-</article>
-<article class="offre">
-<p class="pour-qui">Étape suivante, 3 jours</p>
-<h3>Design sprint</h3>
-<p class="description">Vos décideurs et vos experts autour de la table : situation actuelle, cible, écart, et le périmètre de votre preuve.</p>
-<ul><li>Un scénario cible validé par vos experts</li><li>Le backlog de la preuve de concept</li><li>Le plan de bascule</li></ul>
-<p class="tarif">Forfait : [TARIF]</p>
-<a class="btn btn-contour" href="#contact">Parler du design sprint</a>
+<p class="duree">3 heures</p>
+<h3>Atelier de découverte</h3>
+<p class="description">Votre contexte, les douleurs que vous rencontrez, le champ des possibles, et votre propre chemin dans la méthode LIBRE.</p>
+<p class="sous-titre">Avec vos équipes DSI, achats, architecture, infrastructure et cybersécurité</p>
+<ul><li>Une première lecture de vos dépendances</li><li>Les alternatives qui vous parlent</li><li>Votre prochaine étape</li></ul>
+<p class="tarif">Sur mesure, après un échange avec votre sponsor</p>
+<a class="btn btn-contour" href="#contact">Réserver un atelier</a>
 </article>
 <article class="offre phare">
-<p class="pour-qui">Organisations régulées, 6 semaines</p>
-<h3>Plan B testé</h3>
-<p class="description">Un environnement de secours hors de votre fournisseur principal, et un test de bascule réel de votre service critique.</p>
-<ul><li>Un environnement de secours opérationnel</li><li>Un temps de reprise mesuré</li><li>Un plan de sortie testé, présentable au régulateur</li></ul>
-<p class="tarif">Forfait : [TARIF]</p>
-<a class="btn btn-contour" href="#contact">Parler du plan B testé</a>
+<p class="duree">10 semaines</p>
+<h3>Mission de découverte</h3>
+<p class="description">Lire vos dépendances en partant de ce qui est critique pour votre activité, puis identifier les alternatives avec vos experts.</p>
+<p class="sous-titre">Environ 27 jours de vos équipes, avec un sherpa de la dépendance</p>
+<ul><li>Un périmètre retenu, le plus critique</li><li>Son coût total sur cinq ans, sur trois scénarios</li><li>Une alternative viable, validée par vos experts</li><li>Le plan du pilote de sortie</li></ul>
+<p class="tarif">Forfait : [45 000 € HT]</p>
+<a class="btn btn-contour" href="#contact">Parler de la mission</a>
 </article>
 <article class="offre">
-<p class="pour-qui">Échéance contractuelle, 6 semaines</p>
+<p class="duree">6 à 8 semaines</p>
 <h3>Pilote de sortie</h3>
-<p class="description">Une partie réelle de votre infrastructure migrée vers l'alternative de votre choix, et la sortie complète chiffrée à partir du réel.</p>
-<ul><li>Un périmètre pilote en production</li><li>Le temps et le coût de sortie, mesurés</li><li>Vos équipes formées à l'alternative</li></ul>
-<p class="tarif">Forfait : [TARIF]</p>
-<a class="btn btn-contour" href="#contact">Parler du pilote de sortie</a>
+<p class="description">Nous migrons un périmètre réel et représentatif vers l’alternative retenue, et nous testons la bascule.</p>
+<p class="sous-titre">La preuve de concept qui rend la sortie possible, et chiffrée</p>
+<ul><li>Le périmètre pilote tourne sur l’alternative</li><li>Le délai et le coût de sortie, mesurés et extrapolés</li><li>Le temps de reprise, chronométré</li><li>Vos équipes formées</li></ul>
+<p class="tarif">À partir de [60 000 € HT]</p>
+<a class="btn btn-contour" href="#contact">Parler du pilote</a>
 </article>
 </div>
 </div>
 </section>
 
-<section id="roi" class="section">
+<section id="dispositif" class="section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Le dispositif</p>
+<h2 class="titre">Un dispositif en binômes, avec votre sherpa.</h2>
+<p class="chapo">Le sherpa de la dépendance est votre champion : il connaît le terrain, guide l’équipe et portera le résultat en interne.</p>
+</div>
+<div class="cote" aria-hidden="true"><span>Chez vous</span><span></span><span>Chez Optio</span></div>
+<div class="binome">
+<div class="carte"><h3>Le sponsor</h3><p>DSI ou RSSI : il arbitre et ouvre les portes.</p></div>
+<p class="lien">Point hebdomadaire, comités</p>
+<div class="carte"><h3>Le directeur de mission</h3><p>Pilote la mission et prépare les décisions.</p></div>
+</div>
+<div class="binome sherpa">
+<div class="carte"><h3>Le sherpa de la dépendance</h3><p>Environ un jour par semaine, trois pendant le design sprint.</p></div>
+<p class="lien">Binôme au quotidien</p>
+<div class="carte"><h3>L’architecte infrastructure</h3><p>Outille la lecture, évalue les alternatives, chiffre.</p></div>
+</div>
+<div class="binome">
+<div class="carte"><h3>Vos experts et vos métiers</h3><p>Ils apportent la réalité des usages et des contraintes.</p></div>
+<p class="lien">Ateliers, collecte, design sprint</p>
+<div class="carte"><h3>L’analyste et nos experts</h3><p>Collectent, analysent, connaissent les alternatives.</p></div>
+</div>
+</div>
+</section>
+
+<section id="paroles" class="section">
+<div class="conteneur">
+<div class="intro">
+<p class="repere">Ce que nous voulons vous entendre dire</p>
+<h2 class="titre">Trois regards, une même décision.</h2>
+</div>
+<div class="grille g3">
+<figure class="parole">
+<blockquote><p>« Je ne savais pas combien de temps il nous faudrait pour partir. Aujourd’hui je le sais, et la discussion avec notre fournisseur n’est plus la même. »</p></blockquote>
+<figcaption><strong>Le DSI</strong><span>Établissement financier</span></figcaption>
+</figure>
+<figure class="parole">
+<blockquote><p>« Pour la première fois, je négocie avec une alternative chiffrée sur la table, et non avec une menace de départ que personne ne croit. »</p></blockquote>
+<figcaption><strong>La responsable des achats informatiques</strong><span>Organisme public</span></figcaption>
+</figure>
+<figure class="parole">
+<blockquote><p>« Le pilote a tranché un débat que nous avions depuis trois ans : nous savons ce que l’alternative couvre, et ce qu’il reste à construire. »</p></blockquote>
+<figcaption><strong>L’architecte infrastructure</strong><span>Grande entreprise</span></figcaption>
+</figure>
+</div>
+<p class="avertissement">Citations illustratives, rédigées par Optio. Elles seront remplacées par les retours de nos premiers clients.</p>
+</div>
+</section>
+
+<section id="roi" class="cout section">
 <div class="conteneur">
 <div class="intro">
 <p class="repere">Le retour sur investissement</p>
-<h2 class="titre">Un projet qui se finance par ce qu'il fait gagner.</h2>
+<h2 class="titre">Un projet qui se finance par ce qu’il fait gagner.</h2>
 </div>
-<div class="leviers">
-<div class="levier"><h3>Ce que vous économisez</h3><p>Débrancher un contrat, limiter une consommation, renégocier avec une alternative crédible : le gain se calcule, son délai d'amortissement aussi.</p></div>
-<div class="levier"><h3>Ce que vous sécurisez</h3><p>Si un fournisseur fait défaut ou subit une compromission, vous savez en combien de temps votre activité redémarre ailleurs.</p></div>
-<div class="levier"><h3>D'une poche à l'autre</h3><p>Les premières économies financent les étapes suivantes. Le budget se débloque sans attendre un nouvel arbitrage.</p></div>
+<div class="grille g3">
+<div class="carte levier"><h3>Ce que vous économisez</h3><p>Débrancher un contrat, limiter une consommation, renégocier avec une alternative crédible : le gain se calcule, son délai d’amortissement aussi.</p></div>
+<div class="carte levier"><h3>Ce que vous sécurisez</h3><p>Si un fournisseur fait défaut ou subit une compromission, vous savez en combien de temps votre activité redémarre ailleurs.</p></div>
+<div class="carte levier"><h3>D’une poche à l’autre</h3><p>Les premières économies financent les étapes suivantes. Le budget se débloque sans attendre un nouvel arbitrage.</p></div>
 </div>
 </div>
 </section>
@@ -333,13 +471,13 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <p class="repere">Pourquoi Optio</p>
 <h2 class="titre">Nous construisons la preuve, pas un rapport.</h2>
 </div>
-<div class="raisons">
+<div class="grille g3" style="column-gap:48px;row-gap:36px">
 <div class="raison"><h3>Une preuve, pas un document</h3><p>Un environnement qui tourne et un chiffre mesuré, utilisable en négociation dès le lendemain.</p></div>
-<div class="raison"><h3>Vous choisissez l'alternative</h3><p>Plusieurs technologies maîtrisées, aucune commission des éditeurs. Rester, à de meilleures conditions, est une issue possible.</p></div>
-<div class="raison"><h3>Spécialistes de l'infrastructure</h3><p>Virtualisation, cloud, réseau, stockage : nous savons ce que coûte réellement une sortie.</p></div>
-<div class="raison"><h3>Open source, IA et outillage</h3><p>Des alternatives open source, des accélérateurs d'IA là où l'infrastructure travaille encore à la main, et une méthode outillée de bout en bout.</p></div>
-<div class="raison"><h3>Sans surcharger vos équipes</h3><p>Des périmètres limités et réversibles. Nous apportons la capacité, vos équipes restent concentrées sur l'exploitation.</p></div>
-<div class="raison"><h3>Un écosystème, pas un ego</h3><p>Nous construisons avec l'écosystème européen un référentiel ouvert de la réversibilité, et nous travaillons avec vos équipes et vos intégrateurs.</p></div>
+<div class="raison"><h3>Vous choisissez l’alternative</h3><p>Plusieurs technologies maîtrisées, aucune commission des éditeurs. Rester, à de meilleures conditions, est une issue possible.</p></div>
+<div class="raison"><h3>Spécialistes de l’infrastructure</h3><p>Virtualisation, cloud, réseau, stockage : nous savons ce que coûte réellement une sortie.</p></div>
+<div class="raison"><h3>Accélérés par l’IA</h3><p>Inventaire, conversion, documentation : nos accélérateurs vont plus vite, là où l’infrastructure travaille encore à la main.</p></div>
+<div class="raison"><h3>Sans surcharger vos équipes</h3><p>Un sherpa et des périmètres limités et réversibles. Nous apportons la capacité, vos équipes restent concentrées sur l’exploitation.</p></div>
+<div class="raison"><h3>Un écosystème, pas un ego</h3><p>Nous construisons avec l’écosystème européen un référentiel ouvert de la réversibilité, et nous travaillons avec vos intégrateurs.</p></div>
 </div>
 </div>
 </section>
@@ -350,13 +488,13 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <p class="repere balise">Pourquoi maintenant</p>
 <h2 class="titre">Le calendrier joue pour vous.</h2>
 </div>
-<ol class="jalons">
-<li class="jalon"><span class="date">Déjà applicable</span><p><strong>DORA</strong> exige des plans de sortie documentés et testés pour les fonctions critiques.</p></li>
-<li class="jalon"><span class="date">Automne 2026</span><p><strong>Plans ministériels</strong> de réduction des dépendances, coordonnés par la Dinum.</p></li>
-<li class="jalon"><span class="date">En cours d'adoption</span><p><strong>Loi Résilience (NIS 2)</strong> : la sécurité de la chaîne d'approvisionnement devient une obligation.</p></li>
-<li class="jalon"><span class="date">12 janvier 2027</span><p><strong>Data Act</strong> : fin des frais de changement de fournisseur cloud.</p></li>
+<ol class="grille g4" style="list-style:none;padding:0">
+<li class="carte jalon"><span class="date">Déjà applicable</span><p><strong>DORA</strong> exige des plans de sortie documentés et testés pour les fonctions critiques.</p></li>
+<li class="carte jalon"><span class="date">Automne 2026</span><p><strong>Plans ministériels</strong> de réduction des dépendances, coordonnés par la Dinum.</p></li>
+<li class="carte jalon"><span class="date">Toujours attendue</span><p><strong>La loi Résilience (NIS 2)</strong> attend son examen. L’ANSSI invite à s’y préparer sans attendre.</p></li>
+<li class="carte jalon"><span class="date">12 janvier 2027</span><p><strong>Data Act</strong> : fin des frais de changement de fournisseur cloud.</p></li>
 </ol>
-<p class="fenetre">Re-signer pour trois ans aujourd'hui, c'est renoncer à cette fenêtre.</p>
+<p class="phrase-forte">Re-signer pour trois ans aujourd’hui, c’est renoncer à cette fenêtre.</p>
 </div>
 </section>
 
@@ -366,13 +504,13 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <p class="repere">Questions fréquentes</p>
 <h2 class="titre">Ce que les DSI nous demandent.</h2>
 </div>
-<div class="questions">
-<div class="question"><h3>Faut-il forcément quitter notre fournisseur ?</h3><p>Non. La preuve peut servir à renégocier : un meilleur prix, un engagement plus court, des clauses de sortie.</p></div>
+<div>
+<div class="question"><h3>Faut-il forcément quitter notre fournisseur ?</h3><p>Non. La preuve peut servir à renégocier : un meilleur prix, un engagement plus court, des clauses de sortie. Rester, en connaissance de cause, est une décision légitime.</p></div>
+<div class="question"><h3>Nos choix passés étaient-ils mauvais ?</h3><p>Non. Ils étaient rationnels dans leur contexte. C’est le contexte qui a changé, et c’est ce que nous vous aidons à prendre en compte.</p></div>
 <div class="question"><h3>Nos métiers ne financeront pas un sujet technique. Comment faire ?</h3><p>Nous ne vendons pas un sujet technique, mais la continuité de votre activité. Et les premières économies obtenues financent les étapes suivantes.</p></div>
-<div class="question"><h3>Qui porte le sujet chez nous ?</h3><p>Souvent le RSSI, au titre de NIS 2 ou de DORA, avec le DSI qui pilote et la direction qui arbitre. Notre diagnostic donne à chacun les arguments pour décider.</p></div>
-<div class="question"><h3>Intervenez-vous sur notre production ?</h3><p>Le plan B testé ne touche pas à votre production. Le pilote de sortie porte sur un périmètre limité et non critique.</p></div>
-<div class="question"><h3>Recevez-vous des commissions des éditeurs ?</h3><p>Jamais. Nos partenaires ne nous rémunèrent pas, et c'est vous qui choisissez l'alternative.</p></div>
-<div class="question"><h3>Qui réalise la migration complète ?</h3><p>Nous pouvons la réaliser, ou la piloter avec l'intégrateur de votre choix. Vous restez libre à chaque étape.</p></div>
+<div class="question"><h3>Qui porte le sujet chez nous ?</h3><p>Souvent le RSSI, au titre de NIS 2 ou de DORA, avec le DSI qui pilote, un sherpa qui guide au quotidien et la direction qui arbitre.</p></div>
+<div class="question"><h3>Intervenez-vous sur notre production ?</h3><p>Le pilote de sortie porte sur un périmètre limité et représentatif, sans risque pour votre production.</p></div>
+<div class="question"><h3>Recevez-vous des commissions des éditeurs ?</h3><p>Jamais. Nos partenaires ne nous rémunèrent pas, et c’est vous qui choisissez l’alternative.</p></div>
 </div>
 </div>
 </section>
@@ -381,8 +519,8 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <div class="conteneur">
 <div class="collectif-texte">
 <p class="repere">Rejoindre le collectif</p>
-<h2 class="titre">Experts de l'infrastructure : ne restez pas seuls.</h2>
-<p class="chapo">Optio se construit comme un collectif d'experts, salariés ou indépendants, autour d'un pacte clair : une rémunération juste, une redistribution de la valeur créée, et une vraie communauté de pratique autour de l'open source et des alternatives européennes.</p>
+<h2 class="titre">Experts de l’infrastructure : ne restez pas seuls.</h2>
+<p class="chapo">Optio se construit comme un collectif d’experts, salariés ou indépendants, autour d’un pacte clair : une rémunération juste, une redistribution de la valeur créée, et une vraie communauté de pratique autour de l’open source et des alternatives européennes.</p>
 </div>
 <a class="btn btn-contour" href="mailto:contact@[DOMAINE]?subject=Rejoindre%20le%20collectif%20Optio">Nous écrire</a>
 </div>
@@ -393,7 +531,7 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <div class="contact-texte">
 <p class="repere">Contact</p>
 <h2>Quelle est votre prochaine échéance ?</h2>
-<p class="chapo">Parlons-en trente minutes. Vous repartez avec une première lecture de votre exposition, sans engagement.</p>
+<p class="chapo">Parlons-en trente minutes. Nous préparons ensemble votre atelier de découverte, sans engagement.</p>
 <p>Ou écrivez-nous directement : <a href="mailto:contact@[DOMAINE]">contact@[DOMAINE]</a></p>
 </div>
 <div class="formulaire">
@@ -411,15 +549,15 @@ h2.titre{font-size:clamp(30px,3.4vw,46px);line-height:1.08}
 <div class="pied-haut">
 <div class="pied-marque">
 <svg width="40" height="28" viewBox="0 0 40 28" aria-hidden="true"><circle cx="12" cy="14" r="8.5" fill="none" stroke="#F8FAFA" stroke-width="3"/><path d="M20.5 14 H27 L35 7" fill="none" stroke="#00A37A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 14 L35 21" fill="none" stroke="#5A6E7A" stroke-width="3" stroke-linecap="round"/></svg>
-<p><strong>Optio</strong>, l'indépendance numérique par la preuve.</p>
+<p><strong>Optio</strong>, l’indépendance numérique par la preuve.</p>
 </div>
 <p>© 2026 Optio</p>
 </div>
 <div class="mentions" id="mentions">
 <h2>Mentions légales</h2>
-<p>Éditeur : [RAISON SOCIALE], [FORME JURIDIQUE] au capital de [CAPITAL], [ADRESSE], SIREN [NUMÉRO]. Directeur de la publication : [NOM]. Hébergeur : [NOM ET ADRESSE DE L'HÉBERGEUR].</p>
+<p>Éditeur : [RAISON SOCIALE], [FORME JURIDIQUE] au capital de [CAPITAL], [ADRESSE], SIREN [NUMÉRO]. Directeur de la publication : [NOM]. Hébergeur : [NOM ET ADRESSE DE L’HÉBERGEUR].</p>
 </div>
-<p class="sources">Sources : Gartner, cité par la presse spécialisée (hausses VMware) ; règlement (UE) 2022/2554, article 28 (DORA) ; règlement (UE) 2023/2854, article 29 (Data Act).</p>
+<p class="sources">Sources : Gartner, cité par la presse spécialisée (hausses de prix d’un éditeur de virtualisation) ; Verizon, Data Breach Investigations Report 2026 ; BNP Paribas, cité par Reuters (émissions obligataires des hyperscalers en 2026) ; règlement (UE) 2022/2554, article 28 (DORA) ; règlement (UE) 2023/2854, article 29 (Data Act).</p>
 </div>
 </footer>
 
