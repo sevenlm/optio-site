@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Radar des dépendances — édition 1 (prototype)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+:root{
+  color-scheme: light;
+  --bg:#F3F6F7; --surface:#FFFFFF; --surface-2:#E8EEF0; --ink:#0B2A3C; --text-2:#41576A; --text-3:#5F7280; --line:#D5DFE3;
+  --risque:#0B2A3C; --on-risque:#FFFFFF; --levier:#00A37A; --on-levier:#0B2A3C; --signal-text:#00775A; --balise:#E0AE1B;
+  --ring-1:#E1EAED; --ring-2:#EAF0F2; --ring-3:#F1F5F6; --ring-4:#F8FAFB;
+  --header:#0B2A3C; --on-header:#F8FAFA; --on-header-2:#C9D6DC;
+  --titre:'Archivo','Helvetica Neue',Arial,sans-serif; --corps:'Instrument Sans','Helvetica Neue',Arial,sans-serif; --mesure:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --bg:#07202E; --surface:#0B2A3C; --surface-2:#12364A; --ink:#F0F4F5; --text-2:#C9D6DC; --text-3:#AFC0C9; --line:#1E4255;
+    --risque:#F0F4F5; --on-risque:#0B2A3C; --levier:#00A37A; --on-levier:#0B2A3C; --signal-text:#2BD49B; --balise:#F2C230;
+    --ring-1:#143B50; --ring-2:#113447; --ring-3:#0E2D3E; --ring-4:#0B2735;
+    --header:#041821; --on-header:#F8FAFA; --on-header-2:#C9D6DC;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#07202E; --surface:#0B2A3C; --surface-2:#12364A; --ink:#F0F4F5; --text-2:#C9D6DC; --text-3:#AFC0C9; --line:#1E4255;
+  --risque:#F0F4F5; --on-risque:#0B2A3C; --levier:#00A37A; --on-levier:#0B2A3C; --signal-text:#2BD49B; --balise:#F2C230;
+  --ring-1:#143B50; --ring-2:#113447; --ring-3:#0E2D3E; --ring-4:#0B2735;
+  --header:#041821; --on-header:#F8FAFA; --on-header-2:#C9D6DC;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--corps);line-height:1.5}
+h1,h2,h3,p,ul{margin:0}
+a{color:var(--signal-text)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--levier);outline-offset:2px;border-radius:4px}
+.entete{background:var(--header);color:var(--on-header)}
+.entete-in{max-width:1240px;margin:0 auto;padding:32px 24px 28px;display:flex;flex-direction:column;gap:10px}
+.edition{font-family:var(--mesure);font-size:13px;color:var(--on-header-2)}
+.entete h1{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;line-height:1.05}
+.entete p{color:var(--on-header-2);max-width:780px;font-size:16px}
+.page{max-width:1240px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:24px}
+.panneau{background:var(--surface);border:1px solid var(--line);border-radius:10px}
+.zone-radar{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:920px){.zone-radar{grid-template-columns:1fr}}
+.radar-box{padding:16px}
+.radar-box svg{display:block;width:100%;height:auto}
+.legende{display:flex;flex-wrap:wrap;gap:18px;padding:4px 8px 8px;font-size:13px;color:var(--text-2)}
+.legende span{display:inline-flex;align-items:center;gap:8px}
+.legende i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.fiche{padding:24px;display:flex;flex-direction:column;gap:16px;position:sticky;top:16px}
+.fiche .tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--text-2)}
+.tag.anneau{background:transparent;border:1.5px solid var(--line)}
+.fiche h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:26px;line-height:1.15}
+.fiche h3{font-size:13px;font-weight:700;color:var(--text-3);text-transform:none;margin-bottom:4px}
+.fiche p,.fiche li{font-size:15px;color:var(--text-2)}
+.fiche ul{padding-left:18px}
+.fiche .vide{color:var(--text-3)}
+.numero{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;font-family:var(--mesure);font-size:13px;flex:none}
+.n-risque{background:var(--risque);color:var(--on-risque)}
+.n-levier{background:var(--levier);color:var(--on-levier)}
+.filtres{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filtres span{font-size:13px;color:var(--text-3);margin-right:4px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;min-height:36px;font-size:14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
+.quadrants{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:16px}
+.quadrant{padding:20px;display:flex;flex-direction:column;gap:10px}
+.quadrant h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px}
+.quadrant p.desc{font-size:13.5px;color:var(--text-3)}
+.item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:none;background:none;padding:8px 6px;border-radius:6px;cursor:pointer}
+.item:hover,.item[aria-current="true"]{background:var(--surface-2)}
+.item strong{font-size:14.5px;font-weight:600}
+.item small{display:block;font-size:12.5px;color:var(--text-3)}
+.methode{padding:24px;display:flex;flex-direction:column;gap:14px}
+.methode h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px}
+.methode .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px}
+.methode h3{font-size:15px;font-weight:700}
+.methode p{font-size:14.5px;color:var(--text-2)}
+.pied{font-size:13px;color:var(--text-3);padding:8px 0 24px}
+.blip{cursor:pointer}
+.blip:focus{outline:none}
+.blip:focus-visible circle.halo{stroke:var(--levier);stroke-width:4}
+</style>
+</head>
+<body>
+<header class="entete">
+<div class="entete-in">
+<p class="edition">Édition 1 · prototype · novembre 2026</p>
+<h1>Radar des dépendances</h1>
+<p>Les tendances qui renforcent ou desserrent la dépendance des organisations à leurs fournisseurs numériques, classées selon l’urgence pour un DSI. Cliquez sur un point pour lire sa fiche.</p>
+</div>
+</header>
+
+<main class="page">
+<div class="zone-radar">
+<section class="panneau radar-box" aria-label="Radar">
+<div id="radar"></div>
+<div class="legende">
+<span><i style="background:var(--risque)"></i>Tendance qui renforce la dépendance</span>
+<span><i style="background:var(--levier)"></i>Levier de liberté</span>
+</div>
+</section>
+<aside class="panneau fiche" id="fiche" aria-live="polite"></aside>
+</div>
+
+<div class="filtres" role="group" aria-label="Filtrer par anneau">
+<span>Anneau :</span>
+<button class="chip" data-anneau="tous" aria-pressed="true">Tous</button>
+<button class="chip" data-anneau="0" aria-pressed="false">Agir maintenant</button>
+<button class="chip" data-anneau="1" aria-pressed="false">Préparer</button>
+<button class="chip" data-anneau="2" aria-pressed="false">Surveiller</button>
+<button class="chip" data-anneau="3" aria-pressed="false">Signal faible</button>
+</div>
+
+<div class="quadrants" id="listes"></div>
+
+<section class="panneau methode" aria-labelledby="t-meth">
+<h2 id="t-meth">La méthode</h2>
+<div class="grille">
+<div><h3>Ce que mesure le radar</h3><p>Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Il décrit des faits sourcés, il ne note pas les fournisseurs.</p></div>
+<div><h3>Les anneaux</h3><p>Agir maintenant : effet dans les 12 mois. Préparer : 12 à 24 mois. Surveiller : la tendance se confirme. Signal faible : à garder à l’œil. Pour les leviers, l’anneau indique la maturité : au centre, prêt à l’emploi.</p></div>
+<div><h3>Les sources</h3><p>Études publiques (Cigref, Gartner, Forrester), textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Chaque fiche cite les siennes.</p></div>
+<div><h3>Le rythme</h3><p>Une édition par semestre. Une tendance peut changer d’anneau, entrer ou sortir du radar d’une édition à l’autre, avec une explication.</p></div>
+</div>
+</section>
+<p class="pied">Prototype à valider. Les fiches marquées « à vérifier » reposent sur des informations non revérifiées pour cette édition. Optio, une marque de Stratwise.</p>
+</main>
+
+<script>
+(function(){
+  "use strict";
+  var QUADRANTS=[
+    {t:"Licences et modèles économiques", d:"Comment les éditeurs facturent, et ce que vous possédez vraiment."},
+    {t:"Infrastructure et cloud", d:"Où tournent vos systèmes, et ce qui se passe quand cela s’arrête."},
+    {t:"Réglementation et géopolitique", d:"Ce que les régulateurs et les États exigent ou imposent."},
+    {t:"Leviers de liberté", d:"Ce qui vous redonne le choix, classé par maturité."}
+  ];
+  var ANNEAUX=["Agir maintenant","Préparer","Surveiller","Signal faible"];
+  var T=[
+    {q:0,a:0,k:"risque",t:"Fin des licences perpétuelles",
+      quoi:"Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. Atlassian ne vendra plus de licences Data Center aux clients existants après le 30 mars 2028, et les passera en lecture seule le 28 mars 2029.",
+      pourquoi:"Vous ne possédez plus, vous louez : le prix est revu à chaque échéance et le calendrier de migration est fixé par l’éditeur.",
+      faire:["Recenser les licences sans date d’expiration qui restent, et leurs fins de support.","Chiffrer l’abonnement sur cinq ans, pas sur un an.","Préparer une alternative avant la date imposée."],
+      src:[["CIO Online, analyse d’Elée","https://www.cio-online.com/actualites/lire-budget-it-2026-la-quadrature-du-cercle-16558.html"],["Adaptavist, fin de vie d’Atlassian Data Center","https://www.adaptavist.com/blog/atlassian-data-center-end-of-life-march-2029"]]},
+    {q:0,a:0,k:"risque",t:"IA intégrée d’office dans les suites",
+      quoi:"Les grandes suites collaboratives et les CRM relèvent leurs prix en incluant l’IA dans toutes leurs offres. Microsoft 365 a augmenté ses prix catalogue au 1er juillet 2026 ; Salesforce a remplacé ses éditions le 3 septembre 2026 par des formules qui intègrent toutes son IA.",
+      pourquoi:"Vous payez des fonctions que vous n’utilisez pas forcément, et la hausse devient difficile à refuser.",
+      faire:["Mesurer l’usage réel des fonctions d’IA.","Négocier sur le périmètre utile.","Éviter de se réengager longtemps juste après une hausse."],
+      src:[["Presse spécialisée, synthèse des hausses 2026",null]]},
+    {q:0,a:1,k:"risque",t:"Hausses de prix soutenues",
+      quoi:"Les DSI européens interrogés pour le Cigref anticipent 12 % de hausse par an de leurs coûts de cloud et de logiciels sur cinq ans, soit environ +57 % en quatre ans. Gartner observe des hausses de 10 à 20 % chez plusieurs grands éditeurs SaaS en 2025.",
+      pourquoi:"La trajectoire de coûts n’est plus pilotée par le client, et le verrouillage fournisseur est la première cause citée.",
+      faire:["Projeter le coût total de chaque fournisseur critique sur cinq ans.","Arriver aux échéances avec une alternative chiffrée."],
+      src:[["Cigref et Asterès, mai 2026","https://www.cigref.fr/wp/wp-content/uploads/2026/05/Cigref-Asteres-Hausses-Tarifaires-Cloud-Logiciel-Europe-2026.pdf"],["Solutions Numériques","https://www.solutions-numeriques.com/cloud-et-logiciels-le-cigref-alerte-sur-une-inflation-qui-pese-sur-les-investissements-europeens/"]]},
+    {q:0,a:1,k:"risque",t:"Rachats et consolidation des éditeurs",
+      quoi:"Les rachats se multiplient : IBM a finalisé celui de Confluent (11,6 Md$) en mars 2026, Salesforce a annoncé ceux de Fin et de Braze (5,66 Md$), Schneider Electric celui de PTC (22,6 Md$).",
+      pourquoi:"Quand votre éditeur change de propriétaire, sa roadmap et sa politique tarifaire changent avec lui.",
+      faire:["Identifier les fournisseurs critiques susceptibles d’être rachetés.","Prévoir des clauses en cas de changement de contrôle."],
+      src:[["Genee Tech, rachat de Braze","https://www.genee.tech/blog/salesforce-acquisition-braze-5-milliards-marketing-cloud-crm-2026"],["L’Usine Nouvelle, rachat de PTC","https://www.usinenouvelle.com/equipements-electriques/cest-la-plus-importante-acquisition-de-son-histoire-schneider-electric-avale-lamericain-ptc-pour-226-milliards-de-dollars-et-devient-un-geant-du-logiciel.GLJOXU3YBBCATASBT526JIQ26U.html"]]},
+    {q:0,a:2,k:"risque",t:"Facturation de l’IA à l’usage",
+      quoi:"Selon Forrester, 80 % des décideurs interrogés s’attendent à une hausse de leurs budgets logiciels en 2027, les éditeurs répercutant le coût de l’IA par des hausses de prix ou une facturation à l’usage.",
+      pourquoi:"Une facture à l’usage est difficile à prévoir, et plus encore à comparer.",
+      faire:["Exiger des plafonds et des alertes de consommation.","Suivre la consommation d’IA comme un poste à part entière."],
+      src:[["Forrester, cité par la presse spécialisée",null]]},
+    {q:1,a:0,k:"risque",t:"Virtualisation propriétaire",
+      quoi:"Après le rachat de VMware par Broadcom, licences perpétuelles supprimées et offres groupées imposées. Gartner observe des hausses de 2 à 3 fois chez les clients qui renégocient.",
+      pourquoi:"La virtualisation porte une grande partie des systèmes critiques : en sortir demande des mois de préparation.",
+      faire:["Mesurer le délai de sortie et le comparer à l’échéance.","Évaluer deux alternatives et lancer un pilote sur un périmètre limité."],
+      src:[["Gartner, cité par la presse spécialisée",null]]},
+    {q:1,a:2,k:"risque",t:"Concentration des régions cloud",
+      quoi:"Le 20 octobre 2025, une panne dans la région US-EAST-1 d’AWS a rendu indisponibles pendant plusieurs heures de nombreux services. Même des applications hébergées ailleurs ont été touchées, car elles dépendaient de cette région.",
+      pourquoi:"Être réparti géographiquement ne signifie pas être indépendant : authentification, DNS ou pilotage peuvent créer des dépendances cachées.",
+      faire:["Cartographier les dépendances cachées : identité, DNS, outils de déploiement.","Tester une bascule réelle, pas seulement documentée."],
+      src:[["JustGeek, causes de la panne AWS","https://www.justgeek.fr/panne-aws-20-octobre-explication-143468/"]]},
+    {q:1,a:2,k:"risque",t:"Changements de licence open source",
+      quoi:"Des projets open source contrôlés par un seul éditeur ont adopté des licences plus restrictives, comme Terraform en 2023, ce qui a conduit la communauté à créer un fork. (À vérifier.)",
+      pourquoi:"L’open source ne protège pas si un seul acteur contrôle le projet.",
+      faire:["Privilégier les projets à gouvernance ouverte ou portés par une fondation.","Identifier les composants à éditeur unique."],
+      src:[["À vérifier pour cette édition",null]]},
+    {q:1,a:3,k:"risque",t:"Dépendance aux modèles d’IA propriétaires",
+      quoi:"Les organisations construisent prompts, outils et agents autour d’un modèle ou d’une API d’un seul fournisseur.",
+      pourquoi:"Changer de modèle peut demander de tout reconstruire, au moment où les prix de l’IA évoluent vite.",
+      faire:["Prévoir une couche d’abstraction entre vos applications et les modèles.","Tester régulièrement un modèle alternatif."],
+      src:[["Observation Optio",null]]},
+    {q:2,a:0,k:"risque",t:"Plans de sortie testés (DORA)",
+      quoi:"Depuis le 17 janvier 2025, DORA impose aux entités financières des stratégies de sortie documentées, suffisamment testées et revues régulièrement pour les services qui supportent des fonctions critiques.",
+      pourquoi:"Un plan écrit ne suffit plus : il faut pouvoir prouver qu’il fonctionne.",
+      faire:["Identifier les fonctions critiques et leurs prestataires.","Tester au moins une sortie sur un périmètre réel."],
+      src:[["Règlement (UE) 2022/2554, article 28",null]]},
+    {q:2,a:0,k:"risque",t:"Plans de réduction des dépendances de l’État",
+      quoi:"Coordonnés par la Dinum, les ministères et opérateurs doivent présenter à l’automne 2026 des plans d’action sur sept domaines : poste de travail, collaboratif, antivirus, IA, bases de données, virtualisation, réseau.",
+      pourquoi:"La dépendance devient un sujet piloté au plus haut niveau de l’État.",
+      faire:["Rendre le plan exécutable : chiffrage, priorités, preuve sur un périmètre."],
+      src:[["Communiqués de la Dinum (2026)",null]]},
+    {q:2,a:1,k:"risque",t:"Loi Résilience (NIS 2)",
+      quoi:"Plus de 15 000 organisations en France seront concernées. L’examen à l’Assemblée nationale a été reporté sans nouvelle date ; trois ans de mise en conformité suivront la promulgation.",
+      pourquoi:"La sécurité de la chaîne d’approvisionnement devient une obligation, et les dirigeants en deviennent responsables.",
+      faire:["Cartographier les fournisseurs critiques dès maintenant.","S’appuyer sur le référentiel de l’ANSSI sans attendre le vote."],
+      src:[["ChannelNews, report de l’examen","https://www.channelnews.fr/la-transposition-de-nis-2-a-nouveau-repoussee-159415"]]},
+    {q:2,a:3,k:"risque",t:"Coupures liées aux sanctions",
+      quoi:"Après des sanctions américaines en février 2025, le procureur de la Cour pénale internationale a perdu l’accès à sa messagerie Microsoft et a dû changer de fournisseur, selon l’Associated Press. Microsoft conteste avoir coupé les services de la Cour.",
+      pourquoi:"Un service peut devenir inaccessible pour des raisons qui n’ont rien de technique ni de contractuel.",
+      faire:["Identifier les services critiques exposés à un droit étranger.","Prévoir un mode dégradé pour les plus sensibles."],
+      src:[["Justice Info","https://www.justiceinfo.net/fr/156672-comment-les-sanctions-peuvent-etre-une-arme-technologique-americaine-contre-la-cpi.html"],["Next, audition de Microsoft au Sénat","https://next.ink/brief-article/microsoft-nie-avoir-coupe-lacces-de-ses-services-a-la-cour-penale-internationale/"]]},
+    {q:3,a:0,k:"levier",t:"Alternatives de virtualisation matures",
+      quoi:"Des solutions comme Proxmox ou XCP-ng, cette dernière éditée en France, sont utilisées en production et font l’objet de migrations réelles.",
+      pourquoi:"L’alternative existe : la question n’est plus « peut-on ? », mais « en combien de temps et pour quel coût ? ».",
+      faire:["Comparer deux alternatives sur vos usages réels.","Mesurer la sortie par un pilote."],
+      src:[["Observation Optio",null]]},
+    {q:3,a:0,k:"levier",t:"Clauses de réversibilité",
+      quoi:"Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement.",
+      pourquoi:"C’est le levier le moins coûteux : il se négocie au moment de signer, pas au moment de partir.",
+      faire:["Établir une grille de clauses minimales pour tout contrat critique."],
+      src:[["Pratique Optio",null]]},
+    {q:3,a:1,k:"levier",t:"Fin des frais de sortie cloud (Data Act)",
+      quoi:"À partir du 12 janvier 2027, les fournisseurs de cloud ne pourront plus facturer de frais de changement de fournisseur, y compris les frais de transfert de données.",
+      pourquoi:"Un verrou financier tombe. Le verrouillage technique, lui, demeure.",
+      faire:["Éviter de se réengager longtemps juste avant cette date.","Préparer la portabilité technique."],
+      src:[["Règlement (UE) 2023/2854, article 29",null]]},
+    {q:3,a:1,k:"levier",t:"Cloud européen qualifié",
+      quoi:"Des offres d’hébergeurs européens qualifiées SecNumCloud se développent, notamment pour les données sensibles.",
+      pourquoi:"Elles élargissent le choix, à condition de rester elles-mêmes réversibles.",
+      faire:["Les inclure dans les comparaisons, avec la même grille de réversibilité."],
+      src:[["Observation Optio",null]]},
+    {q:3,a:2,k:"levier",t:"Couches d’abstraction",
+      quoi:"Conteneurs, Kubernetes, outils d’infrastructure as code ouverts : des couches qui rendent l’infrastructure sous-jacente plus interchangeable.",
+      pourquoi:"Elles réduisent le coût d’un changement, à condition de prouver qu’elles fonctionnent sur deux plateformes.",
+      faire:["Tester le déploiement d’une application sur une seconde plateforme."],
+      src:[["Observation Optio",null]]},
+    {q:3,a:3,k:"levier",t:"Modèles d’IA à poids ouverts",
+      quoi:"Des modèles dont les poids sont publiés permettent d’héberger l’IA chez soi ou chez le fournisseur de son choix.",
+      pourquoi:"Ils offrent une alternative aux modèles propriétaires, à surveiller selon les usages et les performances.",
+      faire:["Évaluer un modèle ouvert sur un cas d’usage interne."],
+      src:[["Observation Optio",null]]},
+    {q:3,a:3,k:"levier",t:"Achats et investissements groupés",
+      quoi:"Plusieurs organisations s’associent pour négocier ou financer une alternative commune.",
+      pourquoi:"À plusieurs, le rapport de force change, et le coût d’une alternative se partage.",
+      faire:["Identifier des pairs exposés aux mêmes fournisseurs."],
+      src:[["Observation Optio",null]]}
+  ];
+  T.forEach(function(x,i){ x.id="t-"+String(i+1).padStart(2,"0"); x.n=i+1; });
+
+  var filtre="tous", sel=null;
+  var NS="http://www.w3.org/2000/svg";
+  function s(tag,a,txt){ var e=document.createElementNS(NS,tag); for(var k in a) e.setAttribute(k,a[k]); if(txt!=null) e.textContent=txt; return e; }
+  function el(tag,attrs,kids){ var e=document.createElement(tag); if(attrs) for(var k in attrs){ if(k==="text") e.textContent=attrs[k]; else if(k.slice(0,2)==="on") e.addEventListener(k.slice(2),attrs[k]); else e.setAttribute(k,attrs[k]); } (kids||[]).forEach(function(c){ if(c!=null) e.appendChild(typeof c==="string"?document.createTextNode(c):c); }); return e; }
+
+  // Quadrant angles (degrés, sens horaire depuis l'axe x, y vers le bas) : 0 haut-gauche, 1 haut-droite, 2 bas-gauche, 3 bas-droite
+  var QANG=[[180,270],[270,360],[90,180],[0,90]];
+  var R=[0,95,170,235,290], C=320;
+  function positions(){
+    var groupes={};
+    T.forEach(function(x){ var k=x.q+"-"+x.a; (groupes[k]=groupes[k]||[]).push(x); });
+    Object.keys(groupes).forEach(function(k){
+      var g=groupes[k], q=g[0].q, a=g[0].a, a0=QANG[q][0], a1=QANG[q][1];
+      g.forEach(function(x,i){
+        var frac=(i+1)/(g.length+1), ang=(a0+(a1-a0)*(0.12+0.76*frac))*Math.PI/180;
+        var rr=R[a]+(R[a+1]-R[a])*(g.length>2&&i%2?0.68:0.42);
+        if(a===0) rr=R[1]*(g.length>1?(i%2?0.72:0.48):0.6);
+        x.x=C+rr*Math.cos(ang); x.y=C+rr*Math.sin(ang);
+      });
+    });
+  }
+  function dessiner(){
+    var box=document.getElementById("radar"); box.textContent="";
+    var g=s("svg",{viewBox:"0 0 640 640",role:"img","aria-label":"Radar des dépendances : "+T.length+" tendances réparties en quatre quadrants et quatre anneaux"});
+    [4,3,2,1].forEach(function(i){ g.appendChild(s("circle",{cx:C,cy:C,r:R[i],fill:"var(--ring-"+i+")",stroke:"var(--line)","stroke-width":"1.5"})); });
+    g.appendChild(s("line",{x1:C-R[4],y1:C,x2:C+R[4],y2:C,stroke:"var(--line)","stroke-width":"2"}));
+    g.appendChild(s("line",{x1:C,y1:C-R[4],x2:C,y2:C+R[4],stroke:"var(--line)","stroke-width":"2"}));
+    ANNEAUX.forEach(function(n,i){ var y=C-(R[i]+R[i+1])/2+4; var t=s("text",{x:C+6,y:y,"font-size":"10.5","font-family":"Instrument Sans, sans-serif","font-weight":"600"},n); t.style.fill="var(--text-3)"; g.appendChild(t); });
+    var QL=[[30,24,"start"],[610,24,"end"],[30,626,"start"],[610,626,"end"]];
+    QUADRANTS.forEach(function(q,i){ var t=s("text",{x:QL[i][0],y:QL[i][1],"text-anchor":QL[i][2],"font-size":"13","font-weight":"700","font-family":"Archivo, sans-serif"},q.t); t.style.fill="var(--ink)"; g.appendChild(t); });
+    T.forEach(function(x){
+      var visible = filtre==="tous" || String(x.a)===filtre;
+      var b=s("g",{class:"blip",tabindex:visible?"0":"-1",role:"button","aria-label":x.n+". "+x.t+", "+ANNEAUX[x.a]});
+      b.style.opacity=visible?"1":"0.18";
+      var actif = sel===x.id;
+      b.appendChild(s("circle",{class:"halo",cx:x.x,cy:x.y,r:actif?17:14,fill:"none",stroke:actif?"var(--balise)":"transparent","stroke-width":"3"}));
+      var c=s("circle",{cx:x.x,cy:x.y,r:12}); c.style.fill=x.k==="levier"?"var(--levier)":"var(--risque)"; b.appendChild(c);
+      var t=s("text",{x:x.x,y:x.y+4,"text-anchor":"middle","font-size":"10.5","font-family":"JetBrains Mono, monospace"},String(x.n)); t.style.fill=x.k==="levier"?"var(--on-levier)":"var(--on-risque)"; b.appendChild(t);
+      var tt=s("title",{},x.t); b.appendChild(tt);
+      b.addEventListener("click",function(){ choisir(x.id,true); });
+      b.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); choisir(x.id,true); } });
+      g.appendChild(b);
+    });
+    box.appendChild(g);
+  }
+  function fiche(){
+    var f=document.getElementById("fiche"); f.textContent="";
+    var x=T.find(function(y){ return y.id===sel; });
+    if(!x){ f.appendChild(el("p",{class:"vide",text:"Sélectionnez un point du radar ou une tendance dans les listes pour afficher sa fiche."})); return; }
+    f.appendChild(el("div",{class:"tags"},[ el("span",{class:"numero "+(x.k==="levier"?"n-levier":"n-risque"),text:String(x.n)}), el("span",{class:"tag",text:QUADRANTS[x.q].t}), el("span",{class:"tag anneau",text:ANNEAUX[x.a]}) ]));
+    f.appendChild(el("h2",{text:x.t}));
+    f.appendChild(el("div",null,[ el("h3",{text:"Ce qui se passe"}), el("p",{text:x.quoi}) ]));
+    f.appendChild(el("div",null,[ el("h3",{text:"Pourquoi cela compte"}), el("p",{text:x.pourquoi}) ]));
+    f.appendChild(el("div",null,[ el("h3",{text:"Ce qu’un DSI peut faire"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); })) ]));
+    f.appendChild(el("div",null,[ el("h3",{text:"Sources"}), el("ul",null,x.src.map(function(s2){ return el("li",null,[ s2[1]?el("a",{href:s2[1],target:"_blank",rel:"noopener",text:s2[0]}):s2[0] ]); })) ]));
+  }
+  function listes(){
+    var z=document.getElementById("listes"); z.textContent="";
+    QUADRANTS.forEach(function(q,qi){
+      var items=T.filter(function(x){ return x.q===qi && (filtre==="tous"||String(x.a)===filtre); });
+      var p=el("section",{class:"panneau quadrant","aria-label":q.t},[ el("h2",{text:q.t}), el("p",{class:"desc",text:q.d}) ]);
+      if(!items.length) p.appendChild(el("p",{class:"desc",text:"Aucune tendance dans cet anneau."}));
+      items.forEach(function(x){
+        p.appendChild(el("button",{type:"button",class:"item","aria-current":String(sel===x.id),onclick:function(){ choisir(x.id,true); }},[
+          el("span",{class:"numero "+(x.k==="levier"?"n-levier":"n-risque"),text:String(x.n)}),
+          el("span",null,[ el("strong",{text:x.t}), el("small",{text:ANNEAUX[x.a]}) ])
+        ]));
+      });
+      z.appendChild(p);
+    });
+  }
+  function choisir(id,maj){
+    sel=id; if(maj){ try{ history.replaceState(null,"","#"+id); }catch(e){ location.hash=id; } }
+    dessiner(); fiche(); listes();
+    if(maj && window.innerWidth<920){ var f=document.getElementById("fiche"); if(f.scrollIntoView) f.scrollIntoView({behavior:"smooth",block:"start"}); }
+  }
+  document.querySelectorAll(".chip").forEach(function(b){ b.addEventListener("click",function(){
+    filtre=b.getAttribute("data-anneau");
+    document.querySelectorAll(".chip").forEach(function(c){ c.setAttribute("aria-pressed",String(c===b)); });
+    dessiner(); listes(); }); });
+  function depuisHash(){ var h=location.hash.replace("#",""); if(/^t-\d\d$/.test(h) && T.some(function(x){ return x.id===h; })) choisir(h,false); }
+  window.addEventListener("hashchange",depuisHash);
+  positions(); sel=T[0].id; dessiner(); fiche(); listes(); depuisHash();
+})();
+</script>
+</body>
+</html>
