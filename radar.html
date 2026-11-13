@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="fr">
 <head>
@@ -11,7 +12,9 @@
 :root{
   color-scheme: light;
   --bg:#F3F6F7; --surface:#FFFFFF; --surface-2:#E8EEF0; --ink:#0B2A3C; --text-2:#41576A; --text-3:#5F7280; --line:#D5DFE3;
-  --risque:#0B2A3C; --on-risque:#FFFFFF; --levier:#00A37A; --on-levier:#0B2A3C; --signal-text:#00775A; --balise:#E0AE1B;
+  --c-risque:#0B2A3C; --on-risque:#FFFFFF; --c-levier:#00A37A; --on-levier:#0B2A3C;
+  --c-p:#0B2A3C; --on-p:#FFFFFF; --c-e:#E0AE1B; --on-e:#0B2A3C; --c-o:#00A37A; --on-o:#0B2A3C;
+  --signal-text:#00775A; --halo:#E0AE1B;
   --ring-1:#E1EAED; --ring-2:#EAF0F2; --ring-3:#F1F5F6; --ring-4:#F8FAFB;
   --header:#0B2A3C; --on-header:#F8FAFA; --on-header-2:#C9D6DC;
   --titre:'Archivo','Helvetica Neue',Arial,sans-serif; --corps:'Instrument Sans','Helvetica Neue',Arial,sans-serif; --mesure:'JetBrains Mono',ui-monospace,Menlo,monospace;
@@ -21,72 +24,81 @@
   :root:not([data-theme="light"]){
     color-scheme: dark;
     --bg:#07202E; --surface:#0B2A3C; --surface-2:#12364A; --ink:#F0F4F5; --text-2:#C9D6DC; --text-3:#AFC0C9; --line:#1E4255;
-    --risque:#F0F4F5; --on-risque:#0B2A3C; --levier:#00A37A; --on-levier:#0B2A3C; --signal-text:#2BD49B; --balise:#F2C230;
+    --c-risque:#F0F4F5; --on-risque:#0B2A3C; --c-levier:#00A37A; --on-levier:#0B2A3C;
+    --c-p:#F0F4F5; --on-p:#0B2A3C; --c-e:#F2C230; --on-e:#0B2A3C; --c-o:#00A37A; --on-o:#0B2A3C;
+    --signal-text:#2BD49B; --halo:#F2C230;
     --ring-1:#143B50; --ring-2:#113447; --ring-3:#0E2D3E; --ring-4:#0B2735;
-    --header:#041821; --on-header:#F8FAFA; --on-header-2:#C9D6DC;
+    --header:#041821;
   }
 }
 :root[data-theme="dark"]{
   color-scheme: dark;
   --bg:#07202E; --surface:#0B2A3C; --surface-2:#12364A; --ink:#F0F4F5; --text-2:#C9D6DC; --text-3:#AFC0C9; --line:#1E4255;
-  --risque:#F0F4F5; --on-risque:#0B2A3C; --levier:#00A37A; --on-levier:#0B2A3C; --signal-text:#2BD49B; --balise:#F2C230;
+  --c-risque:#F0F4F5; --on-risque:#0B2A3C; --c-levier:#00A37A; --on-levier:#0B2A3C;
+  --c-p:#F0F4F5; --on-p:#0B2A3C; --c-e:#F2C230; --on-e:#0B2A3C; --c-o:#00A37A; --on-o:#0B2A3C;
+  --signal-text:#2BD49B; --halo:#F2C230;
   --ring-1:#143B50; --ring-2:#113447; --ring-3:#0E2D3E; --ring-4:#0B2735;
-  --header:#041821; --on-header:#F8FAFA; --on-header-2:#C9D6DC;
+  --header:#041821;
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--corps);line-height:1.5}
 h1,h2,h3,p,ul{margin:0}
 a{color:var(--signal-text)}
-button{font:inherit;color:inherit}
-:focus-visible{outline:3px solid var(--levier);outline-offset:2px;border-radius:4px}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--c-o);outline-offset:2px;border-radius:4px}
 .entete{background:var(--header);color:var(--on-header)}
-.entete-in{max-width:1240px;margin:0 auto;padding:32px 24px 28px;display:flex;flex-direction:column;gap:10px}
+.entete-in{max-width:1280px;margin:0 auto;padding:32px 24px 0;display:flex;flex-direction:column;gap:10px}
 .edition{font-family:var(--mesure);font-size:13px;color:var(--on-header-2)}
 .entete h1{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:clamp(28px,4vw,44px);letter-spacing:-0.02em;line-height:1.05}
-.entete p{color:var(--on-header-2);max-width:780px;font-size:16px}
-.page{max-width:1240px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:24px}
+.entete p.intro{color:var(--on-header-2);max-width:820px;font-size:16px}
+.vues{display:flex;gap:4px;margin-top:14px}
+.vues button{background:none;border:none;padding:12px 18px;border-radius:8px 8px 0 0;color:var(--on-header-2);font-weight:600;font-size:15px;cursor:pointer}
+.vues button[aria-selected="true"]{background:var(--bg);color:var(--ink)}
+.page{max-width:1280px;margin:0 auto;padding:24px;display:flex;flex-direction:column;gap:20px}
 .panneau{background:var(--surface);border:1px solid var(--line);border-radius:10px}
-.zone-radar{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:24px;align-items:start}
-@media (max-width:920px){.zone-radar{grid-template-columns:1fr}}
-.radar-box{padding:16px}
+.zone-radar{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:24px;align-items:start}
+@media (max-width:960px){.zone-radar{grid-template-columns:1fr}}
+.radar-box{padding:14px}
 .radar-box svg{display:block;width:100%;height:auto}
-.legende{display:flex;flex-wrap:wrap;gap:18px;padding:4px 8px 8px;font-size:13px;color:var(--text-2)}
+.legende{display:flex;flex-wrap:wrap;gap:16px;padding:4px 8px 6px;font-size:13px;color:var(--text-2)}
 .legende span{display:inline-flex;align-items:center;gap:8px}
-.legende i{width:14px;height:14px;border-radius:50%;display:inline-block}
-.fiche{padding:24px;display:flex;flex-direction:column;gap:16px;position:sticky;top:16px}
-.fiche .tags{display:flex;flex-wrap:wrap;gap:8px}
+.legende i{width:13px;height:13px;border-radius:50%;display:inline-block}
+.fiche{padding:24px;display:flex;flex-direction:column;gap:14px;position:sticky;top:16px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .tag{font-size:12.5px;font-weight:600;padding:4px 10px;border-radius:999px;background:var(--surface-2);color:var(--text-2)}
-.tag.anneau{background:transparent;border:1.5px solid var(--line)}
-.fiche h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:26px;line-height:1.15}
-.fiche h3{font-size:13px;font-weight:700;color:var(--text-3);text-transform:none;margin-bottom:4px}
+.tag.contour{background:transparent;border:1.5px solid var(--line)}
+.fiche h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:25px;line-height:1.15}
+.fiche .editeur{font-size:14px;color:var(--text-3);margin-top:-6px}
+.fiche h3{font-size:13px;font-weight:700;color:var(--text-3);margin-bottom:4px}
 .fiche p,.fiche li{font-size:15px;color:var(--text-2)}
 .fiche ul{padding-left:18px}
-.fiche .vide{color:var(--text-3)}
-.numero{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;font-family:var(--mesure);font-size:13px;flex:none}
-.n-risque{background:var(--risque);color:var(--on-risque)}
-.n-levier{background:var(--levier);color:var(--on-levier)}
+.fiche .note{font-size:12.5px;color:var(--text-3);border-top:1px solid var(--line);padding-top:10px}
+.numero{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;padding:0 6px;border-radius:999px;font-family:var(--mesure);font-size:12px;flex:none}
+.barre{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
 .filtres{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.filtres span{font-size:13px;color:var(--text-3);margin-right:4px}
-.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;min-height:36px;font-size:14px;cursor:pointer}
+.filtres > span{font-size:13px;color:var(--text-3);margin-right:2px}
+.chip{border:1.5px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 13px;min-height:36px;font-size:13.5px;cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink)}
-.quadrants{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(270px,100%),1fr));gap:16px}
-.quadrant{padding:20px;display:flex;flex-direction:column;gap:10px}
+.recherche{min-height:40px;padding:0 14px;border:1.5px solid var(--line);border-radius:999px;background:var(--surface);min-width:240px}
+.quadrants{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px}
+.quadrant{padding:18px;display:flex;flex-direction:column;gap:4px}
 .quadrant h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px}
-.quadrant p.desc{font-size:13.5px;color:var(--text-3)}
-.item{display:flex;align-items:center;gap:12px;width:100%;text-align:left;border:none;background:none;padding:8px 6px;border-radius:6px;cursor:pointer}
+.quadrant p.desc{font-size:13px;color:var(--text-3);margin-bottom:6px}
+.groupe{font-size:12px;font-weight:700;color:var(--text-3);margin:10px 0 2px}
+.item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:none;padding:6px;border-radius:6px;cursor:pointer}
 .item:hover,.item[aria-current="true"]{background:var(--surface-2)}
-.item strong{font-size:14.5px;font-weight:600}
-.item small{display:block;font-size:12.5px;color:var(--text-3)}
+.item strong{font-size:14px;font-weight:600}
+.item small{display:block;font-size:12px;color:var(--text-3)}
 .methode{padding:24px;display:flex;flex-direction:column;gap:14px}
 .methode h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px}
 .methode .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px}
 .methode h3{font-size:15px;font-weight:700}
 .methode p{font-size:14.5px;color:var(--text-2)}
-.pied{font-size:13px;color:var(--text-3);padding:8px 0 24px}
+.pied{font-size:13px;color:var(--text-3);padding:4px 0 24px}
 .blip{cursor:pointer}
 .blip:focus{outline:none}
-.blip:focus-visible circle.halo{stroke:var(--levier);stroke-width:4}
+.blip:focus-visible circle.halo{stroke:var(--c-o);stroke-width:3}
 </style>
 </head>
 <body>
@@ -94,7 +106,11 @@ button{font:inherit;color:inherit}
 <div class="entete-in">
 <p class="edition">Édition 1 · prototype · novembre 2026</p>
 <h1>Radar des dépendances</h1>
-<p>Les tendances qui renforcent ou desserrent la dépendance des organisations à leurs fournisseurs numériques, classées selon l’urgence pour un DSI. Cliquez sur un point pour lire sa fiche.</p>
+<p class="intro" id="intro"></p>
+<div class="vues" role="tablist" aria-label="Vues du radar">
+<button role="tab" id="v-tendances" aria-selected="true">Tendances</button>
+<button role="tab" id="v-technologies" aria-selected="false" tabindex="-1">Technologies</button>
+</div>
 </div>
 </header>
 
@@ -102,47 +118,29 @@ button{font:inherit;color:inherit}
 <div class="zone-radar">
 <section class="panneau radar-box" aria-label="Radar">
 <div id="radar"></div>
-<div class="legende">
-<span><i style="background:var(--risque)"></i>Tendance qui renforce la dépendance</span>
-<span><i style="background:var(--levier)"></i>Levier de liberté</span>
-</div>
+<div class="legende" id="legende"></div>
 </section>
 <aside class="panneau fiche" id="fiche" aria-live="polite"></aside>
 </div>
 
-<div class="filtres" role="group" aria-label="Filtrer par anneau">
-<span>Anneau :</span>
-<button class="chip" data-anneau="tous" aria-pressed="true">Tous</button>
-<button class="chip" data-anneau="0" aria-pressed="false">Agir maintenant</button>
-<button class="chip" data-anneau="1" aria-pressed="false">Préparer</button>
-<button class="chip" data-anneau="2" aria-pressed="false">Surveiller</button>
-<button class="chip" data-anneau="3" aria-pressed="false">Signal faible</button>
+<div class="barre">
+<div class="filtres" role="group" aria-label="Filtrer par anneau" id="f-anneaux"></div>
+<div class="filtres" role="group" aria-label="Filtrer par type" id="f-types"></div>
+<input class="recherche" id="recherche" type="search" placeholder="Rechercher une technologie, un éditeur…" aria-label="Rechercher">
 </div>
 
 <div class="quadrants" id="listes"></div>
 
 <section class="panneau methode" aria-labelledby="t-meth">
 <h2 id="t-meth">La méthode</h2>
-<div class="grille">
-<div><h3>Ce que mesure le radar</h3><p>Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Il décrit des faits sourcés, il ne note pas les fournisseurs.</p></div>
-<div><h3>Les anneaux</h3><p>Agir maintenant : effet dans les 12 mois. Préparer : 12 à 24 mois. Surveiller : la tendance se confirme. Signal faible : à garder à l’œil. Pour les leviers, l’anneau indique la maturité : au centre, prêt à l’emploi.</p></div>
-<div><h3>Les sources</h3><p>Études publiques (Cigref, Gartner, Forrester), textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Chaque fiche cite les siennes.</p></div>
-<div><h3>Le rythme</h3><p>Une édition par semestre. Une tendance peut changer d’anneau, entrer ou sortir du radar d’une édition à l’autre, avec une explication.</p></div>
-</div>
+<div class="grille" id="methode"></div>
 </section>
-<p class="pied">Prototype à valider. Les fiches marquées « à vérifier » reposent sur des informations non revérifiées pour cette édition. Optio, une marque de Stratwise.</p>
+<p class="pied">Prototype à valider avec des experts. Les classements des technologies sont indicatifs : ils décrivent la difficulté typique d’une sortie, pas la qualité des produits, et varient selon vos usages. Les mentions « à vérifier » reposent sur des informations non revérifiées pour cette édition. Optio, une marque de Stratwise.</p>
 </main>
 
 <script>
 (function(){
   "use strict";
-  var QUADRANTS=[
-    {t:"Licences et modèles économiques", d:"Comment les éditeurs facturent, et ce que vous possédez vraiment."},
-    {t:"Infrastructure et cloud", d:"Où tournent vos systèmes, et ce qui se passe quand cela s’arrête."},
-    {t:"Réglementation et géopolitique", d:"Ce que les régulateurs et les États exigent ou imposent."},
-    {t:"Leviers de liberté", d:"Ce qui vous redonne le choix, classé par maturité."}
-  ];
-  var ANNEAUX=["Agir maintenant","Préparer","Surveiller","Signal faible"];
   var T=[
     {q:0,a:0,k:"risque",t:"Fin des licences perpétuelles",
       quoi:"Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. Atlassian ne vendra plus de licences Data Center aux clients existants après le 30 mars 2028, et les passera en lecture seule le 28 mars 2029.",
@@ -245,91 +243,290 @@ button{font:inherit;color:inherit}
       faire:["Identifier des pairs exposés aux mêmes fournisseurs."],
       src:[["Observation Optio",null]]}
   ];
-  T.forEach(function(x,i){ x.id="t-"+String(i+1).padStart(2,"0"); x.n=i+1; });
+  // [quadrant, anneau, type, nom, éditeur, ce qui crée la dépendance, alternatives]
+  // quadrant : 0 infrastructure bas niveau, 1 middleware, 2 données, 3 services aux opérations
+  // anneau : 0 sortie difficile, 1 exigeante, 2 maîtrisable, 3 facilitée
+  // type : p propriétaire, e open source ou source disponible à éditeur unique, o open source à gouvernance ouverte
+  var X=[
+    [0,0,"p","VMware vSphere et VCF","Broadcom","Licences perpétuelles supprimées, offres groupées imposées, outils d’exploitation et compétences spécifiques.","Proxmox VE, XCP-ng, Nutanix AHV, OpenShift Virtualization"],
+    [0,1,"p","Hyper-V et Azure Local","Microsoft","Lié aux licences Windows Server et à l’écosystème Microsoft.","Proxmox VE, XCP-ng, KVM"],
+    [0,1,"p","Nutanix AHV","Nutanix","Plateforme hyperconvergée intégrée : une alternative à VMware qui peut créer un nouveau verrou.","Proxmox VE avec Ceph, XCP-ng"],
+    [0,3,"e","Proxmox VE","Proxmox Server Solutions","Basé sur KVM et des formats ouverts ; support commercial assuré par un seul éditeur.","XCP-ng, OpenStack"],
+    [0,3,"o","XCP-ng et Xen Orchestra","Vates (projet Xen, Linux Foundation)","Hyperviseur ouvert, édité en France, formats standards.","Proxmox VE, OpenStack"],
+    [0,2,"o","OpenStack","OpenInfra Foundation","Ouvert et standard, mais exigeant en compétences d’exploitation.","Proxmox VE, offres OpenStack managées"],
+    [0,3,"o","KVM et QEMU","Communauté Linux","Socle de virtualisation ouvert, intégré au noyau Linux.","Xen"],
+    [0,2,"e","Red Hat Enterprise Linux","Red Hat (IBM)","Code ouvert, mais accès aux sources restreint depuis 2023 et modèle par souscription.","AlmaLinux, Rocky Linux, Debian"],
+    [0,2,"e","SUSE Linux Enterprise","SUSE","Distribution ouverte, support et outillage propres à l’éditeur.","openSUSE, Debian"],
+    [0,1,"p","Windows Server","Microsoft","Licences par cœur et accès clients, liées à la virtualisation et à l’annuaire.","Linux pour les charges compatibles"],
+    [0,3,"o","Debian","Projet Debian","Distribution communautaire, sans éditeur unique.","Ubuntu, AlmaLinux"],
+    [0,3,"e","Ubuntu Server","Canonical","Distribution ouverte, support commercial par un seul éditeur.","Debian"],
+    [0,3,"o","AlmaLinux et Rocky Linux","Fondations AlmaLinux et RESF","Compatibles avec RHEL, portées par des fondations.","Debian, Oracle Linux"],
+    [0,1,"p","NetApp ONTAP","NetApp","Fonctions de données propriétaires (instantanés, réplication) : migrer les volumes est lourd.","Ceph, Scality, stockage natif cloud"],
+    [0,1,"p","Dell PowerStore et PowerMax","Dell Technologies","Baies et fonctions de réplication propriétaires.","Ceph, autres baies compatibles"],
+    [0,1,"p","Pure Storage","Pure Storage","Modèle par abonnement matériel et fonctions propriétaires.","Ceph, autres baies"],
+    [0,1,"p","HPE Alletra","Hewlett Packard Enterprise","Baies et outils de gestion propriétaires.","Ceph, autres baies"],
+    [0,3,"o","Ceph","Ceph Foundation (Linux Foundation)","Stockage logiciel ouvert, bloc, fichier et objet ; exige des compétences.","Stockage objet compatible S3"],
+    [0,2,"p","Scality RING et ARTESCA","Scality","Logiciel propriétaire français, mais API S3 standard qui facilite la sortie.","Ceph, MinIO"],
+    [0,2,"e","MinIO","MinIO","API S3 standard ; licence AGPL et choix de l’éditeur à surveiller.","Ceph, Garage, SeaweedFS"],
+    [0,1,"p","Cisco IOS et NX-OS","Cisco","Parcs homogènes, système et compétences propriétaires, contrats de support.","Arista, SONiC, Nokia"],
+    [0,1,"p","Juniper Junos","Hewlett Packard Enterprise","Système réseau propriétaire ; racheté par HPE.","SONiC, Arista, Nokia"],
+    [0,2,"p","Arista EOS","Arista Networks","Système propriétaire, mais fondé sur des standards et automatisable.","SONiC, Nokia SR Linux"],
+    [0,2,"o","SONiC","Linux Foundation","Système réseau ouvert, dépendant de la compatibilité matérielle.","Arista EOS"],
+    [0,1,"p","FortiGate","Fortinet","Politiques de sécurité propriétaires, à reconvertir lors d’un changement.","Palo Alto, Stormshield, OPNsense"],
+    [0,1,"p","Pare-feux Palo Alto","Palo Alto Networks","Règles, profils et outils de gestion propriétaires.","Fortinet, Stormshield, OPNsense"],
+    [0,1,"p","Veeam Backup","Veeam","Formats de sauvegarde propriétaires : la restauration dépend de l’outil.","Commvault, Atempo, Bacula"],
+    [0,1,"p","Commvault","Commvault","Formats et catalogue de sauvegarde propriétaires.","Veeam, Atempo, Bacula"],
+    [0,1,"p","Atempo Tina et Lina","Atempo","Éditeur français, formats de sauvegarde propriétaires.","Veeam, Bacula"],
+    [0,2,"p","Machines virtuelles AWS (EC2)","Amazon Web Services","Infrastructure standard, mais services annexes et frais de sortie jusqu’au Data Act.","OVHcloud, Scaleway, Outscale"],
+    [0,2,"p","Machines virtuelles Azure","Microsoft","Infrastructure standard, intégrée aux licences et à l’annuaire Microsoft.","OVHcloud, Scaleway, Outscale"],
+    [0,2,"p","IaaS européens (OVHcloud, Scaleway, Outscale)","Divers","Infrastructure standard, réversible si les services utilisés restent génériques.","Autres IaaS, cloud privé"],
 
-  var filtre="tous", sel=null;
+    [1,1,"p","IBM MQ","IBM","Protocoles et API propriétaires au cœur des échanges critiques.","RabbitMQ, ActiveMQ Artemis, Kafka"],
+    [1,0,"p","TIBCO","Cloud Software Group","Intégrations historiques profondes, développées dans des outils propriétaires.","Apache Camel, Kafka, RabbitMQ"],
+    [1,3,"o","Apache Kafka","Apache Software Foundation","Standard ouvert du streaming de données.","Redpanda, Pulsar"],
+    [1,2,"e","Confluent Platform","Confluent (IBM)","Kafka est ouvert, mais de nombreuses fonctions Confluent sont propriétaires ; racheté par IBM en 2026.","Apache Kafka, Strimzi"],
+    [1,2,"e","RabbitMQ","Broadcom","Protocole AMQP standard, mais projet passé sous Broadcom avec VMware.","ActiveMQ Artemis, Kafka"],
+    [1,3,"o","Apache ActiveMQ Artemis","Apache Software Foundation","Messagerie ouverte, protocoles standards.","RabbitMQ"],
+    [1,0,"p","MuleSoft","Salesforce","Flux d’intégration décrits dans un langage et un moteur propriétaires.","Apache Camel, WSO2"],
+    [1,1,"p","Boomi","Boomi","Plateforme d’intégration propriétaire en mode SaaS.","Apache Camel, WSO2"],
+    [1,0,"p","Informatica","Salesforce","Traitements de données décrits dans des outils propriétaires ; racheté par Salesforce.","Apache Hop, dbt, Airflow"],
+    [1,3,"o","Apache Camel","Apache Software Foundation","Cadre d’intégration ouvert et standard.","WSO2"],
+    [1,1,"p","IBM WebSphere","IBM","Serveur d’applications propriétaire, licences IBM.","WildFly, Open Liberty, Tomcat"],
+    [1,1,"p","Oracle WebLogic","Oracle","Licences Oracle, audits, fonctions spécifiques.","WildFly, Open Liberty, Tomcat"],
+    [1,2,"e","Red Hat JBoss EAP","Red Hat (IBM)","Fondé sur WildFly, souscription et support d’un seul éditeur.","WildFly, Open Liberty"],
+    [1,3,"o","Apache Tomcat","Apache Software Foundation","Conteneur web ouvert et standard.","Jetty"],
+    [1,2,"e","Kong Gateway","Kong","Cœur ouvert, fonctions d’entreprise propriétaires.","Apache APISIX, Gravitee"],
+    [1,1,"p","Apigee","Google","Gestion d’API propriétaire, intégrée à Google Cloud.","Kong, Gravitee, Apache APISIX"],
+    [1,1,"p","Azure API Management","Microsoft","Service managé propriétaire, intégré à Azure.","Kong, Gravitee"],
+    [1,3,"o","Kubernetes","CNCF","Standard ouvert d’orchestration des conteneurs.","Distributions certifiées"],
+    [1,2,"e","Red Hat OpenShift","Red Hat (IBM)","Kubernetes ouvert, mais outils et opérateurs spécifiques.","Kubernetes amont, Rancher"],
+    [1,1,"p","VMware Tanzu","Broadcom","Plateforme propriétaire, soumise à la politique de Broadcom.","Kubernetes amont, Rancher"],
+    [1,2,"p","Kubernetes managé (EKS, AKS, GKE)","AWS, Microsoft, Google","Kubernetes standard, mais intégrations propres à chaque cloud.","Kubernetes chez un autre fournisseur"],
+    [1,0,"p","Entra ID et Active Directory","Microsoft","Tout le système d’information s’y authentifie : le point de dépendance le plus central.","Keycloak, FreeIPA"],
+    [1,1,"p","Okta","Okta","Service d’identité propriétaire, intégré à de nombreuses applications.","Keycloak"],
+    [1,3,"o","Keycloak","CNCF","Gestion des identités ouverte, protocoles standards.","Authentik"],
+    [1,1,"p","Citrix Virtual Apps and Desktops","Cloud Software Group","Poste virtualisé propriétaire, hausses signalées après le changement d’actionnaire.","Omnissa Horizon, solutions ouvertes"],
+    [1,2,"e","HashiCorp Vault","IBM","Passé sous licence source disponible (BSL) en 2023 ; HashiCorp racheté par IBM.","OpenBao"],
+    [1,3,"o","OpenBao","Linux Foundation","Fork ouvert de Vault, gouvernance communautaire.","HashiCorp Vault"],
+
+    [2,0,"p","Oracle Database","Oracle","Langage PL/SQL et fonctions spécifiques, licences complexes et audits.","PostgreSQL, MariaDB"],
+    [2,1,"p","Microsoft SQL Server","Microsoft","Langage T-SQL spécifique, licences par cœur.","PostgreSQL"],
+    [2,1,"p","IBM Db2","IBM","Base propriétaire, souvent liée au mainframe.","PostgreSQL"],
+    [2,0,"p","SAP HANA","SAP","Base imposée par S/4HANA, difficilement dissociable de l’ERP.","Peu d’alternatives hors changement d’ERP"],
+    [2,3,"o","PostgreSQL","Communauté PostgreSQL","Base ouverte de référence, sans éditeur unique.","MariaDB"],
+    [2,2,"e","MySQL","Oracle","Code ouvert, mais projet contrôlé par Oracle.","MariaDB, PostgreSQL"],
+    [2,3,"o","MariaDB","MariaDB Foundation","Fork ouvert de MySQL, porté par une fondation.","PostgreSQL"],
+    [2,2,"e","MongoDB","MongoDB","Licence SSPL, non reconnue comme open source par l’OSI.","FerretDB, PostgreSQL"],
+    [2,2,"e","Redis","Redis","Licence modifiée en 2024 par l’éditeur.","Valkey"],
+    [2,3,"o","Valkey","Linux Foundation","Fork ouvert de Redis, gouvernance communautaire.","Redis"],
+    [2,2,"e","Elasticsearch","Elastic","Licence modifiée en 2021, puis AGPL ajoutée en 2024.","OpenSearch"],
+    [2,3,"o","OpenSearch","OpenSearch Software Foundation","Fork ouvert d’Elasticsearch, porté par une fondation.","Elasticsearch"],
+    [2,0,"p","Amazon DynamoDB","Amazon Web Services","API et modèle de données propriétaires, sans équivalent direct.","ScyllaDB, Cassandra"],
+    [2,0,"p","Azure Cosmos DB","Microsoft","Service managé propriétaire, modèles et API spécifiques.","PostgreSQL, Cassandra, MongoDB"],
+    [2,0,"p","Google Spanner","Google","Base distribuée propriétaire, sans équivalent direct.","CockroachDB, YugabyteDB"],
+    [2,1,"p","Snowflake","Snowflake","Formats internes propriétaires ; la prise en charge d’Iceberg ouvre une sortie.","Databricks, entrepôt sur Iceberg"],
+    [2,2,"e","Databricks","Databricks","Plateforme propriétaire bâtie sur des formats ouverts (Delta Lake, Iceberg).","Spark et Iceberg sur une autre plateforme"],
+    [2,1,"p","Google BigQuery","Google","Entrepôt propriétaire, intégré à Google Cloud.","Snowflake, entrepôt sur Iceberg"],
+    [2,1,"p","Amazon Redshift","Amazon Web Services","Entrepôt propriétaire, intégré à AWS.","Snowflake, entrepôt sur Iceberg"],
+    [2,0,"p","Teradata","Teradata","Plateformes historiques volumineuses et langage spécifique.","Entrepôt cloud ou sur Iceberg"],
+    [2,3,"o","Apache Iceberg","Apache Software Foundation","Format de table ouvert : les données restent lisibles par plusieurs moteurs.","Delta Lake, Apache Hudi"],
+    [2,3,"o","Apache Parquet","Apache Software Foundation","Format de fichier ouvert et standard.","Apache ORC"],
+    [2,3,"e","ClickHouse","ClickHouse","Base analytique ouverte, développée par un éditeur principal.","Apache Druid, DuckDB"],
+    [2,1,"p","Talend","Qlik","Version ouverte arrêtée en 2024, traitements décrits dans l’outil.","Apache Hop, dbt, Airbyte"],
+    [2,3,"e","dbt","dbt Labs","Transformations en SQL lisible, cœur ouvert.","SQLMesh"],
+    [2,1,"p","Power BI","Microsoft","Modèles et rapports propriétaires, liés à Microsoft 365.","Apache Superset, Metabase"],
+    [2,1,"p","Tableau","Salesforce","Tableaux de bord propriétaires.","Apache Superset, Metabase"],
+    [2,1,"p","Qlik Sense","Qlik","Modèles et scripts propriétaires.","Apache Superset, Metabase"],
+    [2,3,"o","Apache Superset","Apache Software Foundation","Visualisation ouverte, connecteurs standards.","Metabase"],
+    [2,1,"p","Cloudera","Cloudera","Plateforme de données propriétaire bâtie sur des briques ouvertes.","Spark et Iceberg"],
+    [2,2,"p","Amazon S3","Amazon Web Services","API devenue standard de fait, reprise par de nombreux acteurs ; frais de sortie jusqu’au Data Act.","Stockage objet compatible S3"],
+
+    [3,0,"p","ServiceNow","ServiceNow","Processus, données et développements construits dans la plateforme.","GLPI, iTop, Jira Service Management"],
+    [3,1,"p","BMC Helix","BMC","Outil de gestion des services propriétaire, processus intégrés.","GLPI, iTop"],
+    [3,1,"p","Jira et Jira Service Management","Atlassian","Fin de vie de Data Center en 2029 : passage au cloud imposé pour les installations sur site.","GitLab, OpenProject, GLPI"],
+    [3,1,"p","Confluence","Atlassian","Fin de vie de Data Center en 2029, contenus au format de l’outil.","XWiki, Outline"],
+    [3,3,"e","GLPI","Teclib’","Gestion des services ouverte, éditée en France.","iTop"],
+    [3,1,"p","Splunk","Cisco","Tarification au volume, langage de requête propriétaire ; racheté par Cisco.","OpenSearch, Grafana, Elastic"],
+    [3,1,"p","Datadog","Datadog","Agents et tableaux de bord propriétaires, coûts au volume.","Prometheus, Grafana, OpenTelemetry"],
+    [3,1,"p","Dynatrace","Dynatrace","Agents et analyses propriétaires.","Prometheus, Grafana, OpenTelemetry"],
+    [3,1,"p","New Relic","New Relic","Observabilité propriétaire en mode SaaS.","Prometheus, Grafana, OpenTelemetry"],
+    [3,3,"o","Prometheus","CNCF","Supervision ouverte et standard.","VictoriaMetrics"],
+    [3,3,"e","Grafana","Grafana Labs","Visualisation ouverte (AGPL), éditeur principal.","Perses"],
+    [3,3,"o","OpenTelemetry","CNCF","Standard de collecte qui découple les agents de l’outil d’observabilité.","—"],
+    [3,1,"p","GitHub","Microsoft","Automatisations (Actions) et intégrations spécifiques.","GitLab, Forgejo"],
+    [3,2,"e","GitLab","GitLab","Cœur ouvert, fonctions avancées propriétaires.","Forgejo, Gitea"],
+    [3,3,"o","Forgejo","Codeberg e.V.","Forge logicielle ouverte, gouvernance communautaire.","Gitea"],
+    [3,3,"o","Jenkins","CD Foundation","Intégration continue ouverte.","Woodpecker CI"],
+    [3,1,"p","Azure DevOps","Microsoft","Pipelines et suivi propriétaires, liés à Azure.","GitLab, Jenkins"],
+    [3,2,"e","Terraform","IBM","Passé sous licence source disponible (BSL) en 2023.","OpenTofu"],
+    [3,3,"o","OpenTofu","Linux Foundation","Fork ouvert de Terraform, compatible.","Terraform"],
+    [3,3,"e","Ansible","Red Hat (IBM)","Automatisation ouverte, format standard (YAML).","Salt"],
+    [3,2,"e","Puppet","Perforce","Politique de distribution de la version ouverte modifiée par l’éditeur (à vérifier).","OpenVox, Ansible"],
+    [3,2,"p","PagerDuty","PagerDuty","Gestion des astreintes propriétaire, intégrations nombreuses.","Grafana OnCall, Alertmanager"],
+    [3,1,"p","CrowdStrike Falcon","CrowdStrike","Agent au cœur des postes et serveurs ; à l’origine de la panne mondiale de juillet 2024.","Microsoft Defender, HarfangLab, Wazuh"],
+    [3,1,"p","Microsoft Defender","Microsoft","Sécurité intégrée à l’écosystème et aux licences Microsoft.","CrowdStrike, HarfangLab, Wazuh"],
+    [3,1,"p","Microsoft Intune","Microsoft","Gestion des terminaux liée à Entra ID et Microsoft 365.","Solutions de gestion de flotte ouvertes"],
+    [3,3,"e","Wazuh","Wazuh","Sécurité et détection ouvertes.","Elastic Security"]
+  ];
+
+  var VUES={
+    tendances:{
+      intro:"Les tendances qui renforcent ou desserrent la dépendance des organisations à leurs fournisseurs numériques, classées selon l’urgence pour un DSI. Cliquez sur un point pour lire sa fiche.",
+      quadrants:[{t:"Licences et modèles économiques",d:"Comment les éditeurs facturent, et ce que vous possédez vraiment."},{t:"Infrastructure et cloud",d:"Où tournent vos systèmes, et ce qui se passe quand cela s’arrête."},{t:"Réglementation et géopolitique",d:"Ce que les régulateurs et les États exigent ou imposent."},{t:"Leviers de liberté",d:"Ce qui vous redonne le choix, classé par maturité."}],
+      anneaux:["Agir maintenant","Préparer","Surveiller","Signal faible"], courts:["Agir","Préparer","Surveiller","Signal faible"],
+      types:[["risque","Tendance qui renforce la dépendance"],["levier","Levier de liberté"]],
+      methode:[["Ce que mesure le radar","Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Il décrit des faits sourcés, il ne note pas les fournisseurs."],["Les anneaux","Agir maintenant : effet dans les 12 mois. Préparer : 12 à 24 mois. Surveiller : la tendance se confirme. Signal faible : à garder à l’œil. Pour les leviers, l’anneau indique la maturité."],["Les sources","Études publiques (Cigref, Gartner, Forrester), textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI."],["Le rythme","Une édition par semestre. Une tendance peut changer d’anneau, entrer ou sortir du radar, avec une explication."]]
+    },
+    technologies:{
+      intro:"Plus de cent technologies d’éditeurs et projets ouverts, de l’infrastructure aux services d’exploitation, classés selon la difficulté typique d’une sortie. Au centre, les plus difficiles à quitter.",
+      quadrants:[{t:"Infrastructure bas niveau",d:"Virtualisation, systèmes, stockage, réseau, sauvegarde, IaaS."},{t:"Middleware",d:"Messagerie, intégration, serveurs d’applications, API, conteneurs, identité."},{t:"Données",d:"Bases, entrepôts, formats, traitements et visualisation."},{t:"Services aux opérations",d:"Gestion des services, observabilité, CI/CD, automatisation, sécurité opérationnelle."}],
+      anneaux:["Sortie difficile","Sortie exigeante","Sortie maîtrisable","Sortie facilitée"], courts:["Difficile","Exigeante","Maîtrisable","Facilitée"],
+      types:[["p","Propriétaire"],["e","Ouvert ou source disponible, éditeur unique"],["o","Ouvert, gouvernance partagée"]],
+      methode:[["Ce que mesure ce radar","La difficulté typique de sortie d’une technologie, selon cinq critères : formats et API, licence et contrat, concentration, maturité des alternatives, compétences nécessaires."],["Les anneaux","Sortie difficile : des mois de préparation et peu d’alternatives directes. Exigeante : des alternatives existent, mais la migration est lourde. Maîtrisable : standards ou formats ouverts facilitent la sortie. Facilitée : technologie ouverte, plusieurs fournisseurs possibles."],["Les couleurs","Propriétaire, ouvert à éditeur unique, ou ouvert à gouvernance partagée. Un projet ouvert contrôlé par un seul éditeur peut changer de licence : c’est un signal à surveiller."],["Une lecture, pas un verdict","Le classement varie selon vos usages : une base propriétaire utilisée de façon standard se quitte plus facilement qu’une base ouverte truffée d’extensions spécifiques. À confirmer avec notre référentiel de réversibilité."]]
+    }
+  };
+  T.forEach(function(x,i){ x.id="t-"+String(i+1).padStart(2,"0"); x.n=i+1; x.type=x.k; });
+  var TECH=X.map(function(r,i){ return {id:"x-"+String(i+1).padStart(3,"0"), n:i+1, q:r[0], a:r[1], type:r[2], t:r[3], ed:r[4], note:r[5], alt:r[6]}; });
+  var DONNEES={tendances:T, technologies:TECH};
+
+  var vue="tendances", fAnneau="tous", fType="tous", q="", sel=null;
   var NS="http://www.w3.org/2000/svg";
   function s(tag,a,txt){ var e=document.createElementNS(NS,tag); for(var k in a) e.setAttribute(k,a[k]); if(txt!=null) e.textContent=txt; return e; }
   function el(tag,attrs,kids){ var e=document.createElement(tag); if(attrs) for(var k in attrs){ if(k==="text") e.textContent=attrs[k]; else if(k.slice(0,2)==="on") e.addEventListener(k.slice(2),attrs[k]); else e.setAttribute(k,attrs[k]); } (kids||[]).forEach(function(c){ if(c!=null) e.appendChild(typeof c==="string"?document.createTextNode(c):c); }); return e; }
+  function couleur(type){ return {risque:["var(--c-risque)","var(--on-risque)"],levier:["var(--c-levier)","var(--on-levier)"],p:["var(--c-p)","var(--on-p)"],e:["var(--c-e)","var(--on-e)"],o:["var(--c-o)","var(--on-o)"]}[type]; }
+  function norm(t){ return (t||"").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,""); }
+  function visible(x){
+    if(fAnneau!=="tous" && String(x.a)!==fAnneau) return false;
+    if(fType!=="tous" && x.type!==fType) return false;
+    if(q){ var h=norm(x.t+" "+(x.ed||"")+" "+(x.alt||"")+" "+(x.note||x.quoi||"")); if(h.indexOf(norm(q))<0) return false; }
+    return true;
+  }
 
-  // Quadrant angles (degrés, sens horaire depuis l'axe x, y vers le bas) : 0 haut-gauche, 1 haut-droite, 2 bas-gauche, 3 bas-droite
-  var QANG=[[180,270],[270,360],[90,180],[0,90]];
-  var R=[0,95,170,235,290], C=320;
-  function positions(){
+  var C=360, R=[0,118,206,284,346], QANG=[[180,270],[270,360],[90,180],[0,90]];
+  function placer(items){
     var groupes={};
-    T.forEach(function(x){ var k=x.q+"-"+x.a; (groupes[k]=groupes[k]||[]).push(x); });
+    items.forEach(function(x){ var k=x.q+"-"+x.a; (groupes[k]=groupes[k]||[]).push(x); });
     Object.keys(groupes).forEach(function(k){
-      var g=groupes[k], q=g[0].q, a=g[0].a, a0=QANG[q][0], a1=QANG[q][1];
-      g.forEach(function(x,i){
-        var frac=(i+1)/(g.length+1), ang=(a0+(a1-a0)*(0.12+0.76*frac))*Math.PI/180;
-        var rr=R[a]+(R[a+1]-R[a])*(g.length>2&&i%2?0.68:0.42);
-        if(a===0) rr=R[1]*(g.length>1?(i%2?0.72:0.48):0.6);
-        x.x=C+rr*Math.cos(ang); x.y=C+rr*Math.sin(ang);
+      var g=groupes[k], qq=g[0].q, a=g[0].a, m=11, a0=(QANG[qq][0]+m)*Math.PI/180, a1=(QANG[qq][1]-m)*Math.PI/180, span=a1-a0;
+      var r0=a===0?34:R[a]+12, r1=R[a+1]-12, esp=vue==="technologies"?21:30, lignes=1, rayons, caps;
+      for(lignes=1;lignes<=5;lignes++){
+        rayons=[]; caps=[];
+        for(var i=0;i<lignes;i++){ var rr=lignes===1?(r0+r1)/2:r0+(r1-r0)*i/(lignes-1); rayons.push(rr); caps.push(Math.max(1,Math.floor(span*rr/esp))); }
+        if(caps.reduce(function(s1,c){return s1+c;},0)>=g.length) break;
+      }
+      var total=caps.reduce(function(s1,c){return s1+c;},0), reste=g.length, idx=0;
+      rayons.forEach(function(rr,li){
+        var nb = li===rayons.length-1 ? reste : Math.min(reste, Math.round(g.length*caps[li]/total));
+        for(var j=0;j<nb;j++){
+          var ang=a0+span*(j+0.5)/nb; var x=g[idx++]; x.x=C+rr*Math.cos(ang); x.y=C+rr*Math.sin(ang);
+        }
+        reste-=nb;
       });
     });
   }
   function dessiner(){
-    var box=document.getElementById("radar"); box.textContent="";
-    var g=s("svg",{viewBox:"0 0 640 640",role:"img","aria-label":"Radar des dépendances : "+T.length+" tendances réparties en quatre quadrants et quatre anneaux"});
-    [4,3,2,1].forEach(function(i){ g.appendChild(s("circle",{cx:C,cy:C,r:R[i],fill:"var(--ring-"+i+")",stroke:"var(--line)","stroke-width":"1.5"})); });
-    g.appendChild(s("line",{x1:C-R[4],y1:C,x2:C+R[4],y2:C,stroke:"var(--line)","stroke-width":"2"}));
-    g.appendChild(s("line",{x1:C,y1:C-R[4],x2:C,y2:C+R[4],stroke:"var(--line)","stroke-width":"2"}));
-    ANNEAUX.forEach(function(n,i){ var y=C-(R[i]+R[i+1])/2+4; var t=s("text",{x:C+6,y:y,"font-size":"10.5","font-family":"Instrument Sans, sans-serif","font-weight":"600"},n); t.style.fill="var(--text-3)"; g.appendChild(t); });
-    var QL=[[30,24,"start"],[610,24,"end"],[30,626,"start"],[610,626,"end"]];
-    QUADRANTS.forEach(function(q,i){ var t=s("text",{x:QL[i][0],y:QL[i][1],"text-anchor":QL[i][2],"font-size":"13","font-weight":"700","font-family":"Archivo, sans-serif"},q.t); t.style.fill="var(--ink)"; g.appendChild(t); });
-    T.forEach(function(x){
-      var visible = filtre==="tous" || String(x.a)===filtre;
-      var b=s("g",{class:"blip",tabindex:visible?"0":"-1",role:"button","aria-label":x.n+". "+x.t+", "+ANNEAUX[x.a]});
-      b.style.opacity=visible?"1":"0.18";
-      var actif = sel===x.id;
-      b.appendChild(s("circle",{class:"halo",cx:x.x,cy:x.y,r:actif?17:14,fill:"none",stroke:actif?"var(--balise)":"transparent","stroke-width":"3"}));
-      var c=s("circle",{cx:x.x,cy:x.y,r:12}); c.style.fill=x.k==="levier"?"var(--levier)":"var(--risque)"; b.appendChild(c);
-      var t=s("text",{x:x.x,y:x.y+4,"text-anchor":"middle","font-size":"10.5","font-family":"JetBrains Mono, monospace"},String(x.n)); t.style.fill=x.k==="levier"?"var(--on-levier)":"var(--on-risque)"; b.appendChild(t);
-      var tt=s("title",{},x.t); b.appendChild(tt);
+    var V=VUES[vue], items=DONNEES[vue], box=document.getElementById("radar"); box.textContent="";
+    var g=s("svg",{viewBox:"0 0 720 720",role:"img","aria-label":"Radar : "+items.length+" éléments répartis en quatre quadrants et quatre anneaux"});
+    [4,3,2,1].forEach(function(i){ var c=s("circle",{cx:C,cy:C,r:R[i],"stroke-width":"1.5"}); c.style.fill="var(--ring-"+i+")"; c.style.stroke="var(--line)"; g.appendChild(c); });
+    [[C-R[4],C,C+R[4],C],[C,C-R[4],C,C+R[4]]].forEach(function(l){ var e=s("line",{x1:l[0],y1:l[1],x2:l[2],y2:l[3],"stroke-width":"2"}); e.style.stroke="var(--line)"; g.appendChild(e); });
+    V.courts.forEach(function(n,i){ var mx=C-(R[i]+R[i+1])/2, w=n.length*5.6+12; var bg=s("rect",{x:mx-w/2,y:C-9,width:w,height:18,rx:9}); bg.style.fill="var(--surface)"; g.appendChild(bg); var t=s("text",{x:mx,y:C+4,"text-anchor":"middle","font-size":"10.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},n); t.style.fill="var(--text-3)"; g.appendChild(t); });
+    var QL=[[14,22,"start"],[706,22,"end"],[14,708,"start"],[706,708,"end"]];
+    V.quadrants.forEach(function(qd,i){ var t=s("text",{x:QL[i][0],y:QL[i][1],"text-anchor":QL[i][2],"font-size":"14","font-weight":"700","font-family":"Archivo, sans-serif"},qd.t); t.style.fill="var(--ink)"; g.appendChild(t); });
+    var rb=vue==="technologies"?9:13, fs=vue==="technologies"?"7.5":"10.5";
+    items.forEach(function(x){
+      var vis=visible(x), col=couleur(x.type), actif=sel===x.id;
+      var b=s("g",{class:"blip",tabindex:vis?"0":"-1",role:"button","aria-label":x.n+". "+x.t+(x.ed?" ("+x.ed+")":"")+", "+V.anneaux[x.a]});
+      b.style.opacity=vis?"1":"0.15";
+      var h=s("circle",{class:"halo",cx:x.x,cy:x.y,r:rb+4,fill:"none","stroke-width":"3"}); h.style.stroke=actif?"var(--halo)":"transparent"; b.appendChild(h);
+      var c=s("circle",{cx:x.x,cy:x.y,r:rb}); c.style.fill=col[0]; b.appendChild(c);
+      var t=s("text",{x:x.x,y:x.y+(vue==="technologies"?2.6:4),"text-anchor":"middle","font-size":fs,"font-family":"JetBrains Mono, monospace"},String(x.n)); t.style.fill=col[1]; b.appendChild(t);
+      b.appendChild(s("title",{},x.t));
       b.addEventListener("click",function(){ choisir(x.id,true); });
       b.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); choisir(x.id,true); } });
       g.appendChild(b);
     });
     box.appendChild(g);
   }
+  function legende(){ var z=document.getElementById("legende"); z.textContent=""; VUES[vue].types.forEach(function(t){ var i=el("i"); i.style.background=couleur(t[0])[0]; z.appendChild(el("span",null,[i,t[1]])); }); }
   function fiche(){
-    var f=document.getElementById("fiche"); f.textContent="";
-    var x=T.find(function(y){ return y.id===sel; });
-    if(!x){ f.appendChild(el("p",{class:"vide",text:"Sélectionnez un point du radar ou une tendance dans les listes pour afficher sa fiche."})); return; }
-    f.appendChild(el("div",{class:"tags"},[ el("span",{class:"numero "+(x.k==="levier"?"n-levier":"n-risque"),text:String(x.n)}), el("span",{class:"tag",text:QUADRANTS[x.q].t}), el("span",{class:"tag anneau",text:ANNEAUX[x.a]}) ]));
+    var f=document.getElementById("fiche"), V=VUES[vue]; f.textContent="";
+    var x=DONNEES[vue].find(function(y){ return y.id===sel; });
+    if(!x){ f.appendChild(el("p",{style:"color:var(--text-3)",text:"Sélectionnez un point du radar ou un élément des listes pour afficher sa fiche."})); return; }
+    var col=couleur(x.type), num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
+    var typeLib=V.types.filter(function(t){ return t[0]===x.type; })[0][1];
+    f.appendChild(el("div",{class:"tags"},[num, el("span",{class:"tag",text:V.quadrants[x.q].t}), el("span",{class:"tag contour",text:V.anneaux[x.a]})]));
     f.appendChild(el("h2",{text:x.t}));
-    f.appendChild(el("div",null,[ el("h3",{text:"Ce qui se passe"}), el("p",{text:x.quoi}) ]));
-    f.appendChild(el("div",null,[ el("h3",{text:"Pourquoi cela compte"}), el("p",{text:x.pourquoi}) ]));
-    f.appendChild(el("div",null,[ el("h3",{text:"Ce qu’un DSI peut faire"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); })) ]));
-    f.appendChild(el("div",null,[ el("h3",{text:"Sources"}), el("ul",null,x.src.map(function(s2){ return el("li",null,[ s2[1]?el("a",{href:s2[1],target:"_blank",rel:"noopener",text:s2[0]}):s2[0] ]); })) ]));
+    if(vue==="technologies"){
+      f.appendChild(el("p",{class:"editeur",text:x.ed+" · "+typeLib}));
+      f.appendChild(el("div",null,[el("h3",{text:"Ce qui crée la dépendance"}), el("p",{text:x.note})]));
+      f.appendChild(el("div",null,[el("h3",{text:"Alternatives à évaluer"}), el("ul",null,x.alt.split(", ").map(function(a){ return el("li",{text:a}); }))]));
+      f.appendChild(el("p",{class:"note",text:"Évaluation indicative, à confirmer sur vos usages réels avec le référentiel de réversibilité."}));
+    } else {
+      f.appendChild(el("div",null,[el("h3",{text:"Ce qui se passe"}), el("p",{text:x.quoi})]));
+      f.appendChild(el("div",null,[el("h3",{text:"Pourquoi cela compte"}), el("p",{text:x.pourquoi})]));
+      f.appendChild(el("div",null,[el("h3",{text:"Ce qu’un DSI peut faire"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); }))]));
+      f.appendChild(el("div",null,[el("h3",{text:"Sources"}), el("ul",null,x.src.map(function(s2){ return el("li",null,[ s2[1]?el("a",{href:s2[1],target:"_blank",rel:"noopener",text:s2[0]}):s2[0] ]); }))]));
+    }
   }
   function listes(){
-    var z=document.getElementById("listes"); z.textContent="";
-    QUADRANTS.forEach(function(q,qi){
-      var items=T.filter(function(x){ return x.q===qi && (filtre==="tous"||String(x.a)===filtre); });
-      var p=el("section",{class:"panneau quadrant","aria-label":q.t},[ el("h2",{text:q.t}), el("p",{class:"desc",text:q.d}) ]);
-      if(!items.length) p.appendChild(el("p",{class:"desc",text:"Aucune tendance dans cet anneau."}));
-      items.forEach(function(x){
-        p.appendChild(el("button",{type:"button",class:"item","aria-current":String(sel===x.id),onclick:function(){ choisir(x.id,true); }},[
-          el("span",{class:"numero "+(x.k==="levier"?"n-levier":"n-risque"),text:String(x.n)}),
-          el("span",null,[ el("strong",{text:x.t}), el("small",{text:ANNEAUX[x.a]}) ])
-        ]));
+    var z=document.getElementById("listes"), V=VUES[vue]; z.textContent="";
+    V.quadrants.forEach(function(qd,qi){
+      var p=el("section",{class:"panneau quadrant","aria-label":qd.t},[el("h2",{text:qd.t}), el("p",{class:"desc",text:qd.d})]);
+      var n=0;
+      V.anneaux.forEach(function(an,ai){
+        var items=DONNEES[vue].filter(function(x){ return x.q===qi && x.a===ai && visible(x); }).sort(function(a,b){ return a.t.localeCompare(b.t,"fr"); });
+        if(!items.length) return;
+        p.appendChild(el("p",{class:"groupe",text:an}));
+        items.forEach(function(x){ n++;
+          var col=couleur(x.type), num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
+          p.appendChild(el("button",{type:"button",class:"item","aria-current":String(sel===x.id),onclick:function(){ choisir(x.id,true); }},[num, el("span",null,[el("strong",{text:x.t}), el("small",{text:x.ed||an})])]));
+        });
       });
+      if(!n) p.appendChild(el("p",{class:"desc",text:"Aucun élément ne correspond aux filtres."}));
       z.appendChild(p);
     });
   }
-  function choisir(id,maj){
-    sel=id; if(maj){ try{ history.replaceState(null,"","#"+id); }catch(e){ location.hash=id; } }
-    dessiner(); fiche(); listes();
-    if(maj && window.innerWidth<920){ var f=document.getElementById("fiche"); if(f.scrollIntoView) f.scrollIntoView({behavior:"smooth",block:"start"}); }
+  function filtres(){
+    var V=VUES[vue], fa=document.getElementById("f-anneaux"), ft=document.getElementById("f-types");
+    fa.textContent=""; ft.textContent="";
+    fa.appendChild(el("span",{text:"Anneau :"}));
+    [["tous","Tous"]].concat(V.anneaux.map(function(a,i){ return [String(i),a]; })).forEach(function(c){
+      fa.appendChild(el("button",{class:"chip","aria-pressed":String(fAnneau===c[0]),onclick:function(){ fAnneau=c[0]; filtres(); dessiner(); listes(); }, text:c[1]}));
+    });
+    if(vue==="technologies"){
+      ft.hidden=false; ft.appendChild(el("span",{text:"Type :"}));
+      [["tous","Tous"]].concat(V.types).forEach(function(c){
+        ft.appendChild(el("button",{class:"chip","aria-pressed":String(fType===c[0]),onclick:function(){ fType=c[0]; filtres(); dessiner(); listes(); }, text:c[1]}));
+      });
+    } else ft.hidden=true;
   }
-  document.querySelectorAll(".chip").forEach(function(b){ b.addEventListener("click",function(){
-    filtre=b.getAttribute("data-anneau");
-    document.querySelectorAll(".chip").forEach(function(c){ c.setAttribute("aria-pressed",String(c===b)); });
-    dessiner(); listes(); }); });
-  function depuisHash(){ var h=location.hash.replace("#",""); if(/^t-\d\d$/.test(h) && T.some(function(x){ return x.id===h; })) choisir(h,false); }
+  function methode(){ var z=document.getElementById("methode"); z.textContent=""; VUES[vue].methode.forEach(function(m){ z.appendChild(el("div",null,[el("h3",{text:m[0]}), el("p",{text:m[1]})])); }); }
+  function changerVue(v,garderSel){
+    vue=v; fAnneau="tous"; fType="tous"; q=""; document.getElementById("recherche").value="";
+    document.getElementById("recherche").placeholder = v==="technologies" ? "Rechercher une technologie, un éditeur…" : "Rechercher une tendance…";
+    ["tendances","technologies"].forEach(function(n){ var b=document.getElementById("v-"+n); b.setAttribute("aria-selected",String(n===v)); b.tabIndex=n===v?0:-1; });
+    document.getElementById("intro").textContent=VUES[v].intro;
+    placer(DONNEES[v]);
+    if(!garderSel) sel=DONNEES[v][0].id;
+    filtres(); legende(); methode(); dessiner(); fiche(); listes();
+  }
+  function choisir(id,maj){
+    sel=id; if(maj){ try{ history.replaceState(null,"","#"+id); }catch(e){} }
+    dessiner(); fiche(); listes();
+    if(maj && window.innerWidth<960){ var f=document.getElementById("fiche"); if(f.scrollIntoView) f.scrollIntoView({behavior:"smooth",block:"start"}); }
+  }
+  document.getElementById("v-tendances").addEventListener("click",function(){ changerVue("tendances"); try{ history.replaceState(null,"","#tendances"); }catch(e){} });
+  document.getElementById("v-technologies").addEventListener("click",function(){ changerVue("technologies"); try{ history.replaceState(null,"","#technologies"); }catch(e){} });
+  document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var n=vue==="tendances"?"technologies":"tendances"; changerVue(n); document.getElementById("v-"+n).focus(); } });
+  document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); dessiner(); listes(); });
+  function depuisHash(){
+    var h=location.hash.replace("#","");
+    if(h==="technologies"||h==="tendances"){ if(vue!==h) changerVue(h); return; }
+    if(/^t-\d\d$/.test(h)){ if(vue!=="tendances") changerVue("tendances",true); if(T.some(function(x){return x.id===h;})) choisir(h,false); }
+    else if(/^x-\d\d\d$/.test(h)){ if(vue!=="technologies") changerVue("technologies",true); if(TECH.some(function(x){return x.id===h;})) choisir(h,false); }
+  }
   window.addEventListener("hashchange",depuisHash);
-  positions(); sel=T[0].id; dessiner(); fiche(); listes(); depuisHash();
+  changerVue("tendances"); depuisHash();
 })();
 </script>
 </body>
