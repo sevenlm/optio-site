@@ -38,6 +38,16 @@
   --header:#041420; --header-line:#163447;
 }
 *,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none !important}
+:root{--a0:#FBE2D8;--a0t:#9A3E26;--a1:#FBF0CC;--a1t:#7A5A00;--a2:#DCEDF7;--a2t:#2D6488;--a3:#ECE7F7;--a3t:#5B4E8A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a0:#3B2620;--a0t:#F2B8A5;--a1:#3A3217;--a1t:#F2D27A;--a2:#16374B;--a2t:#9CCBEA;--a3:#2B2742;--a3t:#C7BDF0}}
+:root[data-theme="dark"]{--a0:#3B2620;--a0t:#F2B8A5;--a1:#3A3217;--a1t:#F2D27A;--a2:#16374B;--a2t:#9CCBEA;--a3:#2B2742;--a3t:#C7BDF0}
+.pastille-anneau{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:7px;vertical-align:1px}
+.plus{align-self:flex-start;margin-top:10px;border:1px solid var(--line-2);background:var(--surface);border-radius:10px;padding:8px 14px;min-height:38px;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer}
+.plus:hover{background:var(--surface-2)}
+.contexte{background:var(--surface-2);border-left:4px solid var(--ctx);border-radius:4px 10px 10px 4px;padding:12px 14px}
+.contexte h3{color:var(--ink)}
+.contexte p{color:var(--ink)}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--corps);line-height:1.5;-webkit-font-smoothing:antialiased}
 h1,h2,h3,p,ul{margin:0}
@@ -101,7 +111,7 @@ button,input{font:inherit;color:inherit}
 .quadrant h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .quadrant h2 small{font-family:var(--mesure);font-size:12px;color:var(--text-3);font-weight:500}
 .quadrant p.desc{font-size:13px;color:var(--text-3);margin-bottom:6px}
-.groupe{font-size:11.5px;font-weight:700;color:var(--text-3);letter-spacing:0.02em;margin:12px 6px 4px;padding-bottom:4px;border-bottom:1px solid var(--line)}
+.groupe{align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:0.02em;margin:12px 0 4px;padding:3px 11px;border-radius:999px}
 .item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:none;padding:6px;border-radius:10px;cursor:pointer}
 .item:hover,.item[aria-current="true"]{background:var(--surface-2)}
 .item strong{font-size:14px;font-weight:600;line-height:1.3}
@@ -111,6 +121,76 @@ button,input{font:inherit;color:inherit}
 .methode .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:20px}
 .methode h3{font-size:15px;font-weight:700;margin-bottom:4px}
 .methode p{font-size:14.5px;color:var(--text-2)}
+.familles{display:flex;flex-direction:column;gap:22px}
+.famille{padding:22px 22px 18px}
+.famille-tete{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:4px}
+.famille h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:20px}
+.famille h2 small{font-family:var(--mesure);font-size:12px;color:var(--text-3);font-weight:500;margin-left:8px}
+.famille p.desc{font-size:13.5px;color:var(--text-3);margin-bottom:14px}
+.mecas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:12px}
+.meca{border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
+.meca h3{font-size:15.5px;font-weight:700;line-height:1.3}
+.meca dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 12px;font-size:13.5px}
+.meca dt{font-weight:700;color:var(--text-3);font-size:12px;padding-top:1px}
+.meca dd{margin:0;color:var(--text-2)}
+.meca dd.parade{color:var(--signal-text);font-weight:600}
+
+.tp-tete{display:flex;flex-wrap:wrap;gap:14px 24px;align-items:center;justify-content:space-between;margin-bottom:16px}
+.tp-lecture{font-size:14.5px;color:var(--text-2);max-width:820px}
+.tp-lecture strong{color:var(--ink)}
+.tp-atelier{border:1.5px solid var(--ink);background:var(--surface);border-radius:12px;padding:10px 16px;min-height:44px;font-weight:600;font-size:14px;cursor:pointer}
+.tp-atelier[aria-pressed="true"]{background:var(--ink);color:var(--surface)}
+
+.tp-defil{padding:16px;overflow-x:auto}
+.tp{display:grid;grid-template-columns:136px minmax(188px,.72fr) repeat(3,minmax(284px,1fr));gap:6px;min-width:1160px}
+.tp-moment{font-size:12.5px;font-weight:700;color:var(--text-2);text-align:center;padding:8px 4px;border-bottom:2px solid var(--line-2);cursor:default}
+.tp-couche{display:flex;align-items:center;padding:8px 12px;border-radius:10px;font-weight:700;font-size:13px;line-height:1.25;cursor:default}
+.tp-cellule{display:flex;flex-wrap:nowrap;gap:6px;align-items:flex-start;padding:5px;border-radius:10px;background:var(--surface-2);min-height:92px}
+.tuile{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;flex:none;width:86px;height:80px;padding:6px 7px 7px;border:none;border-radius:10px;text-align:left;cursor:pointer;transition:opacity .15s,transform .15s;box-shadow:inset 0 0 0 1px rgba(11,42,60,.08)}
+.tuile:hover{transform:translateY(-2px)}
+.tuile.pale{opacity:.22}
+.tuile.choisie{box-shadow:0 0 0 3px var(--ink)}
+.tuile.cochee{box-shadow:0 0 0 3px var(--c-o)}
+.tuile-num{font-family:var(--mesure);font-size:10px;opacity:.8}
+.tuile-sym{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:24px;line-height:1}
+.tuile-nom{font-size:10px;font-weight:600;line-height:1.2;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tuile-check{position:absolute;top:6px;right:7px;width:20px;height:20px;border-radius:50%;background:var(--c-o);color:var(--on-o);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
+@media (prefers-reduced-motion: reduce){.tuile{transition:none}.tuile:hover{transform:none}}
+.tp-dialog{border:none;border-radius:18px;padding:26px;max-width:560px;width:calc(100% - 32px);background:var(--surface);color:var(--ink);box-shadow:0 24px 60px rgba(6,25,42,.35)}
+.tp-dialog::backdrop{background:rgba(6,25,42,.5)}
+.tp-dialog h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.15}
+.tp-dialog-pied{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
+.tp-dialog-pied .plus{margin-top:0}
+.tp-profil{margin-top:18px;padding:22px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:28px}
+@media (max-width:860px){.tp-profil{grid-template-columns:1fr}}
+.tp-profil-col{display:flex;flex-direction:column;gap:14px}
+.tp-profil h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:21px}
+.tp-profil h3{font-size:13px;font-weight:700;color:var(--text-3)}
+.tp-fiche h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.15}
+.tp-fiche h3{font-size:13px;font-weight:700;color:var(--text-3)}
+.tp-fiche-tete{display:flex;gap:14px;align-items:center}
+.tuile-grande{width:84px;height:84px;flex:none;cursor:default}
+.tuile-grande:hover{transform:none}
+.tp-quand{font-size:13px;color:var(--text-3);margin-top:4px}
+.tp-dl{margin:0;display:flex;flex-direction:column;gap:4px}
+.tp-dl dt{font-size:12px;font-weight:700;color:var(--text-3);margin-top:8px}
+.tp-dl dd{margin:0;font-size:14.5px;color:var(--text-2);line-height:1.5}
+.tp-dl dd.parade{color:var(--signal-text);font-weight:600}
+.tp-lien{font-weight:600;font-size:14px}
+.tp-aide{font-size:14px;color:var(--text-2)}
+.tp-chiffres{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tp-chiffres strong{display:block;font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:30px;line-height:1}
+.tp-chiffres span{font-size:12.5px;color:var(--text-3)}
+.tp-barres{display:flex;flex-direction:column;gap:8px}
+.tp-barre{display:grid;grid-template-columns:130px 1fr 24px;gap:8px;align-items:center;font-size:12.5px;color:var(--text-2)}
+.tp-barre-fond{height:8px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.tp-barre-remplie{display:block;height:100%;background:var(--c-o);border-radius:4px}
+.tp-barre-n{font-family:var(--mesure);text-align:right}
+.tp-parades{padding-left:18px;display:flex;flex-direction:column;gap:6px;font-size:13.5px;color:var(--text-2)}
+.tp-parades strong{color:var(--ink)}
+:root{--fam0:#FBE2D8;--fam0t:#8A3520;--fam1:#FBF0CC;--fam1t:#6E5100;--fam2:#F8E1EC;--fam2t:#86295A;--fam3:#DCEDF7;--fam3t:#245878;--fam4:#DDF3EA;--fam4t:#1B5E46;--fam5:#ECE7F7;--fam5t:#51447E;--fam6:#E6ECE3;--fam6t:#435537}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--fam0:#3B2620;--fam0t:#F2B8A5;--fam1:#3A3217;--fam1t:#F2D27A;--fam2:#3A2030;--fam2t:#F0B4D2;--fam3:#16374B;--fam3t:#9CCBEA;--fam4:#173A2F;--fam4t:#9DDDC2;--fam5:#2B2742;--fam5t:#C7BDF0;--fam6:#27302A;--fam6t:#BFD0B4}}
+:root[data-theme="dark"]{--fam0:#3B2620;--fam0t:#F2B8A5;--fam1:#3A3217;--fam1t:#F2D27A;--fam2:#3A2030;--fam2t:#F0B4D2;--fam3:#16374B;--fam3t:#9CCBEA;--fam4:#173A2F;--fam4t:#9DDDC2;--fam5:#2B2742;--fam5t:#C7BDF0;--fam6:#27302A;--fam6t:#BFD0B4}
 .pied{font-size:13px;color:var(--text-3);padding:4px 0 28px;max-width:960px}
 .blip{cursor:pointer}
 .blip:focus{outline:none}
@@ -132,6 +212,7 @@ button,input{font:inherit;color:inherit}
 <div class="vues" role="tablist" aria-label="Vues du radar">
 <button role="tab" id="v-tendances" aria-selected="true">Tendances</button>
 <button role="tab" id="v-technologies" aria-selected="false" tabindex="-1">Technologies</button>
+<button role="tab" id="v-mecanismes" aria-selected="false" tabindex="-1">Mécanismes d’enfermement</button>
 </div>
 </div>
 </header>
@@ -158,6 +239,9 @@ button,input{font:inherit;color:inherit}
 
 <div class="quadrants" id="listes"></div>
 
+<section id="vue-meca" hidden aria-label="Mécanismes d’enfermement"></section>
+<dialog id="meca-dialog" class="tp-dialog" aria-labelledby="meca-titre"></dialog>
+
 <section class="panneau methode" aria-labelledby="t-meth">
 <h2 id="t-meth">La méthode</h2>
 <div class="grille" id="methode"></div>
@@ -172,163 +256,248 @@ button,input{font:inherit;color:inherit}
     {q:0,a:0,k:"risque",t:"Fin des licences perpétuelles",
       quoi:"Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. Atlassian ne vendra plus de licences Data Center aux clients existants après le 30 mars 2028, et les passera en lecture seule le 28 mars 2029.",
       pourquoi:"Vous ne possédez plus, vous louez : le prix est revu à chaque échéance et le calendrier de migration est fixé par l’éditeur.",
-      faire:["Recenser les licences sans date d’expiration qui restent, et leurs fins de support.","Chiffrer l’abonnement sur cinq ans, pas sur un an.","Préparer une alternative avant la date imposée."],
+      faire:["Recensez les licences sans date d’expiration qui vous restent, et leurs fins de support.", "Chiffrez l’abonnement sur cinq ans, pas sur un an.", "Préparez une alternative avant la date imposée."],
       src:[["CIO Online, analyse d’Elée","https://www.cio-online.com/actualites/lire-budget-it-2026-la-quadrature-du-cercle-16558.html"],["Adaptavist, fin de vie d’Atlassian Data Center","https://www.adaptavist.com/blog/atlassian-data-center-end-of-life-march-2029"]]},
     {q:0,a:0,k:"risque",t:"IA intégrée d’office dans les suites",
       quoi:"Les grandes suites collaboratives et les CRM relèvent leurs prix en incluant l’IA dans toutes leurs offres. Microsoft 365 a augmenté ses prix catalogue au 1er juillet 2026 ; Salesforce a remplacé ses éditions le 3 septembre 2026 par des formules qui intègrent toutes son IA.",
       pourquoi:"Vous payez des fonctions que vous n’utilisez pas forcément, et la hausse devient difficile à refuser.",
-      faire:["Mesurer l’usage réel des fonctions d’IA.","Négocier sur le périmètre utile.","Éviter de se réengager longtemps juste après une hausse."],
+      faire:["Mesurez l’usage réel des fonctions d’IA.", "Négociez sur le périmètre utile.", "Évitez de se réengager longtemps juste après une hausse."],
       src:[["Presse spécialisée, synthèse des hausses 2026",null]]},
     {q:0,a:1,k:"risque",t:"Hausses de prix soutenues",
       quoi:"Les DSI européens interrogés pour le Cigref anticipent 12 % de hausse par an de leurs coûts de cloud et de logiciels sur cinq ans, soit environ +57 % en quatre ans. Gartner observe des hausses de 10 à 20 % chez plusieurs grands éditeurs SaaS en 2025.",
       pourquoi:"La trajectoire de coûts n’est plus pilotée par le client, et le verrouillage fournisseur est la première cause citée.",
-      faire:["Projeter le coût total de chaque fournisseur critique sur cinq ans.","Arriver aux échéances avec une alternative chiffrée."],
+      faire:["Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.", "Arrivez aux échéances avec une alternative chiffrée."],
       src:[["Cigref et Asterès, mai 2026","https://www.cigref.fr/wp/wp-content/uploads/2026/05/Cigref-Asteres-Hausses-Tarifaires-Cloud-Logiciel-Europe-2026.pdf"],["Solutions Numériques","https://www.solutions-numeriques.com/cloud-et-logiciels-le-cigref-alerte-sur-une-inflation-qui-pese-sur-les-investissements-europeens/"]]},
     {q:0,a:1,k:"risque",t:"Rachats et consolidation des éditeurs",
       quoi:"Les rachats se multiplient : IBM a finalisé celui de Confluent (11,6 Md$) en mars 2026, Salesforce a annoncé ceux de Fin et de Braze (5,66 Md$), Schneider Electric celui de PTC (22,6 Md$).",
       pourquoi:"Quand votre éditeur change de propriétaire, sa roadmap et sa politique tarifaire changent avec lui.",
-      faire:["Identifier les fournisseurs critiques susceptibles d’être rachetés.","Prévoir des clauses en cas de changement de contrôle."],
+      faire:["Identifiez vos fournisseurs critiques susceptibles d’être rachetés.", "Prévoyez des clauses en cas de changement de contrôle."],
       src:[["Genee Tech, rachat de Braze","https://www.genee.tech/blog/salesforce-acquisition-braze-5-milliards-marketing-cloud-crm-2026"],["L’Usine Nouvelle, rachat de PTC","https://www.usinenouvelle.com/equipements-electriques/cest-la-plus-importante-acquisition-de-son-histoire-schneider-electric-avale-lamericain-ptc-pour-226-milliards-de-dollars-et-devient-un-geant-du-logiciel.GLJOXU3YBBCATASBT526JIQ26U.html"]]},
     {q:0,a:2,k:"risque",t:"Facturation de l’IA à l’usage",
       quoi:"Selon Forrester, 80 % des décideurs interrogés s’attendent à une hausse de leurs budgets logiciels en 2027, les éditeurs répercutant le coût de l’IA par des hausses de prix ou une facturation à l’usage.",
       pourquoi:"Une facture à l’usage est difficile à prévoir, et plus encore à comparer.",
-      faire:["Exiger des plafonds et des alertes de consommation.","Suivre la consommation d’IA comme un poste à part entière."],
+      faire:["Exigez des plafonds et des alertes de consommation.", "Suivez la consommation d’IA comme un poste à part entière."],
       src:[["Forrester, cité par la presse spécialisée",null]]},
     {q:1,a:0,k:"risque",t:"Virtualisation propriétaire",
       quoi:"Après le rachat de VMware par Broadcom, licences perpétuelles supprimées et offres groupées imposées. Gartner observe des hausses de 2 à 3 fois chez les clients qui renégocient.",
       pourquoi:"La virtualisation porte une grande partie des systèmes critiques : en sortir demande des mois de préparation.",
-      faire:["Mesurer le délai de sortie et le comparer à l’échéance.","Évaluer deux alternatives et lancer un pilote sur un périmètre limité."],
+      faire:["Mesurez le délai de sortie et le comparer à l’échéance.", "Évaluez deux alternatives et lancez un pilote sur un périmètre limité."],
       src:[["Gartner, cité par la presse spécialisée",null]]},
     {q:1,a:2,k:"risque",t:"Concentration des régions cloud",
       quoi:"Le 20 octobre 2025, une panne dans la région US-EAST-1 d’AWS a rendu indisponibles pendant plusieurs heures de nombreux services. Même des applications hébergées ailleurs ont été touchées, car elles dépendaient de cette région.",
       pourquoi:"Être réparti géographiquement ne signifie pas être indépendant : authentification, DNS ou pilotage peuvent créer des dépendances cachées.",
-      faire:["Cartographier les dépendances cachées : identité, DNS, outils de déploiement.","Tester une bascule réelle, pas seulement documentée."],
+      faire:["Cartographiez les dépendances cachées : identité, DNS, outils de déploiement.", "Testez une bascule réelle, pas seulement documentée."],
       src:[["JustGeek, causes de la panne AWS","https://www.justgeek.fr/panne-aws-20-octobre-explication-143468/"]]},
     {q:1,a:2,k:"risque",t:"Changements de licence open source",
       quoi:"Des projets ouverts contrôlés par un seul éditeur changent de règles : Terraform est passé sous licence source disponible en 2023 ; début 2025, Perforce a réservé les paquets de Puppet à un dépôt privé ; en 2025, MinIO a retiré la console de son édition communautaire puis cessé d’en publier les binaires. À chaque fois, la communauté a dû créer un fork (OpenTofu, OpenVox).",
       pourquoi:"L’open source ne protège pas si un seul acteur contrôle le projet.",
-      faire:["Privilégier les projets à gouvernance ouverte ou portés par une fondation.","Identifier les composants à éditeur unique."],
+      faire:["Privilégiez les projets à gouvernance ouverte ou portés par une fondation.", "Identifiez les composants à éditeur unique."],
       src:[["DevClass, changements de Perforce sur Puppet","https://www.devclass.com/development/2024/12/18/community-plans-to-fork-puppet-unhappy-with-perforce-changes-to-open-source-project/1628823"],["It’s FOSS, l’édition communautaire de MinIO","https://itsfoss.com/news/minio-moves-away-from-open-source.md"]]},
     {q:1,a:3,k:"risque",t:"Dépendance aux modèles d’IA propriétaires",
       quoi:"Les organisations construisent prompts, outils et agents autour d’un modèle ou d’une API d’un seul fournisseur.",
       pourquoi:"Changer de modèle peut demander de tout reconstruire, au moment où les prix de l’IA évoluent vite.",
-      faire:["Prévoir une couche d’abstraction entre vos applications et les modèles.","Tester régulièrement un modèle alternatif."],
+      faire:["Prévoyez une couche d’abstraction entre vos applications et les modèles.", "Testez régulièrement un modèle alternatif."],
       src:[["Observation Optio",null]]},
     {q:2,a:0,k:"risque",t:"Plans de sortie testés (DORA)",
       quoi:"Depuis le 17 janvier 2025, DORA impose aux entités financières des stratégies de sortie documentées, suffisamment testées et revues régulièrement pour les services qui supportent des fonctions critiques.",
       pourquoi:"Un plan écrit ne suffit plus : il faut pouvoir prouver qu’il fonctionne.",
-      faire:["Identifier les fonctions critiques et leurs prestataires.","Tester au moins une sortie sur un périmètre réel."],
+      faire:["Identifiez les fonctions critiques et leurs prestataires.", "Testez au moins une sortie sur un périmètre réel."],
       src:[["Règlement (UE) 2022/2554, article 28",null]]},
     {q:2,a:0,k:"risque",t:"Plans de réduction des dépendances de l’État",
       quoi:"Coordonnés par la Dinum, les ministères et opérateurs doivent présenter à l’automne 2026 des plans d’action sur sept domaines : poste de travail, collaboratif, antivirus, IA, bases de données, virtualisation, réseau.",
       pourquoi:"La dépendance devient un sujet piloté au plus haut niveau de l’État.",
-      faire:["Rendre le plan exécutable : chiffrage, priorités, preuve sur un périmètre."],
+      faire:["Rendez le plan exécutable : chiffrage, priorités, preuve sur un périmètre."],
       src:[["Communiqués de la Dinum (2026)",null]]},
     {q:2,a:1,k:"risque",t:"Loi Résilience (NIS 2)",
       quoi:"Plus de 15 000 organisations en France seront concernées. L’examen à l’Assemblée nationale a été reporté sans nouvelle date ; trois ans de mise en conformité suivront la promulgation.",
       pourquoi:"La sécurité de la chaîne d’approvisionnement devient une obligation, et les dirigeants en deviennent responsables.",
-      faire:["Cartographier les fournisseurs critiques dès maintenant.","S’appuyer sur le référentiel de l’ANSSI sans attendre le vote."],
+      faire:["Cartographiez vos fournisseurs critiques dès maintenant.", "Appuyez-vous sur le référentiel de l’ANSSI sans attendre le vote."],
       src:[["ChannelNews, report de l’examen","https://www.channelnews.fr/la-transposition-de-nis-2-a-nouveau-repoussee-159415"]]},
     {q:2,a:3,k:"risque",t:"Coupures liées aux sanctions",
       quoi:"Après des sanctions américaines en février 2025, le procureur de la Cour pénale internationale a perdu l’accès à sa messagerie Microsoft et a dû changer de fournisseur, selon l’Associated Press. Microsoft conteste avoir coupé les services de la Cour.",
       pourquoi:"Un service peut devenir inaccessible pour des raisons qui n’ont rien de technique ni de contractuel.",
-      faire:["Identifier les services critiques exposés à un droit étranger.","Prévoir un mode dégradé pour les plus sensibles."],
+      faire:["Identifiez les services critiques exposés à un droit étranger.", "Prévoyez un mode dégradé pour les plus sensibles."],
       src:[["Justice Info","https://www.justiceinfo.net/fr/156672-comment-les-sanctions-peuvent-etre-une-arme-technologique-americaine-contre-la-cpi.html"],["Next, audition de Microsoft au Sénat","https://next.ink/brief-article/microsoft-nie-avoir-coupe-lacces-de-ses-services-a-la-cour-penale-internationale/"]]},
     {q:3,a:0,k:"levier",t:"Alternatives de virtualisation matures",
       quoi:"Des solutions comme Proxmox ou XCP-ng, cette dernière éditée en France, sont utilisées en production et font l’objet de migrations réelles.",
       pourquoi:"L’alternative existe : la question n’est plus « peut-on ? », mais « en combien de temps et pour quel coût ? ».",
-      faire:["Comparer deux alternatives sur vos usages réels.","Mesurer la sortie par un pilote."],
+      faire:["Comparez deux alternatives sur vos usages réels.", "Mesurez la sortie par un pilote."],
       src:[["Observation Optio",null]]},
     {q:3,a:0,k:"levier",t:"Clauses de réversibilité",
-      quoi:"Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement.",
+      quoi:"Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références récentes outillent la négociation : les clauses types de la Commission européenne pour les contrats cloud, et les clauses Oméga proposées par Libralis. Oméga 1 engage le fournisseur à ne jamais transmettre vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 lui interdit toute coupure arbitraire d’un service critique.",
       pourquoi:"C’est le levier le moins coûteux : il se négocie au moment de signer, pas au moment de partir.",
-      faire:["Établir une grille de clauses minimales pour tout contrat critique."],
-      src:[["Pratique Optio",null]]},
+      faire:["Établissez une grille de clauses minimales pour tout contrat critique.", "Appuyez-vous sur les clauses types européennes pour la sortie et la portabilité.", "Demandez à vos fournisseurs critiques s’ils signent les clauses Oméga de Libralis."],
+      src:[["Alliancy, clauses types européennes pour le cloud (recommandation (UE) 2026/2394)","https://alliancy.fr/reversibilite-numerique-le-droit-de-partir-ne-suffit-pas-il-faut-savoir-le-faire-382c9e9b-7166-4229-a5d5-876cccb97049"],["InformatiqueNews, entretien avec Alain Issarni sur Libralis","https://www.informatiquenews.fr/aucune-organisation-ne-peut-accepter-un-kill-switch-arbitraire-alain-issarni-libralis-111072"]]},
     {q:3,a:1,k:"levier",t:"Fin des frais de sortie cloud (Data Act)",
       quoi:"À partir du 12 janvier 2027, les fournisseurs de cloud ne pourront plus facturer de frais de changement de fournisseur, y compris les frais de transfert de données.",
       pourquoi:"Un verrou financier tombe. Le verrouillage technique, lui, demeure.",
-      faire:["Éviter de se réengager longtemps juste avant cette date.","Préparer la portabilité technique."],
+      faire:["Évitez de se réengager longtemps juste avant cette date.", "Préparez la portabilité technique."],
       src:[["Règlement (UE) 2023/2854, article 29",null]]},
     {q:3,a:1,k:"levier",t:"Cloud européen qualifié",
       quoi:"Des offres d’hébergeurs européens qualifiées SecNumCloud se développent, notamment pour les données sensibles.",
       pourquoi:"Elles élargissent le choix, à condition de rester elles-mêmes réversibles.",
-      faire:["Les inclure dans les comparaisons, avec la même grille de réversibilité."],
+      faire:["Incluez-les dans vos comparaisons, avec la même grille de réversibilité."],
       src:[["Observation Optio",null]]},
     {q:3,a:2,k:"levier",t:"Couches d’abstraction",
       quoi:"Conteneurs, Kubernetes, outils d’infrastructure as code ouverts : des couches qui rendent l’infrastructure sous-jacente plus interchangeable.",
       pourquoi:"Elles réduisent le coût d’un changement, à condition de prouver qu’elles fonctionnent sur deux plateformes.",
-      faire:["Tester le déploiement d’une application sur une seconde plateforme."],
+      faire:["Testez le déploiement d’une application sur une seconde plateforme."],
       src:[["Observation Optio",null]]},
     {q:3,a:3,k:"levier",t:"Modèles d’IA à poids ouverts",
       quoi:"Des modèles dont les poids sont publiés permettent d’héberger l’IA chez soi ou chez le fournisseur de son choix.",
       pourquoi:"Ils offrent une alternative aux modèles propriétaires, à surveiller selon les usages et les performances.",
-      faire:["Évaluer un modèle ouvert sur un cas d’usage interne."],
+      faire:["Évaluez un modèle ouvert sur un cas d’usage interne."],
       src:[["Observation Optio",null]]},
     {q:3,a:3,k:"levier",t:"Achats et investissements groupés",
       quoi:"Plusieurs organisations s’associent pour négocier ou financer une alternative commune.",
       pourquoi:"À plusieurs, le rapport de force change, et le coût d’une alternative se partage.",
-      faire:["Identifier des pairs exposés aux mêmes fournisseurs."],
+      faire:["Identifiez des pairs exposés aux mêmes fournisseurs."],
       src:[["Observation Optio",null]]},
     {q:3,a:0,k:"levier",t:"Partir des processus métier critiques",
       quoi:"Plutôt que d’inventorier des centaines de contrats, on part des processus qui ne peuvent pas s’arrêter, puis on remonte vers les services numériques et les fournisseurs qui les portent.",
       pourquoi:"C’est ce qui permet de prioriser, et d’embarquer les métiers dans un sujet souvent perçu comme technique.",
-      faire:["Identifier avec les métiers les processus critiques et leur tolérance à l’arrêt.","Nommer les cinq fournisseurs dont la défaillance arrêterait l’activité."],
+      faire:["Identifiez avec vos métiers les processus critiques et leur tolérance à l’arrêt.", "Nommez les cinq fournisseurs dont la défaillance arrêterait votre activité."],
       src:[["Guide Optio « Garder le choix »",null]]},
     {q:3,a:0,k:"levier",t:"Mesurer la marge de manœuvre",
       quoi:"La marge de manœuvre, c’est le nombre de mois avant l’échéance moins le délai de sortie estimé. Négative, le verrou est actif : il faudra re-signer.",
       pourquoi:"Un seul chiffre, compréhensible en comité de direction, qui dit si vous avez encore le choix.",
-      faire:["Pour chaque fournisseur critique, noter l’échéance, le préavis et la reconduction.","Estimer le délai de sortie avec les équipes, puis calculer la marge."],
+      faire:["Pour chaque fournisseur critique, notez l’échéance, le préavis et la reconduction.", "Estimez le délai de sortie avec vos équipes, puis calculez la marge."],
       src:[["Référentiel de réversibilité Optio",null]]},
     {q:3,a:0,k:"levier",t:"Mode dégradé et continuité hors fournisseur",
       quoi:"Un plan de continuité qui ne repose pas entièrement sur le fournisseur dont on dépend : sauvegardes hors site, mode dégradé défini, reprise ailleurs.",
       pourquoi:"Les pannes concentrées ou les coupures pour raisons politiques montrent qu’une répartition géographique chez un même fournisseur ne suffit pas.",
-      faire:["Définir le mode dégradé des services critiques.","Vérifier qu’une sauvegarde est restaurable hors du fournisseur."],
+      faire:["Définissez le mode dégradé des services critiques.", "Vérifiez qu’une sauvegarde est restaurable hors du fournisseur."],
       src:[["Guide Optio « Garder le choix »",null]]},
     {q:3,a:1,k:"levier",t:"Coût total de la dépendance",
       quoi:"Le coût d’une dépendance sur cinq ans : coûts directs, coûts opérationnels (le temps passé à subir roadmap, mises à jour, formations, obsolescence) et coûts de risque. On le compare au coût du changement.",
       pourquoi:"La facture ne montre qu’une partie du coût. Avec des hausses anticipées de 12 % par an, la trajectoire compte plus que le montant de l’année.",
-      faire:["Projeter le coût total de chaque fournisseur critique sur cinq ans.","Le comparer, scénario par scénario, au coût d’un changement."],
+      faire:["Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.", "Comparez-le, scénario par scénario, au coût d’un changement."],
       src:[["Calculateur du coût total de la dépendance Optio",null],["Cigref et Asterès, mai 2026","https://www.cigref.fr/wp/wp-content/uploads/2026/05/Cigref-Asteres-Hausses-Tarifaires-Cloud-Logiciel-Europe-2026.pdf"]]},
     {q:3,a:1,k:"levier",t:"Pilote de sortie sur un périmètre réel",
       quoi:"Migrer un périmètre limité et représentatif vers l’alternative, puis mesurer le temps, l’effort, le coût et le risque, et extrapoler à la sortie complète.",
       pourquoi:"La preuve sert même si l’on reste : elle renforce la négociation et répond à l’exigence de plans de sortie testés de DORA.",
-      faire:["Choisir un périmètre représentatif, sans risque pour la production.","Mesurer, puis présenter le résultat en comité de direction."],
+      faire:["Choisissez un périmètre représentatif, sans risque pour votre production.", "Mesurez, puis présentez le résultat à votre comité de direction."],
       src:[["Guide Optio « Garder le choix »",null],["Règlement (UE) 2022/2554, article 28",null]]},
     {q:3,a:1,k:"levier",t:"Revue de réversibilité des nouveaux contrats",
       quoi:"Chaque nouveau contrat critique passe par une revue : portabilité des données, clauses de sortie, alternatives, notes minimales exigées.",
       pourquoi:"Réduire le stock de dépendances ne suffit pas si chaque nouveau contrat en crée d’autres : c’est ainsi que l’on gouverne le flux.",
-      faire:["Exiger au moins 3 sur 5 sur la portabilité des données et sur le contrat.","Intégrer la revue au processus d’achat."],
+      faire:["Exigez au moins 3 sur 5 sur la portabilité des données et sur le contrat.", "Intégrez la revue au processus d’achat."],
       src:[["Référentiel de réversibilité Optio",null]]},
     {q:3,a:2,k:"levier",t:"Indice de réversibilité fondé sur la preuve",
       quoi:"Une note sur 100 par fournisseur critique, sur sept axes notés 0, 1, 3 ou 5. Sans axe prouvé à 5, l’indice est plafonné à 69.",
       pourquoi:"Un langage commun entre DSI, RSSI, achats et direction, qui récompense la preuve plutôt que l’intention.",
-      faire:["Noter les fournisseurs critiques, preuves à l’appui.","Revoir l’indice chaque trimestre."],
+      faire:["Notez vos fournisseurs critiques, preuves à l’appui.", "Revoyez l’indice chaque trimestre."],
       src:[["Référentiel de réversibilité Optio",null]]},
     {q:3,a:2,k:"levier",t:"Formats de données ouverts",
       quoi:"Des formats comme Apache Iceberg ou Parquet permettent de lire les mêmes données avec plusieurs moteurs, chez plusieurs fournisseurs.",
       pourquoi:"Quand les données restent dans un format ouvert, changer d’outil ne signifie plus migrer toutes les données.",
-      faire:["Privilégier les formats ouverts pour les nouveaux projets de données.","Vérifier que l’entrepôt actuel sait les lire et les écrire."],
+      faire:["Privilégiez les formats ouverts pour les nouveaux projets de données.", "Vérifiez que votre entrepôt actuel sait les lire et les écrire."],
       src:[["Apache Software Foundation",null]]},
     {q:3,a:2,k:"levier",t:"Tests de bascule réguliers",
       quoi:"Une bascule réelle vers l’alternative ou le site de secours, au moins une fois par an pour les fournisseurs les plus critiques.",
       pourquoi:"La réversibilité s’érode si personne ne l’exerce : un plan non testé depuis deux ans n’est plus fiable.",
-      faire:["Planifier un test annuel pour chaque fournisseur vital.","Chronométrer le temps de reprise et le comparer à l’objectif."],
+      faire:["Planifiez un test annuel pour chaque fournisseur vital.", "Chronométrez le temps de reprise et le comparer à l’objectif."],
       src:[["Guide Optio « Garder le choix »",null]]},
     {q:3,a:2,k:"levier",t:"Compétences sur les alternatives",
       quoi:"Former les équipes aux technologies alternatives, s’appuyer sur des communautés et des partenaires.",
       pourquoi:"Sans compétences, la meilleure alternative reste théorique : c’est l’une des erreurs les plus fréquentes.",
-      faire:["Identifier les compétences rares liées aux fournisseurs critiques.","Former au moins deux personnes sur l’alternative retenue."],
+      faire:["Identifiez les compétences rares liées aux fournisseurs critiques.", "Formez au moins deux personnes sur l’alternative retenue."],
       src:[["Guide Optio « Garder le choix »",null]]},
     {q:3,a:3,k:"levier",t:"Support tiers pour gagner du temps",
       quoi:"Des prestataires de support indépendants des éditeurs permettent de prolonger l’usage d’une version existante pendant la construction d’une alternative.",
       pourquoi:"Un moyen de desserrer l’étau à l’échéance. Attention : il donne du temps, mais ne réduit pas la dépendance.",
-      faire:["L’envisager seulement avec un plan de sortie daté.","Vérifier l’impact sur la sécurité et les mises à jour."],
+      faire:["Ne l’envisagez qu’avec un plan de sortie daté.", "Vérifiez l’impact sur la sécurité et les mises à jour."],
       src:[["Observation Optio",null]]},
     {q:3,a:3,k:"levier",t:"Référentiel de réversibilité partagé",
       quoi:"Une grille commune et ouverte pour mesurer la réversibilité, construite avec l’écosystème (associations professionnelles, éditeurs, utilisateurs).",
       pourquoi:"Une mesure partagée faciliterait les comparaisons, les appels d’offres et, à terme, un label.",
-      faire:["Utiliser une grille commune dans les appels d’offres.","Partager ses retours d’expérience."],
-      src:[["Référentiel de réversibilité Optio",null]]}
+      faire:["Utilisez une grille commune dans les appels d’offres.", "Partagez ses retours d’expérience."],
+      src:[["Référentiel de réversibilité Optio",null]]},
+    {q:0,a:0,k:"risque",t:"Audits de licence comme levier commercial",
+      quoi:"Les audits de conformité se multiplient à l’approche des renouvellements. En 2025, Broadcom a adressé des mises en demeure aux détenteurs de licences perpétuelles VMware dont le support avait expiré, leur demandant de ne plus installer de mises à jour.",
+      pourquoi:"Un audit crée un risque financier soudain, qui pousse à re-signer dans l’urgence et aux conditions de l’éditeur.",
+      faire:["Tenez un inventaire à jour des licences et des usages réels.", "Négociez des clauses d’audit encadrées : préavis, fréquence, périmètre.", "Ne concluez jamais un renouvellement sous la pression d’un audit en cours."],
+      src:[["Next, mises en demeure de Broadcom","https://next.ink/184268/broadcom-exige-larret-des-mises-a-jour-vmware-quand-les-licences-perpetuelles-expirent/"],["Le Monde Informatique, pratiques commerciales de Broadcom","https://www.lemondeinformatique.fr/actualites/lireamp-les-pratiques-commerciales-de-broadcom-sur-vmware-encore-taclees-98376.html"]]},
+    {q:0,a:0,k:"risque",t:"Changements de métrique de licence",
+      quoi:"La façon de compter change : par cœur plutôt que par processeur, au nombre total de salariés, avec des minimums de commande. Broadcom a annoncé en avril 2025 un minimum de commande VMware de 72 cœurs (son application a varié selon les régions), avec une majoration de 20 % en cas de renouvellement tardif.",
+      pourquoi:"La facture augmente sans que l’usage change, et la nouvelle métrique pénalise souvent les petites infrastructures.",
+      faire:["Modélisez l’impact de chaque changement de métrique avant l’échéance.", "Négociez le maintien de la métrique sur toute la durée du contrat."],
+      src:[["Le Monde Informatique, nouvelle politique de licences VMware","https://www.lemondeinformatique.fr/actualites/lire-broadcom-durcit-sa-politique-sur-les-licences-vmware-96406.html"],["Developpez.com, bilan du modèle Broadcom","https://systeme.developpez.com/actu/382026/Broadcom-voulait-rentabiliser-VMware-a-marche-forcee-il-a-surtout-offert-30-000-clients-a-Nutanix-et-ouvert-la-plus-grande-fenetre-de-migration-que-le-secteur-ait-connue-depuis-dix-ans/"]]},
+    {q:0,a:1,k:"risque",t:"Engagements de consommation cloud",
+      quoi:"Les fournisseurs de cloud accordent des remises contre un engagement de dépense sur plusieurs années.",
+      pourquoi:"La remise d’aujourd’hui crée l’obligation de consommer demain, et freine toute diversification vers un autre fournisseur.",
+      faire:["Limitez la durée et le montant des engagements.", "Gardez une part de la consommation non engagée.", "Prévoyez une clause de réduction en cas de changement de stratégie."],
+      src:[["Observation Optio",null]]},
+    {q:0,a:2,k:"risque",t:"Restrictions de licence selon l’hébergeur",
+      quoi:"Certaines licences coûtent plus cher, ou ne peuvent pas être transférées, chez des clouds concurrents de l’éditeur. Ces pratiques ont fait l’objet de plaintes en Europe, dont celle de CISPE contre Microsoft, réglée en 2024.",
+      pourquoi:"Le choix de l’hébergeur est contraint par les licences, et non par l’offre technique.",
+      faire:["Vérifiez les droits de transfert de chaque licence avant de choisir un hébergeur.", "Chiffrez le coût des licences dans chaque scénario d’hébergement."],
+      src:[["CISPE, accord avec Microsoft (2024)",null]]},
+    {q:0,a:3,k:"risque",t:"Crédits gratuits et programmes d’adoption",
+      quoi:"Des crédits offerts, notamment pour l’IA ou les jeunes entreprises, incitent à construire sur des services propriétaires.",
+      pourquoi:"Le coût d’entrée est nul, le coût de sortie apparaît plus tard, quand l’architecture est déjà ancrée.",
+      faire:["Évaluez le coût de sortie avant d’accepter des crédits.", "Privilégiez des services standards, même pendant la période gratuite."],
+      src:[["Observation Optio",null]]},
+    {q:1,a:0,k:"risque",t:"Services managés propriétaires",
+      quoi:"Bases de données, fonctions sans serveur, files de messages ou services d’IA propres à un seul cloud.",
+      pourquoi:"Ils font gagner du temps, mais chaque service est une API sans équivalent direct ailleurs.",
+      faire:["Recensez les services managés propriétaires sur les chemins critiques.", "Préférez des équivalents standards : PostgreSQL managé, Kubernetes, files de messages ouvertes."],
+      src:[["Observation Optio",null]]},
+    {q:1,a:0,k:"risque",t:"L’annuaire, point central de dépendance",
+      quoi:"Postes de travail, applications SaaS et cloud s’authentifient tous auprès du même service d’identité.",
+      pourquoi:"Si ce service est indisponible ou coupé, plus rien ne fonctionne : c’est le point de dépendance le plus central du système d’information.",
+      faire:["Prévoyez un mode d’authentification de secours pour les accès critiques.", "Appuyez-vous sur des protocoles standards (SAML, OpenID Connect) pour faciliter un changement."],
+      src:[["Observation Optio",null]]},
+    {q:1,a:1,k:"risque",t:"Gravité des données et frais de transfert",
+      quoi:"Plus les données sont volumineuses chez un fournisseur, plus elles attirent les applications et les services autour d’elles. Les grands fournisseurs ont annoncé en 2024 la gratuité des transferts en cas de départ définitif, et le Data Act supprime les frais de changement au 12 janvier 2027. Mais les frais de transfert d’usage courant demeurent, et migrer des pétaoctets prend du temps.",
+      pourquoi:"Les données deviennent la partie la plus lourde à déplacer, et ce poids augmente avec l’IA.",
+      faire:["Mesurez les volumes et le temps réel de leur transfert.", "Concevez les architectures pour limiter les allers-retours de données entre fournisseurs."],
+      src:[["Règlement (UE) 2023/2854 (Data Act), article 29",null],["Annonces des fournisseurs de cloud (2024)",null]]},
+    {q:1,a:3,k:"risque",t:"Écosystème matériel de l’IA",
+      quoi:"Le calcul pour l’IA repose sur quelques fabricants de puces et leurs environnements logiciels propriétaires.",
+      pourquoi:"Une double dépendance, matérielle et logicielle, dans un marché où la ressource est rare.",
+      faire:["Privilégiez des cadres logiciels portables entre fabricants.", "Évaluez les alternatives matérielles sur un cas d’usage."],
+      src:[["Observation Optio",null]]},
+    {q:2,a:1,k:"risque",t:"Accès extraterritorial aux données",
+      quoi:"Le Cloud Act américain (2018) permet aux autorités des États-Unis de demander des données détenues par des fournisseurs américains, même hébergées en Europe. La section 702 du FISA a été reconduite en 2024.",
+      pourquoi:"La localisation des données ne suffit pas : c’est la nationalité du fournisseur qui compte pour les données sensibles.",
+      faire:["Classez vos données selon leur sensibilité.", "Chiffrez avec des clés que vous maîtrisez.", "Réservez les données les plus sensibles à des offres qualifiées SecNumCloud."],
+      src:[["Observation Optio",null]]},
+    {q:2,a:1,k:"risque",t:"Contrôles des plans de sortie par les régulateurs",
+      quoi:"Les autorités de supervision contrôlent l’application de DORA : les registres d’informations sur les prestataires ont été transmis pour la première fois en 2025, et les plans de sortie deviennent un objet d’inspection.",
+      pourquoi:"Un plan de sortie non testé devient un risque de non-conformité, et plus seulement un risque opérationnel.",
+      faire:["Conservez les preuves des tests de sortie et leurs résultats.", "Tenez le registre des prestataires à jour en continu."],
+      src:[["Règlement (UE) 2022/2554 (DORA), articles 28 et 30",null]]},
+    {q:2,a:2,k:"risque",t:"Règlement européen sur l’IA",
+      quoi:"Entré en vigueur en août 2024, l’AI Act impose des obligations progressives : depuis août 2025 pour les modèles d’IA à usage général, puis pour les systèmes à haut risque, selon un calendrier encore discuté.",
+      pourquoi:"La conformité dépend de la documentation fournie par le fournisseur du modèle : changer de modèle peut imposer de refaire une partie de la démarche.",
+      faire:["Exigez contractuellement la documentation nécessaire à la conformité.", "Conservez la capacité de changer de modèle sans tout reconstruire."],
+      src:[["Règlement (UE) 2024/1689 (AI Act)",null]]},
+    {q:2,a:3,k:"risque",t:"Contrôles à l’exportation des technologies d’IA",
+      quoi:"Les restrictions à l’exportation de puces et de technologies d’IA évoluent rapidement et peuvent limiter l’accès à certains services.",
+      pourquoi:"L’accès à une technologie peut changer pour des raisons qui échappent au client comme au fournisseur.",
+      faire:["Identifiez vos services d’IA critiques et leur origine.", "Prévoyez une alternative pour les usages essentiels."],
+      src:[["Observation Optio",null]]},
+    {q:3,a:0,k:"levier",t:"Gestion des actifs logiciels",
+      quoi:"Un inventaire précis des licences détenues et des usages réels, tenu à jour en continu.",
+      pourquoi:"C’est la meilleure défense en cas d’audit, et la base de toute négociation.",
+      faire:["Rapprochez chaque trimestre licences achetées et usages mesurés.", "Identifiez les licences inutilisées avant chaque échéance."],
+      src:[["Guide Optio « Garder le choix »",null]]},
+    {q:3,a:0,k:"levier",t:"Clauses d’audit encadrées",
+      quoi:"Préavis, fréquence maximale, périmètre défini, auditeur indépendant et outils de mesure reconnus par les deux parties.",
+      pourquoi:"Un audit encadré ne peut plus servir de levier de pression au moment du renouvellement.",
+      faire:["Intégrez ces clauses à la grille de négociation des contrats critiques."],
+      src:[["Guide Optio « Garder le choix »",null]]},
+    {q:3,a:0,k:"levier",t:"Cartographie et classification des données",
+      quoi:"Savoir où sont vos données, leur volume, leur format et leur niveau de sensibilité.",
+      pourquoi:"On ne peut ni protéger ni déplacer ce que l’on ne connaît pas : c’est le point de départ de toute stratégie de réversibilité des données.",
+      faire:["Classez vos données par sensibilité et par fournisseur.", "Estimez le volume et le temps de transfert des données critiques."],
+      src:[["Guide Optio « Garder le choix »",null]]},
+    {q:3,a:1,k:"levier",t:"Chiffrement avec clés maîtrisées",
+      quoi:"Des données chiffrées avec des clés gérées par le client, idéalement dans un module matériel qu’il contrôle.",
+      pourquoi:"Il réduit l’exposition aux accès extraterritoriaux et facilite le changement de fournisseur.",
+      faire:["Identifiez les données qui justifient des clés maîtrisées.", "Vérifiez que la gestion des clés est elle-même réversible."],
+      src:[["Observation Optio",null]]}
   ];
   // [quadrant, anneau, type, nom, éditeur, ce qui crée la dépendance, alternatives]
   // quadrant : 0 infrastructure bas niveau, 1 middleware, 2 données, 3 services aux opérations
@@ -457,6 +626,37 @@ button,input{font:inherit;color:inherit}
     [3,3,"e","Wazuh","Wazuh","Sécurité et détection ouvertes.","Elastic Security"]
   ];
 
+  // Mécanismes d'enfermement : [famille, nom, comment cela fonctionne, exemple, signal d'alerte, parade]
+  var FAMILLES=[["Contractuels","Ce que le contrat vous empêche de faire."],["Licences","Ce que la façon de compter vous impose."],["Commerciaux","Ce que les offres vous incitent à faire."],["Techniques","Ce que la technologie rend difficile à déplacer."],["Organisationnels","Ce que vos équipes et vos processus ont construit autour du fournisseur."],["Juridiques et géopolitiques","Ce qui échappe au contrat comme à la technique."],["Gouvernance de l’open source","Ce qu’un projet ouvert peut devenir quand un seul acteur le contrôle."]];
+  var MECA=[
+    [0,"Engagement long et reconduction tacite","Des contrats de trois à cinq ans, renouvelés automatiquement sans action de votre part.","Contrats d’infrastructure reconduits pour trois ans faute de préavis envoyé à temps.","La date de préavis n’est connue de personne.","Suivre les préavis ; négocier des durées courtes et sans reconduction tacite."],
+    [0,"Pénalités de résiliation et de renouvellement tardif","Des frais pour partir avant le terme, ou une majoration pour renouveler en retard.","Majoration de 20 % appliquée par Broadcom aux renouvellements tardifs.","Une pénalité est découverte au moment de vouloir partir.","Plafonner les pénalités ; anticiper les renouvellements de douze à vingt-quatre mois."],
+    [0,"Clauses de réversibilité absentes ou floues","Aucune obligation précise d’aide à la sortie, de format de restitution ni de délai.","Restitution des données dans un format propriétaire, sans assistance.","Le contrat ne dit pas comment récupérer vos données.","Exiger restitution dans un format standard, assistance et délais chiffrés ; s’appuyer sur les clauses types européennes et les clauses Oméga de Libralis."],
+    [0,"Hausses unilatérales et indexation","Le fournisseur peut revoir ses prix ou ses conditions en cours de contrat ou à chaque échéance.","Hausses de prix catalogue justifiées par l’intégration de l’IA.","Les conditions tarifaires renvoient à une grille modifiable par le fournisseur.","Plafonner les hausses ; geler les prix sur la durée du contrat."],
+    [1,"Changement de métrique","La façon de compter change : par cœur, par salarié, avec des minimums de commande.","Minimum de commande VMware de 72 cœurs annoncé en 2025 (application variable selon les régions) ; Java d’Oracle facturé au nombre total de salariés depuis 2023.","La facture augmente alors que l’usage ne change pas.","Négocier le maintien de la métrique ; modéliser chaque scénario."],
+    [1,"Fin des licences perpétuelles","Le passage à l’abonnement transforme une propriété en location.","Licences perpétuelles VMware supprimées ; fin de vie d’Atlassian Data Center en 2029.","Une annonce de fin de vente ou de fin de support.","Recenser les licences restantes ; chiffrer l’abonnement sur cinq ans ; préparer l’alternative."],
+    [1,"Accès indirect","Des systèmes tiers qui accèdent aux données d’un logiciel déclenchent des licences supplémentaires.","Litiges sur l’accès indirect aux données d’ERP (affaire Diageo contre SAP, 2017).","Des interfaces vers l’ERP ou le CRM non couvertes par les licences.","Faire cartographier et contractualiser les accès indirects."],
+    [1,"Restrictions selon l’hébergeur","Des licences plus chères, ou non transférables, chez un cloud concurrent de l’éditeur.","Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft.","Le choix d’hébergeur est dicté par les licences.","Vérifier les droits de transfert avant tout choix d’hébergement."],
+    [1,"Audits de conformité","Des audits déclenchés à l’approche des renouvellements, avec un risque de rattrapage financier.","Mises en demeure envoyées par Broadcom en 2025 aux détenteurs de licences perpétuelles sans support.","Un audit annoncé quelques mois avant l’échéance.","Inventaire à jour, clauses d’audit encadrées, ne jamais négocier sous la pression d’un audit."],
+    [2,"Offres groupées","Des produits vendus ensemble, y compris ceux que vous n’utilisez pas.","Catalogue VMware ramené à quelques offres groupées ; IA incluse d’office dans les suites.","Vous payez des fonctions inutilisées.","Mesurer l’usage réel ; négocier sur le périmètre utile."],
+    [2,"Remises conditionnelles et engagements de consommation","Des remises contre un volume ou une durée d’engagement.","Engagements de dépense pluriannuels chez les fournisseurs de cloud.","La remise disparaît si vous diversifiez.","Limiter montant et durée ; garder une part non engagée."],
+    [2,"Coût d’entrée nul, coût de sortie élevé","Crédits gratuits, essais, prix d’appel, puis montée en charge.","Crédits offerts pour l’IA ou aux jeunes entreprises.","Un service adopté sans avoir évalué sa sortie.","Évaluer le coût de sortie dès l’entrée."],
+    [3,"Formats et API propriétaires","Les données et les échanges utilisent des formats que seul le fournisseur sait lire.","Formats internes d’entrepôts de données ; formats de sauvegarde propriétaires.","Impossible d’ouvrir vos données sans l’outil.","Formats ouverts (Iceberg, Parquet) ; API standards."],
+    [3,"Services managés sans équivalent","Des services propres à un cloud, sans équivalent direct ailleurs.","Bases de données et fonctions sans serveur propriétaires.","Un chemin critique repose sur un service unique.","Préférer des équivalents standards ; isoler les services spécifiques."],
+    [3,"Gravité des données et frais de transfert","Les volumes accumulés attirent les applications et coûtent cher à déplacer.","Frais de transfert d’usage courant ; migrations de plusieurs pétaoctets.","Personne ne sait combien de temps prendrait le transfert.","Mesurer volumes et débits ; limiter les allers-retours."],
+    [3,"Langages et extensions propriétaires","Le code métier est écrit dans un langage propre au produit.","PL/SQL d’Oracle, T-SQL de SQL Server, langages de requête d’outils d’observabilité.","Des milliers de procédures stockées spécifiques.","Contenir les usages spécifiques ; outils de conversion ; standards."],
+    [3,"Intégrations d’écosystème","L’identité, la supervision et les outils annexes sont imposés par le fournisseur.","Annuaire central dont dépendent tous les accès.","Changer un composant oblige à en changer d’autres.","Protocoles standards (SAML, OpenID Connect, OpenTelemetry)."],
+    [3,"Mises à jour forcées et obsolescence","Le calendrier des versions et des fins de support est imposé.","Fins de support qui obligent à migrer à une date choisie par l’éditeur.","Des montées de version subies chaque année.","Suivre les calendriers de support ; négocier des extensions."],
+    [4,"Compétences et certifications spécifiques","Les équipes sont formées et certifiées sur un seul produit.","Compétences rares, dépendance aux experts de l’éditeur.","Personne ne sait opérer l’alternative.","Former au moins deux personnes sur l’alternative ; s’appuyer sur des communautés."],
+    [4,"Dépendance aux partenaires de l’éditeur","L’intégrateur ou l’infogérant est lui-même lié au fournisseur.","Partenaires rémunérés par l’éditeur, peu enclins à proposer une alternative.","Le conseil reçu ne présente jamais d’alternative.","Conseil indépendant, sans commission d’éditeur."],
+    [4,"Processus métier construits dans l’outil","Les processus, les règles et les données métier sont modélisés dans la plateforme.","Gestion des services, ERP, CRM fortement personnalisés.","Changer d’outil impose de refondre les processus.","Documenter les processus hors de l’outil ; limiter les développements spécifiques."],
+    [5,"Droit applicable et juridiction étrangère","Le contrat relève d’un droit et de tribunaux étrangers.","Contrats régis par un droit étranger, litiges à l’étranger.","Un recours juridique coûteux et lointain.","Négocier un droit et une juridiction européens."],
+    [5,"Extraterritorialité et sanctions","Des lois étrangères peuvent imposer l’accès aux données ou l’interruption d’un service.","Cloud Act américain ; perte d’accès à sa messagerie du procureur de la CPI en 2025.","Des services critiques fournis par une entité soumise à un droit étranger.","Classer les données ; clés maîtrisées ; offres qualifiées ; mode dégradé ; clauses Oméga 1 et 2 de Libralis."],
+    [5,"Contrôles à l’exportation","Des restrictions sur les puces ou les technologies peuvent limiter l’accès à un service.","Restrictions à l’export de technologies d’IA.","Un service critique dépend d’une technologie soumise à des contrôles.","Identifier l’origine des technologies critiques ; prévoir une alternative."],
+    [6,"Changement de licence d’un projet à éditeur unique","Le principal contributeur change la licence du projet.","Terraform (2023), Redis (2024), Elasticsearch (2021).","Un projet ouvert dont un seul acteur détient les droits.","Préférer les projets portés par une fondation ; suivre les forks (OpenTofu, Valkey, OpenSearch)."],
+    [6,"Appauvrissement de l’édition communautaire","Des fonctions ou la distribution sont retirées de la version gratuite.","MinIO (console retirée, binaires arrêtés en 2025) ; Puppet (paquets en dépôt privé depuis 2025).","Des fonctions disparaissent de la version ouverte.","Surveiller la gouvernance ; identifier les forks (OpenVox) ; contribuer aux projets communautaires."]
+  ];
+
   var VUES={
     tendances:{
       intro:"Les tendances qui renforcent ou desserrent la dépendance des organisations à leurs fournisseurs numériques, et les leviers pour garder le choix, classés selon l’urgence pour un DSI.",
@@ -475,7 +675,60 @@ button,input{font:inherit;color:inherit}
       methode:[["Ce que mesure ce radar","La difficulté typique de sortie d’une technologie, selon cinq critères : formats et API, licence et contrat, concentration, maturité des alternatives, compétences nécessaires."],["Les anneaux","Difficile : des mois de préparation et peu d’alternatives directes. Exigeante : des alternatives existent, mais la migration est lourde. Maîtrisable : standards ou formats ouverts facilitent la sortie. Facilitée : technologie ouverte, plusieurs fournisseurs possibles."],["Les couleurs","Propriétaire, ouvert à éditeur unique, ou ouvert à gouvernance partagée. Un projet ouvert contrôlé par un seul éditeur peut changer de règles, comme Redis, Terraform, Puppet ou MinIO l’ont montré."],["Une lecture, pas un verdict","Le classement varie selon vos usages : une base propriétaire utilisée de façon standard se quitte plus facilement qu’une base ouverte truffée d’extensions spécifiques. À confirmer avec l’indice de réversibilité."]]
     }
   };
-  T.forEach(function(x,i){ x.id="t-"+String(i+1).padStart(2,"0"); x.n=i+1; x.type=x.k; });
+  VUES.mecanismes={intro:"La table de l’enfermement numérique : 26 mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et la parade.",
+    methode:[["Ce que recense cette vue","Les mécanismes d’enfermement observés dans les contrats, les licences, les offres commerciales, la technique, l’organisation, le droit et la gouvernance de l’open source."],["Comment l’utiliser","En mode atelier, chaque participant coche les mécanismes à l’œuvre chez son fournisseur le plus critique : la table affiche son profil d’enfermement et ses parades prioritaires. Chaque parade renvoie au levier correspondant du radar."],["Une liste vivante","Elle s’enrichit à chaque édition du radar, au fil des retours des DSI et de l’actualité des éditeurs."]]};
+  var CONTEXTE={
+    "Fin des licences perpétuelles":"Après le rachat de VMware par Broadcom, puis l’annonce de la fin de vie d’Atlassian Data Center, la licence que l’on possède devient l’exception : la plupart des éditeurs basculent vers l’abonnement.",
+    "IA intégrée d’office dans les suites":"Les grandes suites ont profité de l’arrivée de l’IA pour revoir leurs prix : Microsoft 365 a augmenté ses tarifs au 1er juillet 2026, Salesforce a refondu ses éditions en septembre 2026.",
+    "Hausses de prix soutenues":"Selon une étude d’Asterès pour le Cigref publiée en mai 2026, les DSI européens anticipent 12 % de hausse par an, et citent d’abord le verrouillage fournisseur pour l’expliquer.",
+    "Rachats et consolidation des éditeurs":"Les rachats se sont accélérés en 2025 et 2026 : HashiCorp et Confluent par IBM, Informatica, Fin et Braze par Salesforce, PTC par Schneider Electric.",
+    "Facturation de l’IA à l’usage":"Les éditeurs doivent rentabiliser des investissements massifs dans l’IA, et en répercutent le coût sur leurs clients, souvent sous forme de facturation à l’usage.",
+    "Virtualisation propriétaire":"Depuis le rachat de VMware par Broadcom fin 2023, les licences perpétuelles ont disparu, le catalogue a été réduit à quelques offres groupées, et les hausses atteignent souvent deux à trois fois le prix initial.",
+    "Concentration des régions cloud":"La panne d’AWS du 20 octobre 2025 a rappelé qu’une seule région cloud peut rendre indisponibles de très nombreux services dans le monde.",
+    "Changements de licence open source":"Entre 2023 et 2025, Terraform, Redis, Puppet et MinIO ont changé les règles du jeu, obligeant leurs utilisateurs à choisir entre payer, migrer ou suivre un fork.",
+    "Dépendance aux modèles d’IA propriétaires":"Les organisations industrialisent leurs premiers usages d’IA, souvent autour d’un seul fournisseur de modèles, au moment où les prix et les conditions évoluent très vite.",
+    "Plans de sortie testés (DORA)":"Applicable depuis le 17 janvier 2025, DORA a fait de la réversibilité une obligation réglementaire pour tout le secteur financier.",
+    "Plans de réduction des dépendances de l’État":"L’État a demandé à chaque ministère un plan de réduction des dépendances pour l’automne 2026, sur sept domaines prioritaires.",
+    "Loi Résilience (NIS 2)":"Le texte de transposition de NIS 2 a été adopté par le Sénat en mars 2025, mais son examen à l’Assemblée nationale a été reporté en octobre 2026, sans nouvelle date.",
+    "Coupures liées aux sanctions":"En 2025, le procureur de la Cour pénale internationale a perdu l’accès à sa messagerie après des sanctions américaines : un risque jusque-là théorique est devenu concret.",
+    "Alternatives de virtualisation matures":"Les pratiques commerciales de VMware ayant changé après son rachat par Broadcom, chercher des alternatives est devenu essentiel pour réduire la dépendance.",
+    "Clauses de réversibilité":"La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2026 des clauses types pour les contrats cloud, et Libralis propose des clauses standard que les fournisseurs s’engagent publiquement à signer.",
+    "Fin des frais de sortie cloud (Data Act)":"Le Data Act européen, applicable depuis septembre 2025, programme la suppression totale des frais de changement de fournisseur cloud au 12 janvier 2027.",
+    "Cloud européen qualifié":"La doctrine « cloud au centre » de l’État et les inquiétudes sur l’accès extraterritorial aux données font progresser les offres qualifiées SecNumCloud.",
+    "Couches d’abstraction":"Avec la multiplication des fournisseurs et des environnements, les équipes cherchent à rendre leurs applications indépendantes de l’infrastructure qui les porte.",
+    "Modèles d’IA à poids ouverts":"Des acteurs comme Mistral AI ou DeepSeek publient des modèles performants dont les poids sont accessibles, ce qui ouvre une alternative crédible aux modèles fermés.",
+    "Achats et investissements groupés":"Face aux mêmes fournisseurs, des organisations commencent à mutualiser leurs négociations, ou à financer ensemble l’émergence d’alternatives.",
+    "Partir des processus métier critiques":"Les inventaires exhaustifs s’enlisent faute de priorités : partir de l’activité permet de concentrer l’effort là où un arrêt coûterait le plus.",
+    "Mesurer la marge de manœuvre":"Beaucoup de DSI découvrent trop tard qu’il leur faudrait plus de temps pour partir qu’il n’en reste avant l’échéance : c’est ainsi que naissent les re-signatures sous contrainte.",
+    "Mode dégradé et continuité hors fournisseur":"Les pannes géantes de 2024 et 2025 ont montré que la continuité ne peut pas reposer entièrement sur le fournisseur dont on dépend.",
+    "Coût total de la dépendance":"Avec des hausses anticipées de 12 % par an, le coût d’une dépendance double en six ans : la facture de l’année ne suffit plus pour décider.",
+    "Pilote de sortie sur un périmètre réel":"DORA exige des plans de sortie testés, et les fournisseurs ne cèdent que face à une alternative prouvée : la preuve sur un périmètre réel répond aux deux.",
+    "Revue de réversibilité des nouveaux contrats":"Chaque nouveau service activé crée une dépendance supplémentaire : sans revue au moment de signer, le stock se reconstitue aussi vite qu’on le réduit.",
+    "Indice de réversibilité fondé sur la preuve":"DSI, achats, RSSI et direction parlent rarement de la dépendance avec les mêmes mots : un indice commun, fondé sur la preuve, leur donne un langage partagé.",
+    "Formats de données ouverts":"Les grands entrepôts de données adoptent progressivement des formats ouverts comme Apache Iceberg, ce qui permet enfin de changer d’outil sans déplacer les données.",
+    "Tests de bascule réguliers":"Les régulateurs commencent à inspecter les plans de sortie : un plan non exercé depuis longtemps ne convaincra ni un auditeur, ni une cellule de crise.",
+    "Compétences sur les alternatives":"Les compétences sur les alternatives restent rares, et ce sont souvent elles, plus que la technologie, qui freinent une sortie.",
+    "Support tiers pour gagner du temps":"À l’échéance, certaines organisations recourent à un support indépendant de l’éditeur pour gagner du temps pendant qu’elles construisent leur alternative.",
+    "Référentiel de réversibilité partagé":"Il n’existe pas encore de mesure commune de la réversibilité : chaque organisation, chaque appel d’offres et chaque fournisseur utilise ses propres critères.",
+    "Audits de licence comme levier commercial":"En 2025, Broadcom a adressé des mises en demeure aux clients VMware dont le support avait expiré : l’audit est devenu un outil commercial à part entière.",
+    "Changements de métrique de licence":"En avril 2025, Broadcom a annoncé un minimum de commande de 72 cœurs pour VMware ; depuis 2023, Java d’Oracle est facturé au nombre total de salariés de l’entreprise.",
+    "Engagements de consommation cloud":"Pour obtenir de meilleures remises, de nombreuses organisations s’engagent sur plusieurs années de consommation chez un même fournisseur de cloud.",
+    "Restrictions de licence selon l’hébergeur":"La plainte de CISPE contre Microsoft, réglée en 2024 par un accord, a mis en lumière l’impact des règles de licence sur le choix des hébergeurs.",
+    "Crédits gratuits et programmes d’adoption":"La course à l’IA s’accompagne de programmes de crédits généreux, qui incitent à construire vite sur des services propriétaires.",
+    "Services managés propriétaires":"La promesse du cloud est de ne plus gérer l’infrastructure, mais chaque service managé spécifique ajoute une dépendance difficile à remplacer.",
+    "L’annuaire, point central de dépendance":"Avec la généralisation du SaaS, l’annuaire est devenu la porte d’entrée unique du système d’information, et donc son point de dépendance le plus critique.",
+    "Gravité des données et frais de transfert":"Les volumes de données explosent avec l’IA, et les déplacer prend désormais plus de temps que de changer d’application.",
+    "Écosystème matériel de l’IA":"La demande en puces pour l’IA dépasse l’offre, et un fabricant domine à la fois le matériel et l’environnement logiciel associé.",
+    "Accès extraterritorial aux données":"Les tensions géopolitiques et l’affaire de la CPI ont remis au premier plan l’accès des autorités étrangères aux données hébergées par des fournisseurs américains.",
+    "Contrôles des plans de sortie par les régulateurs":"En 2025, les établissements financiers ont transmis pour la première fois leurs registres de prestataires aux autorités : la phase de contrôle commence.",
+    "Règlement européen sur l’IA":"Les premières obligations de l’AI Act s’appliquent depuis 2025, et les organisations découvrent qu’une partie de leur conformité dépend de leur fournisseur de modèles.",
+    "Contrôles à l’exportation des technologies d’IA":"Les États-Unis ajustent régulièrement leurs règles d’exportation sur les puces et les technologies d’IA, avec des effets parfois immédiats sur l’accès aux services.",
+    "Gestion des actifs logiciels":"La multiplication des audits et des changements de métrique rend indispensable une connaissance précise de ce que l’on possède et de ce que l’on utilise.",
+    "Clauses d’audit encadrées":"Les audits déclenchés à l’approche des renouvellements se multiplient : les encadrer dans le contrat évite qu’ils deviennent un moyen de pression.",
+    "Cartographie et classification des données":"Avec le Data Act, l’AI Act et les enjeux d’extraterritorialité, savoir précisément où sont ses données est devenu un prérequis.",
+    "Chiffrement avec clés maîtrisées":"Les inquiétudes sur l’accès extraterritorial aux données poussent les organisations à garder la maîtrise de leurs clés de chiffrement."
+  };
+  T.forEach(function(x,i){ x.id="t-"+String(i+1).padStart(2,"0"); x.n=i+1; x.type=x.k; x.contexte=CONTEXTE[x.t]||""; });
   var TECH=X.map(function(r,i){ return {id:"x-"+String(i+1).padStart(3,"0"), n:i+1, q:r[0], a:r[1], type:r[2], t:r[3], ed:r[4], note:r[5], alt:r[6]}; });
   var DONNEES={tendances:T, technologies:TECH};
   var vue="tendances", fAnneau="tous", fType="tous", q="", sel=null;
@@ -517,18 +770,14 @@ button,input{font:inherit;color:inherit}
   function dessiner(){
     var V=VUES[vue], items=DONNEES[vue], box=document.getElementById("radar"); box.textContent="";
     var g=s("svg",{viewBox:"0 0 760 760",role:"img","aria-label":"Radar : "+items.length+" éléments répartis en quatre quadrants et quatre anneaux"});
-    // fonds des quadrants
-    QANG.forEach(function(qa,i){
-      var x0=C+R[4]*Math.cos(qa[0]), y0=C+R[4]*Math.sin(qa[0]), x1=C+R[4]*Math.cos(qa[1]), y1=C+R[4]*Math.sin(qa[1]);
-      var p=s("path",{d:"M"+C+" "+C+" L"+x0+" "+y0+" A"+R[4]+" "+R[4]+" 0 0 1 "+x1+" "+y1+" Z","fill-opacity":"0.045"}); p.style.fill="var(--q"+i+")"; g.appendChild(p);
-    });
-    [4,3,2,1].forEach(function(i){ var c=s("circle",{cx:C,cy:C,r:R[i],fill:"none","stroke-width":i===4?"1.5":"1.2","stroke-dasharray":i===4?"":"3 5"}); c.style.stroke="var(--line-2)"; g.appendChild(c); });
+    // anneaux en couleurs pastel, du plus large au plus petit
+    [4,3,2,1].forEach(function(i){ var c=s("circle",{cx:C,cy:C,r:R[i],"stroke-width":i===4?"1.5":"1"}); c.style.fill="var(--a"+(i-1)+")"; c.style.stroke=i===4?"var(--line-2)":"var(--surface)"; g.appendChild(c); });
     [[C-R[4],C,C+R[4],C],[C,C-R[4],C,C+R[4]]].forEach(function(l){ var e=s("line",{x1:l[0],y1:l[1],x2:l[2],y2:l[3],"stroke-width":"1.5"}); e.style.stroke="var(--line-2)"; g.appendChild(e); });
     // libellés des anneaux, des deux côtés
     [-1,1].forEach(function(sens){
       V.courts.forEach(function(n,i){
         var mx=C+sens*(R[i]+R[i+1])/2, w=n.length*6+16;
-        var bg=s("rect",{x:mx-w/2,y:C-10,width:w,height:20,rx:10,"stroke-width":"1"}); bg.style.fill="var(--surface)"; bg.style.stroke="var(--line)"; g.appendChild(bg);
+        var bg=s("rect",{x:mx-w/2,y:C-10,width:w,height:20,rx:10,"stroke-width":"1"}); bg.style.fill="var(--surface)"; bg.style.stroke="var(--a"+i+"t)"; bg.setAttribute("stroke-opacity","0.45"); g.appendChild(bg);
         var t=s("text",{x:mx,y:C+4,"text-anchor":"middle","font-size":"10.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},n); t.style.fill="var(--text-3)"; g.appendChild(t);
       });
     });
@@ -566,7 +815,7 @@ button,input{font:inherit;color:inherit}
   }
   function legende(){ var z=document.getElementById("legende"); z.textContent=""; VUES[vue].types.forEach(function(t){ var i=el("i"); i.style.background=couleur(t[0])[0]; z.appendChild(el("span",null,[i,t[1]])); }); }
   function stats(){ var z=document.getElementById("stats"); z.textContent="";
-    [[T.length,"tendances et leviers"],[TECH.length,"technologies"],["4","quadrants"]].forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
+    [[T.length,"tendances et leviers"],[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]].forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
   function fiche(){
     var f=document.getElementById("fiche"), V=VUES[vue]; f.textContent="";
     var x=DONNEES[vue].find(function(y){ return y.id===sel; });
@@ -579,8 +828,9 @@ button,input{font:inherit;color:inherit}
     corps.appendChild(el("h2",{text:x.t}));
     if(x.ed) corps.appendChild(el("p",{class:"editeur",text:x.ed}));
     var barres=el("div",{class:"jauge-barres"}), libs=el("div",{class:"jauge-libs"});
-    V.courts.forEach(function(n,i){ barres.appendChild(el("span",{class:i===x.a?"on":""})); libs.appendChild(i===x.a?el("b",{text:n}):el("span",{text:n})); });
+    V.courts.forEach(function(n,i){ var sp=el("span"); sp.style.background=i===x.a?"var(--a"+i+"t)":"var(--a"+i+")"; barres.appendChild(sp); var lb=i===x.a?el("b",{text:n}):el("span",{text:n}); if(i===x.a) lb.style.color="var(--a"+i+"t)"; libs.appendChild(lb); });
     corps.appendChild(el("div",{class:"jauge","aria-label":"Anneau : "+V.anneaux[x.a]},[barres,libs]));
+    if(x.contexte){ var cx=el("div",{class:"contexte"},[el("h3",{text:"Contexte"}), el("p",{text:x.contexte})]); cx.style.setProperty("--ctx",col[0]); corps.appendChild(cx); }
     if(vue==="technologies"){
       corps.appendChild(el("div",null,[el("h3",{text:"Ce qui crée la dépendance"}), el("p",{text:x.note})]));
       corps.appendChild(el("div",null,[el("h3",{text:"Alternatives à évaluer"}), el("div",{class:"alts"},x.alt.split(", ").map(function(a){ return el("span",{text:a}); }))]));
@@ -588,26 +838,31 @@ button,input{font:inherit;color:inherit}
     } else {
       corps.appendChild(el("div",null,[el("h3",{text:"Ce qui se passe"}), el("p",{text:x.quoi})]));
       corps.appendChild(el("div",null,[el("h3",{text:"Pourquoi cela compte"}), el("p",{text:x.pourquoi})]));
-      corps.appendChild(el("div",null,[el("h3",{text:"Ce qu’un DSI peut faire"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); }))]));
+      corps.appendChild(el("div",null,[el("h3",{text:"Que faire ?"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); }))]));
       corps.appendChild(el("div",null,[el("h3",{text:"Sources"}), el("ul",null,x.src.map(function(s2){ return el("li",null,[ s2[1]?el("a",{href:s2[1],target:"_blank",rel:"noopener",text:s2[0]}):s2[0] ]); }))]));
     }
     f.appendChild(corps);
   }
+  var LIMITE=8, ouverts={};
   function listes(){
     var z=document.getElementById("listes"), V=VUES[vue]; z.textContent=""; var total=0;
     V.quadrants.forEach(function(qd,qi){
       var p=el("section",{class:"panneau quadrant","aria-label":qd.t}); p.style.setProperty("--qc","var(--q"+qi+")");
-      var nbq=DONNEES[vue].filter(function(x){ return x.q===qi && visible(x); }).length; total+=nbq;
+      var tous=[]; V.anneaux.forEach(function(an,ai){ DONNEES[vue].filter(function(x){ return x.q===qi && x.a===ai && visible(x); }).sort(function(a,b){ return a.t.localeCompare(b.t,"fr"); }).forEach(function(x){ tous.push(x); }); });
+      var nbq=tous.length; total+=nbq;
       p.appendChild(el("h2",null,[qd.t, el("small",{text:String(nbq)})])); p.appendChild(el("p",{class:"desc",text:qd.d}));
-      V.anneaux.forEach(function(an,ai){
-        var items=DONNEES[vue].filter(function(x){ return x.q===qi && x.a===ai && visible(x); }).sort(function(a,b){ return a.t.localeCompare(b.t,"fr"); });
-        if(!items.length) return;
-        p.appendChild(el("p",{class:"groupe",text:an}));
-        items.forEach(function(x){
-          var col=couleur(x.type), num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
-          p.appendChild(el("button",{type:"button",class:"item","aria-current":String(sel===x.id),onclick:function(){ choisir(x.id,true); }},[num, el("span",null,[el("strong",{text:x.t}), x.ed?el("small",{text:x.ed}):null])]));
-        });
+      var cle=vue+"-"+qi, idxSel=tous.findIndex(function(x){ return x.id===sel; });
+      if(idxSel>=LIMITE) ouverts[cle]=true;
+      var ouvert=!!ouverts[cle], montres=ouvert?tous:tous.slice(0,LIMITE), dernierAnneau=-1;
+      montres.forEach(function(x){
+        if(x.a!==dernierAnneau){ dernierAnneau=x.a; var gp=el("p",{class:"groupe",text:V.anneaux[x.a]}); gp.style.background="var(--a"+x.a+")"; gp.style.color="var(--a"+x.a+"t)"; p.appendChild(gp); }
+        var col=couleur(x.type), num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
+        p.appendChild(el("button",{type:"button",class:"item","aria-current":String(sel===x.id),onclick:function(){ choisir(x.id,true); }},[num, el("span",null,[el("strong",{text:x.t}), x.ed?el("small",{text:x.ed}):null])]));
       });
+      if(nbq>LIMITE){
+        var reste=nbq-LIMITE;
+        p.appendChild(el("button",{type:"button",class:"plus","aria-expanded":String(ouvert),onclick:function(){ ouverts[cle]=!ouvert; listes(); }, text: ouvert ? "Réduire la liste" : "Afficher les "+reste+" autres"}));
+      }
       if(!nbq) p.appendChild(el("p",{class:"desc",text:"Aucun élément ne correspond aux filtres."}));
       z.appendChild(p);
     });
@@ -617,7 +872,8 @@ button,input{font:inherit;color:inherit}
     var V=VUES[vue], fa=document.getElementById("f-anneaux"), ft=document.getElementById("f-types");
     fa.textContent=""; ft.textContent="";
     [["tous","Tous"]].concat(V.courts.map(function(a,i){ return [String(i),a]; })).forEach(function(c){
-      fa.appendChild(el("button",{type:"button","aria-pressed":String(fAnneau===c[0]),onclick:function(){ fAnneau=c[0]; filtres(); dessiner(); listes(); }, text:c[1]}));
+      var pt=null; if(c[0]!=="tous"){ pt=el("span",{class:"pastille-anneau","aria-hidden":"true"}); pt.style.background="var(--a"+c[0]+"t)"; }
+      fa.appendChild(el("button",{type:"button","aria-pressed":String(fAnneau===c[0]),onclick:function(){ fAnneau=c[0]; filtres(); dessiner(); listes(); }},[pt, c[1]]));
     });
     [["tous","Tous"]].concat(V.types.map(function(t){ return [t[0], t[0]==="e"?"Éditeur unique":t[0]==="o"?"Gouvernance partagée":t[1].split(" qui ")[0].replace("Tendance","Tendances").replace("Levier de liberté","Leviers")]; })).forEach(function(c){
       ft.appendChild(el("button",{type:"button","aria-pressed":String(fType===c[0]),onclick:function(){ fType=c[0]; filtres(); dessiner(); listes(); }, text:c[1]}));
@@ -625,9 +881,95 @@ button,input{font:inherit;color:inherit}
   }
   function methode(){ var z=document.getElementById("methode"); z.textContent=""; VUES[vue].methode.forEach(function(m){ z.appendChild(el("div",null,[el("h3",{text:m[0]}), el("p",{text:m[1]})])); }); }
   var deja={};
+  var META=[["Rt", 0, "Clauses de réversibilité", "Reconduction tacite"], ["Pr", 3, "Clauses de réversibilité", "Pénalités de sortie"], ["Cr", 3, "Clauses de réversibilité", "Clauses floues"], ["Hu", 2, "Coût total de la dépendance", "Hausses unilatérales"], ["Mé", 2, "Gestion des actifs logiciels", "Changement de métrique"], ["Pe", 2, "Mesurer la marge de manœuvre", "Fin des perpétuelles"], ["Ai", 1, "Gestion des actifs logiciels", "Accès indirect"], ["Rh", 0, "Revue de réversibilité des nouveaux contrats", "Restrictions d’hébergeur"], ["Au", 2, "Clauses d’audit encadrées", "Audits"], ["Og", 2, "Coût total de la dépendance", "Offres groupées"], ["Rc", 0, "Revue de réversibilité des nouveaux contrats", "Remises conditionnelles"], ["Ce", 0, "Revue de réversibilité des nouveaux contrats", "Entrée gratuite"], ["Fp", 1, "Formats de données ouverts", "Formats propriétaires"], ["Sm", 1, "Couches d’abstraction", "Services managés"], ["Gd", 3, "Cartographie et classification des données", "Gravité des données"], ["Lp", 3, "Couches d’abstraction", "Langages propriétaires"], ["Ie", 3, "Mode dégradé et continuité hors fournisseur", "Intégrations imposées"], ["Mf", 1, "Coût total de la dépendance", "Mises à jour forcées"], ["Cs", 1, "Compétences sur les alternatives", "Compétences rares"], ["Pa", 0, "Indice de réversibilité fondé sur la preuve", "Partenaires liés"], ["Pm", 1, "Partir des processus métier critiques", "Processus dans l’outil"], ["Dj", 0, "Clauses de réversibilité", "Droit étranger"], ["Ex", 1, "Chiffrement avec clés maîtrisées", "Extraterritorialité"], ["Co", 1, "Mode dégradé et continuité hors fournisseur", "Contrôles à l’export"], ["Lc", 1, "Couches d’abstraction", "Changement de licence"], ["Ap", 1, "Compétences sur les alternatives", "Édition gratuite appauvrie"]];
+  var COUCHES=[5,0,1,2,4,3,6], COUCHE_LIB={5:"Juridique et géopolitique",0:"Contrat",1:"Licences",2:"Commercial",4:"Organisation",3:"Technique",6:"Open source"};
+  var MOMENTS=["À la signature","Pendant l’usage","Au renouvellement","Au moment de partir"];
+  var mSel=0, atelier=false, coches={};
+  function ouvrirMeca(k){
+    var d=document.getElementById("meca-dialog"); d.textContent="";
+    var me=MECA[k], fi=me[0], meta=META[k];
+    var gros=el("div",{class:"tuile tuile-grande"},[el("span",{class:"tuile-num",text:String(k+1)}), el("span",{class:"tuile-sym",text:meta[0]}), el("span",{class:"tuile-nom",text:COUCHE_LIB[fi]})]);
+    gros.style.background="var(--fam"+fi+")"; gros.style.color="var(--fam"+fi+"t)";
+    d.appendChild(el("div",{class:"tp-fiche-tete"},[gros, el("div",null,[el("h2",{id:"meca-titre",text:me[1]}), el("p",{class:"tp-quand",text:COUCHE_LIB[fi]+" · "+MOMENTS[meta[1]]})])]));
+    d.appendChild(el("dl",{class:"tp-dl"},[
+      el("dt",{text:"Comment cela fonctionne"}), el("dd",{text:me[2]}),
+      el("dt",{text:"Exemple"}), el("dd",{text:me[3]}),
+      el("dt",{text:"Le signal d’alerte"}), el("dd",{text:me[4]}),
+      el("dt",{text:"La parade"}), el("dd",{class:"parade",text:me[5]})
+    ]));
+    var pied=el("div",{class:"tp-dialog-pied"});
+    var lev=T.find(function(x){ return x.t===meta[2]; });
+    if(lev) pied.appendChild(el("a",{class:"tp-lien",href:"#"+lev.id,onclick:function(){ d.close(); },text:"Voir le levier « "+lev.t+" » dans le radar →"}));
+    pied.appendChild(el("button",{type:"button",class:"plus",onclick:function(){ d.close(); },text:"Fermer"}));
+    d.appendChild(pied);
+    if(typeof d.showModal==="function") d.showModal(); else d.setAttribute("open","");
+  }
+  function rendreMeca(){
+    var z=document.getElementById("vue-meca"); z.textContent="";
+    z.appendChild(el("div",{class:"tp-tete"},[
+      el("p",{class:"tp-lecture"},[el("strong",{text:"Comment lire la table : "}),"chaque ligne est une couche, de la plus externe à la plus profonde ; chaque colonne indique le moment où le mécanisme agit. Les pièges se posent à la signature et pendant l’usage, mais ne se révèlent qu’au renouvellement et au moment de partir. Cliquez sur une case pour lire sa fiche."]),
+      el("button",{type:"button",class:"tp-atelier","aria-pressed":String(atelier),onclick:function(){ atelier=!atelier; rendreMeca(); }, text: atelier?"Quitter le mode atelier":"Mode atelier : cochez vos mécanismes"})
+    ]));
+    var defil=el("div",{class:"panneau tp-defil"});
+    var grille=el("div",{class:"tp","aria-label":"Table des mécanismes d’enfermement"});
+    var tuiles=[];
+    function pale(fn){ tuiles.forEach(function(t){ t.el.classList.toggle("pale", fn?!fn(t):false); }); }
+    grille.appendChild(el("div",{class:"tp-coin"}));
+    MOMENTS.forEach(function(m,mi){ var h=el("div",{class:"tp-moment",text:m}); h.addEventListener("mouseenter",function(){ pale(function(t){ return t.m===mi; }); }); h.addEventListener("mouseleave",function(){ pale(null); }); grille.appendChild(h); });
+    COUCHES.forEach(function(fi){
+      var lab=el("div",{class:"tp-couche"},[el("span",{text:COUCHE_LIB[fi]})]); lab.style.background="var(--fam"+fi+")"; lab.style.color="var(--fam"+fi+"t)";
+      lab.addEventListener("mouseenter",function(){ pale(function(t){ return t.f===fi; }); }); lab.addEventListener("mouseleave",function(){ pale(null); });
+      grille.appendChild(lab);
+      MOMENTS.forEach(function(m,mi){
+        var cell=el("div",{class:"tp-cellule"});
+        MECA.forEach(function(me,k){
+          if(me[0]!==fi || META[k][1]!==mi) return;
+          var coche=!!coches[k];
+          var b=el("button",{type:"button",class:"tuile"+(atelier&&coche?" cochee":""),"aria-pressed":atelier?String(coche):null,"aria-haspopup":atelier?null:"dialog","aria-label":me[1]+", "+COUCHE_LIB[fi]+", "+m.toLowerCase(),onclick:function(){ if(atelier){ coches[k]=!coches[k]; rendreMeca(); } else { ouvrirMeca(k); } }},[
+            el("span",{class:"tuile-num",text:String(k+1)}),
+            el("span",{class:"tuile-sym",text:META[k][0]}),
+            el("span",{class:"tuile-nom",text:META[k][3]}),
+            atelier&&coche?el("span",{class:"tuile-check","aria-hidden":"true",text:"✓"}):null
+          ]);
+          if(!atelier) b.removeAttribute("aria-pressed"); else b.removeAttribute("aria-haspopup");
+          b.style.background="var(--fam"+fi+")"; b.style.color="var(--fam"+fi+"t)";
+          tuiles.push({el:b,f:fi,m:mi}); cell.appendChild(b);
+        });
+        grille.appendChild(cell);
+      });
+    });
+    defil.appendChild(grille); z.appendChild(defil);
+    if(atelier){
+      var prof=el("section",{class:"panneau tp-profil","aria-live":"polite","aria-label":"Votre profil d’enfermement"});
+      var ks=Object.keys(coches).filter(function(k){ return coches[k]; }).map(Number);
+      var gauche=el("div",{class:"tp-profil-col"},[el("h2",{text:"Votre profil d’enfermement"})]);
+      var droite=el("div",{class:"tp-profil-col"});
+      if(!ks.length){ gauche.appendChild(el("p",{class:"tp-aide",text:"Pensez à votre fournisseur le plus critique, puis cochez dans la table chaque mécanisme que vous reconnaissez chez lui."})); }
+      else {
+        var couches={}; ks.forEach(function(k){ couches[MECA[k][0]]=1; });
+        gauche.appendChild(el("div",{class:"tp-chiffres"},[
+          el("div",null,[el("strong",{text:String(ks.length)}), el("span",{text:"mécanismes cochés"})]),
+          el("div",null,[el("strong",{text:Object.keys(couches).length+" / 7"}), el("span",{text:"couches touchées"})])
+        ]));
+        var max=Math.max.apply(null,MOMENTS.map(function(_,mi){ return ks.filter(function(k){ return META[k][1]===mi; }).length; }))||1;
+        var barres=el("div",{class:"tp-barres"});
+        MOMENTS.forEach(function(m,mi){ var n=ks.filter(function(k){ return META[k][1]===mi; }).length; var b=el("span",{class:"tp-barre-remplie"}); b.style.width=(n/max*100)+"%"; barres.appendChild(el("div",{class:"tp-barre"},[el("span",{class:"tp-barre-lib",text:m}), el("span",{class:"tp-barre-fond"},[b]), el("span",{class:"tp-barre-n",text:String(n)})])); });
+        gauche.appendChild(barres);
+        gauche.appendChild(el("button",{type:"button",class:"plus",onclick:function(){ coches={}; rendreMeca(); },text:"Réinitialiser"}));
+        droite.appendChild(el("h3",{text:"Vos parades prioritaires"}));
+        var tri=ks.slice().sort(function(a,b){ return COUCHES.indexOf(MECA[a][0])-COUCHES.indexOf(MECA[b][0]); });
+        droite.appendChild(el("ul",{class:"tp-parades"},tri.map(function(k){ return el("li",null,[el("strong",{text:META[k][0]+" · "+MECA[k][1]+" : "}), MECA[k][5]]); })));
+        droite.appendChild(el("p",{class:"tp-aide",text:"Prochaine étape : mesurez l’indice de réversibilité de ce fournisseur pour chiffrer votre marge de manœuvre."}));
+      }
+      prof.appendChild(gauche); prof.appendChild(droite); z.appendChild(prof);
+    }
+  }
   function changerVue(v,garderSel){
+    var estMeca=v==="mecanismes";
+    ["tendances","technologies","mecanismes"].forEach(function(n){ var b=document.getElementById("v-"+n); b.setAttribute("aria-selected",String(n===v)); b.tabIndex=n===v?0:-1; });
+    document.querySelector(".zone-radar").hidden=estMeca; document.querySelector(".barre").hidden=estMeca; document.getElementById("listes").hidden=estMeca; document.getElementById("vue-meca").hidden=!estMeca;
+    if(estMeca){ vue=v; document.getElementById("intro").textContent=VUES.mecanismes.intro; rendreMeca(); methode(); return; }
     vue=v; fAnneau="tous"; fType="tous"; q=""; var inp=document.getElementById("recherche"); inp.value=""; inp.placeholder=VUES[v].recherche;
-    ["tendances","technologies"].forEach(function(n){ var b=document.getElementById("v-"+n); b.setAttribute("aria-selected",String(n===v)); b.tabIndex=n===v?0:-1; });
     document.getElementById("intro").textContent=VUES[v].intro;
     if(!deja[v]){ placer(DONNEES[v], rb()); deja[v]=true; }
     if(!garderSel) sel=DONNEES[v][0].id;
@@ -640,11 +982,13 @@ button,input{font:inherit;color:inherit}
   }
   document.getElementById("v-tendances").addEventListener("click",function(){ changerVue("tendances"); try{ history.replaceState(null,"","#tendances"); }catch(e){} });
   document.getElementById("v-technologies").addEventListener("click",function(){ changerVue("technologies"); try{ history.replaceState(null,"","#technologies"); }catch(e){} });
-  document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var n=vue==="tendances"?"technologies":"tendances"; changerVue(n); document.getElementById("v-"+n).focus(); } });
+  document.getElementById("v-mecanismes").addEventListener("click",function(){ changerVue("mecanismes"); try{ history.replaceState(null,"","#mecanismes"); }catch(e){} });
+  var ORDRE=["tendances","technologies","mecanismes"];
+  document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var i=ORDRE.indexOf(vue), n=ORDRE[(i+(e.key==="ArrowRight"?1:2))%3]; changerVue(n); document.getElementById("v-"+n).focus(); } });
   document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); dessiner(); listes(); });
   function depuisHash(){
     var h=location.hash.replace("#","");
-    if(h==="technologies"||h==="tendances"){ if(vue!==h) changerVue(h); return; }
+    if(h==="technologies"||h==="tendances"||h==="mecanismes"){ if(vue!==h) changerVue(h); return; }
     if(/^t-\d\d$/.test(h)){ if(vue!=="tendances") changerVue("tendances",true); if(T.some(function(x){return x.id===h;})) choisir(h,false); }
     else if(/^x-\d\d\d$/.test(h)){ if(vue!=="technologies") changerVue("technologies",true); if(TECH.some(function(x){return x.id===h;})) choisir(h,false); }
   }
