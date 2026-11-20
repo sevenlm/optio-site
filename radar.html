@@ -286,11 +286,11 @@ button,input{font:inherit;color:inherit}
   }
   function preparer(tendances, technologies, mecanismes){
     var A=[0,1,2,3], Q=function(v){ return VUES[v].quadrants.map(function(_,i){ return i; }); };
-    verifier(tendances,"tendances",[["titre","texte"],["quadrant",Q("tendances")],["anneau",A],["type",["risque","levier"]],["quoi","texte"],["pourquoi","texte"]]);
+    verifier(tendances,"tendances",[["titre","texte"],["quadrant",Q("tendances")],["anneau",A],["type",["risque","levier"]],["tendance","texte"],["risque","texte"]]);
     verifier(technologies,"technologies",[["nom","texte"],["quadrant",Q("technologies")],["anneau",A],["type",["p","e","o"]],["dependance","texte"]]);
     verifier(mecanismes,"mecanismes",[["nom","texte"],["court","texte"],["symbole","texte"],["couche",[0,1,2,3,4,5,6]],["moment",[0,1,2,3]],["fonctionnement","texte"],["parade","texte"]]);
-    T=tendances.map(function(x,i){ return {id:"t-"+String(i+1).padStart(2,"0"), n:i+1, q:x.quadrant, a:x.anneau, k:x.type, type:x.type, t:x.titre, contexte:x.contexte||"",
-      quoi:x.quoi, pourquoi:x.pourquoi, faire:x.faire||[], src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
+    T=tendances.map(function(x,i){ return {id:"t-"+String(i+1).padStart(2,"0"), n:i+1, q:x.quadrant, a:x.anneau, k:x.type, type:x.type, t:x.titre, contexte:x.declencheur||"",
+      quoi:x.tendance, pourquoi:x.risque, faire:x.mitigations||[], src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
     TECH=technologies.map(function(x,i){ return {id:"x-"+String(i+1).padStart(3,"0"), n:i+1, q:x.quadrant, a:x.anneau, type:x.type, t:x.nom, ed:x.editeur||"", note:x.dependance, alt:(x.alternatives||[]).join(", ")}; });
     MECA=mecanismes.map(function(m){ return [m.couche, m.nom, m.fonctionnement, m.exemple||"", m.signal||"", m.parade]; });
     META=mecanismes.map(function(m){ return [m.symbole, m.moment, m.levier||"", m.court]; });
@@ -430,15 +430,15 @@ button,input{font:inherit;color:inherit}
     var barres=el("div",{class:"jauge-barres"}), libs=el("div",{class:"jauge-libs"});
     V.courts.forEach(function(n,i){ var sp=el("span"); sp.style.background=i===x.a?"var(--a"+i+"t)":"var(--a"+i+")"; barres.appendChild(sp); var lb=i===x.a?el("b",{text:n}):el("span",{text:n}); if(i===x.a) lb.style.color="var(--a"+i+"t)"; libs.appendChild(lb); });
     corps.appendChild(el("div",{class:"jauge","aria-label":"Anneau : "+V.anneaux[x.a]},[barres,libs]));
-    if(x.contexte){ var cx=el("div",{class:"contexte"},[el("h3",{text:"Contexte"}), el("p",{text:x.contexte})]); cx.style.setProperty("--ctx",col[0]); corps.appendChild(cx); }
+    if(x.contexte){ var cx=el("div",{class:"contexte"},[el("h3",{text:"Fait déclencheur"}), el("p",{text:x.contexte})]); cx.style.setProperty("--ctx",col[0]); corps.appendChild(cx); }
     if(vue==="technologies"){
       corps.appendChild(el("div",null,[el("h3",{text:"Ce qui crée la dépendance"}), el("p",{text:x.note})]));
       corps.appendChild(el("div",null,[el("h3",{text:"Alternatives à évaluer"}), el("div",{class:"alts"},x.alt.split(", ").map(function(a){ return el("span",{text:a}); }))]));
       corps.appendChild(el("p",{class:"note",text:"Évaluation indicative, à confirmer sur vos usages réels avec l’indice de réversibilité."}));
     } else {
-      corps.appendChild(el("div",null,[el("h3",{text:"Ce qui se passe"}), el("p",{text:x.quoi})]));
-      corps.appendChild(el("div",null,[el("h3",{text:"Pourquoi cela compte"}), el("p",{text:x.pourquoi})]));
-      corps.appendChild(el("div",null,[el("h3",{text:"Que faire ?"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); }))]));
+      corps.appendChild(el("div",null,[el("h3",{text:"La tendance"}), el("p",{text:x.quoi})]));
+      corps.appendChild(el("div",null,[el("h3",{text:"Le risque concret"}), el("p",{text:x.pourquoi})]));
+      corps.appendChild(el("div",null,[el("h3",{text:"Pistes de mitigation"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); }))]));
       corps.appendChild(el("div",null,[el("h3",{text:"Sources"}), el("ul",null,x.src.map(function(s2){ return el("li",null,[ s2[1]?el("a",{href:s2[1],target:"_blank",rel:"noopener",text:s2[0]}):s2[0] ]); }))]));
     }
     f.appendChild(corps);

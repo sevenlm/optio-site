@@ -27,10 +27,10 @@ indique le fichier, l'entrée et le champ en cause.
   "quadrant": 0,
   "anneau": 0,
   "type": "risque",
-  "contexte": "Texte du bloc « Contexte » (facultatif).",
-  "quoi": "Ce qui se passe.",
-  "pourquoi": "Pourquoi cela compte.",
-  "faire": ["Action 1", "Action 2"],
+  "declencheur": "Fait déclencheur : l’événement daté qui rend la tendance actuelle (facultatif, affiché en encadré).",
+  "tendance": "La tendance : les faits chiffrés et datés.",
+  "risque": "Le risque concret pour l’organisation.",
+  "mitigations": ["Piste de mitigation 1", "Piste de mitigation 2"],
   "sources": [{ "titre": "Nom de la source", "url": "https://…" }]
 }
 ```
@@ -40,7 +40,7 @@ indique le fichier, l'entrée et le champ en cause.
 - `anneau` (urgence) : 0 Fort · 1 Élevé · 2 Moyen · 3 Faible
 - `type` : `risque` (tendance qui renforce la dépendance) ou `levier` (levier de liberté).
   Le filtre « Type » et la légende n'affichent que les types présents dans le fichier.
-- `sources[].url` peut valoir `null` pour une source sans lien (ex. « Observation Optio »).
+- `sources[].url` : lien vers la source, **obligatoire** pour chaque source affichée.
 
 ## leviers.json (mis de côté)
 
