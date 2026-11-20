@@ -37,7 +37,7 @@ indique le fichier, l'entrée et le champ en cause.
 
 - `quadrant` (l'axe) : 0 Juridique · 1 Financier · 2 Humain · 3 Réglementaire ·
   4 Pratiques technologiques
-- `anneau` : 0 Agir maintenant · 1 Préparer · 2 Surveiller · 3 Signal faible
+- `anneau` (urgence) : 0 Fort · 1 Élevé · 2 Moyen · 3 Faible
 - `type` : `risque` (tendance qui renforce la dépendance) ou `levier` (levier de liberté).
   Le filtre « Type » et la légende n'affichent que les types présents dans le fichier.
 - `sources[].url` peut valoir `null` pour une source sans lien (ex. « Observation Optio »).

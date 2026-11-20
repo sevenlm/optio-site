@@ -229,7 +229,7 @@ button,input{font:inherit;color:inherit}
 
 <div class="barre">
 <div class="groupe-filtres">
-<div><span class="seg-lib">Anneau</span><span class="seg" role="group" aria-label="Filtrer par anneau" id="f-anneaux"></span></div>
+<div><span class="seg-lib" id="lib-anneaux">Anneau</span><span class="seg" role="group" aria-label="Filtrer par anneau" id="f-anneaux"></span></div>
 <div id="bloc-types"><span class="seg-lib">Type</span><span class="seg" role="group" aria-label="Filtrer par type" id="f-types"></span></div>
 </div>
 <div class="groupe-filtres">
@@ -260,10 +260,10 @@ button,input{font:inherit;color:inherit}
     tendances:{
       intro:"Les tendances qui renforcent la dépendance des organisations à leurs fournisseurs numériques, rangées selon cinq axes et classées selon l’urgence pour un DSI.",
       quadrants:[{t:"Juridique",d:"Ce que les contrats, les licences et le droit applicable vous permettent, ou vous interdisent."},{t:"Financier",d:"Comment les éditeurs facturent, et ce que la dépendance vous coûte."},{t:"Humain",d:"Les compétences, l’organisation et les partenaires dont dépend votre capacité à changer."},{t:"Réglementaire",d:"Ce que les régulateurs et les États exigent ou imposent."},{t:"Pratiques technologiques",d:"Les choix techniques qui rendent un fournisseur difficile à remplacer."}],
-      anneaux:["Agir maintenant","Préparer","Surveiller","Signal faible"], courts:["Agir","Préparer","Surveiller","Signal faible"],
+      anneaux:["Urgence forte","Urgence élevée","Urgence moyenne","Urgence faible"], courts:["Fort","Élevé","Moyen","Faible"], libAnneau:"Urgence",
       types:[["risque","Tendance qui renforce la dépendance"],["levier","Levier de liberté"]],
       recherche:"Rechercher une tendance…",
-      methode:[["Ce que mesure le radar","Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Des faits sourcés, pas une note des fournisseurs."],["Les anneaux","Agir maintenant : effet dans les 12 mois. Préparer : 12 à 24 mois. Surveiller : la tendance se confirme. Signal faible : à garder à l’œil."],["Les axes","Juridique, financier, humain, réglementaire et pratiques technologiques : chaque tendance est rangée selon la nature de la dépendance qu’elle crée."],["Les sources et le rythme","Études publiques, textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Une édition par semestre."]]
+      methode:[["Ce que mesure le radar","Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Des faits sourcés, pas une note des fournisseurs."],["Les anneaux","L’urgence pour un DSI, de forte au centre à faible au bord. Forte : effet dans les 12 mois. Élevée : 12 à 24 mois. Moyenne : la tendance se confirme. Faible : signal à garder à l’œil."],["Les axes","Juridique, financier, humain, réglementaire et pratiques technologiques : chaque tendance est rangée selon la nature de la dépendance qu’elle crée."],["Les sources et le rythme","Études publiques, textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Une édition par semestre."]]
     },
     technologies:{
       intro:"Plus de cent technologies d’éditeurs et projets ouverts, de l’infrastructure aux services d’exploitation, classées selon la difficulté typique d’une sortie. Au centre, les plus difficiles à quitter.",
@@ -470,6 +470,7 @@ button,input{font:inherit;color:inherit}
   }
   function filtres(){
     var V=VUES[vue], fa=document.getElementById("f-anneaux"), ft=document.getElementById("f-types");
+    document.getElementById("lib-anneaux").textContent=V.libAnneau||"Anneau"; fa.setAttribute("aria-label","Filtrer par "+(V.libAnneau||"anneau").toLowerCase());
     fa.textContent=""; ft.textContent="";
     [["tous","Tous"]].concat(V.courts.map(function(a,i){ return [String(i),a]; })).forEach(function(c){
       var pt=null; if(c[0]!=="tous"){ pt=el("span",{class:"pastille-anneau","aria-hidden":"true"}); pt.style.background="var(--a"+c[0]+"t)"; }
