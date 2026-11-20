@@ -592,5 +592,417 @@
         "url": "https://www.theregister.com/2025/07/16/vmware_reboots_partner_program_again/"
       }
     ]
+  },
+  {
+    "titre": "Conditions imposées par les éditeurs",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "risque",
+    "contexte": "Fin mai 2025, Salesforce a durci de son propre chef les conditions d’utilisation des API de Slack, privant des clients de l’usage de leurs propres données dans des outils tiers.",
+    "quoi": "À propos des nouvelles conditions des API de Slack, le cabinet Hunton relève que, faute de contrat négocié, Salesforce peut modifier ces conditions sur simple préavis, et la poursuite de l’usage vaut acceptation. En octobre 2023, la Commission d’examen des pratiques commerciales a examiné un contrat SaaS reconduit tacitement avec une hausse de 48 %, que le client devait dénoncer deux mois avant l’échéance sans connaître le nouveau tarif.",
+    "pourquoi": "Le client s’engage sur des règles que l’éditeur peut réécrire en cours de contrat, sans toujours pouvoir partir à temps.",
+    "faire": [
+      "Recensez les clauses de modification unilatérale, de reconduction tacite et de préavis de vos contrats SaaS critiques.",
+      "Exigez un droit de résiliation sans frais en cas de modification substantielle des conditions ou des prix.",
+      "Appuyez-vous sur l’article 25 du Data Act, qui plafonne à deux mois le préavis de changement de fournisseur pour les services cloud."
+    ],
+    "sources": [
+      {
+        "titre": "Techzine, Salesforce restreint l’accès aux données de Slack, juin 2025",
+        "url": "https://www.techzine.eu/news/applications/132144/salesforce-restricts-access-to-slack-data-for-ai-use"
+      },
+      {
+        "titre": "Hunton Andrews Kurth, conditions des API de Slack, juillet 2025",
+        "url": "https://www.hunton.com/insights/legal/salesforce-locks-down-slack-data-time-to-review-your-slack-api-terms"
+      },
+      {
+        "titre": "Le Monde Informatique, avis de la CEPC sur le renouvellement tacite dans le SaaS, novembre 2023",
+        "url": "https://www.lemondeinformatique.fr/actualites/lireamp-la-cepc-emet-un-avis-sur-les-pratiques-de-renouvellement-tacite-dans-le-saas-92223.html"
+      }
+    ]
+  },
+  {
+    "titre": "Concentration du marché du cloud",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "En juillet 2025, l’autorité britannique de la concurrence (CMA) a conclu que la concurrence ne fonctionne pas bien dans le cloud, au moment où Synergy Research constatait que les fournisseurs européens ne pèsent que 15 % de leur propre marché.",
+    "quoi": "Selon Synergy Research, Amazon, Microsoft et Google détiennent 70 % du marché européen du cloud, contre 2 % chacun pour SAP et Deutsche Telekom, premiers acteurs européens ; la part des fournisseurs européens est passée de 29 % en 2017 à 15 % en 2022 et n’a plus bougé. La CMA évalue la part de Microsoft et d’AWS entre 30 et 40 % chacun du marché de l’IaaS en 2024, celle de Google entre 5 et 10 %, et juge que cette concentration va durer. Elle relève que moins de 1 % des clients changent de fournisseur chaque année.",
+    "pourquoi": "Avec deux ou trois fournisseurs crédibles, le client perd à la fois son pouvoir de négociation et ses solutions de repli.",
+    "faire": [
+      "Identifiez, pour chaque charge critique, au moins un fournisseur de remplacement crédible, européen si possible.",
+      "Mettez réellement en concurrence vos fournisseurs à chaque renouvellement, même sur un périmètre partiel.",
+      "Évitez de concentrer infrastructure, plateforme et logiciels chez un même fournisseur."
+    ],
+    "sources": [
+      {
+        "titre": "Synergy Research Group, part de marché des fournisseurs cloud européens, juillet 2025",
+        "url": "https://srgresearch.com/articles/european-cloud-providers-local-market-share-now-holds-steady-at-15"
+      },
+      {
+        "titre": "CMA, enquête sur le marché du cloud, résumé de la décision finale, juillet 2025",
+        "url": "https://assets.publishing.service.gov.uk/media/688b20e6ff8c05468cb7b120/summary_of_final_decision.pdf"
+      }
+    ]
+  },
+  {
+    "titre": "Savoir non documenté",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "En juillet 2025, l’enquête d’Atlassian sur l’expérience des développeurs place la recherche d’information parmi les premiers freins, et la moitié des répondants perdent plus de 10 heures par semaine.",
+    "quoi": "Dans l’enquête Stack Overflow 2024, 45 % des développeurs professionnels estiment que les silos de connaissance empêchent leurs idées de circuler dans l’organisation, et près de 30 % s’y heurtent dix fois ou plus par semaine. L’étude Atlassian de juillet 2025, menée auprès de 3 500 développeurs et managers, relève que 50 % perdent plus de 10 heures par semaine en inefficacités d’organisation. Dans l’enquête Kyndryl 2025 auprès de 500 dirigeants d’entreprises utilisant des mainframes, 39 % citent les départs à la retraite, qui emportent les compétences.",
+    "pourquoi": "Quand le fonctionnement d’un système n’est connu que de quelques personnes ou de l’outil du fournisseur, en sortir oblige à reconstituer ce savoir, ce qui rend tout changement plus cher et plus risqué.",
+    "faire": [
+      "Recensez les systèmes critiques dont le fonctionnement n’est décrit nulle part ailleurs que dans les têtes ou dans l’outil du fournisseur.",
+      "Exigez une documentation à jour et exportable (architecture, paramétrage, flux) comme livrable de chaque projet et de chaque contrat.",
+      "Organisez le transfert de savoir avant chaque départ annoncé, qu’il s’agisse d’une retraite ou d’une fin de mission."
+    ],
+    "sources": [
+      {
+        "titre": "Stack Overflow, enquête développeurs professionnels, 2024",
+        "url": "https://survey.stackoverflow.co/2024/professional-developers"
+      },
+      {
+        "titre": "Atlassian, State of Developer Experience, juillet 2025",
+        "url": "https://www.atlassian.com/blog/developer/developer-experience-report-2025"
+      },
+      {
+        "titre": "Kyndryl, State of Mainframe Modernization, 2025",
+        "url": "https://www.kyndryl.com/content/dam/kyndrylprogram/doc/en/2025/mainframe-modernization-report.pdf"
+      }
+    ]
+  },
+  {
+    "titre": "Faible culture du test",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "Le rapport DORA de Google publié en octobre 2024 rappelle que l’IA n’améliore pas la livraison de logiciels sans les fondamentaux, dont des « mécanismes de test robustes ».",
+    "quoi": "Dans le rapport DORA 2024, le groupe le moins performant réunit 25 % des répondants : 40 % de ses mises en production échouent, et le rétablissement prend entre une semaine et un mois, contre 5 % d’échecs et moins d’une heure pour le groupe le plus performant (19 % des répondants). Selon le World Quality Report d’OpenText, Capgemini et Sogeti publié en octobre 2024, 64 % des répondants citent la dépendance aux systèmes anciens et 57 % l’absence de stratégie globale d’automatisation des tests comme freins à l’automatisation.",
+    "pourquoi": "Sans tests automatisés pour vérifier qu’une alternative rend le même service, chaque migration devient un pari, et l’organisation reste sur le système en place.",
+    "faire": [
+      "Constituez des tests de non-régression automatisés sur les processus métier critiques, indépendants de l’outil en place.",
+      "Mesurez le taux d’échec de vos mises en production pour objectiver votre capacité à changer de solution.",
+      "Exigez de vos fournisseurs des jeux de tests et des environnements de recette réutilisables lors d’une sortie."
+    ],
+    "sources": [
+      {
+        "titre": "Google DORA, Accelerate State of DevOps, octobre 2024",
+        "url": "https://services.google.com/fh/files/misc/2024_final_dora_report.pdf"
+      },
+      {
+        "titre": "Intelligent CIO, World Quality Report 2024, octobre 2024",
+        "url": "https://www.intelligentcio.com/eu/2024/10/31/world-quality-report-2024-shows-68-of-organizations-now-utilizing-gen-ai-to-advance-quality-engineering/"
+      }
+    ]
+  },
+  {
+    "titre": "Dépendance à quelques personnes clés",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "Le 29 mars 2024, l’ingénieur Andres Freund a révélé une porte dérobée dans xz-utils, insérée par un contributeur qui avait gagné en deux ans la confiance du mainteneur bénévole.",
+    "quoi": "Le mainteneur de xz décrivait le projet comme un « projet de loisir non rémunéré » et a subi une campagne de pression. Les versions piégées 5.6.0 et 5.6.1 ont été créées et signées par le compte « Jia Tan ». Une étude publiée fin novembre 2024 sur plus de 36 000 projets open source montre que 89 % ont perdu au moins une fois leur noyau de développeurs, et que seuls 27 % des projets abandonnés ont ensuite attiré un nouveau développeur clé. Le recensement Census III de la Linux Foundation (décembre 2024) constate qu’une grande partie des logiciels libres les plus utilisés n’est développée que par une poignée de contributeurs.",
+    "pourquoi": "Quand un produit, interne ou open source, repose sur une ou deux personnes, leur départ laisse l’organisation captive de ceux qui restent, ou d’un fournisseur qui reprend le sujet à ses conditions.",
+    "faire": [
+      "Comptez, pour chaque produit critique, les personnes capables de le maintenir, en interne comme chez les mainteneurs en amont.",
+      "Imposez au moins un binôme sur chaque expertise critique.",
+      "Suivez le nombre de mainteneurs actifs des projets open source dont vous dépendez le plus."
+    ],
+    "sources": [
+      {
+        "titre": "The Register, porte dérobée xz, avril 2024",
+        "url": "https://www.theregister.com/2024/04/01/xz_backdoor_open_source/"
+      },
+      {
+        "titre": "arXiv, perte des développeurs clés de 36 000 projets, novembre 2024",
+        "url": "https://arxiv.org/abs/2412.00313v1"
+      },
+      {
+        "titre": "Linux Foundation, Census III, décembre 2024",
+        "url": "https://linuxfoundation.org/press/open-source-usage-trends-and-security-challenges-revealed-in-new-study"
+      }
+    ]
+  },
+  {
+    "titre": "Certifications exigées des hébergeurs",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "Depuis le 16 mai 2026, tous les hébergeurs de données de santé doivent être certifiés selon la version 2.0 du référentiel HDS, plus exigeante que la précédente.",
+    "quoi": "Le référentiel HDS v2, fixé par un arrêté du 26 avril 2024 publié au Journal officiel le 16 mai 2024, impose un hébergement exclusivement dans l’Espace économique européen et la publication d’une cartographie des transferts hors de cet espace. Il repose sur la norme ISO/IEC 27001, que l’hébergeur doit aussi détenir, et ajoute une clause de réversibilité obligatoire dans les contrats. La certification, délivrée après un audit documentaire puis un audit sur site, vaut trois ans avec un audit annuel.",
+    "pourquoi": "Chaque exigence ajoutée restreint le nombre d’hébergeurs éligibles, et changer d’hébergeur impose de revérifier certification, périmètre et sous-traitants.",
+    "faire": [
+      "Vérifiez sur la liste de l’Agence du numérique en santé le périmètre et la validité des certificats HDS de vos hébergeurs et de leurs sous-traitants.",
+      "Identifiez dès maintenant un second hébergeur certifié pour vos données de santé.",
+      "Exigez la clause de réversibilité prévue par le référentiel et testez-la."
+    ],
+    "sources": [
+      {
+        "titre": "CMS Francis Lefebvre, nouveau référentiel de certification HDS, juillet 2024",
+        "url": "https://cms.law/fr/fra/news-information/nouveau-referentiel-de-certification-des-hebergeurs-de-donnees-de-sante-hds"
+      },
+      {
+        "titre": "Squire Patton Boggs, certification HDS et date limite de mise en conformité, avril 2026",
+        "url": "https://larevue.squirepattonboggs.com/certification-des-hebergeurs-de-donnees-de-sante-hds-date-limite-pour-la-mise-en-conformite-selon-le-nouveau-referentiel.html"
+      },
+      {
+        "titre": "National Law Review, certification HDS v2.0 pleinement applicable, mai 2026",
+        "url": "https://natlawreview.com/article/v20-certification-french-health-data-hosting-service-providers-hds-now-fully"
+      }
+    ]
+  },
+  {
+    "titre": "Hébergement qualifié imposé",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "risque",
+    "contexte": "Le décret n° 2026-272 du 14 avril 2026 rend applicable l’article 31 de la loi SREN du 21 mai 2024, qui impose un cloud qualifié aux administrations de l’État pour leurs données sensibles.",
+    "quoi": "Les administrations de l’État, leurs opérateurs et six groupements d’intérêt public doivent recourir à des offres qualifiées SecNumCloud, ou à une certification européenne équivalente, pour leurs données sensibles ; les projets engagés avant le décret chez un fournisseur non conforme ont 18 mois pour migrer si une offre conforme existe en France. Le cercle des offres qualifiées reste étroit : S3ns (Thales, technologies Google) a été qualifié en décembre 2025, tandis que Bleu (Orange et Capgemini, technologies Microsoft) était toujours en cours de qualification en octobre 2026. Au niveau européen, les critères de souveraineté ont été retirés du schéma de certification EUCS faute d’accord entre États, et la Commission propose depuis le 3 juin 2026 de les réintroduire dans le Cloud and AI Development Act.",
+    "pourquoi": "L’obligation déplace la dépendance vers une poignée de fournisseurs qualifiés et impose des migrations à échéance fixe.",
+    "faire": [
+      "Classez vos données selon le niveau de sensibilité défini par l’État avant tout nouveau projet cloud.",
+      "Planifiez dès maintenant la migration des projets non conformes dans le délai de 18 mois.",
+      "Comparez plusieurs offres qualifiées et négociez la réversibilité, pour ne pas recréer un verrouillage."
+    ],
+    "sources": [
+      {
+        "titre": "Banque des Territoires, SecNumCloud et décret d’application de la loi SREN, avril 2026",
+        "url": "https://www.banquedesterritoires.fr/secnumcloud-6-gip-assujettis-les-donnees-sensibles-enfin-definies"
+      },
+      {
+        "titre": "Leto, qualification SecNumCloud de Bleu reportée, octobre 2026",
+        "url": "https://www.leto.legal/news/bleu-secnumcloud-qualification-reportee-fin-2026"
+      },
+      {
+        "titre": "Hogan Lovells, Cloud and AI Development Act, juin 2026",
+        "url": "https://www.hlc.com/en/publications/the-eus-cloud-and-ai-development-act-cada-towards-a-sovereigntyfocused-framework-for-cloud"
+      }
+    ]
+  },
+  {
+    "titre": "Composants open source peu maintenus",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "risque",
+    "contexte": "Les obligations de signalement du Cyber Resilience Act européen s’appliquent depuis le 11 septembre 2026, et l’ensemble des obligations des fabricants entrera en application le 11 décembre 2027.",
+    "quoi": "Black Duck a audité 947 bases de code entre novembre 2024 et octobre 2025 : 93 % contiennent des composants sans activité de développement depuis plus de deux ans, et 92 % des composants en retard de quatre ans ou plus. Selon l’enquête Tidelift de septembre 2024 auprès de plus de 400 mainteneurs, 60 % se considèrent comme des bénévoles non rémunérés, et la part des 46-65 ans est passée de 11 % en 2021 à 21 % en 2024. Le Cyber Resilience Act (règlement 2024/2847) demande aux fabricants une diligence raisonnable sur les composants qu’ils intègrent.",
+    "pourquoi": "Un composant que plus personne ne corrige ne se remplace pas du jour au lendemain : l’organisation reste liée à des versions figées, ou doit payer un support étendu pour les maintenir.",
+    "faire": [
+      "Inventoriez vos composants open source et repérez ceux qui n’ont pas évolué depuis deux ans.",
+      "Prévoyez, pour chaque composant critique peu maintenu, un remplaçant ou un support identifié.",
+      "Préparez dès maintenant la diligence que le Cyber Resilience Act exige sur les composants intégrés."
+    ],
+    "sources": [
+      {
+        "titre": "Black Duck, rapport OSSRA, mars 2026",
+        "url": "https://www.blackduck.com/resources/analyst-reports/open-source-security-risk-analysis.html"
+      },
+      {
+        "titre": "The Register, enquête Tidelift sur les mainteneurs, septembre 2024",
+        "url": "https://www.theregister.com/2024/09/18/open_source_maintainers_underpaid/"
+      },
+      {
+        "titre": "Commission européenne, Cyber Resilience Act",
+        "url": "https://digital-strategy.ec.europa.eu/en/policies/cyber-resilience-act"
+      }
+    ]
+  },
+  {
+    "titre": "SaaS d’abord",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "risque",
+    "contexte": "L’index de Zylo publié en janvier 2025 relève la première hausse de la dépense SaaS moyenne et du nombre d’applications depuis 2021.",
+    "quoi": "Gartner prévoyait en novembre 2024 que les dépenses mondiales en SaaS approcheraient 300 milliards de dollars en 2025, contre un peu plus de 250 milliards en 2024. Selon Zylo, la dépense SaaS atteint en moyenne 4 830 dollars par salarié, en hausse de 21,9 % sur un an, et les entreprises de plus de 10 000 salariés gèrent en moyenne 660 applications. Dans l’enquête de Parallels publiée en mars 2026, 94 % des organisations se disent préoccupées par le verrouillage fournisseur.",
+    "pourquoi": "Chaque application SaaS confie à l’éditeur les données, les processus et le paramétrage, et chaque nouvelle application ajoute une sortie à préparer.",
+    "faire": [
+      "Recensez, pour chaque application SaaS critique, les données qu’elle détient et le format d’export disponible.",
+      "Exigez dans le contrat l’export complet des données et du paramétrage dans un format documenté.",
+      "Réservez le choix du SaaS par défaut aux usages non différenciants et justifiez-le au cas par cas pour les processus cœur."
+    ],
+    "sources": [
+      {
+        "titre": "CIO Dive, prévisions Gartner des dépenses cloud 2025, novembre 2024",
+        "url": "https://www.ciodive.com/news/cloud-spend-growth-forecast-2025-gartner"
+      },
+      {
+        "titre": "Zylo, SaaS Management Index 2025, janvier 2025",
+        "url": "https://zylo.com/news/2025-saas-management-index"
+      },
+      {
+        "titre": "9to5Mac, enquête Parallels sur l’état du cloud 2026, mars 2026",
+        "url": "https://9to5mac.com/2026/03/14/it-leaders-fear-vendor-lock-in-as-the-cloud-only-dream-fades/"
+      }
+    ]
+  },
+  {
+    "titre": "Acheter plutôt que construire",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "En février 2026, Retool rapporte que 35 % des équipes interrogées ont remplacé au moins un outil SaaS par un développement interne, mais son panel est composé de clients de sa propre plateforme.",
+    "quoi": "Selon Futurum (juin 2026, 830 décideurs informatiques), 56,0 % des entreprises disent préférer développer en interne la plupart de leurs applications et n’acheter que le nécessaire. 53,3 % d’entre elles indiquent que 20 à 40 % de leurs salariés hors DSI utilisent des outils no-code, low-code ou en langage naturel. Selon le rapport d’Onymos relayé par ITPro en décembre 2024, 84 % des responsables technologiques s’appuient sur des outils SaaS à capacités low-code ou no-code pour développer leurs logiciels.",
+    "pourquoi": "Acheter un progiciel ou construire sur une plateforme low-code propriétaire transfère à l’éditeur la feuille de route, le prix et les formats, et réduit d’autant les compétences de développement internes.",
+    "faire": [
+      "Faites de la réversibilité (export du code, des données et des règles métier) un critère de chaque arbitrage entre construire et acheter.",
+      "Conservez en interne la conception et le développement des briques qui vous différencient.",
+      "Recensez les applications construites sur des plateformes low-code et ce qu’il faudrait réécrire pour en sortir."
+    ],
+    "sources": [
+      {
+        "titre": "Futurum, enquête décideurs logiciels 1er semestre 2026, juin 2026",
+        "url": "https://futurumgroup.com/press-release/enterprises-maintain-56-build-in-house-preference-despite-saas-strengths/"
+      },
+      {
+        "titre": "Retool, rapport Build vs. Buy 2026, février 2026",
+        "url": "https://retool.com/blog/ai-build-vs-buy-report-2026"
+      },
+      {
+        "titre": "ITPro, rapport Onymos sur la dépendance au SaaS, décembre 2024",
+        "url": "https://www.itpro.com/software/saas-dependency-is-causing-serious-problems-for-tech-leaders"
+      }
+    ]
+  },
+  {
+    "titre": "Shadow IT et shadow AI",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "risque",
+    "contexte": "L’index de Zylo publié le 29 janvier 2026 classe ChatGPT comme l’application la plus achetée en note de frais, signe que l’IA entre dans les entreprises hors des achats centralisés.",
+    "quoi": "Selon Zylo, les métiers contrôlent 81 % de la dépense SaaS et la DSI 15 %, et la dépense SaaS réglée en note de frais a augmenté de 267 % en un an. Dans une enquête de BlackFog auprès de 2 000 salariés, publiée en janvier 2026, 49 % disent utiliser des outils d’IA sans accord de leur employeur, 51 % les ont connectés à des systèmes de l’entreprise sans accord de la DSI, et 33 % y ont versé des travaux de recherche ou des jeux de données de l’entreprise. En France, une étude de YouGov pour Microsoft, relayée en février 2026, indique que 61 % des collaborateurs utilisent chaque semaine des IA génératives avec des comptes personnels.",
+    "pourquoi": "Ces services créent des dépendances que la DSI ne voit pas et placent des données de l’entreprise chez des fournisseurs sans contrat négocié ni plan de sortie.",
+    "faire": [
+      "Croisez notes de frais, relevés de cartes d’entreprise et journaux réseau pour recenser les services souscrits hors DSI.",
+      "Proposez une offre d’IA validée pour réduire le recours aux comptes personnels.",
+      "Inscrivez chaque service découvert au registre des fournisseurs, avec un responsable et une règle de sortie."
+    ],
+    "sources": [
+      {
+        "titre": "Zylo, SaaS Management Index 2026, janvier 2026",
+        "url": "https://zylo.com/news/2026-saas-management-index"
+      },
+      {
+        "titre": "CIO, enquête BlackFog sur l’IA non autorisée, janvier 2026",
+        "url": "https://www.cio.com/article/4124760/roughly-half-of-employees-are-using-unsanctioned-ai-tools-and-enterprise-leaders-are-major-culprits.html"
+      },
+      {
+        "titre": "Le Monde Informatique, étude YouGov pour Microsoft sur le shadow IA, février 2026",
+        "url": "https://www.lemondeinformatique.fr/actualites/lire-le-shadow-ia-se-repand-dans-les-entreprises-francaises-99341.html"
+      }
+    ]
+  },
+  {
+    "titre": "Couplage fort à la plateforme",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "Le rapport de MuleSoft publié le 5 février 2026 compte en moyenne 957 applications par entreprise, contre 897 un an plus tôt, dont seulement 27 % intégrées entre elles.",
+    "quoi": "En 2023, l’équipe de Prime Video chargée de surveiller la qualité des flux vidéo a abandonné une architecture distribuée fondée sur AWS Step Functions et Amazon S3. Les transitions d’état effectuées à chaque seconde de flux atteignaient les limites du compte, et le passage à une application monolithique a réduit le coût d’infrastructure de plus de 90 %. En août 2023, Datadog observait que plus de 70 % de ses clients AWS utilisaient au moins un service sans serveur.",
+    "pourquoi": "Chaque microservice bâti sur une file de messages, une fonction sans serveur ou un orchestrateur propre à un cloud ajoute un point d’adhérence, et la logique métier qui y est logée ne se transpose pas ailleurs sans réécriture.",
+    "faire": [
+      "Cartographiez, pour chaque microservice, les services propres au fournisseur qu’il appelle.",
+      "Isolez ces appels derrière des interfaces internes et gardez la logique métier dans votre code.",
+      "Remplacez les intégrations point à point par des API documentées et gouvernées."
+    ],
+    "sources": [
+      {
+        "titre": "Salesforce, rapport MuleSoft Connectivity Benchmark 2026, février 2026",
+        "url": "https://www.salesforce.com/news/stories/connectivity-report-announcement-2026/"
+      },
+      {
+        "titre": "DevClass, retour de Prime Video vers un monolithe, mai 2023",
+        "url": "https://www.devclass.com/ci-cd/2023/05/05/reduce-costs-by-90-by-moving-from-microservices-to-monolith-amazon-internal-case-study-raises-eyebrows/1621790"
+      },
+      {
+        "titre": "Datadog, The State of Serverless, août 2023",
+        "url": "https://www.datadoghq.com/state-of-serverless/"
+      }
+    ]
+  },
+  {
+    "titre": "API fermées ou monétisées",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "risque",
+    "contexte": "Le 29 mai 2025, Slack (Salesforce) a durci les conditions d’utilisation de ses API et réduit fortement l’accès des applications tierces à l’historique des messages.",
+    "quoi": "Depuis le 29 mai 2025, les applications commerciales diffusées hors de la Marketplace Slack ne peuvent plus lire l’historique des conversations qu’à raison d’une requête par minute et de 15 messages par requête. Des éditeurs comme Glean ne peuvent plus indexer ni stocker durablement les données Slack, ce qui, selon Glean, complique leur usage avec la plateforme d’IA choisie par le client. En 2023, Reddit avait facturé son API 12 000 $ pour 50 millions de requêtes, soit environ 20 M$ par an pour l’application Apollo, qui a fermé le 30 juin 2023.",
+    "pourquoi": "L’éditeur contrôle seul l’accès aux données du client et peut à tout moment réduire les intégrations ou l’export, ou les faire payer.",
+    "faire": [
+      "Recensez les intégrations et les exports qui reposent sur des API tierces, avec leurs quotas actuels.",
+      "Exigez dans vos contrats un droit d’export complet dans un format ouvert et un préavis sur toute modification des conditions d’API.",
+      "Planifiez un export régulier de vos données critiques hors de l’outil, sans attendre une restriction."
+    ],
+    "sources": [
+      {
+        "titre": "Slack, changement des limites d’API pour les applications hors Marketplace, mai 2025",
+        "url": "https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps"
+      },
+      {
+        "titre": "Techzine, Salesforce restreint l’accès aux données Slack, juin 2025",
+        "url": "https://www.techzine.eu/news/applications/132144/salesforce-restricts-access-to-slack-data-for-ai-use"
+      },
+      {
+        "titre": "TechCrunch, fermeture d’Apollo après la tarification de l’API Reddit, juin 2023",
+        "url": "https://techcrunch.com/2023/06/08/popular-third-party-reddit-app-apollo-is-shutting-down-as-a-result-of-reddits-new-api-pricing/"
+      }
+    ]
+  },
+  {
+    "titre": "Observabilité propriétaire",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "risque",
+    "contexte": "En juillet 2026, Gartner a relevé que la maîtrise des coûts de télémétrie reste l’une des premières préoccupations des acheteurs et qu’OpenTelemetry est devenu une exigence de base.",
+    "quoi": "Selon Gartner, 5 % de ses clients dépensent plus de 10 M$ par an chez un seul fournisseur d’observabilité. Dans l’enquête Grafana Labs publiée en 2026 (1 363 répondants), le coût est le premier critère de choix d’un outil (65 %) et 41 % utilisent OpenTelemetry en production, 37 % en attendant qu’il facilite le changement de fournisseur. En mai 2023, Datadog a évoqué une facture ponctuelle d’un client, estimée à 65 M$ et attribuée à Coinbase par The Pragmatic Engineer.",
+    "pourquoi": "Avec des agents, des formats et des langages de requête propres à l’outil, changer de fournisseur oblige à réinstrumenter les applications et à refaire tableaux de bord et alertes.",
+    "faire": [
+      "Instrumentez vos nouvelles applications avec OpenTelemetry plutôt qu’avec l’agent propre à l’outil.",
+      "Exigez de votre fournisseur l’ingestion native d’OpenTelemetry et l’export de vos données de télémétrie.",
+      "Suivez le coût d’observabilité par application et fixez des règles de rétention et d’échantillonnage."
+    ],
+    "sources": [
+      {
+        "titre": "Network World, Gartner sur le marché de l’observabilité, juillet 2026",
+        "url": "https://www.networkworld.com/article/4197973/ai-workloads-shake-up-observability-market.html"
+      },
+      {
+        "titre": "Grafana Labs, Observability Survey 2026",
+        "url": "https://grafana.com/observability-survey/2026/"
+      },
+      {
+        "titre": "The Pragmatic Engineer, le client Datadog à 65 M$, mai 2023",
+        "url": "https://blog.pragmaticengineer.com/datadog-65m-year-customer-mystery/"
+      }
+    ]
+  },
+  {
+    "titre": "Fins de support imposées",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "risque",
+    "contexte": "Windows 10 n’est plus supporté depuis le 14 octobre 2025, et la maintenance standard de SAP ECC 6.0 s’arrête fin 2027.",
+    "quoi": "Depuis le 14 octobre 2025, Microsoft ne publie plus de correctifs de sécurité pour Windows 10 hors du programme payant ESU : 61 $ par poste la première année pour les organisations, prix doublé chaque année, trois ans au maximum. Chez SAP, la maintenance standard de Business Suite 7 (dont ECC 6.0) s’arrête fin 2027 et la maintenance étendue, payante, fin 2030. Au-delà, seule une option de transition liée à un passage sur SAP ERP, private edition avant le 31 décembre 2030 permet de prolonger jusqu’en 2033, voire 2035 depuis octobre 2026.",
+    "pourquoi": "Le calendrier de migration est fixé par l’éditeur, et la prolongation se paie ou passe par son offre cloud.",
+    "faire": [
+      "Tenez un calendrier des fins de support de vos produits critiques sur cinq ans.",
+      "Chiffrez pour chacun le coût du support étendu face à celui d’une migration ou d’un support tiers.",
+      "Négociez les conditions de prolongation avant de signer la migration proposée par l’éditeur."
+    ],
+    "sources": [
+      {
+        "titre": "Microsoft Learn, programme ESU pour Windows 10, mise à jour novembre 2026",
+        "url": "https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates"
+      },
+      {
+        "titre": "The Register, SAP et l’option de transition jusqu’en 2033, janvier 2025",
+        "url": "https://www.theregister.com/2025/01/28/sap_extends_support_deadline/"
+      },
+      {
+        "titre": "SAP News, mises à jour de l’option de transition SAP ERP, private edition, août 2025 (mise à jour octobre 2026)",
+        "url": "https://news.sap.com/2025/08/rise-with-sap-journey-sap-erp-private-edition-transition-option-updates/"
+      }
+    ]
   }
 ]
