@@ -15,7 +15,14 @@
     "technologies": [
       "VMware vSphere et VCF",
       "Jira et Jira Service Management",
-      "Confluence"
+      "Confluence",
+      "VMware Tanzu",
+      "Citrix Virtual Apps and Desktops",
+      "XenServer (ex-Citrix Hypervisor)",
+      "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)",
+      "RabbitMQ",
+      "Talend",
+      "Nutanix AHV"
     ],
     "sources": [
       {
@@ -45,7 +52,11 @@
       "Power BI",
       "Microsoft Intune",
       "Microsoft Defender",
-      "Entra ID et Active Directory"
+      "Entra ID et Active Directory",
+      "Jira et Jira Service Management",
+      "Confluence",
+      "ServiceNow",
+      "Tableau"
     ],
     "sources": [
       {
@@ -83,7 +94,11 @@
       "Citrix Virtual Apps and Desktops",
       "Splunk",
       "Datadog",
-      "ServiceNow"
+      "ServiceNow",
+      "Power BI",
+      "Jira et Jira Service Management",
+      "Confluence",
+      "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)"
     ],
     "sources": [
       {
@@ -174,7 +189,11 @@
       "Hyper-V et Azure Local",
       "Nutanix AHV",
       "Huawei DCS (FusionCompute)",
-      "XenServer (ex-Citrix Hypervisor)"
+      "XenServer (ex-Citrix Hypervisor)",
+      "Windows Server",
+      "IBM Power (AIX et IBM i)",
+      "Mainframe IBM Z (z/OS)",
+      "VMware Tanzu"
     ],
     "sources": [
       {
@@ -287,7 +306,18 @@
       "Machines virtuelles Azure",
       "IaaS européens (OVHcloud, Scaleway, Outscale)",
       "Kubernetes managé (EKS, AKS, GKE)",
-      "Amazon S3"
+      "Amazon S3",
+      "Mainframe IBM Z (z/OS)",
+      "Oracle Database",
+      "Entra ID et Active Directory",
+      "CrowdStrike Falcon",
+      "Microsoft Defender",
+      "Veeam Backup",
+      "ServiceNow",
+      "Snowflake",
+      "Google BigQuery",
+      "Amazon DynamoDB",
+      "Azure Cosmos DB"
     ],
     "sources": [
       {
@@ -319,7 +349,13 @@
       "Nutanix AHV",
       "Cisco IOS et NX-OS",
       "Juniper Junos",
-      "Cisco ACI"
+      "Cisco ACI",
+      "Confluence",
+      "FortiGate",
+      "Pare-feux Palo Alto",
+      "Huawei DCS (FusionCompute)",
+      "XenServer (ex-Citrix Hypervisor)",
+      "Entra ID et Active Directory"
     ],
     "sources": [
       {
@@ -343,6 +379,17 @@
     "mitigations": [
       "Cartographiez vos fournisseurs critiques dès maintenant.",
       "Appuyez-vous sur le référentiel de l’ANSSI sans attendre le vote."
+    ],
+    "technologies": [
+      "FortiGate",
+      "Pare-feux Palo Alto",
+      "CrowdStrike Falcon",
+      "Microsoft Defender",
+      "Splunk",
+      "Entra ID et Active Directory",
+      "Okta",
+      "Veeam Backup",
+      "Commvault"
     ],
     "sources": [
       {
@@ -405,7 +452,11 @@
       "Windows Server",
       "IBM WebSphere",
       "IBM Db2",
-      "SAP HANA"
+      "SAP HANA",
+      "IBM MQ",
+      "Mainframe IBM Z (z/OS)",
+      "IBM Power (AIX et IBM i)",
+      "Hyper-V et Azure Local"
     ],
     "sources": [
       {
@@ -433,7 +484,11 @@
     "technologies": [
       "VMware vSphere et VCF",
       "Windows Server",
-      "Microsoft SQL Server"
+      "Microsoft SQL Server",
+      "Hyper-V et Azure Local",
+      "Splunk",
+      "Mainframe IBM Z (z/OS)",
+      "Nutanix AHV"
     ],
     "sources": [
       {
@@ -465,7 +520,13 @@
       "Kubernetes managé (EKS, AKS, GKE)",
       "Amazon S3",
       "Snowflake",
-      "Google BigQuery"
+      "Google BigQuery",
+      "Databricks",
+      "Amazon Redshift",
+      "Amazon DynamoDB",
+      "Azure Cosmos DB",
+      "Google Spanner",
+      "Datadog"
     ],
     "sources": [
       {
@@ -560,7 +621,9 @@
       "Amazon Redshift",
       "Apigee",
       "Azure API Management",
-      "Kubernetes managé (EKS, AKS, GKE)"
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Snowflake",
+      "AWS Outposts"
     ],
     "sources": [
       {
@@ -592,7 +655,10 @@
     "technologies": [
       "Entra ID et Active Directory",
       "Okta",
-      "Microsoft Intune"
+      "Microsoft Intune",
+      "Windows Server",
+      "Microsoft Defender",
+      "Citrix Virtual Apps and Desktops"
     ],
     "sources": [
       {
@@ -624,7 +690,9 @@
       "Amazon Redshift",
       "Databricks",
       "Teradata",
-      "Cloudera"
+      "Cloudera",
+      "Amazon DynamoDB",
+      "Splunk"
     ],
     "sources": [
       {
@@ -687,7 +755,17 @@
       "Amazon S3",
       "Kubernetes managé (EKS, AKS, GKE)",
       "Entra ID et Active Directory",
-      "Google BigQuery"
+      "Google BigQuery",
+      "Okta",
+      "ServiceNow",
+      "Datadog",
+      "GitHub",
+      "Microsoft Intune",
+      "Microsoft Defender",
+      "CrowdStrike Falcon",
+      "Snowflake",
+      "Amazon DynamoDB",
+      "Azure Cosmos DB"
     ],
     "sources": [
       {
@@ -721,7 +799,18 @@
       "Machines virtuelles Azure",
       "IaaS européens (OVHcloud, Scaleway, Outscale)",
       "Kubernetes managé (EKS, AKS, GKE)",
-      "Amazon S3"
+      "Amazon S3",
+      "Mainframe IBM Z (z/OS)",
+      "Oracle Database",
+      "Entra ID et Active Directory",
+      "CrowdStrike Falcon",
+      "Microsoft Defender",
+      "Veeam Backup",
+      "ServiceNow",
+      "Snowflake",
+      "Google BigQuery",
+      "Amazon DynamoDB",
+      "Azure Cosmos DB"
     ],
     "sources": [
       {
@@ -798,7 +887,11 @@
       "IBM Power (AIX et IBM i)",
       "OpenStack",
       "Ceph",
-      "SONiC"
+      "SONiC",
+      "TIBCO",
+      "Teradata",
+      "Kubernetes",
+      "KubeVirt"
     ],
     "sources": [
       {
@@ -823,6 +916,15 @@
       "Repérez les compétences critiques détenues uniquement par des prestataires.",
       "Exigez documentation et transfert de compétences dans les contrats d’infogérance.",
       "Gardez en interne la capacité à piloter et à évaluer les choix techniques."
+    ],
+    "technologies": [
+      "SAP HANA",
+      "ServiceNow",
+      "MuleSoft",
+      "Informatica",
+      "TIBCO",
+      "Mainframe IBM Z (z/OS)",
+      "Control-M"
     ],
     "sources": [
       {
@@ -867,6 +969,15 @@
       "Recensez les clauses de modification unilatérale, de reconduction tacite et de préavis de vos contrats SaaS critiques.",
       "Exigez un droit de résiliation sans frais en cas de modification substantielle des conditions ou des prix.",
       "Appuyez-vous sur l’article 25 du Data Act, qui plafonne à deux mois le préavis de changement de fournisseur pour les services cloud."
+    ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "MuleSoft",
+      "Tableau",
+      "Jira et Jira Service Management",
+      "Confluence",
+      "GitHub",
+      "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)"
     ],
     "sources": [
       {
@@ -1044,7 +1155,11 @@
       "IaaS européens (OVHcloud, Scaleway, Outscale)",
       "Machines virtuelles AWS (EC2)",
       "Machines virtuelles Azure",
-      "Kubernetes managé (EKS, AKS, GKE)"
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Amazon S3",
+      "Google BigQuery",
+      "Azure Cosmos DB",
+      "ServiceNow"
     ],
     "sources": [
       {
@@ -1075,7 +1190,9 @@
       "Préparez dès maintenant la diligence que le Cyber Resilience Act exige sur les composants intégrés."
     ],
     "technologies": [
-      "MinIO"
+      "MinIO",
+      "Puppet",
+      "Talend"
     ],
     "sources": [
       {
@@ -1112,7 +1229,14 @@
       "New Relic",
       "Boomi",
       "Jira et Jira Service Management",
-      "Confluence"
+      "Confluence",
+      "Snowflake",
+      "Dynatrace",
+      "PagerDuty",
+      "GitHub",
+      "Power BI",
+      "Tableau",
+      "CrowdStrike Falcon"
     ],
     "sources": [
       {
@@ -1169,6 +1293,15 @@
       "Croisez notes de frais, relevés de cartes d’entreprise et journaux réseau pour recenser les services souscrits hors DSI.",
       "Proposez une offre d’IA validée pour réduire le recours aux comptes personnels.",
       "Inscrivez chaque service découvert au registre des fournisseurs, avec un responsable et une règle de sortie."
+    ],
+    "technologies": [
+      "GitHub",
+      "GitLab",
+      "Jira et Jira Service Management",
+      "Confluence",
+      "Power BI",
+      "Tableau",
+      "Machines virtuelles AWS (EC2)"
     ],
     "sources": [
       {
@@ -1232,6 +1365,15 @@
       "Recensez les intégrations et les exports qui reposent sur des API tierces, avec leurs quotas actuels.",
       "Exigez dans vos contrats un droit d’export complet dans un format ouvert et un préavis sur toute modification des conditions d’API.",
       "Planifiez un export régulier de vos données critiques hors de l’outil, sans attendre une restriction."
+    ],
+    "technologies": [
+      "ServiceNow",
+      "Jira et Jira Service Management",
+      "Confluence",
+      "Okta",
+      "Datadog",
+      "New Relic",
+      "Power BI"
     ],
     "sources": [
       {
@@ -1298,7 +1440,11 @@
     "technologies": [
       "SAP HANA",
       "Jira et Jira Service Management",
-      "Confluence"
+      "Confluence",
+      "Windows Server",
+      "Microsoft SQL Server",
+      "VMware vSphere et VCF",
+      "Talend"
     ],
     "sources": [
       {
@@ -1331,7 +1477,13 @@
     ],
     "technologies": [
       "GitLab",
-      "GitHub"
+      "GitHub",
+      "Azure DevOps",
+      "New Relic",
+      "PagerDuty",
+      "Datadog",
+      "Jira et Jira Service Management",
+      "Confluence"
     ],
     "sources": [
       {
