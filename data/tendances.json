@@ -12,6 +12,11 @@
       "Chiffrez l’abonnement sur cinq ans, pas sur un an.",
       "Préparez une alternative avant la date imposée."
     ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "Jira et Jira Service Management",
+      "Confluence"
+    ],
     "sources": [
       {
         "titre": "CIO Online, analyse d’Elée",
@@ -35,6 +40,12 @@
       "Mesurez l’usage réel des fonctions d’IA.",
       "Négociez sur le périmètre utile.",
       "Évitez de se réengager longtemps juste après une hausse."
+    ],
+    "technologies": [
+      "Power BI",
+      "Microsoft Intune",
+      "Microsoft Defender",
+      "Entra ID et Active Directory"
     ],
     "sources": [
       {
@@ -67,6 +78,13 @@
       "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.",
       "Arrivez aux échéances avec une alternative chiffrée."
     ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "Citrix Virtual Apps and Desktops",
+      "Splunk",
+      "Datadog",
+      "ServiceNow"
+    ],
     "sources": [
       {
         "titre": "Cigref et Asterès, mai 2026",
@@ -89,6 +107,21 @@
     "mitigations": [
       "Identifiez vos fournisseurs critiques susceptibles d’être rachetés.",
       "Prévoyez des clauses en cas de changement de contrôle."
+    ],
+    "technologies": [
+      "HashiCorp Vault",
+      "Terraform",
+      "Confluent Platform",
+      "Informatica",
+      "Juniper Junos",
+      "Splunk",
+      "VMware vSphere et VCF",
+      "VMware Tanzu",
+      "RabbitMQ",
+      "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)",
+      "Talend",
+      "Citrix Virtual Apps and Desktops",
+      "XenServer (ex-Citrix Hypervisor)"
     ],
     "sources": [
       {
@@ -136,6 +169,13 @@
       "Mesurez le délai de sortie et le comparer à l’échéance.",
       "Évaluez deux alternatives et lancez un pilote sur un périmètre limité."
     ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "Hyper-V et Azure Local",
+      "Nutanix AHV",
+      "Huawei DCS (FusionCompute)",
+      "XenServer (ex-Citrix Hypervisor)"
+    ],
     "sources": [
       {
         "titre": "CIO Dive, première année de VMware sous Broadcom (fin des licences perpétuelles, hausses anticipées par Gartner), novembre 2024",
@@ -159,6 +199,14 @@
       "Cartographiez les dépendances cachées : identité, DNS, outils de déploiement.",
       "Testez une bascule réelle, pas seulement documentée."
     ],
+    "technologies": [
+      "Machines virtuelles AWS (EC2)",
+      "Amazon S3",
+      "Amazon DynamoDB",
+      "Machines virtuelles Azure",
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "AWS Outposts"
+    ],
     "sources": [
       {
         "titre": "JustGeek, causes de la panne AWS",
@@ -177,6 +225,16 @@
     "mitigations": [
       "Privilégiez les projets à gouvernance ouverte ou portés par une fondation.",
       "Identifiez les composants à éditeur unique."
+    ],
+    "technologies": [
+      "Terraform",
+      "Redis",
+      "Puppet",
+      "MinIO",
+      "HashiCorp Vault",
+      "Elasticsearch",
+      "MongoDB",
+      "Talend"
     ],
     "sources": [
       {
@@ -224,6 +282,13 @@
       "Identifiez les fonctions critiques et leurs prestataires.",
       "Testez au moins une sortie sur un périmètre réel."
     ],
+    "technologies": [
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure",
+      "IaaS européens (OVHcloud, Scaleway, Outscale)",
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Amazon S3"
+    ],
     "sources": [
       {
         "titre": "EUR-Lex, règlement (UE) 2022/2554 (DORA), articles 28 et 64, décembre 2022",
@@ -241,6 +306,20 @@
     "risque": "La dépendance devient un sujet piloté au plus haut niveau de l’État.",
     "mitigations": [
       "Rendez le plan exécutable : chiffrage, priorités, preuve sur un périmètre."
+    ],
+    "technologies": [
+      "Microsoft Intune",
+      "Microsoft Defender",
+      "CrowdStrike Falcon",
+      "Oracle Database",
+      "Microsoft SQL Server",
+      "IBM Db2",
+      "VMware vSphere et VCF",
+      "Hyper-V et Azure Local",
+      "Nutanix AHV",
+      "Cisco IOS et NX-OS",
+      "Juniper Junos",
+      "Cisco ACI"
     ],
     "sources": [
       {
@@ -284,6 +363,15 @@
       "Identifiez les services critiques exposés à un droit étranger.",
       "Prévoyez un mode dégradé pour les plus sensibles."
     ],
+    "technologies": [
+      "Entra ID et Active Directory",
+      "Microsoft Intune",
+      "Microsoft Defender",
+      "Machines virtuelles Azure",
+      "Machines virtuelles AWS (EC2)",
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Huawei DCS (FusionCompute)"
+    ],
     "sources": [
       {
         "titre": "Justice Info",
@@ -308,6 +396,17 @@
       "Négociez des clauses d’audit encadrées : préavis, fréquence, périmètre.",
       "Ne concluez jamais un renouvellement sous la pression d’un audit en cours."
     ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "Oracle Database",
+      "Oracle WebLogic",
+      "Oracle Exadata",
+      "Microsoft SQL Server",
+      "Windows Server",
+      "IBM WebSphere",
+      "IBM Db2",
+      "SAP HANA"
+    ],
     "sources": [
       {
         "titre": "Next, mises en demeure de Broadcom",
@@ -330,6 +429,11 @@
     "mitigations": [
       "Modélisez l’impact de chaque changement de métrique avant l’échéance.",
       "Négociez le maintien de la métrique sur toute la durée du contrat."
+    ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "Windows Server",
+      "Microsoft SQL Server"
     ],
     "sources": [
       {
@@ -354,6 +458,14 @@
       "Limitez la durée et le montant des engagements.",
       "Gardez une part de la consommation non engagée.",
       "Prévoyez une clause de réduction en cas de changement de stratégie."
+    ],
+    "technologies": [
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure",
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Amazon S3",
+      "Snowflake",
+      "Google BigQuery"
     ],
     "sources": [
       {
@@ -382,6 +494,11 @@
       "Vérifiez les droits de transfert de chaque licence avant de choisir un hébergeur.",
       "Chiffrez le coût des licences dans chaque scénario d’hébergement."
     ],
+    "technologies": [
+      "Windows Server",
+      "Microsoft SQL Server",
+      "Oracle Database"
+    ],
     "sources": [
       {
         "titre": "CISPE, accord avec Microsoft dans le dossier des licences logicielles, juillet 2024",
@@ -405,6 +522,13 @@
       "Évaluez le coût de sortie avant d’accepter des crédits.",
       "Privilégiez des services standards, même pendant la période gratuite."
     ],
+    "technologies": [
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure",
+      "Google BigQuery",
+      "Amazon DynamoDB",
+      "Google Spanner"
+    ],
     "sources": [
       {
         "titre": "Amazon, jusqu’à 1 million de dollars de crédits AWS pour 40 jeunes entreprises de l’IA générative, octobre 2025",
@@ -427,6 +551,16 @@
     "mitigations": [
       "Recensez les services managés propriétaires sur les chemins critiques.",
       "Préférez des équivalents standards : PostgreSQL managé, Kubernetes, files de messages ouvertes."
+    ],
+    "technologies": [
+      "Amazon DynamoDB",
+      "Azure Cosmos DB",
+      "Google Spanner",
+      "Google BigQuery",
+      "Amazon Redshift",
+      "Apigee",
+      "Azure API Management",
+      "Kubernetes managé (EKS, AKS, GKE)"
     ],
     "sources": [
       {
@@ -455,6 +589,11 @@
       "Prévoyez un mode d’authentification de secours pour les accès critiques.",
       "Appuyez-vous sur des protocoles standards (SAML, OpenID Connect) pour faciliter un changement."
     ],
+    "technologies": [
+      "Entra ID et Active Directory",
+      "Okta",
+      "Microsoft Intune"
+    ],
     "sources": [
       {
         "titre": "Okta, Businesses at Work 2025, mars 2025",
@@ -477,6 +616,15 @@
     "mitigations": [
       "Mesurez les volumes et le temps réel de leur transfert.",
       "Concevez les architectures pour limiter les allers-retours de données entre fournisseurs."
+    ],
+    "technologies": [
+      "Amazon S3",
+      "Snowflake",
+      "Google BigQuery",
+      "Amazon Redshift",
+      "Databricks",
+      "Teradata",
+      "Cloudera"
     ],
     "sources": [
       {
@@ -533,6 +681,14 @@
       "Chiffrez avec des clés que vous maîtrisez.",
       "Réservez les données les plus sensibles à des offres qualifiées SecNumCloud."
     ],
+    "technologies": [
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure",
+      "Amazon S3",
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Entra ID et Active Directory",
+      "Google BigQuery"
+    ],
     "sources": [
       {
         "titre": "The Register, Microsoft France ne peut garantir que les données échappent au Cloud Act (audition au Sénat), juillet 2025",
@@ -559,6 +715,13 @@
     "mitigations": [
       "Conservez les preuves des tests de sortie et leurs résultats.",
       "Tenez le registre des prestataires à jour en continu."
+    ],
+    "technologies": [
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure",
+      "IaaS européens (OVHcloud, Scaleway, Outscale)",
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Amazon S3"
     ],
     "sources": [
       {
@@ -630,6 +793,13 @@
       "Formez au moins deux personnes sur chaque alternative retenue.",
       "Inscrivez ces compétences dans le plan de formation annuel."
     ],
+    "technologies": [
+      "Mainframe IBM Z (z/OS)",
+      "IBM Power (AIX et IBM i)",
+      "OpenStack",
+      "Ceph",
+      "SONiC"
+    ],
     "sources": [
       {
         "titre": "Linux Foundation, 2025 State of Tech Talent Report",
@@ -673,6 +843,10 @@
       "Vérifiez le statut de vos partenaires auprès de l’éditeur avant chaque renouvellement.",
       "Prévoyez dans les contrats le cas où le partenaire perd son agrément.",
       "Entretenez une relation avec un second partenaire ou un prestataire indépendant."
+    ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "VMware Tanzu"
     ],
     "sources": [
       {
@@ -721,6 +895,13 @@
       "Identifiez, pour chaque charge critique, au moins un fournisseur de remplacement crédible, européen si possible.",
       "Mettez réellement en concurrence vos fournisseurs à chaque renouvellement, même sur un périmètre partiel.",
       "Évitez de concentrer infrastructure, plateforme et logiciels chez un même fournisseur."
+    ],
+    "technologies": [
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure",
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Amazon S3",
+      "IaaS européens (OVHcloud, Scaleway, Outscale)"
     ],
     "sources": [
       {
@@ -826,6 +1007,11 @@
       "Identifiez dès maintenant un second hébergeur certifié pour vos données de santé.",
       "Exigez la clause de réversibilité prévue par le référentiel et testez-la."
     ],
+    "technologies": [
+      "IaaS européens (OVHcloud, Scaleway, Outscale)",
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure"
+    ],
     "sources": [
       {
         "titre": "CMS Francis Lefebvre, nouveau référentiel de certification HDS, juillet 2024",
@@ -853,6 +1039,12 @@
       "Classez vos données selon le niveau de sensibilité défini par l’État avant tout nouveau projet cloud.",
       "Planifiez dès maintenant la migration des projets non conformes dans le délai de 18 mois.",
       "Comparez plusieurs offres qualifiées et négociez la réversibilité, pour ne pas recréer un verrouillage."
+    ],
+    "technologies": [
+      "IaaS européens (OVHcloud, Scaleway, Outscale)",
+      "Machines virtuelles AWS (EC2)",
+      "Machines virtuelles Azure",
+      "Kubernetes managé (EKS, AKS, GKE)"
     ],
     "sources": [
       {
@@ -882,6 +1074,9 @@
       "Prévoyez, pour chaque composant critique peu maintenu, un remplaçant ou un support identifié.",
       "Préparez dès maintenant la diligence que le Cyber Resilience Act exige sur les composants intégrés."
     ],
+    "technologies": [
+      "MinIO"
+    ],
     "sources": [
       {
         "titre": "Black Duck, rapport OSSRA, mars 2026",
@@ -909,6 +1104,15 @@
       "Recensez, pour chaque application SaaS critique, les données qu’elle détient et le format d’export disponible.",
       "Exigez dans le contrat l’export complet des données et du paramétrage dans un format documenté.",
       "Réservez le choix du SaaS par défaut aux usages non différenciants et justifiez-le au cas par cas pour les processus cœur."
+    ],
+    "technologies": [
+      "ServiceNow",
+      "Okta",
+      "Datadog",
+      "New Relic",
+      "Boomi",
+      "Jira et Jira Service Management",
+      "Confluence"
     ],
     "sources": [
       {
@@ -994,6 +1198,13 @@
       "Isolez ces appels derrière des interfaces internes et gardez la logique métier dans votre code.",
       "Remplacez les intégrations point à point par des API documentées et gouvernées."
     ],
+    "technologies": [
+      "MuleSoft",
+      "Amazon S3",
+      "Amazon DynamoDB",
+      "Azure Cosmos DB",
+      "Apigee"
+    ],
     "sources": [
       {
         "titre": "Salesforce, rapport MuleSoft Connectivity Benchmark 2026, février 2026",
@@ -1050,6 +1261,12 @@
       "Exigez de votre fournisseur l’ingestion native d’OpenTelemetry et l’export de vos données de télémétrie.",
       "Suivez le coût d’observabilité par application et fixez des règles de rétention et d’échantillonnage."
     ],
+    "technologies": [
+      "Splunk",
+      "Datadog",
+      "Dynatrace",
+      "New Relic"
+    ],
     "sources": [
       {
         "titre": "Network World, Gartner sur le marché de l’observabilité, juillet 2026",
@@ -1077,6 +1294,11 @@
       "Tenez un calendrier des fins de support de vos produits critiques sur cinq ans.",
       "Chiffrez pour chacun le coût du support étendu face à celui d’une migration ou d’un support tiers.",
       "Négociez les conditions de prolongation avant de signer la migration proposée par l’éditeur."
+    ],
+    "technologies": [
+      "SAP HANA",
+      "Jira et Jira Service Management",
+      "Confluence"
     ],
     "sources": [
       {
@@ -1106,6 +1328,10 @@
       "Traitez le passage d’un outil gratuit à un usage d’équipe comme un achat : contrat, export des données, coût sur trois ans.",
       "Exportez régulièrement les dépôts, l’historique et les configurations dans un format ouvert, sans attendre une restriction.",
       "Pour les outils de développement critiques, gardez la possibilité de les héberger vous-même."
+    ],
+    "technologies": [
+      "GitLab",
+      "GitHub"
     ],
     "sources": [
       {

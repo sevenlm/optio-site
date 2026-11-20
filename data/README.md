@@ -68,6 +68,16 @@ les liens « Voir le levier » des fiches mécanismes ne s'affichent pas.
 - `anneau` : 0 Sortie difficile · 1 Exigeante · 2 Maîtrisable · 3 Facilitée
 - `type` : `p` propriétaire · `e` ouvert ou source disponible, éditeur unique ·
   `o` ouvert, gouvernance partagée
+- `site` : lien vers le site officiel de la solution (texte), ou liste de liens
+  quand l’entrée regroupe plusieurs produits.
+- `pourquoi` : la raison du classement dans l’anneau, au regard des cinq critères
+  (formats et API, licence et contrat, concentration, maturité des alternatives,
+  compétences). Affichée dans la fiche sous la jauge.
+- `criteres` (facultatif) : critères pour choisir une alternative, propres à cette
+  technologie. Chaque critère est un texte, ou un objet `{ "titre": "…", "detail": "…" }`.
+  Sans ce champ, la fiche affiche des pistes communes (fonctionnalités requises, taille
+  du déploiement, réemploi du matériel, compétences) et deux pistes propres au domaine,
+  définies dans `radar.html` (`VUES.technologies.criteres`).
 
 ## mecanismes.json
 

@@ -11,7 +11,9 @@
       "XCP-ng",
       "Nutanix AHV",
       "OpenShift Virtualization"
-    ]
+    ],
+    "site": "https://www.vmware.com/",
+    "pourquoi": "Tout le parc virtualisé, les outils d’exploitation et les compétences reposent sur la plateforme ; les alternatives existent mais la bascule demande des mois de préparation, et le contrat impose ses offres groupées."
   },
   {
     "nom": "Hyper-V et Azure Local",
@@ -24,7 +26,9 @@
       "Proxmox VE",
       "XCP-ng",
       "KVM"
-    ]
+    ],
+    "site": "https://azure.microsoft.com/products/local/",
+    "pourquoi": "Les formats de machines virtuelles se convertissent, ce qui évite l’anneau central ; mais le lien avec les licences Windows Server et l’annuaire Microsoft rend la migration lourde."
   },
   {
     "nom": "Nutanix AHV",
@@ -36,7 +40,9 @@
     "alternatives": [
       "Proxmox VE avec Ceph",
       "XCP-ng"
-    ]
+    ],
+    "site": "https://www.nutanix.com/products/ahv",
+    "pourquoi": "Des outils de conversion existent, mais stockage, réseau et gestion sont intégrés dans une même plateforme propriétaire : sortir oblige à tout remplacer en même temps."
   },
   {
     "nom": "Proxmox VE",
@@ -47,8 +53,10 @@
     "dependance": "Basé sur KVM et des formats ouverts ; support commercial assuré par un seul éditeur.",
     "alternatives": [
       "XCP-ng",
-      "OpenStack"
-    ]
+      "KVM et QEMU"
+    ],
+    "site": "https://www.proxmox.com/",
+    "pourquoi": "Les machines virtuelles reposent sur KVM et des formats ouverts, réutilisables ailleurs ; le code est ouvert, seul le support commercial dépend d’un éditeur."
   },
   {
     "nom": "XCP-ng et Xen Orchestra",
@@ -59,8 +67,10 @@
     "dependance": "Hyperviseur ouvert, édité en France, formats standards.",
     "alternatives": [
       "Proxmox VE",
-      "OpenStack"
-    ]
+      "KVM et QEMU"
+    ],
+    "site": "https://xcp-ng.org/",
+    "pourquoi": "Hyperviseur ouvert issu du projet Xen, formats standards : on peut changer d’outil ou de prestataire sans réécrire l’existant."
   },
   {
     "nom": "OpenStack",
@@ -71,8 +81,10 @@
     "dependance": "Ouvert et standard, mais exigeant en compétences d’exploitation.",
     "alternatives": [
       "Proxmox VE",
-      "offres OpenStack managées"
-    ]
+      "XCP-ng"
+    ],
+    "site": "https://www.openstack.org/",
+    "pourquoi": "API ouvertes et plusieurs fournisseurs possibles, d’où la sortie maîtrisable ; mais l’exploitation demande des compétences rares, ce qui l’éloigne de l’anneau extérieur."
   },
   {
     "nom": "KVM et QEMU",
@@ -83,7 +95,9 @@
     "dependance": "Socle de virtualisation ouvert, intégré au noyau Linux.",
     "alternatives": [
       "Xen"
-    ]
+    ],
+    "site": "https://www.linux-kvm.org/",
+    "pourquoi": "Intégré au noyau Linux, utilisé par la plupart des outils de virtualisation ouverts : aucun acteur unique ne contrôle ce socle."
   },
   {
     "nom": "Red Hat Enterprise Linux",
@@ -96,7 +110,9 @@
       "AlmaLinux",
       "Rocky Linux",
       "Debian"
-    ]
+    ],
+    "site": "https://www.redhat.com/en/technologies/linux-platforms/enterprise-linux",
+    "pourquoi": "Les applications fonctionnent sur des distributions compatibles, ce qui rend la sortie maîtrisable ; la souscription et l’accès restreint aux sources l’empêchent d’être dans l’anneau extérieur."
   },
   {
     "nom": "SUSE Linux Enterprise",
@@ -108,7 +124,9 @@
     "alternatives": [
       "openSUSE",
       "Debian"
-    ]
+    ],
+    "site": "https://www.suse.com/products/server/",
+    "pourquoi": "Le système est ouvert et les applications portables ; seuls le support et l’outillage propres à l’éditeur demandent un effort lors d’un changement."
   },
   {
     "nom": "Windows Server",
@@ -119,7 +137,9 @@
     "dependance": "Licences par cœur et accès clients, liées à la virtualisation et à l’annuaire.",
     "alternatives": [
       "Linux pour les charges compatibles"
-    ]
+    ],
+    "site": "https://www.microsoft.com/windows-server",
+    "pourquoi": "Les applications écrites pour Windows ne se déplacent pas vers Linux sans adaptation, et les licences sont liées à la virtualisation et à l’annuaire : la migration est lourde."
   },
   {
     "nom": "Debian",
@@ -131,7 +151,9 @@
     "alternatives": [
       "Ubuntu",
       "AlmaLinux"
-    ]
+    ],
+    "site": "https://www.debian.org/",
+    "pourquoi": "Distribution communautaire sans éditeur unique, avec de nombreux prestataires de support : rien n’empêche de changer de fournisseur."
   },
   {
     "nom": "Ubuntu Server",
@@ -142,7 +164,9 @@
     "dependance": "Distribution ouverte, support commercial par un seul éditeur.",
     "alternatives": [
       "Debian"
-    ]
+    ],
+    "site": "https://ubuntu.com/server",
+    "pourquoi": "Le système est ouvert et proche de Debian ; seul le support commercial dépend d’un éditeur, que d’autres prestataires peuvent remplacer."
   },
   {
     "nom": "AlmaLinux et Rocky Linux",
@@ -152,9 +176,13 @@
     "type": "o",
     "dependance": "Compatibles avec RHEL, portées par des fondations.",
     "alternatives": [
-      "Debian",
-      "Oracle Linux"
-    ]
+      "Debian"
+    ],
+    "site": [
+      "https://almalinux.org/",
+      "https://rockylinux.org/"
+    ],
+    "pourquoi": "Compatibles avec RHEL et portées par des fondations : on passe de l’une à l’autre ou à RHEL sans réécrire les applications."
   },
   {
     "nom": "NetApp ONTAP",
@@ -167,7 +195,9 @@
       "Ceph",
       "Scality",
       "stockage natif cloud"
-    ]
+    ],
+    "site": "https://www.netapp.com/",
+    "pourquoi": "Des alternatives solides existent, mais les instantanés, la réplication et les procédures reposent sur des fonctions propriétaires : migrer les volumes est un projet lourd."
   },
   {
     "nom": "Dell PowerStore et PowerMax",
@@ -177,9 +207,10 @@
     "type": "p",
     "dependance": "Baies et fonctions de réplication propriétaires.",
     "alternatives": [
-      "Ceph",
-      "autres baies compatibles"
-    ]
+      "Ceph"
+    ],
+    "site": "https://www.dell.com/en-us/shop/storage-servers-and-networking-for-business/sc/storage-products",
+    "pourquoi": "Les données se copient vers d’autres baies, mais la réplication et l’exploitation reposent sur des fonctions propriétaires : la migration est lourde."
   },
   {
     "nom": "Pure Storage",
@@ -189,9 +220,10 @@
     "type": "p",
     "dependance": "Modèle par abonnement matériel et fonctions propriétaires.",
     "alternatives": [
-      "Ceph",
-      "autres baies"
-    ]
+      "Ceph"
+    ],
+    "site": "https://www.purestorage.com/",
+    "pourquoi": "Les volumes se migrent, mais le contrat d’abonnement matériel et les fonctions propriétaires rendent le changement coûteux à préparer."
   },
   {
     "nom": "HPE Alletra",
@@ -201,9 +233,10 @@
     "type": "p",
     "dependance": "Baies et outils de gestion propriétaires.",
     "alternatives": [
-      "Ceph",
-      "autres baies"
-    ]
+      "Ceph"
+    ],
+    "site": "https://www.hpe.com/storage/alletra",
+    "pourquoi": "Baies et outils de gestion propriétaires : la sortie est possible mais demande de reconstruire réplication et procédures."
   },
   {
     "nom": "Ceph",
@@ -214,7 +247,9 @@
     "dependance": "Stockage logiciel ouvert, bloc, fichier et objet ; exige des compétences.",
     "alternatives": [
       "Stockage objet compatible S3"
-    ]
+    ],
+    "site": "https://ceph.io/",
+    "pourquoi": "Stockage ouvert porté par une fondation, interfaces standards (bloc, fichier, S3) et plusieurs prestataires : on peut changer de fournisseur ; il faut toutefois des compétences."
   },
   {
     "nom": "Scality RING et ARTESCA",
@@ -225,8 +260,10 @@
     "dependance": "Logiciel propriétaire français, mais API S3 standard qui facilite la sortie.",
     "alternatives": [
       "Ceph",
-      "MinIO"
-    ]
+      "Garage"
+    ],
+    "site": "https://www.scality.com/",
+    "pourquoi": "Le logiciel est propriétaire, mais l’API S3 standard permet de copier les données vers un autre stockage objet sans réécrire les applications."
   },
   {
     "nom": "MinIO",
@@ -239,7 +276,9 @@
       "Ceph",
       "Garage",
       "SeaweedFS"
-    ]
+    ],
+    "site": "https://min.io/",
+    "pourquoi": "L’API S3 standard rend la sortie maîtrisable ; l’arrêt de l’édition communautaire montre que le projet dépend d’un seul éditeur, ce qui l’éloigne de l’anneau extérieur."
   },
   {
     "nom": "Cisco IOS et NX-OS",
@@ -250,9 +289,10 @@
     "dependance": "Parcs homogènes, système et compétences propriétaires, contrats de support.",
     "alternatives": [
       "Arista",
-      "SONiC",
-      "Nokia"
-    ]
+      "SONiC"
+    ],
+    "site": "https://www.cisco.com/site/us/en/products/networking/software/ios-nx-os/index.html",
+    "pourquoi": "Les protocoles réseau sont standards, mais configurations, outils et compétences sont propres au constructeur, sur des parcs souvent homogènes : changer est un projet long."
   },
   {
     "nom": "Juniper Junos",
@@ -263,9 +303,10 @@
     "dependance": "Système réseau propriétaire ; racheté par HPE.",
     "alternatives": [
       "SONiC",
-      "Arista",
-      "Nokia"
-    ]
+      "Arista"
+    ],
+    "site": "https://www.hpe.com/us/en/products/networking/junos-os.html",
+    "pourquoi": "Protocoles standards mais système, configurations et compétences propriétaires : la migration demande de reprendre tout le parc."
   },
   {
     "nom": "Arista EOS",
@@ -274,10 +315,9 @@
     "anneau": 2,
     "type": "p",
     "dependance": "Système propriétaire, mais fondé sur des standards et automatisable.",
-    "alternatives": [
-      "SONiC",
-      "Nokia SR Linux"
-    ]
+    "alternatives": [],
+    "site": "https://www.arista.com/en/products/eos",
+    "pourquoi": "Système propriétaire, mais fondé sur Linux, des standards et une automatisation ouverte : les configurations se reprennent plus facilement."
   },
   {
     "nom": "SONiC",
@@ -286,9 +326,9 @@
     "anneau": 2,
     "type": "o",
     "dependance": "Système réseau ouvert, dépendant de la compatibilité matérielle.",
-    "alternatives": [
-      "Arista EOS"
-    ]
+    "alternatives": [],
+    "site": "https://sonicfoundation.dev/",
+    "pourquoi": "Système ouvert et sans éditeur unique, mais limité aux matériels compatibles et exigeant en compétences : la sortie est maîtrisable, pas immédiate."
   },
   {
     "nom": "FortiGate",
@@ -298,10 +338,10 @@
     "type": "p",
     "dependance": "Politiques de sécurité propriétaires, à reconvertir lors d’un changement.",
     "alternatives": [
-      "Palo Alto",
-      "Stormshield",
       "OPNsense"
-    ]
+    ],
+    "site": "https://www.fortinet.com/products/next-generation-firewall",
+    "pourquoi": "Toutes les politiques de sécurité sont décrites dans le format de l’éditeur et doivent être reconverties puis retestées : la bascule est lourde."
   },
   {
     "nom": "Pare-feux Palo Alto",
@@ -311,10 +351,10 @@
     "type": "p",
     "dependance": "Règles, profils et outils de gestion propriétaires.",
     "alternatives": [
-      "Fortinet",
-      "Stormshield",
       "OPNsense"
-    ]
+    ],
+    "site": "https://www.paloaltonetworks.com/network-security/next-generation-firewall",
+    "pourquoi": "Règles, profils et outils de gestion propriétaires à reconvertir et retester : une migration lourde, même si les alternatives sont nombreuses."
   },
   {
     "nom": "Veeam Backup",
@@ -324,10 +364,10 @@
     "type": "p",
     "dependance": "Formats de sauvegarde propriétaires : la restauration dépend de l’outil.",
     "alternatives": [
-      "Commvault",
-      "Atempo",
       "Bacula"
-    ]
+    ],
+    "site": "https://www.veeam.com/",
+    "pourquoi": "Les sauvegardes existantes ne se restaurent qu’avec l’outil : changer impose de garder l’ancien le temps de la rétention, d’où une sortie exigeante."
   },
   {
     "nom": "Commvault",
@@ -337,10 +377,10 @@
     "type": "p",
     "dependance": "Formats et catalogue de sauvegarde propriétaires.",
     "alternatives": [
-      "Veeam",
-      "Atempo",
       "Bacula"
-    ]
+    ],
+    "site": "https://www.commvault.com/",
+    "pourquoi": "Formats et catalogue propriétaires : les sauvegardes passées restent liées à l’outil pendant toute leur durée de conservation."
   },
   {
     "nom": "Atempo Tina et Lina",
@@ -350,9 +390,10 @@
     "type": "p",
     "dependance": "Éditeur français, formats de sauvegarde propriétaires.",
     "alternatives": [
-      "Veeam",
       "Bacula"
-    ]
+    ],
+    "site": "https://www.atempo.com/",
+    "pourquoi": "Éditeur européen, mais formats de sauvegarde propriétaires : la restauration des archives dépend de l’outil."
   },
   {
     "nom": "Machines virtuelles AWS (EC2)",
@@ -362,10 +403,11 @@
     "type": "p",
     "dependance": "Infrastructure standard, mais services annexes et frais de sortie jusqu’au Data Act.",
     "alternatives": [
-      "OVHcloud",
-      "Scaleway",
-      "Outscale"
-    ]
+      "Proxmox VE",
+      "XCP-ng"
+    ],
+    "site": "https://aws.amazon.com/ec2/",
+    "pourquoi": "Les machines virtuelles sont standards et se déplacent ; ce sont les services annexes autour d’elles qui rendent la sortie maîtrisable plutôt que facile."
   },
   {
     "nom": "Machines virtuelles Azure",
@@ -375,10 +417,11 @@
     "type": "p",
     "dependance": "Infrastructure standard, intégrée aux licences et à l’annuaire Microsoft.",
     "alternatives": [
-      "OVHcloud",
-      "Scaleway",
-      "Outscale"
-    ]
+      "Proxmox VE",
+      "XCP-ng"
+    ],
+    "site": "https://azure.microsoft.com/products/virtual-machines/",
+    "pourquoi": "Les machines virtuelles sont standards, mais leur intégration aux licences et à l’annuaire Microsoft ajoute un effort de migration."
   },
   {
     "nom": "IaaS européens (OVHcloud, Scaleway, Outscale)",
@@ -388,9 +431,15 @@
     "type": "p",
     "dependance": "Infrastructure standard, réversible si les services utilisés restent génériques.",
     "alternatives": [
-      "Autres IaaS",
-      "cloud privé"
-    ]
+      "Proxmox VE",
+      "XCP-ng"
+    ],
+    "site": [
+      "https://www.ovhcloud.com/",
+      "https://www.scaleway.com/",
+      "https://www.outscale.com/"
+    ],
+    "pourquoi": "Infrastructure standard, réversible tant que les services utilisés restent génériques ; les services propres à chaque fournisseur demandent une adaptation."
   },
   {
     "nom": "IBM MQ",
@@ -403,7 +452,9 @@
       "RabbitMQ",
       "ActiveMQ Artemis",
       "Kafka"
-    ]
+    ],
+    "site": "https://www.ibm.com/products/mq",
+    "pourquoi": "Les échanges critiques reposent sur ses API et protocoles propriétaires ; des alternatives ouvertes existent mais chaque application doit être adaptée et retestée."
   },
   {
     "nom": "TIBCO",
@@ -416,7 +467,9 @@
       "Apache Camel",
       "Kafka",
       "RabbitMQ"
-    ]
+    ],
+    "site": "https://www.tibco.com/",
+    "pourquoi": "Des années d’intégrations développées dans des outils propriétaires, souvent peu documentées : peu d’alternatives directes et des mois de réécriture."
   },
   {
     "nom": "Apache Kafka",
@@ -426,9 +479,10 @@
     "type": "o",
     "dependance": "Standard ouvert du streaming de données.",
     "alternatives": [
-      "Redpanda",
-      "Pulsar"
-    ]
+      "Apache Pulsar"
+    ],
+    "site": "https://kafka.apache.org/",
+    "pourquoi": "Standard ouvert de la fondation Apache, protocole repris par plusieurs produits et fournisseurs : on change de fournisseur sans changer les applications."
   },
   {
     "nom": "Confluent Platform",
@@ -440,7 +494,9 @@
     "alternatives": [
       "Apache Kafka",
       "Strimzi"
-    ]
+    ],
+    "site": "https://www.confluent.io/",
+    "pourquoi": "Le cœur Kafka est ouvert et portable, mais les fonctions propriétaires utilisées (connecteurs, sécurité, gestion) doivent être remplacées."
   },
   {
     "nom": "RabbitMQ",
@@ -452,7 +508,9 @@
     "alternatives": [
       "ActiveMQ Artemis",
       "Kafka"
-    ]
+    ],
+    "site": "https://www.rabbitmq.com/",
+    "pourquoi": "Le protocole AMQP est standard et d’autres messageries le parlent ; le contrôle du projet par un seul acteur l’éloigne de l’anneau extérieur."
   },
   {
     "nom": "Apache ActiveMQ Artemis",
@@ -461,9 +519,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Messagerie ouverte, protocoles standards.",
-    "alternatives": [
-      "RabbitMQ"
-    ]
+    "alternatives": [],
+    "site": "https://activemq.apache.org/components/artemis/",
+    "pourquoi": "Projet de la fondation Apache, protocoles standards (AMQP, MQTT, JMS) : les applications se connectent à d’autres messageries compatibles."
   },
   {
     "nom": "MuleSoft",
@@ -475,7 +533,9 @@
     "alternatives": [
       "Apache Camel",
       "WSO2"
-    ]
+    ],
+    "site": "https://www.mulesoft.com/",
+    "pourquoi": "Les flux d’intégration sont décrits dans un langage et un moteur propriétaires : il faut tous les réécrire, avec peu d’alternatives directes."
   },
   {
     "nom": "Boomi",
@@ -487,7 +547,9 @@
     "alternatives": [
       "Apache Camel",
       "WSO2"
-    ]
+    ],
+    "site": "https://boomi.com/",
+    "pourquoi": "Plateforme propriétaire, mais les flux restent plus simples à reconstruire que dans les plateformes historiques ; la migration reste lourde."
   },
   {
     "nom": "Informatica",
@@ -500,7 +562,9 @@
       "Apache Hop",
       "dbt",
       "Airflow"
-    ]
+    ],
+    "site": "https://www.informatica.com/",
+    "pourquoi": "Les traitements de données sont décrits dans des outils propriétaires, souvent en très grand nombre : leur réécriture prend des mois."
   },
   {
     "nom": "Apache Camel",
@@ -509,9 +573,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Cadre d’intégration ouvert et standard.",
-    "alternatives": [
-      "WSO2"
-    ]
+    "alternatives": [],
+    "site": "https://camel.apache.org/",
+    "pourquoi": "Cadre ouvert de la fondation Apache, routes écrites en code standard : elles restent lisibles et réutilisables, sans éditeur unique."
   },
   {
     "nom": "IBM WebSphere",
@@ -524,7 +588,9 @@
       "WildFly",
       "Open Liberty",
       "Tomcat"
-    ]
+    ],
+    "site": "https://www.ibm.com/products/websphere-application-server",
+    "pourquoi": "Les applications Java respectent des standards, mais les fonctions et le paramétrage spécifiques doivent être repris lors du changement."
   },
   {
     "nom": "Oracle WebLogic",
@@ -537,7 +603,9 @@
       "WildFly",
       "Open Liberty",
       "Tomcat"
-    ]
+    ],
+    "site": "https://www.oracle.com/java/weblogic/",
+    "pourquoi": "Applications Java portables en théorie, mais fonctions spécifiques, licences et audits rendent la migration lourde à préparer."
   },
   {
     "nom": "Red Hat JBoss EAP",
@@ -548,8 +616,11 @@
     "dependance": "Fondé sur WildFly, souscription et support d’un seul éditeur.",
     "alternatives": [
       "WildFly",
-      "Open Liberty"
-    ]
+      "Open Liberty",
+      "Tomcat"
+    ],
+    "site": "https://www.redhat.com/en/technologies/jboss-middleware/application-platform",
+    "pourquoi": "Fondé sur WildFly et les standards Java : les applications se déplacent ; seuls la souscription et le support dépendent de l’éditeur."
   },
   {
     "nom": "Apache Tomcat",
@@ -560,7 +631,9 @@
     "dependance": "Conteneur web ouvert et standard.",
     "alternatives": [
       "Jetty"
-    ]
+    ],
+    "site": "https://tomcat.apache.org/",
+    "pourquoi": "Conteneur web ouvert et standard, utilisé partout, nombreux supports possibles : aucun verrou."
   },
   {
     "nom": "Kong Gateway",
@@ -570,9 +643,10 @@
     "type": "e",
     "dependance": "Cœur ouvert, fonctions d’entreprise propriétaires.",
     "alternatives": [
-      "Apache APISIX",
-      "Gravitee"
-    ]
+      "Apache APISIX"
+    ],
+    "site": "https://konghq.com/",
+    "pourquoi": "Le cœur ouvert et les standards d’API facilitent la sortie ; les fonctions d’entreprise propriétaires demandent un effort de remplacement."
   },
   {
     "nom": "Apigee",
@@ -585,7 +659,9 @@
       "Kong",
       "Gravitee",
       "Apache APISIX"
-    ]
+    ],
+    "site": "https://cloud.google.com/apigee",
+    "pourquoi": "Les politiques d’API sont décrites dans le format de l’outil et liées à Google Cloud : il faut les reprendre une par une."
   },
   {
     "nom": "Azure API Management",
@@ -597,7 +673,9 @@
     "alternatives": [
       "Kong",
       "Gravitee"
-    ]
+    ],
+    "site": "https://azure.microsoft.com/products/api-management/",
+    "pourquoi": "Service propriétaire intégré à Azure : politiques et configurations sont à reconstruire dans un autre outil."
   },
   {
     "nom": "Kubernetes",
@@ -608,7 +686,9 @@
     "dependance": "Standard ouvert d’orchestration des conteneurs.",
     "alternatives": [
       "Distributions certifiées"
-    ]
+    ],
+    "site": "https://kubernetes.io/",
+    "pourquoi": "Standard ouvert de la CNCF, proposé par de nombreux fournisseurs avec des distributions certifiées compatibles : on change de fournisseur facilement."
   },
   {
     "nom": "Red Hat OpenShift",
@@ -618,9 +698,10 @@
     "type": "e",
     "dependance": "Kubernetes ouvert, mais outils et opérateurs spécifiques.",
     "alternatives": [
-      "Kubernetes amont",
-      "Rancher"
-    ]
+      "Kubernetes amont"
+    ],
+    "site": "https://www.redhat.com/en/technologies/cloud-computing/openshift",
+    "pourquoi": "Les applications Kubernetes se déplacent, mais les outils et opérateurs spécifiques à la plateforme doivent être remplacés."
   },
   {
     "nom": "VMware Tanzu",
@@ -632,7 +713,9 @@
     "alternatives": [
       "Kubernetes amont",
       "Rancher"
-    ]
+    ],
+    "site": "https://www.vmware.com/products/app-platform/tanzu",
+    "pourquoi": "Plateforme propriétaire autour de Kubernetes, soumise à la politique commerciale de l’éditeur : la sortie demande de reconstruire l’outillage."
   },
   {
     "nom": "Kubernetes managé (EKS, AKS, GKE)",
@@ -642,8 +725,14 @@
     "type": "p",
     "dependance": "Kubernetes standard, mais intégrations propres à chaque cloud.",
     "alternatives": [
-      "Kubernetes chez un autre fournisseur"
-    ]
+      "Kubernetes amont"
+    ],
+    "site": [
+      "https://aws.amazon.com/eks/",
+      "https://azure.microsoft.com/products/kubernetes-service/",
+      "https://cloud.google.com/kubernetes-engine"
+    ],
+    "pourquoi": "Kubernetes est standard et les applications se déplacent ; les intégrations propres à chaque cloud (identité, réseau, stockage) demandent une adaptation."
   },
   {
     "nom": "Entra ID et Active Directory",
@@ -655,7 +744,9 @@
     "alternatives": [
       "Keycloak",
       "FreeIPA"
-    ]
+    ],
+    "site": "https://www.microsoft.com/security/business/identity-access/microsoft-entra-id",
+    "pourquoi": "Toutes les applications et tous les postes s’y authentifient : le changer touche l’ensemble du système d’information, sur une longue période."
   },
   {
     "nom": "Okta",
@@ -666,7 +757,9 @@
     "dependance": "Service d’identité propriétaire, intégré à de nombreuses applications.",
     "alternatives": [
       "Keycloak"
-    ]
+    ],
+    "site": "https://www.okta.com/",
+    "pourquoi": "Les protocoles d’identité sont standards (SAML, OpenID Connect), mais chaque application intégrée doit être reconfigurée."
   },
   {
     "nom": "Keycloak",
@@ -675,9 +768,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Gestion des identités ouverte, protocoles standards.",
-    "alternatives": [
-      "Authentik"
-    ]
+    "alternatives": [],
+    "site": "https://www.keycloak.org/",
+    "pourquoi": "Projet ouvert de la CNCF fondé sur des protocoles standards : les applications se raccordent à un autre fournisseur d’identité sans réécriture."
   },
   {
     "nom": "Citrix Virtual Apps and Desktops",
@@ -687,9 +780,10 @@
     "type": "p",
     "dependance": "Poste virtualisé propriétaire, hausses signalées après le changement d’actionnaire.",
     "alternatives": [
-      "Omnissa Horizon",
-      "solutions ouvertes"
-    ]
+      "Apache Guacamole"
+    ],
+    "site": "https://www.citrix.com/",
+    "pourquoi": "Postes et applications publiés, profils et pratiques d’exploitation propriétaires : la migration est lourde même si des alternatives existent."
   },
   {
     "nom": "HashiCorp Vault",
@@ -700,7 +794,9 @@
     "dependance": "Passé sous licence source disponible (BSL) en 2023 ; HashiCorp racheté par IBM.",
     "alternatives": [
       "OpenBao"
-    ]
+    ],
+    "site": "https://www.hashicorp.com/products/vault",
+    "pourquoi": "Un fork ouvert compatible existe, ce qui rend la sortie maîtrisable ; la licence source disponible et le contrôle par un seul acteur l’éloignent de l’anneau extérieur."
   },
   {
     "nom": "OpenBao",
@@ -709,9 +805,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Fork ouvert de Vault, gouvernance communautaire.",
-    "alternatives": [
-      "HashiCorp Vault"
-    ]
+    "alternatives": [],
+    "site": "https://openbao.org/",
+    "pourquoi": "Fork ouvert sous gouvernance communautaire, compatible avec les API de Vault : pas d’éditeur unique."
   },
   {
     "nom": "Oracle Database",
@@ -723,7 +819,9 @@
     "alternatives": [
       "PostgreSQL",
       "MariaDB"
-    ]
+    ],
+    "site": "https://www.oracle.com/database/",
+    "pourquoi": "Le code applicatif en PL/SQL et les fonctions spécifiques sont à réécrire, les licences et audits compliquent la transition : des mois de préparation."
   },
   {
     "nom": "Microsoft SQL Server",
@@ -734,7 +832,9 @@
     "dependance": "Langage T-SQL spécifique, licences par cœur.",
     "alternatives": [
       "PostgreSQL"
-    ]
+    ],
+    "site": "https://www.microsoft.com/sql-server",
+    "pourquoi": "Le T-SQL et les fonctions spécifiques sont à adapter ; des outils de conversion existent, mais la migration reste lourde."
   },
   {
     "nom": "IBM Db2",
@@ -745,7 +845,9 @@
     "dependance": "Base propriétaire, souvent liée au mainframe.",
     "alternatives": [
       "PostgreSQL"
-    ]
+    ],
+    "site": "https://www.ibm.com/db2",
+    "pourquoi": "Base propriétaire souvent liée au mainframe : la migration est lourde, même si PostgreSQL offre une cible crédible."
   },
   {
     "nom": "SAP HANA",
@@ -756,7 +858,9 @@
     "dependance": "Base imposée par S/4HANA, difficilement dissociable de l’ERP.",
     "alternatives": [
       "Peu d’alternatives hors changement d’ERP"
-    ]
+    ],
+    "site": "https://www.sap.com/products/data-cloud/hana.html",
+    "pourquoi": "Base imposée par l’ERP S/4HANA : en sortir revient à changer d’ERP."
   },
   {
     "nom": "PostgreSQL",
@@ -767,7 +871,9 @@
     "dependance": "Base ouverte de référence, sans éditeur unique.",
     "alternatives": [
       "MariaDB"
-    ]
+    ],
+    "site": "https://www.postgresql.org/",
+    "pourquoi": "Base ouverte de référence sans éditeur unique, proposée par tous les clouds et de nombreux prestataires."
   },
   {
     "nom": "MySQL",
@@ -779,7 +885,9 @@
     "alternatives": [
       "MariaDB",
       "PostgreSQL"
-    ]
+    ],
+    "site": "https://www.mysql.com/",
+    "pourquoi": "Format et protocole repris par MariaDB et de nombreux services : la sortie est maîtrisable ; le contrôle par un seul éditeur l’éloigne de l’anneau extérieur."
   },
   {
     "nom": "MariaDB",
@@ -790,7 +898,9 @@
     "dependance": "Fork ouvert de MySQL, porté par une fondation.",
     "alternatives": [
       "PostgreSQL"
-    ]
+    ],
+    "site": "https://mariadb.org/",
+    "pourquoi": "Fork ouvert porté par une fondation, compatible avec MySQL : plusieurs fournisseurs et prestataires possibles."
   },
   {
     "nom": "MongoDB",
@@ -802,7 +912,9 @@
     "alternatives": [
       "FerretDB",
       "PostgreSQL"
-    ]
+    ],
+    "site": "https://www.mongodb.com/",
+    "pourquoi": "Le modèle de documents se réimporte ailleurs et des alternatives compatibles existent ; la licence SSPL et l’éditeur unique l’éloignent de l’anneau extérieur."
   },
   {
     "nom": "Redis",
@@ -813,7 +925,9 @@
     "dependance": "Licence modifiée en 2024 ; une option AGPL a été réintroduite en 2025, après la création du fork Valkey.",
     "alternatives": [
       "Valkey"
-    ]
+    ],
+    "site": "https://redis.io/",
+    "pourquoi": "Le fork Valkey, compatible, offre une sortie directe ; les changements de licence montrent le poids d’un seul éditeur."
   },
   {
     "nom": "Valkey",
@@ -822,9 +936,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Fork ouvert de Redis, gouvernance communautaire.",
-    "alternatives": [
-      "Redis"
-    ]
+    "alternatives": [],
+    "site": "https://valkey.io/",
+    "pourquoi": "Fork ouvert porté par la Linux Foundation, compatible avec Redis : plusieurs fournisseurs le proposent."
   },
   {
     "nom": "Elasticsearch",
@@ -835,7 +949,9 @@
     "dependance": "Licence modifiée en 2021, puis AGPL ajoutée en 2024.",
     "alternatives": [
       "OpenSearch"
-    ]
+    ],
+    "site": "https://www.elastic.co/elasticsearch",
+    "pourquoi": "Le fork OpenSearch reprend l’essentiel des API : la sortie est maîtrisable ; les changements de licence montrent le poids de l’éditeur."
   },
   {
     "nom": "OpenSearch",
@@ -844,9 +960,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Fork ouvert d’Elasticsearch, porté par une fondation.",
-    "alternatives": [
-      "Elasticsearch"
-    ]
+    "alternatives": [],
+    "site": "https://opensearch.org/",
+    "pourquoi": "Projet ouvert porté par une fondation, proposé par plusieurs fournisseurs : pas d’éditeur unique."
   },
   {
     "nom": "Amazon DynamoDB",
@@ -858,7 +974,9 @@
     "alternatives": [
       "ScyllaDB",
       "Cassandra"
-    ]
+    ],
+    "site": "https://aws.amazon.com/dynamodb/",
+    "pourquoi": "API et modèle de données propriétaires, sans équivalent direct : les applications sont à revoir en profondeur."
   },
   {
     "nom": "Azure Cosmos DB",
@@ -871,7 +989,9 @@
       "PostgreSQL",
       "Cassandra",
       "MongoDB"
-    ]
+    ],
+    "site": "https://azure.microsoft.com/products/cosmos-db/",
+    "pourquoi": "Service propriétaire aux API et modèles spécifiques : il faut adapter le code et le modèle de données."
   },
   {
     "nom": "Google Spanner",
@@ -883,7 +1003,9 @@
     "alternatives": [
       "CockroachDB",
       "YugabyteDB"
-    ]
+    ],
+    "site": "https://cloud.google.com/spanner",
+    "pourquoi": "Base distribuée propriétaire sans équivalent direct : la migration demande de revoir l’architecture applicative."
   },
   {
     "nom": "Snowflake",
@@ -895,7 +1017,9 @@
     "alternatives": [
       "Databricks",
       "entrepôt sur Iceberg"
-    ]
+    ],
+    "site": "https://www.snowflake.com/",
+    "pourquoi": "Le SQL est proche du standard, mais les données sont stockées dans des formats internes ; la prise en charge d’Iceberg ouvre une sortie, encore lourde."
   },
   {
     "nom": "Databricks",
@@ -906,7 +1030,9 @@
     "dependance": "Plateforme propriétaire bâtie sur des formats ouverts (Delta Lake, Iceberg).",
     "alternatives": [
       "Spark et Iceberg sur une autre plateforme"
-    ]
+    ],
+    "site": "https://www.databricks.com/",
+    "pourquoi": "Plateforme propriétaire, mais données dans des formats ouverts (Delta Lake, Iceberg) lisibles par d’autres moteurs : la sortie est maîtrisable."
   },
   {
     "nom": "Google BigQuery",
@@ -916,9 +1042,11 @@
     "type": "p",
     "dependance": "Entrepôt propriétaire, intégré à Google Cloud.",
     "alternatives": [
-      "Snowflake",
+      "Databricks",
       "entrepôt sur Iceberg"
-    ]
+    ],
+    "site": "https://cloud.google.com/bigquery",
+    "pourquoi": "Entrepôt propriétaire intégré à Google Cloud : données, requêtes et traitements sont à migrer."
   },
   {
     "nom": "Amazon Redshift",
@@ -928,9 +1056,11 @@
     "type": "p",
     "dependance": "Entrepôt propriétaire, intégré à AWS.",
     "alternatives": [
-      "Snowflake",
+      "Databricks",
       "entrepôt sur Iceberg"
-    ]
+    ],
+    "site": "https://aws.amazon.com/redshift/",
+    "pourquoi": "Entrepôt propriétaire intégré à AWS : données, requêtes et chaînes de traitement sont à migrer."
   },
   {
     "nom": "Teradata",
@@ -941,7 +1071,9 @@
     "dependance": "Plateformes historiques volumineuses et langage spécifique.",
     "alternatives": [
       "Entrepôt cloud ou sur Iceberg"
-    ]
+    ],
+    "site": "https://www.teradata.com/",
+    "pourquoi": "Volumes très importants, langage et optimisations spécifiques accumulés pendant des années : la migration demande des mois."
   },
   {
     "nom": "Apache Iceberg",
@@ -953,7 +1085,9 @@
     "alternatives": [
       "Delta Lake",
       "Apache Hudi"
-    ]
+    ],
+    "site": "https://iceberg.apache.org/",
+    "pourquoi": "Format de table ouvert de la fondation Apache, lisible par de nombreux moteurs : les données ne sont liées à aucun outil."
   },
   {
     "nom": "Apache Parquet",
@@ -964,7 +1098,9 @@
     "dependance": "Format de fichier ouvert et standard.",
     "alternatives": [
       "Apache ORC"
-    ]
+    ],
+    "site": "https://parquet.apache.org/",
+    "pourquoi": "Format de fichier ouvert et universel, lu par presque tous les outils de données."
   },
   {
     "nom": "ClickHouse",
@@ -976,7 +1112,9 @@
     "alternatives": [
       "Apache Druid",
       "DuckDB"
-    ]
+    ],
+    "site": "https://clickhouse.com/",
+    "pourquoi": "Base ouverte, installable partout et proposée par plusieurs fournisseurs ; un éditeur principal la développe, sans verrou de licence."
   },
   {
     "nom": "Talend",
@@ -989,7 +1127,9 @@
       "Apache Hop",
       "dbt",
       "Airbyte"
-    ]
+    ],
+    "site": "https://www.talend.com/",
+    "pourquoi": "L’arrêt de la version ouverte et les traitements décrits dans l’outil imposent de tout réécrire en changeant."
   },
   {
     "nom": "dbt",
@@ -1000,7 +1140,9 @@
     "dependance": "Transformations en SQL lisible, cœur ouvert.",
     "alternatives": [
       "SQLMesh"
-    ]
+    ],
+    "site": "https://www.getdbt.com/",
+    "pourquoi": "Les transformations sont du SQL lisible, versionné avec le code : elles se réutilisent avec d’autres outils."
   },
   {
     "nom": "Power BI",
@@ -1012,7 +1154,9 @@
     "alternatives": [
       "Apache Superset",
       "Metabase"
-    ]
+    ],
+    "site": "https://www.microsoft.com/power-platform/products/power-bi",
+    "pourquoi": "Modèles, mesures et rapports dans le format de l’outil, liés à Microsoft 365 : il faut les reconstruire ailleurs."
   },
   {
     "nom": "Tableau",
@@ -1024,7 +1168,9 @@
     "alternatives": [
       "Apache Superset",
       "Metabase"
-    ]
+    ],
+    "site": "https://www.tableau.com/",
+    "pourquoi": "Les tableaux de bord sont dans le format de l’outil et doivent être reconstruits dans un autre."
   },
   {
     "nom": "Qlik Sense",
@@ -1036,7 +1182,9 @@
     "alternatives": [
       "Apache Superset",
       "Metabase"
-    ]
+    ],
+    "site": "https://www.qlik.com/us/products/qlik-sense",
+    "pourquoi": "Modèles et scripts de chargement propriétaires à réécrire pour changer d’outil."
   },
   {
     "nom": "Apache Superset",
@@ -1045,9 +1193,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Visualisation ouverte, connecteurs standards.",
-    "alternatives": [
-      "Metabase"
-    ]
+    "alternatives": [],
+    "site": "https://superset.apache.org/",
+    "pourquoi": "Projet ouvert de la fondation Apache, connecteurs standards : on change d’hébergeur ou de prestataire librement."
   },
   {
     "nom": "Cloudera",
@@ -1058,7 +1206,9 @@
     "dependance": "Plateforme de données propriétaire bâtie sur des briques ouvertes.",
     "alternatives": [
       "Spark et Iceberg"
-    ]
+    ],
+    "site": "https://www.cloudera.com/",
+    "pourquoi": "Des briques ouvertes (Spark, Hive) facilitent la reprise des données, mais la plateforme et son outillage sont propriétaires : migration lourde."
   },
   {
     "nom": "Amazon S3",
@@ -1068,8 +1218,10 @@
     "type": "p",
     "dependance": "API devenue standard de fait, reprise par de nombreux acteurs ; frais de sortie jusqu’au Data Act.",
     "alternatives": [
-      "Stockage objet compatible S3"
-    ]
+      "Ceph"
+    ],
+    "site": "https://aws.amazon.com/s3/",
+    "pourquoi": "L’API S3 est reprise par de nombreux fournisseurs et logiciels : les applications se déplacent ; le volume de données à transférer reste un frein."
   },
   {
     "nom": "ServiceNow",
@@ -1082,7 +1234,9 @@
       "GLPI",
       "iTop",
       "Jira Service Management"
-    ]
+    ],
+    "site": "https://www.servicenow.com/",
+    "pourquoi": "Processus, données, développements et intégrations sont construits dans la plateforme : la sortie se prépare sur des mois, avec peu d’équivalents complets."
   },
   {
     "nom": "BMC Helix",
@@ -1094,7 +1248,9 @@
     "alternatives": [
       "GLPI",
       "iTop"
-    ]
+    ],
+    "site": "https://www.bmc.com/it-solutions/bmc-helix.html",
+    "pourquoi": "Processus et données intégrés à l’outil : des alternatives existent mais la reprise est lourde."
   },
   {
     "nom": "Jira et Jira Service Management",
@@ -1107,7 +1263,9 @@
       "GitLab",
       "OpenProject",
       "GLPI"
-    ]
+    ],
+    "site": "https://www.atlassian.com/software/jira",
+    "pourquoi": "Les tickets s’exportent, mais workflows, automatisations et intégrations sont à reconstruire, avec un calendrier imposé par la fin de Data Center."
   },
   {
     "nom": "Confluence",
@@ -1119,7 +1277,9 @@
     "alternatives": [
       "XWiki",
       "Outline"
-    ]
+    ],
+    "site": "https://www.atlassian.com/software/confluence",
+    "pourquoi": "Les pages s’exportent mal hors du format de l’outil, et la fin de Data Center impose un calendrier."
   },
   {
     "nom": "GLPI",
@@ -1130,7 +1290,9 @@
     "dependance": "Gestion des services ouverte, éditée en France.",
     "alternatives": [
       "iTop"
-    ]
+    ],
+    "site": "https://glpi-project.org/",
+    "pourquoi": "Code ouvert, installable chez soi ou chez plusieurs prestataires, données dans une base standard."
   },
   {
     "nom": "Splunk",
@@ -1143,7 +1305,9 @@
       "OpenSearch",
       "Grafana",
       "Elastic"
-    ]
+    ],
+    "site": "https://www.splunk.com/",
+    "pourquoi": "Requêtes, tableaux de bord et alertes écrits dans un langage propriétaire, à réécrire : la migration est lourde."
   },
   {
     "nom": "Datadog",
@@ -1156,7 +1320,9 @@
       "Prometheus",
       "Grafana",
       "OpenTelemetry"
-    ]
+    ],
+    "site": "https://www.datadoghq.com/",
+    "pourquoi": "Agents et tableaux de bord propriétaires ; OpenTelemetry réduit la dépendance aux agents, mais les tableaux de bord restent à reconstruire."
   },
   {
     "nom": "Dynatrace",
@@ -1169,7 +1335,9 @@
       "Prometheus",
       "Grafana",
       "OpenTelemetry"
-    ]
+    ],
+    "site": "https://www.dynatrace.com/",
+    "pourquoi": "Agents et analyses propriétaires à remplacer, tableaux de bord et alertes à reconstruire."
   },
   {
     "nom": "New Relic",
@@ -1182,7 +1350,9 @@
       "Prometheus",
       "Grafana",
       "OpenTelemetry"
-    ]
+    ],
+    "site": "https://newrelic.com/",
+    "pourquoi": "Service propriétaire ; la collecte peut passer par OpenTelemetry, mais l’exploitation des données reste à reconstruire."
   },
   {
     "nom": "Prometheus",
@@ -1191,9 +1361,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Supervision ouverte et standard.",
-    "alternatives": [
-      "VictoriaMetrics"
-    ]
+    "alternatives": [],
+    "site": "https://prometheus.io/",
+    "pourquoi": "Projet ouvert de la CNCF dont le format est devenu un standard repris par de nombreux outils."
   },
   {
     "nom": "Grafana",
@@ -1204,7 +1374,9 @@
     "dependance": "Visualisation ouverte (AGPL), éditeur principal.",
     "alternatives": [
       "Perses"
-    ]
+    ],
+    "site": "https://grafana.com/",
+    "pourquoi": "Code ouvert (AGPL), installable partout, connecté à des sources standards ; un éditeur principal, mais pas de verrou."
   },
   {
     "nom": "OpenTelemetry",
@@ -1213,9 +1385,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Standard de collecte qui découple les agents de l’outil d’observabilité.",
-    "alternatives": [
-      "—"
-    ]
+    "alternatives": [],
+    "site": "https://opentelemetry.io/",
+    "pourquoi": "Standard ouvert de la CNCF : il découple la collecte de l’outil d’analyse, et réduit les dépendances au lieu d’en créer."
   },
   {
     "nom": "GitHub",
@@ -1227,7 +1399,9 @@
     "alternatives": [
       "GitLab",
       "Forgejo"
-    ]
+    ],
+    "site": "https://github.com/",
+    "pourquoi": "Git est standard et les dépôts se déplacent, mais les automatisations (Actions) et intégrations sont à reconstruire."
   },
   {
     "nom": "GitLab",
@@ -1237,9 +1411,10 @@
     "type": "e",
     "dependance": "Cœur ouvert, fonctions avancées propriétaires.",
     "alternatives": [
-      "Forgejo",
-      "Gitea"
-    ]
+      "Forgejo"
+    ],
+    "site": "https://about.gitlab.com/",
+    "pourquoi": "Cœur ouvert et dépôts Git standards : la sortie est maîtrisable ; les fonctions propriétaires et les pipelines demandent un effort."
   },
   {
     "nom": "Forgejo",
@@ -1248,9 +1423,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Forge logicielle ouverte, gouvernance communautaire.",
-    "alternatives": [
-      "Gitea"
-    ]
+    "alternatives": [],
+    "site": "https://forgejo.org/",
+    "pourquoi": "Forge ouverte sous gouvernance communautaire, dépôts Git standards : on l’héberge où l’on veut."
   },
   {
     "nom": "Jenkins",
@@ -1261,7 +1436,9 @@
     "dependance": "Intégration continue ouverte.",
     "alternatives": [
       "Woodpecker CI"
-    ]
+    ],
+    "site": "https://www.jenkins.io/",
+    "pourquoi": "Projet ouvert de la CD Foundation, installable partout : pipelines lisibles et nombreux prestataires."
   },
   {
     "nom": "Azure DevOps",
@@ -1273,7 +1450,9 @@
     "alternatives": [
       "GitLab",
       "Jenkins"
-    ]
+    ],
+    "site": "https://azure.microsoft.com/products/devops/",
+    "pourquoi": "Dépôts Git standards, mais pipelines et suivi propriétaires liés à Azure : à reconstruire."
   },
   {
     "nom": "Terraform",
@@ -1284,7 +1463,9 @@
     "dependance": "Passé sous licence source disponible (BSL) en 2023.",
     "alternatives": [
       "OpenTofu"
-    ]
+    ],
+    "site": "https://www.terraform.io/",
+    "pourquoi": "Le fork OpenTofu, compatible, permet une sortie directe ; la licence source disponible l’éloigne de l’anneau extérieur."
   },
   {
     "nom": "OpenTofu",
@@ -1293,9 +1474,9 @@
     "anneau": 3,
     "type": "o",
     "dependance": "Fork ouvert de Terraform, compatible.",
-    "alternatives": [
-      "Terraform"
-    ]
+    "alternatives": [],
+    "site": "https://opentofu.org/",
+    "pourquoi": "Fork ouvert de la Linux Foundation, compatible avec les configurations Terraform existantes."
   },
   {
     "nom": "Ansible",
@@ -1305,8 +1486,10 @@
     "type": "e",
     "dependance": "Automatisation ouverte, format standard (YAML).",
     "alternatives": [
-      "Salt"
-    ]
+      "OpenVox"
+    ],
+    "site": "https://www.ansible.com/",
+    "pourquoi": "Code ouvert et configurations en YAML lisible, réutilisables sans l’offre commerciale."
   },
   {
     "nom": "Puppet",
@@ -1318,7 +1501,9 @@
     "alternatives": [
       "OpenVox",
       "Ansible"
-    ]
+    ],
+    "site": "https://www.puppet.com/",
+    "pourquoi": "Le fork compatible OpenVox permet de sortir sans réécrire les configurations ; les binaires désormais privés montrent le poids de l’éditeur."
   },
   {
     "nom": "OpenVox",
@@ -1328,9 +1513,10 @@
     "type": "o",
     "dependance": "Fork communautaire de Puppet, compatible avec les configurations existantes.",
     "alternatives": [
-      "Puppet",
       "Ansible"
-    ]
+    ],
+    "site": "https://voxpupuli.org/openvox/",
+    "pourquoi": "Fork communautaire compatible avec les configurations Puppet existantes, sans éditeur unique."
   },
   {
     "nom": "PagerDuty",
@@ -1342,7 +1528,9 @@
     "alternatives": [
       "Grafana OnCall",
       "Alertmanager"
-    ]
+    ],
+    "site": "https://www.pagerduty.com/",
+    "pourquoi": "Les astreintes et escalades se reconstruisent, et des outils ouverts existent ; les nombreuses intégrations demandent un effort."
   },
   {
     "nom": "CrowdStrike Falcon",
@@ -1352,10 +1540,10 @@
     "type": "p",
     "dependance": "Agent au cœur des postes et serveurs ; à l’origine de la panne mondiale de juillet 2024.",
     "alternatives": [
-      "Microsoft Defender",
-      "HarfangLab",
       "Wazuh"
-    ]
+    ],
+    "site": "https://www.crowdstrike.com/",
+    "pourquoi": "Agent installé sur chaque poste et serveur, politiques et détections propriétaires : changer demande un déploiement complet et une période de recouvrement."
   },
   {
     "nom": "Microsoft Defender",
@@ -1365,10 +1553,10 @@
     "type": "p",
     "dependance": "Sécurité intégrée à l’écosystème et aux licences Microsoft.",
     "alternatives": [
-      "CrowdStrike",
-      "HarfangLab",
       "Wazuh"
-    ]
+    ],
+    "site": "https://www.microsoft.com/security/business/endpoint-security/microsoft-defender-endpoint",
+    "pourquoi": "Intégré aux licences et à l’écosystème Microsoft : en sortir demande un nouvel agent sur tout le parc et la reprise des politiques."
   },
   {
     "nom": "Microsoft Intune",
@@ -1379,7 +1567,9 @@
     "dependance": "Gestion des terminaux liée à Entra ID et Microsoft 365.",
     "alternatives": [
       "Solutions de gestion de flotte ouvertes"
-    ]
+    ],
+    "site": "https://www.microsoft.com/security/business/microsoft-intune",
+    "pourquoi": "Gestion des terminaux liée à Entra ID et Microsoft 365 : changer impose de réinscrire tous les appareils."
   },
   {
     "nom": "Wazuh",
@@ -1388,8 +1578,172 @@
     "anneau": 3,
     "type": "e",
     "dependance": "Sécurité et détection ouvertes.",
+    "alternatives": [],
+    "site": "https://wazuh.com/",
+    "pourquoi": "Code ouvert, installable chez soi, règles et données dans des formats lisibles."
+  },
+  {
+    "nom": "Mainframe IBM Z (z/OS)",
+    "editeur": "IBM",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Applications COBOL, CICS et IMS, logiciels facturés selon la capacité consommée, compétences rares : une sortie se compte en années.",
     "alternatives": [
-      "Elastic Security"
-    ]
+      "Réécriture ou réhébergement sur Linux x86",
+      "AlmaLinux et Rocky Linux"
+    ],
+    "site": "https://www.ibm.com/z",
+    "pourquoi": "Des décennies d’applications COBOL, CICS et IMS, des compétences rares et peu d’équivalents directs : une sortie se prépare sur des années."
+  },
+  {
+    "nom": "IBM Power (AIX et IBM i)",
+    "editeur": "IBM",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Système et matériel liés, applications RPG et base Db2 intégrée à IBM i, compétences qui se raréfient.",
+    "alternatives": [
+      "Red Hat Enterprise Linux",
+      "AlmaLinux et Rocky Linux"
+    ],
+    "site": "https://www.ibm.com/power",
+    "pourquoi": "Système et matériel liés, applications RPG et base intégrée : il faut réécrire ou convertir les applications, avec des compétences qui se raréfient."
+  },
+  {
+    "nom": "Oracle Exadata",
+    "editeur": "Oracle",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Fonctions réservées au matériel Oracle (Smart Scan, compression hybride en colonnes) et licences de base de données adossées à la machine.",
+    "alternatives": [
+      "Serveurs x86 standards",
+      "PostgreSQL"
+    ],
+    "site": "https://www.oracle.com/engineered-systems/exadata/",
+    "pourquoi": "Les performances reposent sur des fonctions réservées au matériel Oracle et les licences sont adossées à la machine : sortir implique aussi de quitter Oracle Database."
+  },
+  {
+    "nom": "Cisco ACI",
+    "editeur": "Cisco",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Modèle de politiques propre à Cisco (groupes, contrats) piloté par le contrôleur APIC : la configuration du réseau ne se transpose pas.",
+    "alternatives": [
+      "SONiC",
+      "Arista EOS",
+      "Fabrique EVPN-VXLAN standard"
+    ],
+    "site": "https://www.cisco.com/site/us/en/products/networking/cloud-networking/application-centric-infrastructure/index.html",
+    "pourquoi": "Le modèle de politiques du réseau n’existe que chez Cisco : il faut repenser et reconfigurer la fabrique entière, pas seulement changer d’équipements."
+  },
+  {
+    "nom": "AWS Outposts",
+    "editeur": "Amazon Web Services",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Matériel AWS installé dans vos locaux, piloté depuis une région AWS et engagé sur trois ans.",
+    "alternatives": [
+      "Proxmox VE",
+      "OpenStack"
+    ],
+    "site": "https://aws.amazon.com/outposts/",
+    "pourquoi": "Matériel propriété d’AWS, piloté depuis une région AWS et engagé sur trois ans : la sortie dépend du calendrier du contrat et d’une infrastructure de remplacement."
+  },
+  {
+    "nom": "OpenShift Virtualization",
+    "editeur": "Red Hat (IBM)",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Machines virtuelles gérées comme des objets Kubernetes grâce au projet ouvert KubeVirt ; souscription et outillage propres à Red Hat.",
+    "alternatives": [
+      "KubeVirt",
+      "Proxmox VE"
+    ],
+    "site": "https://www.redhat.com/en/technologies/cloud-computing/openshift/virtualization",
+    "pourquoi": "Fondé sur KubeVirt et KVM, ouverts : les machines virtuelles et leurs définitions se reprennent sur un autre Kubernetes ; la souscription et l’outillage spécifiques l’éloignent de l’anneau extérieur."
+  },
+  {
+    "nom": "KubeVirt",
+    "editeur": "CNCF",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Projet ouvert de la CNCF qui exécute des machines virtuelles dans Kubernetes, à côté des conteneurs.",
+    "alternatives": [
+      "KVM et QEMU",
+      "Proxmox VE"
+    ],
+    "site": "https://kubevirt.io/",
+    "pourquoi": "Projet ouvert sans éditeur unique, repris par plusieurs distributions Kubernetes : on change de fournisseur sans changer le format des machines virtuelles."
+  },
+  {
+    "nom": "Huawei DCS (FusionCompute)",
+    "editeur": "Huawei",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Hyperviseur et outils de gestion propriétaires d’un fournisseur visé par des sanctions américaines : support et mises à jour dépendent du contexte géopolitique.",
+    "alternatives": [
+      "Proxmox VE",
+      "XCP-ng"
+    ],
+    "site": "https://e.huawei.com/en/solutions/storage/virtualization/datacenter-virtualization",
+    "pourquoi": "Les machines virtuelles se convertissent vers d’autres hyperviseurs, ce qui évite l’anneau central ; mais gestion, sauvegarde et exploitation sont propriétaires, et le risque géopolitique pèse sur la continuité."
+  },
+  {
+    "nom": "XenServer (ex-Citrix Hypervisor)",
+    "editeur": "Cloud Software Group",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Hyperviseur propriétaire issu de Citrix, fondé sur le projet ouvert Xen.",
+    "alternatives": [
+      "XCP-ng",
+      "Proxmox VE"
+    ],
+    "site": "https://www.xenserver.com/",
+    "pourquoi": "Propriétaire, mais XCP-ng, issu du même code, reprend les machines virtuelles et les pratiques d’exploitation : la sortie est maîtrisable."
+  },
+  {
+    "nom": "Control-M",
+    "editeur": "BMC",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Des milliers de traitements et de dépendances décrits dans le format de l’outil, au cœur de la production.",
+    "alternatives": [
+      "Apache Airflow"
+    ],
+    "site": "https://www.bmc.com/it-solutions/control-m.html",
+    "pourquoi": "Toutes les chaînes de traitement de la production sont décrites dans l’outil : il faut les recenser, les convertir et les retester, sur des mois, avec peu d’équivalents directs."
+  },
+  {
+    "nom": "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)",
+    "editeur": "Broadcom",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Chaînes de traitement critiques décrites dans des outils propriétaires, soumises à la politique commerciale de Broadcom.",
+    "alternatives": [
+      "Apache Airflow"
+    ],
+    "site": "https://automation.broadcom.com/",
+    "pourquoi": "Comme pour tout ordonnanceur de production, les chaînes sont à convertir et retester une à une ; la politique commerciale de l’éditeur rend la sortie plus urgente sans la rendre plus simple."
+  },
+  {
+    "nom": "Apache Airflow",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Orchestrateur ouvert de la fondation Apache, chaînes de traitement décrites en Python.",
+    "alternatives": [],
+    "site": "https://airflow.apache.org/",
+    "pourquoi": "Projet ouvert de la fondation Apache, installable chez soi ou proposé en service managé par plusieurs fournisseurs : les définitions en Python restent réutilisables."
   }
 ]
