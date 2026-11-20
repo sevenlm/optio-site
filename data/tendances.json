@@ -1092,5 +1092,42 @@
         "url": "https://news.sap.com/2025/08/rise-with-sap-journey-sap-erp-private-edition-transition-option-updates/"
       }
     ]
+  },
+  {
+    "titre": "Offres gratuites qui se referment",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "risque",
+    "declencheur": "En mars 2026, Postman a limité son offre gratuite à un seul utilisateur : les équipes qui collaboraient gratuitement doivent désormais passer à une offre payante.",
+    "tendance": "Les outils SaaS en freemium s’installent gratuitement dans les équipes, puis resserrent l’offre gratuite une fois l’usage installé. Sur GitLab.com, les groupes privés de l’offre gratuite sont limités à cinq utilisateurs et passent en lecture seule au-delà : annoncée en mars 2022, la limite devait s’appliquer à tous les espaces gratuits restants à partir du 15 août 2026, et les comptes gratuits créés depuis le 27 janvier 2026 sont limités à trois groupes. Depuis le 26 août 2024, Slack supprime les messages de plus d’un an des espaces gratuits et ne donne accès qu’aux 90 derniers jours, le reste n’étant visible qu’en passant au payant. En décembre 2025, GitHub a annoncé une redevance de 0,002 $ par minute sur les runners Actions hébergés par les clients eux-mêmes, avant de la reporter.",
+    "risque": "L’outil devient indispensable avant d’avoir été choisi : le passage au payant se négocie sous contrainte, avec un historique, des dépôts ou des données que l’éditeur peut bloquer ou effacer.",
+    "mitigations": [
+      "Recensez les outils SaaS utilisés en offre gratuite par les équipes, avec le nombre d’utilisateurs et le volume de données qu’ils contiennent.",
+      "Traitez le passage d’un outil gratuit à un usage d’équipe comme un achat : contrat, export des données, coût sur trois ans.",
+      "Exportez régulièrement les dépôts, l’historique et les configurations dans un format ouvert, sans attendre une restriction.",
+      "Pour les outils de développement critiques, gardez la possibilité de les héberger vous-même."
+    ],
+    "sources": [
+      {
+        "titre": "Postman, évolution des offres, mars 2026",
+        "url": "https://learning.postman.com/docs/billing/about-plans"
+      },
+      {
+        "titre": "GitLab, limites de l’offre gratuite, consulté en novembre 2026",
+        "url": "https://docs.gitlab.com/user/free_user_limit"
+      },
+      {
+        "titre": "GitLab, limites d’utilisateurs de l’offre gratuite, annonce de mars 2022 mise à jour en juin 2026",
+        "url": "https://about.gitlab.com/blog/2022/03/24/efficient-free-tier/"
+      },
+      {
+        "titre": "Slack, historique des messages des espaces gratuits, août 2024",
+        "url": "https://slack.com/help/articles/29414264463635"
+      },
+      {
+        "titre": "GitHub, évolution de la tarification d’Actions, décembre 2025",
+        "url": "https://github.blog/changelog/2025-12-16-coming-soon-simpler-pricing-and-a-better-experience-for-github-actions/"
+      }
+    ]
   }
 ]
