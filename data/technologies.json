@@ -1,0 +1,1395 @@
+[
+  {
+    "nom": "VMware vSphere et VCF",
+    "editeur": "Broadcom",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Licences perpétuelles supprimées, offres groupées imposées, outils d’exploitation et compétences spécifiques.",
+    "alternatives": [
+      "Proxmox VE",
+      "XCP-ng",
+      "Nutanix AHV",
+      "OpenShift Virtualization"
+    ]
+  },
+  {
+    "nom": "Hyper-V et Azure Local",
+    "editeur": "Microsoft",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Lié aux licences Windows Server et à l’écosystème Microsoft.",
+    "alternatives": [
+      "Proxmox VE",
+      "XCP-ng",
+      "KVM"
+    ]
+  },
+  {
+    "nom": "Nutanix AHV",
+    "editeur": "Nutanix",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Plateforme hyperconvergée intégrée : une alternative à VMware qui peut créer un nouveau verrou.",
+    "alternatives": [
+      "Proxmox VE avec Ceph",
+      "XCP-ng"
+    ]
+  },
+  {
+    "nom": "Proxmox VE",
+    "editeur": "Proxmox Server Solutions",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Basé sur KVM et des formats ouverts ; support commercial assuré par un seul éditeur.",
+    "alternatives": [
+      "XCP-ng",
+      "OpenStack"
+    ]
+  },
+  {
+    "nom": "XCP-ng et Xen Orchestra",
+    "editeur": "Vates (projet Xen, Linux Foundation)",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Hyperviseur ouvert, édité en France, formats standards.",
+    "alternatives": [
+      "Proxmox VE",
+      "OpenStack"
+    ]
+  },
+  {
+    "nom": "OpenStack",
+    "editeur": "OpenInfra Foundation",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "o",
+    "dependance": "Ouvert et standard, mais exigeant en compétences d’exploitation.",
+    "alternatives": [
+      "Proxmox VE",
+      "offres OpenStack managées"
+    ]
+  },
+  {
+    "nom": "KVM et QEMU",
+    "editeur": "Communauté Linux",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Socle de virtualisation ouvert, intégré au noyau Linux.",
+    "alternatives": [
+      "Xen"
+    ]
+  },
+  {
+    "nom": "Red Hat Enterprise Linux",
+    "editeur": "Red Hat (IBM)",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Code ouvert, mais accès aux sources restreint depuis 2023 et modèle par souscription.",
+    "alternatives": [
+      "AlmaLinux",
+      "Rocky Linux",
+      "Debian"
+    ]
+  },
+  {
+    "nom": "SUSE Linux Enterprise",
+    "editeur": "SUSE",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Distribution ouverte, support et outillage propres à l’éditeur.",
+    "alternatives": [
+      "openSUSE",
+      "Debian"
+    ]
+  },
+  {
+    "nom": "Windows Server",
+    "editeur": "Microsoft",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Licences par cœur et accès clients, liées à la virtualisation et à l’annuaire.",
+    "alternatives": [
+      "Linux pour les charges compatibles"
+    ]
+  },
+  {
+    "nom": "Debian",
+    "editeur": "Projet Debian",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Distribution communautaire, sans éditeur unique.",
+    "alternatives": [
+      "Ubuntu",
+      "AlmaLinux"
+    ]
+  },
+  {
+    "nom": "Ubuntu Server",
+    "editeur": "Canonical",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Distribution ouverte, support commercial par un seul éditeur.",
+    "alternatives": [
+      "Debian"
+    ]
+  },
+  {
+    "nom": "AlmaLinux et Rocky Linux",
+    "editeur": "Fondations AlmaLinux et RESF",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Compatibles avec RHEL, portées par des fondations.",
+    "alternatives": [
+      "Debian",
+      "Oracle Linux"
+    ]
+  },
+  {
+    "nom": "NetApp ONTAP",
+    "editeur": "NetApp",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Fonctions de données propriétaires (instantanés, réplication) : migrer les volumes est lourd.",
+    "alternatives": [
+      "Ceph",
+      "Scality",
+      "stockage natif cloud"
+    ]
+  },
+  {
+    "nom": "Dell PowerStore et PowerMax",
+    "editeur": "Dell Technologies",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Baies et fonctions de réplication propriétaires.",
+    "alternatives": [
+      "Ceph",
+      "autres baies compatibles"
+    ]
+  },
+  {
+    "nom": "Pure Storage",
+    "editeur": "Pure Storage",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Modèle par abonnement matériel et fonctions propriétaires.",
+    "alternatives": [
+      "Ceph",
+      "autres baies"
+    ]
+  },
+  {
+    "nom": "HPE Alletra",
+    "editeur": "Hewlett Packard Enterprise",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Baies et outils de gestion propriétaires.",
+    "alternatives": [
+      "Ceph",
+      "autres baies"
+    ]
+  },
+  {
+    "nom": "Ceph",
+    "editeur": "Ceph Foundation (Linux Foundation)",
+    "quadrant": 0,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Stockage logiciel ouvert, bloc, fichier et objet ; exige des compétences.",
+    "alternatives": [
+      "Stockage objet compatible S3"
+    ]
+  },
+  {
+    "nom": "Scality RING et ARTESCA",
+    "editeur": "Scality",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Logiciel propriétaire français, mais API S3 standard qui facilite la sortie.",
+    "alternatives": [
+      "Ceph",
+      "MinIO"
+    ]
+  },
+  {
+    "nom": "MinIO",
+    "editeur": "MinIO",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "API S3 standard, mais console retirée de l’édition communautaire en mai 2025, binaires arrêtés en octobre 2025, dépôt en maintenance depuis décembre 2025.",
+    "alternatives": [
+      "Ceph",
+      "Garage",
+      "SeaweedFS"
+    ]
+  },
+  {
+    "nom": "Cisco IOS et NX-OS",
+    "editeur": "Cisco",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Parcs homogènes, système et compétences propriétaires, contrats de support.",
+    "alternatives": [
+      "Arista",
+      "SONiC",
+      "Nokia"
+    ]
+  },
+  {
+    "nom": "Juniper Junos",
+    "editeur": "Hewlett Packard Enterprise",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Système réseau propriétaire ; racheté par HPE.",
+    "alternatives": [
+      "SONiC",
+      "Arista",
+      "Nokia"
+    ]
+  },
+  {
+    "nom": "Arista EOS",
+    "editeur": "Arista Networks",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Système propriétaire, mais fondé sur des standards et automatisable.",
+    "alternatives": [
+      "SONiC",
+      "Nokia SR Linux"
+    ]
+  },
+  {
+    "nom": "SONiC",
+    "editeur": "Linux Foundation",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "o",
+    "dependance": "Système réseau ouvert, dépendant de la compatibilité matérielle.",
+    "alternatives": [
+      "Arista EOS"
+    ]
+  },
+  {
+    "nom": "FortiGate",
+    "editeur": "Fortinet",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Politiques de sécurité propriétaires, à reconvertir lors d’un changement.",
+    "alternatives": [
+      "Palo Alto",
+      "Stormshield",
+      "OPNsense"
+    ]
+  },
+  {
+    "nom": "Pare-feux Palo Alto",
+    "editeur": "Palo Alto Networks",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Règles, profils et outils de gestion propriétaires.",
+    "alternatives": [
+      "Fortinet",
+      "Stormshield",
+      "OPNsense"
+    ]
+  },
+  {
+    "nom": "Veeam Backup",
+    "editeur": "Veeam",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Formats de sauvegarde propriétaires : la restauration dépend de l’outil.",
+    "alternatives": [
+      "Commvault",
+      "Atempo",
+      "Bacula"
+    ]
+  },
+  {
+    "nom": "Commvault",
+    "editeur": "Commvault",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Formats et catalogue de sauvegarde propriétaires.",
+    "alternatives": [
+      "Veeam",
+      "Atempo",
+      "Bacula"
+    ]
+  },
+  {
+    "nom": "Atempo Tina et Lina",
+    "editeur": "Atempo",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Éditeur français, formats de sauvegarde propriétaires.",
+    "alternatives": [
+      "Veeam",
+      "Bacula"
+    ]
+  },
+  {
+    "nom": "Machines virtuelles AWS (EC2)",
+    "editeur": "Amazon Web Services",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Infrastructure standard, mais services annexes et frais de sortie jusqu’au Data Act.",
+    "alternatives": [
+      "OVHcloud",
+      "Scaleway",
+      "Outscale"
+    ]
+  },
+  {
+    "nom": "Machines virtuelles Azure",
+    "editeur": "Microsoft",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Infrastructure standard, intégrée aux licences et à l’annuaire Microsoft.",
+    "alternatives": [
+      "OVHcloud",
+      "Scaleway",
+      "Outscale"
+    ]
+  },
+  {
+    "nom": "IaaS européens (OVHcloud, Scaleway, Outscale)",
+    "editeur": "Divers",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Infrastructure standard, réversible si les services utilisés restent génériques.",
+    "alternatives": [
+      "Autres IaaS",
+      "cloud privé"
+    ]
+  },
+  {
+    "nom": "IBM MQ",
+    "editeur": "IBM",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Protocoles et API propriétaires au cœur des échanges critiques.",
+    "alternatives": [
+      "RabbitMQ",
+      "ActiveMQ Artemis",
+      "Kafka"
+    ]
+  },
+  {
+    "nom": "TIBCO",
+    "editeur": "Cloud Software Group",
+    "quadrant": 1,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Intégrations historiques profondes, développées dans des outils propriétaires.",
+    "alternatives": [
+      "Apache Camel",
+      "Kafka",
+      "RabbitMQ"
+    ]
+  },
+  {
+    "nom": "Apache Kafka",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Standard ouvert du streaming de données.",
+    "alternatives": [
+      "Redpanda",
+      "Pulsar"
+    ]
+  },
+  {
+    "nom": "Confluent Platform",
+    "editeur": "Confluent (IBM)",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Kafka est ouvert, mais de nombreuses fonctions Confluent sont propriétaires ; racheté par IBM en 2026.",
+    "alternatives": [
+      "Apache Kafka",
+      "Strimzi"
+    ]
+  },
+  {
+    "nom": "RabbitMQ",
+    "editeur": "Broadcom",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Protocole AMQP standard, mais projet passé sous Broadcom avec VMware.",
+    "alternatives": [
+      "ActiveMQ Artemis",
+      "Kafka"
+    ]
+  },
+  {
+    "nom": "Apache ActiveMQ Artemis",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Messagerie ouverte, protocoles standards.",
+    "alternatives": [
+      "RabbitMQ"
+    ]
+  },
+  {
+    "nom": "MuleSoft",
+    "editeur": "Salesforce",
+    "quadrant": 1,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Flux d’intégration décrits dans un langage et un moteur propriétaires.",
+    "alternatives": [
+      "Apache Camel",
+      "WSO2"
+    ]
+  },
+  {
+    "nom": "Boomi",
+    "editeur": "Boomi",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Plateforme d’intégration propriétaire en mode SaaS.",
+    "alternatives": [
+      "Apache Camel",
+      "WSO2"
+    ]
+  },
+  {
+    "nom": "Informatica",
+    "editeur": "Salesforce",
+    "quadrant": 1,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Traitements de données décrits dans des outils propriétaires ; racheté par Salesforce.",
+    "alternatives": [
+      "Apache Hop",
+      "dbt",
+      "Airflow"
+    ]
+  },
+  {
+    "nom": "Apache Camel",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Cadre d’intégration ouvert et standard.",
+    "alternatives": [
+      "WSO2"
+    ]
+  },
+  {
+    "nom": "IBM WebSphere",
+    "editeur": "IBM",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Serveur d’applications propriétaire, licences IBM.",
+    "alternatives": [
+      "WildFly",
+      "Open Liberty",
+      "Tomcat"
+    ]
+  },
+  {
+    "nom": "Oracle WebLogic",
+    "editeur": "Oracle",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Licences Oracle, audits, fonctions spécifiques.",
+    "alternatives": [
+      "WildFly",
+      "Open Liberty",
+      "Tomcat"
+    ]
+  },
+  {
+    "nom": "Red Hat JBoss EAP",
+    "editeur": "Red Hat (IBM)",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Fondé sur WildFly, souscription et support d’un seul éditeur.",
+    "alternatives": [
+      "WildFly",
+      "Open Liberty"
+    ]
+  },
+  {
+    "nom": "Apache Tomcat",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Conteneur web ouvert et standard.",
+    "alternatives": [
+      "Jetty"
+    ]
+  },
+  {
+    "nom": "Kong Gateway",
+    "editeur": "Kong",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Cœur ouvert, fonctions d’entreprise propriétaires.",
+    "alternatives": [
+      "Apache APISIX",
+      "Gravitee"
+    ]
+  },
+  {
+    "nom": "Apigee",
+    "editeur": "Google",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Gestion d’API propriétaire, intégrée à Google Cloud.",
+    "alternatives": [
+      "Kong",
+      "Gravitee",
+      "Apache APISIX"
+    ]
+  },
+  {
+    "nom": "Azure API Management",
+    "editeur": "Microsoft",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Service managé propriétaire, intégré à Azure.",
+    "alternatives": [
+      "Kong",
+      "Gravitee"
+    ]
+  },
+  {
+    "nom": "Kubernetes",
+    "editeur": "CNCF",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Standard ouvert d’orchestration des conteneurs.",
+    "alternatives": [
+      "Distributions certifiées"
+    ]
+  },
+  {
+    "nom": "Red Hat OpenShift",
+    "editeur": "Red Hat (IBM)",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Kubernetes ouvert, mais outils et opérateurs spécifiques.",
+    "alternatives": [
+      "Kubernetes amont",
+      "Rancher"
+    ]
+  },
+  {
+    "nom": "VMware Tanzu",
+    "editeur": "Broadcom",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Plateforme propriétaire, soumise à la politique de Broadcom.",
+    "alternatives": [
+      "Kubernetes amont",
+      "Rancher"
+    ]
+  },
+  {
+    "nom": "Kubernetes managé (EKS, AKS, GKE)",
+    "editeur": "AWS, Microsoft, Google",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Kubernetes standard, mais intégrations propres à chaque cloud.",
+    "alternatives": [
+      "Kubernetes chez un autre fournisseur"
+    ]
+  },
+  {
+    "nom": "Entra ID et Active Directory",
+    "editeur": "Microsoft",
+    "quadrant": 1,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Tout le système d’information s’y authentifie : le point de dépendance le plus central.",
+    "alternatives": [
+      "Keycloak",
+      "FreeIPA"
+    ]
+  },
+  {
+    "nom": "Okta",
+    "editeur": "Okta",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Service d’identité propriétaire, intégré à de nombreuses applications.",
+    "alternatives": [
+      "Keycloak"
+    ]
+  },
+  {
+    "nom": "Keycloak",
+    "editeur": "CNCF",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Gestion des identités ouverte, protocoles standards.",
+    "alternatives": [
+      "Authentik"
+    ]
+  },
+  {
+    "nom": "Citrix Virtual Apps and Desktops",
+    "editeur": "Cloud Software Group",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Poste virtualisé propriétaire, hausses signalées après le changement d’actionnaire.",
+    "alternatives": [
+      "Omnissa Horizon",
+      "solutions ouvertes"
+    ]
+  },
+  {
+    "nom": "HashiCorp Vault",
+    "editeur": "IBM",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Passé sous licence source disponible (BSL) en 2023 ; HashiCorp racheté par IBM.",
+    "alternatives": [
+      "OpenBao"
+    ]
+  },
+  {
+    "nom": "OpenBao",
+    "editeur": "Linux Foundation",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Fork ouvert de Vault, gouvernance communautaire.",
+    "alternatives": [
+      "HashiCorp Vault"
+    ]
+  },
+  {
+    "nom": "Oracle Database",
+    "editeur": "Oracle",
+    "quadrant": 2,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Langage PL/SQL et fonctions spécifiques, licences complexes et audits.",
+    "alternatives": [
+      "PostgreSQL",
+      "MariaDB"
+    ]
+  },
+  {
+    "nom": "Microsoft SQL Server",
+    "editeur": "Microsoft",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Langage T-SQL spécifique, licences par cœur.",
+    "alternatives": [
+      "PostgreSQL"
+    ]
+  },
+  {
+    "nom": "IBM Db2",
+    "editeur": "IBM",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Base propriétaire, souvent liée au mainframe.",
+    "alternatives": [
+      "PostgreSQL"
+    ]
+  },
+  {
+    "nom": "SAP HANA",
+    "editeur": "SAP",
+    "quadrant": 2,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Base imposée par S/4HANA, difficilement dissociable de l’ERP.",
+    "alternatives": [
+      "Peu d’alternatives hors changement d’ERP"
+    ]
+  },
+  {
+    "nom": "PostgreSQL",
+    "editeur": "Communauté PostgreSQL",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Base ouverte de référence, sans éditeur unique.",
+    "alternatives": [
+      "MariaDB"
+    ]
+  },
+  {
+    "nom": "MySQL",
+    "editeur": "Oracle",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Code ouvert, mais projet contrôlé par Oracle.",
+    "alternatives": [
+      "MariaDB",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "nom": "MariaDB",
+    "editeur": "MariaDB Foundation",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Fork ouvert de MySQL, porté par une fondation.",
+    "alternatives": [
+      "PostgreSQL"
+    ]
+  },
+  {
+    "nom": "MongoDB",
+    "editeur": "MongoDB",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Licence SSPL, non reconnue comme open source par l’OSI.",
+    "alternatives": [
+      "FerretDB",
+      "PostgreSQL"
+    ]
+  },
+  {
+    "nom": "Redis",
+    "editeur": "Redis",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Licence modifiée en 2024 ; une option AGPL a été réintroduite en 2025, après la création du fork Valkey.",
+    "alternatives": [
+      "Valkey"
+    ]
+  },
+  {
+    "nom": "Valkey",
+    "editeur": "Linux Foundation",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Fork ouvert de Redis, gouvernance communautaire.",
+    "alternatives": [
+      "Redis"
+    ]
+  },
+  {
+    "nom": "Elasticsearch",
+    "editeur": "Elastic",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Licence modifiée en 2021, puis AGPL ajoutée en 2024.",
+    "alternatives": [
+      "OpenSearch"
+    ]
+  },
+  {
+    "nom": "OpenSearch",
+    "editeur": "OpenSearch Software Foundation",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Fork ouvert d’Elasticsearch, porté par une fondation.",
+    "alternatives": [
+      "Elasticsearch"
+    ]
+  },
+  {
+    "nom": "Amazon DynamoDB",
+    "editeur": "Amazon Web Services",
+    "quadrant": 2,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "API et modèle de données propriétaires, sans équivalent direct.",
+    "alternatives": [
+      "ScyllaDB",
+      "Cassandra"
+    ]
+  },
+  {
+    "nom": "Azure Cosmos DB",
+    "editeur": "Microsoft",
+    "quadrant": 2,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Service managé propriétaire, modèles et API spécifiques.",
+    "alternatives": [
+      "PostgreSQL",
+      "Cassandra",
+      "MongoDB"
+    ]
+  },
+  {
+    "nom": "Google Spanner",
+    "editeur": "Google",
+    "quadrant": 2,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Base distribuée propriétaire, sans équivalent direct.",
+    "alternatives": [
+      "CockroachDB",
+      "YugabyteDB"
+    ]
+  },
+  {
+    "nom": "Snowflake",
+    "editeur": "Snowflake",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Formats internes propriétaires ; la prise en charge d’Iceberg ouvre une sortie.",
+    "alternatives": [
+      "Databricks",
+      "entrepôt sur Iceberg"
+    ]
+  },
+  {
+    "nom": "Databricks",
+    "editeur": "Databricks",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Plateforme propriétaire bâtie sur des formats ouverts (Delta Lake, Iceberg).",
+    "alternatives": [
+      "Spark et Iceberg sur une autre plateforme"
+    ]
+  },
+  {
+    "nom": "Google BigQuery",
+    "editeur": "Google",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Entrepôt propriétaire, intégré à Google Cloud.",
+    "alternatives": [
+      "Snowflake",
+      "entrepôt sur Iceberg"
+    ]
+  },
+  {
+    "nom": "Amazon Redshift",
+    "editeur": "Amazon Web Services",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Entrepôt propriétaire, intégré à AWS.",
+    "alternatives": [
+      "Snowflake",
+      "entrepôt sur Iceberg"
+    ]
+  },
+  {
+    "nom": "Teradata",
+    "editeur": "Teradata",
+    "quadrant": 2,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Plateformes historiques volumineuses et langage spécifique.",
+    "alternatives": [
+      "Entrepôt cloud ou sur Iceberg"
+    ]
+  },
+  {
+    "nom": "Apache Iceberg",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Format de table ouvert : les données restent lisibles par plusieurs moteurs.",
+    "alternatives": [
+      "Delta Lake",
+      "Apache Hudi"
+    ]
+  },
+  {
+    "nom": "Apache Parquet",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Format de fichier ouvert et standard.",
+    "alternatives": [
+      "Apache ORC"
+    ]
+  },
+  {
+    "nom": "ClickHouse",
+    "editeur": "ClickHouse",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Base analytique ouverte, développée par un éditeur principal.",
+    "alternatives": [
+      "Apache Druid",
+      "DuckDB"
+    ]
+  },
+  {
+    "nom": "Talend",
+    "editeur": "Qlik",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Version ouverte arrêtée en 2024, traitements décrits dans l’outil.",
+    "alternatives": [
+      "Apache Hop",
+      "dbt",
+      "Airbyte"
+    ]
+  },
+  {
+    "nom": "dbt",
+    "editeur": "dbt Labs",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Transformations en SQL lisible, cœur ouvert.",
+    "alternatives": [
+      "SQLMesh"
+    ]
+  },
+  {
+    "nom": "Power BI",
+    "editeur": "Microsoft",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Modèles et rapports propriétaires, liés à Microsoft 365.",
+    "alternatives": [
+      "Apache Superset",
+      "Metabase"
+    ]
+  },
+  {
+    "nom": "Tableau",
+    "editeur": "Salesforce",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Tableaux de bord propriétaires.",
+    "alternatives": [
+      "Apache Superset",
+      "Metabase"
+    ]
+  },
+  {
+    "nom": "Qlik Sense",
+    "editeur": "Qlik",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Modèles et scripts propriétaires.",
+    "alternatives": [
+      "Apache Superset",
+      "Metabase"
+    ]
+  },
+  {
+    "nom": "Apache Superset",
+    "editeur": "Apache Software Foundation",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Visualisation ouverte, connecteurs standards.",
+    "alternatives": [
+      "Metabase"
+    ]
+  },
+  {
+    "nom": "Cloudera",
+    "editeur": "Cloudera",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Plateforme de données propriétaire bâtie sur des briques ouvertes.",
+    "alternatives": [
+      "Spark et Iceberg"
+    ]
+  },
+  {
+    "nom": "Amazon S3",
+    "editeur": "Amazon Web Services",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "API devenue standard de fait, reprise par de nombreux acteurs ; frais de sortie jusqu’au Data Act.",
+    "alternatives": [
+      "Stockage objet compatible S3"
+    ]
+  },
+  {
+    "nom": "ServiceNow",
+    "editeur": "ServiceNow",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "p",
+    "dependance": "Processus, données et développements construits dans la plateforme.",
+    "alternatives": [
+      "GLPI",
+      "iTop",
+      "Jira Service Management"
+    ]
+  },
+  {
+    "nom": "BMC Helix",
+    "editeur": "BMC",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Outil de gestion des services propriétaire, processus intégrés.",
+    "alternatives": [
+      "GLPI",
+      "iTop"
+    ]
+  },
+  {
+    "nom": "Jira et Jira Service Management",
+    "editeur": "Atlassian",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Fin de vie de Data Center en 2029 : passage au cloud imposé pour les installations sur site.",
+    "alternatives": [
+      "GitLab",
+      "OpenProject",
+      "GLPI"
+    ]
+  },
+  {
+    "nom": "Confluence",
+    "editeur": "Atlassian",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Fin de vie de Data Center en 2029, contenus au format de l’outil.",
+    "alternatives": [
+      "XWiki",
+      "Outline"
+    ]
+  },
+  {
+    "nom": "GLPI",
+    "editeur": "Teclib’",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Gestion des services ouverte, éditée en France.",
+    "alternatives": [
+      "iTop"
+    ]
+  },
+  {
+    "nom": "Splunk",
+    "editeur": "Cisco",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Tarification au volume, langage de requête propriétaire ; racheté par Cisco.",
+    "alternatives": [
+      "OpenSearch",
+      "Grafana",
+      "Elastic"
+    ]
+  },
+  {
+    "nom": "Datadog",
+    "editeur": "Datadog",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Agents et tableaux de bord propriétaires, coûts au volume.",
+    "alternatives": [
+      "Prometheus",
+      "Grafana",
+      "OpenTelemetry"
+    ]
+  },
+  {
+    "nom": "Dynatrace",
+    "editeur": "Dynatrace",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Agents et analyses propriétaires.",
+    "alternatives": [
+      "Prometheus",
+      "Grafana",
+      "OpenTelemetry"
+    ]
+  },
+  {
+    "nom": "New Relic",
+    "editeur": "New Relic",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Observabilité propriétaire en mode SaaS.",
+    "alternatives": [
+      "Prometheus",
+      "Grafana",
+      "OpenTelemetry"
+    ]
+  },
+  {
+    "nom": "Prometheus",
+    "editeur": "CNCF",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Supervision ouverte et standard.",
+    "alternatives": [
+      "VictoriaMetrics"
+    ]
+  },
+  {
+    "nom": "Grafana",
+    "editeur": "Grafana Labs",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Visualisation ouverte (AGPL), éditeur principal.",
+    "alternatives": [
+      "Perses"
+    ]
+  },
+  {
+    "nom": "OpenTelemetry",
+    "editeur": "CNCF",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Standard de collecte qui découple les agents de l’outil d’observabilité.",
+    "alternatives": [
+      "—"
+    ]
+  },
+  {
+    "nom": "GitHub",
+    "editeur": "Microsoft",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Automatisations (Actions) et intégrations spécifiques.",
+    "alternatives": [
+      "GitLab",
+      "Forgejo"
+    ]
+  },
+  {
+    "nom": "GitLab",
+    "editeur": "GitLab",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Cœur ouvert, fonctions avancées propriétaires.",
+    "alternatives": [
+      "Forgejo",
+      "Gitea"
+    ]
+  },
+  {
+    "nom": "Forgejo",
+    "editeur": "Codeberg e.V.",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Forge logicielle ouverte, gouvernance communautaire.",
+    "alternatives": [
+      "Gitea"
+    ]
+  },
+  {
+    "nom": "Jenkins",
+    "editeur": "CD Foundation",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Intégration continue ouverte.",
+    "alternatives": [
+      "Woodpecker CI"
+    ]
+  },
+  {
+    "nom": "Azure DevOps",
+    "editeur": "Microsoft",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Pipelines et suivi propriétaires, liés à Azure.",
+    "alternatives": [
+      "GitLab",
+      "Jenkins"
+    ]
+  },
+  {
+    "nom": "Terraform",
+    "editeur": "IBM",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Passé sous licence source disponible (BSL) en 2023.",
+    "alternatives": [
+      "OpenTofu"
+    ]
+  },
+  {
+    "nom": "OpenTofu",
+    "editeur": "Linux Foundation",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Fork ouvert de Terraform, compatible.",
+    "alternatives": [
+      "Terraform"
+    ]
+  },
+  {
+    "nom": "Ansible",
+    "editeur": "Red Hat (IBM)",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Automatisation ouverte, format standard (YAML).",
+    "alternatives": [
+      "Salt"
+    ]
+  },
+  {
+    "nom": "Puppet",
+    "editeur": "Perforce",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "dependance": "Depuis début 2025, paquets et binaires publiés dans un dépôt privé ; la communauté a créé le fork OpenVox.",
+    "alternatives": [
+      "OpenVox",
+      "Ansible"
+    ]
+  },
+  {
+    "nom": "OpenVox",
+    "editeur": "Vox Pupuli",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "dependance": "Fork communautaire de Puppet, compatible avec les configurations existantes.",
+    "alternatives": [
+      "Puppet",
+      "Ansible"
+    ]
+  },
+  {
+    "nom": "PagerDuty",
+    "editeur": "PagerDuty",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "p",
+    "dependance": "Gestion des astreintes propriétaire, intégrations nombreuses.",
+    "alternatives": [
+      "Grafana OnCall",
+      "Alertmanager"
+    ]
+  },
+  {
+    "nom": "CrowdStrike Falcon",
+    "editeur": "CrowdStrike",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Agent au cœur des postes et serveurs ; à l’origine de la panne mondiale de juillet 2024.",
+    "alternatives": [
+      "Microsoft Defender",
+      "HarfangLab",
+      "Wazuh"
+    ]
+  },
+  {
+    "nom": "Microsoft Defender",
+    "editeur": "Microsoft",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Sécurité intégrée à l’écosystème et aux licences Microsoft.",
+    "alternatives": [
+      "CrowdStrike",
+      "HarfangLab",
+      "Wazuh"
+    ]
+  },
+  {
+    "nom": "Microsoft Intune",
+    "editeur": "Microsoft",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "dependance": "Gestion des terminaux liée à Entra ID et Microsoft 365.",
+    "alternatives": [
+      "Solutions de gestion de flotte ouvertes"
+    ]
+  },
+  {
+    "nom": "Wazuh",
+    "editeur": "Wazuh",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "dependance": "Sécurité et détection ouvertes.",
+    "alternatives": [
+      "Elastic Security"
+    ]
+  }
+]

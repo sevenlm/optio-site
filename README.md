@@ -19,3 +19,9 @@ rather than copy wholesale.
 
 Serve the folder (e.g. `python3 -m http.server`) and open `Landing-v2.dc.html`;
 some browsers block the scripts over file://.
+
+## Radar des dépendances (`radar.html`)
+
+Le contenu du radar (tendances, technologies, mécanismes d'enfermement) est
+dans le dossier `data/`, au format JSON. Voir [`data/README.md`](data/README.md)
+pour le format des fichiers et la façon de tester en local.
