@@ -253,7 +253,10 @@
       "HashiCorp Vault",
       "Elasticsearch",
       "MongoDB",
-      "Talend"
+      "Talend",
+      "Red Hat Enterprise Linux",
+      "Grafana",
+      "Confluent Platform"
     ],
     "sources": [
       {
@@ -1444,7 +1447,8 @@
       "Windows Server",
       "Microsoft SQL Server",
       "VMware vSphere et VCF",
-      "Talend"
+      "Talend",
+      "oVirt"
     ],
     "sources": [
       {

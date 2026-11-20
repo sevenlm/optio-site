@@ -1745,5 +1745,19 @@
     "alternatives": [],
     "site": "https://airflow.apache.org/",
     "pourquoi": "Projet ouvert de la fondation Apache, installable chez soi ou proposé en service managé par plusieurs fournisseurs : les définitions en Python restent réutilisables."
+  },
+  {
+    "nom": "oVirt",
+    "editeur": "Communauté oVirt",
+    "quadrant": 0,
+    "anneau": 2,
+    "type": "o",
+    "dependance": "Gestionnaire de virtualisation ouvert fondé sur KVM ; Red Hat a arrêté son produit commercial dérivé (fin de maintenance en août 2024) et ne contribue plus au projet, désormais porté par une communauté plus restreinte.",
+    "alternatives": [
+      "Proxmox VE",
+      "XCP-ng"
+    ],
+    "site": "https://www.ovirt.org/",
+    "pourquoi": "Les machines virtuelles reposent sur KVM et des formats ouverts, réutilisables ailleurs ; mais depuis le retrait de Red Hat, l’avenir du projet dépend d’une communauté restreinte, ce qui l’éloigne de l’anneau extérieur."
   }
 ]
