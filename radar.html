@@ -13,7 +13,7 @@
   --bg:#F4F7F8; --surface:#FFFFFF; --surface-2:#EEF3F5; --ink:#0B2A3C; --text-2:#41576A; --text-3:#5F7280; --line:#DCE4E8; --line-2:#C9D5DB;
   --c-risque:#0B2A3C; --on-risque:#FFFFFF; --c-levier:#00A37A; --on-levier:#062A1F;
   --c-p:#0B2A3C; --on-p:#FFFFFF; --c-e:#E0AE1B; --on-e:#2B2100; --c-o:#00A37A; --on-o:#062A1F;
-  --q0:#0B2A3C; --q1:#00A37A; --q2:#E0AE1B; --q3:#3E7CB1;
+  --q0:#0B2A3C; --q1:#00A37A; --q2:#E0AE1B; --q3:#3E7CB1; --q4:#C4572F;
   --signal-text:#00775A; --halo:#E0AE1B; --tip:#0B2A3C; --on-tip:#FFFFFF;
   --header:#0B2A3C; --on-header:#F8FAFA; --on-header-2:#C9D6DC; --header-line:#1E4255;
   --titre:'Archivo','Helvetica Neue',Arial,sans-serif; --corps:'Instrument Sans','Helvetica Neue',Arial,sans-serif; --mesure:'JetBrains Mono',ui-monospace,Menlo,monospace;
@@ -24,7 +24,7 @@
     color-scheme: dark;
     --bg:#06192A; --surface:#0B2A3C; --surface-2:#113346; --ink:#EEF3F5; --text-2:#C9D6DC; --text-3:#A9BCC6; --line:#1C3F53; --line-2:#285169;
     --c-risque:#EEF3F5; --on-risque:#0B2A3C; --c-p:#EEF3F5; --on-p:#0B2A3C; --c-e:#F2C230; --c-levier:#1DBF8E; --c-o:#1DBF8E;
-    --q0:#EEF3F5; --q1:#1DBF8E; --q2:#F2C230; --q3:#6FA8DC;
+    --q0:#EEF3F5; --q1:#1DBF8E; --q2:#F2C230; --q3:#6FA8DC; --q4:#EE8A63;
     --signal-text:#2BD49B; --halo:#F2C230; --tip:#EEF3F5; --on-tip:#0B2A3C;
     --header:#041420; --header-line:#163447;
   }
@@ -33,7 +33,7 @@
   color-scheme: dark;
   --bg:#06192A; --surface:#0B2A3C; --surface-2:#113346; --ink:#EEF3F5; --text-2:#C9D6DC; --text-3:#A9BCC6; --line:#1C3F53; --line-2:#285169;
   --c-risque:#EEF3F5; --on-risque:#0B2A3C; --c-p:#EEF3F5; --on-p:#0B2A3C; --c-e:#F2C230; --c-levier:#1DBF8E; --c-o:#1DBF8E;
-  --q0:#EEF3F5; --q1:#1DBF8E; --q2:#F2C230; --q3:#6FA8DC;
+  --q0:#EEF3F5; --q1:#1DBF8E; --q2:#F2C230; --q3:#6FA8DC; --q4:#EE8A63;
   --signal-text:#2BD49B; --halo:#F2C230; --tip:#EEF3F5; --on-tip:#0B2A3C;
   --header:#041420; --header-line:#163447;
 }
@@ -107,6 +107,7 @@ button,input{font:inherit;color:inherit}
 .recherche input{min-height:42px;padding:0 14px 0 38px;border:1px solid var(--line);border-radius:12px;background:var(--surface);min-width:280px}
 .compteur{font-size:13px;color:var(--text-3)}
 .quadrants{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:18px}
+.quadrants.cinq{grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:14px}
 .quadrant{padding:20px 18px 16px;display:flex;flex-direction:column;gap:2px;border-top:4px solid var(--qc)}
 .quadrant h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .quadrant h2 small{font-family:var(--mesure);font-size:12px;color:var(--text-3);font-weight:500}
@@ -257,12 +258,12 @@ button,input{font:inherit;color:inherit}
 
   var VUES={
     tendances:{
-      intro:"Les tendances qui renforcent ou desserrent la dépendance des organisations à leurs fournisseurs numériques, et les leviers pour garder le choix, classés selon l’urgence pour un DSI.",
-      quadrants:[{t:"Licences et modèles économiques",d:"Comment les éditeurs facturent, et ce que vous possédez vraiment."},{t:"Infrastructure et cloud",d:"Où tournent vos systèmes, et ce qui se passe quand cela s’arrête."},{t:"Réglementation et géopolitique",d:"Ce que les régulateurs et les États exigent ou imposent."},{t:"Leviers de liberté",d:"Ce qui vous redonne le choix : pratiques, mesures, alternatives, classées par maturité."}],
+      intro:"Les tendances qui renforcent la dépendance des organisations à leurs fournisseurs numériques, rangées selon cinq axes et classées selon l’urgence pour un DSI.",
+      quadrants:[{t:"Juridique",d:"Ce que les contrats, les licences et le droit applicable vous permettent, ou vous interdisent."},{t:"Financier",d:"Comment les éditeurs facturent, et ce que la dépendance vous coûte."},{t:"Humain",d:"Les compétences, l’organisation et les partenaires dont dépend votre capacité à changer."},{t:"Réglementaire",d:"Ce que les régulateurs et les États exigent ou imposent."},{t:"Pratiques technologiques",d:"Les choix techniques qui rendent un fournisseur difficile à remplacer."}],
       anneaux:["Agir maintenant","Préparer","Surveiller","Signal faible"], courts:["Agir","Préparer","Surveiller","Signal faible"],
       types:[["risque","Tendance qui renforce la dépendance"],["levier","Levier de liberté"]],
-      recherche:"Rechercher une tendance ou un levier…",
-      methode:[["Ce que mesure le radar","Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur, et les leviers pour y répondre. Des faits sourcés, pas une note des fournisseurs."],["Les anneaux","Agir maintenant : effet dans les 12 mois. Préparer : 12 à 24 mois. Surveiller : la tendance se confirme. Signal faible : à garder à l’œil. Pour les leviers, l’anneau indique la maturité : au centre, prêt à l’emploi."],["Les leviers","Ils reprennent les pratiques du guide « Garder le choix », le coût total de la dépendance et l’indice de réversibilité, complétés par les alternatives techniques et contractuelles."],["Les sources et le rythme","Études publiques, textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Une édition par semestre."]]
+      recherche:"Rechercher une tendance…",
+      methode:[["Ce que mesure le radar","Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Des faits sourcés, pas une note des fournisseurs."],["Les anneaux","Agir maintenant : effet dans les 12 mois. Préparer : 12 à 24 mois. Surveiller : la tendance se confirme. Signal faible : à garder à l’œil."],["Les axes","Juridique, financier, humain, réglementaire et pratiques technologiques : chaque tendance est rangée selon la nature de la dépendance qu’elle crée."],["Les sources et le rythme","Études publiques, textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Une édition par semestre."]]
     },
     technologies:{
       intro:"Plus de cent technologies d’éditeurs et projets ouverts, de l’infrastructure aux services d’exploitation, classées selon la difficulté typique d’une sortie. Au centre, les plus difficiles à quitter.",
@@ -284,16 +285,17 @@ button,input{font:inherit;color:inherit}
     }); });
   }
   function preparer(tendances, technologies, mecanismes){
-    var Q=[0,1,2,3], A=[0,1,2,3];
-    verifier(tendances,"tendances",[["titre","texte"],["quadrant",Q],["anneau",A],["type",["risque","levier"]],["quoi","texte"],["pourquoi","texte"]]);
-    verifier(technologies,"technologies",[["nom","texte"],["quadrant",Q],["anneau",A],["type",["p","e","o"]],["dependance","texte"]]);
+    var A=[0,1,2,3], Q=function(v){ return VUES[v].quadrants.map(function(_,i){ return i; }); };
+    verifier(tendances,"tendances",[["titre","texte"],["quadrant",Q("tendances")],["anneau",A],["type",["risque","levier"]],["quoi","texte"],["pourquoi","texte"]]);
+    verifier(technologies,"technologies",[["nom","texte"],["quadrant",Q("technologies")],["anneau",A],["type",["p","e","o"]],["dependance","texte"]]);
     verifier(mecanismes,"mecanismes",[["nom","texte"],["court","texte"],["symbole","texte"],["couche",[0,1,2,3,4,5,6]],["moment",[0,1,2,3]],["fonctionnement","texte"],["parade","texte"]]);
     T=tendances.map(function(x,i){ return {id:"t-"+String(i+1).padStart(2,"0"), n:i+1, q:x.quadrant, a:x.anneau, k:x.type, type:x.type, t:x.titre, contexte:x.contexte||"",
       quoi:x.quoi, pourquoi:x.pourquoi, faire:x.faire||[], src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
     TECH=technologies.map(function(x,i){ return {id:"x-"+String(i+1).padStart(3,"0"), n:i+1, q:x.quadrant, a:x.anneau, type:x.type, t:x.nom, ed:x.editeur||"", note:x.dependance, alt:(x.alternatives||[]).join(", ")}; });
     MECA=mecanismes.map(function(m){ return [m.couche, m.nom, m.fonctionnement, m.exemple||"", m.signal||"", m.parade]; });
     META=mecanismes.map(function(m){ return [m.symbole, m.moment, m.levier||"", m.court]; });
-    mecanismes.forEach(function(m){ if(m.levier && !T.some(function(x){ return x.t===m.levier; })) console.warn("mecanismes.json : levier « "+m.levier+" » absent de tendances.json ("+m.nom+")"); });
+    var absents=mecanismes.filter(function(m){ return m.levier && !T.some(function(x){ return x.t===m.levier; }); });
+    if(absents.length) console.info("mecanismes.json : "+absents.length+" levier(s) absent(s) de tendances.json, liens « Voir le levier » masqués.");
     DONNEES={tendances:T, technologies:TECH};
     VUES.mecanismes.intro=VUES.mecanismes.intro.replace(/\d+ mécanismes/, MECA.length+" mécanismes");
   }
@@ -311,11 +313,25 @@ button,input{font:inherit;color:inherit}
   }
 
   /* Placement dispersé et déterministe */
-  var C=380, R=[0,124,218,302,368], QANG=[[Math.PI,1.5*Math.PI],[1.5*Math.PI,2*Math.PI],[0.5*Math.PI,Math.PI],[0,0.5*Math.PI]];
+  var C=380, R=[0,124,218,302,368];
+  // Angles [début, fin] de chaque secteur. 4 secteurs : les quadrants d’origine. Sinon : secteurs égaux, le premier part de midi dans le sens horaire.
+  function angles(n){
+    if(n===4) return [[Math.PI,1.5*Math.PI],[1.5*Math.PI,2*Math.PI],[0.5*Math.PI,Math.PI],[0,0.5*Math.PI]];
+    var p=2*Math.PI/n, r=[]; for(var i=0;i<n;i++) r.push([-Math.PI/2+i*p,-Math.PI/2+(i+1)*p]); return r;
+  }
+  // Libellés des anneaux posés sur le séparateur vertical du haut (secteurs non quadrants)
+  function etiquettesAnneaux(V){ return V.courts.map(function(n,i){ var w=n.length*6+16, my=C-(R[i]+R[i+1])/2; return {n:n,i:i,x:C-w/2,y:my-10,w:w,h:20,mx:C,my:my}; }); }
+  function distRayon(px,py,th){ var vx=px-C, vy=py-C, ux=Math.cos(th), uy=Math.sin(th), t=vx*ux+vy*uy; if(t<0) return Math.sqrt(vx*vx+vy*vy); var ex=vx-t*ux, ey=vy-t*uy; return Math.sqrt(ex*ex+ey*ey); }
   function hash(str){ var h=2166136261; for(var i=0;i<str.length;i++){ h^=str.charCodeAt(i); h=Math.imul(h,16777619); } return h>>>0; }
   function alea(a){ return function(){ a|=0; a=a+0x6D2B79F5|0; var t=Math.imul(a^a>>>15,1|a); t=t+Math.imul(t^t>>>7,61|t)^t; return ((t^t>>>14)>>>0)/4294967296; }; }
   function placer(items, rb){
-    var places=[];
+    var places=[], V=VUES[vue], QANG=angles(V.quadrants.length), quad=V.quadrants.length===4, etq=quad?[]:etiquettesAnneaux(V);
+    function genant(px,py){
+      if(quad) return Math.abs(px-C)<rb+8 || Math.abs(py-C)<rb+14;
+      for(var k=0;k<QANG.length;k++) if(distRayon(px,py,QANG[k][0])<rb+8) return true;
+      for(var e=0;e<etq.length;e++){ var b=etq[e]; if(px>b.x-rb-4 && px<b.x+b.w+rb+4 && py>b.y-rb-4 && py<b.y+b.h+rb+4) return true; }
+      return false;
+    }
     items.forEach(function(x){
       var rnd=alea(hash(x.id+vue)), ang0=QANG[x.q][0], ang1=QANG[x.q][1];
       var r0=x.a===0?30:R[x.a]+rb+4, r1=R[x.a+1]-rb-4, dmin=vue==="technologies"?25:38, ok=false;
@@ -323,7 +339,7 @@ button,input{font:inherit;color:inherit}
         if(essai>0 && essai%200===0) dmin*=0.9;
         var ang=ang0+rnd()*(ang1-ang0), rr=Math.sqrt(rnd()*(r1*r1-r0*r0)+r0*r0);
         var px=C+rr*Math.cos(ang), py=C+rr*Math.sin(ang);
-        if(Math.abs(px-C)<rb+8 || Math.abs(py-C)<rb+14) continue;
+        if(genant(px,py)) continue;
         var libre=true;
         for(var i=0;i<places.length;i++){ var dx=places[i][0]-px, dy=places[i][1]-py; if(dx*dx+dy*dy<dmin*dmin){ libre=false; break; } }
         if(libre){ x.x=px; x.y=py; places.push([px,py]); ok=true; }
@@ -335,12 +351,17 @@ button,input{font:inherit;color:inherit}
 
   function dessiner(){
     var V=VUES[vue], items=DONNEES[vue], box=document.getElementById("radar"); box.textContent="";
-    var g=s("svg",{viewBox:"0 0 760 760",role:"img","aria-label":"Radar : "+items.length+" éléments répartis en quatre quadrants et quatre anneaux"});
+    var nq=V.quadrants.length, quad=nq===4, QANG=angles(nq), M=quad?0:30;
+    var g=s("svg",{viewBox:(-M)+" "+(-M)+" "+(760+2*M)+" "+(760+2*M),role:"img","aria-label":"Radar : "+items.length+" éléments répartis en "+(quad?"quatre quadrants":nq+" secteurs")+" et quatre anneaux"});
     // anneaux en couleurs pastel, du plus large au plus petit
     [4,3,2,1].forEach(function(i){ var c=s("circle",{cx:C,cy:C,r:R[i],"stroke-width":i===4?"1.5":"1"}); c.style.fill="var(--a"+(i-1)+")"; c.style.stroke=i===4?"var(--line-2)":"var(--surface)"; g.appendChild(c); });
-    [[C-R[4],C,C+R[4],C],[C,C-R[4],C,C+R[4]]].forEach(function(l){ var e=s("line",{x1:l[0],y1:l[1],x2:l[2],y2:l[3],"stroke-width":"1.5"}); e.style.stroke="var(--line-2)"; g.appendChild(e); });
+    (quad?[[C-R[4],C,C+R[4],C],[C,C-R[4],C,C+R[4]]]:QANG.map(function(a){ return [C,C,C+R[4]*Math.cos(a[0]),C+R[4]*Math.sin(a[0])]; })).forEach(function(l){ var e=s("line",{x1:l[0],y1:l[1],x2:l[2],y2:l[3],"stroke-width":"1.5"}); e.style.stroke="var(--line-2)"; g.appendChild(e); });
+    if(!quad) etiquettesAnneaux(V).forEach(function(b){
+      var bg=s("rect",{x:b.x,y:b.y,width:b.w,height:b.h,rx:10,"stroke-width":"1"}); bg.style.fill="var(--surface)"; bg.style.stroke="var(--a"+b.i+"t)"; bg.setAttribute("stroke-opacity","0.45"); g.appendChild(bg);
+      var t=s("text",{x:b.mx,y:b.my+4,"text-anchor":"middle","font-size":"10.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},b.n); t.style.fill="var(--text-3)"; g.appendChild(t);
+    });
     // libellés des anneaux, des deux côtés
-    [-1,1].forEach(function(sens){
+    if(quad) [-1,1].forEach(function(sens){
       V.courts.forEach(function(n,i){
         var mx=C+sens*(R[i]+R[i+1])/2, w=n.length*6+16;
         var bg=s("rect",{x:mx-w/2,y:C-10,width:w,height:20,rx:10,"stroke-width":"1"}); bg.style.fill="var(--surface)"; bg.style.stroke="var(--a"+i+"t)"; bg.setAttribute("stroke-opacity","0.45"); g.appendChild(bg);
@@ -349,7 +370,19 @@ button,input{font:inherit;color:inherit}
     });
     // titres des quadrants
     var QL=[[8,22,"start"],[752,22,"end"],[8,748,"start"],[752,748,"end"]];
-    V.quadrants.forEach(function(qd,i){
+    if(!quad) V.quadrants.forEach(function(qd,i){
+      // titre en arc au-dessus du bord extérieur, lisible de gauche à droite
+      var a0=QANG[i][0], a1=QANG[i][1], bas=Math.sin((a0+a1)/2)>0, rt=bas?R[4]+20:R[4]+9;
+      var p0=[C+rt*Math.cos(a0),C+rt*Math.sin(a0)], p1=[C+rt*Math.cos(a1),C+rt*Math.sin(a1)];
+      var bord=s("path",{d:"M"+(C+R[4]*Math.cos(a0))+" "+(C+R[4]*Math.sin(a0))+" A"+R[4]+" "+R[4]+" 0 0 1 "+(C+R[4]*Math.cos(a1))+" "+(C+R[4]*Math.sin(a1)),fill:"none","stroke-width":"4"}); bord.style.stroke="var(--q"+i+")"; g.appendChild(bord);
+      var id="arc-"+vue+"-"+i, chemin=s("path",{id:id,fill:"none",d:bas?"M"+p1[0]+" "+p1[1]+" A"+rt+" "+rt+" 0 0 0 "+p0[0]+" "+p0[1]:"M"+p0[0]+" "+p0[1]+" A"+rt+" "+rt+" 0 0 1 "+p1[0]+" "+p1[1]}); g.appendChild(chemin);
+      var nb=items.filter(function(x){ return x.q===i; }).length;
+      var t=s("text",{"font-size":"14.5","font-weight":"800","font-family":"Archivo, sans-serif"}); t.style.fill="var(--ink)";
+      var tp=s("textPath",{href:"#"+id,startOffset:"50%","text-anchor":"middle"});
+      var t1=s("tspan",{},qd.t+" "); var t2=s("tspan",{"font-family":"JetBrains Mono, monospace","font-size":"11","font-weight":"500"},"· "+nb); t2.style.fill="var(--text-3)";
+      tp.appendChild(t1); tp.appendChild(t2); t.appendChild(tp); g.appendChild(t);
+    });
+    if(quad) V.quadrants.forEach(function(qd,i){
       var nb=items.filter(function(x){ return x.q===i; }).length;
       var t=s("text",{x:QL[i][0],y:QL[i][1],"text-anchor":QL[i][2],"font-size":"14.5","font-weight":"800","font-family":"Archivo, sans-serif"}); t.style.fill="var(--ink)";
       var t1=s("tspan",{},qd.t+" "); var t2=s("tspan",{"font-family":"JetBrains Mono, monospace","font-size":"11","font-weight":"500"},"· "+nb); t2.style.fill="var(--text-3)";
@@ -367,7 +400,7 @@ button,input{font:inherit;color:inherit}
       var c=s("circle",{cx:x.x,cy:x.y,r:r,"stroke-width":"2"}); c.style.fill=col[0]; c.style.stroke="var(--surface)"; core.appendChild(c);
       var t=s("text",{x:x.x,y:x.y+(vue==="technologies"?2.7:3.8),"text-anchor":"middle","font-size":fs,"font-family":"JetBrains Mono, monospace"},String(x.n)); t.style.fill=col[1]; core.appendChild(t);
       b.appendChild(core);
-      function montrer(){ calqueTip.textContent=""; if(!vis) return; var lab=x.t.length>42?x.t.slice(0,40)+"…":x.t, w=lab.length*6.4+20, tx=Math.min(Math.max(x.x-w/2,6),760-w-6), ty=x.y-r-30; if(ty<30) ty=x.y+r+8;
+      function montrer(){ calqueTip.textContent=""; if(!vis) return; var lab=x.t.length>42?x.t.slice(0,40)+"…":x.t, w=lab.length*6.4+20, tx=Math.min(Math.max(x.x-w/2,6-M),760+M-w-6), ty=x.y-r-30; if(ty<30-M) ty=x.y+r+8;
         var rc=s("rect",{x:tx,y:ty,width:w,height:22,rx:6}); rc.style.fill="var(--tip)"; calqueTip.appendChild(rc);
         var tt=s("text",{x:tx+w/2,y:ty+15,"text-anchor":"middle","font-size":"11.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},lab); tt.style.fill="var(--on-tip)"; calqueTip.appendChild(tt); }
       function cacher(){ calqueTip.textContent=""; }
@@ -379,9 +412,10 @@ button,input{font:inherit;color:inherit}
     g.appendChild(calqueTip);
     box.appendChild(g);
   }
-  function legende(){ var z=document.getElementById("legende"); z.textContent=""; VUES[vue].types.forEach(function(t){ var i=el("i"); i.style.background=couleur(t[0])[0]; z.appendChild(el("span",null,[i,t[1]])); }); }
+  function typesPresents(){ return VUES[vue].types.filter(function(t){ return DONNEES[vue].some(function(x){ return x.type===t[0]; }); }); }
+  function legende(){ var z=document.getElementById("legende"); z.textContent=""; typesPresents().forEach(function(t){ var i=el("i"); i.style.background=couleur(t[0])[0]; z.appendChild(el("span",null,[i,t[1]])); }); }
   function stats(){ var z=document.getElementById("stats"); z.textContent="";
-    [[T.length,"tendances et leviers"],[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]].forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
+    [[T.length,"tendances"],[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]].forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
   function fiche(){
     var f=document.getElementById("fiche"), V=VUES[vue]; f.textContent="";
     var x=DONNEES[vue].find(function(y){ return y.id===sel; });
@@ -411,7 +445,7 @@ button,input{font:inherit;color:inherit}
   }
   var LIMITE=8, ouverts={};
   function listes(){
-    var z=document.getElementById("listes"), V=VUES[vue]; z.textContent=""; var total=0;
+    var z=document.getElementById("listes"), V=VUES[vue]; z.textContent=""; var total=0; z.classList.toggle("cinq",V.quadrants.length>4);
     V.quadrants.forEach(function(qd,qi){
       var p=el("section",{class:"panneau quadrant","aria-label":qd.t}); p.style.setProperty("--qc","var(--q"+qi+")");
       var tous=[]; V.anneaux.forEach(function(an,ai){ DONNEES[vue].filter(function(x){ return x.q===qi && x.a===ai && visible(x); }).sort(function(a,b){ return a.t.localeCompare(b.t,"fr"); }).forEach(function(x){ tous.push(x); }); });
@@ -429,7 +463,7 @@ button,input{font:inherit;color:inherit}
         var reste=nbq-LIMITE;
         p.appendChild(el("button",{type:"button",class:"plus","aria-expanded":String(ouvert),onclick:function(){ ouverts[cle]=!ouvert; listes(); }, text: ouvert ? "Réduire la liste" : "Afficher les "+reste+" autres"}));
       }
-      if(!nbq) p.appendChild(el("p",{class:"desc",text:"Aucun élément ne correspond aux filtres."}));
+      if(!nbq) p.appendChild(el("p",{class:"desc",text:DONNEES[vue].some(function(x){ return x.q===qi; })?"Aucun élément ne correspond aux filtres.":"Aucun élément pour l’instant."}));
       z.appendChild(p);
     });
     document.getElementById("compteur").textContent=total+" sur "+DONNEES[vue].length+" affichés";
@@ -441,7 +475,8 @@ button,input{font:inherit;color:inherit}
       var pt=null; if(c[0]!=="tous"){ pt=el("span",{class:"pastille-anneau","aria-hidden":"true"}); pt.style.background="var(--a"+c[0]+"t)"; }
       fa.appendChild(el("button",{type:"button","aria-pressed":String(fAnneau===c[0]),onclick:function(){ fAnneau=c[0]; filtres(); dessiner(); listes(); }},[pt, c[1]]));
     });
-    [["tous","Tous"]].concat(V.types.map(function(t){ return [t[0], t[0]==="e"?"Éditeur unique":t[0]==="o"?"Gouvernance partagée":t[1].split(" qui ")[0].replace("Tendance","Tendances").replace("Levier de liberté","Leviers")]; })).forEach(function(c){
+    var tp=typesPresents(); document.getElementById("bloc-types").hidden=tp.length<2;
+    [["tous","Tous"]].concat(tp.map(function(t){ return [t[0], t[0]==="e"?"Éditeur unique":t[0]==="o"?"Gouvernance partagée":t[1].split(" qui ")[0].replace("Tendance","Tendances").replace("Levier de liberté","Leviers")]; })).forEach(function(c){
       ft.appendChild(el("button",{type:"button","aria-pressed":String(fType===c[0]),onclick:function(){ fType=c[0]; filtres(); dessiner(); listes(); }, text:c[1]}));
     });
   }

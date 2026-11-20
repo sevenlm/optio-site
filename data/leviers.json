@@ -1,0 +1,447 @@
+[
+  {
+    "titre": "Alternatives de virtualisation matures",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "Les pratiques commerciales de VMware ayant changé après son rachat par Broadcom, chercher des alternatives est devenu essentiel pour réduire la dépendance.",
+    "quoi": "Des solutions comme Proxmox ou XCP-ng, cette dernière éditée en France, sont utilisées en production et font l’objet de migrations réelles.",
+    "pourquoi": "L’alternative existe : la question n’est plus « peut-on ? », mais « en combien de temps et pour quel coût ? ».",
+    "faire": [
+      "Comparez deux alternatives sur vos usages réels.",
+      "Mesurez la sortie par un pilote."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Clauses de réversibilité",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2026 des clauses types pour les contrats cloud, et Libralis propose des clauses standard que les fournisseurs s’engagent publiquement à signer.",
+    "quoi": "Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références récentes outillent la négociation : les clauses types de la Commission européenne pour les contrats cloud, et les clauses Oméga proposées par Libralis. Oméga 1 engage le fournisseur à ne jamais transmettre vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 lui interdit toute coupure arbitraire d’un service critique.",
+    "pourquoi": "C’est le levier le moins coûteux : il se négocie au moment de signer, pas au moment de partir.",
+    "faire": [
+      "Établissez une grille de clauses minimales pour tout contrat critique.",
+      "Appuyez-vous sur les clauses types européennes pour la sortie et la portabilité.",
+      "Demandez à vos fournisseurs critiques s’ils signent les clauses Oméga de Libralis."
+    ],
+    "sources": [
+      {
+        "titre": "Alliancy, clauses types européennes pour le cloud (recommandation (UE) 2026/2394)",
+        "url": "https://alliancy.fr/reversibilite-numerique-le-droit-de-partir-ne-suffit-pas-il-faut-savoir-le-faire-382c9e9b-7166-4229-a5d5-876cccb97049"
+      },
+      {
+        "titre": "InformatiqueNews, entretien avec Alain Issarni sur Libralis",
+        "url": "https://www.informatiquenews.fr/aucune-organisation-ne-peut-accepter-un-kill-switch-arbitraire-alain-issarni-libralis-111072"
+      }
+    ]
+  },
+  {
+    "titre": "Fin des frais de sortie cloud (Data Act)",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "contexte": "Le Data Act européen, applicable depuis septembre 2025, programme la suppression totale des frais de changement de fournisseur cloud au 12 janvier 2027.",
+    "quoi": "À partir du 12 janvier 2027, les fournisseurs de cloud ne pourront plus facturer de frais de changement de fournisseur, y compris les frais de transfert de données.",
+    "pourquoi": "Un verrou financier tombe. Le verrouillage technique, lui, demeure.",
+    "faire": [
+      "Évitez de se réengager longtemps juste avant cette date.",
+      "Préparez la portabilité technique."
+    ],
+    "sources": [
+      {
+        "titre": "Règlement (UE) 2023/2854, article 29",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Cloud européen qualifié",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "contexte": "La doctrine « cloud au centre » de l’État et les inquiétudes sur l’accès extraterritorial aux données font progresser les offres qualifiées SecNumCloud.",
+    "quoi": "Des offres d’hébergeurs européens qualifiées SecNumCloud se développent, notamment pour les données sensibles.",
+    "pourquoi": "Elles élargissent le choix, à condition de rester elles-mêmes réversibles.",
+    "faire": [
+      "Incluez-les dans vos comparaisons, avec la même grille de réversibilité."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Couches d’abstraction",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "levier",
+    "contexte": "Avec la multiplication des fournisseurs et des environnements, les équipes cherchent à rendre leurs applications indépendantes de l’infrastructure qui les porte.",
+    "quoi": "Conteneurs, Kubernetes, outils d’infrastructure as code ouverts : des couches qui rendent l’infrastructure sous-jacente plus interchangeable.",
+    "pourquoi": "Elles réduisent le coût d’un changement, à condition de prouver qu’elles fonctionnent sur deux plateformes.",
+    "faire": [
+      "Testez le déploiement d’une application sur une seconde plateforme."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Modèles d’IA à poids ouverts",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "levier",
+    "contexte": "Des acteurs comme Mistral AI ou DeepSeek publient des modèles performants dont les poids sont accessibles, ce qui ouvre une alternative crédible aux modèles fermés.",
+    "quoi": "Des modèles dont les poids sont publiés permettent d’héberger l’IA chez soi ou chez le fournisseur de son choix.",
+    "pourquoi": "Ils offrent une alternative aux modèles propriétaires, à surveiller selon les usages et les performances.",
+    "faire": [
+      "Évaluez un modèle ouvert sur un cas d’usage interne."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Achats et investissements groupés",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "levier",
+    "contexte": "Face aux mêmes fournisseurs, des organisations commencent à mutualiser leurs négociations, ou à financer ensemble l’émergence d’alternatives.",
+    "quoi": "Plusieurs organisations s’associent pour négocier ou financer une alternative commune.",
+    "pourquoi": "À plusieurs, le rapport de force change, et le coût d’une alternative se partage.",
+    "faire": [
+      "Identifiez des pairs exposés aux mêmes fournisseurs."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Partir des processus métier critiques",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "Les inventaires exhaustifs s’enlisent faute de priorités : partir de l’activité permet de concentrer l’effort là où un arrêt coûterait le plus.",
+    "quoi": "Plutôt que d’inventorier des centaines de contrats, on part des processus qui ne peuvent pas s’arrêter, puis on remonte vers les services numériques et les fournisseurs qui les portent.",
+    "pourquoi": "C’est ce qui permet de prioriser, et d’embarquer les métiers dans un sujet souvent perçu comme technique.",
+    "faire": [
+      "Identifiez avec vos métiers les processus critiques et leur tolérance à l’arrêt.",
+      "Nommez les cinq fournisseurs dont la défaillance arrêterait votre activité."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Mesurer la marge de manœuvre",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "Beaucoup de DSI découvrent trop tard qu’il leur faudrait plus de temps pour partir qu’il n’en reste avant l’échéance : c’est ainsi que naissent les re-signatures sous contrainte.",
+    "quoi": "La marge de manœuvre, c’est le nombre de mois avant l’échéance moins le délai de sortie estimé. Négative, le verrou est actif : il faudra re-signer.",
+    "pourquoi": "Un seul chiffre, compréhensible en comité de direction, qui dit si vous avez encore le choix.",
+    "faire": [
+      "Pour chaque fournisseur critique, notez l’échéance, le préavis et la reconduction.",
+      "Estimez le délai de sortie avec vos équipes, puis calculez la marge."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Mode dégradé et continuité hors fournisseur",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "Les pannes géantes de 2024 et 2025 ont montré que la continuité ne peut pas reposer entièrement sur le fournisseur dont on dépend.",
+    "quoi": "Un plan de continuité qui ne repose pas entièrement sur le fournisseur dont on dépend : sauvegardes hors site, mode dégradé défini, reprise ailleurs.",
+    "pourquoi": "Les pannes concentrées ou les coupures pour raisons politiques montrent qu’une répartition géographique chez un même fournisseur ne suffit pas.",
+    "faire": [
+      "Définissez le mode dégradé des services critiques.",
+      "Vérifiez qu’une sauvegarde est restaurable hors du fournisseur."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Coût total de la dépendance",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "contexte": "Avec des hausses anticipées de 12 % par an, le coût d’une dépendance double en six ans : la facture de l’année ne suffit plus pour décider.",
+    "quoi": "Le coût d’une dépendance sur cinq ans : coûts directs, coûts opérationnels (le temps passé à subir roadmap, mises à jour, formations, obsolescence) et coûts de risque. On le compare au coût du changement.",
+    "pourquoi": "La facture ne montre qu’une partie du coût. Avec des hausses anticipées de 12 % par an, la trajectoire compte plus que le montant de l’année.",
+    "faire": [
+      "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.",
+      "Comparez-le, scénario par scénario, au coût d’un changement."
+    ],
+    "sources": [
+      {
+        "titre": "Calculateur du coût total de la dépendance Optio",
+        "url": null
+      },
+      {
+        "titre": "Cigref et Asterès, mai 2026",
+        "url": "https://www.cigref.fr/wp/wp-content/uploads/2026/05/Cigref-Asteres-Hausses-Tarifaires-Cloud-Logiciel-Europe-2026.pdf"
+      }
+    ]
+  },
+  {
+    "titre": "Pilote de sortie sur un périmètre réel",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "contexte": "DORA exige des plans de sortie testés, et les fournisseurs ne cèdent que face à une alternative prouvée : la preuve sur un périmètre réel répond aux deux.",
+    "quoi": "Migrer un périmètre limité et représentatif vers l’alternative, puis mesurer le temps, l’effort, le coût et le risque, et extrapoler à la sortie complète.",
+    "pourquoi": "La preuve sert même si l’on reste : elle renforce la négociation et répond à l’exigence de plans de sortie testés de DORA.",
+    "faire": [
+      "Choisissez un périmètre représentatif, sans risque pour votre production.",
+      "Mesurez, puis présentez le résultat à votre comité de direction."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      },
+      {
+        "titre": "Règlement (UE) 2022/2554, article 28",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Revue de réversibilité des nouveaux contrats",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "contexte": "Chaque nouveau service activé crée une dépendance supplémentaire : sans revue au moment de signer, le stock se reconstitue aussi vite qu’on le réduit.",
+    "quoi": "Chaque nouveau contrat critique passe par une revue : portabilité des données, clauses de sortie, alternatives, notes minimales exigées.",
+    "pourquoi": "Réduire le stock de dépendances ne suffit pas si chaque nouveau contrat en crée d’autres : c’est ainsi que l’on gouverne le flux.",
+    "faire": [
+      "Exigez au moins 3 sur 5 sur la portabilité des données et sur le contrat.",
+      "Intégrez la revue au processus d’achat."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Indice de réversibilité fondé sur la preuve",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "levier",
+    "contexte": "DSI, achats, RSSI et direction parlent rarement de la dépendance avec les mêmes mots : un indice commun, fondé sur la preuve, leur donne un langage partagé.",
+    "quoi": "Une note sur 100 par fournisseur critique, sur sept axes notés 0, 1, 3 ou 5. Sans axe prouvé à 5, l’indice est plafonné à 69.",
+    "pourquoi": "Un langage commun entre DSI, RSSI, achats et direction, qui récompense la preuve plutôt que l’intention.",
+    "faire": [
+      "Notez vos fournisseurs critiques, preuves à l’appui.",
+      "Revoyez l’indice chaque trimestre."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Formats de données ouverts",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "levier",
+    "contexte": "Les grands entrepôts de données adoptent progressivement des formats ouverts comme Apache Iceberg, ce qui permet enfin de changer d’outil sans déplacer les données.",
+    "quoi": "Des formats comme Apache Iceberg ou Parquet permettent de lire les mêmes données avec plusieurs moteurs, chez plusieurs fournisseurs.",
+    "pourquoi": "Quand les données restent dans un format ouvert, changer d’outil ne signifie plus migrer toutes les données.",
+    "faire": [
+      "Privilégiez les formats ouverts pour les nouveaux projets de données.",
+      "Vérifiez que votre entrepôt actuel sait les lire et les écrire."
+    ],
+    "sources": [
+      {
+        "titre": "Apache Software Foundation",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Tests de bascule réguliers",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "levier",
+    "contexte": "Les régulateurs commencent à inspecter les plans de sortie : un plan non exercé depuis longtemps ne convaincra ni un auditeur, ni une cellule de crise.",
+    "quoi": "Une bascule réelle vers l’alternative ou le site de secours, au moins une fois par an pour les fournisseurs les plus critiques.",
+    "pourquoi": "La réversibilité s’érode si personne ne l’exerce : un plan non testé depuis deux ans n’est plus fiable.",
+    "faire": [
+      "Planifiez un test annuel pour chaque fournisseur vital.",
+      "Chronométrez le temps de reprise et le comparer à l’objectif."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Compétences sur les alternatives",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "levier",
+    "contexte": "Les compétences sur les alternatives restent rares, et ce sont souvent elles, plus que la technologie, qui freinent une sortie.",
+    "quoi": "Former les équipes aux technologies alternatives, s’appuyer sur des communautés et des partenaires.",
+    "pourquoi": "Sans compétences, la meilleure alternative reste théorique : c’est l’une des erreurs les plus fréquentes.",
+    "faire": [
+      "Identifiez les compétences rares liées aux fournisseurs critiques.",
+      "Formez au moins deux personnes sur l’alternative retenue."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Support tiers pour gagner du temps",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "levier",
+    "contexte": "À l’échéance, certaines organisations recourent à un support indépendant de l’éditeur pour gagner du temps pendant qu’elles construisent leur alternative.",
+    "quoi": "Des prestataires de support indépendants des éditeurs permettent de prolonger l’usage d’une version existante pendant la construction d’une alternative.",
+    "pourquoi": "Un moyen de desserrer l’étau à l’échéance. Attention : il donne du temps, mais ne réduit pas la dépendance.",
+    "faire": [
+      "Ne l’envisagez qu’avec un plan de sortie daté.",
+      "Vérifiez l’impact sur la sécurité et les mises à jour."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Référentiel de réversibilité partagé",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "levier",
+    "contexte": "Il n’existe pas encore de mesure commune de la réversibilité : chaque organisation, chaque appel d’offres et chaque fournisseur utilise ses propres critères.",
+    "quoi": "Une grille commune et ouverte pour mesurer la réversibilité, construite avec l’écosystème (associations professionnelles, éditeurs, utilisateurs).",
+    "pourquoi": "Une mesure partagée faciliterait les comparaisons, les appels d’offres et, à terme, un label.",
+    "faire": [
+      "Utilisez une grille commune dans les appels d’offres.",
+      "Partagez ses retours d’expérience."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Gestion des actifs logiciels",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "La multiplication des audits et des changements de métrique rend indispensable une connaissance précise de ce que l’on possède et de ce que l’on utilise.",
+    "quoi": "Un inventaire précis des licences détenues et des usages réels, tenu à jour en continu.",
+    "pourquoi": "C’est la meilleure défense en cas d’audit, et la base de toute négociation.",
+    "faire": [
+      "Rapprochez chaque trimestre licences achetées et usages mesurés.",
+      "Identifiez les licences inutilisées avant chaque échéance."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Clauses d’audit encadrées",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "Les audits déclenchés à l’approche des renouvellements se multiplient : les encadrer dans le contrat évite qu’ils deviennent un moyen de pression.",
+    "quoi": "Préavis, fréquence maximale, périmètre défini, auditeur indépendant et outils de mesure reconnus par les deux parties.",
+    "pourquoi": "Un audit encadré ne peut plus servir de levier de pression au moment du renouvellement.",
+    "faire": [
+      "Intégrez ces clauses à la grille de négociation des contrats critiques."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Cartographie et classification des données",
+    "quadrant": 3,
+    "anneau": 0,
+    "type": "levier",
+    "contexte": "Avec le Data Act, l’AI Act et les enjeux d’extraterritorialité, savoir précisément où sont ses données est devenu un prérequis.",
+    "quoi": "Savoir où sont vos données, leur volume, leur format et leur niveau de sensibilité.",
+    "pourquoi": "On ne peut ni protéger ni déplacer ce que l’on ne connaît pas : c’est le point de départ de toute stratégie de réversibilité des données.",
+    "faire": [
+      "Classez vos données par sensibilité et par fournisseur.",
+      "Estimez le volume et le temps de transfert des données critiques."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "titre": "Chiffrement avec clés maîtrisées",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "contexte": "Les inquiétudes sur l’accès extraterritorial aux données poussent les organisations à garder la maîtrise de leurs clés de chiffrement.",
+    "quoi": "Des données chiffrées avec des clés gérées par le client, idéalement dans un module matériel qu’il contrôle.",
+    "pourquoi": "Il réduit l’exposition aux accès extraterritoriaux et facilite le changement de fournisseur.",
+    "faire": [
+      "Identifiez les données qui justifient des clés maîtrisées.",
+      "Vérifiez que la gestion des clés est elle-même réversible."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  }
+]

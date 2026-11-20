@@ -8,6 +8,7 @@ du radar, on édite uniquement ces fichiers : le HTML n'a pas à changer.
 | `tendances.json` | Tendances |
 | `technologies.json` | Technologies |
 | `mecanismes.json` | Mécanismes d'enfermement |
+| `leviers.json` | *Non chargé* : leviers de liberté mis de côté (voir plus bas) |
 
 **Numérotation** : le numéro affiché sur le radar et l'ancre d'URL (`#t-07`,
 `#x-042`) dépendent de la **position** de l'entrée dans le fichier. Ajouter une
@@ -34,11 +35,20 @@ indique le fichier, l'entrée et le champ en cause.
 }
 ```
 
-- `quadrant` : 0 Licences et modèles économiques · 1 Infrastructure et cloud ·
-  2 Réglementation et géopolitique · 3 Leviers de liberté
+- `quadrant` (l'axe) : 0 Juridique · 1 Financier · 2 Humain · 3 Réglementaire ·
+  4 Pratiques technologiques
 - `anneau` : 0 Agir maintenant · 1 Préparer · 2 Surveiller · 3 Signal faible
-- `type` : `risque` (tendance qui renforce la dépendance) ou `levier` (levier de liberté)
+- `type` : `risque` (tendance qui renforce la dépendance) ou `levier` (levier de liberté).
+  Le filtre « Type » et la légende n'affichent que les types présents dans le fichier.
 - `sources[].url` peut valoir `null` pour une source sans lien (ex. « Observation Optio »).
+
+## leviers.json (mis de côté)
+
+Les 23 leviers de liberté ont été retirés du radar des tendances en novembre 2026.
+Ils gardent le format de `tendances.json`, mais leur `quadrant` correspond encore
+aux anciens quadrants (3 = « Leviers de liberté ») et doit être réaffecté à l'un
+des cinq axes avant de les remettre dans `tendances.json`. Tant qu'ils sont absents,
+les liens « Voir le levier » des fiches mécanismes ne s'affichent pas.
 
 ## technologies.json
 
