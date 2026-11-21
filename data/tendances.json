@@ -34,7 +34,9 @@
       "Talend",
       "VMware Tanzu",
       "RabbitMQ",
-      "XenServer (ex-Citrix Hypervisor)"
+      "XenServer (ex-Citrix Hypervisor)",
+      "Autodesk (AutoCAD, Fusion)",
+      "Adobe Creative Cloud"
     ],
     "sources": [
       {
@@ -77,7 +79,9 @@
       "Microsoft Defender",
       "Microsoft Intune",
       "Power BI",
-      "Tableau"
+      "Tableau",
+      "Microsoft 365",
+      "Google Workspace"
     ],
     "sources": [
       {
@@ -117,6 +121,10 @@
       {
         "id": "pilote-de-sortie-sur-un-perimetre-reel",
         "commentaire": "Arrivez aux échéances avec une alternative chiffrée, appuyée par un pilote."
+      },
+      {
+        "id": "achats-et-investissements-groupes",
+        "commentaire": "Négociez à plusieurs, ou mutualisez les achats, face aux mêmes fournisseurs."
       }
     ],
     "technologies": [
@@ -322,7 +330,9 @@
     "risque": "L’open source ne protège pas si un seul acteur contrôle le projet.",
     "mecanismes": [
       "meca-changement-de-licence-dun-projet-a-editeur-unique",
-      "meca-appauvrissement-de-ledition-communautaire"
+      "meca-appauvrissement-de-ledition-communautaire",
+      "meca-fonctions-cles-reservees-a-ledition-payante",
+      "meca-infrastructure-communautaire-controlee-par-un-acteur"
     ],
     "leviers": [
       {
@@ -561,7 +571,8 @@
     "mecanismes": [
       "meca-extraterritorialite-et-sanctions",
       "meca-suspension-ou-resiliation-unilaterale-du-service",
-      "meca-controles-a-lexportation"
+      "meca-controles-a-lexportation",
+      "meca-sequestre-de-code-source-sans-droit-dusage-effectif"
     ],
     "leviers": [
       {
@@ -571,6 +582,10 @@
       {
         "id": "mode-degrade-et-continuite-hors-fournisseur",
         "commentaire": "Prévoyez un mode dégradé pour les plus sensibles."
+      },
+      {
+        "id": "sequestre-de-code-source-exploitable",
+        "commentaire": "Exigez un séquestre de code source avec droit d’usage effectif pour les logiciels critiques."
       }
     ],
     "technologies": [
@@ -602,7 +617,8 @@
     "tendance": "Les audits de conformité se multiplient à l’approche des renouvellements. En 2025, Broadcom a adressé des mises en demeure aux détenteurs de licences perpétuelles VMware dont le support avait expiré, leur demandant de ne plus installer de mises à jour.",
     "risque": "Un audit crée un risque financier soudain, qui pousse à re-signer dans l’urgence et aux conditions de l’éditeur.",
     "mecanismes": [
-      "meca-audits-de-conformite"
+      "meca-audits-de-conformite",
+      "meca-acces-indirect"
     ],
     "leviers": [
       {
@@ -1033,6 +1049,10 @@
       {
         "id": "cloud-europeen-qualifie",
         "commentaire": "Réservez les données les plus sensibles à des offres qualifiées SecNumCloud."
+      },
+      {
+        "id": "droit-et-juridiction-europeens-negocies",
+        "commentaire": "Faites appliquer au contrat le droit d’un État membre et vérifiez le siège, le capital et les sous-traitants du fournisseur."
       }
     ],
     "technologies": [
@@ -1293,7 +1313,10 @@
     "mecanismes": [
       "meca-hausses-unilaterales-et-indexation",
       "meca-engagement-long-et-reconduction-tacite",
-      "meca-suspension-ou-resiliation-unilaterale-du-service"
+      "meca-suspension-ou-resiliation-unilaterale-du-service",
+      "meca-penalites-de-resiliation-et-de-renouvellement-tardif",
+      "meca-penalites-de-sortie-anticipee-maintenues-par-le-data-act",
+      "meca-exclusion-des-services-sur-mesure-du-droit-de-changer"
     ],
     "leviers": [
       {
@@ -1678,7 +1701,12 @@
       "Power BI",
       "Snowflake",
       "Tableau",
-      "PagerDuty"
+      "PagerDuty",
+      "Salesforce",
+      "Workday",
+      "Figma",
+      "Slack",
+      "Zoom"
     ],
     "sources": [
       {
@@ -1949,7 +1977,9 @@
       "meca-fin-de-vie-programmee-du-produit-sur-site",
       "meca-surtaxe-sur-les-versions-en-fin-de-support",
       "meca-mises-a-jour-forcees-et-obsolescence",
-      "meca-fin-de-support-avancee-dune-distribution-communautaire"
+      "meca-fin-de-support-avancee-dune-distribution-communautaire",
+      "meca-perte-des-droits-sur-les-correctifs-a-lexpiration-du-support",
+      "meca-verrou-technique-a-lexpiration-de-la-licence"
     ],
     "leviers": [
       {
@@ -1963,6 +1993,10 @@
       {
         "id": "clauses-de-reversibilite",
         "commentaire": "Négociez les conditions de prolongation avant de signer la migration proposée par l’éditeur."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Envisagez un support tiers pour gagner du temps, avec un plan de sortie daté."
       }
     ],
     "technologies": [
@@ -2142,6 +2176,10 @@
       {
         "id": "tests-de-bascule-reguliers",
         "commentaire": "Testez la sortie d’un composant critique sur un autre environnement."
+      },
+      {
+        "id": "referentiel-de-reversibilite-partage",
+        "commentaire": "Appuyez-vous sur une grille commune de réversibilité pour comparer les offres et les appels d’offres."
       }
     ],
     "technologies": [],
@@ -2172,6 +2210,10 @@
       {
         "id": "registre-des-contrats-et-des-prestataires",
         "commentaire": "Tenez un registre des services et licences : fonction soutenue, contrat, date de préavis, sous-traitants connus ; rattachez chaque ligne à un responsable et à une alternative identifiée, et revoyez-le à chaque renouvellement."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Notez chaque fournisseur critique avec un indice de réversibilité fondé sur la preuve."
       }
     ],
     "technologies": [],

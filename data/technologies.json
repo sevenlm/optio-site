@@ -6199,5 +6199,691 @@
         "url": "https://raw.githubusercontent.com/vllm-project/vllm/HEAD/LICENSE"
       }
     ]
+  },
+  {
+    "id": "microsoft-365",
+    "nom": "Microsoft 365",
+    "editeur": "Microsoft",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "p",
+    "categories": [
+      "Bureautique et collaboration"
+    ],
+    "dependance": "Suite propriétaire qui réunit applications Office, messagerie, stockage et collaboration en ligne dans un même abonnement par utilisateur ; courrier, fichiers et réunions dépendent du même éditeur.",
+    "alternatives": [
+      "Nextcloud",
+      "OnlyOffice",
+      "LibreOffice et Collabora Online"
+    ],
+    "site": "https://www.microsoft.com/fr-fr/microsoft-365",
+    "pourquoi": "Messagerie, sites collaboratifs et applications sont liés dans un seul abonnement propriétaire : sortir impose de migrer chaque service et de reconstruire les usages.",
+    "sources": [
+      {
+        "titre": "Microsoft Learn, Présentation de Microsoft 365 pour l’entreprise, consulté en novembre 2026",
+        "url": "https://learn.microsoft.com/en-us/microsoft-365/enterprise/microsoft-365-overview"
+      }
+    ]
+  },
+  {
+    "id": "google-workspace",
+    "nom": "Google Workspace",
+    "editeur": "Google",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Bureautique et collaboration"
+    ],
+    "dependance": "Suite propriétaire en ligne vendue par utilisateur et par niveau (Starter, Standard, Plus, Enterprise) ; la messagerie Gmail et le stockage mutualisé sont inclus dans l’abonnement.",
+    "alternatives": [
+      "Nextcloud",
+      "OnlyOffice",
+      "LibreOffice et Collabora Online"
+    ],
+    "site": "https://workspace.google.com/",
+    "pourquoi": "Service 100 % en ligne et propriétaire, mais plus modulaire et léger à exporter que la suite Microsoft ; la sortie reste un chantier de messagerie et de documents.",
+    "sources": [
+      {
+        "titre": "Google, Tarifs de Google Workspace, consulté en novembre 2026",
+        "url": "https://workspace.google.com/pricing"
+      }
+    ]
+  },
+  {
+    "id": "nextcloud",
+    "nom": "Nextcloud",
+    "editeur": "Nextcloud GmbH",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Bureautique et collaboration"
+    ],
+    "dependance": "Logiciel sous licence AGPL-3.0 développé par un éditeur unique, qui vend un abonnement Enterprise avec support ; l’édition de documents passe par un module externe tel que Collabora ou OnlyOffice.",
+    "alternatives": [
+      "OnlyOffice",
+      "LibreOffice et Collabora Online"
+    ],
+    "site": "https://nextcloud.com/",
+    "pourquoi": "Code ouvert et auto-hébergeable, données dans des formats standards ; la dépendance à l’éditeur unique et à l’exploitation de la plateforme reste maîtrisable.",
+    "depot": "nextcloud/server",
+    "sources": [
+      {
+        "titre": "Nextcloud, Licence du serveur (AGPL-3.0), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/nextcloud/server/master/COPYING"
+      },
+      {
+        "titre": "Nextcloud, À propos, consulté en novembre 2026",
+        "url": "https://nextcloud.com/about/"
+      }
+    ]
+  },
+  {
+    "id": "libreoffice-collabora",
+    "nom": "LibreOffice et Collabora Online",
+    "editeur": "The Document Foundation / Collabora",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Bureautique et collaboration"
+    ],
+    "dependance": "LibreOffice, sous licence MPL 2.0, est porté par The Document Foundation ; Collabora Online, son pendant en ligne, propose une version supportée payante, tandis que CODE est destinée aux tests et aux petites équipes.",
+    "alternatives": [],
+    "site": "https://www.libreoffice.org/",
+    "pourquoi": "Code sous licence libre et gouvernance de fondation ; plusieurs prestataires peuvent assurer le support, ce qui rend la sortie et le changement de prestataire les plus aisés du lot.",
+    "sources": [
+      {
+        "titre": "LibreOffice, Présentation, consulté en novembre 2026",
+        "url": "https://www.libreoffice.org/discover/libreoffice/"
+      },
+      {
+        "titre": "Collabora, CODE et Collabora Online, consulté en novembre 2026",
+        "url": "https://www.collaboraonline.com/code/"
+      }
+    ]
+  },
+  {
+    "id": "onlyoffice",
+    "nom": "OnlyOffice",
+    "editeur": "Ascensio System SIA",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Bureautique et collaboration"
+    ],
+    "dependance": "ONLYOFFICE Docs est publié sous AGPL-3.0 ; les éditions Enterprise et Developer sont commerciales, avec console d’administration et support, la version Community étant recommandée jusqu’à 20 utilisateurs.",
+    "alternatives": [
+      "Nextcloud",
+      "LibreOffice et Collabora Online"
+    ],
+    "site": "https://www.onlyoffice.com/",
+    "pourquoi": "Code ouvert mais piloté par un éditeur unique qui réserve les fonctions de montée en charge aux éditions payantes.",
+    "depot": "ONLYOFFICE/DocumentServer",
+    "sources": [
+      {
+        "titre": "ONLYOFFICE, Dépôt DocumentServer, consulté en novembre 2026",
+        "url": "https://github.com/ONLYOFFICE/DocumentServer"
+      }
+    ]
+  },
+  {
+    "id": "microsoft-teams",
+    "nom": "Microsoft Teams",
+    "editeur": "Microsoft",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "p",
+    "categories": [
+      "Messagerie instantanée et visioconférence"
+    ],
+    "dependance": "Historiquement vendu avec Microsoft 365. Depuis novembre 2025, des suites sans Teams existent dans l’EEE. La Commission impose aussi l’interopérabilité et l’extraction des messages Teams vers des services concurrents.",
+    "alternatives": [
+      "Mattermost",
+      "Element (Matrix)",
+      "Jitsi Meet",
+      "BigBlueButton"
+    ],
+    "site": "https://www.microsoft.com/fr-fr/microsoft-teams/group-chat-software",
+    "pourquoi": "Intégration à la suite bureautique, identité et conformité ; les engagements européens ouvrent la sortie mais la migration reste lourde.",
+    "sources": [
+      {
+        "titre": "Commission européenne, Engagements de Microsoft sur Teams (résumé de décision), consulté en novembre 2026",
+        "url": "https://eur-lex.europa.eu/eli/C/2025/6579/oj/eng"
+      }
+    ]
+  },
+  {
+    "id": "slack",
+    "nom": "Slack",
+    "editeur": "Salesforce",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Messagerie instantanée et visioconférence"
+    ],
+    "dependance": "Export JSON des canaux publics sur tous les forfaits. Messages privés et canaux privés : export réservé aux forfaits Business+ et Enterprise, sur demande d’autorisation.",
+    "alternatives": [
+      "Zoom",
+      "Mattermost",
+      "Element (Matrix)",
+      "Jitsi Meet",
+      "BigBlueButton"
+    ],
+    "site": "https://slack.com",
+    "pourquoi": "Données exportables, mais l’historique privé exige un forfait supérieur et une autorisation ; intégrations propres à la plateforme.",
+    "sources": [
+      {
+        "titre": "Slack, Exporter les données de l’espace de travail, consulté en novembre 2026",
+        "url": "https://slack.com/help/articles/201658943-Export-your-workspace-data"
+      }
+    ]
+  },
+  {
+    "id": "zoom",
+    "nom": "Zoom",
+    "editeur": "Zoom Communications",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Messagerie instantanée et visioconférence"
+    ],
+    "dependance": "Forfaits payants par utilisateur (Pro, Business, Enterprise). Capacité de participants et options supplémentaires liées au forfait ou à des modules payants.",
+    "alternatives": [
+      "Slack",
+      "Mattermost",
+      "Element (Matrix)",
+      "Jitsi Meet",
+      "BigBlueButton"
+    ],
+    "site": "https://www.zoom.com",
+    "pourquoi": "Service hébergé propriétaire facturé par siège ; les réunions se remplacent aisément, mais salles, téléphonie et usages sont à reconstruire.",
+    "sources": [
+      {
+        "titre": "Zoom, Tarifs, consulté en novembre 2026",
+        "url": "https://www.zoom.us/pricing"
+      }
+    ]
+  },
+  {
+    "id": "mattermost",
+    "nom": "Mattermost",
+    "editeur": "Mattermost, Inc.",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Messagerie instantanée et visioconférence"
+    ],
+    "dependance": "Code sous AGPL, avec binaires Mattermost sous MIT et licence commerciale possible. Fonctions de conformité, rétention et haute disponibilité réservées à l’édition Enterprise payante.",
+    "alternatives": [
+      "Element (Matrix)",
+      "Jitsi Meet",
+      "BigBlueButton"
+    ],
+    "site": "https://mattermost.com",
+    "pourquoi": "Auto-hébergeable, mais éditeur unique et fonctions avancées payantes : sortie plus simple que les suites, sans standard d’échange.",
+    "depot": "mattermost/mattermost",
+    "sources": [
+      {
+        "titre": "Mattermost, Politique de licence, consulté en novembre 2026",
+        "url": "https://github.com/mattermost/mattermost/blob/master/LICENSE.txt"
+      },
+      {
+        "titre": "Mattermost, Tarifs, consulté en novembre 2026",
+        "url": "https://mattermost.com/pricing/"
+      }
+    ]
+  },
+  {
+    "id": "element-matrix",
+    "nom": "Element (Matrix)",
+    "editeur": "Element Creations Ltd",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Messagerie instantanée et visioconférence"
+    ],
+    "dependance": "Synapse est sous AGPL, ou sous licence commerciale d’Element. Le protocole Matrix est un standard ouvert dont l’évolution relève d’une fondation à but non lucratif.",
+    "alternatives": [
+      "Jitsi Meet",
+      "BigBlueButton"
+    ],
+    "site": "https://element.io",
+    "pourquoi": "Protocole ouvert et fédéré, plusieurs serveurs et clients possibles ; la migration entre serveurs Matrix est réaliste.",
+    "depot": "element-hq/synapse",
+    "sources": [
+      {
+        "titre": "Element, Synapse (README), consulté en novembre 2026",
+        "url": "https://github.com/element-hq/synapse"
+      },
+      {
+        "titre": "Matrix.org Foundation, À propos, consulté en novembre 2026",
+        "url": "https://matrix.org/foundation/about/"
+      }
+    ]
+  },
+  {
+    "id": "jitsi-meet",
+    "nom": "Jitsi Meet",
+    "editeur": "8x8",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Messagerie instantanée et visioconférence"
+    ],
+    "dependance": "Code sous licence Apache 2.0. Le projet propose paquets Debian et Docker pour l’auto-hébergement, et 8x8 vend une offre hébergée du même logiciel.",
+    "alternatives": [
+      "Element (Matrix)",
+      "BigBlueButton"
+    ],
+    "site": "https://jitsi.org",
+    "pourquoi": "Licence permissive, auto-hébergement documenté, pas de compte imposé ; peu de données à migrer, la visioconférence étant éphémère.",
+    "depot": "jitsi/jitsi-meet",
+    "sources": [
+      {
+        "titre": "Jitsi, Jitsi Meet (README), consulté en novembre 2026",
+        "url": "https://github.com/jitsi/jitsi-meet"
+      },
+      {
+        "titre": "Jitsi, Licence du dépôt Jitsi Meet, consulté en novembre 2026",
+        "url": "https://github.com/jitsi/jitsi-meet/blob/master/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "bigbluebutton",
+    "nom": "BigBlueButton",
+    "editeur": "BigBlueButton Inc.",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Messagerie instantanée et visioconférence"
+    ],
+    "dependance": "Logiciel libre sous licence LGPL v3, conçu comme classe virtuelle. Installation auto-hébergée sur Ubuntu avec un script officiel.",
+    "alternatives": [
+      "Element (Matrix)",
+      "Jitsi Meet"
+    ],
+    "site": "https://bigbluebutton.org",
+    "pourquoi": "Libre et auto-hébergeable ; usage centré enseignement, pas de verrou de données notable.",
+    "depot": "bigbluebutton/bigbluebutton",
+    "sources": [
+      {
+        "titre": "BigBlueButton, README du dépôt, consulté en novembre 2026",
+        "url": "https://github.com/bigbluebutton/bigbluebutton"
+      },
+      {
+        "titre": "BigBlueButton, Licence du dépôt, consulté en novembre 2026",
+        "url": "https://github.com/bigbluebutton/bigbluebutton/blob/v3.0.x-release/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "sap-s4hana",
+    "nom": "SAP S/4HANA",
+    "editeur": "SAP",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "p",
+    "categories": [
+      "ERP et gestion d’entreprise"
+    ],
+    "dependance": "Progiciel propriétaire au cœur des processus de l’entreprise. SAP s’engage à maintenir S/4HANA jusqu’à fin 2040 et a fixé fin 2027 (extension payante jusqu’en 2030) pour Business Suite 7, ce qui impose le calendrier de migration.",
+    "alternatives": [
+      "Odoo",
+      "ERPNext"
+    ],
+    "site": "https://www.sap.com/products/erp/s4hana.html",
+    "pourquoi": "Processus, personnalisations et données y sont profondément ancrés, et le calendrier de maintenance est fixé par l’éditeur : sortie difficile.",
+    "sources": [
+      {
+        "titre": "SAP News, Maintenance de S/4HANA jusqu’en 2040",
+        "url": "https://news.sap.com/2020/02/sap-s4hana-maintenance-2040-clarity-choice-sap-business-suite-7/"
+      }
+    ]
+  },
+  {
+    "id": "workday",
+    "nom": "Workday",
+    "editeur": "Workday",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "p",
+    "categories": [
+      "ERP et gestion d’entreprise"
+    ],
+    "dependance": "Suite SaaS propriétaire (RH, finance) où chaque client dispose d’un locataire hébergé par l’éditeur ; rôles, groupes de sécurité et processus métier sont configurés dans ce locataire.",
+    "alternatives": [
+      "Odoo",
+      "ERPNext"
+    ],
+    "site": "https://www.workday.com",
+    "pourquoi": "Logiciel et hébergement propriétaires, configuration métier propre à la plateforme : sortie difficile.",
+    "sources": [
+      {
+        "titre": "Workday, Sécurité et confiance, consulté en novembre 2026",
+        "url": "https://www.workday.com/en-us/why-workday/trust/security.html"
+      }
+    ]
+  },
+  {
+    "id": "odoo",
+    "nom": "Odoo",
+    "editeur": "Odoo SA",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "ERP et gestion d’entreprise"
+    ],
+    "dependance": "Édition Community sous LGPLv3 ; l’édition Enterprise, sous abonnement, s’installe par-dessus et s’active avec un code d’abonnement. Odoo Online permet de télécharger une sauvegarde de la base.",
+    "alternatives": [],
+    "site": "https://www.odoo.com",
+    "pourquoi": "Cœur libre et auto-hébergeable, mais les fonctions Enterprise et l’éditeur unique créent une dépendance partielle.",
+    "depot": "odoo/odoo",
+    "sources": [
+      {
+        "titre": "Odoo, Licence du dépôt, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/odoo/odoo/master/LICENSE"
+      },
+      {
+        "titre": "Odoo, Passer de Community à Enterprise, consulté en novembre 2026",
+        "url": "https://www.odoo.com/documentation/18.0/administration/on_premise/community_to_enterprise.html"
+      }
+    ]
+  },
+  {
+    "id": "erpnext",
+    "nom": "ERPNext",
+    "editeur": "Frappe Technologies",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "ERP et gestion d’entreprise"
+    ],
+    "dependance": "Code publié sous licence GNU GPL, auto-hébergeable, développé principalement par un éditeur unique.",
+    "alternatives": [],
+    "site": "https://erpnext.com",
+    "pourquoi": "Licence copyleft sans édition payante distincte dans le dépôt : reprise du code et des données possible.",
+    "depot": "frappe/erpnext",
+    "sources": [
+      {
+        "titre": "Frappe, Licence du dépôt ERPNext, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/frappe/erpnext/develop/license.txt"
+      }
+    ]
+  },
+  {
+    "id": "salesforce",
+    "nom": "Salesforce",
+    "editeur": "Salesforce",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "p",
+    "categories": [
+      "CRM"
+    ],
+    "dependance": "CRM propriétaire en SaaS, facturé par utilisateur et par mois, avec des frais de transaction en sus ; les offres supérieures s’empilent sur la même plateforme.",
+    "alternatives": [
+      "Twenty",
+      "SuiteCRM"
+    ],
+    "site": "https://www.salesforce.com",
+    "pourquoi": "Données, automatisations et intégrations vivent sur la plateforme de l’éditeur, avec tarification à l’utilisateur : sortie difficile.",
+    "sources": [
+      {
+        "titre": "Salesforce, Tarifs CRM, consulté en novembre 2026",
+        "url": "https://www.salesforce.com/crm/pricing/"
+      }
+    ]
+  },
+  {
+    "id": "twenty",
+    "nom": "Twenty",
+    "editeur": "Twenty.com PBC",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "CRM"
+    ],
+    "dependance": "Projet principalement sous AGPLv3 ; des fichiers marqués Enterprise relèvent d’une licence commerciale et exigent un abonnement pour un usage en production.",
+    "alternatives": [
+      "SuiteCRM"
+    ],
+    "site": "https://twenty.com",
+    "pourquoi": "Cœur libre et auto-hébergeable, mais des fonctions sous licence commerciale et un éditeur unique.",
+    "depot": "twentyhq/twenty",
+    "sources": [
+      {
+        "titre": "Twenty, Licence du dépôt, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/twentyhq/twenty/main/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "suitecrm",
+    "nom": "SuiteCRM",
+    "editeur": "SalesAgility",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "CRM"
+    ],
+    "dependance": "Code publié sous licence GNU AGPLv3 et auto-hébergeable.",
+    "alternatives": [],
+    "site": "https://suitecrm.com",
+    "pourquoi": "Licence AGPL sur l’ensemble du dépôt et hébergement libre : reprise des données maîtrisable.",
+    "depot": "SuiteCRM/SuiteCRM",
+    "sources": [
+      {
+        "titre": "SalesAgility, Licence du dépôt SuiteCRM, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/salesagility/SuiteCRM/hotfix/LICENSE.txt"
+      }
+    ]
+  },
+  {
+    "id": "adobe-creative-cloud",
+    "nom": "Adobe Creative Cloud",
+    "editeur": "Adobe",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "p",
+    "categories": [
+      "Création graphique et conception"
+    ],
+    "dependance": "Suite proposée par abonnement. Le plan « annuel payé mensuellement » prévoit des frais de résiliation anticipée, soit 50 % des mensualités restantes en cas d’annulation la première année, selon la FTC.",
+    "alternatives": [
+      "GIMP",
+      "Inkscape",
+      "Krita",
+      "Penpot"
+    ],
+    "site": "https://www.adobe.com/creativecloud.html",
+    "pourquoi": "Abonnement avec frais de sortie contestés par la FTC en 2024 : quitter la suite coûte cher en cours d’engagement.",
+    "sources": [
+      {
+        "titre": "FTC, Plainte contre Adobe sur les frais de résiliation, juin 2024",
+        "url": "https://www.ftc.gov/news-events/news/press-releases/2024/06/ftc-takes-action-against-adobe-executives-hiding-fees-preventing-consumers-easily-cancelling"
+      }
+    ]
+  },
+  {
+    "id": "figma",
+    "nom": "Figma",
+    "editeur": "Figma",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Création graphique et conception"
+    ],
+    "dependance": "Service hébergé : après la résiliation, les conditions d’utilisation prévoient une mise à disposition des contenus pour récupération pendant 30 jours.",
+    "alternatives": [
+      "Penpot",
+      "Inkscape"
+    ],
+    "site": "https://www.figma.com",
+    "pourquoi": "Les fichiers vivent chez l’éditeur et la fenêtre de récupération est courte, mais des alternatives ouvertes existent.",
+    "sources": [
+      {
+        "titre": "Figma, Conditions d’utilisation, consulté en novembre 2026",
+        "url": "https://www.figma.com/legal/tos/"
+      }
+    ]
+  },
+  {
+    "id": "gimp",
+    "nom": "GIMP",
+    "editeur": "Équipe GIMP",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Création graphique et conception"
+    ],
+    "dependance": "Logiciel libre sous licence GNU GPL, développé par une communauté de contributeurs.",
+    "alternatives": [
+      "Inkscape",
+      "Krita"
+    ],
+    "site": "https://www.gimp.org",
+    "pourquoi": "Licence libre, gouvernance communautaire, aucun abonnement : sortie facile.",
+    "depot": "GNOME/gimp",
+    "sources": [
+      {
+        "titre": "GIMP, À propos, consulté en novembre 2026",
+        "url": "https://www.gimp.org/about/"
+      }
+    ]
+  },
+  {
+    "id": "inkscape",
+    "nom": "Inkscape",
+    "editeur": "Projet Inkscape",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Création graphique et conception"
+    ],
+    "dependance": "Éditeur vectoriel libre, membre de la Software Freedom Conservancy ; il importe et exporte SVG, AI, EPS, PDF, PS et PNG.",
+    "alternatives": [
+      "GIMP",
+      "Krita"
+    ],
+    "site": "https://inkscape.org",
+    "pourquoi": "Format SVG ouvert, structure associative à but non lucratif : peu de verrou.",
+    "sources": [
+      {
+        "titre": "Inkscape, À propos, consulté en novembre 2026",
+        "url": "https://inkscape.org/about/"
+      }
+    ]
+  },
+  {
+    "id": "krita",
+    "nom": "Krita",
+    "editeur": "Communauté Krita (KDE)",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Création graphique et conception"
+    ],
+    "dependance": "Format natif KRA, avec formats d’échange ORA et EXR pris en charge.",
+    "alternatives": [
+      "GIMP",
+      "Inkscape"
+    ],
+    "site": "https://krita.org",
+    "pourquoi": "Formats d’échange ouverts et logiciel libre : sortie facile.",
+    "sources": [
+      {
+        "titre": "Krita, Documentation des formats de fichier, consulté en novembre 2026",
+        "url": "https://docs.krita.org/en/general_concepts/file_formats.html"
+      }
+    ]
+  },
+  {
+    "id": "penpot",
+    "nom": "Penpot",
+    "editeur": "Kaleidos",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Création graphique et conception"
+    ],
+    "dependance": "Plateforme de design sous Mozilla Public License 2.0, auto-hébergeable.",
+    "alternatives": [
+      "GIMP",
+      "Inkscape",
+      "Krita"
+    ],
+    "site": "https://penpot.app",
+    "pourquoi": "Code ouvert et auto-hébergement, mais gouvernance portée par un seul éditeur.",
+    "depot": "penpot/penpot",
+    "sources": [
+      {
+        "titre": "Penpot, Licence MPL 2.0, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/penpot/penpot/develop/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "autodesk",
+    "nom": "Autodesk (AutoCAD, Fusion)",
+    "editeur": "Autodesk",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "p",
+    "categories": [
+      "Conception technique (CAO)"
+    ],
+    "dependance": "Autodesk a cessé de vendre des licences perpétuelles pour la majorité de ses produits depuis janvier 2016 : l’accès passe par l’abonnement.",
+    "alternatives": [
+      "FreeCAD"
+    ],
+    "site": "https://www.autodesk.com",
+    "pourquoi": "Abonnement obligatoire pour les nouveaux achats : l’accès aux outils dépend du paiement continu.",
+    "sources": [
+      {
+        "titre": "CIOReview, Autodesk passe en abonnement seul, consulté en novembre 2026",
+        "url": "https://www.cioreview.com/news/autodesks-perpetual-products-now-turn-out-subscriptiononly-nid-11923-cid-88.html"
+      }
+    ]
+  },
+  {
+    "id": "freecad",
+    "nom": "FreeCAD",
+    "editeur": "Communauté FreeCAD",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Conception technique (CAO)"
+    ],
+    "dependance": "Modeleur 3D paramétrique libre, distribué sous licence GNU LGPL 2.1.",
+    "alternatives": [],
+    "site": "https://www.freecad.org",
+    "pourquoi": "Licence libre LGPL et code ouvert : sortie facile.",
+    "depot": "FreeCAD/FreeCAD",
+    "sources": [
+      {
+        "titre": "FreeCAD, Fichier LICENSE du dépôt, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/FreeCAD/FreeCAD/main/LICENSE"
+      }
+    ]
   }
 ]

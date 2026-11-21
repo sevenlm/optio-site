@@ -33,7 +33,7 @@ for e in T:
         need(s.get("titre"), f"« {e['titre']} » : source sans titre")
         need(not s.get("url") or s["url"].startswith("https://"), f"« {e['titre']} » : URL non https {s.get('url')}")
 for e in X:
-    need(e["quadrant"] in range(4) and e["anneau"] in range(4) and e["type"] in ("p", "e", "o"), f"technologie « {e['nom']} » : axe, anneau ou type invalide")
+    need(e["quadrant"] in range(5) and e["anneau"] in range(4) and e["type"] in ("p", "e", "o"), f"technologie « {e['nom']} » : axe, anneau ou type invalide")
 cell = collections.Counter((e["couche"], e["moment"]) for e in M)
 for k, n in cell.items(): need(n <= 3, f"mécanismes : plus de 3 dans la case couche {k[0]} / moment {k[1]} ({n})")
 need(len({e["symbole"] for e in M}) == len(M) and all(len(e["symbole"]) == 2 for e in M), "mécanismes : symboles non uniques ou différents de 2 lettres")
