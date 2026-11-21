@@ -90,7 +90,7 @@
     "couche": 1,
     "moment": 0,
     "fonctionnement": "Des licences plus chères, ou non transférables, chez un cloud concurrent de l’éditeur.",
-    "exemple": "Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft (2022), retirée en 2024 après un accord confidentiel.",
+    "exemple": "Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft (2022), retirée en 2024 après un accord confidentiel ; Oracle : sa politique cloud ne vise que AWS, Azure et Google Cloud comme « Authorized Cloud Environments » et ne dit rien des autres hébergeurs, dont les clouds européens.",
     "signal": "Le choix d’hébergeur est dicté par les licences.",
     "parade": "Vérifier les droits de transfert avant tout choix d’hébergement.",
     "levier": "Revue de réversibilité des nouveaux contrats"
@@ -294,7 +294,7 @@
     "couche": 6,
     "moment": 1,
     "fonctionnement": "Le principal contributeur change la licence du projet.",
-    "exemple": "Terraform (2023), Redis (2024, AGPL ajoutée en 2025), Elasticsearch (2021, AGPL ajoutée en 2024).",
+    "exemple": "Terraform (2023), Redis (2024, AGPL ajoutée en 2025), Elasticsearch (2021, AGPL ajoutée en 2024) ; Liquibase (2025, Functional Source License dès la version 5.0, avec un accord de contributeur désormais exigé).",
     "signal": "Un projet ouvert dont un seul acteur détient les droits (accord de cession des droits des contributeurs, marque détenue par une société).",
     "parade": "Vérifier la gouvernance avant d’adopter (fondation, accord de contributeur, marque) ; préférer les projets portés par une fondation ; suivre les forks (OpenTofu, Valkey, OpenSearch).",
     "levier": "Couches d’abstraction"
@@ -534,7 +534,7 @@
     "couche": 6,
     "moment": 3,
     "fonctionnement": "L’éditeur arrête la maintenance de l’édition ouverte puis archive le dépôt : plus de correctifs ni de support communautaire, et le client doit migrer.",
-    "exemple": "Grafana OnCall OSS : mode maintenance annoncé le 11 mars 2025, dépôt archivé le 24 mars 2026 ; MinIO : dépôt communautaire archivé le 25 avril 2026 (« no longer maintained »).",
+    "exemple": "Grafana OnCall OSS : mode maintenance annoncé le 11 mars 2025, dépôt archivé le 24 mars 2026 ; MinIO : dépôt communautaire archivé le 25 avril 2026 (« no longer maintained ») ; Chef Infra Server : arrêt des contributions open source après fin octobre 2026, fin de vie en novembre 2026 (annonce du 26 novembre 2025).",
     "signal": "Un dépôt en mode maintenance, sans nouvelle version, alors qu’une offre commerciale est mise en avant.",
     "parade": "Surveiller l’activité des projets utilisés ; préférer ceux portés par une fondation ; prévoir l’alternative avant l’archivage.",
     "levier": "Support tiers pour gagner du temps"
@@ -586,5 +586,41 @@
     "signal": "Un service présenté comme « sur mesure » pour échapper aux obligations de portabilité.",
     "parade": "Faire qualifier le service au contrat ; exiger les mêmes conditions de sortie que pour un service standard ; conserver la documentation du développement.",
     "levier": "Revue de réversibilité des nouveaux contrats"
+  },
+  {
+    "nom": "Fin de support avancée d’une distribution communautaire",
+    "court": "Fin de support avancée",
+    "symbole": "Cd",
+    "couche": 6,
+    "moment": 2,
+    "fonctionnement": "Le projet remplace la version stable sur laquelle vous vous appuyez par une branche de développement, et raccourcit ainsi la durée de support sur laquelle vous aviez planifié.",
+    "exemple": "CentOS Linux 8 : annoncé en décembre 2020, le projet bascule vers CentOS Stream et arrête CentOS Linux 8 fin 2021.",
+    "signal": "Une distribution gratuite dépend d’un sponsor commercial dont l’offre payante vit sur la même base de code.",
+    "parade": "Inscrire la date de fin de support dans le plan de renouvellement dès l’adoption ; prévoir une migration vers une distribution à support long ; tester la bascule avant l’échéance.",
+    "levier": "Tests de bascule réguliers"
+  },
+  {
+    "nom": "Infrastructure communautaire contrôlée par un acteur",
+    "court": "Infrastructure contrôlée",
+    "symbole": "Ib",
+    "couche": 6,
+    "moment": 1,
+    "fonctionnement": "Les mises à jour de thèmes et d’extensions passent par un serveur géré par une seule organisation, qui peut en couper l’accès à un acteur précis.",
+    "exemple": "WordPress.org : le 21 septembre 2024, Matt Mullenweg affirme que WP Engine doit obtenir une licence de marque ; WordPress.org bloque ensuite l’accès de WP Engine, y compris pour mettre à jour ses extensions. Le 10 décembre 2024, un tribunal californien ordonne le rétablissement de l’accès.",
+    "signal": "Des mises à jour qui dépendent d’un serveur central, et un conflit public entre l’éditeur du service et celui de la distribution.",
+    "parade": "Héberger un miroir des mises à jour critiques ; inventorier les extensions qui interrogent un serveur tiers ; prévoir la reprise de leur distribution.",
+    "levier": "Gestion des actifs logiciels"
+  },
+  {
+    "nom": "Virtualisation non reconnue comme sous-capacité",
+    "court": "Virtualisation non reconnue",
+    "symbole": "Vz",
+    "couche": 1,
+    "moment": 1,
+    "fonctionnement": "L’éditeur refuse de compter les cœurs attribués à une machine virtuelle et exige de licencier les cœurs physiques du serveur.",
+    "exemple": "Oracle : sa politique de partitionnement (version du 14 février 2022) classe VMware et Oracle VM en partitionnement logiciel, non admis pour limiter les licences ; seuls certains partitionnements matériels plafonnés ou les partitions de confiance des systèmes Oracle sont admis. Sur AWS, Azure et Google Cloud, la politique cloud d’Oracle compte au contraire les vCPU par instance.",
+    "signal": "Une base d’éditeur installée sur une machine virtuelle d’une grappe partagée, sans clause de sous-capacité dans le contrat.",
+    "parade": "Faire confirmer par écrit la règle de comptage applicable à votre hyperviseur avant tout déploiement ; isoler les bases concernées sur des serveurs dédiés ; comparer avec le coût en cloud public.",
+    "levier": "Gestion des actifs logiciels"
   }
 ]

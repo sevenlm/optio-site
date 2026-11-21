@@ -896,14 +896,15 @@
     "categories": [
       "Passerelles d’API"
     ],
-    "dependance": "Cœur ouvert, fonctions d’entreprise propriétaires.",
+    "dependance": "Passerelle d’API dont l’édition open source est sous licence Apache 2.0 ; l’édition Enterprise exige une licence payante, et Kong Inc. propose aussi la plateforme hébergée Konnect. La documentation consultée ne détaille pas quelles fonctions sont réservées à l’Enterprise.",
     "alternatives": [
       "Apache APISIX",
       "Gravitee",
       "WSO2 (API Manager et Integrator)"
     ],
     "site": "https://konghq.com/",
-    "pourquoi": "Le cœur ouvert et les standards d’API facilitent la sortie ; les fonctions d’entreprise propriétaires demandent un effort de remplacement."
+    "pourquoi": "Le cœur ouvert et les standards d’API facilitent la sortie ; ce que l’édition Enterprise ou Konnect apportent en plus est à recenser avant de partir, car cela demande un effort de remplacement.",
+    "depot": "Kong/kong"
   },
   {
     "id": "apigee",

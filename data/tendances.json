@@ -519,8 +519,8 @@
     "quadrant": 1,
     "anneau": 0,
     "type": "risque",
-    "declencheur": "En avril 2025, Broadcom a annoncé un minimum de commande de 72 cœurs pour VMware ; depuis 2023, Java d’Oracle est facturé au nombre total de salariés de l’entreprise.",
-    "tendance": "La façon de compter change : par cœur plutôt que par processeur, au nombre total de salariés, avec des minimums de commande. Broadcom a annoncé en avril 2025 un minimum de commande VMware de 72 cœurs (son application a varié selon les régions), avec une majoration de 20 % en cas de renouvellement tardif.",
+    "declencheur": "En mars 2025, un courrier de distributeur relayé par la presse évoquait un minimum de commande de 72 cœurs pour VMware, vite contredit en Europe ; depuis 2023, Java d’Oracle est facturé au nombre total de salariés de l’entreprise.",
+    "tendance": "La façon de compter change : par cœur plutôt que par processeur, au nombre total de salariés, avec des minimums de commande. Fin mars 2025, un courrier du distributeur Arrow relayé par la presse annonçait pour VMware un minimum de commande de 72 cœurs et une majoration de 20 % en cas de renouvellement tardif. Le distributeur a ensuite indiqué que le minimum restait de 16 cœurs par processeur en Europe, Moyen-Orient et Afrique, et la mesure aurait été retirée : le changement de métrique est resté une menace, pas une règle uniforme.",
     "risque": "La facture augmente sans que l’usage change, et la nouvelle métrique pénalise souvent les petites infrastructures.",
     "mitigations": [
       "Modélisez l’impact de chaque changement de métrique avant l’échéance.",
@@ -543,6 +543,10 @@
       {
         "titre": "Developpez.com, bilan du modèle Broadcom",
         "url": "https://systeme.developpez.com/actu/382026/Broadcom-voulait-rentabiliser-VMware-a-marche-forcee-il-a-surtout-offert-30-000-clients-a-Nutanix-et-ouvert-la-plus-grande-fenetre-de-migration-que-le-secteur-ait-connue-depuis-dix-ans/"
+      },
+      {
+        "titre": "Born’s Tech and Windows World, annonce puis retrait probable du minimum de 72 cœurs (11 avril 2025)",
+        "url": "https://borncity.com/win/2025/04/11/vmware-by-broadcom-72-core-licensing-claim-withdrawn/"
       }
     ]
   },
@@ -1542,7 +1546,7 @@
     "anneau": 0,
     "type": "risque",
     "declencheur": "Windows 10 n’est plus supporté depuis le 14 octobre 2025, et la maintenance standard de SAP ECC 6.0 s’arrête fin 2027.",
-    "tendance": "Depuis le 14 octobre 2025, Microsoft ne publie plus de correctifs de sécurité pour Windows 10 hors du programme payant ESU : 61 $ par poste la première année pour les organisations, prix doublé chaque année, trois ans au maximum. Chez SAP, la maintenance standard de Business Suite 7 (dont ECC 6.0) s’arrête fin 2027 et la maintenance étendue, payante, fin 2030. Au-delà, seule une option de transition liée à un passage sur SAP ERP, private edition avant le 31 décembre 2030 permet de prolonger jusqu’en 2033, voire 2035 depuis octobre 2026. Côté Java, la branche 6.2 de Spring Framework, dernière de la génération 6, n’est plus maintenue en open source depuis juin 2026 ; seul un support commercial la prolonge.",
+    "tendance": "Depuis le 14 octobre 2025, Microsoft ne publie plus de correctifs de sécurité pour Windows 10 hors du programme payant ESU : 61 $ par poste la première année pour les organisations, prix doublé chaque année, trois ans au maximum. Chez SAP, la maintenance standard de Business Suite 7 (dont ECC 6.0) s’arrête fin 2027 et la maintenance étendue, payante, fin 2030. Au-delà, seule une option de transition liée à un passage sur SAP ERP, private edition avant le 31 décembre 2030 permet de prolonger jusqu’en 2033, voire 2035 depuis octobre 2026. Côté Java, la branche 6.2 de Spring Framework, dernière de la génération 6, n’est plus maintenue en open source depuis juin 2026 ; seul un support commercial la prolonge. Chez Citrix, la licence par fichier annoncée en fin de vie le 8 septembre 2025 a cessé d’être supportée le 15 avril 2026 au profit d’un service d’activation dans le cloud : l’activation se revérifie chaque jour, avec 30 jours de tolérance si le service est injoignable. Chez Sonatype, Nexus Repository 2 est sorti du support le 30 juin 2025 (avis du 29 mai 2024), et l’éditeur recommande de migrer vers Nexus Repository 3.",
     "risque": "Le calendrier de migration est fixé par l’éditeur, et la prolongation se paie ou passe par son offre cloud.",
     "mitigations": [
       "Tenez un calendrier des fins de support de vos produits critiques sur cinq ans.",
@@ -1557,7 +1561,9 @@
       "Microsoft SQL Server",
       "Talend",
       "Windows Server",
-      "oVirt"
+      "oVirt",
+      "Citrix Virtual Apps and Desktops",
+      "Sonatype Nexus Repository"
     ],
     "sources": [
       {
@@ -1575,6 +1581,14 @@
       {
         "titre": "Spring Framework, politique de support des versions (wiki du projet)",
         "url": "https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions"
+      },
+      {
+        "titre": "Citrix, remplacement de la licence par fichier par le License Activation Service (CTX695107)",
+        "url": "https://support.citrix.com/external/article/CTX695107"
+      },
+      {
+        "titre": "Sonatype Community, avis de fin de support de Nexus Repository 2 (29 mai 2024)",
+        "url": "https://community.sonatype.com/t/sunset-notice-sonatype-nexus-repository-2/12653"
       }
     ]
   },
@@ -1700,7 +1714,7 @@
     "quadrant": 0,
     "anneau": 0,
     "type": "levier",
-    "declencheur": "La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2026 une recommandation (non contraignante) de clauses types pour les contrats cloud, et Libralis propose des clauses standard que les fournisseurs peuvent s’engager à signer.",
+    "declencheur": "La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2025 des clauses types non contraignantes pour les contrats cloud, devenues la recommandation (UE) 2026/2394, et Libralis propose des clauses standard que les fournisseurs peuvent s’engager à signer.",
     "tendance": "Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références récentes outillent la négociation : les clauses types de la Commission européenne pour les contrats cloud, et les clauses Oméga proposées par Libralis. Oméga 1 engage le fournisseur à ne jamais transmettre vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 lui interdit toute coupure arbitraire d’un service critique.",
     "risque": "C’est le levier le moins coûteux : il se négocie au moment de signer, pas au moment de partir.",
     "mitigations": [
@@ -1716,6 +1730,10 @@
       {
         "titre": "InformatiqueNews, entretien avec Alain Issarni sur Libralis",
         "url": "https://www.informatiquenews.fr/aucune-organisation-ne-peut-accepter-un-kill-switch-arbitraire-alain-issarni-libralis-111072"
+      },
+      {
+        "titre": "Commission européenne, clauses contractuelles types pour les contrats cloud (publication du 19 novembre 2025, mise à jour du 11 novembre 2026)",
+        "url": "https://digital-strategy.ec.europa.eu/en/library/draft-recommendation-non-binding-model-contractual-terms-data-access-and-use-and-non-binding"
       }
     ]
   },

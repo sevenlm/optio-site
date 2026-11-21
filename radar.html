@@ -263,6 +263,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .tuile{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;flex:none;width:86px;height:80px;padding:6px 7px 7px;border:none;border-radius:10px;text-align:left;cursor:pointer;transition:opacity .15s,transform .15s;box-shadow:inset 0 0 0 1px rgba(11,42,60,.08)}
 .tuile:hover{transform:translateY(-2px)}
 .tuile.pale{opacity:.22}
+.tp-vide{align-self:center;max-width:140px;font-size:12px;line-height:1.35;font-style:italic;color:var(--text-3)}
 .tuile.choisie{box-shadow:0 0 0 3px var(--ink)}
 .tuile.cochee{box-shadow:0 0 0 3px var(--c-o)}
 .tuile-num{font-family:var(--mesure);font-size:11px;opacity:.8}
@@ -1068,6 +1069,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
           b.style.background="var(--fam"+fi+")"; b.style.color="var(--fam"+fi+"t)";
           tuiles.push({el:b,f:fi,m:mi,hors:!!nq && norm(me.slice(1).join(" ")+" "+META[k][2]+" "+META[k][3]).indexOf(nq)<0}); cell.appendChild(b);
         });
+        if(!cell.children.length) cell.appendChild(el("span",{class:"tp-vide",text:"Aucun cas sourcé pour l’instant"}));
         grille.appendChild(cell);
       });
     });
