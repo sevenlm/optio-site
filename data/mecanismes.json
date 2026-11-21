@@ -1,185 +1,431 @@
 [
   {
+    "id": "meca-engagement-long-et-reconduction-tacite",
     "nom": "Engagement long et reconduction tacite",
     "court": "Reconduction tacite",
     "symbole": "Rt",
     "couche": 0,
     "moment": 0,
     "fonctionnement": "Des contrats de trois à cinq ans, renouvelés automatiquement sans action de votre part.",
-    "exemple": "Contrats d’infrastructure reconduits pour trois ans faute de préavis envoyé à temps.",
+    "exemple": "Avis de la CEPC du 4 octobre 2023 : une entreprise ayant acquis un SaaS via un intégrateur a vu son tarif augmenter de 48 % après la reconduction tacite du contrat annuel ; le préavis de dénonciation de deux mois imposait de décider sans connaître le tarif.",
     "signal": "La date de préavis n’est connue de personne.",
-    "parade": "Suivre les préavis ; négocier des durées courtes et sans reconduction tacite.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négociez une durée courte, sans reconduction tacite."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Suivez dans le registre la date de préavis de chaque contrat."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Le Monde Informatique, La CEPC et le renouvellement tacite dans le SaaS, novembre 2023",
+        "url": "https://www.lemondeinformatique.fr/infrastructure-cloud/2023-11-24-la-cepc-emet-un-avis-sur-les-pratiques-de-renouvellement-tacite-dans-le-saas"
+      }
+    ]
   },
   {
+    "id": "meca-penalites-de-resiliation-et-de-renouvellement-tardif",
     "nom": "Pénalités de résiliation et de renouvellement tardif",
     "court": "Pénalités de sortie",
     "symbole": "Pr",
     "couche": 0,
     "moment": 3,
     "fonctionnement": "Des frais pour partir avant le terme, ou une majoration pour renouveler en retard.",
-    "exemple": "Majoration de 20 % appliquée par Broadcom aux renouvellements tardifs.",
+    "exemple": "En mars 2025, le distributeur Arrow a prévenu ses partenaires VMware français que Broadcom appliquait aux clients n’ayant pas renouvelé à la date anniversaire une pénalité de 20 % du prix de la première année. VMware n’a pas confirmé.",
     "signal": "Une pénalité est découverte au moment de vouloir partir.",
-    "parade": "Plafonner les pénalités ; anticiper les renouvellements de douze à vingt-quatre mois.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Plafonnez les pénalités de résiliation et de renouvellement tardif."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Anticipez les renouvellements de douze à vingt-quatre mois grâce aux échéances du registre."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "The Register, VMware : Arrow annonce une pénalité de 20 % pour renouvellement tardif, mars 2025",
+        "url": "https://www.theregister.com/2025/03/28/arrow_vmware_licensing_change"
+      }
+    ]
   },
   {
+    "id": "meca-clauses-de-reversibilite-absentes-ou-floues",
     "nom": "Clauses de réversibilité absentes ou floues",
     "court": "Clauses floues",
     "symbole": "Cr",
     "couche": 0,
     "moment": 3,
     "fonctionnement": "Aucune obligation précise d’aide à la sortie, de format de restitution ni de délai.",
-    "exemple": "Restitution des données dans un format propriétaire, sans assistance.",
+    "exemple": "Depuis le 12 septembre 2025, le règlement européen sur les données (Data Act) impose aux fournisseurs de services cloud de lever les obstacles au changement de fournisseur, ce qui vise les sorties contractuellement floues. Les frais de changement sont supprimés au 12 janvier 2027.",
     "signal": "Le contrat ne dit pas comment récupérer vos données.",
-    "parade": "Exiger restitution dans un format standard, assistance et délais chiffrés ; s’appuyer sur les clauses types européennes et les clauses Oméga de Libralis.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Exigez la restitution dans un format standard, une assistance et des délais chiffrés, en s’appuyant sur les clauses types européennes et les clauses Oméga de Libralis."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Commission européenne, Le Data Act expliqué, 2025",
+        "url": "https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained"
+      }
+    ]
   },
   {
+    "id": "meca-hausses-unilaterales-et-indexation",
     "nom": "Hausses unilatérales et indexation",
     "court": "Hausses unilatérales",
     "symbole": "Hu",
     "couche": 0,
     "moment": 2,
     "fonctionnement": "Le fournisseur peut revoir ses prix ou ses conditions en cours de contrat ou à chaque échéance.",
-    "exemple": "Hausses de prix catalogue justifiées par l’intégration de l’IA.",
+    "exemple": "Le 27 octobre 2025, l’autorité australienne ACCC assigne Microsoft : Copilot a été intégré à Microsoft 365 Personal et Family le 31 octobre 2024, avec des hausses de 45 % et 29 % ; l’offre Classic, au prix antérieur, n’apparaissait qu’à la résiliation.",
     "signal": "Les conditions tarifaires renvoient à une grille modifiable par le fournisseur.",
-    "parade": "Plafonner les hausses ; geler les prix sur la durée du contrat.",
-    "levier": "Coût total de la dépendance"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Plafonnez les hausses et geler les prix sur la durée du contrat."
+      },
+      {
+        "id": "achats-et-investissements-groupes",
+        "commentaire": "Négociez à plusieurs pour obtenir ce plafond."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Projetez la hausse sur cinq ans pour la comparer au coût d’un changement."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "ACCC, Microsoft devant la justice pour les abonnements Microsoft 365, octobre 2025",
+        "url": "https://www.accc.gov.au/media-release/microsoft-in-court-for-allegedly-misleading-millions-of-australians-over-microsoft-365-subscriptions"
+      }
+    ]
   },
   {
+    "id": "meca-changement-de-metrique",
     "nom": "Changement de métrique",
     "court": "Changement de métrique",
     "symbole": "Mé",
     "couche": 1,
     "moment": 2,
-    "fonctionnement": "La façon de compter change : par cœur, par salarié, avec des minimums de commande.",
-    "exemple": "Minimum de commande VMware de 72 cœurs annoncé en 2025 (application variable selon les régions) ; Java d’Oracle facturé au nombre total de salariés depuis 2023.",
+    "fonctionnement": "La façon de compter change : par cœur, par salarié, avec des minimums de commande.",
+    "exemple": "Broadcom a annoncé qu’à partir du 10 avril 2025 l’achat minimal de licences VMware passerait de 16 à 72 cœurs. Oracle a publié en janvier 2023 une tarification Java SE fondée sur le nombre total d’employés, et non sur les seuls utilisateurs de Java.",
     "signal": "La facture augmente alors que l’usage ne change pas.",
-    "parade": "Négocier le maintien de la métrique ; modéliser chaque scénario.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Mesurez les usages réels pour modéliser chaque scénario de métrique."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Négociez le maintien de la métrique en chiffrant chaque scénario sur cinq ans."
+      },
+      {
+        "id": "alternatives-de-virtualisation-matures",
+        "commentaire": "Chiffrez une alternative de virtualisation avant de subir la nouvelle métrique."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Computing, VMware : minimum d’achat porté à 72 cœurs, avril 2025",
+        "url": "https://www.computing.co.uk/news-network/2025/broadcom-vmware-ups-minimum-core-purchase"
+      },
+      {
+        "titre": "InfoWorld, Oracle : tarification Java par employé, janvier 2023",
+        "url": "https://www.infoworld.com/article/3686611/oracle-per-employee-java-pricing-causes-concern.html"
+      }
+    ]
   },
   {
+    "id": "meca-fin-des-licences-perpetuelles",
     "nom": "Fin des licences perpétuelles",
     "court": "Fin des perpétuelles",
     "symbole": "Pe",
     "couche": 1,
     "moment": 2,
     "fonctionnement": "Le passage à l’abonnement transforme une propriété en location.",
-    "exemple": "Licences perpétuelles VMware supprimées ; fin de vie d’Atlassian Data Center en 2029.",
+    "exemple": "En décembre 2023, juste après son rachat par Broadcom, VMware a cessé de vendre des licences perpétuelles et leurs renouvellements de support. En janvier 2024, l’éditeur confirme la transition vers un modèle d’abonnement : les offres ne sont plus disponibles qu’en abonnement.",
     "signal": "Une annonce de fin de vente ou de fin de support.",
-    "parade": "Recenser les licences restantes ; chiffrer l’abonnement sur cinq ans ; préparer l’alternative.",
-    "levier": "Mesurer la marge de manœuvre"
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Recensez les licences restantes et mesurer les mois avant l’échéance."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez l’abonnement sur cinq ans."
+      },
+      {
+        "id": "alternatives-de-virtualisation-matures",
+        "commentaire": "Préparez l’alternative, comme celles qui existent en virtualisation."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "VMware (Broadcom), Fin de disponibilité des licences perpétuelles, janvier 2024",
+        "url": "https://blogs.vmware.com/cloud-foundation/2024/01/22/vmware-end-of-availability-of-perpetual-licensing-and-saas-services/"
+      },
+      {
+        "titre": "The Register, Broadcom arrête les licences perpétuelles VMware, décembre 2023",
+        "url": "https://www.theregister.com/2023/12/12/vmware_broadcom_licensing_changes/"
+      }
+    ]
   },
   {
+    "id": "meca-acces-indirect",
     "nom": "Accès indirect",
     "court": "Accès indirect",
     "symbole": "Ai",
     "couche": 1,
     "moment": 1,
     "fonctionnement": "Des systèmes tiers qui accèdent aux données d’un logiciel déclenchent des licences supplémentaires.",
-    "exemple": "Litiges sur l’accès indirect aux données d’ERP (affaire Diageo contre SAP, 2017).",
+    "exemple": "Haute Cour de Londres, 16 février 2017, SAP contre Diageo : SAP réclamait 54 503 578 £ de licences et de maintenance supplémentaires, le contrat exigeant des licences Named User pour tout accès direct ou indirect à mySAP ERP.",
     "signal": "Des interfaces vers l’ERP ou le CRM non couvertes par les licences.",
-    "parade": "Faire cartographier et contractualiser les accès indirects.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Faites cartographier et contractualiser les accès indirects."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Haute Cour d’Angleterre (TCC), SAP UK Ltd contre Diageo Great Britain Ltd, [2017] EWHC 189, février 2017",
+        "url": "https://caselaw.nationalarchives.gov.uk/ewhc/tcc/2017/189"
+      }
+    ]
   },
   {
+    "id": "meca-restrictions-selon-lhebergeur",
     "nom": "Restrictions selon l’hébergeur",
     "court": "Restrictions d’hébergeur",
     "symbole": "Rh",
     "couche": 1,
     "moment": 0,
     "fonctionnement": "Des licences plus chères, ou non transférables, chez un cloud concurrent de l’éditeur.",
-    "exemple": "Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft.",
+    "exemple": "En novembre 2022, le CISPE saisit la Commission européenne contre les licences de Microsoft ; un accord du 11 juillet 2024 conduit au retrait de la plainte. Chez Oracle, la politique de licence cloud ne désigne comme « Authorized Cloud Environments » qu’AWS, Azure et Google Cloud Platform.",
     "signal": "Le choix d’hébergeur est dicté par les licences.",
-    "parade": "Vérifier les droits de transfert avant tout choix d’hébergement.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Vérifiez les droits de transfert avant tout choix d’hébergement."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Notez dans le registre les conditions d’hébergement liées à chaque licence."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "CISPE, Accord avec Microsoft sur les licences logicielles, juillet 2024",
+        "url": "https://cispe.cloud/cispe-and-microsoft-agree-settlement-in-fair-software-licensing-case/"
+      },
+      {
+        "titre": "Autorité de la concurrence, Rapport sur l’autopréférence, novembre 2025",
+        "url": "https://www.autoritedelaconcurrence.fr/sites/default/files/2025-11/Rapport_autopreference-ADLC%2011-2025.pdf"
+      },
+      {
+        "titre": "Oracle, Licensing Oracle Software in the Cloud Computing Environment, septembre 2026",
+        "url": "https://oracle.com/a/ocom/docs/cloud-licensing-070579.pdf"
+      }
+    ]
   },
   {
+    "id": "meca-audits-de-conformite",
     "nom": "Audits de conformité",
     "court": "Audits",
     "symbole": "Au",
     "couche": 1,
     "moment": 2,
     "fonctionnement": "Des audits déclenchés à l’approche des renouvellements, avec un risque de rattrapage financier.",
-    "exemple": "Mises en demeure envoyées par Broadcom en 2025 aux détenteurs de licences perpétuelles sans support.",
+    "exemple": "En juin 2024, selon The Register, un cabinet de conseil en licences rapporte des lettres d’audit Java d’Oracle envoyées à des entreprises du Fortune 100. En mai 2025, Broadcom adresse des mises en demeure à des détenteurs de licences VMware perpétuelles.",
     "signal": "Un audit annoncé quelques mois avant l’échéance.",
-    "parade": "Inventaire à jour, clauses d’audit encadrées, ne jamais négocier sous la pression d’un audit.",
-    "levier": "Clauses d’audit encadrées"
+    "leviers": [
+      {
+        "id": "clauses-daudit-encadrees",
+        "commentaire": "Encadrez l’audit au contrat : préavis, fréquence, périmètre, auditeur."
+      },
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Tenez un inventaire à jour ; ne négociez jamais sous la pression d’un audit."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "The Register, Oracle lance des audits Java chez les plus grandes entreprises, juin 2024",
+        "url": "https://www.theregister.com/2024/06/10/fortune_200_oracle_java_audit/"
+      },
+      {
+        "titre": "Techzine, Broadcom envoie des mises en demeure aux détenteurs de licences VMware perpétuelles, mai 2025",
+        "url": "https://www.techzine.eu/news/privacy-compliance/131220/broadcom-sends-cease-and-desist-letter-to-holders-of-perpetual-vmware-licenses"
+      }
+    ]
   },
   {
+    "id": "meca-offres-groupees",
     "nom": "Offres groupées",
     "court": "Offres groupées",
     "symbole": "Og",
     "couche": 2,
     "moment": 2,
     "fonctionnement": "Des produits vendus ensemble, y compris ceux que vous n’utilisez pas.",
-    "exemple": "Catalogue VMware ramené à quelques offres groupées ; IA incluse d’office dans les suites.",
+    "exemple": "En janvier 2024, VMware (Broadcom) ramène son catalogue à deux offres en abonnement, VMware Cloud Foundation et vSphere Foundation ; de nombreux produits ne s’achètent plus seuls.",
     "signal": "Vous payez des fonctions inutilisées.",
-    "parade": "Mesurer l’usage réel ; négocier sur le périmètre utile.",
-    "levier": "Coût total de la dépendance"
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Mesurez l’usage réel et négocier sur le périmètre utile."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "VMware (Broadcom), Fin de disponibilité des licences perpétuelles, janvier 2024",
+        "url": "https://blogs.vmware.com/cloud-foundation/2024/01/22/vmware-end-of-availability-of-perpetual-licensing-and-saas-services/"
+      }
+    ]
   },
   {
+    "id": "meca-remises-conditionnelles-et-engagements-de-consommation",
     "nom": "Remises conditionnelles et engagements de consommation",
     "court": "Remises conditionnelles",
     "symbole": "Rc",
     "couche": 2,
     "moment": 0,
     "fonctionnement": "Des remises contre un volume ou une durée d’engagement.",
-    "exemple": "Engagements de dépense pluriannuels chez les fournisseurs de cloud.",
+    "exemple": "Dans son avis du 29 juin 2023, l’Autorité de la concurrence relève que des crédits cloud d’AWS (programmes « Activate » et « Migration Acceleration ») sont accordés sous condition d’engagements ou de volumes d’achats conséquents.",
     "signal": "La remise disparaît si vous diversifiez.",
-    "parade": "Limiter montant et durée ; garder une part non engagée.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Limitez le montant et la durée de l’engagement dès la revue du contrat."
+      },
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Gardez une part non engagée pour préserver la marge de manœuvre."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Autorité de la concurrence, avis 23-A-08 sur le cloud, juin 2023",
+        "url": "https://www.autoritedelaconcurrence.fr/sites/default/files/2024-01/23a08.pdf"
+      }
+    ]
   },
   {
+    "id": "meca-cout-dentree-nul-cout-de-sortie-eleve",
     "nom": "Coût d’entrée nul, coût de sortie élevé",
     "court": "Entrée gratuite",
     "symbole": "Ce",
     "couche": 2,
     "moment": 0,
     "fonctionnement": "Crédits gratuits, essais, prix d’appel, puis montée en charge.",
-    "exemple": "Crédits offerts pour l’IA ou aux jeunes entreprises.",
+    "exemple": "En octobre 2025, AWS a annoncé jusqu’à 1 million de dollars de crédits pour chacune des 40 jeunes entreprises de son accélérateur d’IA générative. En juillet 2025, la CMA britannique reconnaissait que ces crédits peuvent désavantager les petits fournisseurs, sans les juger nuisibles à la concurrence à ce jour.",
     "signal": "Un service adopté sans avoir évalué sa sortie.",
-    "parade": "Évaluer le coût de sortie dès l’entrée.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Mesurez la sortie par un pilote dès l’entrée."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Évaluez le coût de sortie dès l’entrée, sur cinq ans."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Amazon, AWS sélectionne 40 jeunes entreprises pour son accélérateur d’IA générative, octobre 2025",
+        "url": "https://press.aboutamazon.com/aws/2025/10/aws-selects-40-promising-ai-startups-from-around-the-world-for-the-2025-generative-ai-accelerator"
+      },
+      {
+        "titre": "CMA, Résumé de la décision finale sur les services cloud, juillet 2025",
+        "url": "https://assets.publishing.service.gov.uk/media/688b20e6ff8c05468cb7b120/summary_of_final_decision.pdf"
+      }
+    ]
   },
   {
+    "id": "meca-formats-et-api-proprietaires",
     "nom": "Formats et API propriétaires",
     "court": "Formats propriétaires",
     "symbole": "Fp",
     "couche": 3,
     "moment": 1,
     "fonctionnement": "Les données et les échanges utilisent des formats que seul le fournisseur sait lire.",
-    "exemple": "Formats internes d’entrepôts de données ; formats de sauvegarde propriétaires.",
+    "exemple": "En septembre 2025, la Commission européenne rend contraignants les engagements de Microsoft sur Teams : ouverture d’API pour l’interopérabilité avec des outils tiers et possibilité d’exporter les données de Teams, pour une durée de plusieurs années.",
     "signal": "Impossible d’ouvrir vos données sans l’outil.",
-    "parade": "Formats ouverts (Iceberg, Parquet) ; API standards.",
-    "levier": "Formats de données ouverts"
+    "leviers": [
+      {
+        "id": "formats-de-donnees-ouverts",
+        "commentaire": "Choisissez des formats ouverts (Iceberg, Parquet) et des API standards."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "TechCrunch, Teams : engagements de Microsoft acceptés par l’UE, septembre 2025",
+        "url": "https://techcrunch.com/2025/09/12/microsoft-slips-unscathed-through-eu-competition-probe-after-promising-to-unbundle-teams"
+      }
+    ]
   },
   {
+    "id": "meca-services-manages-sans-equivalent",
     "nom": "Services managés sans équivalent",
     "court": "Services managés",
     "symbole": "Sm",
     "couche": 3,
     "moment": 1,
     "fonctionnement": "Des services propres à un cloud, sans équivalent direct ailleurs.",
-    "exemple": "Bases de données et fonctions sans serveur propriétaires.",
+    "exemple": "Dans son avis du 29 juin 2023, l’Autorité de la concurrence note que tous les services PaaS n’ont pas d’équivalent chez un autre fournisseur cloud ; Google Cloud SQL correspond à plusieurs produits chez Amazon et Microsoft, ce qui complexifie la migration.",
     "signal": "Un chemin critique repose sur un service unique.",
-    "parade": "Préférer des équivalents standards ; isoler les services spécifiques.",
-    "levier": "Couches d’abstraction"
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Préférez des équivalents standards et isoler les services spécifiques derrière une couche."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Autorité de la concurrence, avis 23-A-08 sur le cloud, juin 2023",
+        "url": "https://www.autoritedelaconcurrence.fr/sites/default/files/2024-01/23a08.pdf"
+      }
+    ]
   },
   {
-    "nom": "Gravité des données et frais de transfert",
+    "id": "meca-gravite-des-donnees",
+    "nom": "Gravité des données",
     "court": "Gravité des données",
     "symbole": "Gd",
     "couche": 3,
     "moment": 3,
-    "fonctionnement": "Les volumes accumulés attirent les applications et coûtent cher à déplacer.",
-    "exemple": "Frais de transfert d’usage courant ; migrations de plusieurs pétaoctets.",
+    "fonctionnement": "Les volumes accumulés attirent les applications et coûtent cher et longtemps à déplacer.",
+    "exemple": "En juillet 2025, l’autorité britannique de la concurrence (CMA) conclut que la concurrence ne fonctionne pas bien dans le cloud : les frais de sortie de données freinent le changement de fournisseur, surtout pour les clients à gros volumes stockés. Microsoft et AWS dominent l’IaaS.",
     "signal": "Personne ne sait combien de temps prendrait le transfert.",
-    "parade": "Mesurer volumes et débits ; limiter les allers-retours.",
-    "levier": "Cartographie et classification des données"
+    "leviers": [
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Mesurez volumes et débits pour savoir ce qu’un transfert coûterait."
+      },
+      {
+        "id": "fin-des-frais-de-sortie-cloud-data-act",
+        "commentaire": "Préparez la sortie des données avant la fin des frais de transfert, programmée au 12 janvier 2027."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "CMA, Enquête de marché sur les services cloud, décision finale, juillet 2025",
+        "url": "https://assets.publishing.service.gov.uk/media/688b20e6ff8c05468cb7b120/summary_of_final_decision.pdf"
+      },
+      {
+        "titre": "Google Cloud, Transfert de données gratuit en cas de départ, janvier 2024",
+        "url": "https://cloud.google.com/blog/products/networking/eliminating-data-transfer-fees-when-migrating-off-google-cloud"
+      }
+    ]
   },
   {
+    "id": "meca-langages-et-extensions-proprietaires",
     "nom": "Langages et extensions propriétaires",
     "court": "Langages propriétaires",
     "symbole": "Lp",
@@ -188,127 +434,1087 @@
     "fonctionnement": "Le code métier est écrit dans un langage propre au produit.",
     "exemple": "PL/SQL d’Oracle, T-SQL de SQL Server, langages de requête d’outils d’observabilité.",
     "signal": "Des milliers de procédures stockées spécifiques.",
-    "parade": "Contenir les usages spécifiques ; outils de conversion ; standards.",
-    "levier": "Couches d’abstraction"
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Contenez les usages spécifiques ; utilisez des outils de conversion et des standards."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-integrations-decosysteme",
     "nom": "Intégrations d’écosystème",
     "court": "Intégrations imposées",
     "symbole": "Ie",
     "couche": 3,
     "moment": 3,
     "fonctionnement": "L’identité, la supervision et les outils annexes sont imposés par le fournisseur.",
-    "exemple": "Annuaire central dont dépendent tous les accès.",
+    "exemple": "Le 14 mai 2026, la CMA britannique ouvre une enquête sur Microsoft ; son avis reprend le constat de son enquête de marché sur le cloud selon lequel Entra ID, le logiciel d’identité et d’accès de Microsoft, n’interopère pas sans friction avec les logiciels d’identité tiers.",
     "signal": "Changer un composant oblige à en changer d’autres.",
-    "parade": "Protocoles standards (SAML, OpenID Connect, OpenTelemetry).",
-    "levier": "Mode dégradé et continuité hors fournisseur"
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Utilisez des protocoles standards (SAML, OpenID Connect, OpenTelemetry)."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Competition and Markets Authority, Avis d’ouverture de l’enquête SMS sur Microsoft, mai 2026",
+        "url": "https://assets.publishing.service.gov.uk/media/6a044eeecd2e0e8b5b20b518/Investigation_Notice.pdf"
+      }
+    ]
   },
   {
+    "id": "meca-mises-a-jour-forcees-et-obsolescence",
     "nom": "Mises à jour forcées et obsolescence",
     "court": "Mises à jour forcées",
     "symbole": "Mf",
     "couche": 3,
     "moment": 1,
     "fonctionnement": "Le calendrier des versions et des fins de support est imposé.",
-    "exemple": "Fins de support qui obligent à migrer à une date choisie par l’éditeur.",
+    "exemple": "Le 14 octobre 2025, Microsoft met fin au support de Windows 10 : plus de mises à jour de sécurité. Microsoft recommande Windows 11, ou l’inscription au programme payant Extended Security Updates pour les PC non éligibles.",
     "signal": "Des montées de version subies chaque année.",
-    "parade": "Suivre les calendriers de support ; négocier des extensions.",
-    "levier": "Coût total de la dépendance"
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Suivez les calendriers de support et négocier des extensions."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Gagnez du temps sur une version en fin de support en attendant la migration."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Microsoft, Fin du support de Windows 10, octobre 2025",
+        "url": "https://support.microsoft.com/en-us/windows/windows-10-support-ends-on-october-14-2025-2ca8b313-1946-43d3-b55c-2b95b107f281"
+      }
+    ]
   },
   {
+    "id": "meca-competences-et-certifications-specifiques",
     "nom": "Compétences et certifications spécifiques",
     "court": "Compétences rares",
     "symbole": "Cs",
     "couche": 4,
     "moment": 1,
     "fonctionnement": "Les équipes sont formées et certifiées sur un seul produit.",
-    "exemple": "Compétences rares, dépendance aux experts de l’éditeur.",
+    "exemple": "Avis 23-A-08 de l’Autorité de la concurrence (juin 2023) : les hyperscalers proposent des certifications centrées sur leurs propres solutions, Microsoft en comptant plus de 70 pour Azure ; les clients se tournent vers les compétences les plus présentes sur le marché, ce qui favorise ces fournisseurs.",
     "signal": "Personne ne sait opérer l’alternative.",
-    "parade": "Former au moins deux personnes sur l’alternative ; s’appuyer sur des communautés.",
-    "levier": "Compétences sur les alternatives"
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Formez au moins deux personnes sur l’alternative et s’appuyer sur des communautés."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Autorité de la concurrence, Avis 23-A-08 sur le cloud, juin 2023",
+        "url": "https://www.autoritedelaconcurrence.fr/sites/default/files/2024-01/23a08.pdf"
+      }
+    ]
   },
   {
+    "id": "meca-dependance-aux-partenaires-de-lediteur",
     "nom": "Dépendance aux partenaires de l’éditeur",
     "court": "Partenaires liés",
     "symbole": "Pa",
     "couche": 4,
     "moment": 0,
     "fonctionnement": "L’intégrateur ou l’infogérant est lui-même lié au fournisseur.",
-    "exemple": "Partenaires rémunérés par l’éditeur, peu enclins à proposer une alternative.",
+    "exemple": "Le 15 juillet 2025, Broadcom remplace le programme VMware pour fournisseurs cloud par un programme sur invitation : les partenaires non invités reçoivent un avis de non-renouvellement, sans nouveaux engagements après le 31 octobre 2025.",
     "signal": "Le conseil reçu ne présente jamais d’alternative.",
-    "parade": "Conseil indépendant, sans commission d’éditeur.",
-    "levier": "Indice de réversibilité fondé sur la preuve"
+    "leviers": [
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Recourez à un conseil indépendant, sans commission d’éditeur."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "The Register, VMware relance son programme partenaires, juillet 2025",
+        "url": "https://www.theregister.com/2025/07/16/vmware_reboots_partner_program_again"
+      }
+    ]
   },
   {
+    "id": "meca-processus-metier-construits-dans-loutil",
     "nom": "Processus métier construits dans l’outil",
     "court": "Processus dans l’outil",
     "symbole": "Pm",
     "couche": 4,
     "moment": 1,
     "fonctionnement": "Les processus, les règles et les données métier sont modélisés dans la plateforme.",
-    "exemple": "Gestion des services, ERP, CRM fortement personnalisés.",
+    "exemple": "Le Contrôle fédéral des finances suisse (CDF), dans son audit du 20 février 2023 du programme SUPERB (SAP S/4HANA), vise à ramener environ 250 applications métier vers le standard SAP, surtout celles bâties sur SAP ECC6.",
     "signal": "Changer d’outil impose de refondre les processus.",
-    "parade": "Documenter les processus hors de l’outil ; limiter les développements spécifiques.",
-    "levier": "Partir des processus métier critiques"
+    "leviers": [
+      {
+        "id": "partir-des-processus-metier-critiques",
+        "commentaire": "Documentez les processus hors de l’outil et limiter les développements spécifiques."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Contrôle fédéral des finances (Suisse), Audit du projet SUPERB, applications métier, février 2023",
+        "url": "https://efk.admin.ch/wp-content/uploads/publikationen/berichte/wirtschaft_und_verwaltung/informatikprojekte/22754/22754be-version-definitive-v04.pdf"
+      }
+    ]
   },
   {
+    "id": "meca-droit-applicable-et-juridiction-etrangere",
     "nom": "Droit applicable et juridiction étrangère",
     "court": "Droit étranger",
     "symbole": "Dj",
     "couche": 5,
     "moment": 0,
     "fonctionnement": "Le contrat relève d’un droit et de tribunaux étrangers.",
-    "exemple": "Contrats régis par un droit étranger, litiges à l’étranger.",
+    "exemple": "Le 10 juin 2025, devant la commission d’enquête du Sénat sur la commande publique, le représentant juridique de Microsoft France, sous serment, ne peut garantir que les données confiées via l’UGAP ne seront jamais transmises au gouvernement américain.",
     "signal": "Un recours juridique coûteux et lointain.",
-    "parade": "Négocier un droit et une juridiction européens.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "droit-et-juridiction-europeens-negocies",
+        "commentaire": "Négociez un droit applicable et une juridiction européens."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Choisissez une offre qualifiée dont la convention applique le droit d’un État membre."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Sénat, commission d’enquête sur la commande publique, audition de Microsoft France, 10 juin 2025",
+        "url": "https://senat.fr/compte-rendu-commissions/20250609/ce_commande_publique.html"
+      }
+    ]
   },
   {
+    "id": "meca-extraterritorialite-et-sanctions",
     "nom": "Extraterritorialité et sanctions",
     "court": "Extraterritorialité",
     "symbole": "Ex",
     "couche": 5,
     "moment": 1,
     "fonctionnement": "Des lois étrangères peuvent imposer l’accès aux données ou l’interruption d’un service.",
-    "exemple": "Cloud Act américain ; perte d’accès à sa messagerie du procureur de la CPI en 2025.",
+    "exemple": "Selon l’AP (15 mai 2025), après les sanctions américaines visant le procureur de la CPI Karim Khan, Microsoft a annulé son adresse de messagerie, le forçant à passer chez Proton Mail. Microsoft n’a pas répondu à la demande de commentaire de l’AP.",
     "signal": "Des services critiques fournis par une entité soumise à un droit étranger.",
-    "parade": "Classer les données ; clés maîtrisées ; offres qualifiées ; mode dégradé ; clauses Oméga 1 et 2 de Libralis.",
-    "levier": "Chiffrement avec clés maîtrisées"
+    "leviers": [
+      {
+        "id": "chiffrement-avec-cles-maitrisees",
+        "commentaire": "Gardez la maîtrise des clés de chiffrement."
+      },
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Classez les données pour savoir lesquelles justifient des mesures."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Recourez à des offres qualifiées pour les données sensibles."
+      },
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoyez un mode dégradé si le service est coupé par sanction."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "AP via PBS NewsHour, sanctions américaines et travail de la CPI, mai 2025",
+        "url": "https://www.pbs.org/newshour/world/trumps-sanctions-on-iccs-chief-prosecutor-have-halted-tribunals-work"
+      }
+    ]
   },
   {
+    "id": "meca-controles-a-lexportation",
     "nom": "Contrôles à l’exportation",
     "court": "Contrôles à l’export",
     "symbole": "Co",
     "couche": 5,
     "moment": 1,
     "fonctionnement": "Des restrictions sur les puces ou les technologies peuvent limiter l’accès à un service.",
-    "exemple": "Restrictions à l’export de technologies d’IA.",
+    "exemple": "Le 9 avril 2025, le gouvernement américain informe Nvidia qu’une licence est requise pour exporter ses puces H20 vers la Chine, Hong Kong et Macao. Nvidia annonce jusqu’à environ 5,5 milliards de dollars de charges liées à ces produits au premier trimestre.",
     "signal": "Un service critique dépend d’une technologie soumise à des contrôles.",
-    "parade": "Identifier l’origine des technologies critiques ; prévoir une alternative.",
-    "levier": "Mode dégradé et continuité hors fournisseur"
+    "leviers": [
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoyez une alternative et un mode dégradé pour les technologies soumises à contrôle."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Identifiez dans le registre l’origine des technologies critiques."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Nvidia (SEC), Formulaire 8-K, avril 2025",
+        "url": "https://www.sec.gov/Archives/edgar/data/1045810/000104581025000082/nvda-20250409.htm"
+      }
+    ]
   },
   {
+    "id": "meca-changement-de-licence-dun-projet-a-editeur-unique",
     "nom": "Changement de licence d’un projet à éditeur unique",
     "court": "Changement de licence",
     "symbole": "Lc",
     "couche": 6,
     "moment": 1,
     "fonctionnement": "Le principal contributeur change la licence du projet.",
-    "exemple": "Terraform (2023), Redis (2024), Elasticsearch (2021).",
-    "signal": "Un projet ouvert dont un seul acteur détient les droits.",
-    "parade": "Préférer les projets portés par une fondation ; suivre les forks (OpenTofu, Valkey, OpenSearch).",
-    "levier": "Couches d’abstraction"
+    "exemple": "HashiCorp a quitté la MPL 2.0 pour la Business Source License le 10 août 2023 (Terraform) ; Elastic a quitté Apache 2.0 pour SSPL et Elastic License le 14 janvier 2021 ; Redis a quitté la licence BSD pour RSALv2/SSPLv1 avec Redis 7.4 (20 mars 2024) ; Liquibase passe sa version communautaire à la Functional Source License le 30 septembre 2025.",
+    "signal": "Un projet ouvert dont un seul acteur détient les droits (accord de cession des droits des contributeurs, marque détenue par une société).",
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Vérifiez la gouvernance avant d’adopter : fondation, accord de contributeur, marque."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Suivez les forks (OpenTofu, Valkey, OpenSearch) et préparer le repli."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "HashiCorp, Adoption de la Business Source License, août 2023",
+        "url": "https://www.hashicorp.com/en/blog/hashicorp-adopts-business-source-license"
+      },
+      {
+        "titre": "Elastic, Changement de licence d’Elasticsearch et Kibana, janvier 2021",
+        "url": "https://www.elastic.co/blog/licensing-change"
+      },
+      {
+        "titre": "Redis, Licence source-available double, mars 2024",
+        "url": "https://redis.io/blog/redis-adopts-dual-source-available-licensing/"
+      },
+      {
+        "titre": "Liquibase, passage de Liquibase Community à la Functional Source License, septembre 2025",
+        "url": "https://www.liquibase.com/blog/liquibase-community-for-the-future-fsl"
+      }
+    ]
   },
   {
+    "id": "meca-appauvrissement-de-ledition-communautaire",
     "nom": "Appauvrissement de l’édition communautaire",
     "court": "Édition gratuite appauvrie",
     "symbole": "Ap",
     "couche": 6,
     "moment": 1,
     "fonctionnement": "Des fonctions ou la distribution sont retirées de la version gratuite.",
-    "exemple": "MinIO (console retirée, binaires arrêtés en 2025) ; Puppet (paquets en dépôt privé depuis 2025).",
+    "exemple": "MinIO : l’interface d’administration web a été retirée de l’édition communautaire et réservée à l’offre payante AIStor (Blocks & Files, juin 2025) ; l’édition n’est plus diffusée qu’en code source. Puppet : annonce du 7 novembre 2024, nouveaux binaires et paquets dans un dépôt privé dès début 2025.",
     "signal": "Des fonctions disparaissent de la version ouverte.",
-    "parade": "Surveiller la gouvernance ; identifier les forks (OpenVox) ; contribuer aux projets communautaires.",
-    "levier": "Compétences sur les alternatives"
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Surveillez la gouvernance du projet et la part des fonctions réservées à l’offre payante."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Identifiez le fork communautaire (OpenVox pour Puppet)."
+      },
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Contribuez aux projets communautaires et former les équipes à l’alternative."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Blocks & Files, MinIO retire l’interface d’administration de l’édition communautaire, juin 2025",
+        "url": "https://blocksandfiles.com/2025/06/19/minio-removes-management-features-from-basic-community-edition-object-storage-code/"
+      },
+      {
+        "titre": "MinIO, README du dépôt communautaire, 2026",
+        "url": "https://github.com/minio/minio"
+      },
+      {
+        "titre": "Puppet, Nos plans pour Puppet open source en 2025, novembre 2024",
+        "url": "https://www.puppet.com/blog/open-source-puppet-updates-2025"
+      }
+    ]
+  },
+  {
+    "id": "meca-frais-de-sortie-de-donnees",
+    "nom": "Frais de sortie de données",
+    "court": "Frais de sortie",
+    "symbole": "Fs",
+    "couche": 2,
+    "moment": 3,
+    "fonctionnement": "Le départ est facturé : le transfert et l’export des données hors du fournisseur sont payants.",
+    "exemple": "En janvier 2024, Google Cloud a annoncé le transfert de données gratuit pour les clients qui le quittent, puis AWS en mars 2024. Selon la Bundesnetzagentur, le Data Act interdit tout frais de changement de fournisseur à compter du 12 janvier 2027.",
+    "signal": "Une facture de transfert apparaît au moment de déménager les données.",
+    "leviers": [
+      {
+        "id": "fin-des-frais-de-sortie-cloud-data-act",
+        "commentaire": "Anticipez la fin des frais de changement de fournisseur au 12 janvier 2027."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez le coût de sortie dès la signature."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Google Cloud, Fin des frais de transfert pour quitter Google Cloud, janvier 2024",
+        "url": "https://cloud.google.com/blog/products/networking/eliminating-data-transfer-fees-when-migrating-off-google-cloud"
+      },
+      {
+        "titre": "AWS, Transferts de données sortants gratuits pour changer de fournisseur, mars 2024",
+        "url": "https://aws.amazon.com/blogs/networking-and-content-delivery/promoting-customer-choice-aws-takes-another-step-to-lower-costs-for-customers-changing-it-providers"
+      },
+      {
+        "titre": "Bundesnetzagentur, Glossaire Data Act : frais de changement de fournisseur",
+        "url": "https://www.bundesnetzagentur.de/SharedDocs/A_Z_Glossar_DataAct_ENG/S/switching-charge.html"
+      }
+    ]
+  },
+  {
+    "id": "meca-suspension-ou-resiliation-unilaterale-du-service",
+    "nom": "Suspension ou résiliation unilatérale du service",
+    "court": "Suspension unilatérale",
+    "symbole": "Su",
+    "couche": 0,
+    "moment": 1,
+    "fonctionnement": "Le contrat permet au fournisseur de couper ou de suspendre le service sans préavis suffisant ni recours.",
+    "exemple": "En janvier 2021, AWS cesse d’héberger Parler. Le 21 janvier 2021, un juge fédéral américain refuse d’ordonner le rétablissement du service.",
+    "signal": "Un contrat qui autorise la suspension sans préavis, y compris pour un service critique.",
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négociez un préavis, un recours et la continuité du service pendant un litige, et interdire la coupure arbitraire (clause Oméga 2)."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Intégrez cette vérification à la revue de chaque nouveau contrat."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "CNBC, Amazon n’a pas à remettre Parler en ligne, selon un juge, janvier 2021",
+        "url": "https://www.cnbc.com/2021/01/21/amazon-doesnt-have-to-put-parler-back-online-says-judge.html"
+      }
+    ]
+  },
+  {
+    "id": "meca-perte-des-droits-sur-les-correctifs-a-lexpiration-du-support",
+    "nom": "Perte des droits sur les correctifs à l’expiration du support",
+    "court": "Perte des correctifs",
+    "symbole": "Pc",
+    "couche": 1,
+    "moment": 3,
+    "fonctionnement": "Sans support actif, le droit d’utiliser les correctifs publiés après la fin du support est contesté.",
+    "exemple": "En mai 2025, Broadcom a envoyé des courriers à des détenteurs de licences perpétuelles VMware dont le support avait expiré, visant l’usage non autorisé de correctifs et mises à jour publiés après l’expiration.",
+    "signal": "Un courrier du fournisseur sur les correctifs installés après l’expiration du support.",
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Vérifiez ce que la licence perpétuelle couvre et conserver la preuve des droits."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Prévoyez la sortie avant la fin du support, avec un support tiers si besoin."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Network World, VMware : courriers de Broadcom aux licences perpétuelles, mai 2025",
+        "url": "https://www.networkworld.com/article/3981450/perpetual-vmware-license-holders-receive-demand-letter-from-broadcom.html"
+      }
+    ]
+  },
+  {
+    "id": "meca-changement-de-controle-de-lediteur",
+    "nom": "Changement de contrôle de l’éditeur",
+    "court": "Changement de contrôle",
+    "symbole": "Cc",
+    "couche": 2,
+    "moment": 1,
+    "fonctionnement": "Après un rachat, la politique commerciale et la feuille de route changent sans que le contrat bouge.",
+    "exemple": "Après le rachat de VMware par Broadcom, IDC (août 2024) relève la fin de la majorité des licences perpétuelles, de nouveaux bundles d’abonnement plus chers et des hausses de coût à l’achat comme au renouvellement.",
+    "signal": "Un changement de propriétaire suivi d’une nouvelle politique tarifaire ou de nouvelles offres groupées.",
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Prévoyez des clauses de protection en cas de changement de contrôle."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Suivez l’actionnariat des éditeurs critiques dans le registre."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "IDC, Hausses de coût VMware et évolution des offres Broadcom, août 2024",
+        "url": "https://idc.com/resource-center/blog/vmware-cost-increases-how-broadcom-vmware-product-offerings-are-evolving"
+      }
+    ]
+  },
+  {
+    "id": "meca-sequestre-de-code-source-sans-droit-dusage-effectif",
+    "nom": "Séquestre de code source sans droit d’usage effectif",
+    "court": "Séquestre de code",
+    "symbole": "Sc",
+    "couche": 5,
+    "moment": 3,
+    "fonctionnement": "Le fournisseur propose un dépôt du code source en lieu sûr pour rassurer sur la continuité, mais le droit de l’utiliser, de le modifier et de l’héberger n’est ni défini ni opérationnel.",
+    "exemple": "Le 30 avril 2025, Microsoft annonce qu’il stockera des copies de sauvegarde de son code dans un dépôt sécurisé en Suisse et qu’il donnera à ses partenaires européens les droits légaux nécessaires pour y accéder et l’utiliser si nécessaire à cette fin.",
+    "signal": "Une promesse de séquestre sans conditions de déclenchement ni droit d’exploitation précisés.",
+    "leviers": [
+      {
+        "id": "sequestre-de-code-source-exploitable",
+        "commentaire": "Exigez un séquestre avec conditions de déclenchement, droit d’usage, de modification et d’hébergement, et vérifier qu’une équipe peut l’exploiter."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Microsoft, Engagements numériques européens, 30 avril 2025",
+        "url": "https://blogs.microsoft.com/on-the-issues/2025/04/30/european-digital-commitments/"
+      }
+    ]
+  },
+  {
+    "id": "meca-sous-traitance-en-cascade",
+    "nom": "Sous-traitance en cascade",
+    "court": "Sous-traitance en cascade",
+    "symbole": "St",
+    "couche": 0,
+    "moment": 1,
+    "fonctionnement": "Le fournisseur sous-traite à son tour des fonctions critiques, et la chaîne devient trop longue ou opaque pour que le client la contrôle.",
+    "exemple": "En juillet 2021, des acteurs malveillants ont exploité une faille de Kaseya VSA pour lancer des rançongiciels contre des prestataires de services gérés et leurs clients en aval.",
+    "signal": "Le fournisseur ne peut pas dire qui exécute quoi, ni dans quel pays.",
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Exigez et tenir à jour la liste des sous-traitants des fonctions critiques."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Négociez un droit d’opposition et d’audit sur la chaîne, et la responsabilité du fournisseur principal."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "CISA, Attaque par rançongiciel Kaseya : consignes pour les MSP et leurs clients, juillet 2021",
+        "url": "https://www.cisa.gov/uscert/kaseya-ransomware-attack"
+      }
+    ]
+  },
+  {
+    "id": "meca-concentration-sur-un-prestataire-non-substituable",
+    "nom": "Concentration sur un prestataire non substituable",
+    "court": "Concentration prestataire",
+    "symbole": "Cn",
+    "couche": 2,
+    "moment": 0,
+    "fonctionnement": "Plusieurs services critiques reposent sur le même fournisseur, dont la défaillance touche alors tout le système d’information.",
+    "exemple": "Le résumé post-incident d’AWS indique une panne du 19 octobre (23 h 48 PDT) au 20 octobre 2025 (14 h 20 PDT), due à une situation de concurrence latente dans la gestion DNS de DynamoDB. Le 18 novembre 2025, les autorités européennes ont publié la liste des prestataires TIC critiques désignés au titre de DORA.",
+    "signal": "Un incident chez un seul fournisseur arrête plusieurs applications critiques.",
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Cartographiez les dépendances par fournisseur pour voir la concentration."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Évaluez le risque de concentration avant de signer, avec un indice fondé sur la preuve."
+      },
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoyez un mode dégradé hors fournisseur."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "AWS, résumé post-incident de la panne us-east-1, octobre 2025",
+        "url": "https://aws.amazon.com/message/101925"
+      },
+      {
+        "titre": "ESMA, désignation des prestataires TIC critiques (DORA), novembre 2025",
+        "url": "https://www.esma.europa.eu/press-news/esma-news/european-supervisory-authorities-designate-critical-ict-third-party-providers"
+      }
+    ]
+  },
+  {
+    "id": "meca-fenetre-de-recuperation-courte-apres-resiliation",
+    "nom": "Fenêtre de récupération courte après résiliation",
+    "court": "Fenêtre de récupération",
+    "symbole": "Fr",
+    "couche": 0,
+    "moment": 3,
+    "fonctionnement": "Après la résiliation, le fournisseur ne garde les données exploitables que quelques semaines, puis les supprime de façon irréversible.",
+    "exemple": "Microsoft 365 : après la fin d’un abonnement payant, les données restent 90 jours dans un compte à fonctions limitées pour extraction, puis sont supprimées au plus tard 180 jours après l’expiration, et deviennent « commercialement irrécupérables » (page Microsoft Learn mise à jour le 28 mai 2026).",
+    "signal": "Une date de suppression des données qui tombe avant la fin de la migration.",
+    "leviers": [
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Testez la restauration avant la résiliation."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négociez la durée de conservation après résiliation et planifier l’export complet."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Microsoft Learn, Conservation, suppression et destruction des données dans Microsoft 365, mai 2026",
+        "url": "https://learn.microsoft.com/en-us/compliance/assurance/assurance-data-retention-deletion-and-destruction-overview"
+      }
+    ]
+  },
+  {
+    "id": "meca-conditions-de-place-de-marche-cloud",
+    "nom": "Conditions de place de marché cloud",
+    "court": "Place de marché",
+    "symbole": "Pl",
+    "couche": 2,
+    "moment": 1,
+    "fonctionnement": "La place de marché du fournisseur cloud peut limiter la promotion des offres tierces, favoriser les siennes et imposer la parité tarifaire, alors que les engagements de dépense du client y sont adossés.",
+    "exemple": "Avis 23-A-08 de l’Autorité de la concurrence (29 juin 2023) : plusieurs fournisseurs, dont AWS et Oracle, prévoient des clauses empêchant les éditeurs tiers de communiquer ou promouvoir leurs offres via la place de marché ; l’Autorité y voit un risque concurrentiel, sans constater d’infraction.",
+    "signal": "Des offres tierces plus chères sur la place de marché qu’en achat direct.",
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Comparez le prix d’achat direct et le prix via la place de marché."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Autorité de la concurrence, Avis 23-A-08 sur le cloud, juin 2023",
+        "url": "https://www.autoritedelaconcurrence.fr/sites/default/files/2024-01/23a08.pdf"
+      }
+    ]
+  },
+  {
+    "id": "meca-fin-de-vie-programmee-du-produit-sur-site",
+    "nom": "Fin de vie programmée du produit sur site",
+    "court": "Fin de vie sur site",
+    "symbole": "Fv",
+    "couche": 3,
+    "moment": 2,
+    "fonctionnement": "Le fournisseur fixe une date d’arrêt du produit hébergé chez le client : chaque renouvellement n’est plus prolongé que jusqu’à cette date, puis le produit passe en lecture seule.",
+    "exemple": "Atlassian fixe au 28 mars 2029 la fin de vie de la plupart de ses produits Data Center : abonnements expirés, produits en lecture seule. Achat fermé aux nouveaux clients le 30 mars 2026, aux clients existants après le 30 mars 2028. Bitbucket et Bamboo Data Center sont exclus.",
+    "signal": "Des renouvellements proratisés à une date d’arrêt annoncée.",
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Planifiez la migration avant la date d’arrêt et ne pas renouveler au-delà de la fin de vie."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Gagnez du temps avec un support tiers si la migration n’est pas prête."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Atlassian, Fin de vie de Data Center, 2025-2026",
+        "url": "https://www.atlassian.com/licensing/data-center-end-of-life"
+      }
+    ]
+  },
+  {
+    "id": "meca-surtaxe-sur-les-versions-en-fin-de-support",
+    "nom": "Surtaxe sur les versions en fin de support",
+    "court": "Surtaxe fin de support",
+    "symbole": "Se",
+    "couche": 3,
+    "moment": 2,
+    "fonctionnement": "Le service managé place d’office les versions dépassées sous un support étendu payant, et le surcoût court jusqu’à la montée de version.",
+    "exemple": "AWS a annoncé que les bases MySQL 5.7 et PostgreSQL 11 d’Aurora et de RDS seraient inscrites automatiquement au support étendu payant à partir du 29 février 2024. Facturation dès le 1er mars 2024 pour MySQL 5.7 et dès le 1er avril 2024 pour PostgreSQL 11.",
+    "signal": "Une ligne de facture « support étendu » sur une base qui n’a pas été mise à jour.",
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Comparez le coût du support étendu à celui de la migration."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Envisagez un support tiers pour éviter la surtaxe, avec un plan de sortie daté."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "AWS, inscription automatique au support étendu RDS, février 2024",
+        "url": "https://aws.amazon.com/blogs/aws/your-mysql-5-7-and-postgresql-11-databases-will-be-automatically-enrolled-into-amazon-rds-extended-support"
+      },
+      {
+        "titre": "AWS, documentation des frais du support étendu RDS",
+        "url": "https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/extended-support-charges.html"
+      }
+    ]
+  },
+  {
+    "id": "meca-verrou-technique-a-lexpiration-de-la-licence",
+    "nom": "Verrou technique à l’expiration de la licence",
+    "court": "Verrou de licence",
+    "symbole": "Vt",
+    "couche": 3,
+    "moment": 2,
+    "fonctionnement": "À l’expiration de la clé de licence, le produit se bloque techniquement, sans décision ni délai de grâce du fournisseur.",
+    "exemple": "Selon la base de connaissances Broadcom (article 391605), à l’expiration d’une licence ESXi l’hôte apparaît déconnecté et aucune VM éteinte ne peut être démarrée ; à l’expiration de la licence vCenter, tous les hôtes gérés apparaissent déconnectés.",
+    "signal": "Une licence qui expire alors que le renouvellement n’est pas signé.",
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Suivez les dates d’expiration des clés de licence."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Signez les renouvellements avant l’échéance grâce au calendrier du registre."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Broadcom, Impact de l’expiration d’une licence vCenter/ESXi, sans date",
+        "url": "https://knowledge.broadcom.com/external/article?articleNumber=391605"
+      }
+    ]
+  },
+  {
+    "id": "meca-achat-par-accord-cadre-sans-mise-en-concurrence-propre",
+    "nom": "Achat par accord-cadre sans mise en concurrence propre",
+    "court": "Accord-cadre captif",
+    "symbole": "Ac",
+    "couche": 4,
+    "moment": 0,
+    "fonctionnement": "L’achat passe par un accord-cadre ou une centrale d’achat généraliste, sans consultation spécifique ni revue d’architecture, et l’hébergeur ou l’éditeur est installé d’emblée.",
+    "exemple": "Health Data Hub : lors de son audition au Sénat le 6 mai 2025, la directrice interministérielle du numérique déclare que pour le HDH, l’Ugap a été utilisée, ce qui a donné lieu à un marché public pour l’hébergement chez Microsoft Azure.",
+    "signal": "Un fournisseur choisi dans le catalogue d’une centrale d’achat, sans comparaison avec une alternative.",
+    "leviers": [
+      {
+        "id": "achats-et-investissements-groupes",
+        "commentaire": "Recourez à une centrale d’achat informatique qui inclut des alternatives."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Centralisez le calendrier des contrats pour exiger une comparaison avant tout achat."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Comparez les fournisseurs avec un indice commun avant l’achat sur accord-cadre."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Sénat, Commission d’enquête sur la commande publique, audition de la Dinum, mai 2025",
+        "url": "https://www.senat.fr/compte-rendu-commissions/20250505/ce_commande_publique.html"
+      }
+    ]
+  },
+  {
+    "id": "meca-renouvellements-decentralises-sans-avis-darchitecture",
+    "nom": "Renouvellements décentralisés sans avis d’architecture",
+    "court": "Renouvellement décentralisé",
+    "symbole": "Rd",
+    "couche": 4,
+    "moment": 2,
+    "fonctionnement": "Chaque entité renouvelle seule ses licences, sans pouvoir central ni avis d’architecture, donc sans rapport de force face à l’éditeur.",
+    "exemple": "Éducation nationale : accord-cadre Microsoft publié au BOAMP en mars 2025, plafond de 152 M€ HT sur 48 mois à compter du 7 mars 2025. Selon le Sénat, ce renouvellement n’a pas été soumis pour avis conforme à la Dinum, alors que le seuil de 9 M€ était dépassé.",
+    "signal": "Un renouvellement signé sans que l’organisation centrale en ait connaissance.",
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Centralisez le calendrier des contrats et la négociation."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Instituez un avis d’architecture sur les renouvellements importants."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "BOAMP, Avis d’attribution Microsoft SPLA ou équivalent, mars 2025",
+        "url": "https://www.boamp.fr/telechargements/FILES/PDF/2025/03/25-28385.pdf"
+      },
+      {
+        "titre": "Sénat, Rapport de la commission d’enquête sur la commande publique, juillet 2025",
+        "url": "https://www.senat.fr/rap/r24-830-1/r24-830-1_mono.html"
+      }
+    ]
+  },
+  {
+    "id": "meca-inertie-culturelle-et-formation-insuffisante",
+    "nom": "Inertie culturelle et formation insuffisante",
+    "court": "Inertie et formation",
+    "symbole": "Ic",
+    "couche": 4,
+    "moment": 2,
+    "fonctionnement": "Le renouvellement se fait par défaut parce que les utilisateurs sont habitués à l’outil et que la formation à une alternative manque de temps et de moyens.",
+    "exemple": "Rapport de la Cour des comptes d’octobre 2026 sur les outils bureautiques de l’État : en 2025, 80 % des achats de licences ont concerné des produits Microsoft ou assimilés ; les directions du numérique citent la résistance au changement et le manque de temps ou de ressources pour la formation.",
+    "signal": "Un renouvellement reconduit faute de plan de conduite du changement.",
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Budgétez la formation et la conduite du changement avant le renouvellement."
+      },
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Menez un pilote d’alternative."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Cour des comptes, Les outils bureautiques et collaboratifs au sein de l’État, octobre 2026",
+        "url": "https://www.vie-publique.fr/files/rapport/pdf/305075.pdf"
+      }
+    ]
+  },
+  {
+    "id": "meca-maitrise-douvrage-externalisee",
+    "nom": "Maîtrise d’ouvrage externalisée",
+    "court": "Savoir-faire externalisé",
+    "symbole": "Mo",
+    "couche": 4,
+    "moment": 3,
+    "fonctionnement": "L’organisation a confié le pilotage, la réalisation et le conseil à quelques prestataires, qui détiennent la connaissance du système d’information et rendent la sortie très difficile.",
+    "exemple": "Selon la Cour des comptes (rapport sur la Cnam, relayé le 3 juin 2024), les cinq premiers fournisseurs de prestations intellectuelles, presque tous informatiques, ont reçu 877 M€ de commandes sur 2012-2022, le premier plus de 80 % de ce total.",
+    "signal": "Aucun agent interne ne sait reconstruire ou reprendre un élément du système.",
+    "leviers": [
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Plafonnez la sous-traitance et conserver en interne le pilotage et l’architecture."
+      },
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Exigez la documentation et le transfert de compétences."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "LeMondeInformatique, l’IT de la Cnam dépendante des prestataires, juin 2024",
+        "url": "https://www.lemondeinformatique.fr/actualites/lire-l-it-de-la-cnam-trop-dependante-des-prestataires-selon-la-cour-des-comptes-93889.html"
+      }
+    ]
+  },
+  {
+    "id": "meca-resserrement-de-loffre-gratuite",
+    "nom": "Resserrement de l’offre gratuite",
+    "court": "Offre gratuite resserrée",
+    "symbole": "Rg",
+    "couche": 2,
+    "moment": 1,
+    "fonctionnement": "L’outil s’installe gratuitement, puis l’éditeur limite l’offre gratuite une fois l’usage installé ; le passage au payant se négocie sous contrainte.",
+    "exemple": "GitLab.com limite à 5 utilisateurs les groupes de premier niveau privés de l’offre gratuite (annoncé en 2022, application aux espaces gratuits restants prévue le 15 août 2026) ; Slack ne donne aux espaces gratuits que 90 jours d’historique et supprime les messages de plus d’un an dès le 26 août 2024.",
+    "signal": "Une limite d’utilisateurs, d’historique ou de ressources annoncée sur une offre gratuite déjà adoptée.",
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez le passage au payant avant que la limite s’applique."
+      },
+      {
+        "id": "formats-de-donnees-ouverts",
+        "commentaire": "Exportez régulièrement l’historique et les données dans un format ouvert."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "GitLab, Offre gratuite : limite de 5 utilisateurs, mars 2022 (mis à jour juin 2026)",
+        "url": "https://about.gitlab.com/blog/2022/03/24/efficient-free-tier/"
+      },
+      {
+        "titre": "Slack, Mises à jour de l’historique des messages et fichiers des espaces gratuits, 2024",
+        "url": "https://slack.com/help/articles/29414264463635-Updates-to-message-and-file-history-on-free-workspaces"
+      }
+    ]
+  },
+  {
+    "id": "meca-fonctions-cles-reservees-a-ledition-payante",
+    "nom": "Fonctions clés réservées à l’édition payante",
+    "court": "Open core",
+    "symbole": "Fc",
+    "couche": 6,
+    "moment": 0,
+    "fonctionnement": "Le noyau ouvert est gratuit, mais des fonctions nécessaires en production (authentification unique, droits fins, audit, support) sont réservées à une édition payante sous licence propriétaire.",
+    "exemple": "FleetDM : cœur sous licence MIT, mais le dossier ee/ exige un abonnement valide en production ; Infisical : cœur MIT, dossier ee/ sous licence commerciale pour la production ; Keep : cœur MIT, dossier ee/ sous licence commerciale.",
+    "signal": "Une fonction indispensable en production qui n’apparaît que dans la grille tarifaire de l’édition entreprise.",
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Listez les fonctions nécessaires en production et vérifier la licence de chaque dossier du dépôt avant d’adopter."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez l’édition payante dès la décision."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "FleetDM, licence Enterprise (ee/LICENSE), dépôt GitHub, état au 21 novembre 2026",
+        "url": "https://raw.githubusercontent.com/fleetdm/fleet/main/ee/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "meca-projet-ouvert-abandonne-par-son-editeur",
+    "nom": "Projet ouvert abandonné par son éditeur",
+    "court": "Projet abandonné",
+    "symbole": "Ab",
+    "couche": 6,
+    "moment": 3,
+    "fonctionnement": "L’éditeur arrête la maintenance de l’édition ouverte puis archive le dépôt : plus de correctifs ni de support communautaire, et le client doit migrer.",
+    "exemple": "MinIO : dépôt communautaire archivé en avril 2026, README « THIS REPOSITORY IS NO LONGER MAINTAINED ». Grafana OnCall OSS : maintenance depuis le 11 mars 2025, archivage prévu le 24 mars 2026. Chef Infra Server open source : plus de contributions après fin octobre 2026, fin de cycle en novembre 2026 (annonce du 26 novembre 2025).",
+    "signal": "Un dépôt en mode maintenance, sans nouvelle version, alors qu’une offre commerciale est mise en avant.",
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Surveillez l’activité des projets utilisés et préférer ceux portés par une fondation."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Prévoyez le fork ou l’alternative avant l’archivage."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Gagnez du temps avec un support tiers pendant la migration."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "MinIO, README du dépôt communautaire, 2026",
+        "url": "https://github.com/minio/minio"
+      },
+      {
+        "titre": "Grafana Labs, README de Grafana OnCall OSS, mars 2025",
+        "url": "https://github.com/grafana/oncall"
+      },
+      {
+        "titre": "Chef, Chef Infra Server passe à la plateforme Chef 360, novembre 2025",
+        "url": "https://www.chef.io/blog/chef-infra-server-transitions-to-chef-360-platform"
+      }
+    ]
+  },
+  {
+    "id": "meca-entrainement-de-lia-de-lediteur-sur-les-donnees-clients",
+    "nom": "Entraînement de l’IA de l’éditeur sur les données clients",
+    "court": "IA sur données clients",
+    "symbole": "Ia",
+    "couche": 0,
+    "moment": 1,
+    "fonctionnement": "Les conditions ou les principes de confidentialité de l’éditeur autorisent l’analyse du contenu client pour entraîner ses modèles, activée par défaut, avec une sortie lourde ou réservée à l’offre la plus haute.",
+    "exemple": "Atlassian a annoncé en avril 2026 qu’à partir du 17 août 2026 la contribution des métadonnées à l’amélioration de ses services est toujours active pour les offres Free, Standard et Premium ; seule l’offre Enterprise peut s’y opposer. Atlassian indique les dépersonnaliser et les agréger.",
+    "signal": "Un partage de données activé par défaut, avec une sortie par e-mail ou réservée à l’offre haute.",
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Exigez au contrat l’interdiction d’entraîner des modèles sur les données du client, et relire les conditions à chaque évolution."
+      },
+      {
+        "id": "modeles-dia-a-poids-ouverts",
+        "commentaire": "Disposez d’un modèle ouvert évalué comme alternative pour les usages sensibles."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "The Register, Nouvelle politique de collecte de données d’Atlassian, avril 2026",
+        "url": "https://www.theregister.com/2026/04/18/atlassians_new_data_collection_policy/"
+      },
+      {
+        "titre": "Atlassian, Contribution de données, 2026",
+        "url": "https://www.atlassian.com/trust/ai/data-contribution"
+      }
+    ]
+  },
+  {
+    "id": "meca-hebergeur-impose-par-la-loi-pour-les-donnees-sensibles",
+    "nom": "Hébergeur imposé par la loi pour les données sensibles",
+    "court": "Hébergeur imposé",
+    "symbole": "Hl",
+    "couche": 5,
+    "moment": 0,
+    "fonctionnement": "La loi réserve, dès l’appel d’offres, certaines données sensibles à des hébergeurs protégés des accès d’États tiers, ce qui restreint le choix aux offres qualifiées.",
+    "exemple": "La CNIL (19 juillet 2024) rappelle que la loi SREN du 21 mai 2024 impose, pour les données d’une sensibilité particulière de l’État, un cloud empêchant tout accès par des autorités publiques d’États tiers.",
+    "signal": "Une exigence de qualification ou de protection contre les lois extraterritoriales dans l’appel d’offres.",
+    "leviers": [
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Comparez les offres qualifiées pour les données sensibles."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Prévoyez la réversibilité vers une autre offre qualifiée."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "CNIL, cloud et accès des autorités étrangères aux données sensibles, juillet 2024",
+        "url": "https://www.cnil.fr/fr/cloud-les-risques-dune-certification-europeenne-permettant-lacces-des-autorites-etrangeres"
+      }
+    ]
+  },
+  {
+    "id": "meca-penalites-de-sortie-anticipee-maintenues-par-le-data-act",
+    "nom": "Pénalités de sortie anticipée maintenues par le Data Act",
+    "court": "Pénalités maintenues",
+    "symbole": "Pd",
+    "couche": 5,
+    "moment": 3,
+    "fonctionnement": "Le règlement garantit le droit de changer de fournisseur (préavis maximal de deux mois) mais laisse subsister les pénalités de sortie anticipée annoncées avant la signature.",
+    "exemple": "Data Act (règlement (UE) 2023/2854), art. 29 : les frais de changement de fournisseur disparaissent le 12 janvier 2027, mais des pénalités de résiliation anticipée restent possibles si elles sont annoncées avant la signature ; leur validité relève du droit national (analyse DLA Piper, juillet 2025).",
+    "signal": "Une pénalité de résiliation anticipée prévue au contrat, même à partir de 2027.",
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Faites inscrire les pénalités au contrat et en chiffrer le montant avant la signature."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Privilégiez des durées courtes lors de la revue du contrat."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "DLA Piper, Droits de changement et de résiliation du Data Act, juillet 2025",
+        "url": "https://www.dlapiper.com/en-be/insights/publications/2025/07/understanding-switching-termination-rights-under-the-data-act"
+      }
+    ]
+  },
+  {
+    "id": "meca-exclusion-des-services-sur-mesure-du-droit-de-changer",
+    "nom": "Exclusion des services sur mesure du droit de changer",
+    "court": "Services sur mesure exclus",
+    "symbole": "Sz",
+    "couche": 5,
+    "moment": 3,
+    "fonctionnement": "Un service dont l’essentiel est développé sur mesure pour un seul client, ou un service de test, échappe au droit de changer de fournisseur prévu par la loi.",
+    "exemple": "Règlement (UE) 2023/2854 (Data Act), art. 31 : certaines obligations de changement de fournisseur (art. 23 d, 29, 30 §1 et 3) ne s’appliquent pas aux services dont la majorité des caractéristiques principales est conçue sur mesure pour un client et non proposée au catalogue à grande échelle, ni aux versions d’essai non destinées à la production.",
+    "signal": "Un service présenté comme « sur mesure » pour échapper aux obligations de portabilité.",
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Faites qualifier le service au contrat et exiger les mêmes conditions de sortie qu’un service standard."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Conservez la documentation du développement et prévoir l’export."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Journal officiel de l’UE, règlement (UE) 2023/2854 (Data Act), article 31",
+        "url": "https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R2854"
+      }
+    ]
+  },
+  {
+    "id": "meca-fin-de-support-avancee-dune-distribution-communautaire",
+    "nom": "Fin de support avancée d’une distribution communautaire",
+    "court": "Fin de support avancée",
+    "symbole": "Cd",
+    "couche": 6,
+    "moment": 2,
+    "fonctionnement": "Le projet remplace la version stable sur laquelle vous vous appuyez par une branche de développement, et raccourcit ainsi la durée de support sur laquelle vous aviez planifié.",
+    "exemple": "En décembre 2020, le projet CentOS a annoncé que CentOS Linux 8 s’arrêterait fin 2021 et que l’effort se déplacerait vers CentOS Stream.",
+    "signal": "Une distribution gratuite dépend d’un sponsor commercial dont l’offre payante vit sur la même base de code.",
+    "leviers": [
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Testez la bascule avant l’échéance."
+      },
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Inscrivez la date de fin de support dans le plan de renouvellement dès l’adoption."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Projet CentOS, Le futur est CentOS Stream, décembre 2020",
+        "url": "https://blog.centos.org/2020/12/future-is-centos-stream/"
+      }
+    ]
+  },
+  {
+    "id": "meca-infrastructure-communautaire-controlee-par-un-acteur",
+    "nom": "Infrastructure communautaire contrôlée par un acteur",
+    "court": "Infrastructure contrôlée",
+    "symbole": "Ib",
+    "couche": 6,
+    "moment": 1,
+    "fonctionnement": "Les mises à jour de thèmes et d’extensions passent par un serveur géré par une seule organisation, qui peut en couper l’accès à un acteur précis.",
+    "exemple": "Le 21 septembre 2024, Matt Mullenweg affirme que WP Engine doit obtenir une licence de marque ; le 25 septembre, WordPress.org bloque l’accès de WP Engine à ses ressources : ses sites ne peuvent plus installer d’extensions ni mettre à jour leurs thèmes. Le 10 décembre 2024, un tribunal ordonne à Automattic et à Matt Mullenweg de rétablir cet accès.",
+    "signal": "Des mises à jour qui dépendent d’un serveur central, et un conflit public entre l’éditeur du service et celui de la distribution.",
+    "leviers": [
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Hébergez un miroir des mises à jour critiques."
+      },
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Inventoriez les extensions qui interrogent un serveur tiers."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "TechCrunch, WordPress.org bannit WP Engine, septembre 2024",
+        "url": "https://techcrunch.com/2024/09/25/wordpress-org-bans-wp-engine-blocks-it-from-accessing-its-resources"
+      },
+      {
+        "titre": "TechCrunch, un tribunal ordonne de rétablir l’accès de WP Engine, décembre 2024",
+        "url": "https://techcrunch.com/2024/12/10/court-orders-mullenweg-and-automattic-to-restore-wp-engines-access-to-wordpress-org"
+      },
+      {
+        "titre": "WordPress.org, WP Engine is not WordPress, 21 septembre 2024",
+        "url": "https://wordpress.org/news/2024/09/wp-engine/"
+      }
+    ]
+  },
+  {
+    "id": "meca-virtualisation-non-reconnue-comme-sous-capacite",
+    "nom": "Virtualisation non reconnue comme sous-capacité",
+    "court": "Virtualisation non reconnue",
+    "symbole": "Vz",
+    "couche": 1,
+    "moment": 1,
+    "fonctionnement": "L’éditeur refuse de compter les cœurs attribués à une machine virtuelle et exige de licencier les cœurs physiques du serveur.",
+    "exemple": "Politique de partitionnement d’Oracle : VMware figure parmi les technologies de « partitionnement logiciel » (soft partitioning), non admis pour déterminer ou limiter le nombre de licences requises (analyse du cabinet Scott & Scott, 2019).",
+    "signal": "Une base d’éditeur installée sur une machine virtuelle d’une grappe partagée, sans clause de sous-capacité dans le contrat.",
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Faites confirmer par écrit la règle de comptage de votre hyperviseur et inventorier les bases concernées."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Comparez le coût avec celui d’un hébergement en cloud public."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "Oracle, Partitioning Policy (politique de partitionnement), version du 14 février 2022",
+        "url": "https://www.oracle.com/a/ocom/docs/it-infrastructure/partitioning-070609.pdf"
+      },
+      {
+        "titre": "Oracle, Licensing Oracle Software in the Cloud Computing Environment",
+        "url": "https://oracle.com/a/ocom/docs/cloud-licensing-070579.pdf"
+      },
+      {
+        "titre": "Scott & Scott, Comprendre l’usage par Oracle de sa politique de partitionnement, 2019",
+        "url": "https://scottandscottllp.com/how-to-understand-oracles-use-of-its-partitioning-policy-for-virtualization/"
+      }
+    ]
+  },
+  {
+    "id": "meca-materiel-certifie-impose-a-ladoption",
+    "nom": "Matériel certifié imposé à l’adoption",
+    "court": "Matériel certifié imposé",
+    "symbole": "Rm",
+    "couche": 3,
+    "moment": 0,
+    "fonctionnement": "Le fournisseur n’accepte, ou ne soutient, que des architectures et du matériel qu’il a certifiés dès le déploiement, ce qui fixe la pile technique du client.",
+    "exemple": "En septembre 2023, un billet de Pete Koehler (VMware) précise que, pour vSAN ESA, la liste de compatibilité se limite à des fournisseurs de ReadyNode approuvés avec du matériel certifié ; le montage « maison » n’existe que pour l’architecture OSA. Selon un article de la base de connaissances de Broadcom, non daté, les disques qualifiés dans le ReadyNode d’un autre fabricant ne sont pas admis.",
+    "signal": "Le support n’est promis que sur une liste de matériel certifié, et l’architecture récente la restreint davantage.",
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Vérifiez avant signature si le support exige du matériel certifié et ce qu’il advient hors liste."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Évitez de lier vos charges de travail à une architecture matérielle certifiée unique."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "VMware (Broadcom), Matériel ReadyNode exigé pour vSAN ESA, septembre 2023",
+        "url": "https://blogs.vmware.com/cloud-foundation/2023/09/13/support-for-readynode-emulated-configurations-in-vsan-esa/"
+      },
+      {
+        "titre": "Broadcom, Modifications matérielles prises en charge pour vSAN ESA, non daté",
+        "url": "https://knowledge.broadcom.com/external/article/326717/supported-changes-in-a-vsan-esa-or-vsan.html"
+      }
+    ]
   }
 ]

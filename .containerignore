@@ -1,0 +1,9 @@
+# Contexte de build minimal : seuls les fichiers copiés par la Containerfile en font partie.
+# Exclut notamment tmp/ (confidentiel), .git et .playwright-mcp.
+*
+!index.html
+!radar.html
+!robots.txt
+!sitemap.xml
+!fonts/
+!data/*.json

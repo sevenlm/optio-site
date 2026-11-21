@@ -8,12 +8,12 @@ du radar, on édite uniquement ces fichiers : le HTML n'a pas à changer.
 | `tendances.json` | Tendances |
 | `technologies.json` | Technologies |
 | `mecanismes.json` | Mécanismes d'enfermement |
-| `leviers.json` | *Non chargé* : leviers de liberté mis de côté (voir plus bas) |
 
-**Numérotation** : le numéro affiché sur le radar et l'ancre d'URL (`#t-07`,
-`#x-042`) dépendent de la **position** de l'entrée dans le fichier. Ajouter une
-entrée en fin de liste ne change rien aux liens existants ; en insérer ou en
-supprimer une au milieu décale les numéros suivants.
+**Identifiants** : chaque entrée de `tendances.json` et `technologies.json` a un champ
+`id` (minuscules, chiffres et tirets, unique sur les deux fichiers), qui sert d'ancre d'URL
+(`radar.html#fin-des-licences-perpetuelles`). Il ne change pas quand on réordonne ou
+insère des entrées. Les anciennes ancres par position (`#t-07`, `#x-042`) restent
+reconnues. Le numéro affiché sur le radar dépend encore de la position dans le fichier.
 
 **Vérification** : au chargement, la page contrôle les champs obligatoires et
 les codes. En cas d'erreur, le message s'affiche sous le titre de la page et
@@ -23,6 +23,7 @@ indique le fichier, l'entrée et le champ en cause.
 
 ```json
 {
+  "id": "fin-des-licences-perpetuelles",
   "titre": "Fin des licences perpétuelles",
   "quadrant": 0,
   "anneau": 0,
@@ -31,6 +32,7 @@ indique le fichier, l'entrée et le champ en cause.
   "tendance": "La tendance : les faits chiffrés et datés.",
   "risque": "Le risque concret pour l’organisation.",
   "mitigations": ["Piste de mitigation 1", "Piste de mitigation 2"],
+  "technologies": ["VMware vSphere et VCF"],
   "sources": [{ "titre": "Nom de la source", "url": "https://…" }]
 }
 ```
@@ -40,20 +42,16 @@ indique le fichier, l'entrée et le champ en cause.
 - `anneau` (urgence) : 0 Fort · 1 Élevé · 2 Moyen · 3 Faible
 - `type` : `risque` (tendance qui renforce la dépendance) ou `levier` (levier de liberté).
   Le filtre « Type » et la légende n'affichent que les types présents dans le fichier.
+  Les leviers sont masqués par défaut ; un lien vers un levier les affiche.
+- `technologies` (facultatif) : noms **exacts** d'entrées de `technologies.json`. Ils relient la
+  tendance au radar Technologies.
 - `sources[].url` : lien vers la source, **obligatoire** pour chaque source affichée.
-
-## leviers.json (mis de côté)
-
-Les 23 leviers de liberté ont été retirés du radar des tendances en novembre 2026.
-Ils gardent le format de `tendances.json`, mais leur `quadrant` correspond encore
-aux anciens quadrants (3 = « Leviers de liberté ») et doit être réaffecté à l'un
-des cinq axes avant de les remettre dans `tendances.json`. Tant qu'ils sont absents,
-les liens « Voir le levier » des fiches mécanismes ne s'affichent pas.
 
 ## technologies.json
 
 ```json
 {
+  "id": "vmware-vsphere-et-vcf",
   "nom": "VMware vSphere et VCF",
   "editeur": "Broadcom",
   "quadrant": 0,
@@ -68,6 +66,14 @@ les liens « Voir le levier » des fiches mécanismes ne s'affichent pas.
 - `anneau` : 0 Sortie difficile · 1 Exigeante · 2 Maîtrisable · 3 Facilitée
 - `type` : `p` propriétaire · `e` ouvert ou source disponible, éditeur unique ·
   `o` ouvert, gouvernance partagée
+- `categories` : une ou plusieurs catégories, sous la forme `Groupe > Sous-catégorie` ou
+  `Groupe` seul (par exemple `Stockage > Objet`, `Calcul > Machines virtuelles (cloud et
+  hyperviseurs)`). Une alternative doit partager au moins un **groupe** avec la technologie
+  qu'elle remplace.
+- `alternatives` : règle contrôlée par `scripts/check-data.py` et par la console du navigateur :
+  une alternative qui figure sur le radar est dans un anneau **équivalent ou meilleur** ; à anneau
+  égal, la relation doit être **réciproque** (les deux entrées se citent). Chaque alternative doit être une
+  entrée du radar (nom exact) : le contrôle échoue sinon.
 - `site` : lien vers le site officiel de la solution (texte), ou liste de liens
   quand l’entrée regroupe plusieurs produits.
 - `pourquoi` : la raison du classement dans l’anneau, au regard des cinq critères
@@ -100,9 +106,18 @@ les liens « Voir le levier » des fiches mécanismes ne s'affichent pas.
 - `couche` : 0 Contrat · 1 Licences · 2 Commercial · 3 Technique · 4 Organisation ·
   5 Juridique et géopolitique · 6 Open source
 - `moment` : 0 À la signature · 1 Pendant l'usage · 2 Au renouvellement · 3 Au moment de partir
-- `levier` : **titre exact** d'une tendance de `tendances.json`. Il crée le lien
+- `levier` : **titre exact** d'un levier de `tendances.json` (`type: "levier"`). Il crée le lien
   « Voir le levier… ». Si le titre ne correspond à aucune tendance, le lien
   n'apparaît pas et un avertissement s'affiche dans la console du navigateur.
+
+## Contrôle
+
+```sh
+python3 scripts/check-data.py                 # données
+python3 scripts/check-data.py --placeholders  # + marqueurs [À COMPLÉTER] dans index.html
+```
+
+Le même contrôle tourne dans GitHub Actions (`.github/workflows/check.yml`).
 
 ## Tester en local
 
