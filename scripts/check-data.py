@@ -30,14 +30,32 @@ for m in M: need(m["levier"] in titres, f"mécanisme « {m['nom']} » : levier �
 noms = {e["nom"] for e in X}
 for e in T:
     for t in e.get("technologies", []): need(t in noms, f"tendance « {e['titre']} » : technologie « {t} » introuvable")
-norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower())
+norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
+def cible(e, a):
+    n = norm(a); ex = [y for y in X if y is not e and norm(y["nom"]) == n]
+    if ex: return ex[0]
+    c = [y for y in X if y is not e and norm(y["nom"]) and (norm(y["nom"]) in n or n in norm(y["nom"]))]
+    return c[0] if len(c) == 1 else (None if len(c) == 0 else False)
+avert = []
+groupes = lambda e: {c.split(" > ")[0] for c in e["categories"]}
+lignes = lambda e: set(e["categories"])
 for e in X:
+    need(isinstance(e.get("categories"), list) and e["categories"], f"technologie « {e['nom']} » : categories manquantes")
     for a in e["alternatives"]:
         if a == "—": continue
-        exact = [y for y in X if y is not e and norm(y["nom"]) == norm(a)]
-        if not exact:
-            c = [y["nom"] for y in X if y is not e and norm(y["nom"]) and (norm(y["nom"]) in norm(a) or norm(a) in norm(y["nom"]))]
-            need(len(c) <= 1, f"technologie « {e['nom']} » : alternative « {a} » ambiguë ({', '.join(c)})")
+        y = cible(e, a)
+        if y is False: err.append(f"technologie « {e['nom']} » : alternative « {a} » ambiguë"); continue
+        if y is None: err.append(f"« {e['nom']} » : l’alternative « {a} » n’est pas une entrée du radar"); continue
+        need(groupes(e) & groupes(y), f"« {e['nom']} » ({e['categories'][0]}) → « {y['nom']} » ({y['categories'][0]}) : catégories différentes")
+        need(y["anneau"] >= e["anneau"], f"« {e['nom']} » → « {y['nom']} » : alternative dans un anneau moins bon")
+        if y["anneau"] == e["anneau"]:
+            need(any(cible(y, b) is e for b in y["alternatives"] if b != "—"), f"« {e['nom']} » ↔ « {y['nom']} » : anneau égal, mais la relation n’est pas réciproque")
+# Avertissements (non bloquants) : pairs de même catégorie non reliées
+for e in X:
+    liens = {id(cible(e, a)) for a in e["alternatives"] if a != "—"}
+    for y in X:
+        if y is e or not (lignes(e) & lignes(y)): continue
+        if y["anneau"] >= e["anneau"] and id(y) not in liens: avert.append(f"{e['nom']} -> {y['nom']}")
 txt = json.dumps([T, X, M], ensure_ascii=False)
 need(not re.search(r"\d [%€]", txt), "espace simple avant % ou € (utiliser une espace insécable)")
 need("'" not in txt, "apostrophe droite dans les données (utiliser ’)")
@@ -47,5 +65,6 @@ if "--placeholders" in sys.argv:
         for n, l in enumerate(open(f, encoding="utf-8"), 1):
             for m in re.findall(r"\[[A-ZÉÈÀ][A-ZÉÈÀ ’']{2,}\]", l): err.append(f"{f}:{n} marqueur à compléter {m}")
 
+if "--warn" in sys.argv: print("AVERTISSEMENTS (%d) :\n" % len(avert) + "\n".join(avert))
 print("\n".join(err) if err else f"OK : {len(T)} tendances, {len(X)} technologies, {len(M)} mécanismes")
 sys.exit(1 if err else 0)

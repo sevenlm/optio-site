@@ -8,7 +8,7 @@
     "fonctionnement": "Des contrats de trois à cinq ans, renouvelés automatiquement sans action de votre part.",
     "exemple": "Contrats d’infrastructure reconduits pour trois ans faute de préavis envoyé à temps.",
     "signal": "La date de préavis n’est connue de personne.",
-    "parade": "Suivre les préavis ; négocier des durées courtes et sans reconduction tacite.",
+    "parade": "Suivre les préavis ; négocier des durées courtes et sans reconduction tacite.",
     "levier": "Clauses de réversibilité"
   },
   {
@@ -18,9 +18,9 @@
     "couche": 0,
     "moment": 3,
     "fonctionnement": "Des frais pour partir avant le terme, ou une majoration pour renouveler en retard.",
-    "exemple": "Majoration de 20 % appliquée par Broadcom aux renouvellements tardifs.",
+    "exemple": "Majoration de 20 % du prix de la première année appliquée par Broadcom aux renouvellements tardifs (annoncée en 2025).",
     "signal": "Une pénalité est découverte au moment de vouloir partir.",
-    "parade": "Plafonner les pénalités ; anticiper les renouvellements de douze à vingt-quatre mois.",
+    "parade": "Plafonner les pénalités ; anticiper les renouvellements de douze à vingt-quatre mois.",
     "levier": "Clauses de réversibilité"
   },
   {
@@ -32,7 +32,7 @@
     "fonctionnement": "Aucune obligation précise d’aide à la sortie, de format de restitution ni de délai.",
     "exemple": "Restitution des données dans un format propriétaire, sans assistance.",
     "signal": "Le contrat ne dit pas comment récupérer vos données.",
-    "parade": "Exiger restitution dans un format standard, assistance et délais chiffrés ; s’appuyer sur les clauses types européennes et les clauses Oméga de Libralis.",
+    "parade": "Exiger restitution dans un format standard, assistance et délais chiffrés ; s’appuyer sur les clauses types européennes et les clauses Oméga de Libralis.",
     "levier": "Clauses de réversibilité"
   },
   {
@@ -44,8 +44,8 @@
     "fonctionnement": "Le fournisseur peut revoir ses prix ou ses conditions en cours de contrat ou à chaque échéance.",
     "exemple": "Hausses de prix catalogue justifiées par l’intégration de l’IA.",
     "signal": "Les conditions tarifaires renvoient à une grille modifiable par le fournisseur.",
-    "parade": "Plafonner les hausses ; geler les prix sur la durée du contrat.",
-    "levier": "Coût total de la dépendance"
+    "parade": "Plafonner les hausses ; geler les prix sur la durée du contrat.",
+    "levier": "Achats et investissements groupés"
   },
   {
     "nom": "Changement de métrique",
@@ -53,10 +53,10 @@
     "symbole": "Mé",
     "couche": 1,
     "moment": 2,
-    "fonctionnement": "La façon de compter change : par cœur, par salarié, avec des minimums de commande.",
-    "exemple": "Minimum de commande VMware de 72 cœurs annoncé en 2025 (application variable selon les régions) ; Java d’Oracle facturé au nombre total de salariés depuis 2023.",
+    "fonctionnement": "La façon de compter change : par cœur, par salarié, avec des minimums de commande.",
+    "exemple": "Minimum de commande VMware de 72 cœurs annoncé en 2025 (application variable selon les régions) ; Java d’Oracle facturé au nombre total de salariés depuis 2023.",
     "signal": "La facture augmente alors que l’usage ne change pas.",
-    "parade": "Négocier le maintien de la métrique ; modéliser chaque scénario.",
+    "parade": "Négocier le maintien de la métrique ; modéliser chaque scénario.",
     "levier": "Gestion des actifs logiciels"
   },
   {
@@ -66,9 +66,9 @@
     "couche": 1,
     "moment": 2,
     "fonctionnement": "Le passage à l’abonnement transforme une propriété en location.",
-    "exemple": "Licences perpétuelles VMware supprimées ; fin de vie d’Atlassian Data Center en 2029.",
+    "exemple": "Licences perpétuelles VMware supprimées ; fin de vie d’Atlassian Data Center en 2029.",
     "signal": "Une annonce de fin de vente ou de fin de support.",
-    "parade": "Recenser les licences restantes ; chiffrer l’abonnement sur cinq ans ; préparer l’alternative.",
+    "parade": "Recenser les licences restantes ; chiffrer l’abonnement sur cinq ans ; préparer l’alternative.",
     "levier": "Mesurer la marge de manœuvre"
   },
   {
@@ -78,7 +78,7 @@
     "couche": 1,
     "moment": 1,
     "fonctionnement": "Des systèmes tiers qui accèdent aux données d’un logiciel déclenchent des licences supplémentaires.",
-    "exemple": "Litiges sur l’accès indirect aux données d’ERP (affaire Diageo contre SAP, 2017).",
+    "exemple": "Litiges sur l’accès indirect aux données d’ERP (affaire SAP contre Diageo, Haute Cour de Londres, 2017).",
     "signal": "Des interfaces vers l’ERP ou le CRM non couvertes par les licences.",
     "parade": "Faire cartographier et contractualiser les accès indirects.",
     "levier": "Gestion des actifs logiciels"
@@ -90,7 +90,7 @@
     "couche": 1,
     "moment": 0,
     "fonctionnement": "Des licences plus chères, ou non transférables, chez un cloud concurrent de l’éditeur.",
-    "exemple": "Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft.",
+    "exemple": "Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft (2022), retirée en 2024 après un accord confidentiel.",
     "signal": "Le choix d’hébergeur est dicté par les licences.",
     "parade": "Vérifier les droits de transfert avant tout choix d’hébergement.",
     "levier": "Revue de réversibilité des nouveaux contrats"
@@ -114,9 +114,9 @@
     "couche": 2,
     "moment": 2,
     "fonctionnement": "Des produits vendus ensemble, y compris ceux que vous n’utilisez pas.",
-    "exemple": "Catalogue VMware ramené à quelques offres groupées ; IA incluse d’office dans les suites.",
+    "exemple": "Catalogue VMware ramené à quelques offres groupées ; IA incluse d’office dans les suites.",
     "signal": "Vous payez des fonctions inutilisées.",
-    "parade": "Mesurer l’usage réel ; négocier sur le périmètre utile.",
+    "parade": "Mesurer l’usage réel ; négocier sur le périmètre utile.",
     "levier": "Coût total de la dépendance"
   },
   {
@@ -128,7 +128,7 @@
     "fonctionnement": "Des remises contre un volume ou une durée d’engagement.",
     "exemple": "Engagements de dépense pluriannuels chez les fournisseurs de cloud.",
     "signal": "La remise disparaît si vous diversifiez.",
-    "parade": "Limiter montant et durée ; garder une part non engagée.",
+    "parade": "Limiter montant et durée ; garder une part non engagée.",
     "levier": "Revue de réversibilité des nouveaux contrats"
   },
   {
@@ -141,7 +141,7 @@
     "exemple": "Crédits offerts pour l’IA ou aux jeunes entreprises.",
     "signal": "Un service adopté sans avoir évalué sa sortie.",
     "parade": "Évaluer le coût de sortie dès l’entrée.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "levier": "Pilote de sortie sur un périmètre réel"
   },
   {
     "nom": "Formats et API propriétaires",
@@ -150,9 +150,9 @@
     "couche": 3,
     "moment": 1,
     "fonctionnement": "Les données et les échanges utilisent des formats que seul le fournisseur sait lire.",
-    "exemple": "Formats internes d’entrepôts de données ; formats de sauvegarde propriétaires.",
+    "exemple": "Formats internes d’entrepôts de données ; formats de sauvegarde propriétaires.",
     "signal": "Impossible d’ouvrir vos données sans l’outil.",
-    "parade": "Formats ouverts (Iceberg, Parquet) ; API standards.",
+    "parade": "Formats ouverts (Iceberg, Parquet) ; API standards.",
     "levier": "Formats de données ouverts"
   },
   {
@@ -164,7 +164,7 @@
     "fonctionnement": "Des services propres à un cloud, sans équivalent direct ailleurs.",
     "exemple": "Bases de données et fonctions sans serveur propriétaires.",
     "signal": "Un chemin critique repose sur un service unique.",
-    "parade": "Préférer des équivalents standards ; isoler les services spécifiques.",
+    "parade": "Préférer des équivalents standards ; isoler les services spécifiques.",
     "levier": "Couches d’abstraction"
   },
   {
@@ -174,9 +174,9 @@
     "couche": 3,
     "moment": 3,
     "fonctionnement": "Les volumes accumulés attirent les applications et coûtent cher à déplacer.",
-    "exemple": "Frais de transfert d’usage courant ; migrations de plusieurs pétaoctets.",
+    "exemple": "Frais de transfert d’usage courant ; migrations de plusieurs pétaoctets.",
     "signal": "Personne ne sait combien de temps prendrait le transfert.",
-    "parade": "Mesurer volumes et débits ; limiter les allers-retours.",
+    "parade": "Mesurer volumes et débits ; limiter les allers-retours.",
     "levier": "Cartographie et classification des données"
   },
   {
@@ -188,7 +188,7 @@
     "fonctionnement": "Le code métier est écrit dans un langage propre au produit.",
     "exemple": "PL/SQL d’Oracle, T-SQL de SQL Server, langages de requête d’outils d’observabilité.",
     "signal": "Des milliers de procédures stockées spécifiques.",
-    "parade": "Contenir les usages spécifiques ; outils de conversion ; standards.",
+    "parade": "Contenir les usages spécifiques ; outils de conversion ; standards.",
     "levier": "Couches d’abstraction"
   },
   {
@@ -201,7 +201,7 @@
     "exemple": "Annuaire central dont dépendent tous les accès.",
     "signal": "Changer un composant oblige à en changer d’autres.",
     "parade": "Protocoles standards (SAML, OpenID Connect, OpenTelemetry).",
-    "levier": "Mode dégradé et continuité hors fournisseur"
+    "levier": "Couches d’abstraction"
   },
   {
     "nom": "Mises à jour forcées et obsolescence",
@@ -212,8 +212,8 @@
     "fonctionnement": "Le calendrier des versions et des fins de support est imposé.",
     "exemple": "Fins de support qui obligent à migrer à une date choisie par l’éditeur.",
     "signal": "Des montées de version subies chaque année.",
-    "parade": "Suivre les calendriers de support ; négocier des extensions.",
-    "levier": "Coût total de la dépendance"
+    "parade": "Suivre les calendriers de support ; négocier des extensions.",
+    "levier": "Support tiers pour gagner du temps"
   },
   {
     "nom": "Compétences et certifications spécifiques",
@@ -224,7 +224,7 @@
     "fonctionnement": "Les équipes sont formées et certifiées sur un seul produit.",
     "exemple": "Compétences rares, dépendance aux experts de l’éditeur.",
     "signal": "Personne ne sait opérer l’alternative.",
-    "parade": "Former au moins deux personnes sur l’alternative ; s’appuyer sur des communautés.",
+    "parade": "Former au moins deux personnes sur l’alternative ; s’appuyer sur des communautés.",
     "levier": "Compétences sur les alternatives"
   },
   {
@@ -248,7 +248,7 @@
     "fonctionnement": "Les processus, les règles et les données métier sont modélisés dans la plateforme.",
     "exemple": "Gestion des services, ERP, CRM fortement personnalisés.",
     "signal": "Changer d’outil impose de refondre les processus.",
-    "parade": "Documenter les processus hors de l’outil ; limiter les développements spécifiques.",
+    "parade": "Documenter les processus hors de l’outil ; limiter les développements spécifiques.",
     "levier": "Partir des processus métier critiques"
   },
   {
@@ -261,7 +261,7 @@
     "exemple": "Contrats régis par un droit étranger, litiges à l’étranger.",
     "signal": "Un recours juridique coûteux et lointain.",
     "parade": "Négocier un droit et une juridiction européens.",
-    "levier": "Clauses de réversibilité"
+    "levier": "Cloud européen qualifié"
   },
   {
     "nom": "Extraterritorialité et sanctions",
@@ -270,9 +270,9 @@
     "couche": 5,
     "moment": 1,
     "fonctionnement": "Des lois étrangères peuvent imposer l’accès aux données ou l’interruption d’un service.",
-    "exemple": "Cloud Act américain ; perte d’accès à sa messagerie du procureur de la CPI en 2025.",
+    "exemple": "Cloud Act américain ; messagerie du procureur de la CPI coupée en 2025 après des sanctions américaines (Microsoft dément avoir suspendu les services de la CPI).",
     "signal": "Des services critiques fournis par une entité soumise à un droit étranger.",
-    "parade": "Classer les données ; clés maîtrisées ; offres qualifiées ; mode dégradé ; clauses Oméga 1 et 2 de Libralis.",
+    "parade": "Classer les données ; clés maîtrisées ; offres qualifiées ; mode dégradé ; clauses Oméga 1 et 2 de Libralis.",
     "levier": "Chiffrement avec clés maîtrisées"
   },
   {
@@ -284,7 +284,7 @@
     "fonctionnement": "Des restrictions sur les puces ou les technologies peuvent limiter l’accès à un service.",
     "exemple": "Restrictions à l’export de technologies d’IA.",
     "signal": "Un service critique dépend d’une technologie soumise à des contrôles.",
-    "parade": "Identifier l’origine des technologies critiques ; prévoir une alternative.",
+    "parade": "Identifier l’origine des technologies critiques ; prévoir une alternative.",
     "levier": "Mode dégradé et continuité hors fournisseur"
   },
   {
@@ -294,9 +294,9 @@
     "couche": 6,
     "moment": 1,
     "fonctionnement": "Le principal contributeur change la licence du projet.",
-    "exemple": "Terraform (2023), Redis (2024), Elasticsearch (2021).",
+    "exemple": "Terraform (2023), Redis (2024, AGPL ajoutée en 2025), Elasticsearch (2021, AGPL ajoutée en 2024).",
     "signal": "Un projet ouvert dont un seul acteur détient les droits.",
-    "parade": "Préférer les projets portés par une fondation ; suivre les forks (OpenTofu, Valkey, OpenSearch).",
+    "parade": "Préférer les projets portés par une fondation ; suivre les forks (OpenTofu, Valkey, OpenSearch).",
     "levier": "Couches d’abstraction"
   },
   {
@@ -306,9 +306,9 @@
     "couche": 6,
     "moment": 1,
     "fonctionnement": "Des fonctions ou la distribution sont retirées de la version gratuite.",
-    "exemple": "MinIO (console retirée, binaires arrêtés en 2025) ; Puppet (paquets en dépôt privé depuis 2025).",
+    "exemple": "MinIO (console de gestion retirée en mai 2025, binaires arrêtés en octobre 2025, dépôt archivé en avril 2026) ; Puppet (paquets en dépôt privé depuis 2025).",
     "signal": "Des fonctions disparaissent de la version ouverte.",
-    "parade": "Surveiller la gouvernance ; identifier les forks (OpenVox) ; contribuer aux projets communautaires.",
+    "parade": "Surveiller la gouvernance ; identifier les forks (OpenVox) ; contribuer aux projets communautaires.",
     "levier": "Compétences sur les alternatives"
   }
 ]

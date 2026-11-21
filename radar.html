@@ -561,10 +561,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       x.alts=(technologies[i].alternatives||[]).filter(function(a){ return a && a!=="—"; }).map(function(a){
         var na=norm(a), c=TECH.filter(function(y){ return y!==x && norm(y.t)===na; });
         if(!c.length) c=TECH.filter(function(y){ var ny=norm(y.t); return y!==x && (ny.indexOf(na)>=0 || na.indexOf(ny)>=0); });
+        if(c.length!==1) console.warn("technologies.json, « "+x.t+" » : l’alternative « "+a+" » n’est pas une entrée du radar.");
         return {nom:a, cible:c.length===1?c[0]:null};
       }).sort(function(a,b){ return (b.cible?b.cible.a+1:0)-(a.cible?a.cible.a+1:0); });
-      // règle éditoriale : une alternative est dans un anneau plus extérieur (ou équivalent si déjà à l’extérieur)
-      x.alts.forEach(function(al){ if(al.cible && (al.cible.a<x.a || (al.cible.a===x.a && x.a<3))) console.warn("technologies.json, « "+x.t+" » : l’alternative « "+al.nom+" » n’est pas mieux classée."); });
+      // règle éditoriale : une alternative est dans un anneau équivalent ou plus extérieur ; à anneau égal, la relation doit être réciproque
+      x.alts.forEach(function(al){ if(al.cible && (al.cible.a<x.a || (al.cible.a===x.a && !technologies[TECH.indexOf(al.cible)].alternatives.some(function(b){ var nb=norm(b); return norm(x.t)===nb || (nb.indexOf(norm(x.t))>=0) || (norm(x.t).indexOf(nb)>=0 && nb.length>2); })))) console.warn("technologies.json, « "+x.t+" » : l’alternative « "+al.nom+" » n’est pas mieux classée ou n’est pas réciproque."); });
     });
     // Liens tendances ↔ technologies (champ « technologies » de tendances.json, noms exacts)
     var parNom={}; TECH.forEach(function(y){ parNom[y.t]=y; y.tends=[]; });

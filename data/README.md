@@ -66,6 +66,14 @@ indique le fichier, l'entrée et le champ en cause.
 - `anneau` : 0 Sortie difficile · 1 Exigeante · 2 Maîtrisable · 3 Facilitée
 - `type` : `p` propriétaire · `e` ouvert ou source disponible, éditeur unique ·
   `o` ouvert, gouvernance partagée
+- `categories` : une ou plusieurs catégories, sous la forme `Groupe > Sous-catégorie` ou
+  `Groupe` seul (par exemple `Stockage > Objet`, `Calcul > Machines virtuelles (cloud et
+  hyperviseurs)`). Une alternative doit partager au moins un **groupe** avec la technologie
+  qu'elle remplace.
+- `alternatives` : règle contrôlée par `scripts/check-data.py` et par la console du navigateur :
+  une alternative qui figure sur le radar est dans un anneau **équivalent ou meilleur** ; à anneau
+  égal, la relation doit être **réciproque** (les deux entrées se citent). Chaque alternative doit être une
+  entrée du radar (nom exact) : le contrôle échoue sinon.
 - `site` : lien vers le site officiel de la solution (texte), ou liste de liens
   quand l’entrée regroupe plusieurs produits.
 - `pourquoi` : la raison du classement dans l’anneau, au regard des cinq critères
