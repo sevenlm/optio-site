@@ -859,7 +859,7 @@
   {
     "id": "openbao",
     "nom": "OpenBao",
-    "editeur": "Linux Foundation",
+    "editeur": "Linux Foundation (OpenSSF)",
     "quadrant": 1,
     "anneau": 3,
     "type": "o",
@@ -1044,7 +1044,7 @@
     "type": "p",
     "dependance": "API et modèle de données propriétaires, sans équivalent direct.",
     "alternatives": [
-      "ScyllaDB",
+      "ScyllaDB (licence à source disponible)",
       "Cassandra"
     ],
     "site": "https://aws.amazon.com/dynamodb/",
@@ -1102,10 +1102,11 @@
     "editeur": "Databricks",
     "quadrant": 2,
     "anneau": 2,
-    "type": "e",
+    "type": "p",
     "dependance": "Plateforme propriétaire bâtie sur des formats ouverts (Delta Lake, Iceberg).",
     "alternatives": [
-      "Spark et Iceberg sur une autre plateforme"
+      "Apache Spark sur Kubernetes",
+      "Trino"
     ],
     "site": "https://www.databricks.com/",
     "pourquoi": "Plateforme propriétaire, mais données dans des formats ouverts (Delta Lake, Iceberg) lisibles par d’autres moteurs : la sortie est maîtrisable."
@@ -1639,7 +1640,6 @@
     "type": "p",
     "dependance": "Gestion des astreintes propriétaire, intégrations nombreuses.",
     "alternatives": [
-      "Grafana OnCall",
       "Alertmanager"
     ],
     "site": "https://www.pagerduty.com/",

@@ -42,8 +42,8 @@
     "quadrant": 1,
     "anneau": 0,
     "type": "risque",
-    "declencheur": "Les grandes suites ont profité de l’arrivée de l’IA pour revoir leurs prix : Microsoft a relevé les tarifs de Microsoft 365 au 1er juillet 2026, Salesforce a lancé de nouvelles éditions en septembre 2026.",
-    "tendance": "Les grandes suites collaboratives et les CRM relèvent leurs prix en incluant l’IA dans leurs offres. Microsoft a relevé les prix catalogue de Microsoft 365 au 1er juillet 2026, appliqués aux clients existants à leur renouvellement ; Salesforce a lancé le 3 septembre 2026 trois éditions (Core, Advanced, Max) qui succèdent aux éditions historiques et intègrent toutes son IA Agentforce.",
+    "declencheur": "Les grandes suites ont profité de l’arrivée de l’IA pour revoir leurs prix : Microsoft a relevé les tarifs de Microsoft 365 au 1er juillet 2026, Salesforce a présenté de nouvelles éditions en septembre 2026.",
+    "tendance": "Les grandes suites collaboratives et les CRM relèvent leurs prix en incluant l’IA dans leurs offres. Microsoft a relevé les prix catalogue de Microsoft 365 au 1er juillet 2026, appliqués aux clients existants à leur renouvellement ; Salesforce a présenté le 3 septembre 2026 trois éditions (Core, Advanced, Max) qui intègrent toutes son IA Agentforce.",
     "risque": "Vous payez des fonctions que vous n’utilisez pas forcément, et la hausse devient difficile à refuser.",
     "mitigations": [
       "Mesurez l’usage réel des fonctions d’IA.",
@@ -85,9 +85,9 @@
     "quadrant": 1,
     "anneau": 1,
     "type": "risque",
-    "declencheur": "Selon une étude d’Asterès pour le Cigref publiée en mai 2026, les DSI européens anticipent 12 % de hausse par an, et citent d’abord le verrouillage fournisseur pour l’expliquer.",
-    "tendance": "Les DSI européens interrogés pour le Cigref anticipent 12 % de hausse par an de leurs coûts de cloud et de logiciels sur cinq ans, soit environ +57 % en quatre ans. Gartner observe des hausses de 10 à 20 % chez plusieurs grands éditeurs SaaS en 2025.",
-    "risque": "La trajectoire de coûts n’est plus pilotée par le client, et le verrouillage fournisseur est la première cause citée.",
+    "declencheur": "Selon une étude d’Asterès pour le Cigref publiée en mai 2026, les DSI européens anticipent 12 % de hausse par an sur cinq ans, et relèvent des mécanismes de verrouillage qui compliquent le changement de fournisseur.",
+    "tendance": "Les DSI européens interrogés pour le Cigref ont constaté 8,7 % de hausse par an sur les trois dernières années et anticipent 12 % par an sur les cinq prochaines, soit environ +76 % cumulés sur cinq ans. Asterès en déduit un surcoût moyen de 140 Md€ par an sur 2026-2030 pour l’économie européenne.",
+    "risque": "La trajectoire de coûts n’est plus pilotée par le client, et les mécanismes de verrouillage freinent le changement de fournisseur.",
     "mitigations": [
       "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.",
       "Arrivez aux échéances avec une alternative chiffrée."
@@ -121,7 +121,7 @@
     "anneau": 1,
     "type": "risque",
     "declencheur": "Les rachats se sont accélérés en 2025 et 2026 : HashiCorp et Confluent par IBM, Informatica, Fin et Braze par Salesforce, PTC par Schneider Electric.",
-    "tendance": "Les rachats se multiplient : IBM a finalisé celui de Confluent (11,6 Md$) en mars 2026, Salesforce a annoncé ceux de Fin et de Braze (5,66 Md$), Schneider Electric celui de PTC (22,6 Md$).",
+    "tendance": "Les rachats se multiplient : IBM a finalisé celui de Confluent (environ 11 Md$) en mars 2026, Salesforce a annoncé ceux de Fin et de Braze (5,66 Md$), Schneider Electric celui de PTC (22,6 Md$).",
     "risque": "Quand votre éditeur change de propriétaire, sa roadmap et sa politique tarifaire changent avec lui.",
     "mitigations": [
       "Identifiez vos fournisseurs critiques susceptibles d’être rachetés.",
@@ -388,8 +388,8 @@
     "quadrant": 3,
     "anneau": 1,
     "type": "risque",
-    "declencheur": "Le texte de transposition de NIS 2 a été adopté par le Sénat en mars 2025, mais son examen à l’Assemblée nationale a été reporté en octobre 2026, sans nouvelle date.",
-    "tendance": "Plus de 15 000 organisations en France seront concernées. L’examen à l’Assemblée nationale a été reporté sans nouvelle date ; trois ans de mise en conformité suivront la promulgation.",
+    "declencheur": "Le texte de transposition de NIS 2 a été adopté par le Sénat en mars 2025, puis examiné par l’Assemblée nationale en novembre 2026 ; une commission mixte paritaire doit encore le rapprocher de la version du Sénat.",
+    "tendance": "Entre 15 000 et 20 000 organisations seront concernées en France selon les estimations des rapporteurs et du gouvernement. L’ANSSI vise la conformité de toutes les entités d’ici fin 2028.",
     "risque": "La sécurité de la chaîne d’approvisionnement devient une obligation, et les dirigeants en deviennent responsables.",
     "mitigations": [
       "Cartographiez vos fournisseurs critiques dès maintenant.",
@@ -410,6 +410,10 @@
       {
         "titre": "ChannelNews, report de l’examen",
         "url": "https://www.channelnews.fr/la-transposition-de-nis-2-a-nouveau-repoussee-159415"
+      },
+      {
+        "titre": "Journal du Net, NIS 2 : l’Assemblée adopte la transposition (novembre 2026)",
+        "url": "https://www.journaldunet.com/cybersecurite/1557881-nis2-l-assemblee-adopte-enfin-la-transposition-et-la-reecrit-contre-l-avis-du-gouvernement/"
       }
     ]
   },
@@ -629,7 +633,7 @@
     "anneau": 0,
     "type": "risque",
     "declencheur": "La promesse du cloud est de ne plus gérer l’infrastructure, mais chaque service managé spécifique ajoute une dépendance difficile à remplacer.",
-    "tendance": "Bases de données, fonctions sans serveur, files de messages ou services d’IA propres à un seul cloud. L’Ofcom (2023) puis l’autorité britannique de la concurrence (2025) relèvent que ces barrières techniques obligent à reconfigurer données et applications pour changer de fournisseur. Et le fournisseur peut retirer un service : en juillet 2024, AWS a fermé CodeCommit, Cloud9 et SimpleDB aux nouveaux clients.",
+    "tendance": "Bases de données, fonctions sans serveur, files de messages ou services d’IA propres à un seul cloud. L’Ofcom (2023) puis l’autorité britannique de la concurrence (2025) relèvent que ces barrières techniques obligent à reconfigurer données et applications pour changer de fournisseur. Et le fournisseur peut retirer un service : en juillet 2024, AWS a fermé CodeCommit, Cloud9 et SimpleDB aux nouveaux clients (CodeCommit a finalement été rouvert en novembre 2025).",
     "risque": "Ils font gagner du temps, mais chaque service est une API sans équivalent direct ailleurs.",
     "mitigations": [
       "Recensez les services managés propriétaires sur les chemins critiques.",
@@ -659,6 +663,10 @@
       {
         "titre": "Le Monde Informatique, AWS ferme CodeCommit, Cloud9 et SimpleDB aux nouveaux clients, août 2024",
         "url": "https://www.lemondeinformatique.fr/actualites/lire-aws-tue-a-petit-feu-codecommit-cloud9-et-simpledb-94425.html"
+      },
+      {
+        "titre": "AWS, CodeCommit revient en disponibilité générale",
+        "url": "https://aws.amazon.com/blogs/devops/aws-codecommit-returns-to-general-availability"
       }
     ]
   },
@@ -881,7 +889,7 @@
     "anneau": 3,
     "type": "risque",
     "declencheur": "Les États-Unis ajustent régulièrement leurs règles d’exportation sur les puces d’IA, avec des effets immédiats : en avril 2025, une licence a été imposée du jour au lendemain pour vendre les puces H20 de Nvidia en Chine.",
-    "tendance": "Les restrictions à l’exportation de puces et de technologies d’IA évoluent rapidement : une règle publiée le 15 janvier 2025 a été abrogée le 13 mai 2025, avant même son entrée en application. Elles peuvent limiter l’accès aux capacités de calcul, et par ricochet aux services qui en dépendent.",
+    "tendance": "Les restrictions à l’exportation de puces et de technologies d’IA évoluent rapidement : une règle publiée le 15 janvier 2025 a vu son abrogation annoncée le 13 mai 2025, avant même son entrée en application. Elles peuvent limiter l’accès aux capacités de calcul, et par ricochet aux services qui en dépendent.",
     "risque": "L’accès à une technologie peut changer pour des raisons qui échappent au client comme au fournisseur.",
     "mitigations": [
       "Identifiez vos services d’IA critiques et leur origine.",
@@ -1120,7 +1128,7 @@
     "anneau": 2,
     "type": "risque",
     "declencheur": "Le 29 mars 2024, l’ingénieur Andres Freund a révélé une porte dérobée dans xz-utils, insérée par un contributeur qui avait gagné en deux ans la confiance du mainteneur bénévole.",
-    "tendance": "Le mainteneur de xz décrivait le projet comme un « projet de loisir non rémunéré » et a subi une campagne de pression. Les versions piégées 5.6.0 et 5.6.1 ont été créées et signées par le compte « Jia Tan ». Une étude publiée fin novembre 2024 sur plus de 36 000 projets open source montre que 89 % ont perdu au moins une fois leur noyau de développeurs, et que seuls 27 % des projets abandonnés ont ensuite attiré un nouveau développeur clé. Le recensement Census III de la Linux Foundation (décembre 2024) constate qu’une grande partie des logiciels libres les plus utilisés n’est développée que par une poignée de contributeurs.",
+    "tendance": "Le mainteneur de xz décrivait le projet comme un « projet de loisir non rémunéré » et a subi une campagne de pression. Les versions piégées 5.6.0 et 5.6.1 ont été créées et signées par le compte « Jia Tan ». Une étude publiée fin novembre 2024 sur plus de 36 000 projets open source montre que 89 % ont perdu au moins une fois leur noyau de développeurs (les auteurs jugent cette perte fréquente, et pas toujours fatale au projet), et que seuls 27 % des projets abandonnés ont ensuite attiré un nouveau développeur clé. Le recensement Census III de la Linux Foundation (décembre 2024) constate qu’une grande partie des logiciels libres les plus utilisés n’est développée que par une poignée de contributeurs.",
     "risque": "Quand un produit, interne ou open source, repose sur une ou deux personnes, leur départ laisse l’organisation captive de ceux qui restent, ou d’un fournisseur qui reprend le sujet à ses conditions.",
     "mitigations": [
       "Comptez, pour chaque produit critique, les personnes capables de le maintenir, en interne comme chez les mainteneurs en amont.",
@@ -1140,6 +1148,13 @@
         "titre": "Linux Foundation, Census III, décembre 2024",
         "url": "https://linuxfoundation.org/press/open-source-usage-trends-and-security-challenges-revealed-in-new-study"
       }
+    ],
+    "technologies": [
+      "Forgejo",
+      "OpenBao",
+      "OpenTofu",
+      "OpenVox",
+      "Valkey"
     ]
   },
   {
@@ -1301,7 +1316,7 @@
     "anneau": 2,
     "type": "risque",
     "declencheur": "En février 2026, Retool rapporte que 35 % des équipes interrogées ont remplacé au moins un outil SaaS par un développement interne, mais son panel est composé de clients de sa propre plateforme.",
-    "tendance": "Selon Futurum (juin 2026, 830 décideurs informatiques), 56,0 % des entreprises disent préférer développer en interne la plupart de leurs applications et n’acheter que le nécessaire. 53,3 % d’entre elles indiquent que 20 à 40 % de leurs salariés hors DSI utilisent des outils no-code, low-code ou en langage naturel. Selon le rapport d’Onymos relayé par ITPro en décembre 2024, 84 % des responsables technologiques s’appuient sur des outils SaaS à capacités low-code ou no-code pour développer leurs logiciels.",
+    "tendance": "Selon Futurum (juin 2026, 830 décideurs informatiques), 56,0 % des entreprises disent préférer développer en interne la plupart de leurs applications et n’acheter que le nécessaire. 53,3 % des entreprises interrogées indiquent que 20 à 40 % de leurs salariés hors DSI utilisent des outils no-code, low-code ou en langage naturel. Selon le rapport d’Onymos relayé par ITPro en décembre 2024, 84 % des responsables technologiques s’appuient sur des outils SaaS à capacités low-code ou no-code pour développer leurs logiciels.",
     "risque": "Acheter un progiciel ou construire sur une plateforme low-code propriétaire transfère à l’éditeur la feuille de route, le prix et les formats, et réduit d’autant les compétences de développement internes.",
     "mitigations": [
       "Faites de la réversibilité (export du code, des données et des règles métier) un critère de chaque arbitrage entre construire et acheter.",
@@ -1321,6 +1336,11 @@
         "titre": "ITPro, rapport Onymos sur la dépendance au SaaS, décembre 2024",
         "url": "https://www.itpro.com/software/saas-dependency-is-causing-serious-problems-for-tech-leaders"
       }
+    ],
+    "technologies": [
+      "Boomi",
+      "MuleSoft",
+      "ServiceNow"
     ]
   },
   {
@@ -1404,7 +1424,7 @@
     "anneau": 1,
     "type": "risque",
     "declencheur": "Le 29 mai 2025, Slack (Salesforce) a durci les conditions d’utilisation de ses API et réduit fortement l’accès des applications tierces à l’historique des messages.",
-    "tendance": "Depuis le 29 mai 2025, les applications commerciales diffusées hors de la Marketplace Slack ne peuvent plus lire l’historique des conversations qu’à raison d’une requête par minute et de 15 messages par requête. Des éditeurs comme Glean ne peuvent plus indexer ni stocker durablement les données Slack, ce qui, selon Glean, complique leur usage avec la plateforme d’IA choisie par le client. En 2023, Reddit avait facturé son API 12 000 $ pour 50 millions de requêtes, soit environ 20 M$ par an pour l’application Apollo, qui a fermé le 30 juin 2023.",
+    "tendance": "Depuis le 29 mai 2025, les nouvelles applications commerciales diffusées hors de la Marketplace Slack, et les nouvelles installations d’applications existantes, ne peuvent plus lire l’historique des conversations qu’à raison d’une requête par minute et de 15 messages par requête. Des éditeurs comme Glean ne peuvent plus indexer ni stocker durablement les données Slack, ce qui, selon Glean, complique leur usage avec la plateforme d’IA choisie par le client. En 2023, Reddit annonçait 12 000 $ pour 50 millions de requêtes, ce qui représentait, selon le développeur d’Apollo, environ 20 M$ par an ; l’application a fermé le 30 juin 2023.",
     "risque": "L’éditeur contrôle seul l’accès aux données du client et peut à tout moment réduire les intégrations ou l’export, ou les faire payer.",
     "mitigations": [
       "Recensez les intégrations et les exports qui reposent sur des API tierces, avec leurs quotas actuels.",
@@ -1575,6 +1595,15 @@
         "titre": "Observation Optio",
         "url": null
       }
+    ],
+    "technologies": [
+      "KubeVirt",
+      "Nutanix AHV",
+      "OpenShift Virtualization",
+      "Proxmox VE",
+      "VMware vSphere et VCF",
+      "XCP-ng et Xen Orchestra",
+      "oVirt"
     ]
   },
   {
@@ -1583,7 +1612,7 @@
     "quadrant": 0,
     "anneau": 0,
     "type": "levier",
-    "declencheur": "La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2026 des clauses types pour les contrats cloud, et Libralis propose des clauses standard que les fournisseurs s’engagent publiquement à signer.",
+    "declencheur": "La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2026 une recommandation (non contraignante) de clauses types pour les contrats cloud, et Libralis propose des clauses standard que les fournisseurs peuvent s’engager à signer.",
     "tendance": "Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références récentes outillent la négociation : les clauses types de la Commission européenne pour les contrats cloud, et les clauses Oméga proposées par Libralis. Oméga 1 engage le fournisseur à ne jamais transmettre vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 lui interdit toute coupure arbitraire d’un service critique.",
     "risque": "C’est le levier le moins coûteux : il se négocie au moment de signer, pas au moment de partir.",
     "mitigations": [
@@ -1610,7 +1639,7 @@
     "type": "levier",
     "declencheur": "Le Data Act européen, applicable depuis septembre 2025, programme la suppression totale des frais de changement de fournisseur cloud au 12 janvier 2027.",
     "tendance": "À partir du 12 janvier 2027, les fournisseurs de cloud ne pourront plus facturer de frais de changement de fournisseur, y compris les frais de transfert de données.",
-    "risque": "Un verrou financier tombe. Le verrouillage technique, lui, demeure.",
+    "risque": "Les frais de changement de fournisseur tombent, dans les limites prévues par le règlement. Le verrouillage technique, lui, demeure.",
     "mitigations": [
       "Évitez de se réengager longtemps juste avant cette date.",
       "Préparez la portabilité technique."
@@ -1618,7 +1647,7 @@
     "sources": [
       {
         "titre": "Règlement (UE) 2023/2854, article 29",
-        "url": null
+        "url": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj"
       }
     ]
   },
@@ -1639,6 +1668,10 @@
         "titre": "Observation Optio",
         "url": null
       }
+    ],
+    "technologies": [
+      "IaaS européens (OVHcloud, Scaleway, Outscale)",
+      "OpenStack"
     ]
   },
   {
@@ -1658,6 +1691,12 @@
         "titre": "Observation Optio",
         "url": null
       }
+    ],
+    "technologies": [
+      "Ansible",
+      "Kubernetes",
+      "OpenTofu",
+      "Terraform"
     ]
   },
   {
@@ -1756,6 +1795,11 @@
         "titre": "Guide Optio « Garder le choix »",
         "url": null
       }
+    ],
+    "technologies": [
+      "Atempo Tina et Lina",
+      "Commvault",
+      "Veeam Backup"
     ]
   },
   {
@@ -1788,7 +1832,7 @@
     "quadrant": 4,
     "anneau": 1,
     "type": "levier",
-    "declencheur": "DORA exige des plans de sortie testés, et les fournisseurs ne cèdent que face à une alternative prouvée : la preuve sur un périmètre réel répond aux deux.",
+    "declencheur": "DORA exige des plans de sortie testés pour les entités financières, et une alternative prouvée renforce la négociation : la preuve sur un périmètre réel répond aux deux.",
     "tendance": "Migrer un périmètre limité et représentatif vers l’alternative, puis mesurer le temps, l’effort, le coût et le risque, et extrapoler à la sortie complète.",
     "risque": "La preuve sert même si l’on reste : elle renforce la négociation et répond à l’exigence de plans de sortie testés de DORA.",
     "mitigations": [
@@ -1802,8 +1846,17 @@
       },
       {
         "titre": "Règlement (UE) 2022/2554, article 28",
-        "url": null
+        "url": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
       }
+    ],
+    "technologies": [
+      "KubeVirt",
+      "Nutanix AHV",
+      "OpenShift Virtualization",
+      "Proxmox VE",
+      "VMware vSphere et VCF",
+      "XCP-ng et Xen Orchestra",
+      "oVirt"
     ]
   },
   {
@@ -1852,7 +1905,7 @@
     "quadrant": 4,
     "anneau": 2,
     "type": "levier",
-    "declencheur": "Les grands entrepôts de données adoptent progressivement des formats ouverts comme Apache Iceberg, ce qui permet enfin de changer d’outil sans déplacer les données.",
+    "declencheur": "Les grands entrepôts de données adoptent progressivement des formats ouverts comme Apache Iceberg, ce qui réduit le volume de données à migrer pour changer d’outil.",
     "tendance": "Des formats comme Apache Iceberg ou Parquet permettent de lire les mêmes données avec plusieurs moteurs, chez plusieurs fournisseurs.",
     "risque": "Quand les données restent dans un format ouvert, changer d’outil ne signifie plus migrer toutes les données.",
     "mitigations": [
@@ -1861,9 +1914,16 @@
     ],
     "sources": [
       {
-        "titre": "Apache Software Foundation",
-        "url": null
+        "titre": "Apache Iceberg",
+        "url": "https://iceberg.apache.org/"
       }
+    ],
+    "technologies": [
+      "Apache Iceberg",
+      "Apache Parquet",
+      "Databricks",
+      "Google BigQuery",
+      "Snowflake"
     ]
   },
   {
@@ -1873,11 +1933,11 @@
     "anneau": 2,
     "type": "levier",
     "declencheur": "Les régulateurs commencent à inspecter les plans de sortie : un plan non exercé depuis longtemps ne convaincra ni un auditeur, ni une cellule de crise.",
-    "tendance": "Une bascule réelle vers l’alternative ou le site de secours, au moins une fois par an pour les fournisseurs les plus critiques.",
-    "risque": "La réversibilité s’érode si personne ne l’exerce : un plan non testé depuis deux ans n’est plus fiable.",
+    "tendance": "Une bascule réelle vers l’alternative ou le site de secours, au moins une fois par an (recommandation Optio) pour les fournisseurs les plus critiques.",
+    "risque": "La réversibilité s’érode si personne ne l’exerce : un plan non testé depuis longtemps n’est plus fiable.",
     "mitigations": [
       "Planifiez un test annuel pour chaque fournisseur vital.",
-      "Chronométrez le temps de reprise et le comparer à l’objectif."
+      "Chronométrez le temps de reprise et comparez-le à l’objectif."
     ],
     "sources": [
       {
@@ -1924,6 +1984,10 @@
         "titre": "Observation Optio",
         "url": null
       }
+    ],
+    "technologies": [
+      "Oracle Database",
+      "SAP HANA"
     ]
   },
   {
@@ -1937,7 +2001,7 @@
     "risque": "Une mesure partagée faciliterait les comparaisons, les appels d’offres et, à terme, un label.",
     "mitigations": [
       "Utilisez une grille commune dans les appels d’offres.",
-      "Partagez ses retours d’expérience."
+      "Partagez vos retours d’expérience."
     ],
     "sources": [
       {
@@ -1954,7 +2018,7 @@
     "type": "levier",
     "declencheur": "La multiplication des audits et des changements de métrique rend indispensable une connaissance précise de ce que l’on possède et de ce que l’on utilise.",
     "tendance": "Un inventaire précis des licences détenues et des usages réels, tenu à jour en continu.",
-    "risque": "C’est la meilleure défense en cas d’audit, et la base de toute négociation.",
+    "risque": "C’est l’une des meilleures défenses en cas d’audit, et la base de toute négociation.",
     "mitigations": [
       "Rapprochez chaque trimestre licences achetées et usages mesurés.",
       "Identifiez les licences inutilisées avant chaque échéance."
@@ -2013,7 +2077,7 @@
     "type": "levier",
     "declencheur": "Les inquiétudes sur l’accès extraterritorial aux données poussent les organisations à garder la maîtrise de leurs clés de chiffrement.",
     "tendance": "Des données chiffrées avec des clés gérées par le client, idéalement dans un module matériel qu’il contrôle.",
-    "risque": "Il réduit l’exposition aux accès extraterritoriaux et facilite le changement de fournisseur.",
+    "risque": "Il réduit l’exposition aux accès extraterritoriaux, sans la supprimer tant que les données sont traitées en clair chez le fournisseur, et facilite le changement de fournisseur.",
     "mitigations": [
       "Identifiez les données qui justifient des clés maîtrisées.",
       "Vérifiez que la gestion des clés est elle-même réversible."
@@ -2023,6 +2087,11 @@
         "titre": "Observation Optio",
         "url": null
       }
+    ],
+    "technologies": [
+      "Entra ID et Active Directory",
+      "HashiCorp Vault",
+      "OpenBao"
     ]
   }
 ]
