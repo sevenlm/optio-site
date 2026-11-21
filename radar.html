@@ -1003,7 +1003,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(fAxe==="tous") fAnneau="tous"; // l’urgence n’existe qu’une fois l’axe choisi
     // la fiche suit le filtre : si l’élément affiché est masqué, on montre le premier élément retenu (urgence la plus forte d’abord)
     var cour=DONNEES[vue].find(function(x){ return x.id===sel; });
-    if(!cour || !visible(cour)){ var prem=DONNEES[vue].filter(function(x){ return visible(x); }).sort(function(a,b){ return a.a-b.a || a.q-b.q || a.t.localeCompare(b.t,"fr"); })[0]; if(prem){ sel=prem.id; fiche(); } }
+    if(cour && !visible(cour) && q){ sel=null; fiche(); } else if(cour && !visible(cour)){ var prem=DONNEES[vue].filter(function(x){ return visible(x); }).sort(function(a,b){ return a.a-b.a || a.q-b.q || a.t.localeCompare(b.t,"fr"); })[0]; if(prem){ sel=prem.id; fiche(); } }
     majBarre(anim); majRadar(); listes(anim); indice();
   }
   function filtres(){
@@ -1112,7 +1112,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     vue=v; fAxe="tous"; fAnneau="tous"; fType=typeDefaut(v,garderSel); q=""; apercu={q:null,a:null}; dernierTotal=null; var inp=document.getElementById("recherche"); inp.value=""; inp.placeholder=VUES[v].recherche;
     document.getElementById("intro").textContent=VUES[v].intro;
     if(!deja[v]){ placer(DONNEES[v], rb()); deja[v]=true; }
-    if(!garderSel) sel=(v==="technologies" && lien && lien.techs.length ? lien.techs[0] : DONNEES[v][0]).id;
+    if(!garderSel) sel=v==="technologies" && lien && lien.techs.length ? lien.techs[0].id : null; // aucune sélection par défaut
     construireBarre(); majBarre(); filtres(); legende(); methode(); dessiner(); fiche(); listes(); indice();
     if(v==="technologies" && lien) eclat();
   }
@@ -1232,6 +1232,16 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     choisir(y.id,true);
     var f=document.getElementById("fiche"); if(f.scrollIntoView && f.getBoundingClientRect().top<0) f.scrollIntoView({behavior:"smooth",block:"start"});
   }
+  // recherche : sélectionne le résultat le plus pertinent (nom exact, début du nom, début d’un mot, nom contenant, éditeur, reste), puis l’anneau le plus exposé
+  function meilleur(){
+    var nq=norm(q), best=null, bs=9;
+    DONNEES[vue].forEach(function(x){
+      if(!visible(x)) return;
+      var n=norm(x.t), sc=n===nq?0:n.indexOf(nq)===0?1:(" "+n).indexOf(" "+nq)>=0?2:n.indexOf(nq)>=0?3:norm(x.ed||"").indexOf(nq)>=0?4:5;
+      if(sc<bs || (sc===bs && (x.a<best.a || (x.a===best.a && n.length<norm(best.t).length)))){ best=x; bs=sc; }
+    });
+    if(best && best.id!==sel) choisir(best.id,false);
+  }
   function choisir(id,maj){
     sel=id; if(maj){ try{ history.replaceState(null,"","#"+id); }catch(e){} }
     majRadar(); fiche(); listes();
@@ -1240,7 +1250,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   }
   ORDRE.forEach(function(n){ document.getElementById("v-"+n).addEventListener("click",function(){ glisser(n,function(){ changerVue(n); try{ history.replaceState(null,"","#"+n); }catch(e){} }); }); });
   document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var i=ORDRE.indexOf(vue), n=ORDRE[(i+(e.key==="ArrowRight"?1:2))%3]; glisser(n,function(){ changerVue(n); }); document.getElementById("v-"+n).focus(); } });
-  document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); if(vue==="mecanismes") rendreMeca(); else rafraichir(); });
+  document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); if(vue==="mecanismes") rendreMeca(); else { if(q && lien && vue==="technologies") lien=null; rafraichir(); if(q.length>=2) meilleur(); } }); // chercher = parcourir tout le radar : la sélection d’une tendance ne masque plus les résultats
   function toutEffacer(){ fAxe="tous"; fAnneau="tous"; if(vue==="technologies") lien=null; rafraichir(true); }
   document.getElementById("raz").addEventListener("click",toutEffacer);
   document.getElementById("tirette-g").addEventListener("click",function(){ setLie(false); });
