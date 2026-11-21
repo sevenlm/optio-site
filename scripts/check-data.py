@@ -31,6 +31,10 @@ for nom, d, k in [("tendances", T, "titre"), ("technologies", X, "nom"), ("mecan
 titres = {e["titre"] for e in T}
 for m in M: need(m["levier"] in titres, f"mécanisme « {m['nom']} » : levier « {m['levier']} » absent de tendances.json")
 noms = {e["nom"] for e in X}
+import datetime
+for e in X:
+    v = e.get("verifie")
+    if v is not None: need(isinstance(v, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", v) and datetime.date.fromisoformat(v) <= datetime.date.today(), f"{e['nom']} : « verifie » doit être une date AAAA-MM-JJ non future")
 for e in T:
     for t in e.get("technologies", []): need(t in noms, f"tendance « {e['titre']} » : technologie « {t} » introuvable")
 norm = lambda s: re.sub(r"[^a-z0-9]+", " ", s.lower()).strip()
