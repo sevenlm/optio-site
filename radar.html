@@ -318,6 +318,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .filtres-bande.colle{box-shadow:0 10px 24px -16px rgba(6,25,42,.45);border-bottom:1px solid var(--line)}
 .filtres-in{max-width:1320px;margin:0 auto;padding:16px 28px 12px;display:flex;flex-wrap:nowrap;align-items:center;gap:10px 14px}
 .filtres-bande + .page{padding-top:12px}
+.filtres-in .recherche{flex:0 1 260px;min-width:0}
+.filtres-in .recherche input{width:100%;min-width:0}
+.filtres-bande.meca :is(#etape-1,#etape-2,#lien,.resume){display:none}
+.filtres-bande.meca .recherche{margin-left:auto}
 .etape{display:flex;align-items:center;gap:10px;min-width:0;transition:opacity .3s}
 #etape-1,#etape-2{flex:0 1 auto}
 .etape-tete{display:flex;align-items:center;gap:8px;flex:none}
@@ -371,6 +375,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .raz{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:6px 13px;min-height:34px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:background .2s,transform .15s}
 .raz:hover{background:var(--surface-2);transform:rotate(-2deg)}
 @media (max-width:860px){
+  .filtres-in .recherche{flex:1 1 100%}
   .filtres-in{padding:12px 16px 10px}
   .filtres-in{flex-wrap:wrap}
   .etape{width:100%}
@@ -454,6 +459,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 <div class="etape" id="etape-2" inert><svg class="sep" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg><span class="etape-tete"><span class="etape-num">2</span><span class="etape-lib" id="lib-urg">Urgence</span></span><div id="zone-urg"></div></div>
 <button type="button" class="lien-tendance" id="lien" hidden></button>
 <div class="resume" aria-live="polite"><span id="resume"></span><button type="button" class="raz" id="raz" hidden><span aria-hidden="true">×</span> Réinitialiser</button></div>
+<label class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg><input id="recherche" type="search" aria-label="Rechercher"></label>
 </div>
 </div>
 
@@ -478,7 +484,6 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 </div>
 <div class="groupe-filtres">
 <span class="compteur" id="compteur" aria-live="polite"></span>
-<label class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg><input id="recherche" type="search" aria-label="Rechercher"></label>
 </div>
 </div>
 
@@ -531,7 +536,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       methode:[["Ce que mesure ce radar","La difficulté typique de sortie d’une technologie, selon cinq critères : formats et API, licence et contrat, concentration, maturité des alternatives, compétences nécessaires."],["Les anneaux","Du rouge au vert, du centre vers le bord : plus une technologie est loin du centre, plus elle se quitte facilement. Difficile : des mois de préparation et peu d’alternatives directes. Exigeante : des alternatives existent, mais la migration est lourde. Maîtrisable : standards ou formats ouverts facilitent la sortie. Facilitée : technologie ouverte, plusieurs fournisseurs possibles."],["Les couleurs","Propriétaire, ouvert à éditeur unique, ou ouvert à gouvernance partagée. Un projet ouvert contrôlé par un seul éditeur peut changer de règles, comme Redis, Terraform, Puppet ou MinIO l’ont montré."],["Une lecture, pas un verdict","Le classement varie selon vos usages : une base propriétaire utilisée de façon standard se quitte plus facilement qu’une base ouverte truffée d’extensions spécifiques. À confirmer avec l’indice de réversibilité."]]
     }
   };
-  VUES.mecanismes={intro:"La table de l’enfermement numérique : {n} mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et la parade.",
+  VUES.mecanismes={recherche:"Rechercher un mécanisme…", intro:"La table de l’enfermement numérique : {n} mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et la parade.",
     methode:[["Ce que recense cette vue","Les mécanismes d’enfermement observés dans les contrats, les licences, les offres commerciales, la technique, l’organisation, le droit et la gouvernance de l’open source."],["Comment l’utiliser","En mode atelier, chaque participant coche les mécanismes à l’œuvre chez son fournisseur le plus critique : la table affiche son profil d’enfermement et ses parades prioritaires. Chaque parade renvoie au levier correspondant du radar."],["Une liste vivante","Elle s’enrichit à chaque édition du radar, au fil des retours des DSI et de l’actualité des éditeurs."]]};
   var T=[], TECH=[], MECA=[], META=[], DONNEES=null;
   function verifier(liste, nom, regles){
@@ -1040,7 +1045,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var defil=el("div",{class:"panneau tp-defil"});
     var grille=el("div",{class:"tp","aria-label":"Table des mécanismes d’enfermement"});
     var tuiles=[];
-    function pale(fn){ tuiles.forEach(function(t){ t.el.classList.toggle("pale", fn?!fn(t):false); }); }
+    function pale(fn){ tuiles.forEach(function(t){ t.el.classList.toggle("pale", fn?!fn(t):t.hors); }); }
+    var nq=norm(q);
     grille.appendChild(el("div",{class:"tp-coin"}));
     MOMENTS.forEach(function(m,mi){ var h=el("div",{class:"tp-moment",text:m}); h.addEventListener("mouseenter",function(){ pale(function(t){ return t.m===mi; }); }); h.addEventListener("mouseleave",function(){ pale(null); }); grille.appendChild(h); });
     COUCHES.forEach(function(fi){
@@ -1060,12 +1066,12 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
           ]);
           if(!atelier) b.removeAttribute("aria-pressed"); else b.removeAttribute("aria-haspopup");
           b.style.background="var(--fam"+fi+")"; b.style.color="var(--fam"+fi+"t)";
-          tuiles.push({el:b,f:fi,m:mi}); cell.appendChild(b);
+          tuiles.push({el:b,f:fi,m:mi,hors:!!nq && norm(me.slice(1).join(" ")+" "+META[k][2]+" "+META[k][3]).indexOf(nq)<0}); cell.appendChild(b);
         });
         grille.appendChild(cell);
       });
     });
-    defil.appendChild(grille); z.appendChild(defil);
+    defil.appendChild(grille); z.appendChild(defil); pale(null);
     if(atelier){
       var prof=el("section",{class:"panneau tp-profil","aria-live":"polite","aria-label":"Votre profil d’enfermement"});
       var ks=Object.keys(coches).filter(function(k){ return coches[k]; }).map(Number);
@@ -1098,7 +1104,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(!DONNEES) return;
     var estMeca=v==="mecanismes";
     ["tendances","technologies","mecanismes"].forEach(function(n){ var b=document.getElementById("v-"+n); b.setAttribute("aria-selected",String(n===v)); b.tabIndex=n===v?0:-1; });
-    document.querySelector(".zone-radar").hidden=estMeca; document.querySelector(".barre").hidden=estMeca; document.getElementById("bande").hidden=estMeca; document.getElementById("listes").hidden=estMeca; document.getElementById("vue-meca").hidden=!estMeca;
+    document.querySelector(".zone-radar").hidden=estMeca; document.querySelector(".barre").hidden=estMeca; document.getElementById("bande").classList.toggle("meca",estMeca); document.getElementById("listes").hidden=estMeca; document.getElementById("vue-meca").hidden=!estMeca;
+    var inp0=document.getElementById("recherche"); q=""; inp0.value=""; inp0.placeholder=VUES[v].recherche;
     if(estMeca){ vue=v; document.getElementById("intro").textContent=VUES.mecanismes.intro; rendreMeca(); methode(); return; }
     vue=v; fAxe="tous"; fAnneau="tous"; fType=typeDefaut(v,garderSel); q=""; apercu={q:null,a:null}; dernierTotal=null; var inp=document.getElementById("recherche"); inp.value=""; inp.placeholder=VUES[v].recherche;
     document.getElementById("intro").textContent=VUES[v].intro;
@@ -1231,7 +1238,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   }
   ORDRE.forEach(function(n){ document.getElementById("v-"+n).addEventListener("click",function(){ glisser(n,function(){ changerVue(n); try{ history.replaceState(null,"","#"+n); }catch(e){} }); }); });
   document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var i=ORDRE.indexOf(vue), n=ORDRE[(i+(e.key==="ArrowRight"?1:2))%3]; glisser(n,function(){ changerVue(n); }); document.getElementById("v-"+n).focus(); } });
-  document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); rafraichir(); });
+  document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); if(vue==="mecanismes") rendreMeca(); else rafraichir(); });
   function toutEffacer(){ fAxe="tous"; fAnneau="tous"; if(vue==="technologies") lien=null; rafraichir(true); }
   document.getElementById("raz").addEventListener("click",toutEffacer);
   document.getElementById("tirette-g").addEventListener("click",function(){ setLie(false); });
