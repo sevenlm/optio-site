@@ -1,5 +1,6 @@
 [
   {
+    "id": "vmware-vsphere-et-vcf",
     "nom": "VMware vSphere et VCF",
     "editeur": "Broadcom",
     "quadrant": 0,
@@ -16,6 +17,7 @@
     "pourquoi": "Tout le parc virtualisé, les outils d’exploitation et les compétences reposent sur la plateforme ; les alternatives existent mais la bascule demande des mois de préparation, et le contrat impose ses offres groupées."
   },
   {
+    "id": "hyper-v-et-azure-local",
     "nom": "Hyper-V et Azure Local",
     "editeur": "Microsoft",
     "quadrant": 0,
@@ -31,6 +33,7 @@
     "pourquoi": "Les formats de machines virtuelles se convertissent, ce qui évite l’anneau central ; mais le lien avec les licences Windows Server et l’annuaire Microsoft rend la migration lourde."
   },
   {
+    "id": "nutanix-ahv",
     "nom": "Nutanix AHV",
     "editeur": "Nutanix",
     "quadrant": 0,
@@ -38,13 +41,14 @@
     "type": "p",
     "dependance": "Plateforme hyperconvergée intégrée : une alternative à VMware qui peut créer un nouveau verrou.",
     "alternatives": [
-      "Proxmox VE avec Ceph",
+      "Proxmox VE",
       "XCP-ng"
     ],
     "site": "https://www.nutanix.com/products/ahv",
     "pourquoi": "Des outils de conversion existent, mais stockage, réseau et gestion sont intégrés dans une même plateforme propriétaire : sortir oblige à tout remplacer en même temps."
   },
   {
+    "id": "proxmox-ve",
     "nom": "Proxmox VE",
     "editeur": "Proxmox Server Solutions",
     "quadrant": 0,
@@ -59,6 +63,7 @@
     "pourquoi": "Les machines virtuelles reposent sur KVM et des formats ouverts, réutilisables ailleurs ; le code est ouvert, seul le support commercial dépend d’un éditeur."
   },
   {
+    "id": "xcp-ng-et-xen-orchestra",
     "nom": "XCP-ng et Xen Orchestra",
     "editeur": "Vates (projet Xen, Linux Foundation)",
     "quadrant": 0,
@@ -73,6 +78,7 @@
     "pourquoi": "Hyperviseur ouvert issu du projet Xen, formats standards : on peut changer d’outil ou de prestataire sans réécrire l’existant."
   },
   {
+    "id": "openstack",
     "nom": "OpenStack",
     "editeur": "OpenInfra Foundation",
     "quadrant": 0,
@@ -87,6 +93,7 @@
     "pourquoi": "API ouvertes et plusieurs fournisseurs possibles, d’où la sortie maîtrisable ; mais l’exploitation demande des compétences rares, ce qui l’éloigne de l’anneau extérieur."
   },
   {
+    "id": "kvm-et-qemu",
     "nom": "KVM et QEMU",
     "editeur": "Communauté Linux",
     "quadrant": 0,
@@ -94,12 +101,13 @@
     "type": "o",
     "dependance": "Socle de virtualisation ouvert, intégré au noyau Linux.",
     "alternatives": [
-      "Xen"
+      "XCP-ng et Xen Orchestra"
     ],
     "site": "https://www.linux-kvm.org/",
     "pourquoi": "Intégré au noyau Linux, utilisé par la plupart des outils de virtualisation ouverts : aucun acteur unique ne contrôle ce socle."
   },
   {
+    "id": "red-hat-enterprise-linux",
     "nom": "Red Hat Enterprise Linux",
     "editeur": "Red Hat (IBM)",
     "quadrant": 0,
@@ -115,6 +123,7 @@
     "pourquoi": "Les applications fonctionnent sur des distributions compatibles, ce qui rend la sortie maîtrisable ; la souscription et l’accès restreint aux sources l’empêchent d’être dans l’anneau extérieur."
   },
   {
+    "id": "suse-linux-enterprise",
     "nom": "SUSE Linux Enterprise",
     "editeur": "SUSE",
     "quadrant": 0,
@@ -129,6 +138,7 @@
     "pourquoi": "Le système est ouvert et les applications portables ; seuls le support et l’outillage propres à l’éditeur demandent un effort lors d’un changement."
   },
   {
+    "id": "windows-server",
     "nom": "Windows Server",
     "editeur": "Microsoft",
     "quadrant": 0,
@@ -142,6 +152,7 @@
     "pourquoi": "Les applications écrites pour Windows ne se déplacent pas vers Linux sans adaptation, et les licences sont liées à la virtualisation et à l’annuaire : la migration est lourde."
   },
   {
+    "id": "debian",
     "nom": "Debian",
     "editeur": "Projet Debian",
     "quadrant": 0,
@@ -156,6 +167,7 @@
     "pourquoi": "Distribution communautaire sans éditeur unique, avec de nombreux prestataires de support : rien n’empêche de changer de fournisseur."
   },
   {
+    "id": "ubuntu-server",
     "nom": "Ubuntu Server",
     "editeur": "Canonical",
     "quadrant": 0,
@@ -169,6 +181,7 @@
     "pourquoi": "Le système est ouvert et proche de Debian ; seul le support commercial dépend d’un éditeur, que d’autres prestataires peuvent remplacer."
   },
   {
+    "id": "almalinux-et-rocky-linux",
     "nom": "AlmaLinux et Rocky Linux",
     "editeur": "Fondations AlmaLinux et RESF",
     "quadrant": 0,
@@ -185,6 +198,7 @@
     "pourquoi": "Compatibles avec RHEL et portées par des fondations : on passe de l’une à l’autre ou à RHEL sans réécrire les applications."
   },
   {
+    "id": "netapp-ontap",
     "nom": "NetApp ONTAP",
     "editeur": "NetApp",
     "quadrant": 0,
@@ -200,6 +214,7 @@
     "pourquoi": "Des alternatives solides existent, mais les instantanés, la réplication et les procédures reposent sur des fonctions propriétaires : migrer les volumes est un projet lourd."
   },
   {
+    "id": "dell-powerstore-et-powermax",
     "nom": "Dell PowerStore et PowerMax",
     "editeur": "Dell Technologies",
     "quadrant": 0,
@@ -213,6 +228,7 @@
     "pourquoi": "Les données se copient vers d’autres baies, mais la réplication et l’exploitation reposent sur des fonctions propriétaires : la migration est lourde."
   },
   {
+    "id": "pure-storage",
     "nom": "Pure Storage",
     "editeur": "Pure Storage",
     "quadrant": 0,
@@ -226,6 +242,7 @@
     "pourquoi": "Les volumes se migrent, mais le contrat d’abonnement matériel et les fonctions propriétaires rendent le changement coûteux à préparer."
   },
   {
+    "id": "hpe-alletra",
     "nom": "HPE Alletra",
     "editeur": "Hewlett Packard Enterprise",
     "quadrant": 0,
@@ -239,6 +256,7 @@
     "pourquoi": "Baies et outils de gestion propriétaires : la sortie est possible mais demande de reconstruire réplication et procédures."
   },
   {
+    "id": "ceph",
     "nom": "Ceph",
     "editeur": "Ceph Foundation (Linux Foundation)",
     "quadrant": 0,
@@ -252,6 +270,7 @@
     "pourquoi": "Stockage ouvert porté par une fondation, interfaces standards (bloc, fichier, S3) et plusieurs prestataires : on peut changer de fournisseur ; il faut toutefois des compétences."
   },
   {
+    "id": "scality-ring-et-artesca",
     "nom": "Scality RING et ARTESCA",
     "editeur": "Scality",
     "quadrant": 0,
@@ -266,6 +285,7 @@
     "pourquoi": "Le logiciel est propriétaire, mais l’API S3 standard permet de copier les données vers un autre stockage objet sans réécrire les applications."
   },
   {
+    "id": "minio",
     "nom": "MinIO",
     "editeur": "MinIO",
     "quadrant": 0,
@@ -281,6 +301,7 @@
     "pourquoi": "L’API S3 standard rend la sortie maîtrisable ; l’arrêt de l’édition communautaire montre que le projet dépend d’un seul éditeur, ce qui l’éloigne de l’anneau extérieur."
   },
   {
+    "id": "cisco-ios-et-nx-os",
     "nom": "Cisco IOS et NX-OS",
     "editeur": "Cisco",
     "quadrant": 0,
@@ -295,6 +316,7 @@
     "pourquoi": "Les protocoles réseau sont standards, mais configurations, outils et compétences sont propres au constructeur, sur des parcs souvent homogènes : changer est un projet long."
   },
   {
+    "id": "juniper-junos",
     "nom": "Juniper Junos",
     "editeur": "Hewlett Packard Enterprise",
     "quadrant": 0,
@@ -309,6 +331,7 @@
     "pourquoi": "Protocoles standards mais système, configurations et compétences propriétaires : la migration demande de reprendre tout le parc."
   },
   {
+    "id": "arista-eos",
     "nom": "Arista EOS",
     "editeur": "Arista Networks",
     "quadrant": 0,
@@ -320,6 +343,7 @@
     "pourquoi": "Système propriétaire, mais fondé sur Linux, des standards et une automatisation ouverte : les configurations se reprennent plus facilement."
   },
   {
+    "id": "sonic",
     "nom": "SONiC",
     "editeur": "Linux Foundation",
     "quadrant": 0,
@@ -331,6 +355,7 @@
     "pourquoi": "Système ouvert et sans éditeur unique, mais limité aux matériels compatibles et exigeant en compétences : la sortie est maîtrisable, pas immédiate."
   },
   {
+    "id": "fortigate",
     "nom": "FortiGate",
     "editeur": "Fortinet",
     "quadrant": 0,
@@ -344,6 +369,7 @@
     "pourquoi": "Toutes les politiques de sécurité sont décrites dans le format de l’éditeur et doivent être reconverties puis retestées : la bascule est lourde."
   },
   {
+    "id": "pare-feux-palo-alto",
     "nom": "Pare-feux Palo Alto",
     "editeur": "Palo Alto Networks",
     "quadrant": 0,
@@ -357,6 +383,7 @@
     "pourquoi": "Règles, profils et outils de gestion propriétaires à reconvertir et retester : une migration lourde, même si les alternatives sont nombreuses."
   },
   {
+    "id": "veeam-backup",
     "nom": "Veeam Backup",
     "editeur": "Veeam",
     "quadrant": 0,
@@ -370,6 +397,7 @@
     "pourquoi": "Les sauvegardes existantes ne se restaurent qu’avec l’outil : changer impose de garder l’ancien le temps de la rétention, d’où une sortie exigeante."
   },
   {
+    "id": "commvault",
     "nom": "Commvault",
     "editeur": "Commvault",
     "quadrant": 0,
@@ -383,6 +411,7 @@
     "pourquoi": "Formats et catalogue propriétaires : les sauvegardes passées restent liées à l’outil pendant toute leur durée de conservation."
   },
   {
+    "id": "atempo-tina-et-lina",
     "nom": "Atempo Tina et Lina",
     "editeur": "Atempo",
     "quadrant": 0,
@@ -396,6 +425,7 @@
     "pourquoi": "Éditeur européen, mais formats de sauvegarde propriétaires : la restauration des archives dépend de l’outil."
   },
   {
+    "id": "machines-virtuelles-aws-ec2",
     "nom": "Machines virtuelles AWS (EC2)",
     "editeur": "Amazon Web Services",
     "quadrant": 0,
@@ -410,6 +440,7 @@
     "pourquoi": "Les machines virtuelles sont standards et se déplacent ; ce sont les services annexes autour d’elles qui rendent la sortie maîtrisable plutôt que facile."
   },
   {
+    "id": "machines-virtuelles-azure",
     "nom": "Machines virtuelles Azure",
     "editeur": "Microsoft",
     "quadrant": 0,
@@ -424,6 +455,7 @@
     "pourquoi": "Les machines virtuelles sont standards, mais leur intégration aux licences et à l’annuaire Microsoft ajoute un effort de migration."
   },
   {
+    "id": "iaas-europeens-ovhcloud-scaleway-outscale",
     "nom": "IaaS européens (OVHcloud, Scaleway, Outscale)",
     "editeur": "Divers",
     "quadrant": 0,
@@ -442,6 +474,7 @@
     "pourquoi": "Infrastructure standard, réversible tant que les services utilisés restent génériques ; les services propres à chaque fournisseur demandent une adaptation."
   },
   {
+    "id": "ibm-mq",
     "nom": "IBM MQ",
     "editeur": "IBM",
     "quadrant": 1,
@@ -457,6 +490,7 @@
     "pourquoi": "Les échanges critiques reposent sur ses API et protocoles propriétaires ; des alternatives ouvertes existent mais chaque application doit être adaptée et retestée."
   },
   {
+    "id": "tibco",
     "nom": "TIBCO",
     "editeur": "Cloud Software Group",
     "quadrant": 1,
@@ -472,6 +506,7 @@
     "pourquoi": "Des années d’intégrations développées dans des outils propriétaires, souvent peu documentées : peu d’alternatives directes et des mois de réécriture."
   },
   {
+    "id": "apache-kafka",
     "nom": "Apache Kafka",
     "editeur": "Apache Software Foundation",
     "quadrant": 1,
@@ -485,6 +520,7 @@
     "pourquoi": "Standard ouvert de la fondation Apache, protocole repris par plusieurs produits et fournisseurs : on change de fournisseur sans changer les applications."
   },
   {
+    "id": "confluent-platform",
     "nom": "Confluent Platform",
     "editeur": "Confluent (IBM)",
     "quadrant": 1,
@@ -499,6 +535,7 @@
     "pourquoi": "Le cœur Kafka est ouvert et portable, mais les fonctions propriétaires utilisées (connecteurs, sécurité, gestion) doivent être remplacées."
   },
   {
+    "id": "rabbitmq",
     "nom": "RabbitMQ",
     "editeur": "Broadcom",
     "quadrant": 1,
@@ -513,6 +550,7 @@
     "pourquoi": "Le protocole AMQP est standard et d’autres messageries le parlent ; le contrôle du projet par un seul acteur l’éloigne de l’anneau extérieur."
   },
   {
+    "id": "apache-activemq-artemis",
     "nom": "Apache ActiveMQ Artemis",
     "editeur": "Apache Software Foundation",
     "quadrant": 1,
@@ -524,6 +562,7 @@
     "pourquoi": "Projet de la fondation Apache, protocoles standards (AMQP, MQTT, JMS) : les applications se connectent à d’autres messageries compatibles."
   },
   {
+    "id": "mulesoft",
     "nom": "MuleSoft",
     "editeur": "Salesforce",
     "quadrant": 1,
@@ -538,6 +577,7 @@
     "pourquoi": "Les flux d’intégration sont décrits dans un langage et un moteur propriétaires : il faut tous les réécrire, avec peu d’alternatives directes."
   },
   {
+    "id": "boomi",
     "nom": "Boomi",
     "editeur": "Boomi",
     "quadrant": 1,
@@ -552,6 +592,7 @@
     "pourquoi": "Plateforme propriétaire, mais les flux restent plus simples à reconstruire que dans les plateformes historiques ; la migration reste lourde."
   },
   {
+    "id": "informatica",
     "nom": "Informatica",
     "editeur": "Salesforce",
     "quadrant": 1,
@@ -567,6 +608,7 @@
     "pourquoi": "Les traitements de données sont décrits dans des outils propriétaires, souvent en très grand nombre : leur réécriture prend des mois."
   },
   {
+    "id": "apache-camel",
     "nom": "Apache Camel",
     "editeur": "Apache Software Foundation",
     "quadrant": 1,
@@ -578,6 +620,7 @@
     "pourquoi": "Cadre ouvert de la fondation Apache, routes écrites en code standard : elles restent lisibles et réutilisables, sans éditeur unique."
   },
   {
+    "id": "ibm-websphere",
     "nom": "IBM WebSphere",
     "editeur": "IBM",
     "quadrant": 1,
@@ -593,6 +636,7 @@
     "pourquoi": "Les applications Java respectent des standards, mais les fonctions et le paramétrage spécifiques doivent être repris lors du changement."
   },
   {
+    "id": "oracle-weblogic",
     "nom": "Oracle WebLogic",
     "editeur": "Oracle",
     "quadrant": 1,
@@ -608,6 +652,7 @@
     "pourquoi": "Applications Java portables en théorie, mais fonctions spécifiques, licences et audits rendent la migration lourde à préparer."
   },
   {
+    "id": "red-hat-jboss-eap",
     "nom": "Red Hat JBoss EAP",
     "editeur": "Red Hat (IBM)",
     "quadrant": 1,
@@ -623,6 +668,7 @@
     "pourquoi": "Fondé sur WildFly et les standards Java : les applications se déplacent ; seuls la souscription et le support dépendent de l’éditeur."
   },
   {
+    "id": "apache-tomcat",
     "nom": "Apache Tomcat",
     "editeur": "Apache Software Foundation",
     "quadrant": 1,
@@ -636,6 +682,7 @@
     "pourquoi": "Conteneur web ouvert et standard, utilisé partout, nombreux supports possibles : aucun verrou."
   },
   {
+    "id": "kong-gateway",
     "nom": "Kong Gateway",
     "editeur": "Kong",
     "quadrant": 1,
@@ -649,6 +696,7 @@
     "pourquoi": "Le cœur ouvert et les standards d’API facilitent la sortie ; les fonctions d’entreprise propriétaires demandent un effort de remplacement."
   },
   {
+    "id": "apigee",
     "nom": "Apigee",
     "editeur": "Google",
     "quadrant": 1,
@@ -664,6 +712,7 @@
     "pourquoi": "Les politiques d’API sont décrites dans le format de l’outil et liées à Google Cloud : il faut les reprendre une par une."
   },
   {
+    "id": "azure-api-management",
     "nom": "Azure API Management",
     "editeur": "Microsoft",
     "quadrant": 1,
@@ -678,6 +727,7 @@
     "pourquoi": "Service propriétaire intégré à Azure : politiques et configurations sont à reconstruire dans un autre outil."
   },
   {
+    "id": "kubernetes",
     "nom": "Kubernetes",
     "editeur": "CNCF",
     "quadrant": 1,
@@ -691,6 +741,7 @@
     "pourquoi": "Standard ouvert de la CNCF, proposé par de nombreux fournisseurs avec des distributions certifiées compatibles : on change de fournisseur facilement."
   },
   {
+    "id": "red-hat-openshift",
     "nom": "Red Hat OpenShift",
     "editeur": "Red Hat (IBM)",
     "quadrant": 1,
@@ -704,6 +755,7 @@
     "pourquoi": "Les applications Kubernetes se déplacent, mais les outils et opérateurs spécifiques à la plateforme doivent être remplacés."
   },
   {
+    "id": "vmware-tanzu",
     "nom": "VMware Tanzu",
     "editeur": "Broadcom",
     "quadrant": 1,
@@ -718,6 +770,7 @@
     "pourquoi": "Plateforme propriétaire autour de Kubernetes, soumise à la politique commerciale de l’éditeur : la sortie demande de reconstruire l’outillage."
   },
   {
+    "id": "kubernetes-manage-eks-aks-gke",
     "nom": "Kubernetes managé (EKS, AKS, GKE)",
     "editeur": "AWS, Microsoft, Google",
     "quadrant": 1,
@@ -735,6 +788,7 @@
     "pourquoi": "Kubernetes est standard et les applications se déplacent ; les intégrations propres à chaque cloud (identité, réseau, stockage) demandent une adaptation."
   },
   {
+    "id": "entra-id-et-active-directory",
     "nom": "Entra ID et Active Directory",
     "editeur": "Microsoft",
     "quadrant": 1,
@@ -749,6 +803,7 @@
     "pourquoi": "Toutes les applications et tous les postes s’y authentifient : le changer touche l’ensemble du système d’information, sur une longue période."
   },
   {
+    "id": "okta",
     "nom": "Okta",
     "editeur": "Okta",
     "quadrant": 1,
@@ -762,6 +817,7 @@
     "pourquoi": "Les protocoles d’identité sont standards (SAML, OpenID Connect), mais chaque application intégrée doit être reconfigurée."
   },
   {
+    "id": "keycloak",
     "nom": "Keycloak",
     "editeur": "CNCF",
     "quadrant": 1,
@@ -773,6 +829,7 @@
     "pourquoi": "Projet ouvert de la CNCF fondé sur des protocoles standards : les applications se raccordent à un autre fournisseur d’identité sans réécriture."
   },
   {
+    "id": "citrix-virtual-apps-and-desktops",
     "nom": "Citrix Virtual Apps and Desktops",
     "editeur": "Cloud Software Group",
     "quadrant": 1,
@@ -786,6 +843,7 @@
     "pourquoi": "Postes et applications publiés, profils et pratiques d’exploitation propriétaires : la migration est lourde même si des alternatives existent."
   },
   {
+    "id": "hashicorp-vault",
     "nom": "HashiCorp Vault",
     "editeur": "IBM",
     "quadrant": 1,
@@ -799,6 +857,7 @@
     "pourquoi": "Un fork ouvert compatible existe, ce qui rend la sortie maîtrisable ; la licence source disponible et le contrôle par un seul acteur l’éloignent de l’anneau extérieur."
   },
   {
+    "id": "openbao",
     "nom": "OpenBao",
     "editeur": "Linux Foundation",
     "quadrant": 1,
@@ -810,6 +869,7 @@
     "pourquoi": "Fork ouvert sous gouvernance communautaire, compatible avec les API de Vault : pas d’éditeur unique."
   },
   {
+    "id": "oracle-database",
     "nom": "Oracle Database",
     "editeur": "Oracle",
     "quadrant": 2,
@@ -824,6 +884,7 @@
     "pourquoi": "Le code applicatif en PL/SQL et les fonctions spécifiques sont à réécrire, les licences et audits compliquent la transition : des mois de préparation."
   },
   {
+    "id": "microsoft-sql-server",
     "nom": "Microsoft SQL Server",
     "editeur": "Microsoft",
     "quadrant": 2,
@@ -837,6 +898,7 @@
     "pourquoi": "Le T-SQL et les fonctions spécifiques sont à adapter ; des outils de conversion existent, mais la migration reste lourde."
   },
   {
+    "id": "ibm-db2",
     "nom": "IBM Db2",
     "editeur": "IBM",
     "quadrant": 2,
@@ -850,6 +912,7 @@
     "pourquoi": "Base propriétaire souvent liée au mainframe : la migration est lourde, même si PostgreSQL offre une cible crédible."
   },
   {
+    "id": "sap-hana",
     "nom": "SAP HANA",
     "editeur": "SAP",
     "quadrant": 2,
@@ -863,6 +926,7 @@
     "pourquoi": "Base imposée par l’ERP S/4HANA : en sortir revient à changer d’ERP."
   },
   {
+    "id": "postgresql",
     "nom": "PostgreSQL",
     "editeur": "Communauté PostgreSQL",
     "quadrant": 2,
@@ -876,6 +940,7 @@
     "pourquoi": "Base ouverte de référence sans éditeur unique, proposée par tous les clouds et de nombreux prestataires."
   },
   {
+    "id": "mysql",
     "nom": "MySQL",
     "editeur": "Oracle",
     "quadrant": 2,
@@ -890,6 +955,7 @@
     "pourquoi": "Format et protocole repris par MariaDB et de nombreux services : la sortie est maîtrisable ; le contrôle par un seul éditeur l’éloigne de l’anneau extérieur."
   },
   {
+    "id": "mariadb",
     "nom": "MariaDB",
     "editeur": "MariaDB Foundation",
     "quadrant": 2,
@@ -903,6 +969,7 @@
     "pourquoi": "Fork ouvert porté par une fondation, compatible avec MySQL : plusieurs fournisseurs et prestataires possibles."
   },
   {
+    "id": "mongodb",
     "nom": "MongoDB",
     "editeur": "MongoDB",
     "quadrant": 2,
@@ -917,6 +984,7 @@
     "pourquoi": "Le modèle de documents se réimporte ailleurs et des alternatives compatibles existent ; la licence SSPL et l’éditeur unique l’éloignent de l’anneau extérieur."
   },
   {
+    "id": "redis",
     "nom": "Redis",
     "editeur": "Redis",
     "quadrant": 2,
@@ -930,6 +998,7 @@
     "pourquoi": "Le fork Valkey, compatible, offre une sortie directe ; les changements de licence montrent le poids d’un seul éditeur."
   },
   {
+    "id": "valkey",
     "nom": "Valkey",
     "editeur": "Linux Foundation",
     "quadrant": 2,
@@ -941,6 +1010,7 @@
     "pourquoi": "Fork ouvert porté par la Linux Foundation, compatible avec Redis : plusieurs fournisseurs le proposent."
   },
   {
+    "id": "elasticsearch",
     "nom": "Elasticsearch",
     "editeur": "Elastic",
     "quadrant": 2,
@@ -954,6 +1024,7 @@
     "pourquoi": "Le fork OpenSearch reprend l’essentiel des API : la sortie est maîtrisable ; les changements de licence montrent le poids de l’éditeur."
   },
   {
+    "id": "opensearch",
     "nom": "OpenSearch",
     "editeur": "OpenSearch Software Foundation",
     "quadrant": 2,
@@ -965,6 +1036,7 @@
     "pourquoi": "Projet ouvert porté par une fondation, proposé par plusieurs fournisseurs : pas d’éditeur unique."
   },
   {
+    "id": "amazon-dynamodb",
     "nom": "Amazon DynamoDB",
     "editeur": "Amazon Web Services",
     "quadrant": 2,
@@ -979,6 +1051,7 @@
     "pourquoi": "API et modèle de données propriétaires, sans équivalent direct : les applications sont à revoir en profondeur."
   },
   {
+    "id": "azure-cosmos-db",
     "nom": "Azure Cosmos DB",
     "editeur": "Microsoft",
     "quadrant": 2,
@@ -994,6 +1067,7 @@
     "pourquoi": "Service propriétaire aux API et modèles spécifiques : il faut adapter le code et le modèle de données."
   },
   {
+    "id": "google-spanner",
     "nom": "Google Spanner",
     "editeur": "Google",
     "quadrant": 2,
@@ -1008,6 +1082,7 @@
     "pourquoi": "Base distribuée propriétaire sans équivalent direct : la migration demande de revoir l’architecture applicative."
   },
   {
+    "id": "snowflake",
     "nom": "Snowflake",
     "editeur": "Snowflake",
     "quadrant": 2,
@@ -1022,6 +1097,7 @@
     "pourquoi": "Le SQL est proche du standard, mais les données sont stockées dans des formats internes ; la prise en charge d’Iceberg ouvre une sortie, encore lourde."
   },
   {
+    "id": "databricks",
     "nom": "Databricks",
     "editeur": "Databricks",
     "quadrant": 2,
@@ -1035,6 +1111,7 @@
     "pourquoi": "Plateforme propriétaire, mais données dans des formats ouverts (Delta Lake, Iceberg) lisibles par d’autres moteurs : la sortie est maîtrisable."
   },
   {
+    "id": "google-bigquery",
     "nom": "Google BigQuery",
     "editeur": "Google",
     "quadrant": 2,
@@ -1049,6 +1126,7 @@
     "pourquoi": "Entrepôt propriétaire intégré à Google Cloud : données, requêtes et traitements sont à migrer."
   },
   {
+    "id": "amazon-redshift",
     "nom": "Amazon Redshift",
     "editeur": "Amazon Web Services",
     "quadrant": 2,
@@ -1063,6 +1141,7 @@
     "pourquoi": "Entrepôt propriétaire intégré à AWS : données, requêtes et chaînes de traitement sont à migrer."
   },
   {
+    "id": "teradata",
     "nom": "Teradata",
     "editeur": "Teradata",
     "quadrant": 2,
@@ -1076,6 +1155,7 @@
     "pourquoi": "Volumes très importants, langage et optimisations spécifiques accumulés pendant des années : la migration demande des mois."
   },
   {
+    "id": "apache-iceberg",
     "nom": "Apache Iceberg",
     "editeur": "Apache Software Foundation",
     "quadrant": 2,
@@ -1090,6 +1170,7 @@
     "pourquoi": "Format de table ouvert de la fondation Apache, lisible par de nombreux moteurs : les données ne sont liées à aucun outil."
   },
   {
+    "id": "apache-parquet",
     "nom": "Apache Parquet",
     "editeur": "Apache Software Foundation",
     "quadrant": 2,
@@ -1103,6 +1184,7 @@
     "pourquoi": "Format de fichier ouvert et universel, lu par presque tous les outils de données."
   },
   {
+    "id": "clickhouse",
     "nom": "ClickHouse",
     "editeur": "ClickHouse",
     "quadrant": 2,
@@ -1117,6 +1199,7 @@
     "pourquoi": "Base ouverte, installable partout et proposée par plusieurs fournisseurs ; un éditeur principal la développe, sans verrou de licence."
   },
   {
+    "id": "talend",
     "nom": "Talend",
     "editeur": "Qlik",
     "quadrant": 2,
@@ -1132,6 +1215,7 @@
     "pourquoi": "L’arrêt de la version ouverte et les traitements décrits dans l’outil imposent de tout réécrire en changeant."
   },
   {
+    "id": "dbt",
     "nom": "dbt",
     "editeur": "dbt Labs",
     "quadrant": 2,
@@ -1145,6 +1229,7 @@
     "pourquoi": "Les transformations sont du SQL lisible, versionné avec le code : elles se réutilisent avec d’autres outils."
   },
   {
+    "id": "power-bi",
     "nom": "Power BI",
     "editeur": "Microsoft",
     "quadrant": 2,
@@ -1159,6 +1244,7 @@
     "pourquoi": "Modèles, mesures et rapports dans le format de l’outil, liés à Microsoft 365 : il faut les reconstruire ailleurs."
   },
   {
+    "id": "tableau",
     "nom": "Tableau",
     "editeur": "Salesforce",
     "quadrant": 2,
@@ -1173,6 +1259,7 @@
     "pourquoi": "Les tableaux de bord sont dans le format de l’outil et doivent être reconstruits dans un autre."
   },
   {
+    "id": "qlik-sense",
     "nom": "Qlik Sense",
     "editeur": "Qlik",
     "quadrant": 2,
@@ -1187,6 +1274,7 @@
     "pourquoi": "Modèles et scripts de chargement propriétaires à réécrire pour changer d’outil."
   },
   {
+    "id": "apache-superset",
     "nom": "Apache Superset",
     "editeur": "Apache Software Foundation",
     "quadrant": 2,
@@ -1198,6 +1286,7 @@
     "pourquoi": "Projet ouvert de la fondation Apache, connecteurs standards : on change d’hébergeur ou de prestataire librement."
   },
   {
+    "id": "cloudera",
     "nom": "Cloudera",
     "editeur": "Cloudera",
     "quadrant": 2,
@@ -1211,6 +1300,7 @@
     "pourquoi": "Des briques ouvertes (Spark, Hive) facilitent la reprise des données, mais la plateforme et son outillage sont propriétaires : migration lourde."
   },
   {
+    "id": "amazon-s3",
     "nom": "Amazon S3",
     "editeur": "Amazon Web Services",
     "quadrant": 2,
@@ -1224,6 +1314,7 @@
     "pourquoi": "L’API S3 est reprise par de nombreux fournisseurs et logiciels : les applications se déplacent ; le volume de données à transférer reste un frein."
   },
   {
+    "id": "servicenow",
     "nom": "ServiceNow",
     "editeur": "ServiceNow",
     "quadrant": 3,
@@ -1239,6 +1330,7 @@
     "pourquoi": "Processus, données, développements et intégrations sont construits dans la plateforme : la sortie se prépare sur des mois, avec peu d’équivalents complets."
   },
   {
+    "id": "bmc-helix",
     "nom": "BMC Helix",
     "editeur": "BMC",
     "quadrant": 3,
@@ -1253,6 +1345,7 @@
     "pourquoi": "Processus et données intégrés à l’outil : des alternatives existent mais la reprise est lourde."
   },
   {
+    "id": "jira-et-jira-service-management",
     "nom": "Jira et Jira Service Management",
     "editeur": "Atlassian",
     "quadrant": 3,
@@ -1268,6 +1361,7 @@
     "pourquoi": "Les tickets s’exportent, mais workflows, automatisations et intégrations sont à reconstruire, avec un calendrier imposé par la fin de Data Center."
   },
   {
+    "id": "confluence",
     "nom": "Confluence",
     "editeur": "Atlassian",
     "quadrant": 3,
@@ -1282,6 +1376,7 @@
     "pourquoi": "Les pages s’exportent mal hors du format de l’outil, et la fin de Data Center impose un calendrier."
   },
   {
+    "id": "glpi",
     "nom": "GLPI",
     "editeur": "Teclib’",
     "quadrant": 3,
@@ -1295,6 +1390,7 @@
     "pourquoi": "Code ouvert, installable chez soi ou chez plusieurs prestataires, données dans une base standard."
   },
   {
+    "id": "splunk",
     "nom": "Splunk",
     "editeur": "Cisco",
     "quadrant": 3,
@@ -1310,6 +1406,7 @@
     "pourquoi": "Requêtes, tableaux de bord et alertes écrits dans un langage propriétaire, à réécrire : la migration est lourde."
   },
   {
+    "id": "datadog",
     "nom": "Datadog",
     "editeur": "Datadog",
     "quadrant": 3,
@@ -1325,6 +1422,7 @@
     "pourquoi": "Agents et tableaux de bord propriétaires ; OpenTelemetry réduit la dépendance aux agents, mais les tableaux de bord restent à reconstruire."
   },
   {
+    "id": "dynatrace",
     "nom": "Dynatrace",
     "editeur": "Dynatrace",
     "quadrant": 3,
@@ -1340,6 +1438,7 @@
     "pourquoi": "Agents et analyses propriétaires à remplacer, tableaux de bord et alertes à reconstruire."
   },
   {
+    "id": "new-relic",
     "nom": "New Relic",
     "editeur": "New Relic",
     "quadrant": 3,
@@ -1355,6 +1454,7 @@
     "pourquoi": "Service propriétaire ; la collecte peut passer par OpenTelemetry, mais l’exploitation des données reste à reconstruire."
   },
   {
+    "id": "prometheus",
     "nom": "Prometheus",
     "editeur": "CNCF",
     "quadrant": 3,
@@ -1366,6 +1466,7 @@
     "pourquoi": "Projet ouvert de la CNCF dont le format est devenu un standard repris par de nombreux outils."
   },
   {
+    "id": "grafana",
     "nom": "Grafana",
     "editeur": "Grafana Labs",
     "quadrant": 3,
@@ -1379,6 +1480,7 @@
     "pourquoi": "Code ouvert (AGPL), installable partout, connecté à des sources standards ; un éditeur principal, mais pas de verrou."
   },
   {
+    "id": "opentelemetry",
     "nom": "OpenTelemetry",
     "editeur": "CNCF",
     "quadrant": 3,
@@ -1390,6 +1492,7 @@
     "pourquoi": "Standard ouvert de la CNCF : il découple la collecte de l’outil d’analyse, et réduit les dépendances au lieu d’en créer."
   },
   {
+    "id": "github",
     "nom": "GitHub",
     "editeur": "Microsoft",
     "quadrant": 3,
@@ -1404,6 +1507,7 @@
     "pourquoi": "Git est standard et les dépôts se déplacent, mais les automatisations (Actions) et intégrations sont à reconstruire."
   },
   {
+    "id": "gitlab",
     "nom": "GitLab",
     "editeur": "GitLab",
     "quadrant": 3,
@@ -1417,6 +1521,7 @@
     "pourquoi": "Cœur ouvert et dépôts Git standards : la sortie est maîtrisable ; les fonctions propriétaires et les pipelines demandent un effort."
   },
   {
+    "id": "forgejo",
     "nom": "Forgejo",
     "editeur": "Codeberg e.V.",
     "quadrant": 3,
@@ -1428,6 +1533,7 @@
     "pourquoi": "Forge ouverte sous gouvernance communautaire, dépôts Git standards : on l’héberge où l’on veut."
   },
   {
+    "id": "jenkins",
     "nom": "Jenkins",
     "editeur": "CD Foundation",
     "quadrant": 3,
@@ -1441,6 +1547,7 @@
     "pourquoi": "Projet ouvert de la CD Foundation, installable partout : pipelines lisibles et nombreux prestataires."
   },
   {
+    "id": "azure-devops",
     "nom": "Azure DevOps",
     "editeur": "Microsoft",
     "quadrant": 3,
@@ -1455,6 +1562,7 @@
     "pourquoi": "Dépôts Git standards, mais pipelines et suivi propriétaires liés à Azure : à reconstruire."
   },
   {
+    "id": "terraform",
     "nom": "Terraform",
     "editeur": "IBM",
     "quadrant": 3,
@@ -1468,6 +1576,7 @@
     "pourquoi": "Le fork OpenTofu, compatible, permet une sortie directe ; la licence source disponible l’éloigne de l’anneau extérieur."
   },
   {
+    "id": "opentofu",
     "nom": "OpenTofu",
     "editeur": "Linux Foundation",
     "quadrant": 3,
@@ -1479,6 +1588,7 @@
     "pourquoi": "Fork ouvert de la Linux Foundation, compatible avec les configurations Terraform existantes."
   },
   {
+    "id": "ansible",
     "nom": "Ansible",
     "editeur": "Red Hat (IBM)",
     "quadrant": 3,
@@ -1492,6 +1602,7 @@
     "pourquoi": "Code ouvert et configurations en YAML lisible, réutilisables sans l’offre commerciale."
   },
   {
+    "id": "puppet",
     "nom": "Puppet",
     "editeur": "Perforce",
     "quadrant": 3,
@@ -1506,6 +1617,7 @@
     "pourquoi": "Le fork compatible OpenVox permet de sortir sans réécrire les configurations ; les binaires désormais privés montrent le poids de l’éditeur."
   },
   {
+    "id": "openvox",
     "nom": "OpenVox",
     "editeur": "Vox Pupuli",
     "quadrant": 3,
@@ -1519,6 +1631,7 @@
     "pourquoi": "Fork communautaire compatible avec les configurations Puppet existantes, sans éditeur unique."
   },
   {
+    "id": "pagerduty",
     "nom": "PagerDuty",
     "editeur": "PagerDuty",
     "quadrant": 3,
@@ -1533,6 +1646,7 @@
     "pourquoi": "Les astreintes et escalades se reconstruisent, et des outils ouverts existent ; les nombreuses intégrations demandent un effort."
   },
   {
+    "id": "crowdstrike-falcon",
     "nom": "CrowdStrike Falcon",
     "editeur": "CrowdStrike",
     "quadrant": 3,
@@ -1546,6 +1660,7 @@
     "pourquoi": "Agent installé sur chaque poste et serveur, politiques et détections propriétaires : changer demande un déploiement complet et une période de recouvrement."
   },
   {
+    "id": "microsoft-defender",
     "nom": "Microsoft Defender",
     "editeur": "Microsoft",
     "quadrant": 3,
@@ -1559,6 +1674,7 @@
     "pourquoi": "Intégré aux licences et à l’écosystème Microsoft : en sortir demande un nouvel agent sur tout le parc et la reprise des politiques."
   },
   {
+    "id": "microsoft-intune",
     "nom": "Microsoft Intune",
     "editeur": "Microsoft",
     "quadrant": 3,
@@ -1572,6 +1688,7 @@
     "pourquoi": "Gestion des terminaux liée à Entra ID et Microsoft 365 : changer impose de réinscrire tous les appareils."
   },
   {
+    "id": "wazuh",
     "nom": "Wazuh",
     "editeur": "Wazuh",
     "quadrant": 3,
@@ -1583,6 +1700,7 @@
     "pourquoi": "Code ouvert, installable chez soi, règles et données dans des formats lisibles."
   },
   {
+    "id": "mainframe-ibm-z-z-os",
     "nom": "Mainframe IBM Z (z/OS)",
     "editeur": "IBM",
     "quadrant": 0,
@@ -1597,6 +1715,7 @@
     "pourquoi": "Des décennies d’applications COBOL, CICS et IMS, des compétences rares et peu d’équivalents directs : une sortie se prépare sur des années."
   },
   {
+    "id": "ibm-power-aix-et-ibm-i",
     "nom": "IBM Power (AIX et IBM i)",
     "editeur": "IBM",
     "quadrant": 0,
@@ -1611,6 +1730,7 @@
     "pourquoi": "Système et matériel liés, applications RPG et base intégrée : il faut réécrire ou convertir les applications, avec des compétences qui se raréfient."
   },
   {
+    "id": "oracle-exadata",
     "nom": "Oracle Exadata",
     "editeur": "Oracle",
     "quadrant": 0,
@@ -1625,6 +1745,7 @@
     "pourquoi": "Les performances reposent sur des fonctions réservées au matériel Oracle et les licences sont adossées à la machine : sortir implique aussi de quitter Oracle Database."
   },
   {
+    "id": "cisco-aci",
     "nom": "Cisco ACI",
     "editeur": "Cisco",
     "quadrant": 0,
@@ -1640,6 +1761,7 @@
     "pourquoi": "Le modèle de politiques du réseau n’existe que chez Cisco : il faut repenser et reconfigurer la fabrique entière, pas seulement changer d’équipements."
   },
   {
+    "id": "aws-outposts",
     "nom": "AWS Outposts",
     "editeur": "Amazon Web Services",
     "quadrant": 0,
@@ -1654,6 +1776,7 @@
     "pourquoi": "Matériel propriété d’AWS, piloté depuis une région AWS et engagé sur trois ans : la sortie dépend du calendrier du contrat et d’une infrastructure de remplacement."
   },
   {
+    "id": "openshift-virtualization",
     "nom": "OpenShift Virtualization",
     "editeur": "Red Hat (IBM)",
     "quadrant": 0,
@@ -1668,6 +1791,7 @@
     "pourquoi": "Fondé sur KubeVirt et KVM, ouverts : les machines virtuelles et leurs définitions se reprennent sur un autre Kubernetes ; la souscription et l’outillage spécifiques l’éloignent de l’anneau extérieur."
   },
   {
+    "id": "kubevirt",
     "nom": "KubeVirt",
     "editeur": "CNCF",
     "quadrant": 0,
@@ -1682,6 +1806,7 @@
     "pourquoi": "Projet ouvert sans éditeur unique, repris par plusieurs distributions Kubernetes : on change de fournisseur sans changer le format des machines virtuelles."
   },
   {
+    "id": "huawei-dcs-fusioncompute",
     "nom": "Huawei DCS (FusionCompute)",
     "editeur": "Huawei",
     "quadrant": 0,
@@ -1696,6 +1821,7 @@
     "pourquoi": "Les machines virtuelles se convertissent vers d’autres hyperviseurs, ce qui évite l’anneau central ; mais gestion, sauvegarde et exploitation sont propriétaires, et le risque géopolitique pèse sur la continuité."
   },
   {
+    "id": "xenserver-ex-citrix-hypervisor",
     "nom": "XenServer (ex-Citrix Hypervisor)",
     "editeur": "Cloud Software Group",
     "quadrant": 0,
@@ -1710,6 +1836,7 @@
     "pourquoi": "Propriétaire, mais XCP-ng, issu du même code, reprend les machines virtuelles et les pratiques d’exploitation : la sortie est maîtrisable."
   },
   {
+    "id": "control-m",
     "nom": "Control-M",
     "editeur": "BMC",
     "quadrant": 3,
@@ -1723,6 +1850,7 @@
     "pourquoi": "Toutes les chaînes de traitement de la production sont décrites dans l’outil : il faut les recenser, les convertir et les retester, sur des mois, avec peu d’équivalents directs."
   },
   {
+    "id": "ordonnanceurs-broadcom-autosys-automic-dollar",
     "nom": "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)",
     "editeur": "Broadcom",
     "quadrant": 3,
@@ -1736,6 +1864,7 @@
     "pourquoi": "Comme pour tout ordonnanceur de production, les chaînes sont à convertir et retester une à une ; la politique commerciale de l’éditeur rend la sortie plus urgente sans la rendre plus simple."
   },
   {
+    "id": "apache-airflow",
     "nom": "Apache Airflow",
     "editeur": "Apache Software Foundation",
     "quadrant": 3,
@@ -1747,6 +1876,7 @@
     "pourquoi": "Projet ouvert de la fondation Apache, installable chez soi ou proposé en service managé par plusieurs fournisseurs : les définitions en Python restent réutilisables."
   },
   {
+    "id": "ovirt",
     "nom": "oVirt",
     "editeur": "Communauté oVirt",
     "quadrant": 0,

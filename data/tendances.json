@@ -1,11 +1,12 @@
 [
   {
+    "id": "fin-des-licences-perpetuelles",
     "titre": "Fin des licences perpétuelles",
     "quadrant": 1,
     "anneau": 0,
     "type": "risque",
     "declencheur": "Après le rachat de VMware par Broadcom, puis l’annonce de la fin de vie d’Atlassian Data Center, la licence que l’on possède devient l’exception : la plupart des éditeurs basculent vers l’abonnement.",
-    "tendance": "Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. Atlassian ne vendra plus de licences Data Center aux clients existants après le 30 mars 2028, et les passera en lecture seule le 28 mars 2029.",
+    "tendance": "Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. Atlassian ne vendra plus de licences Data Center aux clients existants après le 30 mars 2028, et les passera en lecture seule le 28 mars 2029.",
     "risque": "Vous ne possédez plus, vous louez : le prix est revu à chaque échéance et le calendrier de migration est fixé par l’éditeur.",
     "mitigations": [
       "Recensez les licences sans date d’expiration qui vous restent, et leurs fins de support.",
@@ -36,6 +37,7 @@
     ]
   },
   {
+    "id": "ia-integree-doffice-dans-les-suites",
     "titre": "IA intégrée d’office dans les suites",
     "quadrant": 1,
     "anneau": 0,
@@ -78,12 +80,13 @@
     ]
   },
   {
+    "id": "hausses-de-prix-soutenues",
     "titre": "Hausses de prix soutenues",
     "quadrant": 1,
     "anneau": 1,
     "type": "risque",
-    "declencheur": "Selon une étude d’Asterès pour le Cigref publiée en mai 2026, les DSI européens anticipent 12 % de hausse par an, et citent d’abord le verrouillage fournisseur pour l’expliquer.",
-    "tendance": "Les DSI européens interrogés pour le Cigref anticipent 12 % de hausse par an de leurs coûts de cloud et de logiciels sur cinq ans, soit environ +57 % en quatre ans. Gartner observe des hausses de 10 à 20 % chez plusieurs grands éditeurs SaaS en 2025.",
+    "declencheur": "Selon une étude d’Asterès pour le Cigref publiée en mai 2026, les DSI européens anticipent 12 % de hausse par an, et citent d’abord le verrouillage fournisseur pour l’expliquer.",
+    "tendance": "Les DSI européens interrogés pour le Cigref anticipent 12 % de hausse par an de leurs coûts de cloud et de logiciels sur cinq ans, soit environ +57 % en quatre ans. Gartner observe des hausses de 10 à 20 % chez plusieurs grands éditeurs SaaS en 2025.",
     "risque": "La trajectoire de coûts n’est plus pilotée par le client, et le verrouillage fournisseur est la première cause citée.",
     "mitigations": [
       "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.",
@@ -112,6 +115,7 @@
     ]
   },
   {
+    "id": "rachats-et-consolidation-des-editeurs",
     "titre": "Rachats et consolidation des éditeurs",
     "quadrant": 1,
     "anneau": 1,
@@ -150,12 +154,13 @@
     ]
   },
   {
+    "id": "facturation-de-lia-a-lusage",
     "titre": "Facturation de l’IA à l’usage",
     "quadrant": 1,
     "anneau": 2,
     "type": "risque",
     "declencheur": "Les éditeurs doivent rentabiliser des investissements massifs dans l’IA, et en répercutent le coût sur leurs clients, souvent sous forme de facturation à l’usage.",
-    "tendance": "Selon Forrester (enquête auprès de plus de 2 600 décideurs, juillet 2026), 80 % des décideurs s’attendent à une hausse de leurs budgets données et logiciels en 2027, les éditeurs répercutant le coût de l’IA par des hausses de prix ou une facturation à l’usage.",
+    "tendance": "Selon Forrester (enquête auprès de plus de 2 600 décideurs, juillet 2026), 80 % des décideurs s’attendent à une hausse de leurs budgets données et logiciels en 2027, les éditeurs répercutant le coût de l’IA par des hausses de prix ou une facturation à l’usage.",
     "risque": "Une facture à l’usage est difficile à prévoir, et plus encore à comparer.",
     "mitigations": [
       "Exigez des plafonds et des alertes de consommation.",
@@ -173,6 +178,7 @@
     ]
   },
   {
+    "id": "virtualisation-proprietaire",
     "titre": "Virtualisation propriétaire",
     "quadrant": 4,
     "anneau": 0,
@@ -207,6 +213,7 @@
     ]
   },
   {
+    "id": "concentration-des-regions-cloud",
     "titre": "Concentration des régions cloud",
     "quadrant": 4,
     "anneau": 2,
@@ -234,6 +241,7 @@
     ]
   },
   {
+    "id": "changements-de-licence-open-source",
     "titre": "Changements de licence open source",
     "quadrant": 0,
     "anneau": 2,
@@ -270,12 +278,13 @@
     ]
   },
   {
+    "id": "dependance-aux-modeles-dia-proprietaires",
     "titre": "Dépendance aux modèles d’IA propriétaires",
     "quadrant": 4,
     "anneau": 3,
     "type": "risque",
-    "declencheur": "Les organisations industrialisent leurs premiers usages d’IA, souvent autour d’un seul fournisseur de modèles : selon Menlo Ventures, seules 11 % des équipes en ont changé en 2025, alors que les prix et les conditions évoluent très vite.",
-    "tendance": "Les organisations construisent prompts, outils et agents autour d’un modèle ou d’une API d’un seul fournisseur. Selon Menlo Ventures, les modèles fermés concentrent 87 % des usages en entreprise, et les fournisseurs retirent régulièrement leurs anciens modèles : OpenAI annonce ces retraits avec six mois de préavis au minimum pour ses modèles généraux.",
+    "declencheur": "Les organisations industrialisent leurs premiers usages d’IA, souvent autour d’un seul fournisseur de modèles : selon Menlo Ventures, seules 11 % des équipes en ont changé en 2025, alors que les prix et les conditions évoluent très vite.",
+    "tendance": "Les organisations construisent prompts, outils et agents autour d’un modèle ou d’une API d’un seul fournisseur. Selon Menlo Ventures, les modèles fermés concentrent 87 % des usages en entreprise, et les fournisseurs retirent régulièrement leurs anciens modèles : OpenAI annonce ces retraits avec six mois de préavis au minimum pour ses modèles généraux.",
     "risque": "Changer de modèle peut demander de tout reconstruire, au moment où les prix de l’IA évoluent vite.",
     "mitigations": [
       "Prévoyez une couche d’abstraction entre vos applications et les modèles.",
@@ -293,6 +302,7 @@
     ]
   },
   {
+    "id": "plans-de-sortie-testes-dora",
     "titre": "Plans de sortie testés (DORA)",
     "quadrant": 3,
     "anneau": 0,
@@ -330,6 +340,7 @@
     ]
   },
   {
+    "id": "plans-de-reduction-des-dependances-de-letat",
     "titre": "Plans de réduction des dépendances de l’État",
     "quadrant": 3,
     "anneau": 0,
@@ -362,7 +373,7 @@
     ],
     "sources": [
       {
-        "titre": "DINUM, « Souveraineté numérique : l’État accélère la réduction de ses dépendances extra-européennes », avril 2026",
+        "titre": "DINUM, « Souveraineté numérique : l’État accélère la réduction de ses dépendances extra-européennes », avril 2026",
         "url": "https://www.numerique.gouv.fr/sinformer/espace-presse/souverainete-numerique-reduction-dependances-extra-europeennes/"
       },
       {
@@ -372,6 +383,7 @@
     ]
   },
   {
+    "id": "loi-resilience-nis-2",
     "titre": "Loi Résilience (NIS 2)",
     "quadrant": 3,
     "anneau": 1,
@@ -402,6 +414,7 @@
     ]
   },
   {
+    "id": "coupures-liees-aux-sanctions",
     "titre": "Coupures liées aux sanctions",
     "quadrant": 0,
     "anneau": 3,
@@ -434,6 +447,7 @@
     ]
   },
   {
+    "id": "audits-de-licence-comme-levier-commercial",
     "titre": "Audits de licence comme levier commercial",
     "quadrant": 0,
     "anneau": 0,
@@ -473,12 +487,13 @@
     ]
   },
   {
+    "id": "changements-de-metrique-de-licence",
     "titre": "Changements de métrique de licence",
     "quadrant": 1,
     "anneau": 0,
     "type": "risque",
     "declencheur": "En avril 2025, Broadcom a annoncé un minimum de commande de 72 cœurs pour VMware ; depuis 2023, Java d’Oracle est facturé au nombre total de salariés de l’entreprise.",
-    "tendance": "La façon de compter change : par cœur plutôt que par processeur, au nombre total de salariés, avec des minimums de commande. Broadcom a annoncé en avril 2025 un minimum de commande VMware de 72 cœurs (son application a varié selon les régions), avec une majoration de 20 % en cas de renouvellement tardif.",
+    "tendance": "La façon de compter change : par cœur plutôt que par processeur, au nombre total de salariés, avec des minimums de commande. Broadcom a annoncé en avril 2025 un minimum de commande VMware de 72 cœurs (son application a varié selon les régions), avec une majoration de 20 % en cas de renouvellement tardif.",
     "risque": "La facture augmente sans que l’usage change, et la nouvelle métrique pénalise souvent les petites infrastructures.",
     "mitigations": [
       "Modélisez l’impact de chaque changement de métrique avant l’échéance.",
@@ -505,12 +520,13 @@
     ]
   },
   {
+    "id": "engagements-de-consommation-cloud",
     "titre": "Engagements de consommation cloud",
     "quadrant": 1,
     "anneau": 1,
     "type": "risque",
     "declencheur": "Pour obtenir de meilleures remises, des organisations s’engagent sur une à plusieurs années de consommation chez un même fournisseur de cloud.",
-    "tendance": "Les fournisseurs de cloud accordent des remises contre un engagement de dépense : jusqu’à 72 % chez AWS pour un engagement d’un ou trois ans, tandis que chez Microsoft la part non consommée d’un engagement Azure est facturée. En 2023, l’Ofcom relevait que ces remises sont conçues pour inciter à recourir à un seul fournisseur.",
+    "tendance": "Les fournisseurs de cloud accordent des remises contre un engagement de dépense : jusqu’à 72 % chez AWS pour un engagement d’un ou trois ans, tandis que chez Microsoft la part non consommée d’un engagement Azure est facturée. En 2023, l’Ofcom relevait que ces remises sont conçues pour inciter à recourir à un seul fournisseur.",
     "risque": "La remise d’aujourd’hui crée l’obligation de consommer demain, et peut freiner la diversification vers un autre fournisseur.",
     "mitigations": [
       "Limitez la durée et le montant des engagements.",
@@ -547,6 +563,7 @@
     ]
   },
   {
+    "id": "restrictions-de-licence-selon-lhebergeur",
     "titre": "Restrictions de licence selon l’hébergeur",
     "quadrant": 0,
     "anneau": 2,
@@ -575,6 +592,7 @@
     ]
   },
   {
+    "id": "credits-gratuits-et-programmes-dadoption",
     "titre": "Crédits gratuits et programmes d’adoption",
     "quadrant": 1,
     "anneau": 3,
@@ -605,6 +623,7 @@
     ]
   },
   {
+    "id": "services-manages-proprietaires",
     "titre": "Services managés propriétaires",
     "quadrant": 4,
     "anneau": 0,
@@ -644,6 +663,7 @@
     ]
   },
   {
+    "id": "lannuaire-point-central-de-dependance",
     "titre": "L’annuaire, point central de dépendance",
     "quadrant": 4,
     "anneau": 0,
@@ -675,6 +695,7 @@
     ]
   },
   {
+    "id": "gravite-des-donnees-et-frais-de-transfert",
     "titre": "Gravité des données et frais de transfert",
     "quadrant": 4,
     "anneau": 1,
@@ -717,11 +738,12 @@
     ]
   },
   {
+    "id": "ecosysteme-materiel-de-lia",
     "titre": "Écosystème matériel de l’IA",
     "quadrant": 4,
     "anneau": 3,
     "type": "risque",
-    "declencheur": "La demande en puces pour l’IA reste très tendue (fin 2025, Nvidia déclarait ses GPU cloud « épuisés »), et un fabricant domine à la fois le matériel et l’environnement logiciel associé, CUDA.",
+    "declencheur": "La demande en puces pour l’IA reste très tendue (fin 2025, Nvidia déclarait ses GPU cloud « épuisés »), et un fabricant domine à la fois le matériel et l’environnement logiciel associé, CUDA.",
     "tendance": "Le calcul pour l’IA repose sur quelques fabricants de puces et leurs environnements logiciels propriétaires. En juin 2024, l’Autorité de la concurrence a constaté la domination des processeurs graphiques de Nvidia et un risque de dépendance à CUDA, son environnement logiciel.",
     "risque": "Une double dépendance, matérielle et logicielle, dans un marché où la ressource est rare.",
     "mitigations": [
@@ -740,6 +762,7 @@
     ]
   },
   {
+    "id": "acces-extraterritorial-aux-donnees",
     "titre": "Accès extraterritorial aux données",
     "quadrant": 0,
     "anneau": 1,
@@ -786,6 +809,7 @@
     ]
   },
   {
+    "id": "controles-des-plans-de-sortie-par-les",
     "titre": "Contrôles des plans de sortie par les régulateurs",
     "quadrant": 3,
     "anneau": 1,
@@ -827,6 +851,7 @@
     ]
   },
   {
+    "id": "reglement-europeen-sur-lia",
     "titre": "Règlement européen sur l’IA",
     "quadrant": 3,
     "anneau": 2,
@@ -850,6 +875,7 @@
     ]
   },
   {
+    "id": "controles-a-lexportation-des-technologies-dia",
     "titre": "Contrôles à l’exportation des technologies d’IA",
     "quadrant": 3,
     "anneau": 3,
@@ -873,12 +899,13 @@
     ]
   },
   {
+    "id": "competences-rares-sur-les-alternatives",
     "titre": "Compétences rares sur les alternatives",
     "quadrant": 2,
     "anneau": 1,
     "type": "risque",
     "declencheur": "L’IA et le cloud absorbent l’essentiel des efforts de formation, et le départ à la retraite des spécialistes de technologies plus anciennes complique encore la situation.",
-    "tendance": "Selon le rapport 2025 de la Linux Foundation sur les talents, les écarts de compétences les plus larges portent sur l’IA (68 %), la cybersécurité (65 %), le cloud (59 %) et le platform engineering (56 %). En France, la moitié des 55 DSI interrogés par Inop’s en 2025 peinent à recruter, sur les technologies récentes comme sur les plus anciennes.",
+    "tendance": "Selon le rapport 2025 de la Linux Foundation sur les talents, les écarts de compétences les plus larges portent sur l’IA (68 %), la cybersécurité (65 %), le cloud (59 %) et le platform engineering (56 %). En France, la moitié des 55 DSI interrogés par Inop’s en 2025 peinent à recruter, sur les technologies récentes comme sur les plus anciennes.",
     "risque": "Sans personne capable d’opérer l’alternative, une sortie reste théorique : la dépendance au fournisseur devient une dépendance à ses experts.",
     "mitigations": [
       "Identifiez, pour chaque fournisseur critique, qui saurait opérer l’alternative.",
@@ -908,12 +935,13 @@
     ]
   },
   {
+    "id": "savoir-faire-detenu-par-les-prestataires",
     "titre": "Savoir-faire détenu par les prestataires",
     "quadrant": 2,
     "anneau": 1,
     "type": "risque",
     "declencheur": "Après des années d’externalisation, de nombreuses DSI cherchent à réinternaliser des compétences clés pour garder la maîtrise de leurs choix technologiques.",
-    "tendance": "40 % des DSI interrogés par Inop’s en 2025 travaillent avec plus de la moitié d’externes, et 15 % avec plus de 70 %. 43 % veulent internaliser davantage, contre 9 % qui veulent externaliser plus.",
+    "tendance": "40 % des DSI interrogés par Inop’s en 2025 travaillent avec plus de la moitié d’externes, et 15 % avec plus de 70 %. 43 % veulent internaliser davantage, contre 9 % qui veulent externaliser plus.",
     "risque": "Quand le savoir-faire est chez le prestataire, changer de fournisseur, ou même évaluer une alternative, dépend d’un acteur qui n’y a pas forcément intérêt.",
     "mitigations": [
       "Repérez les compétences critiques détenues uniquement par des prestataires.",
@@ -937,6 +965,7 @@
     ]
   },
   {
+    "id": "reseaux-de-partenaires-resserres-par-les",
     "titre": "Réseaux de partenaires resserrés par les éditeurs",
     "quadrant": 2,
     "anneau": 2,
@@ -955,18 +984,19 @@
     ],
     "sources": [
       {
-        "titre": "The Register, « VMware reboots its partner program again » (juillet 2025)",
+        "titre": "The Register, « VMware reboots its partner program again » (juillet 2025)",
         "url": "https://www.theregister.com/2025/07/16/vmware_reboots_partner_program_again/"
       }
     ]
   },
   {
+    "id": "conditions-imposees-par-les-editeurs",
     "titre": "Conditions imposées par les éditeurs",
     "quadrant": 0,
     "anneau": 1,
     "type": "risque",
     "declencheur": "Fin mai 2025, Salesforce a durci de son propre chef les conditions d’utilisation des API de Slack, privant des clients de l’usage de leurs propres données dans des outils tiers.",
-    "tendance": "À propos des nouvelles conditions des API de Slack, le cabinet Hunton relève que, faute de contrat négocié, Salesforce peut modifier ces conditions sur simple préavis, et la poursuite de l’usage vaut acceptation. En octobre 2023, la Commission d’examen des pratiques commerciales a examiné un contrat SaaS reconduit tacitement avec une hausse de 48 %, que le client devait dénoncer deux mois avant l’échéance sans connaître le nouveau tarif.",
+    "tendance": "À propos des nouvelles conditions des API de Slack, le cabinet Hunton relève que, faute de contrat négocié, Salesforce peut modifier ces conditions sur simple préavis, et la poursuite de l’usage vaut acceptation. En octobre 2023, la Commission d’examen des pratiques commerciales a examiné un contrat SaaS reconduit tacitement avec une hausse de 48 %, que le client devait dénoncer deux mois avant l’échéance sans connaître le nouveau tarif.",
     "risque": "Le client s’engage sur des règles que l’éditeur peut réécrire en cours de contrat, sans toujours pouvoir partir à temps.",
     "mitigations": [
       "Recensez les clauses de modification unilatérale, de reconduction tacite et de préavis de vos contrats SaaS critiques.",
@@ -998,12 +1028,13 @@
     ]
   },
   {
+    "id": "concentration-du-marche-du-cloud",
     "titre": "Concentration du marché du cloud",
     "quadrant": 1,
     "anneau": 2,
     "type": "risque",
-    "declencheur": "En juillet 2025, l’autorité britannique de la concurrence (CMA) a conclu que la concurrence ne fonctionne pas bien dans le cloud, au moment où Synergy Research constatait que les fournisseurs européens ne pèsent que 15 % de leur propre marché.",
-    "tendance": "Selon Synergy Research, Amazon, Microsoft et Google détiennent 70 % du marché européen du cloud, contre 2 % chacun pour SAP et Deutsche Telekom, premiers acteurs européens ; la part des fournisseurs européens est passée de 29 % en 2017 à 15 % en 2022 et n’a plus bougé. La CMA évalue la part de Microsoft et d’AWS entre 30 et 40 % chacun du marché de l’IaaS en 2024, celle de Google entre 5 et 10 %, et juge que cette concentration va durer. Elle relève que moins de 1 % des clients changent de fournisseur chaque année.",
+    "declencheur": "En juillet 2025, l’autorité britannique de la concurrence (CMA) a conclu que la concurrence ne fonctionne pas bien dans le cloud, au moment où Synergy Research constatait que les fournisseurs européens ne pèsent que 15 % de leur propre marché.",
+    "tendance": "Selon Synergy Research, Amazon, Microsoft et Google détiennent 70 % du marché européen du cloud, contre 2 % chacun pour SAP et Deutsche Telekom, premiers acteurs européens ; la part des fournisseurs européens est passée de 29 % en 2017 à 15 % en 2022 et n’a plus bougé. La CMA évalue la part de Microsoft et d’AWS entre 30 et 40 % chacun du marché de l’IaaS en 2024, celle de Google entre 5 et 10 %, et juge que cette concentration va durer. Elle relève que moins de 1 % des clients changent de fournisseur chaque année.",
     "risque": "Avec deux ou trois fournisseurs crédibles, le client perd à la fois son pouvoir de négociation et ses solutions de repli.",
     "mitigations": [
       "Identifiez, pour chaque charge critique, au moins un fournisseur de remplacement crédible, européen si possible.",
@@ -1029,12 +1060,13 @@
     ]
   },
   {
+    "id": "savoir-non-documente",
     "titre": "Savoir non documenté",
     "quadrant": 2,
     "anneau": 2,
     "type": "risque",
     "declencheur": "En juillet 2025, l’enquête d’Atlassian sur l’expérience des développeurs place la recherche d’information parmi les premiers freins, et la moitié des répondants perdent plus de 10 heures par semaine.",
-    "tendance": "Dans l’enquête Stack Overflow 2024, 45 % des développeurs professionnels estiment que les silos de connaissance empêchent leurs idées de circuler dans l’organisation, et près de 30 % s’y heurtent dix fois ou plus par semaine. L’étude Atlassian de juillet 2025, menée auprès de 3 500 développeurs et managers, relève que 50 % perdent plus de 10 heures par semaine en inefficacités d’organisation. Dans l’enquête Kyndryl 2025 auprès de 500 dirigeants d’entreprises utilisant des mainframes, 39 % citent les départs à la retraite, qui emportent les compétences.",
+    "tendance": "Dans l’enquête Stack Overflow 2024, 45 % des développeurs professionnels estiment que les silos de connaissance empêchent leurs idées de circuler dans l’organisation, et près de 30 % s’y heurtent dix fois ou plus par semaine. L’étude Atlassian de juillet 2025, menée auprès de 3 500 développeurs et managers, relève que 50 % perdent plus de 10 heures par semaine en inefficacités d’organisation. Dans l’enquête Kyndryl 2025 auprès de 500 dirigeants d’entreprises utilisant des mainframes, 39 % citent les départs à la retraite, qui emportent les compétences.",
     "risque": "Quand le fonctionnement d’un système n’est connu que de quelques personnes ou de l’outil du fournisseur, en sortir oblige à reconstituer ce savoir, ce qui rend tout changement plus cher et plus risqué.",
     "mitigations": [
       "Recensez les systèmes critiques dont le fonctionnement n’est décrit nulle part ailleurs que dans les têtes ou dans l’outil du fournisseur.",
@@ -1057,12 +1089,13 @@
     ]
   },
   {
+    "id": "faible-culture-du-test",
     "titre": "Faible culture du test",
     "quadrant": 2,
     "anneau": 2,
     "type": "risque",
-    "declencheur": "Le rapport DORA de Google publié en octobre 2024 rappelle que l’IA n’améliore pas la livraison de logiciels sans les fondamentaux, dont des « mécanismes de test robustes ».",
-    "tendance": "Dans le rapport DORA 2024, le groupe le moins performant réunit 25 % des répondants : 40 % de ses mises en production échouent, et le rétablissement prend entre une semaine et un mois, contre 5 % d’échecs et moins d’une heure pour le groupe le plus performant (19 % des répondants). Selon le World Quality Report d’OpenText, Capgemini et Sogeti publié en octobre 2024, 64 % des répondants citent la dépendance aux systèmes anciens et 57 % l’absence de stratégie globale d’automatisation des tests comme freins à l’automatisation.",
+    "declencheur": "Le rapport DORA de Google publié en octobre 2024 rappelle que l’IA n’améliore pas la livraison de logiciels sans les fondamentaux, dont des « mécanismes de test robustes ».",
+    "tendance": "Dans le rapport DORA 2024, le groupe le moins performant réunit 25 % des répondants : 40 % de ses mises en production échouent, et le rétablissement prend entre une semaine et un mois, contre 5 % d’échecs et moins d’une heure pour le groupe le plus performant (19 % des répondants). Selon le World Quality Report d’OpenText, Capgemini et Sogeti publié en octobre 2024, 64 % des répondants citent la dépendance aux systèmes anciens et 57 % l’absence de stratégie globale d’automatisation des tests comme freins à l’automatisation.",
     "risque": "Sans tests automatisés pour vérifier qu’une alternative rend le même service, chaque migration devient un pari, et l’organisation reste sur le système en place.",
     "mitigations": [
       "Constituez des tests de non-régression automatisés sur les processus métier critiques, indépendants de l’outil en place.",
@@ -1081,12 +1114,13 @@
     ]
   },
   {
+    "id": "dependance-a-quelques-personnes-cles",
     "titre": "Dépendance à quelques personnes clés",
     "quadrant": 2,
     "anneau": 2,
     "type": "risque",
     "declencheur": "Le 29 mars 2024, l’ingénieur Andres Freund a révélé une porte dérobée dans xz-utils, insérée par un contributeur qui avait gagné en deux ans la confiance du mainteneur bénévole.",
-    "tendance": "Le mainteneur de xz décrivait le projet comme un « projet de loisir non rémunéré » et a subi une campagne de pression. Les versions piégées 5.6.0 et 5.6.1 ont été créées et signées par le compte « Jia Tan ». Une étude publiée fin novembre 2024 sur plus de 36 000 projets open source montre que 89 % ont perdu au moins une fois leur noyau de développeurs, et que seuls 27 % des projets abandonnés ont ensuite attiré un nouveau développeur clé. Le recensement Census III de la Linux Foundation (décembre 2024) constate qu’une grande partie des logiciels libres les plus utilisés n’est développée que par une poignée de contributeurs.",
+    "tendance": "Le mainteneur de xz décrivait le projet comme un « projet de loisir non rémunéré » et a subi une campagne de pression. Les versions piégées 5.6.0 et 5.6.1 ont été créées et signées par le compte « Jia Tan ». Une étude publiée fin novembre 2024 sur plus de 36 000 projets open source montre que 89 % ont perdu au moins une fois leur noyau de développeurs, et que seuls 27 % des projets abandonnés ont ensuite attiré un nouveau développeur clé. Le recensement Census III de la Linux Foundation (décembre 2024) constate qu’une grande partie des logiciels libres les plus utilisés n’est développée que par une poignée de contributeurs.",
     "risque": "Quand un produit, interne ou open source, repose sur une ou deux personnes, leur départ laisse l’organisation captive de ceux qui restent, ou d’un fournisseur qui reprend le sujet à ses conditions.",
     "mitigations": [
       "Comptez, pour chaque produit critique, les personnes capables de le maintenir, en interne comme chez les mainteneurs en amont.",
@@ -1109,6 +1143,7 @@
     ]
   },
   {
+    "id": "certifications-exigees-des-hebergeurs",
     "titre": "Certifications exigées des hébergeurs",
     "quadrant": 3,
     "anneau": 2,
@@ -1142,6 +1177,7 @@
     ]
   },
   {
+    "id": "hebergement-qualifie-impose",
     "titre": "Hébergement qualifié imposé",
     "quadrant": 3,
     "anneau": 1,
@@ -1180,12 +1216,13 @@
     ]
   },
   {
+    "id": "composants-open-source-peu-maintenus",
     "titre": "Composants open source peu maintenus",
     "quadrant": 4,
     "anneau": 1,
     "type": "risque",
     "declencheur": "Les obligations de signalement du Cyber Resilience Act européen s’appliquent depuis le 11 septembre 2026, et l’ensemble des obligations des fabricants entrera en application le 11 décembre 2027.",
-    "tendance": "Black Duck a audité 947 bases de code entre novembre 2024 et octobre 2025 : 93 % contiennent des composants sans activité de développement depuis plus de deux ans, et 92 % des composants en retard de quatre ans ou plus. Selon l’enquête Tidelift de septembre 2024 auprès de plus de 400 mainteneurs, 60 % se considèrent comme des bénévoles non rémunérés, et la part des 46-65 ans est passée de 11 % en 2021 à 21 % en 2024. Le Cyber Resilience Act (règlement 2024/2847) demande aux fabricants une diligence raisonnable sur les composants qu’ils intègrent.",
+    "tendance": "Black Duck a audité 947 bases de code entre novembre 2024 et octobre 2025 : 93 % contiennent des composants sans activité de développement depuis plus de deux ans, et 92 % des composants en retard de quatre ans ou plus. Selon l’enquête Tidelift de septembre 2024 auprès de plus de 400 mainteneurs, 60 % se considèrent comme des bénévoles non rémunérés, et la part des 46-65 ans est passée de 11 % en 2021 à 21 % en 2024. Le Cyber Resilience Act (règlement 2024/2847) demande aux fabricants une diligence raisonnable sur les composants qu’ils intègrent.",
     "risque": "Un composant que plus personne ne corrige ne se remplace pas du jour au lendemain : l’organisation reste liée à des versions figées, ou doit payer un support étendu pour les maintenir.",
     "mitigations": [
       "Inventoriez vos composants open source et repérez ceux qui n’ont pas évolué depuis deux ans.",
@@ -1213,12 +1250,13 @@
     ]
   },
   {
+    "id": "saas-dabord",
     "titre": "SaaS d’abord",
     "quadrant": 4,
     "anneau": 1,
     "type": "risque",
     "declencheur": "L’index de Zylo publié en janvier 2025 relève la première hausse de la dépense SaaS moyenne et du nombre d’applications depuis 2021.",
-    "tendance": "Gartner prévoyait en novembre 2024 que les dépenses mondiales en SaaS approcheraient 300 milliards de dollars en 2025, contre un peu plus de 250 milliards en 2024. Selon Zylo, la dépense SaaS atteint en moyenne 4 830 dollars par salarié, en hausse de 21,9 % sur un an, et les entreprises de plus de 10 000 salariés gèrent en moyenne 660 applications. Dans l’enquête de Parallels publiée en mars 2026, 94 % des organisations se disent préoccupées par le verrouillage fournisseur.",
+    "tendance": "Gartner prévoyait en novembre 2024 que les dépenses mondiales en SaaS approcheraient 300 milliards de dollars en 2025, contre un peu plus de 250 milliards en 2024. Selon Zylo, la dépense SaaS atteint en moyenne 4 830 dollars par salarié, en hausse de 21,9 % sur un an, et les entreprises de plus de 10 000 salariés gèrent en moyenne 660 applications. Dans l’enquête de Parallels publiée en mars 2026, 94 % des organisations se disent préoccupées par le verrouillage fournisseur.",
     "risque": "Chaque application SaaS confie à l’éditeur les données, les processus et le paramétrage, et chaque nouvelle application ajoute une sortie à préparer.",
     "mitigations": [
       "Recensez, pour chaque application SaaS critique, les données qu’elle détient et le format d’export disponible.",
@@ -1257,12 +1295,13 @@
     ]
   },
   {
+    "id": "acheter-plutot-que-construire",
     "titre": "Acheter plutôt que construire",
     "quadrant": 4,
     "anneau": 2,
     "type": "risque",
-    "declencheur": "En février 2026, Retool rapporte que 35 % des équipes interrogées ont remplacé au moins un outil SaaS par un développement interne, mais son panel est composé de clients de sa propre plateforme.",
-    "tendance": "Selon Futurum (juin 2026, 830 décideurs informatiques), 56,0 % des entreprises disent préférer développer en interne la plupart de leurs applications et n’acheter que le nécessaire. 53,3 % d’entre elles indiquent que 20 à 40 % de leurs salariés hors DSI utilisent des outils no-code, low-code ou en langage naturel. Selon le rapport d’Onymos relayé par ITPro en décembre 2024, 84 % des responsables technologiques s’appuient sur des outils SaaS à capacités low-code ou no-code pour développer leurs logiciels.",
+    "declencheur": "En février 2026, Retool rapporte que 35 % des équipes interrogées ont remplacé au moins un outil SaaS par un développement interne, mais son panel est composé de clients de sa propre plateforme.",
+    "tendance": "Selon Futurum (juin 2026, 830 décideurs informatiques), 56,0 % des entreprises disent préférer développer en interne la plupart de leurs applications et n’acheter que le nécessaire. 53,3 % d’entre elles indiquent que 20 à 40 % de leurs salariés hors DSI utilisent des outils no-code, low-code ou en langage naturel. Selon le rapport d’Onymos relayé par ITPro en décembre 2024, 84 % des responsables technologiques s’appuient sur des outils SaaS à capacités low-code ou no-code pour développer leurs logiciels.",
     "risque": "Acheter un progiciel ou construire sur une plateforme low-code propriétaire transfère à l’éditeur la feuille de route, le prix et les formats, et réduit d’autant les compétences de développement internes.",
     "mitigations": [
       "Faites de la réversibilité (export du code, des données et des règles métier) un critère de chaque arbitrage entre construire et acheter.",
@@ -1285,12 +1324,13 @@
     ]
   },
   {
+    "id": "shadow-it-et-shadow-ai",
     "titre": "Shadow IT et shadow AI",
     "quadrant": 4,
     "anneau": 0,
     "type": "risque",
     "declencheur": "L’index de Zylo publié le 29 janvier 2026 classe ChatGPT comme l’application la plus achetée en note de frais, signe que l’IA entre dans les entreprises hors des achats centralisés.",
-    "tendance": "Selon Zylo, les métiers contrôlent 81 % de la dépense SaaS et la DSI 15 %, et la dépense SaaS réglée en note de frais a augmenté de 267 % en un an. Dans une enquête de BlackFog auprès de 2 000 salariés, publiée en janvier 2026, 49 % disent utiliser des outils d’IA sans accord de leur employeur, 51 % les ont connectés à des systèmes de l’entreprise sans accord de la DSI, et 33 % y ont versé des travaux de recherche ou des jeux de données de l’entreprise. En France, une étude de YouGov pour Microsoft, relayée en février 2026, indique que 61 % des collaborateurs utilisent chaque semaine des IA génératives avec des comptes personnels.",
+    "tendance": "Selon Zylo, les métiers contrôlent 81 % de la dépense SaaS et la DSI 15 %, et la dépense SaaS réglée en note de frais a augmenté de 267 % en un an. Dans une enquête de BlackFog auprès de 2 000 salariés, publiée en janvier 2026, 49 % disent utiliser des outils d’IA sans accord de leur employeur, 51 % les ont connectés à des systèmes de l’entreprise sans accord de la DSI, et 33 % y ont versé des travaux de recherche ou des jeux de données de l’entreprise. En France, une étude de YouGov pour Microsoft, relayée en février 2026, indique que 61 % des collaborateurs utilisent chaque semaine des IA génératives avec des comptes personnels.",
     "risque": "Ces services créent des dépendances que la DSI ne voit pas et placent des données de l’entreprise chez des fournisseurs sans contrat négocié ni plan de sortie.",
     "mitigations": [
       "Croisez notes de frais, relevés de cartes d’entreprise et journaux réseau pour recenser les services souscrits hors DSI.",
@@ -1322,12 +1362,13 @@
     ]
   },
   {
+    "id": "couplage-fort-a-la-plateforme",
     "titre": "Couplage fort à la plateforme",
     "quadrant": 4,
     "anneau": 2,
     "type": "risque",
-    "declencheur": "Le rapport de MuleSoft publié le 5 février 2026 compte en moyenne 957 applications par entreprise, contre 897 un an plus tôt, dont seulement 27 % intégrées entre elles.",
-    "tendance": "En 2023, l’équipe de Prime Video chargée de surveiller la qualité des flux vidéo a abandonné une architecture distribuée fondée sur AWS Step Functions et Amazon S3. Les transitions d’état effectuées à chaque seconde de flux atteignaient les limites du compte, et le passage à une application monolithique a réduit le coût d’infrastructure de plus de 90 %. En août 2023, Datadog observait que plus de 70 % de ses clients AWS utilisaient au moins un service sans serveur.",
+    "declencheur": "Le rapport de MuleSoft publié le 5 février 2026 compte en moyenne 957 applications par entreprise, contre 897 un an plus tôt, dont seulement 27 % intégrées entre elles.",
+    "tendance": "En 2023, l’équipe de Prime Video chargée de surveiller la qualité des flux vidéo a abandonné une architecture distribuée fondée sur AWS Step Functions et Amazon S3. Les transitions d’état effectuées à chaque seconde de flux atteignaient les limites du compte, et le passage à une application monolithique a réduit le coût d’infrastructure de plus de 90 %. En août 2023, Datadog observait que plus de 70 % de ses clients AWS utilisaient au moins un service sans serveur.",
     "risque": "Chaque microservice bâti sur une file de messages, une fonction sans serveur ou un orchestrateur propre à un cloud ajoute un point d’adhérence, et la logique métier qui y est logée ne se transpose pas ailleurs sans réécriture.",
     "mitigations": [
       "Cartographiez, pour chaque microservice, les services propres au fournisseur qu’il appelle.",
@@ -1357,6 +1398,7 @@
     ]
   },
   {
+    "id": "api-fermees-ou-monetisees",
     "titre": "API fermées ou monétisées",
     "quadrant": 4,
     "anneau": 1,
@@ -1394,12 +1436,13 @@
     ]
   },
   {
+    "id": "observabilite-proprietaire",
     "titre": "Observabilité propriétaire",
     "quadrant": 4,
     "anneau": 2,
     "type": "risque",
     "declencheur": "En juillet 2026, Gartner a relevé que la maîtrise des coûts de télémétrie reste l’une des premières préoccupations des acheteurs et qu’OpenTelemetry est devenu une exigence de base.",
-    "tendance": "Selon Gartner, 5 % de ses clients dépensent plus de 10 M$ par an chez un seul fournisseur d’observabilité. Dans l’enquête Grafana Labs publiée en 2026 (1 363 répondants), le coût est le premier critère de choix d’un outil (65 %) et 41 % utilisent OpenTelemetry en production, 37 % en attendant qu’il facilite le changement de fournisseur. En mai 2023, Datadog a évoqué une facture ponctuelle d’un client, estimée à 65 M$ et attribuée à Coinbase par The Pragmatic Engineer.",
+    "tendance": "Selon Gartner, 5 % de ses clients dépensent plus de 10 M$ par an chez un seul fournisseur d’observabilité. Dans l’enquête Grafana Labs publiée en 2026 (1 363 répondants), le coût est le premier critère de choix d’un outil (65 %) et 41 % utilisent OpenTelemetry en production, 37 % en attendant qu’il facilite le changement de fournisseur. En mai 2023, Datadog a évoqué une facture ponctuelle d’un client, estimée à 65 M$ et attribuée à Coinbase par The Pragmatic Engineer.",
     "risque": "Avec des agents, des formats et des langages de requête propres à l’outil, changer de fournisseur oblige à réinstrumenter les applications et à refaire tableaux de bord et alertes.",
     "mitigations": [
       "Instrumentez vos nouvelles applications avec OpenTelemetry plutôt qu’avec l’agent propre à l’outil.",
@@ -1428,6 +1471,7 @@
     ]
   },
   {
+    "id": "fins-de-support-imposees",
     "titre": "Fins de support imposées",
     "quadrant": 4,
     "anneau": 0,
@@ -1466,6 +1510,7 @@
     ]
   },
   {
+    "id": "offres-gratuites-qui-se-referment",
     "titre": "Offres gratuites qui se referment",
     "quadrant": 1,
     "anneau": 1,
@@ -1509,6 +1554,474 @@
       {
         "titre": "GitHub, évolution de la tarification d’Actions, décembre 2025",
         "url": "https://github.blog/changelog/2025-12-16-coming-soon-simpler-pricing-and-a-better-experience-for-github-actions/"
+      }
+    ]
+  },
+  {
+    "id": "alternatives-de-virtualisation-matures",
+    "titre": "Alternatives de virtualisation matures",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "Les pratiques commerciales de VMware ayant changé après son rachat par Broadcom, chercher des alternatives est devenu essentiel pour réduire la dépendance.",
+    "tendance": "Des solutions comme Proxmox ou XCP-ng, cette dernière éditée en France, sont utilisées en production et font l’objet de migrations réelles.",
+    "risque": "L’alternative existe : la question n’est plus « peut-on ? », mais « en combien de temps et pour quel coût ? ».",
+    "mitigations": [
+      "Comparez deux alternatives sur vos usages réels.",
+      "Mesurez la sortie par un pilote."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "clauses-de-reversibilite",
+    "titre": "Clauses de réversibilité",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2026 des clauses types pour les contrats cloud, et Libralis propose des clauses standard que les fournisseurs s’engagent publiquement à signer.",
+    "tendance": "Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références récentes outillent la négociation : les clauses types de la Commission européenne pour les contrats cloud, et les clauses Oméga proposées par Libralis. Oméga 1 engage le fournisseur à ne jamais transmettre vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 lui interdit toute coupure arbitraire d’un service critique.",
+    "risque": "C’est le levier le moins coûteux : il se négocie au moment de signer, pas au moment de partir.",
+    "mitigations": [
+      "Établissez une grille de clauses minimales pour tout contrat critique.",
+      "Appuyez-vous sur les clauses types européennes pour la sortie et la portabilité.",
+      "Demandez à vos fournisseurs critiques s’ils signent les clauses Oméga de Libralis."
+    ],
+    "sources": [
+      {
+        "titre": "Alliancy, clauses types européennes pour le cloud (recommandation (UE) 2026/2394)",
+        "url": "https://alliancy.fr/reversibilite-numerique-le-droit-de-partir-ne-suffit-pas-il-faut-savoir-le-faire-382c9e9b-7166-4229-a5d5-876cccb97049"
+      },
+      {
+        "titre": "InformatiqueNews, entretien avec Alain Issarni sur Libralis",
+        "url": "https://www.informatiquenews.fr/aucune-organisation-ne-peut-accepter-un-kill-switch-arbitraire-alain-issarni-libralis-111072"
+      }
+    ]
+  },
+  {
+    "id": "fin-des-frais-de-sortie-cloud-data-act",
+    "titre": "Fin des frais de sortie cloud (Data Act)",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "declencheur": "Le Data Act européen, applicable depuis septembre 2025, programme la suppression totale des frais de changement de fournisseur cloud au 12 janvier 2027.",
+    "tendance": "À partir du 12 janvier 2027, les fournisseurs de cloud ne pourront plus facturer de frais de changement de fournisseur, y compris les frais de transfert de données.",
+    "risque": "Un verrou financier tombe. Le verrouillage technique, lui, demeure.",
+    "mitigations": [
+      "Évitez de se réengager longtemps juste avant cette date.",
+      "Préparez la portabilité technique."
+    ],
+    "sources": [
+      {
+        "titre": "Règlement (UE) 2023/2854, article 29",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "cloud-europeen-qualifie",
+    "titre": "Cloud européen qualifié",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "declencheur": "La doctrine « cloud au centre » de l’État et les inquiétudes sur l’accès extraterritorial aux données font progresser les offres qualifiées SecNumCloud.",
+    "tendance": "Des offres d’hébergeurs européens qualifiées SecNumCloud se développent, notamment pour les données sensibles.",
+    "risque": "Elles élargissent le choix, à condition de rester elles-mêmes réversibles.",
+    "mitigations": [
+      "Incluez-les dans vos comparaisons, avec la même grille de réversibilité."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "couches-dabstraction",
+    "titre": "Couches d’abstraction",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "levier",
+    "declencheur": "Avec la multiplication des fournisseurs et des environnements, les équipes cherchent à rendre leurs applications indépendantes de l’infrastructure qui les porte.",
+    "tendance": "Conteneurs, Kubernetes, outils d’infrastructure as code ouverts : des couches qui rendent l’infrastructure sous-jacente plus interchangeable.",
+    "risque": "Elles réduisent le coût d’un changement, à condition de prouver qu’elles fonctionnent sur deux plateformes.",
+    "mitigations": [
+      "Testez le déploiement d’une application sur une seconde plateforme."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "modeles-dia-a-poids-ouverts",
+    "titre": "Modèles d’IA à poids ouverts",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "levier",
+    "declencheur": "Des acteurs comme Mistral AI ou DeepSeek publient des modèles performants dont les poids sont accessibles, ce qui ouvre une alternative crédible aux modèles fermés.",
+    "tendance": "Des modèles dont les poids sont publiés permettent d’héberger l’IA chez soi ou chez le fournisseur de son choix.",
+    "risque": "Ils offrent une alternative aux modèles propriétaires, à surveiller selon les usages et les performances.",
+    "mitigations": [
+      "Évaluez un modèle ouvert sur un cas d’usage interne."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "achats-et-investissements-groupes",
+    "titre": "Achats et investissements groupés",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "levier",
+    "declencheur": "Face aux mêmes fournisseurs, des organisations commencent à mutualiser leurs négociations, ou à financer ensemble l’émergence d’alternatives.",
+    "tendance": "Plusieurs organisations s’associent pour négocier ou financer une alternative commune.",
+    "risque": "À plusieurs, le rapport de force change, et le coût d’une alternative se partage.",
+    "mitigations": [
+      "Identifiez des pairs exposés aux mêmes fournisseurs."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "partir-des-processus-metier-critiques",
+    "titre": "Partir des processus métier critiques",
+    "quadrant": 2,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "Les inventaires exhaustifs s’enlisent faute de priorités : partir de l’activité permet de concentrer l’effort là où un arrêt coûterait le plus.",
+    "tendance": "Plutôt que d’inventorier des centaines de contrats, on part des processus qui ne peuvent pas s’arrêter, puis on remonte vers les services numériques et les fournisseurs qui les portent.",
+    "risque": "C’est ce qui permet de prioriser, et d’embarquer les métiers dans un sujet souvent perçu comme technique.",
+    "mitigations": [
+      "Identifiez avec vos métiers les processus critiques et leur tolérance à l’arrêt.",
+      "Nommez les cinq fournisseurs dont la défaillance arrêterait votre activité."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "mesurer-la-marge-de-manuvre",
+    "titre": "Mesurer la marge de manœuvre",
+    "quadrant": 1,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "Beaucoup de DSI découvrent trop tard qu’il leur faudrait plus de temps pour partir qu’il n’en reste avant l’échéance : c’est ainsi que naissent les re-signatures sous contrainte.",
+    "tendance": "La marge de manœuvre, c’est le nombre de mois avant l’échéance moins le délai de sortie estimé. Négative, le verrou est actif : il faudra re-signer.",
+    "risque": "Un seul chiffre, compréhensible en comité de direction, qui dit si vous avez encore le choix.",
+    "mitigations": [
+      "Pour chaque fournisseur critique, notez l’échéance, le préavis et la reconduction.",
+      "Estimez le délai de sortie avec vos équipes, puis calculez la marge."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "mode-degrade-et-continuite-hors-fournisseur",
+    "titre": "Mode dégradé et continuité hors fournisseur",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "Les pannes géantes de 2024 et 2025 ont montré que la continuité ne peut pas reposer entièrement sur le fournisseur dont on dépend.",
+    "tendance": "Un plan de continuité qui ne repose pas entièrement sur le fournisseur dont on dépend : sauvegardes hors site, mode dégradé défini, reprise ailleurs.",
+    "risque": "Les pannes concentrées ou les coupures pour raisons politiques montrent qu’une répartition géographique chez un même fournisseur ne suffit pas.",
+    "mitigations": [
+      "Définissez le mode dégradé des services critiques.",
+      "Vérifiez qu’une sauvegarde est restaurable hors du fournisseur."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "cout-total-de-la-dependance",
+    "titre": "Coût total de la dépendance",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "levier",
+    "declencheur": "Avec des hausses anticipées de 12 % par an, le coût d’une dépendance double en six ans : la facture de l’année ne suffit plus pour décider.",
+    "tendance": "Le coût d’une dépendance sur cinq ans : coûts directs, coûts opérationnels (le temps passé à subir roadmap, mises à jour, formations, obsolescence) et coûts de risque. On le compare au coût du changement.",
+    "risque": "La facture ne montre qu’une partie du coût. Avec des hausses anticipées de 12 % par an, la trajectoire compte plus que le montant de l’année.",
+    "mitigations": [
+      "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.",
+      "Comparez-le, scénario par scénario, au coût d’un changement."
+    ],
+    "sources": [
+      {
+        "titre": "Calculateur du coût total de la dépendance Optio",
+        "url": null
+      },
+      {
+        "titre": "Cigref et Asterès, mai 2026",
+        "url": "https://www.cigref.fr/wp/wp-content/uploads/2026/05/Cigref-Asteres-Hausses-Tarifaires-Cloud-Logiciel-Europe-2026.pdf"
+      }
+    ]
+  },
+  {
+    "id": "pilote-de-sortie-sur-un-perimetre-reel",
+    "titre": "Pilote de sortie sur un périmètre réel",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "levier",
+    "declencheur": "DORA exige des plans de sortie testés, et les fournisseurs ne cèdent que face à une alternative prouvée : la preuve sur un périmètre réel répond aux deux.",
+    "tendance": "Migrer un périmètre limité et représentatif vers l’alternative, puis mesurer le temps, l’effort, le coût et le risque, et extrapoler à la sortie complète.",
+    "risque": "La preuve sert même si l’on reste : elle renforce la négociation et répond à l’exigence de plans de sortie testés de DORA.",
+    "mitigations": [
+      "Choisissez un périmètre représentatif, sans risque pour votre production.",
+      "Mesurez, puis présentez le résultat à votre comité de direction."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      },
+      {
+        "titre": "Règlement (UE) 2022/2554, article 28",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "revue-de-reversibilite-des-nouveaux-contrats",
+    "titre": "Revue de réversibilité des nouveaux contrats",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "levier",
+    "declencheur": "Chaque nouveau service activé crée une dépendance supplémentaire : sans revue au moment de signer, le stock se reconstitue aussi vite qu’on le réduit.",
+    "tendance": "Chaque nouveau contrat critique passe par une revue : portabilité des données, clauses de sortie, alternatives, notes minimales exigées.",
+    "risque": "Réduire le stock de dépendances ne suffit pas si chaque nouveau contrat en crée d’autres : c’est ainsi que l’on gouverne le flux.",
+    "mitigations": [
+      "Exigez au moins 3 sur 5 sur la portabilité des données et sur le contrat.",
+      "Intégrez la revue au processus d’achat."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+    "titre": "Indice de réversibilité fondé sur la preuve",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "levier",
+    "declencheur": "DSI, achats, RSSI et direction parlent rarement de la dépendance avec les mêmes mots : un indice commun, fondé sur la preuve, leur donne un langage partagé.",
+    "tendance": "Une note sur 100 par fournisseur critique, sur sept axes notés 0, 1, 3 ou 5. Sans axe prouvé à 5, l’indice est plafonné à 69.",
+    "risque": "Un langage commun entre DSI, RSSI, achats et direction, qui récompense la preuve plutôt que l’intention.",
+    "mitigations": [
+      "Notez vos fournisseurs critiques, preuves à l’appui.",
+      "Revoyez l’indice chaque trimestre."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "formats-de-donnees-ouverts",
+    "titre": "Formats de données ouverts",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "levier",
+    "declencheur": "Les grands entrepôts de données adoptent progressivement des formats ouverts comme Apache Iceberg, ce qui permet enfin de changer d’outil sans déplacer les données.",
+    "tendance": "Des formats comme Apache Iceberg ou Parquet permettent de lire les mêmes données avec plusieurs moteurs, chez plusieurs fournisseurs.",
+    "risque": "Quand les données restent dans un format ouvert, changer d’outil ne signifie plus migrer toutes les données.",
+    "mitigations": [
+      "Privilégiez les formats ouverts pour les nouveaux projets de données.",
+      "Vérifiez que votre entrepôt actuel sait les lire et les écrire."
+    ],
+    "sources": [
+      {
+        "titre": "Apache Software Foundation",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "tests-de-bascule-reguliers",
+    "titre": "Tests de bascule réguliers",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "levier",
+    "declencheur": "Les régulateurs commencent à inspecter les plans de sortie : un plan non exercé depuis longtemps ne convaincra ni un auditeur, ni une cellule de crise.",
+    "tendance": "Une bascule réelle vers l’alternative ou le site de secours, au moins une fois par an pour les fournisseurs les plus critiques.",
+    "risque": "La réversibilité s’érode si personne ne l’exerce : un plan non testé depuis deux ans n’est plus fiable.",
+    "mitigations": [
+      "Planifiez un test annuel pour chaque fournisseur vital.",
+      "Chronométrez le temps de reprise et le comparer à l’objectif."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "competences-sur-les-alternatives",
+    "titre": "Compétences sur les alternatives",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "levier",
+    "declencheur": "Les compétences sur les alternatives restent rares, et ce sont souvent elles, plus que la technologie, qui freinent une sortie.",
+    "tendance": "Former les équipes aux technologies alternatives, s’appuyer sur des communautés et des partenaires.",
+    "risque": "Sans compétences, la meilleure alternative reste théorique : c’est l’une des erreurs les plus fréquentes.",
+    "mitigations": [
+      "Identifiez les compétences rares liées aux fournisseurs critiques.",
+      "Formez au moins deux personnes sur l’alternative retenue."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "support-tiers-pour-gagner-du-temps",
+    "titre": "Support tiers pour gagner du temps",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "levier",
+    "declencheur": "À l’échéance, certaines organisations recourent à un support indépendant de l’éditeur pour gagner du temps pendant qu’elles construisent leur alternative.",
+    "tendance": "Des prestataires de support indépendants des éditeurs permettent de prolonger l’usage d’une version existante pendant la construction d’une alternative.",
+    "risque": "Un moyen de desserrer l’étau à l’échéance. Attention : il donne du temps, mais ne réduit pas la dépendance.",
+    "mitigations": [
+      "Ne l’envisagez qu’avec un plan de sortie daté.",
+      "Vérifiez l’impact sur la sécurité et les mises à jour."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "referentiel-de-reversibilite-partage",
+    "titre": "Référentiel de réversibilité partagé",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "levier",
+    "declencheur": "Il n’existe pas encore de mesure commune de la réversibilité : chaque organisation, chaque appel d’offres et chaque fournisseur utilise ses propres critères.",
+    "tendance": "Une grille commune et ouverte pour mesurer la réversibilité, construite avec l’écosystème (associations professionnelles, éditeurs, utilisateurs).",
+    "risque": "Une mesure partagée faciliterait les comparaisons, les appels d’offres et, à terme, un label.",
+    "mitigations": [
+      "Utilisez une grille commune dans les appels d’offres.",
+      "Partagez ses retours d’expérience."
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "gestion-des-actifs-logiciels",
+    "titre": "Gestion des actifs logiciels",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "La multiplication des audits et des changements de métrique rend indispensable une connaissance précise de ce que l’on possède et de ce que l’on utilise.",
+    "tendance": "Un inventaire précis des licences détenues et des usages réels, tenu à jour en continu.",
+    "risque": "C’est la meilleure défense en cas d’audit, et la base de toute négociation.",
+    "mitigations": [
+      "Rapprochez chaque trimestre licences achetées et usages mesurés.",
+      "Identifiez les licences inutilisées avant chaque échéance."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "clauses-daudit-encadrees",
+    "titre": "Clauses d’audit encadrées",
+    "quadrant": 0,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "Les audits déclenchés à l’approche des renouvellements se multiplient : les encadrer dans le contrat évite qu’ils deviennent un moyen de pression.",
+    "tendance": "Préavis, fréquence maximale, périmètre défini, auditeur indépendant et outils de mesure reconnus par les deux parties.",
+    "risque": "Un audit encadré ne peut plus servir de levier de pression au moment du renouvellement.",
+    "mitigations": [
+      "Intégrez ces clauses à la grille de négociation des contrats critiques."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "cartographie-et-classification-des-donnees",
+    "titre": "Cartographie et classification des données",
+    "quadrant": 4,
+    "anneau": 0,
+    "type": "levier",
+    "declencheur": "Avec le Data Act, l’AI Act et les enjeux d’extraterritorialité, savoir précisément où sont ses données est devenu un prérequis.",
+    "tendance": "Savoir où sont vos données, leur volume, leur format et leur niveau de sensibilité.",
+    "risque": "On ne peut ni protéger ni déplacer ce que l’on ne connaît pas : c’est le point de départ de toute stratégie de réversibilité des données.",
+    "mitigations": [
+      "Classez vos données par sensibilité et par fournisseur.",
+      "Estimez le volume et le temps de transfert des données critiques."
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ]
+  },
+  {
+    "id": "chiffrement-avec-cles-maitrisees",
+    "titre": "Chiffrement avec clés maîtrisées",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "levier",
+    "declencheur": "Les inquiétudes sur l’accès extraterritorial aux données poussent les organisations à garder la maîtrise de leurs clés de chiffrement.",
+    "tendance": "Des données chiffrées avec des clés gérées par le client, idéalement dans un module matériel qu’il contrôle.",
+    "risque": "Il réduit l’exposition aux accès extraterritoriaux et facilite le changement de fournisseur.",
+    "mitigations": [
+      "Identifiez les données qui justifient des clés maîtrisées.",
+      "Vérifiez que la gestion des clés est elle-même réversible."
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
       }
     ]
   }

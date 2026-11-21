@@ -4,9 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Radar des dépendances — édition 1 (prototype)</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 28'%3E%3Ccircle cx='12' cy='14' r='8.5' fill='none' stroke='%230B2A3C' stroke-width='3'/%3E%3Cpath d='M20.5 14H27L35 7' fill='none' stroke='%2300A37A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M27 14L35 21' fill='none' stroke='%235A6E7A' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<meta name="description" content="Radar des dépendances numériques : tendances, technologies et mécanismes d’enfermement, avec les alternatives et les leviers pour garder le choix.">
+<link rel="canonical" href="https://optio.stratwise.fr/radar.html">
+<meta property="og:title" content="Radar des dépendances — Optio">
+<meta property="og:description" content="Tendances, technologies et mécanismes d’enfermement, avec les alternatives et les leviers pour garder le choix.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://optio.stratwise.fr/radar.html">
+<meta property="og:locale" content="fr_FR">
 <style>
 :root{
   color-scheme: light;
@@ -62,6 +68,9 @@ h1,h2,h3,p,ul{margin:0}
 a{color:var(--signal-text)}
 button,input{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--c-o);outline-offset:2px;border-radius:6px}
+html{scroll-padding-top:96px}
+.skip{position:absolute;left:12px;top:-100px;z-index:30;background:var(--c-o);color:var(--on-o);padding:12px 16px;border-radius:8px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
 .entete{background:var(--header);color:var(--on-header);border-bottom:1px solid var(--header-line)}
 .entete-in{max-width:1320px;margin:0 auto;padding:36px 28px 0;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 32px;align-items:end}
 @media (max-width:860px){.entete-in{grid-template-columns:minmax(0,1fr)}}
@@ -76,6 +85,7 @@ button,input{font:inherit;color:inherit}
   .vues button{padding:11px 14px 10px;font-size:14px;white-space:nowrap;flex:none}
   .page{padding:16px}
 }
+.edition a{color:var(--on-header);text-underline-offset:3px}
 .edition{font-family:var(--mesure);font-size:12.5px;color:var(--on-header-2);letter-spacing:0.02em}
 .entete h1{font-family:var(--titre);font-stretch:118%;font-weight:800;font-size:clamp(30px,4.4vw,52px);letter-spacing:-0.025em;line-height:1;margin-top:8px}
 .entete p.intro{color:var(--on-header-2);max-width:720px;font-size:16px;margin-top:12px}
@@ -102,7 +112,7 @@ button,input{font:inherit;color:inherit}
 .tirette:hover{background:var(--surface-2)}
 .tirette-g:hover{transform:translateX(3px)}
 .tirette-d:hover{transform:translateX(-3px)}
-.tirette-nb{font-family:var(--mesure);font-size:11px;font-weight:700;background:var(--halo);color:#2B2100;border-radius:999px;padding:1px 6px}
+.tirette-nb{font-family:var(--mesure);font-size:12px;font-weight:600;background:var(--halo);color:#2B2100;border-radius:999px;padding:1px 6px}
 .radar-lie{display:flex;flex-direction:column;gap:6px}
 .radar-lie-tete{display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:8px 14px;padding:4px 6px 0}
 .radar-lie-tete h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px;line-height:1.2}
@@ -113,7 +123,7 @@ button,input{font:inherit;color:inherit}
 .radar-lie .pt-lie{cursor:pointer}
 .radar-lie .pt-lie .core{transition:transform .16s ease;transform-box:fill-box;transform-origin:center}
 .radar-lie .pt-lie:hover .core,.radar-lie .pt-lie:focus-visible .core{transform:scale(1.3)}
-.radar-lie .pt-lie:focus{outline:none}
+.radar-lie .pt-lie:focus:not(:focus-visible){outline:none}
 .radar-lie .pt-lie .onde{pointer-events:none;transform-box:fill-box;transform-origin:center;animation:onde 2.4s ease-out infinite}
 @keyframes onde{0%{transform:scale(1);opacity:.7}100%{transform:scale(2.4);opacity:0}}
 .radar-lie .ouvrir{align-self:flex-start;margin:4px 6px 6px}
@@ -145,18 +155,18 @@ button,input{font:inherit;color:inherit}
 .jauge-barres{display:grid;grid-template-columns:repeat(4,1fr);gap:4px}
 .jauge-barres span{height:6px;border-radius:3px;background:var(--surface-2)}
 .jauge-barres span.on{background:var(--ink)}
-.jauge-libs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;font-size:11px;color:var(--text-3)}
-.jauge-libs b{color:var(--ink);font-weight:700}
-.fiche h3{font-size:12px;font-weight:700;color:var(--text-3);letter-spacing:0.02em;margin-bottom:5px}
+.jauge-libs{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;font-size:12px;color:var(--text-3)}
+.jauge-libs b{color:var(--ink);font-weight:600}
+.fiche h3{font-size:12px;font-weight:600;color:var(--text-3);margin-bottom:5px}
 .fiche p,.fiche li{font-size:15px;color:var(--text-2);line-height:1.55}
 .fiche ul{padding-left:18px;display:flex;flex-direction:column;gap:4px}
 .fiche .note{font-size:12.5px;color:var(--text-3);border-top:1px solid var(--line);padding-top:12px}
 .alts{display:flex;flex-wrap:wrap;gap:6px}
-.alts .alt-radar{display:inline-flex;align-items:center;gap:8px;border:1.5px solid color-mix(in srgb,var(--lt) 45%,transparent);background:var(--la);color:var(--ink);border-radius:999px;padding:4px 5px 4px 12px;font-size:13.5px;font-weight:600;cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.3,1.3),box-shadow .2s,border-color .2s}
+.alts .alt-radar{display:inline-flex;align-items:center;gap:8px;border:1.5px solid color-mix(in srgb,var(--lt) 45%,transparent);background:var(--la);color:var(--ink);border-radius:999px;padding:4px 5px 4px 12px;font-size:13.5px;font-weight:600;cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.25,1),box-shadow .2s,border-color .2s}
 .alts .alt-radar:hover,.alts .alt-radar:focus-visible{transform:translateY(-2px);border-color:var(--lt);box-shadow:0 6px 14px -8px rgba(6,25,42,.45)}
-.alts .alt-anneau{font-size:11px;font-weight:700;color:var(--lt);background:var(--surface);border-radius:999px;padding:2px 8px}
+.alts .alt-anneau{font-size:12px;font-weight:600;color:var(--lt);background:var(--surface);border-radius:999px;padding:2px 8px}
 .alts .alt-hors{font-size:13px;padding:5px 11px;border-radius:999px;border:1px dashed var(--line-2);color:var(--text-2)}
-.alts .alt-vide{font-size:14px;color:var(--text-3);font-style:italic}
+.alts .alt-vide{font-size:14px;color:var(--text-3);font-style:normal}
 .blip.pointe .core{transform:scale(1.5)}
 /* Défilement horizontal entre les vues */
 .page{view-transition-name:contenu}
@@ -171,17 +181,17 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 @keyframes vt-sort-d{to{transform:translateX(100vw);opacity:.4}}
 @keyframes vt-entre-d{from{transform:translateX(100vw)}}
 @keyframes vt-entre-g{from{transform:translateX(-100vw)}}
-.blip.eclat .core{animation:eclat .9s cubic-bezier(.2,.8,.3,1.4) 2}
+.blip.eclat .core{animation:eclat .9s cubic-bezier(.2,.8,.25,1) 2}
 @keyframes eclat{0%,100%{transform:none}40%{transform:scale(1.6)}}
-.badge-onglet{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;margin-left:8px;padding:0 6px;border-radius:999px;background:var(--halo);color:#2B2100;font-family:var(--mesure);font-size:11.5px;font-weight:700;vertical-align:1px}
-.badge-onglet.pop-badge{animation:bump .45s cubic-bezier(.2,.8,.3,1.5)}
-.lien-tendance{display:inline-flex;align-items:center;gap:8px;max-width:420px;border:1.5px solid var(--halo);background:color-mix(in srgb,var(--halo) 16%,var(--surface));border-radius:999px;padding:4px 6px 4px 5px;min-height:38px;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;flex:0 1 auto;min-width:0;transition:transform .18s,box-shadow .2s;animation:entre .4s cubic-bezier(.2,.8,.25,1.2)}
+.badge-onglet{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;margin-left:8px;padding:0 6px;border-radius:999px;background:var(--halo);color:#2B2100;font-family:var(--mesure);font-size:12px;font-weight:600;vertical-align:1px}
+.badge-onglet.pop-badge{animation:bump .45s cubic-bezier(.2,.8,.25,1)}
+.lien-tendance{display:inline-flex;align-items:center;gap:8px;max-width:420px;border:1.5px solid var(--halo);background:color-mix(in srgb,var(--halo) 16%,var(--surface));border-radius:999px;padding:4px 6px 4px 5px;min-height:38px;font-size:13.5px;font-weight:600;color:var(--ink);cursor:pointer;flex:0 1 auto;min-width:0;transition:transform .18s,box-shadow .2s;animation:entre .4s cubic-bezier(.2,.8,.25,1)}
 .lien-tendance:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px rgba(6,25,42,.45)}
 .lien-tendance .numero{background:var(--ink);color:var(--surface);min-width:26px;height:26px}
 .lien-tendance .lien-lib{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}
 .lien-tendance .lien-x{width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:15px;color:var(--text-2);flex:none}
 .lien-tendance:hover .lien-x{background:var(--ink);color:var(--surface)}
-.voir-radar{align-self:flex-start;margin-top:10px;border:none;background:var(--ink);color:var(--surface);border-radius:999px;padding:9px 16px;min-height:40px;font-size:13.5px;font-weight:700;cursor:pointer;transition:transform .18s,box-shadow .2s}
+.voir-radar{align-self:flex-start;margin-top:10px;border:none;background:var(--ink);color:var(--surface);border-radius:999px;padding:9px 16px;min-height:40px;font-size:13.5px;font-weight:600;cursor:pointer;transition:transform .18s,box-shadow .2s}
 .voir-radar:hover{transform:translateY(-2px);box-shadow:0 8px 18px -10px rgba(6,25,42,.6)}
 .voir-radar span{display:inline-block;transition:transform .2s}
 .voir-radar:hover span{transform:translateX(4px)}
@@ -192,13 +202,13 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .tend-liee .numero{background:var(--ink);color:var(--surface)}
 @media (prefers-reduced-motion: reduce){.blip.eclat .core,.badge-onglet.pop-badge,.lien-tendance{animation:none}}
 .blip.pointe .halo{stroke:var(--a3t) !important;stroke-dasharray:4 3}
-.fiche h3 .non-exh{font-weight:500;color:var(--text-3);font-style:italic;margin-left:4px}
+.fiche h3 .non-exh{font-weight:500;color:var(--text-3);font-style:normal;margin-left:4px}
 .fiche .criteres ul{list-style:none;padding:0;gap:8px;margin-top:4px}
 .fiche .criteres li{display:grid;grid-template-columns:auto 1fr;column-gap:10px;align-items:baseline;font-size:14px;line-height:1.45;padding-left:14px;position:relative}
 .fiche .criteres li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--a3t)}
 .fiche .criteres li strong{grid-column:1/-1;color:var(--ink);font-size:14px}
 .fiche .criteres li span{grid-column:1/-1;color:var(--text-2);font-size:13.5px}
-.numero{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 7px;border-radius:999px;font-family:var(--mesure);font-size:11.5px;flex:none}
+.numero{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 7px;border-radius:999px;font-family:var(--mesure);font-size:12px;flex:none}
 .barre{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:center;justify-content:space-between}
 .groupe-filtres{display:flex;flex-wrap:wrap;gap:12px 22px;align-items:center}
 .seg{display:inline-flex;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:3px;gap:2px}
@@ -215,7 +225,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .quadrant h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
 .quadrant h2 small{font-family:var(--mesure);font-size:12px;color:var(--text-3);font-weight:500}
 .quadrant p.desc{font-size:13px;color:var(--text-3);margin-bottom:6px}
-.groupe{align-self:flex-start;font-size:11.5px;font-weight:700;letter-spacing:0.02em;margin:12px 0 4px;padding:3px 11px;border-radius:999px}
+.groupe{align-self:flex-start;font-size:12px;font-weight:600;margin:12px 0 4px;padding:3px 11px;border-radius:999px}
 .item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:none;padding:6px;border-radius:10px;cursor:pointer}
 .item:hover,.item[aria-current="true"]{background:var(--surface-2)}
 .item strong{font-size:14px;font-weight:600;line-height:1.3}
@@ -223,7 +233,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .methode{padding:26px;display:flex;flex-direction:column;gap:16px}
 .methode h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px}
 .methode .grille{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:20px}
-.methode h3{font-size:15px;font-weight:700;margin-bottom:4px}
+.methode h3{font-size:15px;font-weight:600;margin-bottom:4px}
 .methode p{font-size:14.5px;color:var(--text-2)}
 .familles{display:flex;flex-direction:column;gap:22px}
 .famille{padding:22px 22px 18px}
@@ -233,9 +243,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .famille p.desc{font-size:13.5px;color:var(--text-3);margin-bottom:14px}
 .mecas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(330px,100%),1fr));gap:12px}
 .meca{border:1px solid var(--line);border-radius:12px;padding:16px 16px 14px;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
-.meca h3{font-size:15.5px;font-weight:700;line-height:1.3}
+.meca h3{font-size:15.5px;font-weight:600;line-height:1.3}
 .meca dl{margin:0;display:grid;grid-template-columns:max-content 1fr;gap:6px 12px;font-size:13.5px}
-.meca dt{font-weight:700;color:var(--text-3);font-size:12px;padding-top:1px}
+.meca dt{font-weight:600;color:var(--text-3);font-size:12px;padding-top:1px}
 .meca dd{margin:0;color:var(--text-2)}
 .meca dd.parade{color:var(--signal-text);font-weight:600}
 
@@ -247,17 +257,17 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 
 .tp-defil{padding:16px;overflow-x:auto}
 .tp{display:grid;grid-template-columns:136px minmax(188px,.72fr) repeat(3,minmax(284px,1fr));gap:6px;min-width:1160px}
-.tp-moment{font-size:12.5px;font-weight:700;color:var(--text-2);text-align:center;padding:8px 4px;border-bottom:2px solid var(--line-2);cursor:default}
-.tp-couche{display:flex;align-items:center;padding:8px 12px;border-radius:10px;font-weight:700;font-size:13px;line-height:1.25;cursor:default}
+.tp-moment{font-size:12.5px;font-weight:600;color:var(--text-2);text-align:center;padding:8px 4px;border-bottom:2px solid var(--line-2);cursor:default}
+.tp-couche{display:flex;align-items:center;padding:8px 12px;border-radius:10px;font-weight:600;font-size:13px;line-height:1.25;cursor:default}
 .tp-cellule{display:flex;flex-wrap:nowrap;gap:6px;align-items:flex-start;padding:5px;border-radius:10px;background:var(--surface-2);min-height:92px}
 .tuile{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;flex:none;width:86px;height:80px;padding:6px 7px 7px;border:none;border-radius:10px;text-align:left;cursor:pointer;transition:opacity .15s,transform .15s;box-shadow:inset 0 0 0 1px rgba(11,42,60,.08)}
 .tuile:hover{transform:translateY(-2px)}
 .tuile.pale{opacity:.22}
 .tuile.choisie{box-shadow:0 0 0 3px var(--ink)}
 .tuile.cochee{box-shadow:0 0 0 3px var(--c-o)}
-.tuile-num{font-family:var(--mesure);font-size:10px;opacity:.8}
+.tuile-num{font-family:var(--mesure);font-size:11px;opacity:.8}
 .tuile-sym{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:24px;line-height:1}
-.tuile-nom{font-size:10px;font-weight:600;line-height:1.2;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.tuile-nom{font-size:11px;font-weight:600;line-height:1.2;hyphens:auto;-webkit-hyphens:auto;overflow-wrap:anywhere;max-width:100%;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .tuile-check{position:absolute;top:6px;right:7px;width:20px;height:20px;border-radius:50%;background:var(--c-o);color:var(--on-o);font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center}
 @media (prefers-reduced-motion: reduce){.tuile{transition:none}.tuile:hover{transform:none}}
 .tp-dialog{border:none;border-radius:18px;padding:26px;max-width:560px;width:calc(100% - 32px);background:var(--surface);color:var(--ink);box-shadow:0 24px 60px rgba(6,25,42,.35)}
@@ -269,15 +279,15 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 @media (max-width:860px){.tp-profil{grid-template-columns:1fr}}
 .tp-profil-col{display:flex;flex-direction:column;gap:14px}
 .tp-profil h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:21px}
-.tp-profil h3{font-size:13px;font-weight:700;color:var(--text-3)}
+.tp-profil h3{font-size:13px;font-weight:600;color:var(--text-3)}
 .tp-fiche h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.15}
-.tp-fiche h3{font-size:13px;font-weight:700;color:var(--text-3)}
+.tp-fiche h3{font-size:13px;font-weight:600;color:var(--text-3)}
 .tp-fiche-tete{display:flex;gap:14px;align-items:center}
 .tuile-grande{width:84px;height:84px;flex:none;cursor:default}
 .tuile-grande:hover{transform:none}
 .tp-quand{font-size:13px;color:var(--text-3);margin-top:4px}
 .tp-dl{margin:0;display:flex;flex-direction:column;gap:4px}
-.tp-dl dt{font-size:12px;font-weight:700;color:var(--text-3);margin-top:8px}
+.tp-dl dt{font-size:12px;font-weight:600;color:var(--text-3);margin-top:8px}
 .tp-dl dd{margin:0;font-size:14.5px;color:var(--text-2);line-height:1.5}
 .tp-dl dd.parade{color:var(--signal-text);font-weight:600}
 .tp-lien{font-weight:600;font-size:14px}
@@ -297,7 +307,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 :root[data-theme="dark"]{--fam0:#3B2620;--fam0t:#F2B8A5;--fam1:#3A3217;--fam1t:#F2D27A;--fam2:#3A2030;--fam2t:#F0B4D2;--fam3:#16374B;--fam3t:#9CCBEA;--fam4:#173A2F;--fam4t:#9DDDC2;--fam5:#2B2742;--fam5t:#C7BDF0;--fam6:#27302A;--fam6t:#BFD0B4}
 .pied{font-size:13px;color:var(--text-3);padding:4px 0 28px;max-width:960px}
 .blip{cursor:pointer}
-.blip:focus{outline:none}
+.blip:focus:not(:focus-visible){outline:none}
 .blip .core{transition:transform .16s ease;transform-box:fill-box;transform-origin:center}
 .blip:hover .core,.blip:focus-visible .core{transform:scale(1.28)}
 .blip:focus-visible .halo{stroke:var(--c-o)}
@@ -312,28 +322,28 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 #etape-1,#etape-2{flex:0 1 auto}
 .etape-tete{display:flex;align-items:center;gap:8px;flex:none}
 .etape-num{width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--surface);font-family:var(--mesure);font-size:12px;display:inline-flex;align-items:center;justify-content:center;transition:background .3s,color .3s}
-.etape-lib{font-size:12px;font-weight:700;color:var(--text-3);letter-spacing:.05em;text-transform:uppercase}
+.etape-lib{font-size:12px;font-weight:600;color:var(--text-3)}
 .menu{position:relative;flex:none}
-.puce{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1.5px solid var(--line-2);background:var(--surface);border-radius:999px;padding:5px 10px 5px 6px;min-height:40px;font-size:14px;font-weight:600;color:var(--text-2);cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.3,1.3),border-color .2s,background .25s,box-shadow .25s,opacity .25s,color .2s}
+.puce{display:inline-flex;align-items:center;gap:8px;white-space:nowrap;border:1.5px solid var(--line-2);background:var(--surface);border-radius:999px;padding:5px 10px 5px 6px;min-height:40px;font-size:14px;font-weight:600;color:var(--text-2);cursor:pointer;transition:transform .18s cubic-bezier(.2,.8,.25,1),border-color .2s,background .25s,box-shadow .25s,opacity .25s,color .2s}
 .puce:hover{transform:translateY(-2px);border-color:var(--pc);color:var(--ink);box-shadow:0 6px 14px -8px rgba(6,25,42,.45)}
 .puce:active{transform:translateY(0) scale(.97)}
 .tete-dec{display:inline-flex;align-items:center;gap:8px}
-.dot{width:11px;height:11px;border-radius:50%;background:var(--pc);flex:none;margin:0 4px 0 6px;transition:transform .25s cubic-bezier(.2,.8,.3,1.4)}
+.dot{width:11px;height:11px;border-radius:50%;background:var(--pc);flex:none;margin:0 4px 0 6px;transition:transform .25s cubic-bezier(.2,.8,.25,1)}
 .puce:hover .dot{transform:scale(1.3)}
 .ic{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
-.ic-rond{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--pc) 15%,var(--surface));color:var(--pc);flex:none;transition:transform .3s cubic-bezier(.2,.8,.3,1.4),background .25s}
+.ic-rond{width:28px;height:28px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:color-mix(in srgb,var(--pc) 15%,var(--surface));color:var(--pc);flex:none;transition:transform .3s cubic-bezier(.2,.8,.25,1),background .25s}
 .ic-rond .ic{width:17px;height:17px}
 .puce:hover .ic-rond,.option.actif .ic-rond{transform:rotate(-10deg) scale(1.08)}
-.nb{font-family:var(--mesure);font-size:11px;font-weight:500;color:var(--text-3);background:var(--surface-2);border-radius:999px;padding:2px 7px;min-width:24px;text-align:center;transition:background .25s,color .25s}
-.chev{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.2,.8,.3,1.3);flex:none}
+.nb{font-family:var(--mesure);font-size:12px;font-weight:500;color:var(--text-3);background:var(--surface-2);border-radius:999px;padding:2px 7px;min-width:24px;text-align:center;transition:background .25s,color .25s}
+.chev{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transition:transform .3s cubic-bezier(.2,.8,.25,1);flex:none}
 .menu.ouvert .chev{transform:rotate(180deg)}
-.puce.choisi{border-color:var(--pc);background:var(--pf,color-mix(in srgb,var(--pc) 12%,var(--surface)));color:var(--ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--pc) 22%,transparent)}
-.puce.choisi .nb{background:var(--surface);color:var(--ink);font-weight:700}
+.puce.choisi{border-color:var(--pc);background:var(--pf,color-mix(in srgb,var(--pc) 12%,var(--surface)));color:var(--ink);box-shadow:none}
+.puce.choisi .nb{background:var(--surface);color:var(--ink);font-weight:600}
 .puce.choisi .ic-rond{background:var(--surface)}
-.menu.ouvert .puce{border-color:var(--pc);box-shadow:0 0 0 3px color-mix(in srgb,var(--pc) 22%,transparent)}
+.menu.ouvert .puce{border-color:var(--pc);box-shadow:none}
 .liste{position:absolute;top:calc(100% + 8px);left:0;z-index:40;min-width:max(100%,300px);max-width:calc(100vw - 32px);max-height:min(70vh,460px);overflow-y:auto;margin:0;padding:6px;list-style:none;background:var(--surface);border:1px solid var(--line);border-radius:20px;box-shadow:0 24px 50px -18px rgba(6,25,42,.55);display:none;flex-direction:column;gap:3px;transform-origin:top left}
 /* fermée, la liste sort de la mise en page (pas de débordement sur mobile) ; ouverte, elle apparaît en fondu */
-.menu.ouvert .liste{display:flex;animation:menu-in .22s cubic-bezier(.2,.8,.3,1.2)}
+.menu.ouvert .liste{display:flex;animation:menu-in .22s cubic-bezier(.2,.8,.25,1)}
 @keyframes menu-in{from{opacity:0;transform:translateY(-6px) scale(.97)}}
 .liste:focus{outline:none}
 .liste:focus-visible .option.actif{outline:2px solid var(--pc);outline-offset:-2px}
@@ -347,7 +357,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .option[aria-selected="true"] .coche{opacity:1}
 .option.vide{opacity:.45}
 .option .dot{margin:0 8px}
-.menu.ouvert .option{animation:entre .32s cubic-bezier(.2,.8,.25,1.2) backwards}
+.menu.ouvert .option{animation:entre .32s cubic-bezier(.2,.8,.25,1) backwards}
 #etape-2{max-width:0;opacity:0;visibility:hidden;overflow:hidden;transform:translateX(-14px);margin-left:-14px;transition:max-width .55s cubic-bezier(.2,.8,.25,1),opacity .35s,transform .45s,margin .45s,visibility 0s .55s}
 .axe-choisi #etape-2{max-width:1000px;overflow:visible;opacity:1;visibility:visible;transform:none;margin-left:0;transition:max-width .55s cubic-bezier(.2,.8,.25,1),opacity .35s .12s,transform .45s .12s,margin .45s,visibility 0s}
 .sep{width:20px;height:20px;color:var(--text-3);flex:none}
@@ -356,7 +366,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 @keyframes reveil{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--halo) 80%,transparent)}100%{box-shadow:0 0 0 14px transparent}}
 .resume{margin-left:auto;display:flex;align-items:center;gap:12px;font-size:13px;color:var(--text-2)}
 .resume strong{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:20px;color:var(--ink);margin-right:3px;display:inline-block}
-.resume strong.bump{animation:bump .4s cubic-bezier(.2,.8,.3,1.5)}
+.resume strong.bump{animation:bump .4s cubic-bezier(.2,.8,.25,1)}
 @keyframes bump{from{transform:scale(1.35)}to{transform:none}}
 .raz{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:6px 13px;min-height:34px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;display:inline-flex;gap:6px;align-items:center;transition:background .2s,transform .15s}
 .raz:hover{background:var(--surface-2);transform:rotate(-2deg)}
@@ -371,7 +381,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 }
 
 /* Radar : secteurs animés */
-.secteur{transform-box:view-box;transform-origin:0 0;transition:transform .55s cubic-bezier(.2,.85,.25,1.18),opacity .35s,filter .35s}
+.secteur{transform-box:view-box;transform-origin:0 0;transition:transform .55s cubic-bezier(.2,.8,.25,1),opacity .35s,filter .35s}
 .secteur.eteint{opacity:.28;filter:saturate(.15)}
 .secteur.apercu{transform:translate(calc(var(--dx) * .4),calc(var(--dy) * .4)) scale(1.012)}
 .secteur.focus{transform:translate(var(--dx),var(--dy)) scale(1.03);filter:drop-shadow(0 12px 18px rgba(6,25,42,.28))}
@@ -389,7 +399,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .lab-anneau.allume text{fill:var(--lt);font-weight:800}
 .lab-anneau.terne{opacity:.45}
 .blip{transition:opacity .35s}
-.picto-axe{cursor:pointer;transform-box:fill-box;transform-origin:center;transition:transform .25s cubic-bezier(.2,.8,.3,1.4)}
+.picto-axe{cursor:pointer;transform-box:fill-box;transform-origin:center;transition:transform .25s cubic-bezier(.2,.8,.25,1)}
 .picto-axe:hover{transform:scale(1.18) rotate(-8deg)}
 @media (prefers-reduced-motion: reduce){.picto-axe{transition:none}}
 .indice{display:flex;align-items:center;gap:8px;min-height:30px;padding:2px 6px 6px;font-size:12.5px;color:var(--text-3);transition:color .2s}
@@ -401,7 +411,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .quadrant.eteint{opacity:.42;filter:grayscale(.9)}
 .quadrant.eteint:hover{opacity:.8;filter:none}
 .quadrant.focus{order:-1;box-shadow:0 0 0 2px var(--qc),0 22px 44px -26px rgba(6,25,42,.55)}
-.quadrant.pop{animation:pop .55s cubic-bezier(.2,.85,.25,1.2)}
+.quadrant.pop{animation:pop .55s cubic-bezier(.2,.8,.25,1)}
 @keyframes pop{from{transform:translateY(10px) scale(.96);opacity:.3}to{transform:none;opacity:1}}
 .titre-axe{display:flex;justify-content:space-between;align-items:baseline;gap:10px;width:100%;border:none;background:none;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;border-radius:6px}
 .titre-axe:hover span:first-child{text-decoration:underline;text-decoration-color:var(--qc);text-decoration-thickness:3px;text-underline-offset:4px}
@@ -421,10 +431,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 </style>
 </head>
 <body>
+<a class="skip" href="#contenu">Aller au contenu</a>
 <header class="entete">
 <div class="entete-in">
 <div>
-<p class="edition">Édition 1 · prototype · novembre 2026</p>
+<p class="edition"><a href="./">Optio</a> · Édition 1 · prototype · novembre 2026</p>
 <h1>Radar des dépendances</h1>
 <p class="intro" id="intro"></p>
 </div>
@@ -446,7 +457,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 </div>
 </div>
 
-<main class="page">
+<main class="page" id="contenu">
 <div class="zone-radar" id="zone">
 <button type="button" class="tirette tirette-g" id="tirette-g" hidden aria-label="Revenir au radar des tendances"><span aria-hidden="true">‹</span></button>
 <button type="button" class="tirette tirette-d" id="tirette-d" hidden aria-label="Afficher le radar des technologies concernées"><span aria-hidden="true">›</span><span class="tirette-nb" id="tirette-nb"></span></button>
@@ -491,7 +502,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 
   var VUES={
     tendances:{
-      intro:"Les tendances qui renforcent la dépendance des organisations à leurs fournisseurs numériques, rangées selon cinq axes et classées selon l’urgence pour un DSI.",
+      intro:"Les tendances qui renforcent la dépendance des organisations à leurs fournisseurs numériques, rangées selon cinq axes et classées selon l’urgence pour un DSI. Le filtre « Type » ajoute les leviers de liberté pour les contrer.",
       tousAxes:"Tous les axes", tousAnneaux:"Toutes les urgences",
       quadrants:[{t:"Juridique",ic:"balance",d:"Ce que les contrats, les licences et le droit applicable vous permettent, ou vous interdisent."},{t:"Financier",ic:"pieces",d:"Comment les éditeurs facturent, et ce que la dépendance vous coûte."},{t:"Humain",ic:"humain",d:"Les compétences, l’organisation et les partenaires dont dépend votre capacité à changer."},{t:"Réglementaire",ic:"institution",d:"Ce que les régulateurs et les États exigent ou imposent."},{t:"Pratiques technologiques",ic:"puce",d:"Les choix techniques qui rendent un fournisseur difficile à remplacer."}],
       anneaux:["Urgence forte","Urgence élevée","Urgence moyenne","Urgence faible"], courts:["Fort","Élevé","Moyen","Faible"], libAnneau:"Urgence", libAxe:"Axe", nom:["tendance","tendances"],
@@ -500,7 +511,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       methode:[["Ce que mesure le radar","Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Des faits sourcés, pas une note des fournisseurs."],["Les anneaux","L’urgence pour un DSI, de forte au centre à faible au bord. Forte : effet dans les 12 mois. Élevée : 12 à 24 mois. Moyenne : la tendance se confirme. Faible : signal à garder à l’œil."],["Les axes","Juridique, financier, humain, réglementaire et pratiques technologiques : chaque tendance est rangée selon la nature de la dépendance qu’elle crée."],["Les sources et le rythme","Études publiques, textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Une édition par semestre."]]
     },
     technologies:{
-      intro:"Plus de cent technologies d’éditeurs et projets ouverts, de l’infrastructure aux services d’exploitation, classées selon la difficulté typique d’une sortie. Au centre, les plus difficiles à quitter.",
+      intro:"{n} technologies d’éditeurs et projets ouverts, de l’infrastructure aux services d’exploitation, classées selon la difficulté typique d’une sortie. Au centre, les plus difficiles à quitter.",
       tousAxes:"Tous les domaines", tousAnneaux:"Toutes les difficultés",
       quadrants:[{t:"Infrastructure bas niveau",ic:"serveur",d:"Virtualisation, systèmes, stockage, réseau, sauvegarde, IaaS."},{t:"Middleware",ic:"couches",d:"Messagerie, intégration, serveurs d’applications, API, conteneurs, identité."},{t:"Données",ic:"donnees",d:"Bases, entrepôts, formats, traitements et visualisation."},{t:"Services aux opérations",ic:"operations",d:"Gestion des services, observabilité, CI/CD, automatisation, sécurité opérationnelle."}],
       anneaux:["Sortie difficile","Sortie exigeante","Sortie maîtrisable","Sortie facilitée"], courts:["Difficile","Exigeante","Maîtrisable","Facilitée"], libAnneau:"Sortie", libAxe:"Domaine", nom:["technologie","technologies"],
@@ -520,7 +531,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       methode:[["Ce que mesure ce radar","La difficulté typique de sortie d’une technologie, selon cinq critères : formats et API, licence et contrat, concentration, maturité des alternatives, compétences nécessaires."],["Les anneaux","Du rouge au vert, du centre vers le bord : plus une technologie est loin du centre, plus elle se quitte facilement. Difficile : des mois de préparation et peu d’alternatives directes. Exigeante : des alternatives existent, mais la migration est lourde. Maîtrisable : standards ou formats ouverts facilitent la sortie. Facilitée : technologie ouverte, plusieurs fournisseurs possibles."],["Les couleurs","Propriétaire, ouvert à éditeur unique, ou ouvert à gouvernance partagée. Un projet ouvert contrôlé par un seul éditeur peut changer de règles, comme Redis, Terraform, Puppet ou MinIO l’ont montré."],["Une lecture, pas un verdict","Le classement varie selon vos usages : une base propriétaire utilisée de façon standard se quitte plus facilement qu’une base ouverte truffée d’extensions spécifiques. À confirmer avec l’indice de réversibilité."]]
     }
   };
-  VUES.mecanismes={intro:"La table de l’enfermement numérique : 26 mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et la parade.",
+  VUES.mecanismes={intro:"La table de l’enfermement numérique : {n} mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et la parade.",
     methode:[["Ce que recense cette vue","Les mécanismes d’enfermement observés dans les contrats, les licences, les offres commerciales, la technique, l’organisation, le droit et la gouvernance de l’open source."],["Comment l’utiliser","En mode atelier, chaque participant coche les mécanismes à l’œuvre chez son fournisseur le plus critique : la table affiche son profil d’enfermement et ses parades prioritaires. Chaque parade renvoie au levier correspondant du radar."],["Une liste vivante","Elle s’enrichit à chaque édition du radar, au fil des retours des DSI et de l’actualité des éditeurs."]]};
   var T=[], TECH=[], MECA=[], META=[], DONNEES=null;
   function verifier(liste, nom, regles){
@@ -535,10 +546,13 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     verifier(tendances,"tendances",[["titre","texte"],["quadrant",Q("tendances")],["anneau",A],["type",["risque","levier"]],["tendance","texte"],["risque","texte"]]);
     verifier(technologies,"technologies",[["nom","texte"],["quadrant",Q("technologies")],["anneau",A],["type",["p","e","o"]],["dependance","texte"]]);
     verifier(mecanismes,"mecanismes",[["nom","texte"],["court","texte"],["symbole","texte"],["couche",[0,1,2,3,4,5,6]],["moment",[0,1,2,3]],["fonctionnement","texte"],["parade","texte"]]);
-    T=tendances.map(function(x,i){ return {id:"t-"+String(i+1).padStart(2,"0"), n:i+1, techNoms:Array.isArray(x.technologies)?x.technologies:[], q:x.quadrant, a:x.anneau, k:x.type, type:x.type, t:x.titre, contexte:x.declencheur||"",
+    T=tendances.map(function(x,i){ return {id:(x.id||"t-"+String(i+1).padStart(2,"0")), pid:"t-"+String(i+1).padStart(2,"0"), n:i+1, techNoms:Array.isArray(x.technologies)?x.technologies:[], q:x.quadrant, a:x.anneau, k:x.type, type:x.type, t:x.titre, contexte:x.declencheur||"",
       quoi:x.tendance, pourquoi:x.risque, faire:x.mitigations||[], src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
-    TECH=technologies.map(function(x,i){ return {id:"x-"+String(i+1).padStart(3,"0"), n:i+1, crit:Array.isArray(x.criteres)&&x.criteres.length?x.criteres:null, sites:(Array.isArray(x.site)?x.site:(x.site?[x.site]:[])), pourquoi:x.pourquoi||"", q:x.quadrant, a:x.anneau, type:x.type, t:x.nom, ed:x.editeur||"", note:x.dependance, alt:(x.alternatives||[]).join(", ")}; });
+    TECH=technologies.map(function(x,i){ return {id:(x.id||"x-"+String(i+1).padStart(3,"0")), pid:"x-"+String(i+1).padStart(3,"0"), n:i+1, crit:Array.isArray(x.criteres)&&x.criteres.length?x.criteres:null, sites:(Array.isArray(x.site)?x.site:(x.site?[x.site]:[])), pourquoi:x.pourquoi||"", q:x.quadrant, a:x.anneau, type:x.type, t:x.nom, ed:x.editeur||"", note:x.dependance, alt:(x.alternatives||[]).join(", ")}; });
     MECA=mecanismes.map(function(m){ return [m.couche, m.nom, m.fonctionnement, m.exemple||"", m.signal||"", m.parade]; });
+    var vus={tendances:1,technologies:1,mecanismes:1};
+    T.concat(TECH).forEach(function(x){ if(!/^[a-z0-9][a-z0-9-]*$/.test(x.id)||vus[x.id]) throw new Error("data : identifiant « "+x.id+" » invalide ou en double (« "+(x.t)+" »)"); vus[x.id]=1; });
+    VUES.technologies.intro=VUES.technologies.intro.replace("{n}",TECH.length); VUES.mecanismes.intro=VUES.mecanismes.intro.replace("{n}",mecanismes.length);
     META=mecanismes.map(function(m){ return [m.symbole, m.moment, m.levier||"", m.court]; });
     var absents=mecanismes.filter(function(m){ return m.levier && !T.some(function(x){ return x.t===m.levier; }); });
     if(absents.length) console.info("mecanismes.json : "+absents.length+" levier(s) absent(s) de tendances.json, liens « Voir le levier » masqués.");
@@ -602,7 +616,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       return false;
     }
     items.forEach(function(x){
-      var rnd=alea(hash(x.id+vue)), ang0=QANG[x.q][0], ang1=QANG[x.q][1];
+      var rnd=alea(hash(x.pid+vue)), ang0=QANG[x.q][0], ang1=QANG[x.q][1];
       var r0=x.a===0?30:R[x.a]+rb+4, r1=R[x.a+1]-rb-4, dmin=vue==="technologies"?25:38, ok=false;
       for(var essai=0;essai<1200 && !ok;essai++){
         if(essai>0 && essai%200===0) dmin*=0.9;
@@ -766,7 +780,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function typesPresents(){ return VUES[vue].types.filter(function(t){ return DONNEES[vue].some(function(x){ return x.type===t[0]; }); }); }
   function legende(){ var z=document.getElementById("legende"); z.textContent=""; typesPresents().forEach(function(t){ var i=el("i"); i.style.background=couleur(t[0])[0]; z.appendChild(el("span",null,[i,t[1]])); }); }
   function stats(){ var z=document.getElementById("stats"); z.textContent="";
-    [[T.length,"tendances"],[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]].forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
+    var nl=T.filter(function(x){ return x.type==="levier"; }).length;
+    [[T.length-nl,"tendances"]].concat(nl?[[nl,"leviers"]]:[],[[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]]).forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
   function fiche(){
     var f=document.getElementById("fiche"), V=VUES[vue]; f.textContent="";
     var x=DONNEES[vue].find(function(y){ return y.id===sel; });
@@ -1075,6 +1090,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       prof.appendChild(gauche); prof.appendChild(droite); z.appendChild(prof);
     }
   }
+  // Vue Tendances : les leviers sont masqués par défaut (filtre Type), sauf si la fiche demandée en est un
+  function typeDefaut(v,garder){ var d=DONNEES[v]; if(v!=="tendances"||!d.some(function(x){ return x.type==="levier"; })) return "tous"; var c=garder&&d.filter(function(x){ return x.id===sel; })[0]; return c&&c.type==="levier"?"tous":"risque"; }
   function changerVue(v,garderSel){
     document.documentElement.setAttribute("data-vue",v); // palette des anneaux propre à la vue
     if(!DONNEES) return;
@@ -1082,7 +1099,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     ["tendances","technologies","mecanismes"].forEach(function(n){ var b=document.getElementById("v-"+n); b.setAttribute("aria-selected",String(n===v)); b.tabIndex=n===v?0:-1; });
     document.querySelector(".zone-radar").hidden=estMeca; document.querySelector(".barre").hidden=estMeca; document.getElementById("bande").hidden=estMeca; document.getElementById("listes").hidden=estMeca; document.getElementById("vue-meca").hidden=!estMeca;
     if(estMeca){ vue=v; document.getElementById("intro").textContent=VUES.mecanismes.intro; rendreMeca(); methode(); return; }
-    vue=v; fAxe="tous"; fAnneau="tous"; fType="tous"; q=""; apercu={q:null,a:null}; dernierTotal=null; var inp=document.getElementById("recherche"); inp.value=""; inp.placeholder=VUES[v].recherche;
+    vue=v; fAxe="tous"; fAnneau="tous"; fType=typeDefaut(v,garderSel); q=""; apercu={q:null,a:null}; dernierTotal=null; var inp=document.getElementById("recherche"); inp.value=""; inp.placeholder=VUES[v].recherche;
     document.getElementById("intro").textContent=VUES[v].intro;
     if(!deja[v]){ placer(DONNEES[v], rb()); deja[v]=true; }
     if(!garderSel) sel=(v==="technologies" && lien && lien.techs.length ? lien.techs[0] : DONNEES[v][0]).id;
@@ -1235,8 +1252,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function depuisHash(){
     var h=location.hash.replace("#","");
     if(h==="technologies"||h==="tendances"||h==="mecanismes"){ if(vue!==h) changerVue(h); return; }
-    if(/^t-\d\d$/.test(h)){ if(vue!=="tendances") changerVue("tendances",true); if(T.some(function(x){return x.id===h;})) choisir(h,false); }
-    else if(/^x-\d\d\d$/.test(h)){ if(vue!=="technologies") changerVue("technologies",true); if(TECH.some(function(x){return x.id===h;})) choisir(h,false); }
+    var y=T.filter(function(x){ return x.id===h||x.pid===h; })[0], z=y?null:TECH.filter(function(x){ return x.id===h||x.pid===h; })[0];
+    if(y){ if(vue!=="tendances") changerVue("tendances",true); if(!visible(y)) allerA(y); else choisir(y.id,false); }
+    else if(z){ if(vue!=="technologies") changerVue("technologies",true); if(!visible(z)) allerA(z); else choisir(z.id,false); }
   }
   window.addEventListener("hashchange",depuisHash);
   /* Chargement des données : data/tendances.json, data/technologies.json, data/mecanismes.json */
