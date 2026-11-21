@@ -1,0 +1,774 @@
+[
+  {
+    "id": "alternatives-de-virtualisation-matures",
+    "titre": "Alternatives de virtualisation matures",
+    "axe": 4,
+    "principe": "Des solutions comme Proxmox ou XCP-ng, cette dernière éditée en France, sont utilisées en production et font l’objet de migrations réelles.",
+    "mise_en_oeuvre": [
+      "Comparez deux alternatives sur vos usages réels.",
+      "Mesurez la sortie par un pilote."
+    ],
+    "verification": "Deux alternatives ont été comparées sur vos charges réelles, avec un délai et un coût de migration chiffrés.",
+    "limites": "Une alternative mature ne dit rien de votre cas : sauvegarde, supervision et compétences sont à remplacer aussi.",
+    "lies": [
+      "pilote-de-sortie-sur-un-perimetre-reel",
+      "competences-sur-les-alternatives"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "Nutanix AHV",
+      "Apache CloudStack",
+      "Harvester",
+      "OpenNebula",
+      "OpenShift Virtualization",
+      "oVirt",
+      "Incus",
+      "KubeVirt",
+      "Proxmox VE",
+      "XCP-ng et Xen Orchestra"
+    ]
+  },
+  {
+    "id": "clauses-de-reversibilite",
+    "titre": "Clauses de réversibilité",
+    "axe": 0,
+    "principe": "Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références récentes outillent la négociation : les clauses types de la Commission européenne pour les contrats cloud, et les clauses Oméga proposées par Libralis. Oméga 1 engage le fournisseur à ne jamais transmettre vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 lui interdit toute coupure arbitraire d’un service critique.",
+    "mise_en_oeuvre": [
+      "Établissez une grille de clauses minimales pour tout contrat critique.",
+      "Appuyez-vous sur les clauses types européennes pour la sortie et la portabilité.",
+      "Demandez à vos fournisseurs critiques s’ils signent les clauses Oméga de Libralis."
+    ],
+    "verification": "Chaque contrat critique contient une durée, un plafond de hausse, un export dans un format standard et une assistance à la sortie, relus par le juridique.",
+    "limites": "Une clause ne vaut que si elle s’exerce : sans test de sortie, rien ne prouve que l’export ou l’assistance fonctionnent.",
+    "lies": [
+      "revue-de-reversibilite-des-nouveaux-contrats",
+      "tests-de-bascule-reguliers",
+      "clauses-daudit-encadrees"
+    ],
+    "contexte": "La négociation du contrat reste le levier le moins coûteux, et elle s’outille : la Commission européenne a publié en novembre 2025 des clauses types non contraignantes pour les contrats cloud, devenues la recommandation (UE) 2026/2394, et Libralis propose des clauses standard que les fournisseurs peuvent s’engager à signer.",
+    "sources": [
+      {
+        "titre": "Alliancy, clauses types européennes pour le cloud (recommandation (UE) 2026/2394)",
+        "url": "https://alliancy.fr/reversibilite-numerique-le-droit-de-partir-ne-suffit-pas-il-faut-savoir-le-faire-382c9e9b-7166-4229-a5d5-876cccb97049"
+      },
+      {
+        "titre": "InformatiqueNews, entretien avec Alain Issarni sur Libralis",
+        "url": "https://www.informatiquenews.fr/aucune-organisation-ne-peut-accepter-un-kill-switch-arbitraire-alain-issarni-libralis-111072"
+      },
+      {
+        "titre": "Commission européenne, clauses contractuelles types pour les contrats cloud (publication du 19 novembre 2025, mise à jour du 11 novembre 2026)",
+        "url": "https://digital-strategy.ec.europa.eu/en/library/draft-recommendation-non-binding-model-contractual-terms-data-access-and-use-and-non-binding"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "fin-des-frais-de-sortie-cloud-data-act",
+    "titre": "Fin des frais de sortie cloud (Data Act)",
+    "axe": 3,
+    "principe": "À partir du 12 janvier 2027, les fournisseurs de cloud ne pourront plus facturer de frais de changement de fournisseur, y compris les frais de transfert de données.",
+    "mise_en_oeuvre": [
+      "Évitez de se réengager longtemps juste avant cette date.",
+      "Préparez la portabilité technique."
+    ],
+    "verification": "Les contrats cloud en cours mentionnent la fin des frais de changement de fournisseur au 12 janvier 2027.",
+    "limites": "Seuls les frais de changement tombent : le travail de portabilité technique reste à votre charge.",
+    "lies": [
+      "couches-dabstraction",
+      "formats-de-donnees-ouverts"
+    ],
+    "contexte": "Le Data Act européen, applicable depuis septembre 2025, programme la suppression totale des frais de changement de fournisseur cloud au 12 janvier 2027.",
+    "sources": [
+      {
+        "titre": "Règlement (UE) 2023/2854, article 29",
+        "url": "https://eur-lex.europa.eu/eli/reg/2023/2854/oj"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "cloud-europeen-qualifie",
+    "titre": "Cloud européen qualifié",
+    "axe": 3,
+    "principe": "Des offres d’hébergeurs européens qualifiées SecNumCloud se développent, notamment pour les données sensibles.",
+    "mise_en_oeuvre": [
+      "Incluez-les dans vos comparaisons, avec la même grille de réversibilité."
+    ],
+    "verification": "L’offre qualifiée est comparée avec la même grille de réversibilité que les autres.",
+    "limites": "La qualification vise la protection contre l’accès extraterritorial, pas la réversibilité de l’offre elle-même.",
+    "lies": [
+      "indice-de-reversibilite-fonde-sur-la-preuve",
+      "chiffrement-avec-cles-maitrisees"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ],
+    "technologies": [
+      "IaaS européens (OVHcloud, Scaleway, Outscale)",
+      "OpenStack"
+    ]
+  },
+  {
+    "id": "couches-dabstraction",
+    "titre": "Couches d’abstraction",
+    "axe": 4,
+    "principe": "Conteneurs, Kubernetes, outils d’infrastructure as code ouverts : des couches qui rendent l’infrastructure sous-jacente plus interchangeable.",
+    "mise_en_oeuvre": [
+      "Testez le déploiement d’une application sur une seconde plateforme.",
+      "Décrivez infrastructure, configuration et pipelines dans des fichiers versionnés (Git), pour pouvoir les rejouer sur une autre plateforme."
+    ],
+    "verification": "Une application critique a été déployée sur une seconde plateforme à partir des mêmes fichiers versionnés.",
+    "limites": "Une couche d’abstraction crée parfois sa propre dépendance (outil, version, compétences) et ne couvre pas les services managés propres à un fournisseur.",
+    "lies": [
+      "pilote-de-sortie-sur-un-perimetre-reel",
+      "tests-de-bascule-reguliers"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ],
+    "technologies": [
+      "Pulumi",
+      "Rancher",
+      "Terraform",
+      "Ansible",
+      "Kubernetes",
+      "OpenTofu",
+      "Argo CD"
+    ]
+  },
+  {
+    "id": "modeles-dia-a-poids-ouverts",
+    "titre": "Modèles d’IA à poids ouverts",
+    "axe": 4,
+    "principe": "Des modèles dont les poids sont publiés permettent d’héberger l’IA chez soi ou chez le fournisseur de son choix.",
+    "mise_en_oeuvre": [
+      "Évaluez un modèle ouvert sur un cas d’usage interne."
+    ],
+    "verification": "Un modèle ouvert a été évalué sur un cas d’usage interne, avec des critères de performance écrits.",
+    "limites": "Les poids ouverts ne suppriment ni le besoin de matériel ni celui de compétences, et leurs conditions d’usage sont à relire.",
+    "lies": [
+      "competences-sur-les-alternatives",
+      "pilote-de-sortie-sur-un-perimetre-reel"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ],
+    "technologies": [
+      "vLLM"
+    ]
+  },
+  {
+    "id": "achats-et-investissements-groupes",
+    "titre": "Achats et investissements groupés",
+    "axe": 1,
+    "principe": "Plusieurs organisations s’associent pour négocier ou financer une alternative commune.",
+    "mise_en_oeuvre": [
+      "Identifiez des pairs exposés aux mêmes fournisseurs."
+    ],
+    "verification": "Au moins un pair exposé au même fournisseur a été contacté, et un cadre commun est écrit (périmètre, calendrier).",
+    "limites": "Un groupement ne vaut que si les intérêts sont alignés, et il ralentit la décision.",
+    "lies": [
+      "cout-total-de-la-dependance"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "partir-des-processus-metier-critiques",
+    "titre": "Partir des processus métier critiques",
+    "axe": 2,
+    "principe": "Plutôt que d’inventorier des centaines de contrats, on part des processus qui ne peuvent pas s’arrêter, puis on remonte vers les services numériques et les fournisseurs qui les portent.",
+    "mise_en_oeuvre": [
+      "Identifiez avec vos métiers les processus critiques et leur tolérance à l’arrêt.",
+      "Nommez les cinq fournisseurs dont la défaillance arrêterait votre activité."
+    ],
+    "verification": "La liste des processus critiques est validée par les métiers, avec leur tolérance à l’arrêt.",
+    "limites": "Elle ne remplace pas l’inventaire des contrats : elle indique par où commencer.",
+    "lies": [
+      "registre-des-contrats-et-des-prestataires",
+      "mesurer-la-marge-de-manuvre"
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "mesurer-la-marge-de-manuvre",
+    "titre": "Mesurer la marge de manœuvre",
+    "axe": 1,
+    "principe": "La marge de manœuvre, c’est le nombre de mois avant l’échéance moins le délai de sortie estimé. Négative, le verrou est actif : il faudra re-signer.",
+    "mise_en_oeuvre": [
+      "Pour chaque fournisseur critique, notez l’échéance, le préavis et la reconduction.",
+      "Estimez le délai de sortie avec vos équipes, puis calculez la marge."
+    ],
+    "verification": "Pour chaque fournisseur critique, la marge (mois avant l’échéance moins délai de sortie) est calculée et datée.",
+    "limites": "Le délai de sortie est une estimation : sans pilote, la marge reste théorique.",
+    "lies": [
+      "registre-des-contrats-et-des-prestataires",
+      "pilote-de-sortie-sur-un-perimetre-reel"
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "mode-degrade-et-continuite-hors-fournisseur",
+    "titre": "Mode dégradé et continuité hors fournisseur",
+    "axe": 4,
+    "principe": "Un plan de continuité qui ne repose pas entièrement sur le fournisseur dont on dépend : sauvegardes hors site, mode dégradé défini, reprise ailleurs.",
+    "mise_en_oeuvre": [
+      "Définissez le mode dégradé des services critiques.",
+      "Vérifiez qu’une sauvegarde est restaurable hors du fournisseur."
+    ],
+    "verification": "Une sauvegarde a été restaurée hors du fournisseur lors d’un test chronométré.",
+    "limites": "Répartir sur plusieurs régions chez le même fournisseur ne suffit pas, et un mode dégradé demande du travail pour rester à jour.",
+    "lies": [
+      "tests-de-bascule-reguliers"
+    ],
+    "contexte": "Les pannes géantes de 2024 et 2025 ont montré que la continuité ne peut pas reposer entièrement sur le fournisseur dont on dépend.",
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ],
+    "technologies": [
+      "Atempo Tina et Lina",
+      "Commvault",
+      "Veeam Backup",
+      "Bacula",
+      "Bareos",
+      "Proxmox Backup Server"
+    ]
+  },
+  {
+    "id": "cout-total-de-la-dependance",
+    "titre": "Coût total de la dépendance",
+    "axe": 1,
+    "principe": "Le coût d’une dépendance sur cinq ans : coûts directs, coûts opérationnels (le temps passé à subir roadmap, mises à jour, formations, obsolescence) et coûts de risque. On le compare au coût du changement.",
+    "mise_en_oeuvre": [
+      "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.",
+      "Comparez-le, scénario par scénario, au coût d’un changement."
+    ],
+    "verification": "Un calcul sur cinq ans existe pour chaque fournisseur critique, comparé à un scénario de changement.",
+    "limites": "Les hausses futures sont des hypothèses : le résultat dépend de celles que vous posez.",
+    "lies": [
+      "mesurer-la-marge-de-manuvre",
+      "achats-et-investissements-groupes"
+    ],
+    "contexte": "Avec des hausses anticipées de 12 % par an, le coût d’une dépendance double en six ans : la facture de l’année ne suffit plus pour décider.",
+    "sources": [
+      {
+        "titre": "Calculateur du coût total de la dépendance Optio",
+        "url": null
+      },
+      {
+        "titre": "Cigref et Asterès, mai 2026",
+        "url": "https://www.cigref.fr/wp/wp-content/uploads/2026/05/Cigref-Asteres-Hausses-Tarifaires-Cloud-Logiciel-Europe-2026.pdf"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "pilote-de-sortie-sur-un-perimetre-reel",
+    "titre": "Pilote de sortie sur un périmètre réel",
+    "axe": 4,
+    "principe": "Migrer un périmètre limité et représentatif vers l’alternative, puis mesurer le temps, l’effort, le coût et le risque, et extrapoler à la sortie complète.",
+    "mise_en_oeuvre": [
+      "Choisissez un périmètre représentatif, sans risque pour votre production.",
+      "Mesurez, puis présentez le résultat à votre comité de direction."
+    ],
+    "verification": "Le pilote a mesuré le temps, l’effort, le coût et le risque, et le résultat a été présenté à la direction.",
+    "limites": "Un périmètre trop simple sous-estime la sortie complète ; un périmètre trop large met la production en risque.",
+    "lies": [
+      "tests-de-bascule-reguliers",
+      "alternatives-de-virtualisation-matures"
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      },
+      {
+        "titre": "Règlement (UE) 2022/2554, article 28",
+        "url": "https://eur-lex.europa.eu/eli/reg/2022/2554/oj"
+      }
+    ],
+    "technologies": [
+      "VMware vSphere et VCF",
+      "Nutanix AHV",
+      "Apache CloudStack",
+      "Harvester",
+      "OpenNebula",
+      "OpenShift Virtualization",
+      "oVirt",
+      "Incus",
+      "KubeVirt",
+      "Proxmox VE",
+      "XCP-ng et Xen Orchestra"
+    ]
+  },
+  {
+    "id": "revue-de-reversibilite-des-nouveaux-contrats",
+    "titre": "Revue de réversibilité des nouveaux contrats",
+    "axe": 0,
+    "principe": "Chaque nouveau contrat critique passe par une revue : portabilité des données, clauses de sortie, alternatives, notes minimales exigées.",
+    "mise_en_oeuvre": [
+      "Exigez au moins 3 sur 5 sur la portabilité des données et sur le contrat.",
+      "Intégrez la revue au processus d’achat."
+    ],
+    "verification": "Aucun contrat critique n’est signé sans la revue, et les notes minimales sont consignées.",
+    "limites": "Une revue ne couvre que les nouveaux contrats : le stock existant se traite avec d’autres leviers.",
+    "lies": [
+      "clauses-de-reversibilite",
+      "indice-de-reversibilite-fonde-sur-la-preuve",
+      "registre-des-contrats-et-des-prestataires"
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+    "titre": "Indice de réversibilité fondé sur la preuve",
+    "axe": 2,
+    "principe": "Une note sur 100 par fournisseur critique, sur sept axes notés 0, 1, 3 ou 5. Sans axe prouvé à 5, l’indice est plafonné à 69.",
+    "mise_en_oeuvre": [
+      "Notez vos fournisseurs critiques, preuves à l’appui.",
+      "Revoyez l’indice chaque trimestre."
+    ],
+    "verification": "Chaque fournisseur critique a un indice daté, avec la preuve de chaque axe noté 5.",
+    "limites": "L’indice est une méthode Optio : il ne remplace ni un audit ni un test de sortie réel.",
+    "lies": [
+      "revue-de-reversibilite-des-nouveaux-contrats",
+      "tests-de-bascule-reguliers"
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "formats-de-donnees-ouverts",
+    "titre": "Formats de données ouverts",
+    "axe": 4,
+    "principe": "Des formats comme Apache Iceberg ou Parquet permettent de lire les mêmes données avec plusieurs moteurs, chez plusieurs fournisseurs.",
+    "mise_en_oeuvre": [
+      "Privilégiez les formats ouverts pour les nouveaux projets de données.",
+      "Vérifiez que votre entrepôt actuel sait les lire et les écrire."
+    ],
+    "verification": "Les nouveaux projets de données écrivent dans un format ouvert que deux moteurs savent lire.",
+    "limites": "Un format ouvert ne règle ni les procédures stockées, ni les fonctions propres à un moteur, ni les frais de transfert.",
+    "lies": [
+      "cartographie-et-classification-des-donnees",
+      "couches-dabstraction"
+    ],
+    "sources": [
+      {
+        "titre": "Apache Iceberg",
+        "url": "https://iceberg.apache.org/"
+      }
+    ],
+    "technologies": [
+      "Google BigQuery",
+      "Snowflake",
+      "Databricks",
+      "Apache Hudi",
+      "Apache Iceberg",
+      "Apache ORC",
+      "Apache Parquet",
+      "Delta Lake"
+    ]
+  },
+  {
+    "id": "tests-de-bascule-reguliers",
+    "titre": "Tests de bascule réguliers",
+    "axe": 4,
+    "principe": "Une bascule réelle vers l’alternative ou le site de secours, au moins une fois par an (recommandation Optio) pour les fournisseurs les plus critiques.",
+    "mise_en_oeuvre": [
+      "Planifiez un test annuel pour chaque fournisseur vital.",
+      "Chronométrez le temps de reprise et comparez-le à l’objectif."
+    ],
+    "verification": "Un test de bascule a été chronométré dans l’année et comparé à l’objectif de reprise.",
+    "limites": "Une bascule coûte du temps d’équipe, et un test partiel peut rassurer à tort.",
+    "lies": [
+      "mode-degrade-et-continuite-hors-fournisseur",
+      "pilote-de-sortie-sur-un-perimetre-reel"
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "competences-sur-les-alternatives",
+    "titre": "Compétences sur les alternatives",
+    "axe": 2,
+    "principe": "Former les équipes aux technologies alternatives, s’appuyer sur des communautés et des partenaires.",
+    "mise_en_oeuvre": [
+      "Identifiez les compétences rares liées aux fournisseurs critiques.",
+      "Formez au moins deux personnes sur l’alternative retenue."
+    ],
+    "verification": "Au moins deux personnes ont été formées et ont réalisé un exercice sur l’alternative.",
+    "limites": "La formation s’érode sans pratique, et une compétence individuelle part avec la personne.",
+    "lies": [
+      "pilote-de-sortie-sur-un-perimetre-reel",
+      "tests-de-bascule-reguliers"
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "support-tiers-pour-gagner-du-temps",
+    "titre": "Support tiers pour gagner du temps",
+    "axe": 1,
+    "principe": "Des prestataires de support indépendants des éditeurs permettent de prolonger l’usage d’une version existante pendant la construction d’une alternative.",
+    "mise_en_oeuvre": [
+      "Ne l’envisagez qu’avec un plan de sortie daté.",
+      "Vérifiez l’impact sur la sécurité et les mises à jour."
+    ],
+    "verification": "Le support tiers est accompagné d’un plan de sortie daté.",
+    "limites": "Il donne du temps mais ne réduit pas la dépendance, et son effet sur la sécurité et les mises à jour est à vérifier.",
+    "lies": [
+      "mesurer-la-marge-de-manuvre",
+      "cout-total-de-la-dependance"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ],
+    "technologies": [
+      "Oracle Database",
+      "SAP HANA"
+    ]
+  },
+  {
+    "id": "referentiel-de-reversibilite-partage",
+    "titre": "Référentiel de réversibilité partagé",
+    "axe": 3,
+    "principe": "Une grille commune et ouverte pour mesurer la réversibilité, construite avec l’écosystème (associations professionnelles, éditeurs, utilisateurs).",
+    "mise_en_oeuvre": [
+      "Utilisez une grille commune dans les appels d’offres.",
+      "Partagez vos retours d’expérience."
+    ],
+    "verification": "Une grille commune a été utilisée dans au moins un appel d’offres.",
+    "limites": "Elle n’existe pas encore comme référence reconnue : sans adoption large, elle reste une méthode parmi d’autres.",
+    "lies": [
+      "indice-de-reversibilite-fonde-sur-la-preuve"
+    ],
+    "sources": [
+      {
+        "titre": "Référentiel de réversibilité Optio",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "gestion-des-actifs-logiciels",
+    "titre": "Gestion des actifs logiciels",
+    "axe": 0,
+    "principe": "Un inventaire précis des licences détenues et des usages réels, tenu à jour en continu.",
+    "mise_en_oeuvre": [
+      "Rapprochez chaque trimestre licences achetées et usages mesurés.",
+      "Identifiez les licences inutilisées avant chaque échéance."
+    ],
+    "verification": "Licences achetées et usages mesurés sont rapprochés chaque trimestre.",
+    "limites": "Un inventaire exact ne protège pas si la règle de comptage de l’éditeur est elle-même contestée.",
+    "lies": [
+      "clauses-daudit-encadrees",
+      "registre-des-contrats-et-des-prestataires"
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "clauses-daudit-encadrees",
+    "titre": "Clauses d’audit encadrées",
+    "axe": 0,
+    "principe": "Préavis, fréquence maximale, périmètre défini, auditeur indépendant et outils de mesure reconnus par les deux parties.",
+    "mise_en_oeuvre": [
+      "Intégrez ces clauses à la grille de négociation des contrats critiques."
+    ],
+    "verification": "Les clauses d’audit (préavis, fréquence, périmètre, auditeur) figurent dans les contrats critiques.",
+    "limites": "Une clause encadre l’audit sans l’empêcher, et l’éditeur peut refuser de la signer.",
+    "lies": [
+      "gestion-des-actifs-logiciels",
+      "clauses-de-reversibilite"
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "cartographie-et-classification-des-donnees",
+    "titre": "Cartographie et classification des données",
+    "axe": 4,
+    "principe": "Savoir où sont vos données, leur volume, leur format et leur niveau de sensibilité.",
+    "mise_en_oeuvre": [
+      "Classez vos données par sensibilité et par fournisseur.",
+      "Estimez le volume et le temps de transfert des données critiques."
+    ],
+    "verification": "Les données critiques sont classées par sensibilité et par fournisseur, avec volume et temps de transfert estimés.",
+    "limites": "Une cartographie se périme vite si elle n’est pas mise à jour en continu.",
+    "lies": [
+      "chiffrement-avec-cles-maitrisees",
+      "formats-de-donnees-ouverts"
+    ],
+    "sources": [
+      {
+        "titre": "Guide Optio « Garder le choix »",
+        "url": null
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "chiffrement-avec-cles-maitrisees",
+    "titre": "Chiffrement avec clés maîtrisées",
+    "axe": 3,
+    "principe": "Des données chiffrées avec des clés gérées par le client, idéalement dans un module matériel qu’il contrôle.",
+    "mise_en_oeuvre": [
+      "Identifiez les données qui justifient des clés maîtrisées.",
+      "Vérifiez que la gestion des clés est elle-même réversible."
+    ],
+    "verification": "Les clés des données identifiées sont gérées hors du fournisseur, et leur gestion est elle-même réversible.",
+    "limites": "Le chiffrement ne protège pas les données traitées en clair chez le fournisseur.",
+    "lies": [
+      "cartographie-et-classification-des-donnees",
+      "cloud-europeen-qualifie"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      }
+    ],
+    "technologies": [
+      "Entra ID et Active Directory",
+      "HashiCorp Vault",
+      "Infisical",
+      "OpenBao"
+    ]
+  },
+  {
+    "id": "gouvernance-des-projets-ouverts-verifiee",
+    "titre": "Gouvernance des projets ouverts vérifiée avant adoption",
+    "axe": 4,
+    "principe": "Avant d’adopter un projet ouvert, on regarde qui le gouverne (fondation ou éditeur unique), qui détient les droits et la marque, et si plusieurs organisations le font vivre. OpenSSF Scorecard automatise une partie de ces vérifications : projet maintenu, contributeurs d’au moins deux organisations.",
+    "mise_en_oeuvre": [
+      "Relevez, pour chaque projet critique, qui le gouverne, qui détient la marque et s’il existe un accord de contributeur.",
+      "Mesurez l’activité et la diversité des contributeurs (OpenSSF Scorecard : contrôles Maintained et Contributors).",
+      "Préférez les projets hébergés par une fondation à gouvernance ouverte, comme Valkey sous la Linux Foundation."
+    ],
+    "verification": "Chaque projet ouvert critique a une fiche de gouvernance datée.",
+    "limites": "Scorecard mesure l’activité et la diversité des contributeurs, pas la gouvernance elle-même ; une fondation ne garantit pas la pérennité.",
+    "lies": [
+      "fork-communautaire-et-miroir-de-repli",
+      "competences-sur-les-alternatives"
+    ],
+    "sources": [
+      {
+        "titre": "OpenSSF, Scorecard (README du projet)",
+        "url": "https://github.com/ossf/scorecard"
+      },
+      {
+        "titre": "Linux Foundation, communiqué sur Valkey, avril 2024",
+        "url": "https://www.linuxfoundation.org/press/valkey-community-announces-release-candidate-amid-growing-support-for-open-source-data-store"
+      }
+    ],
+    "technologies": [
+      "Valkey",
+      "OpenTofu"
+    ]
+  },
+  {
+    "id": "fork-communautaire-et-miroir-de-repli",
+    "titre": "Fork communautaire et miroir de repli",
+    "axe": 4,
+    "principe": "Quand un éditeur unique change de licence ou abandonne un projet, un fork hébergé par une fondation et soutenu par plusieurs acteurs peut prendre le relais. Valkey, annoncé en mars 2024 sous la Linux Foundation après le changement de licence de Redis, reprend Redis OSS 7.2.4 sous licence BSD 3-clause ; AWS, Google Cloud et Oracle comptent parmi ses soutiens. Un miroir interne des paquets et des images évite qu’un retrait en amont bloque les compilations.",
+    "mise_en_oeuvre": [
+      "Identifiez, pour chaque projet à éditeur unique, le fork communautaire existant ou probable.",
+      "Gardez un miroir interne des paquets et des images que vous utilisez.",
+      "Vérifiez la compatibilité de votre configuration avec le fork avant d’en avoir besoin."
+    ],
+    "verification": "Un fork de repli est identifié et sa compatibilité est testée sur un environnement non critique.",
+    "limites": "Un fork peut diverger du projet d’origine, et il ne règle ni le support commercial ni les compétences.",
+    "lies": [
+      "gouvernance-des-projets-ouverts-verifiee",
+      "competences-sur-les-alternatives"
+    ],
+    "sources": [
+      {
+        "titre": "Linux Foundation, communiqué sur Valkey, avril 2024",
+        "url": "https://www.linuxfoundation.org/press/valkey-community-announces-release-candidate-amid-growing-support-for-open-source-data-store"
+      }
+    ],
+    "technologies": [
+      "Valkey",
+      "OpenTofu"
+    ]
+  },
+  {
+    "id": "registre-des-contrats-et-des-prestataires",
+    "titre": "Registre des contrats et des prestataires",
+    "axe": 4,
+    "principe": "Un registre unique des accords contractuels portant sur des services numériques : fournisseur, fonction soutenue, durée, date de préavis, reconduction, sous-traitants connus. DORA l’impose aux entités financières (article 28, paragraphe 3), avec des modèles fixés par le règlement d’exécution (UE) 2024/2956, et y inclut les sous-traitants des services qui soutiennent des fonctions critiques ou importantes.",
+    "mise_en_oeuvre": [
+      "Listez chaque service critique avec son contrat, sa durée, sa date de préavis et sa règle de reconduction.",
+      "Ajoutez les sous-traitants connus des services critiques.",
+      "Rattachez chaque ligne à un responsable et à une alternative identifiée.",
+      "Faites passer tout renouvellement par ce registre."
+    ],
+    "verification": "Le registre est à jour, et chaque échéance à douze mois y figure avec un responsable.",
+    "limites": "Un registre ne dit rien de la qualité d’un contrat : il évite de rater les échéances et montre la concentration. Les sous-traitants ne sont connus que si le fournisseur les déclare.",
+    "lies": [
+      "mesurer-la-marge-de-manuvre",
+      "revue-de-reversibilite-des-nouveaux-contrats",
+      "gestion-des-actifs-logiciels"
+    ],
+    "sources": [
+      {
+        "titre": "EUR-Lex, règlement d’exécution (UE) 2024/2956, registre d’informations DORA",
+        "url": "https://eur-lex.europa.eu/eli/reg_impl/2024/2956/oj/eng"
+      },
+      {
+        "titre": "EUR-Lex, règlement (UE) 2022/2554 (DORA), articles 28 et 64, décembre 2022",
+        "url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32022R2554"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "sequestre-de-code-source-exploitable",
+    "titre": "Séquestre de code source exploitable",
+    "axe": 0,
+    "principe": "L’entiercement (escrow) confie à un tiers de confiance le code source, la base de données ou le savoir-faire d’un logiciel, que le bénéficiaire peut réclamer dans des conditions fixées par contrat : faillite, cession des activités, défaut de maintenance, bug critique, inexécution. L’Agence pour la Protection des Programmes (APP) propose un entiercement bipartite ou tripartite et dit gérer plusieurs milliers de contrats.",
+    "mise_en_oeuvre": [
+      "Définissez au contrat les conditions de libération du dépôt (faillite, cession, arrêt de maintenance).",
+      "Prévoyez le droit d’usage, de modification et d’hébergement du code libéré.",
+      "Faites vérifier que le dépôt est complet et qu’une équipe peut le compiler et l’exploiter.",
+      "Faites mettre à jour le dépôt à chaque version majeure."
+    ],
+    "verification": "Une équipe qui n’a pas écrit le code a compilé le dépôt lors d’un test.",
+    "limites": "Le séquestre ne protège que si le dépôt est vérifié et le droit d’usage prévu : un code récupéré sans droit de l’exploiter, ni équipe pour le faire, ne sert à rien.",
+    "lies": [
+      "clauses-de-reversibilite",
+      "competences-sur-les-alternatives"
+    ],
+    "sources": [
+      {
+        "titre": "APP, communiqué de presse sur l’entiercement, 7 mai 2020",
+        "url": "https://www.app.asso.fr/wp-content/uploads/LAPP-Communiqu%C3%A9-de-presse-Entiercement-Escrow-agreement.pdf"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "pilotage-et-conseil-independants",
+    "titre": "Pilotage et conseil indépendants de l’éditeur",
+    "axe": 2,
+    "principe": "Conserver en interne le pilotage, l’architecture et la maîtrise d’ouvrage, et recourir à un conseil indépendant des éditeurs et de leurs partenaires. Dans un rapport relayé le 3 juin 2024, la Cour des comptes relevait que la Cnam dépendait de quelques prestataires pour l’assistance à maîtrise d’ouvrage, la maîtrise d’œuvre et le conseil stratégique : entre 2012 et 2022, l’un d’eux avait reçu plus de 80 % des commandes passées auprès des cinq premiers. La Cnam s’est fixé de rester sous 20 % de la charge en assistance à maîtrise d’ouvrage et sous 50 % en assistance à maîtrise d’œuvre.",
+    "mise_en_oeuvre": [
+      "Fixez un plafond à la part de la maîtrise d’ouvrage et de l’architecture confiée à l’extérieur.",
+      "Gardez en interne le pilotage, l’architecture et les décisions d’achat.",
+      "Choisissez des conseils sans commission d’éditeur.",
+      "Exigez la documentation et le transfert de compétences en fin de mission."
+    ],
+    "verification": "La part des missions de maîtrise d’ouvrage confiée à un seul prestataire est suivie et plafonnée.",
+    "limites": "Les plafonds de la Cnam (20 % et 50 %) sont un choix propre à cet organisme, pas une norme.",
+    "lies": [
+      "competences-sur-les-alternatives",
+      "indice-de-reversibilite-fonde-sur-la-preuve"
+    ],
+    "sources": [
+      {
+        "titre": "Le Monde Informatique, l’IT de la Cnam trop dépendante des prestataires selon la Cour des comptes, 3 juin 2024",
+        "url": "https://www.lemondeinformatique.fr/actualites/lire-l-it-de-la-cnam-trop-dependante-des-prestataires-selon-la-cour-des-comptes-93889.html"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "droit-et-juridiction-europeens-negocies",
+    "titre": "Droit et juridiction européens négociés",
+    "axe": 0,
+    "principe": "Faire appliquer au contrat le droit d’un État membre de l’Union européenne et choisir un fournisseur dont le siège, le capital et les sous-traitants limitent l’exposition aux lois extra-européennes. Le référentiel SecNumCloud 3.2 de l’ANSSI (8 mars 2022) exige une convention de service appliquant le droit d’un État membre (exigence 19.1), une résiliation sans pénalité en cas de perte de la qualification, un siège dans l’Union et un capital détenu par des entités non européennes à moins de 24 % individuellement et de 39 % collectivement (exigence 19.6).",
+    "mise_en_oeuvre": [
+      "Exigez que le droit applicable soit celui d’un État membre de l’Union.",
+      "Demandez au fournisseur les éléments d’appréciation du risque lié aux droits non européens.",
+      "Prévoyez une résiliation sans pénalité en cas de perte de la qualification.",
+      "Vérifiez le siège, l’actionnariat et les sous-traitants non européens du fournisseur."
+    ],
+    "verification": "Les contrats critiques identifient le droit applicable et prévoient la résiliation sans pénalité en cas de perte de la qualification.",
+    "limites": "Le droit choisi pour le contrat ne règle pas seul l’exposition aux lois extra-européennes : le référentiel y ajoute des exigences de siège, de capital et d’accès aux données.",
+    "lies": [
+      "cloud-europeen-qualifie",
+      "chiffrement-avec-cles-maitrisees",
+      "clauses-de-reversibilite"
+    ],
+    "sources": [
+      {
+        "titre": "ANSSI, référentiel SecNumCloud, version 3.2 du 8 mars 2022",
+        "url": "https://cyber.gouv.fr/documents/388/secnumcloud-referentiel-exigences-v3.2.pdf"
+      }
+    ],
+    "technologies": [
+      "IaaS européens (OVHcloud, Scaleway, Outscale)"
+    ]
+  }
+]

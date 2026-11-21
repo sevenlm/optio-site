@@ -291,6 +291,22 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .tp-dl dt{font-size:12px;font-weight:600;color:var(--text-3);margin-top:8px}
 .tp-dl dd{margin:0;font-size:14.5px;color:var(--text-2);line-height:1.5}
 .tp-dl dd.parade{color:var(--signal-text);font-weight:600}
+.lv-liste{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.lv-liste li{font-size:14px;color:var(--text-2);line-height:1.45}
+.lv-btn{font:inherit;font-weight:600;font-size:14px;background:none;border:0;padding:0;cursor:pointer;color:var(--signal-text);text-align:left;text-decoration:underline;text-underline-offset:3px}
+.lv-dialog{max-width:680px;max-height:calc(100vh - 40px);overflow:auto}
+.lv-groupe{margin:0 0 26px}
+.lv-groupe h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:19px;margin:0 0 2px}
+.lv-groupe > p{margin:0 0 12px;font-size:14px;color:var(--text-2);max-width:760px}
+.lv-grille{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:10px}
+.lv-carte{display:flex;flex-direction:column;gap:8px;text-align:left;font:inherit;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--ink);cursor:pointer}
+.lv-carte:hover,.lv-carte:focus-visible{border-color:var(--text-3)}
+.lv-carte strong{font-size:15px;font-weight:600;line-height:1.3}
+.lv-carte .lv-n{font-size:12.5px;color:var(--text-3)}
+.lv-carte .lv-n.vide{font-style:italic}
+.lv-chips{display:flex;flex-wrap:wrap;gap:4px}
+.lv-chip{font-family:var(--mono,ui-monospace,monospace);font-size:11.5px;font-weight:700;padding:2px 6px;border-radius:6px}
+.lv-vide{font-size:14px;color:var(--text-3);font-style:italic}
 .tp-lien{font-weight:600;font-size:14px}
 .tp-aide{font-size:14px;color:var(--text-2)}
 .tp-chiffres{display:grid;grid-template-columns:1fr 1fr;gap:12px}
@@ -450,6 +466,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 <button role="tab" id="v-tendances" aria-selected="true">Tendances</button>
 <button role="tab" id="v-technologies" aria-selected="false" tabindex="-1">Technologies</button>
 <button role="tab" id="v-mecanismes" aria-selected="false" tabindex="-1">Mécanismes d’enfermement</button>
+<button role="tab" id="v-leviers" aria-selected="false" tabindex="-1">Leviers</button>
 </div>
 </div>
 </header>
@@ -491,7 +508,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 <div class="quadrants" id="listes"></div>
 
 <section id="vue-meca" hidden aria-label="Mécanismes d’enfermement"></section>
+<section id="vue-lev" hidden aria-label="Leviers"></section>
 <dialog id="meca-dialog" class="tp-dialog" aria-labelledby="meca-titre"></dialog>
+<dialog id="lev-dialog" class="tp-dialog lv-dialog" aria-labelledby="lev-titre"></dialog>
 
 <section class="panneau methode" aria-labelledby="t-meth">
 <h2 id="t-meth">La méthode</h2>
@@ -508,11 +527,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 
   var VUES={
     tendances:{
-      intro:"Les tendances qui renforcent la dépendance des organisations à leurs fournisseurs numériques, rangées selon cinq axes et classées selon l’urgence pour un DSI. Le filtre « Type » ajoute les leviers de liberté pour les contrer.",
+      intro:"Les tendances qui renforcent la dépendance des organisations à leurs fournisseurs numériques, rangées selon cinq axes et classées selon l’urgence pour un DSI.",
       tousAxes:"Tous les axes", tousAnneaux:"Toutes les urgences",
       quadrants:[{t:"Juridique",ic:"balance",d:"Ce que les contrats, les licences et le droit applicable vous permettent, ou vous interdisent."},{t:"Financier",ic:"pieces",d:"Comment les éditeurs facturent, et ce que la dépendance vous coûte."},{t:"Humain",ic:"humain",d:"Les compétences, l’organisation et les partenaires dont dépend votre capacité à changer."},{t:"Réglementaire",ic:"institution",d:"Ce que les régulateurs et les États exigent ou imposent."},{t:"Pratiques technologiques",ic:"puce",d:"Les choix techniques qui rendent un fournisseur difficile à remplacer."}],
       anneaux:["Urgence forte","Urgence élevée","Urgence moyenne","Urgence faible"], courts:["Fort","Élevé","Moyen","Faible"], libAnneau:"Urgence", libAxe:"Axe", nom:["tendance","tendances"],
-      types:[["risque","Tendance qui renforce la dépendance"],["levier","Levier de liberté"]],
+      types:[["risque","Tendance qui renforce la dépendance"]],
       recherche:"Rechercher une tendance…",
       methode:[["Ce que mesure le radar","Des tendances de marché, réglementaires ou techniques qui modifient la capacité des organisations à changer de fournisseur. Des faits sourcés, pas une note des fournisseurs."],["Les anneaux","L’urgence pour un DSI, de forte au centre à faible au bord. Forte : effet dans les 12 mois. Élevée : 12 à 24 mois. Moyenne : la tendance se confirme. Faible : signal à garder à l’œil."],["Les axes","Juridique, financier, humain, réglementaire et pratiques technologiques : chaque tendance est rangée selon la nature de la dépendance qu’elle crée."],["Les sources et le rythme","Études publiques, textes réglementaires, annonces des éditeurs, presse spécialisée et entretiens avec des DSI. Une édition par semestre."]]
     },
@@ -538,8 +557,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     }
   };
   VUES.mecanismes={recherche:"Rechercher un mécanisme…", intro:"La table de l’enfermement numérique : {n} mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et la parade.",
-    methode:[["Ce que recense cette vue","Les mécanismes d’enfermement observés dans les contrats, les licences, les offres commerciales, la technique, l’organisation, le droit et la gouvernance de l’open source."],["Comment l’utiliser","En mode atelier, chaque participant coche les mécanismes à l’œuvre chez son fournisseur le plus critique : la table affiche son profil d’enfermement et ses parades prioritaires. Chaque parade renvoie au levier correspondant du radar."],["Une liste vivante","Elle s’enrichit à chaque édition du radar, au fil des retours des DSI et de l’actualité des éditeurs."]]};
-  var T=[], TECH=[], MECA=[], META=[], DONNEES=null;
+    methode:[["Ce que recense cette vue","Les mécanismes d’enfermement observés dans les contrats, les licences, les offres commerciales, la technique, l’organisation, le droit et la gouvernance de l’open source."],["Comment l’utiliser","En mode atelier, chaque participant coche les mécanismes à l’œuvre chez son fournisseur le plus critique : la table affiche son profil d’enfermement et les leviers prioritaires pour le desserrer. Chaque mécanisme renvoie à ses leviers, dans l’onglet Leviers."],["Une liste vivante","Elle s’enrichit à chaque édition du radar, au fil des retours des DSI et de l’actualité des éditeurs."]]};
+  VUES.leviers={recherche:"Rechercher un levier…", intro:"Les solutions aux mécanismes d’enfermement : {n} leviers, chacun rattaché aux mécanismes qu’il permet de contrer, avec ses étapes de mise en œuvre, la preuve qu’il fonctionne et ses limites.",
+    methode:[["Ce que recense cette vue","Des pratiques qui desserrent une dépendance : contrats, finances, organisation, réglementation, architecture. Un levier peut répondre à plusieurs mécanismes d’enfermement, et un mécanisme peut en appeler plusieurs."],["Comment lire une fiche","Le principe, les étapes de mise en œuvre, la façon de vérifier que le levier est réellement en place, et ce qu’il ne règle pas. Chaque lien entre un mécanisme et un levier porte une phrase qui dit comment le levier répond à ce mécanisme."],["Une liste vivante","Un levier sans mécanisme associé reste affiché : il attend un cas sourcé qui le relie."]]};
+  var T=[], TECH=[], MECA=[], META=[], LEV=[], MECAID=[], DONNEES=null;
   function verifier(liste, nom, regles){
     if(!Array.isArray(liste)) throw new Error("data/"+nom+".json doit contenir une liste");
     liste.forEach(function(x,i){ regles.forEach(function(rg){
@@ -547,21 +568,24 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       if(!ok) throw new Error("data/"+nom+".json, entrée "+(i+1)+" ("+(x.titre||x.nom||"sans nom")+") : champ « "+rg[0]+" » invalide ("+JSON.stringify(v)+")");
     }); });
   }
-  function preparer(tendances, technologies, mecanismes){
+  function preparer(tendances, technologies, mecanismes, leviers){
     var A=[0,1,2,3], Q=function(v){ return VUES[v].quadrants.map(function(_,i){ return i; }); };
-    verifier(tendances,"tendances",[["titre","texte"],["quadrant",Q("tendances")],["anneau",A],["type",["risque","levier"]],["tendance","texte"],["risque","texte"]]);
+    verifier(tendances,"tendances",[["titre","texte"],["quadrant",Q("tendances")],["anneau",A],["tendance","texte"],["risque","texte"]]);
     verifier(technologies,"technologies",[["nom","texte"],["quadrant",Q("technologies")],["anneau",A],["type",["p","e","o"]],["dependance","texte"]]);
-    verifier(mecanismes,"mecanismes",[["nom","texte"],["court","texte"],["symbole","texte"],["couche",[0,1,2,3,4,5,6]],["moment",[0,1,2,3]],["fonctionnement","texte"],["parade","texte"]]);
-    T=tendances.map(function(x,i){ return {id:(x.id||"t-"+String(i+1).padStart(2,"0")), pid:"t-"+String(i+1).padStart(2,"0"), n:i+1, techNoms:Array.isArray(x.technologies)?x.technologies:[], q:x.quadrant, a:x.anneau, k:x.type, type:x.type, t:x.titre, contexte:x.declencheur||"",
+    verifier(mecanismes,"mecanismes",[["id","texte"],["nom","texte"],["court","texte"],["symbole","texte"],["couche",[0,1,2,3,4,5,6]],["moment",[0,1,2,3]],["fonctionnement","texte"]]);
+    verifier(leviers,"leviers",[["titre","texte"],["axe",[0,1,2,3,4]],["principe","texte"],["verification","texte"],["limites","texte"]]);
+    T=tendances.map(function(x,i){ return {id:(x.id||"t-"+String(i+1).padStart(2,"0")), pid:"t-"+String(i+1).padStart(2,"0"), n:i+1, techNoms:Array.isArray(x.technologies)?x.technologies:[], q:x.quadrant, a:x.anneau, k:"risque", type:"risque", t:x.titre, contexte:x.declencheur||"",
       quoi:x.tendance, pourquoi:x.risque, faire:x.mitigations||[], src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
-    TECH=technologies.map(function(x,i){ return {id:(x.id||"x-"+String(i+1).padStart(3,"0")), pid:"x-"+String(i+1).padStart(3,"0"), n:i+1, crit:Array.isArray(x.criteres)&&x.criteres.length?x.criteres:null, sites:(Array.isArray(x.site)?x.site:(x.site?[x.site]:[])), pourquoi:x.pourquoi||"", q:x.quadrant, a:x.anneau, type:x.type, t:x.nom, ed:x.editeur||"", note:x.dependance, alt:(x.alternatives||[]).join(", ")}; });
-    MECA=mecanismes.map(function(m){ return [m.couche, m.nom, m.fonctionnement, m.exemple||"", m.signal||"", m.parade]; });
-    var vus={tendances:1,technologies:1,mecanismes:1};
-    T.concat(TECH).forEach(function(x){ if(!/^[a-z0-9][a-z0-9-]*$/.test(x.id)||vus[x.id]) throw new Error("data : identifiant « "+x.id+" » invalide ou en double (« "+(x.t)+" »)"); vus[x.id]=1; });
-    VUES.technologies.intro=VUES.technologies.intro.replace("{n}",TECH.length); VUES.mecanismes.intro=VUES.mecanismes.intro.replace("{n}",mecanismes.length);
-    META=mecanismes.map(function(m){ return [m.symbole, m.moment, m.levier||"", m.court]; });
-    var absents=mecanismes.filter(function(m){ return m.levier && !T.some(function(x){ return x.t===m.levier; }); });
-    if(absents.length) console.info("mecanismes.json : "+absents.length+" levier(s) absent(s) de tendances.json, liens « Voir le levier » masqués.");
+    TECH=technologies.map(function(x,i){ return {id:(x.id||"x-"+String(i+1).padStart(3,"0")), pid:"x-"+String(i+1).padStart(3,"0"), n:i+1, crit:Array.isArray(x.criteres)&&x.criteres.length?x.criteres:null, sites:(Array.isArray(x.site)?x.site:(x.site?[x.site]:[])), pourquoi:x.pourquoi||"", q:x.quadrant, a:x.anneau, type:x.type, t:x.nom, ed:x.editeur||"", note:x.dependance, alt:(x.alternatives||[]).join(", "), src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
+    LEV=leviers.map(function(x){ return {id:x.id, t:x.titre, axe:x.axe, principe:x.principe, faire:x.mise_en_oeuvre||[], verif:x.verification, limites:x.limites, liesIds:x.lies||[], contexte:x.contexte||"", src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; }), techNoms:x.technologies||[], mecas:[]}; });
+    var parId={}; LEV.forEach(function(l){ parId[l.id]=l; });
+    LEV.forEach(function(l){ l.lies=l.liesIds.map(function(i){ return parId[i]; }).filter(Boolean); });
+    MECA=mecanismes.map(function(m,k){ return [m.couche, m.nom, m.fonctionnement, m.exemple||"", m.signal||"", (m.leviers||[]).map(function(a){ var l=parId[a.id]; if(!l) console.warn("mecanismes.json, « "+m.nom+" » : levier « "+a.id+" » introuvable dans leviers.json."); else l.mecas.push(k); return l?{l:l,c:a.commentaire||""}:null; }).filter(Boolean), (m.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })]; });
+    MECAID=mecanismes.map(function(m){ return m.id; });
+    var vus={tendances:1,technologies:1,mecanismes:1,leviers:1};
+    T.concat(TECH,LEV,MECAID.map(function(i){ return {id:i,t:i}; })).forEach(function(x){ if(!/^[a-z0-9][a-z0-9-]*$/.test(x.id)||vus[x.id]) throw new Error("data : identifiant « "+x.id+" » invalide ou en double (« "+(x.t)+" »)"); vus[x.id]=1; });
+    VUES.technologies.intro=VUES.technologies.intro.replace("{n}",TECH.length); VUES.mecanismes.intro=VUES.mecanismes.intro.replace("{n}",mecanismes.length); VUES.leviers.intro=VUES.leviers.intro.replace("{n}",leviers.length);
+    META=mecanismes.map(function(m,k){ return [m.symbole, m.moment, MECA[k][5].map(function(a){ return a.l.t+" "+a.c; }).join(" "), m.court]; });
     // Alternatives : on retrouve celles qui figurent sur le radar (nom exact, sinon inclusion sans ambiguïté)
     TECH.forEach(function(x,i){
       x.alts=(technologies[i].alternatives||[]).filter(function(a){ return a && a!=="—"; }).map(function(a){
@@ -580,6 +604,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
         .sort(function(a,b){ return a.a-b.a || a.t.localeCompare(b.t,"fr"); });
       t.techs.forEach(function(y){ y.tends.push(t); });
     });
+    LEV.forEach(function(l){ l.techs=l.techNoms.map(function(n){ if(!parNom[n]) console.warn("leviers.json, « "+l.t+" » : technologie « "+n+" » introuvable dans technologies.json."); return parNom[n]; }).filter(Boolean); });
     DONNEES={tendances:T, technologies:TECH};
     VUES.mecanismes.intro=VUES.mecanismes.intro.replace(/\d+ mécanismes/, MECA.length+" mécanismes");
   }
@@ -787,8 +812,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function typesPresents(){ return VUES[vue].types.filter(function(t){ return DONNEES[vue].some(function(x){ return x.type===t[0]; }); }); }
   function legende(){ var z=document.getElementById("legende"); z.textContent=""; typesPresents().forEach(function(t){ var i=el("i"); i.style.background=couleur(t[0])[0]; z.appendChild(el("span",null,[i,t[1]])); }); }
   function stats(){ var z=document.getElementById("stats"); z.textContent="";
-    var nl=T.filter(function(x){ return x.type==="levier"; }).length;
-    [[T.length-nl,"tendances"]].concat(nl?[[nl,"leviers"]]:[],[[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]]).forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
+    [[T.length,"tendances"],[LEV.length,"leviers"],[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]].forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
   function fiche(){
     var f=document.getElementById("fiche"), V=VUES[vue]; f.textContent="";
     var x=DONNEES[vue].find(function(y){ return y.id===sel; });
@@ -834,6 +858,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
         el("ul",null,crit.map(function(c){ return el("li",null,[el("strong",{text:c[0]}), c[1]?el("span",{text:c[1]}):null]); }))]));
       if(x.tends && x.tends.length) corps.appendChild(el("div",null,[el("h3",{text:"Tendances qui la concernent"}), el("div",{class:"tends-liees"},x.tends.map(function(t){
         return el("button",{type:"button",class:"tend-liee",title:"Ouvrir la tendance",onclick:function(){ voirTendance(t); }},[el("span",{class:"numero",text:String(t.n)}), el("span",{text:t.t})]); }))]));
+      if(x.src.length) corps.appendChild(el("div",null,[el("h3",{text:"Sources"}), el("ul",null,x.src.map(function(s2){ return el("li",null,[ s2[1]?el("a",{href:s2[1],target:"_blank",rel:"noopener",text:s2[0]}):s2[0] ]); }))]));
       corps.appendChild(el("p",{class:"note",text:"Évaluation indicative, à confirmer sur vos usages réels avec l’indice de réversibilité."}));
     } else {
       corps.appendChild(el("div",null,[el("h3",{text:"La tendance"}), el("p",{text:x.quoi})]));
@@ -1028,13 +1053,51 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       el("dt",{text:"Comment cela fonctionne"}), el("dd",{text:me[2]}),
       el("dt",{text:"Exemple"}), el("dd",{text:me[3]}),
       el("dt",{text:"Le signal d’alerte"}), el("dd",{text:me[4]}),
-      el("dt",{text:"La parade"}), el("dd",{class:"parade",text:me[5]})
-    ]));
+      el("dt",{text:"Les leviers"}), el("dd",null,[el("ul",{class:"lv-liste"}, me[5].map(function(a){ return el("li",null,[el("a",{class:"tp-lien",href:"#"+a.l.id,onclick:function(){ d.close(); },text:a.l.t}), el("span",{text:" : "+a.c})]); }))])
+    ].concat(me[6].length?[el("dt",{text:"Sources"}), el("dd",null,[el("ul",{class:"lv-liste"}, me[6].map(function(x){ return el("li",null,[x[1]?el("a",{class:"tp-lien",href:x[1],target:"_blank",rel:"noopener",text:x[0]}):el("span",{text:x[0]})]); }))])]:[])));
     var pied=el("div",{class:"tp-dialog-pied"});
-    var lev=T.find(function(x){ return x.t===meta[2]; });
-    if(lev) pied.appendChild(el("a",{class:"tp-lien",href:"#"+lev.id,onclick:function(){ d.close(); },text:"Voir le levier « "+lev.t+" » dans le radar →"}));
     pied.appendChild(el("button",{type:"button",class:"plus",onclick:function(){ d.close(); },text:"Fermer"}));
     d.appendChild(pied);
+    if(typeof d.showModal==="function") d.showModal(); else d.setAttribute("open","");
+  }
+  function rendreLeviers(){
+    var z=document.getElementById("vue-lev"); z.textContent="";
+    z.appendChild(el("div",{class:"tp-tete"},[el("p",{class:"tp-lecture"},[el("strong",{text:"Comment lire cette vue : "}),"les leviers sont rangés par axe. Chaque carte indique les mécanismes d’enfermement qu’elle permet de contrer. Cliquez pour lire comment mettre le levier en œuvre et comment vérifier qu’il fonctionne."])]));
+    var nq=norm(q), vus=0, AX=VUES.tendances.quadrants;
+    AX.forEach(function(ax,i){
+      var ls=LEV.filter(function(l){ return l.axe===i && (!nq || norm(l.t+" "+l.principe+" "+l.faire.join(" ")+" "+l.mecas.map(function(k){ return META[k][0]+" "+MECA[k][1]; }).join(" ")).indexOf(nq)>=0); })
+        .sort(function(a,b){ return b.mecas.length-a.mecas.length || a.t.localeCompare(b.t,"fr"); });
+      if(!ls.length) return; vus+=ls.length;
+      var g=el("section",{class:"lv-groupe"},[el("h2",{text:ax.t}), el("p",{text:ax.d})]), grille=el("div",{class:"lv-grille"});
+      ls.forEach(function(l){
+        var chips=el("div",{class:"lv-chips","aria-hidden":"true"});
+        l.mecas.forEach(function(k){ var c=el("span",{class:"lv-chip",text:META[k][0]}); c.style.background="var(--fam"+MECA[k][0]+")"; c.style.color="var(--fam"+MECA[k][0]+"t)"; chips.appendChild(c); });
+        grille.appendChild(el("button",{type:"button",class:"lv-carte","aria-haspopup":"dialog",onclick:function(){ ouvrirLevier(l); }},[
+          el("strong",{text:l.t}),
+          el("span",{class:"lv-n"+(l.mecas.length?"":" vide"),text:l.mecas.length?"Répond à "+l.mecas.length+" mécanisme"+(l.mecas.length>1?"s":""):"Aucun mécanisme associé"}), chips]));
+      });
+      g.appendChild(grille); z.appendChild(g);
+    });
+    if(!vus) z.appendChild(el("p",{class:"lv-vide",text:"Aucun levier ne correspond à cette recherche."}));
+  }
+  function ouvrirLevier(l){
+    var d=document.getElementById("lev-dialog"); d.textContent="";
+    var lien=function(txt,href,fn){ return el("a",{class:"tp-lien",href:href,onclick:fn||function(){ d.close(); }},[txt]); };
+    d.appendChild(el("div",{class:"tp-fiche-tete"},[el("div",null,[el("h2",{id:"lev-titre",text:l.t}), el("p",{class:"tp-quand",text:"Levier · axe "+VUES.tendances.quadrants[l.axe].t})])]));
+    var dl=el("dl",{class:"tp-dl"});
+    dl.appendChild(el("dt",{text:"Le principe"})); dl.appendChild(el("dd",{text:l.principe}));
+    if(l.contexte){ dl.appendChild(el("dt",{text:"Le contexte"})); dl.appendChild(el("dd",{text:l.contexte})); }
+    dl.appendChild(el("dt",{text:"Comment le mettre en œuvre"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.faire.map(function(f){ return el("li",{text:f}); }))]));
+    dl.appendChild(el("dt",{text:"Comment vérifier qu’il est en place"})); dl.appendChild(el("dd",{class:"parade",text:l.verif}));
+    dl.appendChild(el("dt",{text:"Ses limites"})); dl.appendChild(el("dd",{text:l.limites}));
+    dl.appendChild(el("dt",{text:"Les mécanismes qu’il permet de contrer"}));
+    dl.appendChild(el("dd",null,[l.mecas.length ? el("ul",{class:"lv-liste"},l.mecas.map(function(k){ var a=MECA[k][5].filter(function(x){ return x.l===l; })[0];
+      return el("li",null,[el("button",{type:"button",class:"lv-btn",onclick:function(){ d.close(); ouvrirMeca(k); },text:META[k][0]+" · "+MECA[k][1]}), el("span",{text:" : "+(a?a.c:"")})]); })) : el("span",{class:"lv-vide",text:"Aucun mécanisme n’est encore relié à ce levier."})]));
+    if(l.lies.length){ dl.appendChild(el("dt",{text:"À associer avec"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.lies.map(function(x){ return el("li",null,[lien(x.t,"#"+x.id)]); }))])); }
+    if(l.techs.length){ dl.appendChild(el("dt",{text:"Technologies concernées"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.techs.map(function(x){ return el("li",null,[lien(x.t,"#"+x.id)]); }))])); }
+    if(l.src.length){ dl.appendChild(el("dt",{text:"Sources"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.src.map(function(x){ return el("li",null,[x[1]?el("a",{class:"tp-lien",href:x[1],target:"_blank",rel:"noopener",text:x[0]}):el("span",{text:x[0]})]); }))])); }
+    d.appendChild(dl);
+    d.appendChild(el("div",{class:"tp-dialog-pied"},[el("button",{type:"button",class:"plus",onclick:function(){ d.close(); },text:"Fermer"})]));
     if(typeof d.showModal==="function") d.showModal(); else d.setAttribute("open","");
   }
   function rendreMeca(){
@@ -1067,7 +1130,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
           ]);
           if(!atelier) b.removeAttribute("aria-pressed"); else b.removeAttribute("aria-haspopup");
           b.style.background="var(--fam"+fi+")"; b.style.color="var(--fam"+fi+"t)";
-          tuiles.push({el:b,f:fi,m:mi,hors:!!nq && norm(me.slice(1).join(" ")+" "+META[k][2]+" "+META[k][3]).indexOf(nq)<0}); cell.appendChild(b);
+          tuiles.push({el:b,f:fi,m:mi,hors:!!nq && norm(me.slice(1,5).join(" ")+" "+META[k][2]+" "+META[k][3]).indexOf(nq)<0}); cell.appendChild(b);
         });
         if(!cell.children.length) cell.appendChild(el("span",{class:"tp-vide",text:"Aucun cas sourcé pour l’instant"}));
         grille.appendChild(cell);
@@ -1091,9 +1154,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
         MOMENTS.forEach(function(m,mi){ var n=ks.filter(function(k){ return META[k][1]===mi; }).length; var b=el("span",{class:"tp-barre-remplie"}); b.style.width=(n/max*100)+"%"; barres.appendChild(el("div",{class:"tp-barre"},[el("span",{class:"tp-barre-lib",text:m}), el("span",{class:"tp-barre-fond"},[b]), el("span",{class:"tp-barre-n",text:String(n)})])); });
         gauche.appendChild(barres);
         gauche.appendChild(el("button",{type:"button",class:"plus",onclick:function(){ coches={}; rendreMeca(); },text:"Réinitialiser"}));
-        droite.appendChild(el("h3",{text:"Vos parades prioritaires"}));
-        var tri=ks.slice().sort(function(a,b){ return COUCHES.indexOf(MECA[a][0])-COUCHES.indexOf(MECA[b][0]); });
-        droite.appendChild(el("ul",{class:"tp-parades"},tri.map(function(k){ return el("li",null,[el("strong",{text:META[k][0]+" · "+MECA[k][1]+" : "}), MECA[k][5]]); })));
+        droite.appendChild(el("h3",{text:"Vos leviers prioritaires"}));
+        var pl={}; ks.forEach(function(k){ MECA[k][5].forEach(function(a){ (pl[a.l.id]=pl[a.l.id]||{l:a.l,syms:[]}).syms.push(META[k][0]); }); });
+        var tri=Object.keys(pl).map(function(i){ return pl[i]; }).sort(function(a,b){ return b.syms.length-a.syms.length || a.l.t.localeCompare(b.l.t,"fr"); });
+        droite.appendChild(el("ul",{class:"tp-parades"},tri.map(function(x){ return el("li",null,[el("a",{class:"tp-lien",href:"#"+x.l.id,text:x.l.t}), " : répond à "+x.syms.length+" de vos mécanismes ("+x.syms.join(", ")+")."]); })));
         droite.appendChild(el("p",{class:"tp-aide",text:"Prochaine étape : mesurez l’indice de réversibilité de ce fournisseur pour chiffrer votre marge de manœuvre."}));
       }
       prof.appendChild(gauche); prof.appendChild(droite); z.appendChild(prof);
@@ -1104,11 +1168,12 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function changerVue(v,garderSel){
     document.documentElement.setAttribute("data-vue",v); // palette des anneaux propre à la vue
     if(!DONNEES) return;
-    var estMeca=v==="mecanismes";
-    ["tendances","technologies","mecanismes"].forEach(function(n){ var b=document.getElementById("v-"+n); b.setAttribute("aria-selected",String(n===v)); b.tabIndex=n===v?0:-1; });
-    document.querySelector(".zone-radar").hidden=estMeca; document.querySelector(".barre").hidden=estMeca; document.getElementById("bande").classList.toggle("meca",estMeca); document.getElementById("listes").hidden=estMeca; document.getElementById("vue-meca").hidden=!estMeca;
+    var estMeca=v==="mecanismes", estLev=v==="leviers", estListe=estMeca||estLev;
+    ["tendances","technologies","mecanismes","leviers"].forEach(function(n){ var b=document.getElementById("v-"+n); b.setAttribute("aria-selected",String(n===v)); b.tabIndex=n===v?0:-1; });
+    document.querySelector(".zone-radar").hidden=estListe; document.querySelector(".barre").hidden=estListe; document.getElementById("bande").classList.toggle("meca",estListe); document.getElementById("listes").hidden=estListe; document.getElementById("vue-meca").hidden=!estMeca; document.getElementById("vue-lev").hidden=!estLev;
     var inp0=document.getElementById("recherche"); q=""; inp0.value=""; inp0.placeholder=VUES[v].recherche;
     if(estMeca){ vue=v; document.getElementById("intro").textContent=VUES.mecanismes.intro; rendreMeca(); methode(); return; }
+    if(estLev){ vue=v; document.getElementById("intro").textContent=VUES.leviers.intro; rendreLeviers(); methode(); return; }
     vue=v; fAxe="tous"; fAnneau="tous"; fType=typeDefaut(v,garderSel); q=""; apercu={q:null,a:null}; dernierTotal=null; var inp=document.getElementById("recherche"); inp.value=""; inp.placeholder=VUES[v].recherche;
     document.getElementById("intro").textContent=VUES[v].intro;
     if(!deja[v]){ placer(DONNEES[v], rb()); deja[v]=true; }
@@ -1196,7 +1261,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function voirTendance(t){ glisser("tendances",function(){ sel=t.id; changerVue("tendances",true); choisir(t.id,true); }); }
   // Défilement horizontal entre les vues (API View Transitions) : la vue suivante arrive par la droite, la précédente par la gauche.
   // Sans prise en charge du navigateur, ou si l’utilisateur limite les animations, la vue change simplement.
-  var ORDRE=["tendances","technologies","mecanismes"];
+  var ORDRE=["tendances","technologies","mecanismes","leviers"];
   function glisser(cible,maj){
     function appliquer(){
       maj();
@@ -1249,8 +1314,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(maj && window.innerWidth<1000){ var f=document.getElementById("fiche"); if(f.scrollIntoView) f.scrollIntoView({behavior:"smooth",block:"start"}); }
   }
   ORDRE.forEach(function(n){ document.getElementById("v-"+n).addEventListener("click",function(){ glisser(n,function(){ changerVue(n); try{ history.replaceState(null,"","#"+n); }catch(e){} }); }); });
-  document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var i=ORDRE.indexOf(vue), n=ORDRE[(i+(e.key==="ArrowRight"?1:2))%3]; glisser(n,function(){ changerVue(n); }); document.getElementById("v-"+n).focus(); } });
-  document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); if(vue==="mecanismes") rendreMeca(); else { if(q && lien && vue==="technologies") lien=null; rafraichir(); if(q.length>=2) meilleur(); } }); // chercher = parcourir tout le radar : la sélection d’une tendance ne masque plus les résultats
+  document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var i=ORDRE.indexOf(vue), n=ORDRE[(i+(e.key==="ArrowRight"?1:ORDRE.length-1))%ORDRE.length]; glisser(n,function(){ changerVue(n); }); document.getElementById("v-"+n).focus(); } });
+  document.getElementById("recherche").addEventListener("input",function(e){ q=e.target.value.trim(); if(vue==="mecanismes") rendreMeca(); else if(vue==="leviers") rendreLeviers(); else { if(q && lien && vue==="technologies") lien=null; rafraichir(); if(q.length>=2) meilleur(); } }); // chercher = parcourir tout le radar : la sélection d’une tendance ne masque plus les résultats
   function toutEffacer(){ fAxe="tous"; fAnneau="tous"; if(vue==="technologies") lien=null; rafraichir(true); }
   document.getElementById("raz").addEventListener("click",toutEffacer);
   document.getElementById("tirette-g").addEventListener("click",function(){ setLie(false); });
@@ -1261,7 +1326,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   // Échap : retire les filtres axe et urgence
   document.addEventListener("keydown",function(e){
     if(e.key==="Escape" && vue==="tendances" && zoneLie && !document.querySelector("dialog[open]")){ setLie(false); return; }
-    if(e.key!=="Escape" || vue==="mecanismes" || (fAxe==="tous" && fAnneau==="tous" && !(vue==="technologies" && lien))) return;
+    if(e.key!=="Escape" || vue==="mecanismes" || vue==="leviers" || (fAxe==="tous" && fAnneau==="tous" && !(vue==="technologies" && lien))) return;
     if(document.querySelector("dialog[open]") || (document.activeElement && document.activeElement.id==="recherche")) return;
     toutEffacer();
   });
@@ -1271,7 +1336,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     window.addEventListener("scroll",function(){ if(!tic){ tic=true; requestAnimationFrame(maj); } },{passive:true}); })();
   function depuisHash(){
     var h=location.hash.replace("#","");
-    if(h==="technologies"||h==="tendances"||h==="mecanismes"){ if(vue!==h) changerVue(h); return; }
+    if(h==="technologies"||h==="tendances"||h==="mecanismes"||h==="leviers"){ if(vue!==h) changerVue(h); return; }
+    var mi=MECAID.indexOf(h);
+    if(mi>=0){ if(vue!=="mecanismes") changerVue("mecanismes"); ouvrirMeca(mi); return; }
+    var lv=LEV.filter(function(x){ return x.id===h; })[0];
+    if(lv){ if(vue!=="leviers") changerVue("leviers"); ouvrirLevier(lv); return; }
     var y=T.filter(function(x){ return x.id===h||x.pid===h; })[0], z=y?null:TECH.filter(function(x){ return x.id===h||x.pid===h; })[0];
     if(y){ if(vue!=="tendances") changerVue("tendances",true); if(!visible(y)) allerA(y); else choisir(y.id,false); }
     else if(z){ if(vue!=="technologies") changerVue("technologies",true); if(!visible(z)) allerA(z); else choisir(z.id,false); }
@@ -1281,8 +1350,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function charger(nom){
     return fetch("data/"+nom+".json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("data/"+nom+".json introuvable (HTTP "+r.status+")"); return r.json().catch(function(e){ throw new Error("data/"+nom+".json n’est pas un JSON valide : "+e.message); }); });
   }
-  Promise.all(["tendances","technologies","mecanismes"].map(charger)).then(function(r){
-    preparer(r[0],r[1],r[2]);
+  Promise.all(["tendances","technologies","mecanismes","leviers"].map(charger)).then(function(r){
+    preparer(r[0],r[1],r[2],r[3]);
     stats(); changerVue("tendances"); depuisHash();
   }).catch(function(err){
     console.error(err);

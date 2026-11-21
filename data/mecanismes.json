@@ -1,5 +1,6 @@
 [
   {
+    "id": "meca-engagement-long-et-reconduction-tacite",
     "nom": "Engagement long et reconduction tacite",
     "court": "Reconduction tacite",
     "symbole": "Rt",
@@ -8,10 +9,20 @@
     "fonctionnement": "Des contrats de trois à cinq ans, renouvelés automatiquement sans action de votre part.",
     "exemple": "Contrats d’infrastructure reconduits pour trois ans faute de préavis envoyé à temps.",
     "signal": "La date de préavis n’est connue de personne.",
-    "parade": "Suivre les préavis ; négocier des durées courtes et sans reconduction tacite.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négocier une durée courte, sans reconduction tacite."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Suivre dans le registre la date de préavis de chaque contrat."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-penalites-de-resiliation-et-de-renouvellement-tardif",
     "nom": "Pénalités de résiliation et de renouvellement tardif",
     "court": "Pénalités de sortie",
     "symbole": "Pr",
@@ -20,10 +31,20 @@
     "fonctionnement": "Des frais pour partir avant le terme, ou une majoration pour renouveler en retard.",
     "exemple": "Majoration de 20 % du prix de la première année appliquée par Broadcom aux renouvellements tardifs (annoncée en 2025).",
     "signal": "Une pénalité est découverte au moment de vouloir partir.",
-    "parade": "Plafonner les pénalités ; anticiper les renouvellements de douze à vingt-quatre mois.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Plafonner les pénalités de résiliation et de renouvellement tardif."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Anticiper les renouvellements de douze à vingt-quatre mois grâce aux échéances du registre."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-clauses-de-reversibilite-absentes-ou-floues",
     "nom": "Clauses de réversibilité absentes ou floues",
     "court": "Clauses floues",
     "symbole": "Cr",
@@ -32,10 +53,16 @@
     "fonctionnement": "Aucune obligation précise d’aide à la sortie, de format de restitution ni de délai.",
     "exemple": "Restitution des données dans un format propriétaire, sans assistance.",
     "signal": "Le contrat ne dit pas comment récupérer vos données.",
-    "parade": "Exiger restitution dans un format standard, assistance et délais chiffrés ; s’appuyer sur les clauses types européennes et les clauses Oméga de Libralis.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Exiger la restitution dans un format standard, une assistance et des délais chiffrés, en s’appuyant sur les clauses types européennes et les clauses Oméga de Libralis."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-hausses-unilaterales-et-indexation",
     "nom": "Hausses unilatérales et indexation",
     "court": "Hausses unilatérales",
     "symbole": "Hu",
@@ -44,10 +71,24 @@
     "fonctionnement": "Le fournisseur peut revoir ses prix ou ses conditions en cours de contrat ou à chaque échéance.",
     "exemple": "Hausses de prix catalogue justifiées par l’intégration de l’IA.",
     "signal": "Les conditions tarifaires renvoient à une grille modifiable par le fournisseur.",
-    "parade": "Plafonner les hausses ; geler les prix sur la durée du contrat.",
-    "levier": "Achats et investissements groupés"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Plafonner les hausses et geler les prix sur la durée du contrat."
+      },
+      {
+        "id": "achats-et-investissements-groupes",
+        "commentaire": "Négocier à plusieurs pour obtenir ce plafond."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Projeter la hausse sur cinq ans pour la comparer au coût d’un changement."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-changement-de-metrique",
     "nom": "Changement de métrique",
     "court": "Changement de métrique",
     "symbole": "Mé",
@@ -56,10 +97,24 @@
     "fonctionnement": "La façon de compter change : par cœur, par salarié, avec des minimums de commande.",
     "exemple": "Minimum de commande VMware de 72 cœurs annoncé en 2025 (application variable selon les régions) ; Java d’Oracle facturé au nombre total de salariés depuis 2023.",
     "signal": "La facture augmente alors que l’usage ne change pas.",
-    "parade": "Négocier le maintien de la métrique ; modéliser chaque scénario.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Mesurer les usages réels pour modéliser chaque scénario de métrique."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Négocier le maintien de la métrique en chiffrant chaque scénario sur cinq ans."
+      },
+      {
+        "id": "alternatives-de-virtualisation-matures",
+        "commentaire": "Chiffrer une alternative de virtualisation avant de subir la nouvelle métrique."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-fin-des-licences-perpetuelles",
     "nom": "Fin des licences perpétuelles",
     "court": "Fin des perpétuelles",
     "symbole": "Pe",
@@ -68,10 +123,24 @@
     "fonctionnement": "Le passage à l’abonnement transforme une propriété en location.",
     "exemple": "Licences perpétuelles VMware supprimées depuis la reprise par Broadcom.",
     "signal": "Une annonce de fin de vente ou de fin de support.",
-    "parade": "Recenser les licences restantes ; chiffrer l’abonnement sur cinq ans ; préparer l’alternative.",
-    "levier": "Mesurer la marge de manœuvre"
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Recenser les licences restantes et mesurer les mois avant l’échéance."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrer l’abonnement sur cinq ans."
+      },
+      {
+        "id": "alternatives-de-virtualisation-matures",
+        "commentaire": "Préparer l’alternative, comme celles qui existent en virtualisation."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-acces-indirect",
     "nom": "Accès indirect",
     "court": "Accès indirect",
     "symbole": "Ai",
@@ -80,34 +149,60 @@
     "fonctionnement": "Des systèmes tiers qui accèdent aux données d’un logiciel déclenchent des licences supplémentaires.",
     "exemple": "Litiges sur l’accès indirect aux données d’ERP (affaire SAP contre Diageo, Haute Cour de Londres, 2017).",
     "signal": "Des interfaces vers l’ERP ou le CRM non couvertes par les licences.",
-    "parade": "Faire cartographier et contractualiser les accès indirects.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Faire cartographier et contractualiser les accès indirects."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-restrictions-selon-lhebergeur",
     "nom": "Restrictions selon l’hébergeur",
     "court": "Restrictions d’hébergeur",
     "symbole": "Rh",
     "couche": 1,
     "moment": 0,
     "fonctionnement": "Des licences plus chères, ou non transférables, chez un cloud concurrent de l’éditeur.",
-    "exemple": "Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft (2022), retirée en 2024 après un accord confidentiel ; Oracle : sa politique cloud ne vise que AWS, Azure et Google Cloud comme « Authorized Cloud Environments » et ne dit rien des autres hébergeurs, dont les clouds européens.",
+    "exemple": "Règles de licence défavorables aux clouds concurrents, visées par la plainte de CISPE contre Microsoft (2022), retirée en 2024 après un accord confidentiel ; Oracle : sa politique cloud ne vise que AWS, Azure et Google Cloud comme « Authorized Cloud Environments » et ne dit rien des autres hébergeurs, dont les clouds européens.",
     "signal": "Le choix d’hébergeur est dicté par les licences.",
-    "parade": "Vérifier les droits de transfert avant tout choix d’hébergement.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Vérifier les droits de transfert avant tout choix d’hébergement."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Noter dans le registre les conditions d’hébergement liées à chaque licence."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-audits-de-conformite",
     "nom": "Audits de conformité",
     "court": "Audits",
     "symbole": "Au",
     "couche": 1,
     "moment": 2,
     "fonctionnement": "Des audits déclenchés à l’approche des renouvellements, avec un risque de rattrapage financier.",
-    "exemple": "Audits déclenchés à l’approche des renouvellements chez plusieurs grands éditeurs (exemple générique : voir la tendance « Audits de licence comme levier commercial »).",
+    "exemple": "Audits déclenchés à l’approche des renouvellements chez plusieurs grands éditeurs (exemple générique : voir la tendance « Audits de licence comme levier commercial »).",
     "signal": "Un audit annoncé quelques mois avant l’échéance.",
-    "parade": "Inventaire à jour, clauses d’audit encadrées, ne jamais négocier sous la pression d’un audit.",
-    "levier": "Clauses d’audit encadrées"
+    "leviers": [
+      {
+        "id": "clauses-daudit-encadrees",
+        "commentaire": "Encadrer l’audit au contrat : préavis, fréquence, périmètre, auditeur."
+      },
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Tenir un inventaire à jour ; ne jamais négocier sous la pression d’un audit."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-offres-groupees",
     "nom": "Offres groupées",
     "court": "Offres groupées",
     "symbole": "Og",
@@ -116,10 +211,16 @@
     "fonctionnement": "Des produits vendus ensemble, y compris ceux que vous n’utilisez pas.",
     "exemple": "Catalogue VMware ramené à quelques offres groupées ; IA incluse d’office dans les suites.",
     "signal": "Vous payez des fonctions inutilisées.",
-    "parade": "Mesurer l’usage réel ; négocier sur le périmètre utile.",
-    "levier": "Coût total de la dépendance"
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Mesurer l’usage réel et négocier sur le périmètre utile."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-remises-conditionnelles-et-engagements-de-consommation",
     "nom": "Remises conditionnelles et engagements de consommation",
     "court": "Remises conditionnelles",
     "symbole": "Rc",
@@ -128,10 +229,20 @@
     "fonctionnement": "Des remises contre un volume ou une durée d’engagement.",
     "exemple": "Engagements de dépense pluriannuels chez les fournisseurs de cloud.",
     "signal": "La remise disparaît si vous diversifiez.",
-    "parade": "Limiter montant et durée ; garder une part non engagée.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Limiter le montant et la durée de l’engagement dès la revue du contrat."
+      },
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Garder une part non engagée pour préserver la marge de manœuvre."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-cout-dentree-nul-cout-de-sortie-eleve",
     "nom": "Coût d’entrée nul, coût de sortie élevé",
     "court": "Entrée gratuite",
     "symbole": "Ce",
@@ -140,10 +251,20 @@
     "fonctionnement": "Crédits gratuits, essais, prix d’appel, puis montée en charge.",
     "exemple": "En octobre 2025, AWS a offert jusqu’à 1 million de dollars de crédits à chacune des 40 jeunes entreprises de son accélérateur d’IA générative.",
     "signal": "Un service adopté sans avoir évalué sa sortie.",
-    "parade": "Évaluer le coût de sortie dès l’entrée.",
-    "levier": "Pilote de sortie sur un périmètre réel"
+    "leviers": [
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Mesurer la sortie par un pilote dès l’entrée."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Évaluer le coût de sortie dès l’entrée, sur cinq ans."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-formats-et-api-proprietaires",
     "nom": "Formats et API propriétaires",
     "court": "Formats propriétaires",
     "symbole": "Fp",
@@ -152,10 +273,16 @@
     "fonctionnement": "Les données et les échanges utilisent des formats que seul le fournisseur sait lire.",
     "exemple": "Formats internes d’entrepôts de données ; formats de sauvegarde propriétaires.",
     "signal": "Impossible d’ouvrir vos données sans l’outil.",
-    "parade": "Formats ouverts (Iceberg, Parquet) ; API standards.",
-    "levier": "Formats de données ouverts"
+    "leviers": [
+      {
+        "id": "formats-de-donnees-ouverts",
+        "commentaire": "Choisir des formats ouverts (Iceberg, Parquet) et des API standards."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-services-manages-sans-equivalent",
     "nom": "Services managés sans équivalent",
     "court": "Services managés",
     "symbole": "Sm",
@@ -164,10 +291,16 @@
     "fonctionnement": "Des services propres à un cloud, sans équivalent direct ailleurs.",
     "exemple": "Bases de données et fonctions sans serveur propriétaires.",
     "signal": "Un chemin critique repose sur un service unique.",
-    "parade": "Préférer des équivalents standards ; isoler les services spécifiques.",
-    "levier": "Couches d’abstraction"
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Préférer des équivalents standards et isoler les services spécifiques derrière une couche."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-gravite-des-donnees",
     "nom": "Gravité des données",
     "court": "Gravité des données",
     "symbole": "Gd",
@@ -176,10 +309,20 @@
     "fonctionnement": "Les volumes accumulés attirent les applications et coûtent cher et longtemps à déplacer.",
     "exemple": "Migrations de plusieurs pétaoctets, dont la durée dépend des débits disponibles.",
     "signal": "Personne ne sait combien de temps prendrait le transfert.",
-    "parade": "Mesurer volumes et débits ; limiter les allers-retours.",
-    "levier": "Cartographie et classification des données"
+    "leviers": [
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Mesurer volumes et débits pour savoir ce qu’un transfert coûterait."
+      },
+      {
+        "id": "fin-des-frais-de-sortie-cloud-data-act",
+        "commentaire": "Préparer la sortie des données avant la fin des frais de transfert, programmée au 12 janvier 2027."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-langages-et-extensions-proprietaires",
     "nom": "Langages et extensions propriétaires",
     "court": "Langages propriétaires",
     "symbole": "Lp",
@@ -188,10 +331,16 @@
     "fonctionnement": "Le code métier est écrit dans un langage propre au produit.",
     "exemple": "PL/SQL d’Oracle, T-SQL de SQL Server, langages de requête d’outils d’observabilité.",
     "signal": "Des milliers de procédures stockées spécifiques.",
-    "parade": "Contenir les usages spécifiques ; outils de conversion ; standards.",
-    "levier": "Couches d’abstraction"
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Contenir les usages spécifiques ; utiliser des outils de conversion et des standards."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-integrations-decosysteme",
     "nom": "Intégrations d’écosystème",
     "court": "Intégrations imposées",
     "symbole": "Ie",
@@ -200,10 +349,16 @@
     "fonctionnement": "L’identité, la supervision et les outils annexes sont imposés par le fournisseur.",
     "exemple": "Annuaire central dont dépendent tous les accès.",
     "signal": "Changer un composant oblige à en changer d’autres.",
-    "parade": "Protocoles standards (SAML, OpenID Connect, OpenTelemetry).",
-    "levier": "Couches d’abstraction"
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Utiliser des protocoles standards (SAML, OpenID Connect, OpenTelemetry)."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-mises-a-jour-forcees-et-obsolescence",
     "nom": "Mises à jour forcées et obsolescence",
     "court": "Mises à jour forcées",
     "symbole": "Mf",
@@ -212,10 +367,20 @@
     "fonctionnement": "Le calendrier des versions et des fins de support est imposé.",
     "exemple": "Fins de support qui obligent à migrer à une date choisie par l’éditeur.",
     "signal": "Des montées de version subies chaque année.",
-    "parade": "Suivre les calendriers de support ; négocier des extensions.",
-    "levier": "Support tiers pour gagner du temps"
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Suivre les calendriers de support et négocier des extensions."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Gagner du temps sur une version en fin de support en attendant la migration."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-competences-et-certifications-specifiques",
     "nom": "Compétences et certifications spécifiques",
     "court": "Compétences rares",
     "symbole": "Cs",
@@ -224,10 +389,16 @@
     "fonctionnement": "Les équipes sont formées et certifiées sur un seul produit.",
     "exemple": "Compétences rares, dépendance aux experts de l’éditeur.",
     "signal": "Personne ne sait opérer l’alternative.",
-    "parade": "Former au moins deux personnes sur l’alternative ; s’appuyer sur des communautés.",
-    "levier": "Compétences sur les alternatives"
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Former au moins deux personnes sur l’alternative et s’appuyer sur des communautés."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-dependance-aux-partenaires-de-lediteur",
     "nom": "Dépendance aux partenaires de l’éditeur",
     "court": "Partenaires liés",
     "symbole": "Pa",
@@ -236,10 +407,16 @@
     "fonctionnement": "L’intégrateur ou l’infogérant est lui-même lié au fournisseur.",
     "exemple": "Partenaires rémunérés par l’éditeur, peu enclins à proposer une alternative.",
     "signal": "Le conseil reçu ne présente jamais d’alternative.",
-    "parade": "Conseil indépendant, sans commission d’éditeur.",
-    "levier": "Indice de réversibilité fondé sur la preuve"
+    "leviers": [
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Recourir à un conseil indépendant, sans commission d’éditeur."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-processus-metier-construits-dans-loutil",
     "nom": "Processus métier construits dans l’outil",
     "court": "Processus dans l’outil",
     "symbole": "Pm",
@@ -248,10 +425,16 @@
     "fonctionnement": "Les processus, les règles et les données métier sont modélisés dans la plateforme.",
     "exemple": "Gestion des services, ERP, CRM fortement personnalisés.",
     "signal": "Changer d’outil impose de refondre les processus.",
-    "parade": "Documenter les processus hors de l’outil ; limiter les développements spécifiques.",
-    "levier": "Partir des processus métier critiques"
+    "leviers": [
+      {
+        "id": "partir-des-processus-metier-critiques",
+        "commentaire": "Documenter les processus hors de l’outil et limiter les développements spécifiques."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-droit-applicable-et-juridiction-etrangere",
     "nom": "Droit applicable et juridiction étrangère",
     "court": "Droit étranger",
     "symbole": "Dj",
@@ -260,10 +443,20 @@
     "fonctionnement": "Le contrat relève d’un droit et de tribunaux étrangers.",
     "exemple": "Contrats régis par un droit étranger, litiges à l’étranger.",
     "signal": "Un recours juridique coûteux et lointain.",
-    "parade": "Négocier un droit et une juridiction européens.",
-    "levier": "Cloud européen qualifié"
+    "leviers": [
+      {
+        "id": "droit-et-juridiction-europeens-negocies",
+        "commentaire": "Négocier un droit applicable et une juridiction européens."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Choisir une offre qualifiée dont la convention applique le droit d’un État membre."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-extraterritorialite-et-sanctions",
     "nom": "Extraterritorialité et sanctions",
     "court": "Extraterritorialité",
     "symbole": "Ex",
@@ -272,10 +465,28 @@
     "fonctionnement": "Des lois étrangères peuvent imposer l’accès aux données ou l’interruption d’un service.",
     "exemple": "Cloud Act américain ; messagerie du procureur de la CPI coupée en 2025 après des sanctions américaines (Microsoft dément avoir suspendu les services de la CPI).",
     "signal": "Des services critiques fournis par une entité soumise à un droit étranger.",
-    "parade": "Classer les données ; clés maîtrisées ; offres qualifiées ; mode dégradé ; clauses Oméga 1 et 2 de Libralis.",
-    "levier": "Chiffrement avec clés maîtrisées"
+    "leviers": [
+      {
+        "id": "chiffrement-avec-cles-maitrisees",
+        "commentaire": "Garder la maîtrise des clés de chiffrement."
+      },
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Classer les données pour savoir lesquelles justifient des mesures."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Recourir à des offres qualifiées pour les données sensibles."
+      },
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoir un mode dégradé si le service est coupé par sanction."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-controles-a-lexportation",
     "nom": "Contrôles à l’exportation",
     "court": "Contrôles à l’export",
     "symbole": "Co",
@@ -284,22 +495,42 @@
     "fonctionnement": "Des restrictions sur les puces ou les technologies peuvent limiter l’accès à un service.",
     "exemple": "Restrictions à l’export de technologies d’IA.",
     "signal": "Un service critique dépend d’une technologie soumise à des contrôles.",
-    "parade": "Identifier l’origine des technologies critiques ; prévoir une alternative.",
-    "levier": "Mode dégradé et continuité hors fournisseur"
+    "leviers": [
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoir une alternative et un mode dégradé pour les technologies soumises à contrôle."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Identifier dans le registre l’origine des technologies critiques."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-changement-de-licence-dun-projet-a-editeur-unique",
     "nom": "Changement de licence d’un projet à éditeur unique",
     "court": "Changement de licence",
     "symbole": "Lc",
     "couche": 6,
     "moment": 1,
     "fonctionnement": "Le principal contributeur change la licence du projet.",
-    "exemple": "Terraform (2023), Redis (2024, AGPL ajoutée en 2025), Elasticsearch (2021, AGPL ajoutée en 2024) ; Liquibase (2025, Functional Source License dès la version 5.0, avec un accord de contributeur désormais exigé).",
+    "exemple": "Terraform (2023), Redis (2024, AGPL ajoutée en 2025), Elasticsearch (2021, AGPL ajoutée en 2024) ; Liquibase (2025, Functional Source License dès la version 5.0, avec un accord de contributeur désormais exigé).",
     "signal": "Un projet ouvert dont un seul acteur détient les droits (accord de cession des droits des contributeurs, marque détenue par une société).",
-    "parade": "Vérifier la gouvernance avant d’adopter (fondation, accord de contributeur, marque) ; préférer les projets portés par une fondation ; suivre les forks (OpenTofu, Valkey, OpenSearch).",
-    "levier": "Couches d’abstraction"
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Vérifier la gouvernance avant d’adopter : fondation, accord de contributeur, marque."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Suivre les forks (OpenTofu, Valkey, OpenSearch) et préparer le repli."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-appauvrissement-de-ledition-communautaire",
     "nom": "Appauvrissement de l’édition communautaire",
     "court": "Édition gratuite appauvrie",
     "symbole": "Ap",
@@ -308,34 +539,68 @@
     "fonctionnement": "Des fonctions ou la distribution sont retirées de la version gratuite.",
     "exemple": "MinIO (console de gestion retirée en mai 2025, binaires arrêtés en octobre 2025) ; Puppet (paquets en dépôt privé depuis 2025).",
     "signal": "Des fonctions disparaissent de la version ouverte.",
-    "parade": "Surveiller la gouvernance ; identifier les forks (OpenVox) ; contribuer aux projets communautaires.",
-    "levier": "Compétences sur les alternatives"
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Surveiller la gouvernance du projet et la part des fonctions réservées à l’offre payante."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Identifier le fork communautaire (OpenVox pour Puppet)."
+      },
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Contribuer aux projets communautaires et former les équipes à l’alternative."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-frais-de-sortie-de-donnees",
     "nom": "Frais de sortie de données",
     "court": "Frais de sortie",
     "symbole": "Fs",
     "couche": 2,
     "moment": 3,
-    "fonctionnement": "Le départ est facturé : le transfert et l’export des données hors du fournisseur sont payants.",
-    "exemple": "En 2024, Google puis AWS ont annoncé la gratuité des transferts de données pour les clients qui quittent leur cloud ; le règlement européen sur les données (Data Act) interdit les frais de changement de fournisseur à partir du 12 janvier 2027.",
+    "fonctionnement": "Le départ est facturé : le transfert et l’export des données hors du fournisseur sont payants.",
+    "exemple": "En 2024, Google puis AWS ont annoncé la gratuité des transferts de données pour les clients qui quittent leur cloud ; le règlement européen sur les données (Data Act) interdit les frais de changement de fournisseur à partir du 12 janvier 2027.",
     "signal": "Une facture de transfert apparaît au moment de déménager les données.",
-    "parade": "Chiffrer le coût de sortie dès la signature ; exiger la gratuité du transfert de sortie ; anticiper la fin des frais de changement de fournisseur au 12 janvier 2027.",
-    "levier": "Fin des frais de sortie cloud (Data Act)"
+    "leviers": [
+      {
+        "id": "fin-des-frais-de-sortie-cloud-data-act",
+        "commentaire": "Anticiper la fin des frais de changement de fournisseur au 12 janvier 2027."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrer le coût de sortie dès la signature."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-suspension-ou-resiliation-unilaterale-du-service",
     "nom": "Suspension ou résiliation unilatérale du service",
     "court": "Suspension unilatérale",
     "symbole": "Su",
     "couche": 0,
     "moment": 1,
     "fonctionnement": "Le contrat permet au fournisseur de couper ou de suspendre le service sans préavis suffisant ni recours.",
-    "exemple": "Clause de protection proposée par Libralis (Oméga 2) : interdire toute coupure arbitraire d’un service critique.",
+    "exemple": "Clause de protection proposée par Libralis (Oméga 2) : interdire toute coupure arbitraire d’un service critique.",
     "signal": "Un contrat qui autorise la suspension sans préavis, y compris pour un service critique.",
-    "parade": "Négocier un préavis, un recours et la continuité du service pendant un litige ; exiger une clause interdisant la coupure arbitraire.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négocier un préavis, un recours et la continuité du service pendant un litige, et interdire la coupure arbitraire (clause Oméga 2)."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Intégrer cette vérification à la revue de chaque nouveau contrat."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-perte-des-droits-sur-les-correctifs-a-lexpiration-du-support",
     "nom": "Perte des droits sur les correctifs à l’expiration du support",
     "court": "Perte des correctifs",
     "symbole": "Pc",
@@ -344,10 +609,20 @@
     "fonctionnement": "Sans support actif, le droit d’utiliser les correctifs publiés après la fin du support est contesté.",
     "exemple": "En 2025, Broadcom a adressé des mises en demeure aux détenteurs de licences perpétuelles VMware dont le support avait expiré, leur demandant de ne plus installer de mises à jour.",
     "signal": "Un courrier du fournisseur sur les correctifs installés après l’expiration du support.",
-    "parade": "Vérifier ce que la licence perpétuelle couvre ; conserver la preuve des droits ; prévoir la sortie avant la fin du support.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Vérifier ce que la licence perpétuelle couvre et conserver la preuve des droits."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Prévoir la sortie avant la fin du support, avec un support tiers si besoin."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-changement-de-controle-de-lediteur",
     "nom": "Changement de contrôle de l’éditeur",
     "court": "Changement de contrôle",
     "symbole": "Cc",
@@ -356,271 +631,504 @@
     "fonctionnement": "Après un rachat, la politique commerciale et la feuille de route changent sans que le contrat bouge.",
     "exemple": "VMware racheté par Broadcom (novembre 2023), HashiCorp par IBM (2025), Informatica par Salesforce (novembre 2025).",
     "signal": "Un changement de propriétaire suivi d’une nouvelle politique tarifaire ou de nouvelles offres groupées.",
-    "parade": "Prévoir des clauses de protection en cas de changement de contrôle ; suivre l’actionnariat des éditeurs critiques.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Prévoir des clauses de protection en cas de changement de contrôle."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Suivre l’actionnariat des éditeurs critiques dans le registre."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-sequestre-de-code-source-sans-droit-dusage-effectif",
     "nom": "Séquestre de code source sans droit d’usage effectif",
     "court": "Séquestre de code",
     "symbole": "Sc",
     "couche": 5,
     "moment": 3,
     "fonctionnement": "Le fournisseur propose un dépôt du code source en lieu sûr pour rassurer sur la continuité, mais le droit de l’utiliser, de le modifier et de l’héberger n’est ni défini ni opérationnel.",
-    "exemple": "Fin avril 2025, Microsoft a annoncé des copies de son code source dans un coffre numérique en Suisse, avec des droits d’accès pour des partenaires européens ; le président de Bleu indique que le mécanisme est « en cours de conception ».",
+    "exemple": "Fin avril 2025, Microsoft a annoncé des copies de son code source dans un coffre numérique en Suisse, avec des droits d’accès pour des partenaires européens ; le président de Bleu indique que le mécanisme est « en cours de conception ».",
     "signal": "Une promesse de séquestre sans conditions de déclenchement ni droit d’exploitation précisés.",
-    "parade": "Exiger un séquestre avec conditions de déclenchement, droit d’usage, de modification et d’hébergement, et vérifier qu’une équipe peut réellement l’exploiter.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "sequestre-de-code-source-exploitable",
+        "commentaire": "Exiger un séquestre avec conditions de déclenchement, droit d’usage, de modification et d’hébergement, et vérifier qu’une équipe peut l’exploiter."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-sous-traitance-en-cascade",
     "nom": "Sous-traitance en cascade",
     "court": "Sous-traitance en cascade",
     "symbole": "St",
     "couche": 0,
     "moment": 1,
     "fonctionnement": "Le fournisseur sous-traite à son tour des fonctions critiques, et la chaîne devient trop longue ou opaque pour que le client la contrôle.",
-    "exemple": "Kaseya VSA (juillet 2021) : une faille dans un seul outil d’infogérance a paralysé des prestataires puis leurs clients en aval ; le règlement DORA (art. 29 et 30) impose d’évaluer les chaînes de sous-traitance et de les encadrer par contrat.",
+    "exemple": "Kaseya VSA (juillet 2021) : une faille dans un seul outil d’infogérance a paralysé des prestataires puis leurs clients en aval ; le règlement DORA (art. 29 et 30) impose d’évaluer les chaînes de sous-traitance et de les encadrer par contrat.",
     "signal": "Le fournisseur ne peut pas dire qui exécute quoi, ni dans quel pays.",
-    "parade": "Exiger la liste des sous-traitants des fonctions critiques, un droit d’opposition et d’audit sur la chaîne, et la responsabilité du fournisseur principal.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Exiger et tenir à jour la liste des sous-traitants des fonctions critiques."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Négocier un droit d’opposition et d’audit sur la chaîne, et la responsabilité du fournisseur principal."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-concentration-sur-un-prestataire-non-substituable",
     "nom": "Concentration sur un prestataire non substituable",
     "court": "Concentration prestataire",
     "symbole": "Cn",
     "couche": 2,
     "moment": 0,
     "fonctionnement": "Plusieurs services critiques reposent sur le même fournisseur, dont la défaillance touche alors tout le système d’information.",
-    "exemple": "Panne AWS us-east-1 des 19 et 20 octobre 2025 (défaut du DNS de DynamoDB) ; en novembre 2025, les autorités européennes ont publié la première liste de 19 prestataires critiques au titre de DORA (art. 28 et 29).",
+    "exemple": "Panne AWS us-east-1 des 19 et 20 octobre 2025 (défaut du DNS de DynamoDB) ; en novembre 2025, les autorités européennes ont publié la première liste de 19 prestataires critiques au titre de DORA (art. 28 et 29).",
     "signal": "Un incident chez un seul fournisseur arrête plusieurs applications critiques.",
-    "parade": "Cartographier les dépendances par fournisseur ; évaluer le risque de concentration avant de signer ; prévoir un mode dégradé hors fournisseur.",
-    "levier": "Mode dégradé et continuité hors fournisseur"
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Cartographier les dépendances par fournisseur pour voir la concentration."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Évaluer le risque de concentration avant de signer, avec un indice fondé sur la preuve."
+      },
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoir un mode dégradé hors fournisseur."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-fenetre-de-recuperation-courte-apres-resiliation",
     "nom": "Fenêtre de récupération courte après résiliation",
     "court": "Fenêtre de récupération",
     "symbole": "Fr",
     "couche": 0,
     "moment": 3,
     "fonctionnement": "Après la résiliation, le fournisseur ne garde les données exploitables que quelques semaines, puis les supprime de façon irréversible.",
-    "exemple": "Microsoft 365 : accès limité pendant 90 jours après la fin de l’abonnement, suppression au plus tard 180 jours après la résiliation, données ensuite « commercialement irrécupérables » (page Microsoft mise à jour le 28 mai 2026) ; le Data Act impose au moins 30 jours de récupération après la transition.",
+    "exemple": "Microsoft 365 : accès limité pendant 90 jours après la fin de l’abonnement, suppression au plus tard 180 jours après la résiliation, données ensuite « commercialement irrécupérables » (page Microsoft mise à jour le 28 mai 2026) ; le Data Act impose au moins 30 jours de récupération après la transition.",
     "signal": "Une date de suppression des données qui tombe avant la fin de la migration.",
-    "parade": "Négocier la durée de conservation après résiliation ; planifier l’export complet avant la résiliation ; tester la restauration.",
-    "levier": "Tests de bascule réguliers"
+    "leviers": [
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Tester la restauration avant la résiliation."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négocier la durée de conservation après résiliation et planifier l’export complet."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-conditions-de-place-de-marche-cloud",
     "nom": "Conditions de place de marché cloud",
     "court": "Place de marché",
     "symbole": "Pl",
     "couche": 2,
     "moment": 1,
     "fonctionnement": "La place de marché du fournisseur cloud peut limiter la promotion des offres tierces, favoriser les siennes et imposer la parité tarifaire, alors que les engagements de dépense du client y sont adossés.",
-    "exemple": "Autorité de la concurrence, avis 23-A-08 du 29 juin 2023 : selon des acteurs interrogés, AWS et Oracle empêchent les éditeurs de communiquer sur leurs offres vendues via leur place de marché (risques relevés, pas une infraction constatée).",
+    "exemple": "Autorité de la concurrence, avis 23-A-08 du 29 juin 2023 : selon des acteurs interrogés, AWS et Oracle empêchent les éditeurs de communiquer sur leurs offres vendues via leur place de marché (risques relevés, pas une infraction constatée).",
     "signal": "Des offres tierces plus chères sur la place de marché qu’en achat direct.",
-    "parade": "Comparer le prix d’achat direct et via la place de marché ; vérifier que les achats comptent dans l’engagement de dépense sans exclusivité.",
-    "levier": "Coût total de la dépendance"
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Comparer le prix d’achat direct et le prix via la place de marché."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-fin-de-vie-programmee-du-produit-sur-site",
     "nom": "Fin de vie programmée du produit sur site",
     "court": "Fin de vie sur site",
     "symbole": "Fv",
     "couche": 3,
     "moment": 2,
-    "fonctionnement": "Le fournisseur fixe une date d’arrêt du produit hébergé chez le client : chaque renouvellement n’est plus prolongé que jusqu’à cette date, puis le produit passe en lecture seule.",
-    "exemple": "Atlassian Data Center : fin des ventes aux nouveaux clients le 30 mars 2026, aux clients existants le 30 mars 2028, fin de vie le 28 mars 2029, avec des incitations à passer au cloud.",
+    "fonctionnement": "Le fournisseur fixe une date d’arrêt du produit hébergé chez le client : chaque renouvellement n’est plus prolongé que jusqu’à cette date, puis le produit passe en lecture seule.",
+    "exemple": "Atlassian Data Center : fin des ventes aux nouveaux clients le 30 mars 2026, aux clients existants le 30 mars 2028, fin de vie le 28 mars 2029, avec des incitations à passer au cloud.",
     "signal": "Des renouvellements proratisés à une date d’arrêt annoncée.",
-    "parade": "Planifier la migration avant la date d’arrêt ; chiffrer l’option cloud et l’alternative ; ne pas renouveler sur une durée qui dépasse la fin de vie.",
-    "levier": "Mesurer la marge de manœuvre"
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Planifier la migration avant la date d’arrêt et ne pas renouveler au-delà de la fin de vie."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Gagner du temps avec un support tiers si la migration n’est pas prête."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-surtaxe-sur-les-versions-en-fin-de-support",
     "nom": "Surtaxe sur les versions en fin de support",
     "court": "Surtaxe fin de support",
     "symbole": "Se",
     "couche": 3,
     "moment": 2,
     "fonctionnement": "Le service managé place d’office les versions dépassées sous un support étendu payant, et le surcoût court jusqu’à la montée de version.",
-    "exemple": "AWS, Amazon RDS Extended Support : inscription automatique le 29 février 2024, facturation par vCPU à partir du 1er mars 2024 pour MySQL 5.7 et du 1er avril 2024 pour PostgreSQL 11.",
-    "signal": "Une ligne de facture « support étendu » sur une base qui n’a pas été mise à jour.",
-    "parade": "Suivre les calendriers de fin de support ; planifier les montées de version ; comparer le coût du support étendu à celui de la migration.",
-    "levier": "Coût total de la dépendance"
+    "exemple": "AWS, Amazon RDS Extended Support : inscription automatique le 29 février 2024, facturation par vCPU à partir du 1er mars 2024 pour MySQL 5.7 et du 1er avril 2024 pour PostgreSQL 11.",
+    "signal": "Une ligne de facture « support étendu » sur une base qui n’a pas été mise à jour.",
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Comparer le coût du support étendu à celui de la migration."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Envisager un support tiers pour éviter la surtaxe, avec un plan de sortie daté."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-verrou-technique-a-lexpiration-de-la-licence",
     "nom": "Verrou technique à l’expiration de la licence",
     "court": "Verrou de licence",
     "symbole": "Vt",
     "couche": 3,
     "moment": 2,
     "fonctionnement": "À l’expiration de la clé de licence, le produit se bloque techniquement, sans décision ni délai de grâce du fournisseur.",
-    "exemple": "Broadcom, VMware vSphere et vCenter : une clé expirée déconnecte les hôtes et empêche les machines virtuelles éteintes de redémarrer (base de connaissances Broadcom, sans date de mise à jour).",
+    "exemple": "Broadcom, VMware vSphere et vCenter : une clé expirée déconnecte les hôtes et empêche les machines virtuelles éteintes de redémarrer (base de connaissances Broadcom, sans date de mise à jour).",
     "signal": "Une licence qui expire alors que le renouvellement n’est pas signé.",
-    "parade": "Suivre les dates d’expiration des clés ; signer les renouvellements avant l’échéance ; prévoir une marge et un plan de repli.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Suivre les dates d’expiration des clés de licence."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Signer les renouvellements avant l’échéance grâce au calendrier du registre."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-achat-par-accord-cadre-sans-mise-en-concurrence-propre",
     "nom": "Achat par accord-cadre sans mise en concurrence propre",
     "court": "Accord-cadre captif",
     "symbole": "Ac",
     "couche": 4,
     "moment": 0,
     "fonctionnement": "L’achat passe par un accord-cadre ou une centrale d’achat généraliste, sans consultation spécifique ni revue d’architecture, et l’hébergeur ou l’éditeur est installé d’emblée.",
-    "exemple": "Health Data Hub : hébergement chez Microsoft contracté via l’UGAP sans appel d’offres spécifique ; selon Henri Verdier (audition au Sénat, 10 mars 2026), un appel d’offres classique aurait pris trois ans.",
+    "exemple": "Health Data Hub : hébergement chez Microsoft contracté via l’UGAP sans appel d’offres spécifique ; selon Henri Verdier (audition au Sénat, 10 mars 2026), un appel d’offres classique aurait pris trois ans.",
     "signal": "Un fournisseur choisi dans le catalogue d’une centrale d’achat, sans comparaison avec une alternative.",
-    "parade": "Exiger une comparaison et un avis d’architecture avant tout achat sur accord-cadre ; recourir à une centrale d’achat informatique qui inclut des alternatives.",
-    "levier": "Achats et investissements groupés"
+    "leviers": [
+      {
+        "id": "achats-et-investissements-groupes",
+        "commentaire": "Recourir à une centrale d’achat informatique qui inclut des alternatives."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Centraliser le calendrier des contrats pour exiger une comparaison avant tout achat."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Comparer les fournisseurs avec un indice commun avant l’achat sur accord-cadre."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-renouvellements-decentralises-sans-avis-darchitecture",
     "nom": "Renouvellements décentralisés sans avis d’architecture",
     "court": "Renouvellement décentralisé",
     "symbole": "Rd",
     "couche": 4,
     "moment": 2,
     "fonctionnement": "Chaque entité renouvelle seule ses licences, sans pouvoir central ni avis d’architecture, donc sans rapport de force face à l’éditeur.",
-    "exemple": "Éducation nationale : contrat Microsoft renouvelé en mars 2025 jusqu’en 2029, plafond de 152 M€ HT, publié au BOAMP sans avis de la Dinum ; selon Henri Verdier, les DSI ministérielles dépensent environ 4 Md€ par an, dont environ 2 Md€ pour Microsoft, SAP et Oracle.",
+    "exemple": "Éducation nationale : contrat Microsoft renouvelé en mars 2025 jusqu’en 2029, plafond de 152 M€ HT, publié au BOAMP sans avis de la Dinum ; selon Henri Verdier, les DSI ministérielles dépensent environ 4 Md€ par an, dont environ 2 Md€ pour Microsoft, SAP et Oracle.",
     "signal": "Un renouvellement signé sans que l’organisation centrale en ait connaissance.",
-    "parade": "Instituer un avis d’architecture sur les renouvellements importants ; centraliser le calendrier des contrats et la négociation.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Centraliser le calendrier des contrats et la négociation."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Instituer un avis d’architecture sur les renouvellements importants."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-inertie-culturelle-et-formation-insuffisante",
     "nom": "Inertie culturelle et formation insuffisante",
     "court": "Inertie et formation",
     "symbole": "Ic",
     "couche": 4,
     "moment": 2,
     "fonctionnement": "Le renouvellement se fait par défaut parce que les utilisateurs sont habitués à l’outil et que la formation à une alternative manque de temps et de moyens.",
-    "exemple": "Cour des comptes, rapport du 22 octobre 2026 sur les outils bureautiques de l’État : résistance au changement, formation inadaptée et sous-dotée ; 80 % des achats de licences de 2025 concernent Microsoft ou des produits associés.",
+    "exemple": "Cour des comptes, rapport du 22 octobre 2026 sur les outils bureautiques de l’État : résistance au changement, formation inadaptée et sous-dotée ; 80 % des achats de licences de 2025 concernent Microsoft ou des produits associés.",
     "signal": "Un renouvellement reconduit faute de plan de conduite du changement.",
-    "parade": "Budgéter la formation et la conduite du changement avant le renouvellement ; mener un pilote d’alternative.",
-    "levier": "Compétences sur les alternatives"
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Budgéter la formation et la conduite du changement avant le renouvellement."
+      },
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Mener un pilote d’alternative."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-maitrise-douvrage-externalisee",
     "nom": "Maîtrise d’ouvrage externalisée",
     "court": "Savoir-faire externalisé",
     "symbole": "Mo",
     "couche": 4,
     "moment": 3,
     "fonctionnement": "L’organisation a confié le pilotage, la réalisation et le conseil à quelques prestataires, qui détiennent la connaissance du système d’information et rendent la sortie très difficile.",
-    "exemple": "Cour des comptes sur la Cnam (3 juin 2024) : les cinq premiers prestataires de services intellectuels ont reçu 877 M€ de commandes sur 2012-2022, le premier plus de 80 % ; un appel d’offres n’a reçu que deux offres.",
+    "exemple": "Cour des comptes sur la Cnam (3 juin 2024) : les cinq premiers prestataires de services intellectuels ont reçu 877 M€ de commandes sur 2012-2022, le premier plus de 80 % ; un appel d’offres n’a reçu que deux offres.",
     "signal": "Aucun agent interne ne sait reconstruire ou reprendre un élément du système.",
-    "parade": "Plafonner la sous-traitance ; conserver en interne le pilotage et l’architecture ; exiger la documentation et le transfert de compétences.",
-    "levier": "Indice de réversibilité fondé sur la preuve"
+    "leviers": [
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Plafonner la sous-traitance et conserver en interne le pilotage et l’architecture."
+      },
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Exiger la documentation et le transfert de compétences."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-resserrement-de-loffre-gratuite",
     "nom": "Resserrement de l’offre gratuite",
     "court": "Offre gratuite resserrée",
     "symbole": "Rg",
     "couche": 2,
     "moment": 1,
-    "fonctionnement": "L’outil s’installe gratuitement, puis l’éditeur limite l’offre gratuite une fois l’usage installé ; le passage au payant se négocie sous contrainte.",
-    "exemple": "GitLab.com : groupes privés gratuits limités à cinq utilisateurs et en lecture seule au-delà (annoncé en mars 2022, applicable aux espaces gratuits restants à partir du 15 août 2026) ; Slack : depuis le 26 août 2024, les espaces gratuits ne donnent accès qu’aux 90 derniers jours de messages.",
+    "fonctionnement": "L’outil s’installe gratuitement, puis l’éditeur limite l’offre gratuite une fois l’usage installé ; le passage au payant se négocie sous contrainte.",
+    "exemple": "GitLab.com : groupes privés gratuits limités à cinq utilisateurs et en lecture seule au-delà (annoncé en mars 2022, applicable aux espaces gratuits restants à partir du 15 août 2026) ; Slack : depuis le 26 août 2024, les espaces gratuits ne donnent accès qu’aux 90 derniers jours de messages.",
     "signal": "Une limite d’utilisateurs, d’historique ou de ressources annoncée sur une offre gratuite déjà adoptée.",
-    "parade": "Suivre les conditions des offres gratuites utilisées par les équipes ; exporter régulièrement l’historique et les données ; chiffrer le passage au payant avant que la limite s’applique.",
-    "levier": "Coût total de la dépendance"
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrer le passage au payant avant que la limite s’applique."
+      },
+      {
+        "id": "formats-de-donnees-ouverts",
+        "commentaire": "Exporter régulièrement l’historique et les données dans un format ouvert."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-fonctions-cles-reservees-a-ledition-payante",
     "nom": "Fonctions clés réservées à l’édition payante",
     "court": "Open core",
     "symbole": "Fc",
     "couche": 6,
     "moment": 0,
     "fonctionnement": "Le noyau ouvert est gratuit, mais des fonctions nécessaires en production (authentification unique, droits fins, audit, support) sont réservées à une édition payante sous licence propriétaire.",
-    "exemple": "FleetDM : cœur sous licence MIT, mais le dossier ee/ exige un abonnement valide en production ; Infisical : cœur MIT, dossier ee/ sous licence commerciale pour la production ; Keep : cœur MIT, dossier ee/ sous licence commerciale.",
+    "exemple": "FleetDM : cœur sous licence MIT, mais le dossier ee/ exige un abonnement valide en production ; Infisical : cœur MIT, dossier ee/ sous licence commerciale pour la production ; Keep : cœur MIT, dossier ee/ sous licence commerciale.",
     "signal": "Une fonction indispensable en production qui n’apparaît que dans la grille tarifaire de l’édition entreprise.",
-    "parade": "Lister les fonctions nécessaires en production avant d’adopter ; vérifier la licence de chaque dossier du dépôt ; chiffrer l’édition payante dès la décision.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Lister les fonctions nécessaires en production et vérifier la licence de chaque dossier du dépôt avant d’adopter."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrer l’édition payante dès la décision."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-projet-ouvert-abandonne-par-son-editeur",
     "nom": "Projet ouvert abandonné par son éditeur",
     "court": "Projet abandonné",
     "symbole": "Ab",
     "couche": 6,
     "moment": 3,
-    "fonctionnement": "L’éditeur arrête la maintenance de l’édition ouverte puis archive le dépôt : plus de correctifs ni de support communautaire, et le client doit migrer.",
-    "exemple": "Grafana OnCall OSS : mode maintenance annoncé le 11 mars 2025, dépôt archivé le 24 mars 2026 ; MinIO : dépôt communautaire archivé le 25 avril 2026 (« no longer maintained ») ; Chef Infra Server : arrêt des contributions open source après fin octobre 2026, fin de vie en novembre 2026 (annonce du 26 novembre 2025).",
+    "fonctionnement": "L’éditeur arrête la maintenance de l’édition ouverte puis archive le dépôt : plus de correctifs ni de support communautaire, et le client doit migrer.",
+    "exemple": "Grafana OnCall OSS : mode maintenance annoncé le 11 mars 2025, dépôt archivé le 24 mars 2026 ; MinIO : dépôt communautaire archivé le 25 avril 2026 (« no longer maintained ») ; Chef Infra Server : arrêt des contributions open source après fin octobre 2026, fin de vie en novembre 2026 (annonce du 26 novembre 2025).",
     "signal": "Un dépôt en mode maintenance, sans nouvelle version, alors qu’une offre commerciale est mise en avant.",
-    "parade": "Surveiller l’activité des projets utilisés ; préférer ceux portés par une fondation ; prévoir l’alternative avant l’archivage.",
-    "levier": "Support tiers pour gagner du temps"
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Surveiller l’activité des projets utilisés et préférer ceux portés par une fondation."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Prévoir le fork ou l’alternative avant l’archivage."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Gagner du temps avec un support tiers pendant la migration."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-entrainement-de-lia-de-lediteur-sur-les-donnees-clients",
     "nom": "Entraînement de l’IA de l’éditeur sur les données clients",
     "court": "IA sur données clients",
     "symbole": "Ia",
     "couche": 0,
     "moment": 1,
     "fonctionnement": "Les conditions ou les principes de confidentialité de l’éditeur autorisent l’analyse du contenu client pour entraîner ses modèles, activée par défaut, avec une sortie lourde ou réservée à l’offre la plus haute.",
-    "exemple": "Slack (mai 2024) : ses principes de confidentialité prévoient d’analyser les données clients (messages, contenus, fichiers) pour des modèles d’apprentissage, la sortie passant par un e-mail de l’administrateur à l’éditeur, qui nie entraîner des modèles génératifs sur ces données. Atlassian (annonce du 18 avril 2026, application au 17 août 2026) : métadonnées collectées pour l’IA sur les offres Free, Standard et Premium, sortie possible seulement en Enterprise (selon The Register ; les réglages par défaut varient selon les sources).",
+    "exemple": "Slack (mai 2024) : ses principes de confidentialité prévoient d’analyser les données clients (messages, contenus, fichiers) pour des modèles d’apprentissage, la sortie passant par un e-mail de l’administrateur à l’éditeur, qui nie entraîner des modèles génératifs sur ces données. Atlassian (annonce du 18 avril 2026, application au 17 août 2026) : métadonnées collectées pour l’IA sur les offres Free, Standard et Premium, sortie possible seulement en Enterprise (selon The Register ; les réglages par défaut varient selon les sources).",
     "signal": "Un partage de données activé par défaut, avec une sortie par e-mail ou réservée à l’offre haute.",
-    "parade": "Relire les conditions et les principes de confidentialité à chaque évolution ; désactiver le partage dès la souscription ; exiger au contrat l’interdiction d’entraîner des modèles sur les données du client.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Exiger au contrat l’interdiction d’entraîner des modèles sur les données du client, et relire les conditions à chaque évolution."
+      },
+      {
+        "id": "modeles-dia-a-poids-ouverts",
+        "commentaire": "Disposer d’un modèle ouvert évalué comme alternative pour les usages sensibles."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-hebergeur-impose-par-la-loi-pour-les-donnees-sensibles",
     "nom": "Hébergeur imposé par la loi pour les données sensibles",
     "court": "Hébergeur imposé",
     "symbole": "Hl",
     "couche": 5,
     "moment": 0,
     "fonctionnement": "La loi réserve, dès l’appel d’offres, certaines données sensibles à des hébergeurs protégés des accès d’États tiers, ce qui restreint le choix aux offres qualifiées.",
-    "exemple": "Loi SREN du 21 mai 2024 (sécuriser et réguler l’espace numérique) : exigence d’hébergeurs protégés contre les accès d’autorités étrangères pour les données sensibles, telle que la rappelle la CNIL.",
+    "exemple": "Loi SREN du 21 mai 2024 (sécuriser et réguler l’espace numérique) : exigence d’hébergeurs protégés contre les accès d’autorités étrangères pour les données sensibles, telle que la rappelle la CNIL.",
     "signal": "Une exigence de qualification ou de protection contre les lois extraterritoriales dans l’appel d’offres.",
-    "parade": "Identifier tôt les données concernées ; comparer les offres qualifiées ; prévoir la réversibilité vers une autre offre qualifiée.",
-    "levier": "Cloud européen qualifié"
+    "leviers": [
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Comparer les offres qualifiées pour les données sensibles."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Prévoir la réversibilité vers une autre offre qualifiée."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-penalites-de-sortie-anticipee-maintenues-par-le-data-act",
     "nom": "Pénalités de sortie anticipée maintenues par le Data Act",
     "court": "Pénalités maintenues",
     "symbole": "Pd",
     "couche": 5,
     "moment": 3,
     "fonctionnement": "Le règlement garantit le droit de changer de fournisseur (préavis maximal de deux mois) mais laisse subsister les pénalités de sortie anticipée annoncées avant la signature.",
-    "exemple": "Règlement (UE) 2023/2854 (Data Act), art. 23, 25 et 29 : les frais de changement de fournisseur disparaissent le 12 janvier 2027, mais les pénalités de résiliation anticipée restent permises, leur validité dépendant du droit national (analyse DLA Piper).",
+    "exemple": "Règlement (UE) 2023/2854 (Data Act), art. 23, 25 et 29 : les frais de changement de fournisseur disparaissent le 12 janvier 2027, mais les pénalités de résiliation anticipée restent permises, leur validité dépendant du droit national (analyse DLA Piper).",
     "signal": "Une pénalité de résiliation anticipée prévue au contrat, même à partir de 2027.",
-    "parade": "Faire inscrire les pénalités au contrat et en chiffrer le montant avant la signature ; privilégier des durées courtes.",
-    "levier": "Clauses de réversibilité"
+    "leviers": [
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Faire inscrire les pénalités au contrat et en chiffrer le montant avant la signature."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Privilégier des durées courtes lors de la revue du contrat."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-exclusion-des-services-sur-mesure-du-droit-de-changer",
     "nom": "Exclusion des services sur mesure du droit de changer",
     "court": "Services sur mesure exclus",
     "symbole": "Sz",
     "couche": 5,
     "moment": 3,
     "fonctionnement": "Un service dont l’essentiel est développé sur mesure pour un seul client, ou un service de test, échappe au droit de changer de fournisseur prévu par la loi.",
-    "exemple": "Règlement (UE) 2023/2854 (Data Act), chapitre VI : exceptions pour les services sur mesure et les services de test (analyse DLA Piper).",
-    "signal": "Un service présenté comme « sur mesure » pour échapper aux obligations de portabilité.",
-    "parade": "Faire qualifier le service au contrat ; exiger les mêmes conditions de sortie que pour un service standard ; conserver la documentation du développement.",
-    "levier": "Revue de réversibilité des nouveaux contrats"
+    "exemple": "Règlement (UE) 2023/2854 (Data Act), chapitre VI : exceptions pour les services sur mesure et les services de test (analyse DLA Piper).",
+    "signal": "Un service présenté comme « sur mesure » pour échapper aux obligations de portabilité.",
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Faire qualifier le service au contrat et exiger les mêmes conditions de sortie qu’un service standard."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Conserver la documentation du développement et prévoir l’export."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-fin-de-support-avancee-dune-distribution-communautaire",
     "nom": "Fin de support avancée d’une distribution communautaire",
     "court": "Fin de support avancée",
     "symbole": "Cd",
     "couche": 6,
     "moment": 2,
     "fonctionnement": "Le projet remplace la version stable sur laquelle vous vous appuyez par une branche de développement, et raccourcit ainsi la durée de support sur laquelle vous aviez planifié.",
-    "exemple": "CentOS Linux 8 : annoncé en décembre 2020, le projet bascule vers CentOS Stream et arrête CentOS Linux 8 fin 2021.",
+    "exemple": "CentOS Linux 8 : annoncé en décembre 2020, le projet bascule vers CentOS Stream et arrête CentOS Linux 8 fin 2021.",
     "signal": "Une distribution gratuite dépend d’un sponsor commercial dont l’offre payante vit sur la même base de code.",
-    "parade": "Inscrire la date de fin de support dans le plan de renouvellement dès l’adoption ; prévoir une migration vers une distribution à support long ; tester la bascule avant l’échéance.",
-    "levier": "Tests de bascule réguliers"
+    "leviers": [
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Tester la bascule avant l’échéance."
+      },
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Inscrire la date de fin de support dans le plan de renouvellement dès l’adoption."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-infrastructure-communautaire-controlee-par-un-acteur",
     "nom": "Infrastructure communautaire contrôlée par un acteur",
     "court": "Infrastructure contrôlée",
     "symbole": "Ib",
     "couche": 6,
     "moment": 1,
     "fonctionnement": "Les mises à jour de thèmes et d’extensions passent par un serveur géré par une seule organisation, qui peut en couper l’accès à un acteur précis.",
-    "exemple": "WordPress.org : le 21 septembre 2024, Matt Mullenweg affirme que WP Engine doit obtenir une licence de marque ; WordPress.org bloque ensuite l’accès de WP Engine, y compris pour mettre à jour ses extensions. Le 10 décembre 2024, un tribunal californien ordonne le rétablissement de l’accès.",
+    "exemple": "WordPress.org : le 21 septembre 2024, Matt Mullenweg affirme que WP Engine doit obtenir une licence de marque ; WordPress.org bloque ensuite l’accès de WP Engine, y compris pour mettre à jour ses extensions. Le 10 décembre 2024, un tribunal californien ordonne le rétablissement de l’accès.",
     "signal": "Des mises à jour qui dépendent d’un serveur central, et un conflit public entre l’éditeur du service et celui de la distribution.",
-    "parade": "Héberger un miroir des mises à jour critiques ; inventorier les extensions qui interrogent un serveur tiers ; prévoir la reprise de leur distribution.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Héberger un miroir des mises à jour critiques."
+      },
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Inventorier les extensions qui interrogent un serveur tiers."
+      }
+    ],
+    "sources": []
   },
   {
+    "id": "meca-virtualisation-non-reconnue-comme-sous-capacite",
     "nom": "Virtualisation non reconnue comme sous-capacité",
     "court": "Virtualisation non reconnue",
     "symbole": "Vz",
     "couche": 1,
     "moment": 1,
     "fonctionnement": "L’éditeur refuse de compter les cœurs attribués à une machine virtuelle et exige de licencier les cœurs physiques du serveur.",
-    "exemple": "Oracle : sa politique de partitionnement (version du 14 février 2022) classe VMware et Oracle VM en partitionnement logiciel, non admis pour limiter les licences ; seuls certains partitionnements matériels plafonnés ou les partitions de confiance des systèmes Oracle sont admis. Sur AWS, Azure et Google Cloud, la politique cloud d’Oracle compte au contraire les vCPU par instance.",
+    "exemple": "Oracle : sa politique de partitionnement (version du 14 février 2022) classe VMware et Oracle VM en partitionnement logiciel, non admis pour limiter les licences ; seuls certains partitionnements matériels plafonnés ou les partitions de confiance des systèmes Oracle sont admis. Sur AWS, Azure et Google Cloud, la politique cloud d’Oracle compte au contraire les vCPU par instance.",
     "signal": "Une base d’éditeur installée sur une machine virtuelle d’une grappe partagée, sans clause de sous-capacité dans le contrat.",
-    "parade": "Faire confirmer par écrit la règle de comptage applicable à votre hyperviseur avant tout déploiement ; isoler les bases concernées sur des serveurs dédiés ; comparer avec le coût en cloud public.",
-    "levier": "Gestion des actifs logiciels"
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Faire confirmer par écrit la règle de comptage de votre hyperviseur et inventorier les bases concernées."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Comparer le coût avec celui d’un hébergement en cloud public."
+      }
+    ],
+    "sources": []
   }
 ]
