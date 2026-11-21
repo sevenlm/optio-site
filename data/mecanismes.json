@@ -450,7 +450,7 @@
     "couche": 3,
     "moment": 3,
     "fonctionnement": "L’identité, la supervision et les outils annexes sont imposés par le fournisseur.",
-    "exemple": "Annuaire central dont dépendent tous les accès.",
+    "exemple": "Le 14 mai 2026, la CMA britannique ouvre une enquête sur Microsoft ; son avis reprend le constat de son enquête de marché sur le cloud selon lequel Entra ID, le logiciel d’identité et d’accès de Microsoft, n’interopère pas sans friction avec les logiciels d’identité tiers.",
     "signal": "Changer un composant oblige à en changer d’autres.",
     "leviers": [
       {
@@ -458,7 +458,12 @@
         "commentaire": "Utilisez des protocoles standards (SAML, OpenID Connect, OpenTelemetry)."
       }
     ],
-    "sources": []
+    "sources": [
+      {
+        "titre": "Competition and Markets Authority, Avis d’ouverture de l’enquête SMS sur Microsoft, mai 2026",
+        "url": "https://assets.publishing.service.gov.uk/media/6a044eeecd2e0e8b5b20b518/Investigation_Notice.pdf"
+      }
+    ]
   },
   {
     "id": "meca-mises-a-jour-forcees-et-obsolescence",
@@ -541,7 +546,7 @@
     "couche": 4,
     "moment": 1,
     "fonctionnement": "Les processus, les règles et les données métier sont modélisés dans la plateforme.",
-    "exemple": "Gestion des services, ERP, CRM fortement personnalisés.",
+    "exemple": "Le Contrôle fédéral des finances suisse (CDF), dans son audit du 20 février 2023 du programme SUPERB (SAP S/4HANA), vise à ramener environ 250 applications métier vers le standard SAP, surtout celles bâties sur SAP ECC6.",
     "signal": "Changer d’outil impose de refondre les processus.",
     "leviers": [
       {
@@ -549,7 +554,12 @@
         "commentaire": "Documentez les processus hors de l’outil et limiter les développements spécifiques."
       }
     ],
-    "sources": []
+    "sources": [
+      {
+        "titre": "Contrôle fédéral des finances (Suisse), Audit du projet SUPERB, applications métier, février 2023",
+        "url": "https://efk.admin.ch/wp-content/uploads/publikationen/berichte/wirtschaft_und_verwaltung/informatikprojekte/22754/22754be-version-definitive-v04.pdf"
+      }
+    ]
   },
   {
     "id": "meca-droit-applicable-et-juridiction-etrangere",
@@ -1473,6 +1483,37 @@
       {
         "titre": "Scott & Scott, Comprendre l’usage par Oracle de sa politique de partitionnement, 2019",
         "url": "https://scottandscottllp.com/how-to-understand-oracles-use-of-its-partitioning-policy-for-virtualization/"
+      }
+    ]
+  },
+  {
+    "id": "meca-materiel-certifie-impose-a-ladoption",
+    "nom": "Matériel certifié imposé à l’adoption",
+    "court": "Matériel certifié imposé",
+    "symbole": "Rm",
+    "couche": 3,
+    "moment": 0,
+    "fonctionnement": "Le fournisseur n’accepte, ou ne soutient, que des architectures et du matériel qu’il a certifiés dès le déploiement, ce qui fixe la pile technique du client.",
+    "exemple": "En septembre 2023, un billet de Pete Koehler (VMware) précise que, pour vSAN ESA, la liste de compatibilité se limite à des fournisseurs de ReadyNode approuvés avec du matériel certifié ; le montage « maison » n’existe que pour l’architecture OSA. Selon un article de la base de connaissances de Broadcom, non daté, les disques qualifiés dans le ReadyNode d’un autre fabricant ne sont pas admis.",
+    "signal": "Le support n’est promis que sur une liste de matériel certifié, et l’architecture récente la restreint davantage.",
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Vérifiez avant signature si le support exige du matériel certifié et ce qu’il advient hors liste."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Évitez de lier vos charges de travail à une architecture matérielle certifiée unique."
+      }
+    ],
+    "sources": [
+      {
+        "titre": "VMware (Broadcom), Matériel ReadyNode exigé pour vSAN ESA, septembre 2023",
+        "url": "https://blogs.vmware.com/cloud-foundation/2023/09/13/support-for-readynode-emulated-configurations-in-vsan-esa/"
+      },
+      {
+        "titre": "Broadcom, Modifications matérielles prises en charge pour vSAN ESA, non daté",
+        "url": "https://knowledge.broadcom.com/external/article/326717/supported-changes-in-a-vsan-esa-or-vsan.html"
       }
     ]
   }

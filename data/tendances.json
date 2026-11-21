@@ -246,7 +246,8 @@
     "mecanismes": [
       "meca-changement-de-metrique",
       "meca-fin-des-licences-perpetuelles",
-      "meca-virtualisation-non-reconnue-comme-sous-capacite"
+      "meca-virtualisation-non-reconnue-comme-sous-capacite",
+      "meca-materiel-certifie-impose-a-ladoption"
     ],
     "leviers": [
       {

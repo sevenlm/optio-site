@@ -451,7 +451,12 @@
     ],
     "site": "https://www.hpe.com/storage/alletra",
     "pourquoi": "Baies et outils de gestion propriétaires : la sortie est possible mais demande de reconstruire réplication et procédures.",
-    "sources": []
+    "sources": [
+      {
+        "titre": "Blocks & Files, HPE lance le programme Timeless pour Alletra MP, mai 2024",
+        "url": "https://blocksandfiles.com/2024/05/15/hpe-takes-on-pures-evergreen-with-alletra-mp-timeless-program/"
+      }
+    ]
   },
   {
     "id": "ceph",
@@ -727,7 +732,16 @@
     ],
     "site": "https://www.commvault.com/",
     "pourquoi": "Formats et catalogue propriétaires : les sauvegardes passées restent liées à l’outil pendant toute leur durée de conservation.",
-    "sources": []
+    "sources": [
+      {
+        "titre": "Commvault (SEC), rapport annuel 10-K exercice clos mars 2020, consulté en novembre 2026",
+        "url": "https://www.sec.gov/Archives/edgar/data/1169561/000116956120000018/a2020033110k.htm"
+      },
+      {
+        "titre": "Commvault (SEC), 10-K exercice 2020, coût du changement de système, consulté en novembre 2026",
+        "url": "https://www.sec.gov/Archives/edgar/data/1169561/000116956120000018/a2020033110k.htm"
+      }
+    ]
   },
   {
     "id": "atempo-tina-et-lina",
@@ -6883,6 +6897,228 @@
       {
         "titre": "FreeCAD, Fichier LICENSE du dépôt, consulté en novembre 2026",
         "url": "https://raw.githubusercontent.com/FreeCAD/FreeCAD/main/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "sailpoint",
+    "nom": "SailPoint",
+    "editeur": "SailPoint, Inc.",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Identité et accès"
+    ],
+    "dependance": "Gouvernance des identités vendue en suites SaaS par abonnement, contrats typiques de trois ans à facturation annuelle d’avance. Thoma Bravo détient la majorité du capital (environ 86 % à l’introduction en bourse).",
+    "alternatives": [],
+    "site": "https://www.sailpoint.com",
+    "pourquoi": "Les politiques, certifications d’accès et connecteurs s’accumulent dans la suite SaaS propriétaire, sans alternative libre équivalente pour la gouvernance : sortie exigeante.",
+    "sources": [
+      {
+        "titre": "SailPoint, prospectus 424B4 (SEC), février 2025",
+        "url": "https://www.sec.gov/Archives/edgar/data/2030781/000119312525026566/d906470d424b4.htm"
+      },
+      {
+        "titre": "SailPoint, prospectus 424B4 (SEC), février 2025",
+        "url": "https://www.sec.gov/Archives/edgar/data/2030781/000119312525026566/d906470d424b4.htm"
+      }
+    ]
+  },
+  {
+    "id": "cyberark",
+    "nom": "CyberArk",
+    "editeur": "Palo Alto Networks",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Identité et accès"
+    ],
+    "dependance": "Gestion des accès à privilèges propriétaire (identités humaines, machines et IA). Racheté par Palo Alto Networks, opération finalisée le 11 février 2026 : intégration probable à une plateforme plus large.",
+    "alternatives": [],
+    "site": "https://www.cyberark.com",
+    "pourquoi": "Coffres, sessions et secrets privilégiés sont profondément intégrés aux opérations d’administration, sans alternative libre équivalente ; le rachat ajoute une incertitude de feuille de route.",
+    "sources": [
+      {
+        "titre": "Palo Alto Networks, communiqué sur la finalisation du rachat de CyberArk, février 2026",
+        "url": "https://paloaltonetworks.com/company/press/2026/palo-alto-networks-completes-acquisition-of-cyberark-to-secure-the-ai-era"
+      }
+    ]
+  },
+  {
+    "id": "ping-identity",
+    "nom": "Ping Identity",
+    "editeur": "Ping Identity (Thoma Bravo)",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Identité et accès"
+    ],
+    "dependance": "Plateforme d’identité propriétaire, filiale du fonds Thoma Bravo, qui a fusionné ForgeRock dans Ping Identity en août 2023 : sa gouvernance est celle d’un fonds d’investissement.",
+    "alternatives": [
+      "Keycloak",
+      "Authentik",
+      "Zitadel"
+    ],
+    "site": "https://www.pingidentity.com",
+    "pourquoi": "Fédérations, applications SSO et politiques d’authentification sont à reconstruire, mais des alternatives libres couvrent la fonction : sortie exigeante.",
+    "sources": [
+      {
+        "titre": "Thoma Bravo, communiqué sur ForgeRock et Ping Identity, août 2023",
+        "url": "https://www.thomabravo.com/press-releases/thoma-bravo-completes-acquisition-of-forgerock-combines-forgerock-into-ping-identity"
+      }
+    ]
+  },
+  {
+    "id": "check-point",
+    "nom": "Check Point",
+    "editeur": "Check Point Software Technologies",
+    "quadrant": 0,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Pare-feux"
+    ],
+    "dependance": "Pare-feux Quantum sous licences par abonnement ; l’Infinity Platform Agreement regroupe matériel, logiciel et abonnements dans un prix annuel unique. Politiques et gestion centralisée propriétaires.",
+    "alternatives": [
+      "OPNsense",
+      "pfSense",
+      "IPFire"
+    ],
+    "site": "https://www.checkpoint.com",
+    "pourquoi": "Base de règles, blades de sécurité et gestion centralisée sont propriétaires et à retraduire ; le contrat annuel global renforce l’engagement.",
+    "sources": [
+      {
+        "titre": "Check Point, brochure Infinity Platform Agreement, consulté en novembre 2026",
+        "url": "https://www.checkpoint.com/resources/items/brochure-%7C-infinity-platform-agreement"
+      }
+    ]
+  },
+  {
+    "id": "bitbucket",
+    "nom": "Bitbucket",
+    "editeur": "Atlassian",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Forges et CI/CD"
+    ],
+    "dependance": "Forge hébergée par Atlassian, offre gratuite limitée à 5 utilisateurs, puis plans Standard et Premium. Pipelines, intégrations Jira et dépôts sont liés à la plateforme ; Git facilite la migration des dépôts, pas des pipelines.",
+    "alternatives": [
+      "GitLab",
+      "Forgejo",
+      "Gitea"
+    ],
+    "site": "https://bitbucket.org",
+    "pourquoi": "Les dépôts Git se déplacent aisément, mais pipelines, permissions et liens avec Jira doivent être reconstruits, d’où une sortie exigeante.",
+    "sources": [
+      {
+        "titre": "Atlassian, Tarifs de Bitbucket, consulté en novembre 2026",
+        "url": "https://www.atlassian.com/software/bitbucket/pricing"
+      }
+    ]
+  },
+  {
+    "id": "chef",
+    "nom": "Chef",
+    "editeur": "Progress Chef",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Infrastructure as code"
+    ],
+    "dependance": "Code source sous licence Apache 2.0, mais les binaires distribués par Progress relèvent d’un contrat de licence : l’usage gratuit exclut les entreprises, un usage commercial exige une licence payante. Recettes Ruby propres à Chef.",
+    "alternatives": [
+      "Ansible",
+      "OpenVox"
+    ],
+    "site": "https://www.chef.io",
+    "pourquoi": "Le code reste ouvert, mais l’usage de binaires officiels se paie en entreprise ; les recettes Ruby sont à réécrire pour changer d’outil.",
+    "depot": "chef/chef",
+    "sources": [
+      {
+        "titre": "Progress Chef, Contrat de licence utilisateur final, consulté en novembre 2026",
+        "url": "https://www.chef.io/end-user-license-agreement"
+      },
+      {
+        "titre": "Chef, Licence du dépôt chef/chef, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/chef/chef/main/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "docker-desktop",
+    "nom": "Docker Desktop",
+    "editeur": "Docker Inc.",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Conteneurs"
+    ],
+    "dependance": "Application propriétaire dont l’usage professionnel dans les grandes organisations exige un abonnement payant ; gratuite sous 250 salariés et 10 millions de dollars de chiffre d’affaires. Environnement de développement et extensions liés à l’éditeur.",
+    "alternatives": [
+      "Podman"
+    ],
+    "site": "https://www.docker.com/products/docker-desktop/",
+    "pourquoi": "Les images et Dockerfile restent standards, mais outillage, Compose et habitudes d’équipe sont à migrer, avec un coût de licence qui pèse sur les grands groupes.",
+    "sources": [
+      {
+        "titre": "Docker, Licence de Docker Desktop, consulté en novembre 2026",
+        "url": "https://docs.docker.com/subscription/desktop-license/"
+      }
+    ]
+  },
+  {
+    "id": "podman",
+    "nom": "Podman",
+    "editeur": "Podman Container Tools (CNCF)",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Conteneurs"
+    ],
+    "dependance": "Moteur de conteneurs sous licence Apache 2.0, gouverné par le projet Podman Container Tools au sein de la CNCF. Images OCI standards, compatibles avec les autres moteurs.",
+    "alternatives": [],
+    "site": "https://podman.io",
+    "pourquoi": "Licence Apache 2.0, gouvernance communautaire et formats OCI standards : peu de verrouillage, sortie facilitée.",
+    "depot": "podman-container-tools/podman",
+    "sources": [
+      {
+        "titre": "Podman, Gouvernance du projet, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/containers/podman/main/GOVERNANCE.md"
+      },
+      {
+        "titre": "Podman, Licence du dépôt, consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/containers/podman/main/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "mistral-ai-la-plateforme",
+    "nom": "Mistral AI (La Plateforme)",
+    "editeur": "Mistral AI",
+    "quadrant": 2,
+    "anneau": 2,
+    "type": "p",
+    "categories": [
+      "Modèles d’IA managés et serveurs d’inférence"
+    ],
+    "dependance": "Service d’API hébergé, facturé au million de jetons. Certains modèles sont à poids ouverts et auto-hébergeables, mais l’usage commercial en production peut exiger une licence Mistral.",
+    "alternatives": [
+      "vLLM"
+    ],
+    "site": "https://mistral.ai",
+    "pourquoi": "Des poids ouverts permettent l’auto-hébergement, mais la licence commerciale et les prompts réglés pour ces modèles limitent la portabilité.",
+    "sources": [
+      {
+        "titre": "Mistral AI, Tarifs, consulté en novembre 2026",
+        "url": "https://mistral.ai/pricing"
       }
     ]
   }
