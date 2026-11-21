@@ -1,0 +1,35 @@
+# Configuration prek (compatible pre-commit) : les contrôles de la CI, avant le commit et avant le push.
+# Activation : prek install --hook-type pre-commit --hook-type pre-push
+# Tout contrôler : prek run --all-files
+# Contrôles réseau, à la demande : prek run check-links --hook-stage manual
+repos:
+  - repo: local
+    hooks:
+      - id: check-data
+        name: données du radar (check-data.py)
+        entry: python3 scripts/check-data.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit, pre-push]
+      - id: check-cases
+        name: cas chiffrés (check-cases.py)
+        entry: python3 scripts/check-cases.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [pre-commit, pre-push]
+      - id: check-links
+        name: liens des sources (check-links.py)
+        entry: python3 scripts/check-links.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [manual]
+      - id: check-vitality
+        name: vitalité des dépôts (check-vitality.py, GITHUB_TOKEN conseillé)
+        entry: python3 scripts/check-vitality.py
+        language: system
+        pass_filenames: false
+        always_run: true
+        stages: [manual]
