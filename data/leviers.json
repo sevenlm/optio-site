@@ -18,6 +18,14 @@
       {
         "titre": "Observation Optio",
         "url": null
+      },
+      {
+        "titre": "XCP-ng (Vates), Comment Bedrock Streaming a migré de VMware vers XCP-ng, avril 2022",
+        "url": "https://xcp-ng.org/blog/2022/04/13/how-bedrock-streaming-migrated-from-vmware-to-xcp-ng/"
+      },
+      {
+        "titre": "Proxmox, Wiki « Migrate to Proxmox VE », consulté en 2026",
+        "url": "https://pve.proxmox.com/wiki/Migrate_to_Proxmox_VE"
       }
     ],
     "technologies": [
@@ -110,6 +118,10 @@
       {
         "titre": "Observation Optio",
         "url": null
+      },
+      {
+        "titre": "ANSSI, FAQ qualification SecNumCloud, 2026",
+        "url": "https://cyber.gouv.fr/enjeux-technologiques/cloud/faq-qualification-secnumcloud/"
       }
     ],
     "technologies": [
@@ -136,6 +148,10 @@
       {
         "titre": "Observation Optio",
         "url": null
+      },
+      {
+        "titre": "GOV.UK, Managing technical lock-in in the cloud, mise à jour du 3 septembre 2026",
+        "url": "https://www.gov.uk/guidance/managing-technical-lock-in-in-the-cloud"
       }
     ],
     "technologies": [
@@ -157,7 +173,7 @@
       "Évaluez un modèle ouvert sur un cas d’usage interne."
     ],
     "verification": "Un modèle ouvert a été évalué sur un cas d’usage interne, avec des critères de performance écrits.",
-    "limites": "Les poids ouverts ne suppriment ni le besoin de matériel ni celui de compétences, et leurs conditions d’usage sont à relire.",
+    "limites": "Les poids ouverts ne suppriment ni le besoin de matériel ni celui de compétences, et leurs conditions d’usage sont à relire. La définition de l’IA ouverte de l’OSI exige aussi des informations sur les données et le code, pas seulement la publication des poids.",
     "lies": [
       "competences-sur-les-alternatives",
       "pilote-de-sortie-sur-un-perimetre-reel"
@@ -166,6 +182,10 @@
       {
         "titre": "Observation Optio",
         "url": null
+      },
+      {
+        "titre": "Open Source Initiative, Définition de l’IA open source 1.0, 2024",
+        "url": "https://opensource.org/ai/open-source-ai-definition"
       }
     ],
     "technologies": [
@@ -212,6 +232,14 @@
       {
         "titre": "Guide Optio « Garder le choix »",
         "url": null
+      },
+      {
+        "titre": "ANSSI, Anticiper et gérer une crise cyber, 2026",
+        "url": "https://cyber.gouv.fr/securisation/gestion-de-crise/anticiper-gerer-une-crise-cyber/"
+      },
+      {
+        "titre": "EBA, Orientations sur l’externalisation (EBA/GL/2019/02), février 2019",
+        "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf"
       }
     ],
     "technologies": []
@@ -235,6 +263,14 @@
       {
         "titre": "Référentiel de réversibilité Optio",
         "url": null
+      },
+      {
+        "titre": "ABE, Orientations relatives à l’externalisation (EBA/GL/2019/02), rapport final",
+        "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/2761380/6565c789-487b-4528-8a17-4b94147dc5b8/EBA%20revised%20Guidelines%20on%20outsourcing_FR.pdf"
+      },
+      {
+        "titre": "GOV.UK, Managing technical lock-in in the cloud, mise à jour du 3 septembre 2026",
+        "url": "https://www.gov.uk/guidance/managing-technical-lock-in-in-the-cloud"
       }
     ],
     "technologies": []
@@ -258,6 +294,14 @@
       {
         "titre": "Guide Optio « Garder le choix »",
         "url": null
+      },
+      {
+        "titre": "CNIL, Prévoir la continuité et la reprise d’activité, mars 2024",
+        "url": "https://cnil.fr/fr/securite-prevoir-la-continuite-et-la-reprise-dactivite"
+      },
+      {
+        "titre": "ANSSI, Anticiper et gérer une crise cyber, 2026",
+        "url": "https://cyber.gouv.fr/securisation/gestion-de-crise/anticiper-gerer-une-crise-cyber/"
       }
     ],
     "technologies": [
@@ -356,6 +400,10 @@
       {
         "titre": "Référentiel de réversibilité Optio",
         "url": null
+      },
+      {
+        "titre": "ABE, Orientations relatives à l’externalisation (EBA/GL/2019/02), rapport final",
+        "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/2761380/6565c789-487b-4528-8a17-4b94147dc5b8/EBA%20revised%20Guidelines%20on%20outsourcing_FR.pdf"
       }
     ],
     "technologies": []
@@ -379,6 +427,14 @@
       {
         "titre": "Référentiel de réversibilité Optio",
         "url": null
+      },
+      {
+        "titre": "GOV.UK, Managing technical lock-in in the cloud, mise à jour du 3 septembre 2026",
+        "url": "https://www.gov.uk/guidance/managing-technical-lock-in-in-the-cloud"
+      },
+      {
+        "titre": "EBA, Orientations sur l’externalisation (EBA/GL/2019/02), février 2019",
+        "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf"
       }
     ],
     "technologies": []
@@ -434,6 +490,14 @@
       {
         "titre": "Guide Optio « Garder le choix »",
         "url": null
+      },
+      {
+        "titre": "ABE, Orientations relatives à l’externalisation (EBA/GL/2019/02), rapport final",
+        "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/2761380/6565c789-487b-4528-8a17-4b94147dc5b8/EBA%20revised%20Guidelines%20on%20outsourcing_FR.pdf"
+      },
+      {
+        "titre": "GOV.UK, Managing technical lock-in in the cloud, mise à jour du 3 septembre 2026",
+        "url": "https://www.gov.uk/guidance/managing-technical-lock-in-in-the-cloud"
       }
     ],
     "technologies": []
@@ -457,6 +521,10 @@
       {
         "titre": "Guide Optio « Garder le choix »",
         "url": null
+      },
+      {
+        "titre": "GOV.UK, Managing technical lock-in in the cloud, mise à jour du 3 septembre 2026",
+        "url": "https://www.gov.uk/guidance/managing-technical-lock-in-in-the-cloud"
       }
     ],
     "technologies": []
@@ -480,6 +548,10 @@
       {
         "titre": "Observation Optio",
         "url": null
+      },
+      {
+        "titre": "TechTarget, Third-party VMware support for perpetual licenses growing",
+        "url": "https://www.techtarget.com/searchdatacenter/news/366617790/Third-party-VMware-support-for-perpetual-licenses-growing"
       }
     ],
     "technologies": [
@@ -505,6 +577,10 @@
       {
         "titre": "Référentiel de réversibilité Optio",
         "url": null
+      },
+      {
+        "titre": "Commission européenne, Data Act explained, décembre 2025",
+        "url": "https://digital-strategy.ec.europa.eu/en/factpages/data-act-explained"
       }
     ],
     "technologies": []
@@ -528,6 +604,10 @@
       {
         "titre": "Guide Optio « Garder le choix »",
         "url": null
+      },
+      {
+        "titre": "Gouvernement du Queensland, Software asset management policy, mis à jour août 2025",
+        "url": "https://forgov.qld.gov.au/information-and-communication-technology/qgea-policies-standards-and-guidelines/software-asset-management-policy"
       }
     ],
     "technologies": []
@@ -550,6 +630,10 @@
       {
         "titre": "Guide Optio « Garder le choix »",
         "url": null
+      },
+      {
+        "titre": "EBA, Orientations sur l’externalisation (EBA/GL/2019/02), février 2019",
+        "url": "https://www.eba.europa.eu/sites/default/files/documents/10180/2551996/38c80601-f5d7-4855-8ba3-702423665479/EBA%20revised%20Guidelines%20on%20outsourcing%20arrangements.pdf"
       }
     ],
     "technologies": []
@@ -573,6 +657,10 @@
       {
         "titre": "Guide Optio « Garder le choix »",
         "url": null
+      },
+      {
+        "titre": "CNIL, Cartographier vos traitements de données personnelles, consulté en 2026",
+        "url": "https://www.cnil.fr/fr/cartographier-vos-traitements-de-donnees-personnelles"
       }
     ],
     "technologies": []
@@ -587,7 +675,7 @@
       "Vérifiez que la gestion des clés est elle-même réversible."
     ],
     "verification": "Les clés des données identifiées sont gérées hors du fournisseur, et leur gestion est elle-même réversible.",
-    "limites": "Le chiffrement ne protège pas les données traitées en clair chez le fournisseur.",
+    "limites": "Le chiffrement ne protège pas les données traitées en clair chez le fournisseur. Le NCSC britannique déconseille les clés apportées ou conservées par le client (BYOK, HYOK) sauf obligation réglementaire, et recommande les clés générées par le fournisseur dans son KMS : à arbitrer selon votre exposition.",
     "lies": [
       "cartographie-et-classification-des-donnees",
       "cloud-europeen-qualifie"
@@ -596,6 +684,10 @@
       {
         "titre": "Observation Optio",
         "url": null
+      },
+      {
+        "titre": "NCSC (Royaume-Uni), Choosing and configuring a KMS for secure key management in the cloud, juin 2023",
+        "url": "https://www.ncsc.gov.uk/collection/cloud/understanding-cloud-services/choosing-and-configuring-a-kms-for-secure-key-management-in-the-cloud"
       }
     ],
     "technologies": [
