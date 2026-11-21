@@ -3934,5 +3934,345 @@
     "site": "https://www.liquibase.com/",
     "pourquoi": "Les changelogs au format de l’outil sont à convertir pour partir. La licence FSL n’autorise pas tous les usages concurrents.",
     "depot": "liquibase/liquibase"
+  },
+  {
+    "id": "dataiku",
+    "nom": "Dataiku",
+    "editeur": "Dataiku",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Plateformes de data science et MLOps"
+    ],
+    "dependance": "Plateforme commerciale d’analyse, d’apprentissage automatique et d’agents IA. Les projets (Flow), recettes visuelles, registre de modèles et suivi de gouvernance sont des objets de la plateforme. Elle lit les données chez Snowflake, Databricks, Redshift ou S3, calcule sur Spark, Kubernetes ou GPU, et son LLM Mesh permet de changer de fournisseur de modèles de langage.",
+    "alternatives": [
+      "MLflow",
+      "Kubeflow"
+    ],
+    "site": "https://www.dataiku.com/product/",
+    "pourquoi": "Les données restent chez vous, mais les flux, les recettes visuelles et le suivi de gouvernance sont à reconstruire ailleurs. Les recettes en code (Python, R, SQL) se réutilisent plus facilement."
+  },
+  {
+    "id": "amazon-sagemaker-ai",
+    "nom": "Amazon SageMaker AI",
+    "editeur": "Amazon Web Services",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Plateformes de data science et MLOps"
+    ],
+    "dependance": "Service géré d’entraînement, de déploiement et de gouvernance de modèles. Il accepte tout modèle, tout cadre (PyTorch, TensorFlow, JAX) et tout conteneur, avec un suivi MLflow intégré. Les pipelines, le registre de modèles à approbations liées à IAM, les points d’accès et la supervision sont propres à AWS.",
+    "alternatives": [
+      "MLflow",
+      "Kubeflow"
+    ],
+    "site": "https://aws.amazon.com/sagemaker/ai/",
+    "pourquoi": "Modèles et conteneurs se déplacent, pas les pipelines ni le registre liés à IAM et à l’infrastructure AWS. Le suivi MLflow limite la dépendance côté expérimentation."
+  },
+  {
+    "id": "google-vertex-ai",
+    "nom": "Google Vertex AI (Gemini platform)",
+    "editeur": "Google",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Plateformes de data science et MLOps"
+    ],
+    "dependance": "Plateforme d’entraînement, de déploiement et d’agents IA de Google Cloud, présentée sous le nom « Gemini platform » sur la page du produit. Notebooks reliés à BigQuery, pipelines, registre de modèles, magasin de caractéristiques et supervision sont propres à Google ; Model Garden donne accès à des modèles tiers et ouverts, comme Claude ou Gemma. Facturation à l’usage.",
+    "alternatives": [
+      "MLflow",
+      "Kubeflow"
+    ],
+    "site": "https://cloud.google.com/vertex-ai",
+    "pourquoi": "Les modèles ouverts et les cadres standards se déplacent, mais pipelines, registre et magasin de caractéristiques restent liés à Google Cloud, de même que l’intégration avec BigQuery."
+  },
+  {
+    "id": "azure-machine-learning",
+    "nom": "Azure Machine Learning",
+    "editeur": "Microsoft",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Plateformes de data science et MLOps"
+    ],
+    "dependance": "Service d’apprentissage automatique d’Azure, sans frais propres : on paie le calcul et les services Azure associés (Blob Storage, Key Vault, Container Registry, Application Insights). Préparation Spark interopérable avec Microsoft Fabric, catalogue de modèles (Microsoft, OpenAI, Hugging Face, Meta, Cohere), pipelines, registres et points d’accès gérés.",
+    "alternatives": [
+      "MLflow",
+      "Kubeflow"
+    ],
+    "site": "https://azure.microsoft.com/en-us/products/machine-learning",
+    "pourquoi": "Aucune licence à part, mais pipelines, registres et points d’accès s’appuient sur les autres services Azure consommés, qu’il faut remplacer en même temps."
+  },
+  {
+    "id": "mlflow",
+    "nom": "MLflow",
+    "editeur": "Projet MLflow",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Plateformes de data science et MLOps"
+    ],
+    "dependance": "Plateforme ouverte de suivi d’expériences, d’évaluation et de gestion de modèles et d’agents, sous licence Apache 2.0. Le site du projet la dit soutenue par la Linux Foundation.",
+    "alternatives": [
+      "Kubeflow"
+    ],
+    "site": "https://mlflow.org/",
+    "pourquoi": "Licence Apache 2.0 et soutien d’une fondation. Plusieurs services cloud l’intègrent déjà, par exemple SageMaker pour le suivi, donc les expériences se déplacent d’une plateforme à l’autre.",
+    "depot": "mlflow/mlflow"
+  },
+  {
+    "id": "kubeflow",
+    "nom": "Kubeflow",
+    "editeur": "Projet Kubeflow",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Plateformes de data science et MLOps"
+    ],
+    "dependance": "Plateforme d’IA native de Kubernetes (notebooks, pipelines, entraînement distribué), sous licence Apache 2.0, développée par la communauté The Kubeflow Authors.",
+    "alternatives": [
+      "MLflow"
+    ],
+    "site": "https://www.kubeflow.org/",
+    "pourquoi": "Licence Apache 2.0 et déploiement sur n’importe quel Kubernetes. Demande des compétences Kubernetes et l’exploitation de la plateforme en interne.",
+    "depot": "kubeflow/kubeflow"
+  },
+  {
+    "id": "aws-lambda",
+    "nom": "AWS Lambda",
+    "editeur": "Amazon Web Services",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Fonctions serverless"
+    ],
+    "dependance": "Exécution de code sans serveur, facturée à l’usage, avec plus de 220 intégrations natives aux services AWS ; des sources d’événements comme SQS ou Kafka déclenchent les fonctions.",
+    "alternatives": [
+      "Knative"
+    ],
+    "site": "https://aws.amazon.com/lambda/",
+    "pourquoi": "Le code de la fonction se déplace, mais les déclencheurs, les rôles IAM et les intégrations natives sont à refaire autour d’un autre moteur."
+  },
+  {
+    "id": "azure-functions",
+    "nom": "Azure Functions",
+    "editeur": "Microsoft",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Fonctions serverless"
+    ],
+    "dependance": "Applications et agents événementiels sans serveur, écrits en .NET, Node.js, Python, Java ou PowerShell et exécutés sur Azure.",
+    "alternatives": [
+      "Knative"
+    ],
+    "site": "https://azure.microsoft.com/en-us/products/functions",
+    "pourquoi": "Le code se réutilise, mais les déclencheurs et liaisons propres à Azure et l’hébergement dans le compte Azure sont à reconstruire."
+  },
+  {
+    "id": "google-cloud-functions",
+    "nom": "Google Cloud Functions",
+    "editeur": "Google",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Fonctions serverless"
+    ],
+    "dependance": "Fonctions en mode service (FaaS) à la demande, sans gestion de serveur, facturées à l’usage.",
+    "alternatives": [
+      "Knative"
+    ],
+    "site": "https://cloud.google.com/functions",
+    "pourquoi": "Le code se réutilise, mais les déclencheurs et les autorisations passent par les services de Google Cloud, à remplacer avec le moteur."
+  },
+  {
+    "id": "openfaas",
+    "nom": "OpenFaaS",
+    "editeur": "OpenFaaS Ltd",
+    "quadrant": 1,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Fonctions serverless"
+    ],
+    "dependance": "Plateforme de fonctions pour Kubernetes. L’édition Community est réservée à un usage individuel ou d’exploration, avec 60 jours pour un essai commercial ; la production exige les éditions payantes OpenFaaS Standard ou Enterprises.",
+    "alternatives": [
+      "Knative"
+    ],
+    "site": "https://github.com/openfaas/faas",
+    "pourquoi": "Le code est visible et exécutable chez soi, mais la licence Community interdit la production : il faut passer à l’offre payante de l’éditeur.",
+    "depot": "openfaas/faas"
+  },
+  {
+    "id": "knative",
+    "nom": "Knative",
+    "editeur": "Projet Knative",
+    "quadrant": 1,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Fonctions serverless"
+    ],
+    "dependance": "Calcul sans serveur sur Kubernetes, avec mise à l’échelle jusqu’à zéro, sous licence Apache 2.0.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://knative.dev/",
+    "pourquoi": "Licence Apache 2.0 et tourne sur n’importe quel Kubernetes. Demande d’exploiter Kubernetes en interne.",
+    "depot": "knative/serving"
+  },
+  {
+    "id": "amazon-sqs-sns",
+    "nom": "Amazon SQS et SNS",
+    "editeur": "Amazon Web Services",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Messagerie et streaming"
+    ],
+    "dependance": "Files de messages et notifications gérées par AWS pour découpler microservices, systèmes distribués et applications sans serveur, avec envoi vers SMS, notifications mobiles et courriel pour SNS.",
+    "alternatives": [
+      "Apache Kafka",
+      "RabbitMQ",
+      "NATS JetStream"
+    ],
+    "site": "https://aws.amazon.com/sqs/",
+    "pourquoi": "Les files se remplacent par un courtier ouvert, mais les applications utilisent les API et les droits IAM d’AWS, et les déclencheurs Lambda en dépendent."
+  },
+  {
+    "id": "azure-service-bus-event-hubs",
+    "nom": "Azure Service Bus et Event Hubs",
+    "editeur": "Microsoft",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Messagerie et streaming"
+    ],
+    "dependance": "Messagerie cloud d’Azure reliant applications et appareils (Service Bus) et ingestion de flux massifs (Event Hubs). Service Bus accepte les applications Java Message Service (JMS) existantes.",
+    "alternatives": [
+      "Apache Kafka",
+      "RabbitMQ",
+      "NATS JetStream"
+    ],
+    "site": "https://azure.microsoft.com/en-us/products/service-bus",
+    "pourquoi": "Le support de JMS facilite l’arrivée comme le départ pour les applications Java, mais les autres usages passent par les API et les droits d’Azure."
+  },
+  {
+    "id": "google-pub-sub",
+    "nom": "Google Pub/Sub",
+    "editeur": "Google",
+    "quadrant": 1,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Messagerie et streaming"
+    ],
+    "dependance": "Messagerie et ingestion d’événements de Google Cloud, qui alimente BigQuery, des lacs de données et des bases, utilisée pour l’analyse en continu et l’intégration de services.",
+    "alternatives": [
+      "Apache Kafka",
+      "RabbitMQ",
+      "NATS JetStream"
+    ],
+    "site": "https://cloud.google.com/pubsub",
+    "pourquoi": "Les messages se rejouent ailleurs, mais les abonnements vers BigQuery et les autres services Google sont propres à Google Cloud."
+  },
+  {
+    "id": "aws-step-functions",
+    "nom": "AWS Step Functions",
+    "editeur": "Amazon Web Services",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Ordonnancement"
+    ],
+    "dependance": "Orchestration de plusieurs services AWS en flux de travail sans serveur. C’est le service dont l’usage à haute fréquence a poussé l’équipe de Prime Video à revoir son architecture (voir « Couplage fort à la plateforme »).",
+    "alternatives": [
+      "Temporal",
+      "Kestra"
+    ],
+    "site": "https://aws.amazon.com/step-functions/",
+    "pourquoi": "Les définitions d’états appellent directement les services AWS, donc le flux se réécrit entièrement avec un autre moteur d’orchestration."
+  },
+  {
+    "id": "temporal",
+    "nom": "Temporal",
+    "editeur": "Projet Temporal",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Ordonnancement"
+    ],
+    "dependance": "Moteur d’exécution durable de flux de travail, dépôt sous licence MIT.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://temporal.io/",
+    "pourquoi": "Licence MIT et flux écrits en code standard, mais le moteur est à exploiter soi-même, ou à acheter auprès de l’éditeur.",
+    "depot": "temporalio/temporal"
+  },
+  {
+    "id": "amazon-bedrock",
+    "nom": "Amazon Bedrock",
+    "editeur": "Amazon Web Services",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Modèles d’IA managés et serveurs d’inférence"
+    ],
+    "dependance": "Plateforme AWS de création d’applications et d’agents d’IA générative en production, qui donne accès par un service géré à des modèles ouverts et à des modèles de fournisseurs tiers, dont ceux d’OpenAI.",
+    "alternatives": [
+      "vLLM"
+    ],
+    "site": "https://aws.amazon.com/bedrock/",
+    "pourquoi": "Le choix du modèle reste ouvert (la page AWS cite des modèles ouverts et des modèles d’OpenAI), mais agents, droits IAM et intégrations sont propres à AWS."
+  },
+  {
+    "id": "azure-openai-foundry",
+    "nom": "Azure OpenAI (Microsoft Foundry)",
+    "editeur": "Microsoft",
+    "quadrant": 2,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Modèles d’IA managés et serveurs d’inférence"
+    ],
+    "dependance": "Accès aux modèles de raisonnement et multimodaux d’OpenAI, à leur ajustement et au déploiement d’agents, dans l’offre Microsoft Foundry d’Azure.",
+    "alternatives": [
+      "vLLM"
+    ],
+    "site": "https://azure.microsoft.com/en-us/products/ai-foundry/models/openai",
+    "pourquoi": "Les agents, les ajustements de modèles et les droits restent liés à Azure, même si des modèles d’OpenAI sont aussi proposés ailleurs, notamment chez AWS."
+  },
+  {
+    "id": "vllm",
+    "nom": "vLLM",
+    "editeur": "Projet vLLM",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Modèles d’IA managés et serveurs d’inférence"
+    ],
+    "dependance": "Moteur d’inférence et de service de modèles de langage à haut débit, sous licence Apache 2.0, pour faire tourner des modèles à poids ouverts chez soi ou chez n’importe quel hébergeur.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://github.com/vllm-project/vllm",
+    "pourquoi": "Licence Apache 2.0 et modèles à poids ouverts. Demande des GPU et une équipe capable de les exploiter.",
+    "depot": "vllm-project/vllm"
   }
 ]

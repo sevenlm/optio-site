@@ -317,6 +317,11 @@
         "titre": "OpenAI, calendrier de retrait des modèles de l’API, consulté en novembre 2026",
         "url": "https://developers.openai.com/api/docs/deprecations"
       }
+    ],
+    "technologies": [
+      "Amazon Bedrock",
+      "Azure OpenAI (Microsoft Foundry)",
+      "Google Vertex AI (Gemini platform)"
     ]
   },
   {
@@ -1433,7 +1438,14 @@
       "Azure Cosmos DB",
       "MuleSoft",
       "Apigee",
-      "Amazon S3"
+      "Amazon S3",
+      "AWS Lambda",
+      "Azure Functions",
+      "Google Cloud Functions",
+      "Amazon SQS et SNS",
+      "Azure Service Bus et Event Hubs",
+      "Google Pub/Sub",
+      "AWS Step Functions"
     ],
     "sources": [
       {
@@ -1603,7 +1615,7 @@
     "anneau": 1,
     "type": "risque",
     "declencheur": "En mars 2026, Postman a limité son offre gratuite à un seul utilisateur : les équipes qui collaboraient gratuitement doivent désormais passer à une offre payante.",
-    "tendance": "Les outils SaaS en freemium s’installent gratuitement dans les équipes, puis resserrent l’offre gratuite une fois l’usage installé. Sur GitLab.com, les groupes privés de l’offre gratuite sont limités à cinq utilisateurs et passent en lecture seule au-delà : annoncée en mars 2022, la limite devait s’appliquer à tous les espaces gratuits restants à partir du 15 août 2026, et les comptes gratuits créés depuis le 27 janvier 2026 sont limités à trois groupes. Depuis le 26 août 2024, Slack supprime les messages de plus d’un an des espaces gratuits et ne donne accès qu’aux 90 derniers jours, le reste n’étant visible qu’en passant au payant. En décembre 2025, GitHub a annoncé une redevance de 0,002 $ par minute sur les runners Actions hébergés par les clients eux-mêmes, avant de la reporter.",
+    "tendance": "Les outils SaaS en freemium s’installent gratuitement dans les équipes, puis resserrent l’offre gratuite une fois l’usage installé. Sur GitLab.com, les groupes privés de l’offre gratuite sont limités à cinq utilisateurs et passent en lecture seule au-delà : annoncée en mars 2022, la limite devait s’appliquer à tous les espaces gratuits restants à partir du 15 août 2026, et les comptes gratuits créés depuis le 27 janvier 2026 sont limités à trois groupes. Depuis le 26 août 2024, Slack supprime les messages de plus d’un an des espaces gratuits et ne donne accès qu’aux 90 derniers jours, le reste n’étant visible qu’en passant au payant. En décembre 2025, GitHub a annoncé une redevance de 0,002 $ par minute sur les runners Actions hébergés par les clients eux-mêmes, avant de la reporter. Le logiciel auto-hébergé n’y échappe pas : l’édition Community d’OpenFaaS est réservée à un usage individuel ou d’exploration, avec 60 jours d’essai commercial, et la production exige une offre payante.",
     "risque": "L’outil devient indispensable avant d’avoir été choisi : le passage au payant se négocie sous contrainte, avec un historique, des dépôts ou des données que l’éditeur peut bloquer ou effacer.",
     "mitigations": [
       "Recensez les outils SaaS utilisés en offre gratuite par les équipes, avec le nombre d’utilisateurs et le volume de données qu’ils contiennent.",
@@ -1619,7 +1631,8 @@
       "Jira et Jira Service Management",
       "New Relic",
       "GitLab",
-      "PagerDuty"
+      "PagerDuty",
+      "OpenFaaS"
     ],
     "sources": [
       {
@@ -1641,6 +1654,10 @@
       {
         "titre": "GitHub, évolution de la tarification d’Actions, décembre 2025",
         "url": "https://github.blog/changelog/2025-12-16-coming-soon-simpler-pricing-and-a-better-experience-for-github-actions/"
+      },
+      {
+        "titre": "OpenFaaS, licence de l’édition Community (dépôt faas, consulté en novembre 2026)",
+        "url": "https://github.com/openfaas/faas"
       }
     ]
   },
@@ -1791,6 +1808,9 @@
         "titre": "Observation Optio",
         "url": null
       }
+    ],
+    "technologies": [
+      "vLLM"
     ]
   },
   {
