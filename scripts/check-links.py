@@ -50,7 +50,15 @@ def etat(url):
             dernier = type(e).__name__
     return ("bloque" if dernier.startswith("HTTP") and int(dernier.split()[1]) in BLOQUE else "erreur"), dernier
 
+def hors_ligne():
+    """Sans réseau, tous les domaines seraient « introuvables » : on ne bloque pas un push pour ça."""
+    try: socket.gethostbyname("github.com"); return False
+    except OSError: return True
+
 def main():
+    if hors_ligne():
+        print("Pas de réseau : contrôle des liens ignoré.")
+        sys.exit(0)
     L = liens()
     print(f"{len(L)} liens à contrôler…")
     with ThreadPoolExecutor(JOBS) as ex: R = dict(zip(L, ex.map(etat, L)))

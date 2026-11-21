@@ -32,7 +32,7 @@ pour le format des fichiers et la façon de tester en local.
 |---|---|---|
 | `scripts/check-data.py` | structure, liens, typographie et règles du radar (`--warn` : sources manquantes, textes longs ; `--placeholders` : marqueurs à compléter dans `index.html`) | CI à chaque push, prek avant commit et push |
 | `scripts/check-cases.py` | cohérence des cas chiffrés avec `index.html` | CI, prek avant commit et push |
-| `scripts/check-links.py` | liens des sources (échoue sur 404, 410, domaine introuvable ; les sites qui bloquent les robots sont seulement signalés) | CI chaque lundi, prek à la demande |
+| `scripts/check-links.py` | liens des sources (échoue sur 404, 410, domaine introuvable ; les sites qui bloquent les robots sont seulement signalés) | CI chaque lundi, prek avant chaque push et à la demande (ignoré sans réseau) |
 | `scripts/check-vitality.py` | activité des dépôts open source (API GitHub) | CI chaque lundi, prek à la demande |
 
-Avec [prek](https://github.com/j178/prek) (configuration dans `prek.toml`) : `prek install --hook-type pre-commit --hook-type pre-push` active `check-data` et `check-cases` avant chaque commit et chaque push ; `prek run check-links --hook-stage manual` lance un contrôle réseau.
+Avec [prek](https://github.com/j178/prek) (configuration dans `prek.toml`) : `prek install --hook-type pre-commit --hook-type pre-push` active `check-data` et `check-cases` avant chaque commit et chaque push, et `check-links` avant chaque push (environ une minute) ; `prek run check-links --hook-stage manual` le lance à la demande.

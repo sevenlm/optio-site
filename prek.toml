@@ -4,7 +4,7 @@
 # Les contrôles de la CI, avant le commit et avant le push.
 # Activation : prek install --hook-type pre-commit --hook-type pre-push
 # Tout contrôler : prek run --all-files
-# Contrôles réseau, à la demande : prek run check-links --hook-stage manual
+# Contrôle des liens : avant chaque push (environ une minute) ; à la demande : prek run check-links --hook-stage manual
 #:schema https://www.schemastore.org/prek.json
 
 [[repos]]
@@ -41,7 +41,7 @@ hooks = [
     language = "system",
     pass_filenames = false,
     always_run = true,
-    stages = ["manual"]
+    stages = ["pre-push", "manual"]
   },
   {
     id = "check-vitality",
