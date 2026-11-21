@@ -11,7 +11,7 @@ def need(cond, msg):
 # Contrat de structure : champ -> (type, minimum d'éléments pour une liste)
 STR, INT, LST = str, int, list
 CONTRAT = {
-    "tendances": (T, {"id": STR, "titre": STR, "quadrant": INT, "anneau": INT, "declencheur": STR, "tendance": STR, "risque": STR, "mitigations": (LST, 1), "sources": (LST, 1), "technologies": LST}),
+    "tendances": (T, {"id": STR, "titre": STR, "quadrant": INT, "anneau": INT, "declencheur": STR, "tendance": STR, "risque": STR, "mecanismes": (LST, 1), "leviers": (LST, 1), "sources": (LST, 1), "technologies": LST}),
     "technologies": (X, {"id": STR, "nom": STR, "editeur": STR, "quadrant": INT, "anneau": INT, "type": STR, "categories": (LST, 1), "dependance": STR, "alternatives": LST, "site": None, "pourquoi": STR, "sources": LST}),
     "mecanismes": (M, {"id": STR, "nom": STR, "court": STR, "symbole": STR, "couche": INT, "moment": INT, "fonctionnement": STR, "exemple": STR, "signal": STR, "leviers": (LST, 1), "sources": LST}),
     "leviers": (V, {"id": STR, "titre": STR, "axe": INT, "principe": STR, "mise_en_oeuvre": (LST, 1), "verification": STR, "limites": STR, "lies": LST, "sources": (LST, 1), "technologies": LST}),
@@ -44,6 +44,14 @@ for i, n in ids.items(): need(n == 1 and re.fullmatch(r"[a-z0-9][a-z0-9-]*", i) 
 for nom, d, k in [("tendances", T, "titre"), ("technologies", X, "nom"), ("mecanismes", M, "nom"), ("leviers", V, "titre")]:
     for a, n in collections.Counter(e[k].strip().lower() for e in d).items(): need(n == 1, f"{nom} : doublon « {a} »")
 vid = {e["id"] for e in V}
+mid = {e["id"] for e in M}
+for t in T:
+    for i in t.get("mecanismes", []): need(i in mid, f"tendance « {t['titre']} » : mécanisme « {i} » introuvable")
+    need(len(set(t.get("mecanismes", []))) == len(t.get("mecanismes", [])), f"tendance « {t['titre']} » : mécanisme en double")
+    for k in t.get("leviers", []):
+        need(k.get("id") in vid, f"tendance « {t['titre']} » : levier « {k.get('id')} » introuvable")
+        need(isinstance(k.get("commentaire"), str) and k["commentaire"].strip(), f"tendance « {t['titre']} » : lien vers « {k.get('id')} » sans commentaire")
+    need(len({k.get("id") for k in t.get("leviers", [])}) == len(t.get("leviers", [])), f"tendance « {t['titre']} » : levier en double")
 for m in M:
     need(m.get("leviers"), f"mécanisme « {m['nom']} » : aucun levier")
     for k in m.get("leviers", []):

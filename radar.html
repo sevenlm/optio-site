@@ -556,11 +556,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       methode:[["Ce que mesure ce radar","La difficulté typique de sortie d’une technologie, selon cinq critères : formats et API, licence et contrat, concentration, maturité des alternatives, compétences nécessaires."],["Les anneaux","Du rouge au vert, du centre vers le bord : plus une technologie est loin du centre, plus elle se quitte facilement. Difficile : des mois de préparation et peu d’alternatives directes. Exigeante : des alternatives existent, mais la migration est lourde. Maîtrisable : standards ou formats ouverts facilitent la sortie. Facilitée : technologie ouverte, plusieurs fournisseurs possibles."],["Les couleurs","Propriétaire, ouvert à éditeur unique, ou ouvert à gouvernance partagée. Un projet ouvert contrôlé par un seul éditeur peut changer de règles, comme Redis, Terraform, Puppet ou MinIO l’ont montré."],["Une lecture, pas un verdict","Le classement varie selon vos usages : une base propriétaire utilisée de façon standard se quitte plus facilement qu’une base ouverte truffée d’extensions spécifiques. À confirmer avec l’indice de réversibilité."]]
     }
   };
-  VUES.mecanismes={recherche:"Rechercher un mécanisme…", intro:"La table de l’enfermement numérique : {n} mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et la parade.",
+  VUES.mecanismes={recherche:"Rechercher un mécanisme…", intro:"La table de l’enfermement numérique : {n} mécanismes rangés par couche et par moment d’action, avec pour chacun un exemple, le signal qui doit alerter et les leviers pour y répondre.",
     methode:[["Ce que recense cette vue","Les mécanismes d’enfermement observés dans les contrats, les licences, les offres commerciales, la technique, l’organisation, le droit et la gouvernance de l’open source."],["Comment l’utiliser","En mode atelier, chaque participant coche les mécanismes à l’œuvre chez son fournisseur le plus critique : la table affiche son profil d’enfermement et les leviers prioritaires pour le desserrer. Chaque mécanisme renvoie à ses leviers, dans l’onglet Leviers."],["Une liste vivante","Elle s’enrichit à chaque édition du radar, au fil des retours des DSI et de l’actualité des éditeurs."]]};
   VUES.leviers={recherche:"Rechercher un levier…", intro:"Les solutions aux mécanismes d’enfermement : {n} leviers, chacun rattaché aux mécanismes qu’il permet de contrer, avec ses étapes de mise en œuvre, la preuve qu’il fonctionne et ses limites.",
     methode:[["Ce que recense cette vue","Des pratiques qui desserrent une dépendance : contrats, finances, organisation, réglementation, architecture. Un levier peut répondre à plusieurs mécanismes d’enfermement, et un mécanisme peut en appeler plusieurs."],["Comment lire une fiche","Le principe, les étapes de mise en œuvre, la façon de vérifier que le levier est réellement en place, et ce qu’il ne règle pas. Chaque lien entre un mécanisme et un levier porte une phrase qui dit comment le levier répond à ce mécanisme."],["Une liste vivante","Un levier sans mécanisme associé reste affiché : il attend un cas sourcé qui le relie."]]};
-  var T=[], TECH=[], MECA=[], META=[], LEV=[], MECAID=[], DONNEES=null;
+  var T=[], TECH=[], MECA=[], META=[], LEV=[], MECAID=[], MECTEND=[], DONNEES=null;
   function verifier(liste, nom, regles){
     if(!Array.isArray(liste)) throw new Error("data/"+nom+".json doit contenir une liste");
     liste.forEach(function(x,i){ regles.forEach(function(rg){
@@ -575,13 +575,20 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     verifier(mecanismes,"mecanismes",[["id","texte"],["nom","texte"],["court","texte"],["symbole","texte"],["couche",[0,1,2,3,4,5,6]],["moment",[0,1,2,3]],["fonctionnement","texte"]]);
     verifier(leviers,"leviers",[["titre","texte"],["axe",[0,1,2,3,4]],["principe","texte"],["verification","texte"],["limites","texte"]]);
     T=tendances.map(function(x,i){ return {id:(x.id||"t-"+String(i+1).padStart(2,"0")), pid:"t-"+String(i+1).padStart(2,"0"), n:i+1, techNoms:Array.isArray(x.technologies)?x.technologies:[], q:x.quadrant, a:x.anneau, k:"risque", type:"risque", t:x.titre, contexte:x.declencheur||"",
-      quoi:x.tendance, pourquoi:x.risque, faire:x.mitigations||[], src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
+      quoi:x.tendance, pourquoi:x.risque, rawLev:x.leviers||[], rawMec:x.mecanismes||[], levs:[], mecs:[], src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
     TECH=technologies.map(function(x,i){ return {id:(x.id||"x-"+String(i+1).padStart(3,"0")), pid:"x-"+String(i+1).padStart(3,"0"), n:i+1, crit:Array.isArray(x.criteres)&&x.criteres.length?x.criteres:null, sites:(Array.isArray(x.site)?x.site:(x.site?[x.site]:[])), pourquoi:x.pourquoi||"", q:x.quadrant, a:x.anneau, type:x.type, t:x.nom, ed:x.editeur||"", note:x.dependance, alt:(x.alternatives||[]).join(", "), src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })}; });
     LEV=leviers.map(function(x){ return {id:x.id, t:x.titre, axe:x.axe, principe:x.principe, faire:x.mise_en_oeuvre||[], verif:x.verification, limites:x.limites, liesIds:x.lies||[], contexte:x.contexte||"", src:(x.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; }), techNoms:x.technologies||[], mecas:[]}; });
     var parId={}; LEV.forEach(function(l){ parId[l.id]=l; });
     LEV.forEach(function(l){ l.lies=l.liesIds.map(function(i){ return parId[i]; }).filter(Boolean); });
     MECA=mecanismes.map(function(m,k){ return [m.couche, m.nom, m.fonctionnement, m.exemple||"", m.signal||"", (m.leviers||[]).map(function(a){ var l=parId[a.id]; if(!l) console.warn("mecanismes.json, « "+m.nom+" » : levier « "+a.id+" » introuvable dans leviers.json."); else l.mecas.push(k); return l?{l:l,c:a.commentaire||""}:null; }).filter(Boolean), (m.sources||[]).map(function(s2){ return [s2.titre, s2.url||null]; })]; });
     MECAID=mecanismes.map(function(m){ return m.id; });
+    var parMid={}; mecanismes.forEach(function(m,k){ parMid[m.id]=k; });
+    LEV.forEach(function(l){ l.tends=[]; });
+    MECTEND=mecanismes.map(function(){ return []; });
+    T.forEach(function(t){
+      t.levs=t.rawLev.map(function(a){ var l=parId[a.id]; if(!l){ console.warn("tendances.json, « "+t.t+" » : levier « "+a.id+" » introuvable."); return null; } l.tends.push(t); return {l:l,c:a.commentaire||""}; }).filter(Boolean);
+      t.mecs=t.rawMec.map(function(i){ var k=parMid[i]; if(k===undefined){ console.warn("tendances.json, « "+t.t+" » : mécanisme « "+i+" » introuvable."); return null; } MECTEND[k].push(t); return k; }).filter(function(k){ return k!==null; });
+    });
     var vus={tendances:1,technologies:1,mecanismes:1,leviers:1};
     T.concat(TECH,LEV,MECAID.map(function(i){ return {id:i,t:i}; })).forEach(function(x){ if(!/^[a-z0-9][a-z0-9-]*$/.test(x.id)||vus[x.id]) throw new Error("data : identifiant « "+x.id+" » invalide ou en double (« "+(x.t)+" »)"); vus[x.id]=1; });
     VUES.technologies.intro=VUES.technologies.intro.replace("{n}",TECH.length); VUES.mecanismes.intro=VUES.mecanismes.intro.replace("{n}",mecanismes.length); VUES.leviers.intro=VUES.leviers.intro.replace("{n}",leviers.length);
@@ -863,7 +870,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     } else {
       corps.appendChild(el("div",null,[el("h3",{text:"La tendance"}), el("p",{text:x.quoi})]));
       corps.appendChild(el("div",null,[el("h3",{text:"Le risque concret"}), el("p",{text:x.pourquoi})]));
-      corps.appendChild(el("div",null,[el("h3",{text:"Pistes de mitigation"}), el("ul",null,x.faire.map(function(t){ return el("li",{text:t}); }))]));
+      corps.appendChild(el("div",null,[el("h3",{text:"Les leviers pour y répondre"}), el("ul",null,x.levs.map(function(a){ return el("li",null,[el("a",{href:"#"+a.l.id,text:a.l.t}), el("span",{text:" : "+a.c})]); }))]));
+      if(x.mecs.length) corps.appendChild(el("div",null,[el("h3",{text:"Mécanismes d’enfermement associés"}), el("ul",{class:"lv-liste"},x.mecs.map(function(k){ return el("li",null,[el("a",{href:"#"+MECAID[k],text:META[k][0]+" · "+MECA[k][1]})]); }))]));
       corps.appendChild(blocTechnosConcernees(x));
       corps.appendChild(el("div",null,[el("h3",{text:"Sources"}), el("ul",null,x.src.map(function(s2){ return el("li",null,[ s2[1]?el("a",{href:s2[1],target:"_blank",rel:"noopener",text:s2[0]}):s2[0] ]); }))]));
     }
@@ -1054,7 +1062,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       el("dt",{text:"Exemple"}), el("dd",{text:me[3]}),
       el("dt",{text:"Le signal d’alerte"}), el("dd",{text:me[4]}),
       el("dt",{text:"Les leviers"}), el("dd",null,[el("ul",{class:"lv-liste"}, me[5].map(function(a){ return el("li",null,[el("a",{class:"tp-lien",href:"#"+a.l.id,onclick:function(){ d.close(); },text:a.l.t}), el("span",{text:" : "+a.c})]); }))])
-    ].concat(me[6].length?[el("dt",{text:"Sources"}), el("dd",null,[el("ul",{class:"lv-liste"}, me[6].map(function(x){ return el("li",null,[x[1]?el("a",{class:"tp-lien",href:x[1],target:"_blank",rel:"noopener",text:x[0]}):el("span",{text:x[0]})]); }))])]:[])));
+    ].concat(MECTEND[k].length?[el("dt",{text:"Tendances liées"}), el("dd",null,[el("ul",{class:"lv-liste"}, MECTEND[k].map(function(t){ return el("li",null,[el("a",{class:"tp-lien",href:"#"+t.id,onclick:function(){ d.close(); },text:t.t})]); }))])]:[]).concat(me[6].length?[el("dt",{text:"Sources"}), el("dd",null,[el("ul",{class:"lv-liste"}, me[6].map(function(x){ return el("li",null,[x[1]?el("a",{class:"tp-lien",href:x[1],target:"_blank",rel:"noopener",text:x[0]}):el("span",{text:x[0]})]); }))])]:[])));
     var pied=el("div",{class:"tp-dialog-pied"});
     pied.appendChild(el("button",{type:"button",class:"plus",onclick:function(){ d.close(); },text:"Fermer"}));
     d.appendChild(pied);
@@ -1094,6 +1102,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     dl.appendChild(el("dd",null,[l.mecas.length ? el("ul",{class:"lv-liste"},l.mecas.map(function(k){ var a=MECA[k][5].filter(function(x){ return x.l===l; })[0];
       return el("li",null,[el("button",{type:"button",class:"lv-btn",onclick:function(){ d.close(); ouvrirMeca(k); },text:META[k][0]+" · "+MECA[k][1]}), el("span",{text:" : "+(a?a.c:"")})]); })) : el("span",{class:"lv-vide",text:"Aucun mécanisme n’est encore relié à ce levier."})]));
     if(l.lies.length){ dl.appendChild(el("dt",{text:"À associer avec"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.lies.map(function(x){ return el("li",null,[lien(x.t,"#"+x.id)]); }))])); }
+    if(l.tends.length){ dl.appendChild(el("dt",{text:"Tendances auxquelles il répond"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.tends.map(function(t){ return el("li",null,[lien(t.t,"#"+t.id)]); }))])); }
     if(l.techs.length){ dl.appendChild(el("dt",{text:"Technologies concernées"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.techs.map(function(x){ return el("li",null,[lien(x.t,"#"+x.id)]); }))])); }
     if(l.src.length){ dl.appendChild(el("dt",{text:"Sources"})); dl.appendChild(el("dd",null,[el("ul",{class:"lv-liste"},l.src.map(function(x){ return el("li",null,[x[1]?el("a",{class:"tp-lien",href:x[1],target:"_blank",rel:"noopener",text:x[0]}):el("span",{text:x[0]})]); }))])); }
     d.appendChild(dl);

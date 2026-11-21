@@ -46,7 +46,7 @@
     "id": "clauses-de-reversibilite",
     "titre": "Clauses de réversibilité",
     "axe": 0,
-    "principe": "Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références récentes outillent la négociation : les clauses types de la Commission européenne pour les contrats cloud, et les clauses Oméga proposées par Libralis. Oméga 1 engage le fournisseur à ne jamais transmettre vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 lui interdit toute coupure arbitraire d’un service critique.",
+    "principe": "Durée courte, plafonnement des hausses, export des données dans un format standard, assistance à la sortie : des clauses négociables à chaque renouvellement. Deux références les outillent : les clauses types de la Commission européenne pour les contrats cloud et les clauses Oméga de Libralis (Oméga 1 : aucune transmission de vos données sans autorisation des autorités françaises ou européennes ; Oméga 2 : aucune coupure arbitraire d’un service critique).",
     "mise_en_oeuvre": [
       "Établissez une grille de clauses minimales pour tout contrat critique.",
       "Appuyez-vous sur les clauses types européennes pour la sortie et la portabilité.",
@@ -814,7 +814,7 @@
     "id": "pilotage-et-conseil-independants",
     "titre": "Pilotage et conseil indépendants de l’éditeur",
     "axe": 2,
-    "principe": "Conserver en interne le pilotage, l’architecture et la maîtrise d’ouvrage, et recourir à un conseil indépendant des éditeurs et de leurs partenaires. Dans un rapport relayé le 3 juin 2024, la Cour des comptes relevait que la Cnam dépendait de quelques prestataires pour l’assistance à maîtrise d’ouvrage, la maîtrise d’œuvre et le conseil stratégique : entre 2012 et 2022, l’un d’eux avait reçu plus de 80 % des commandes passées auprès des cinq premiers. La Cnam s’est fixé de rester sous 20 % de la charge en assistance à maîtrise d’ouvrage et sous 50 % en assistance à maîtrise d’œuvre.",
+    "principe": "Conserver en interne le pilotage, l’architecture et la maîtrise d’ouvrage, et recourir à un conseil indépendant des éditeurs et de leurs partenaires. Dans un rapport relayé le 3 juin 2024, la Cour des comptes relevait que la Cnam dépendait de quelques prestataires : entre 2012 et 2022, l’un d’eux avait reçu plus de 80 % des commandes passées auprès des cinq premiers. La Cnam s’est fixé de rester sous 20 % de la charge en assistance à maîtrise d’ouvrage et sous 50 % en assistance à maîtrise d’œuvre.",
     "mise_en_oeuvre": [
       "Fixez un plafond à la part de la maîtrise d’ouvrage et de l’architecture confiée à l’extérieur.",
       "Gardez en interne le pilotage, l’architecture et les décisions d’achat.",
@@ -839,7 +839,7 @@
     "id": "droit-et-juridiction-europeens-negocies",
     "titre": "Droit et juridiction européens négociés",
     "axe": 0,
-    "principe": "Faire appliquer au contrat le droit d’un État membre de l’Union européenne et choisir un fournisseur dont le siège, le capital et les sous-traitants limitent l’exposition aux lois extra-européennes. Le référentiel SecNumCloud 3.2 de l’ANSSI (8 mars 2022) exige une convention de service appliquant le droit d’un État membre (exigence 19.1), une résiliation sans pénalité en cas de perte de la qualification, un siège dans l’Union et un capital détenu par des entités non européennes à moins de 24 % individuellement et de 39 % collectivement (exigence 19.6).",
+    "principe": "Faire appliquer au contrat le droit d’un État membre de l’Union européenne et choisir un fournisseur dont le siège, le capital et les sous-traitants limitent l’exposition aux lois extra-européennes. Le référentiel SecNumCloud 3.2 de l’ANSSI (8 mars 2022) exige une convention de service appliquant le droit d’un État membre (19.1), un siège dans l’Union et un capital détenu par des entités non européennes à moins de 24 % individuellement et 39 % collectivement (19.6).",
     "mise_en_oeuvre": [
       "Exigez que le droit applicable soit celui d’un État membre de l’Union.",
       "Demandez au fournisseur les éléments d’appréciation du risque lié aux droits non européens.",

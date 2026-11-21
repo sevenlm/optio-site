@@ -3471,7 +3471,7 @@
     "categories": [
       "Stockage > Sauvegarde"
     ],
-    "dependance": "Édition Community ouverte (AGPL) ; certains plugins, des fonctions avancées et le support professionnel relèvent de l’édition Enterprise d’un éditeur unique ; l’édition Community publie peu de versions : la dernière annoncée sur le site est la 15.0.3, tandis que l’édition Enterprise est déjà en 18.x.",
+    "dependance": "Édition Community ouverte (AGPL) ; certains plugins, des fonctions avancées et le support professionnel relèvent de l’édition Enterprise d’un éditeur unique. La dernière version Community annoncée est la 15.0.3, tandis que l’édition Enterprise est déjà en 18.x.",
     "alternatives": [
       "Bareos",
       "Proxmox Backup Server"
@@ -5720,7 +5720,7 @@
     "categories": [
       "Plateformes de data science et MLOps"
     ],
-    "dependance": "Plateforme commerciale d’analyse, d’apprentissage automatique et d’agents IA. Les projets (Flow), recettes visuelles, registre de modèles et suivi de gouvernance sont des objets de la plateforme. Elle lit les données chez Snowflake, Databricks, Redshift ou S3, calcule sur Spark, Kubernetes ou GPU, et son LLM Mesh permet de changer de fournisseur de modèles de langage.",
+    "dependance": "Plateforme commerciale d’analyse, d’apprentissage automatique et d’agents IA. Projets (Flow), recettes visuelles, registre de modèles et suivi de gouvernance sont des objets de la plateforme ; elle lit les données chez Snowflake, Databricks, Redshift ou S3, et son LLM Mesh permet de changer de fournisseur de modèles de langage.",
     "alternatives": [
       "MLflow",
       "Kubeflow"
@@ -5744,7 +5744,7 @@
     "categories": [
       "Plateformes de data science et MLOps"
     ],
-    "dependance": "Service géré d’entraînement, de déploiement et de gouvernance de modèles. Il accepte tout modèle, tout cadre (PyTorch, TensorFlow, JAX) et tout conteneur, avec un suivi MLflow intégré. Les pipelines, le registre de modèles à approbations liées à IAM, les points d’accès et la supervision sont propres à AWS.",
+    "dependance": "Service géré d’entraînement, de déploiement et de gouvernance de modèles : il accepte tout modèle, tout cadre et tout conteneur, avec un suivi MLflow intégré. Les pipelines, le registre de modèles à approbations liées à IAM, les points d’accès et la supervision sont propres à AWS.",
     "alternatives": [
       "MLflow",
       "Kubeflow"
@@ -5768,7 +5768,7 @@
     "categories": [
       "Plateformes de data science et MLOps"
     ],
-    "dependance": "Plateforme d’entraînement, de déploiement et d’agents IA de Google Cloud, présentée sous le nom « Gemini platform » sur la page du produit. Notebooks reliés à BigQuery, pipelines, registre de modèles, magasin de caractéristiques et supervision sont propres à Google ; Model Garden donne accès à des modèles tiers et ouverts, comme Claude ou Gemma. Facturation à l’usage.",
+    "dependance": "Plateforme d’entraînement, de déploiement et d’agents IA de Google Cloud, présentée comme « Gemini platform ». Notebooks reliés à BigQuery, pipelines, registre de modèles, magasin de caractéristiques et supervision sont propres à Google ; Model Garden donne accès à des modèles tiers et ouverts. Facturation à l’usage.",
     "alternatives": [
       "MLflow",
       "Kubeflow"
@@ -5792,7 +5792,7 @@
     "categories": [
       "Plateformes de data science et MLOps"
     ],
-    "dependance": "Service d’apprentissage automatique d’Azure, sans frais propres : on paie le calcul et les services Azure associés (Blob Storage, Key Vault, Container Registry, Application Insights). Préparation Spark interopérable avec Microsoft Fabric, catalogue de modèles (Microsoft, OpenAI, Hugging Face, Meta, Cohere), pipelines, registres et points d’accès gérés.",
+    "dependance": "Service d’apprentissage automatique d’Azure, sans frais propres : on paie le calcul et les services Azure associés (Blob Storage, Key Vault, Container Registry, Application Insights). Pipelines, registres et points d’accès sont gérés ; la préparation Spark est interopérable avec Microsoft Fabric.",
     "alternatives": [
       "MLflow",
       "Kubeflow"
@@ -5941,7 +5941,7 @@
     "categories": [
       "Fonctions serverless"
     ],
-    "dependance": "Plateforme de fonctions pour Kubernetes. L’édition Community est réservée à un usage personnel, non productif ou d’expérimentation, et l’usage commercial y est limité à 60 jours et une installation par entreprise ; la production exige les éditions payantes OpenFaaS Standard ou OpenFaaS for Enterprises.",
+    "dependance": "Plateforme de fonctions pour Kubernetes. L’édition Community est réservée à un usage personnel ou d’expérimentation, avec un usage commercial limité à 60 jours et une installation par entreprise ; la production exige OpenFaaS Standard ou OpenFaaS for Enterprises.",
     "alternatives": [
       "Knative"
     ],

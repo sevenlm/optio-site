@@ -12,11 +12,11 @@
     "leviers": [
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Négocier une durée courte, sans reconduction tacite."
+        "commentaire": "Négociez une durée courte, sans reconduction tacite."
       },
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Suivre dans le registre la date de préavis de chaque contrat."
+        "commentaire": "Suivez dans le registre la date de préavis de chaque contrat."
       }
     ],
     "sources": [
@@ -39,11 +39,11 @@
     "leviers": [
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Plafonner les pénalités de résiliation et de renouvellement tardif."
+        "commentaire": "Plafonnez les pénalités de résiliation et de renouvellement tardif."
       },
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Anticiper les renouvellements de douze à vingt-quatre mois grâce aux échéances du registre."
+        "commentaire": "Anticipez les renouvellements de douze à vingt-quatre mois grâce aux échéances du registre."
       }
     ],
     "sources": [
@@ -66,7 +66,7 @@
     "leviers": [
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Exiger la restitution dans un format standard, une assistance et des délais chiffrés, en s’appuyant sur les clauses types européennes et les clauses Oméga de Libralis."
+        "commentaire": "Exigez la restitution dans un format standard, une assistance et des délais chiffrés, en s’appuyant sur les clauses types européennes et les clauses Oméga de Libralis."
       }
     ],
     "sources": [
@@ -89,15 +89,15 @@
     "leviers": [
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Plafonner les hausses et geler les prix sur la durée du contrat."
+        "commentaire": "Plafonnez les hausses et geler les prix sur la durée du contrat."
       },
       {
         "id": "achats-et-investissements-groupes",
-        "commentaire": "Négocier à plusieurs pour obtenir ce plafond."
+        "commentaire": "Négociez à plusieurs pour obtenir ce plafond."
       },
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Projeter la hausse sur cinq ans pour la comparer au coût d’un changement."
+        "commentaire": "Projetez la hausse sur cinq ans pour la comparer au coût d’un changement."
       }
     ],
     "sources": [
@@ -120,15 +120,15 @@
     "leviers": [
       {
         "id": "gestion-des-actifs-logiciels",
-        "commentaire": "Mesurer les usages réels pour modéliser chaque scénario de métrique."
+        "commentaire": "Mesurez les usages réels pour modéliser chaque scénario de métrique."
       },
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Négocier le maintien de la métrique en chiffrant chaque scénario sur cinq ans."
+        "commentaire": "Négociez le maintien de la métrique en chiffrant chaque scénario sur cinq ans."
       },
       {
         "id": "alternatives-de-virtualisation-matures",
-        "commentaire": "Chiffrer une alternative de virtualisation avant de subir la nouvelle métrique."
+        "commentaire": "Chiffrez une alternative de virtualisation avant de subir la nouvelle métrique."
       }
     ],
     "sources": [
@@ -155,15 +155,15 @@
     "leviers": [
       {
         "id": "mesurer-la-marge-de-manuvre",
-        "commentaire": "Recenser les licences restantes et mesurer les mois avant l’échéance."
+        "commentaire": "Recensez les licences restantes et mesurer les mois avant l’échéance."
       },
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Chiffrer l’abonnement sur cinq ans."
+        "commentaire": "Chiffrez l’abonnement sur cinq ans."
       },
       {
         "id": "alternatives-de-virtualisation-matures",
-        "commentaire": "Préparer l’alternative, comme celles qui existent en virtualisation."
+        "commentaire": "Préparez l’alternative, comme celles qui existent en virtualisation."
       }
     ],
     "sources": [
@@ -190,7 +190,7 @@
     "leviers": [
       {
         "id": "gestion-des-actifs-logiciels",
-        "commentaire": "Faire cartographier et contractualiser les accès indirects."
+        "commentaire": "Faites cartographier et contractualiser les accès indirects."
       }
     ],
     "sources": [
@@ -213,11 +213,11 @@
     "leviers": [
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Vérifier les droits de transfert avant tout choix d’hébergement."
+        "commentaire": "Vérifiez les droits de transfert avant tout choix d’hébergement."
       },
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Noter dans le registre les conditions d’hébergement liées à chaque licence."
+        "commentaire": "Notez dans le registre les conditions d’hébergement liées à chaque licence."
       }
     ],
     "sources": [
@@ -248,11 +248,11 @@
     "leviers": [
       {
         "id": "clauses-daudit-encadrees",
-        "commentaire": "Encadrer l’audit au contrat : préavis, fréquence, périmètre, auditeur."
+        "commentaire": "Encadrez l’audit au contrat : préavis, fréquence, périmètre, auditeur."
       },
       {
         "id": "gestion-des-actifs-logiciels",
-        "commentaire": "Tenir un inventaire à jour ; ne jamais négocier sous la pression d’un audit."
+        "commentaire": "Tenez un inventaire à jour ; ne négociez jamais sous la pression d’un audit."
       }
     ],
     "sources": [
@@ -279,7 +279,7 @@
     "leviers": [
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Mesurer l’usage réel et négocier sur le périmètre utile."
+        "commentaire": "Mesurez l’usage réel et négocier sur le périmètre utile."
       }
     ],
     "sources": [
@@ -302,11 +302,11 @@
     "leviers": [
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Limiter le montant et la durée de l’engagement dès la revue du contrat."
+        "commentaire": "Limitez le montant et la durée de l’engagement dès la revue du contrat."
       },
       {
         "id": "mesurer-la-marge-de-manuvre",
-        "commentaire": "Garder une part non engagée pour préserver la marge de manœuvre."
+        "commentaire": "Gardez une part non engagée pour préserver la marge de manœuvre."
       }
     ],
     "sources": [
@@ -329,11 +329,11 @@
     "leviers": [
       {
         "id": "pilote-de-sortie-sur-un-perimetre-reel",
-        "commentaire": "Mesurer la sortie par un pilote dès l’entrée."
+        "commentaire": "Mesurez la sortie par un pilote dès l’entrée."
       },
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Évaluer le coût de sortie dès l’entrée, sur cinq ans."
+        "commentaire": "Évaluez le coût de sortie dès l’entrée, sur cinq ans."
       }
     ],
     "sources": [
@@ -360,7 +360,7 @@
     "leviers": [
       {
         "id": "formats-de-donnees-ouverts",
-        "commentaire": "Choisir des formats ouverts (Iceberg, Parquet) et des API standards."
+        "commentaire": "Choisissez des formats ouverts (Iceberg, Parquet) et des API standards."
       }
     ],
     "sources": [
@@ -383,7 +383,7 @@
     "leviers": [
       {
         "id": "couches-dabstraction",
-        "commentaire": "Préférer des équivalents standards et isoler les services spécifiques derrière une couche."
+        "commentaire": "Préférez des équivalents standards et isoler les services spécifiques derrière une couche."
       }
     ],
     "sources": [
@@ -406,11 +406,11 @@
     "leviers": [
       {
         "id": "cartographie-et-classification-des-donnees",
-        "commentaire": "Mesurer volumes et débits pour savoir ce qu’un transfert coûterait."
+        "commentaire": "Mesurez volumes et débits pour savoir ce qu’un transfert coûterait."
       },
       {
         "id": "fin-des-frais-de-sortie-cloud-data-act",
-        "commentaire": "Préparer la sortie des données avant la fin des frais de transfert, programmée au 12 janvier 2027."
+        "commentaire": "Préparez la sortie des données avant la fin des frais de transfert, programmée au 12 janvier 2027."
       }
     ],
     "sources": [
@@ -437,7 +437,7 @@
     "leviers": [
       {
         "id": "couches-dabstraction",
-        "commentaire": "Contenir les usages spécifiques ; utiliser des outils de conversion et des standards."
+        "commentaire": "Contenez les usages spécifiques ; utilisez des outils de conversion et des standards."
       }
     ],
     "sources": []
@@ -455,7 +455,7 @@
     "leviers": [
       {
         "id": "couches-dabstraction",
-        "commentaire": "Utiliser des protocoles standards (SAML, OpenID Connect, OpenTelemetry)."
+        "commentaire": "Utilisez des protocoles standards (SAML, OpenID Connect, OpenTelemetry)."
       }
     ],
     "sources": []
@@ -473,11 +473,11 @@
     "leviers": [
       {
         "id": "mesurer-la-marge-de-manuvre",
-        "commentaire": "Suivre les calendriers de support et négocier des extensions."
+        "commentaire": "Suivez les calendriers de support et négocier des extensions."
       },
       {
         "id": "support-tiers-pour-gagner-du-temps",
-        "commentaire": "Gagner du temps sur une version en fin de support en attendant la migration."
+        "commentaire": "Gagnez du temps sur une version en fin de support en attendant la migration."
       }
     ],
     "sources": [
@@ -500,7 +500,7 @@
     "leviers": [
       {
         "id": "competences-sur-les-alternatives",
-        "commentaire": "Former au moins deux personnes sur l’alternative et s’appuyer sur des communautés."
+        "commentaire": "Formez au moins deux personnes sur l’alternative et s’appuyer sur des communautés."
       }
     ],
     "sources": [
@@ -523,7 +523,7 @@
     "leviers": [
       {
         "id": "pilotage-et-conseil-independants",
-        "commentaire": "Recourir à un conseil indépendant, sans commission d’éditeur."
+        "commentaire": "Recourez à un conseil indépendant, sans commission d’éditeur."
       }
     ],
     "sources": [
@@ -546,7 +546,7 @@
     "leviers": [
       {
         "id": "partir-des-processus-metier-critiques",
-        "commentaire": "Documenter les processus hors de l’outil et limiter les développements spécifiques."
+        "commentaire": "Documentez les processus hors de l’outil et limiter les développements spécifiques."
       }
     ],
     "sources": []
@@ -564,11 +564,11 @@
     "leviers": [
       {
         "id": "droit-et-juridiction-europeens-negocies",
-        "commentaire": "Négocier un droit applicable et une juridiction européens."
+        "commentaire": "Négociez un droit applicable et une juridiction européens."
       },
       {
         "id": "cloud-europeen-qualifie",
-        "commentaire": "Choisir une offre qualifiée dont la convention applique le droit d’un État membre."
+        "commentaire": "Choisissez une offre qualifiée dont la convention applique le droit d’un État membre."
       }
     ],
     "sources": [
@@ -591,19 +591,19 @@
     "leviers": [
       {
         "id": "chiffrement-avec-cles-maitrisees",
-        "commentaire": "Garder la maîtrise des clés de chiffrement."
+        "commentaire": "Gardez la maîtrise des clés de chiffrement."
       },
       {
         "id": "cartographie-et-classification-des-donnees",
-        "commentaire": "Classer les données pour savoir lesquelles justifient des mesures."
+        "commentaire": "Classez les données pour savoir lesquelles justifient des mesures."
       },
       {
         "id": "cloud-europeen-qualifie",
-        "commentaire": "Recourir à des offres qualifiées pour les données sensibles."
+        "commentaire": "Recourez à des offres qualifiées pour les données sensibles."
       },
       {
         "id": "mode-degrade-et-continuite-hors-fournisseur",
-        "commentaire": "Prévoir un mode dégradé si le service est coupé par sanction."
+        "commentaire": "Prévoyez un mode dégradé si le service est coupé par sanction."
       }
     ],
     "sources": [
@@ -626,11 +626,11 @@
     "leviers": [
       {
         "id": "mode-degrade-et-continuite-hors-fournisseur",
-        "commentaire": "Prévoir une alternative et un mode dégradé pour les technologies soumises à contrôle."
+        "commentaire": "Prévoyez une alternative et un mode dégradé pour les technologies soumises à contrôle."
       },
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Identifier dans le registre l’origine des technologies critiques."
+        "commentaire": "Identifiez dans le registre l’origine des technologies critiques."
       }
     ],
     "sources": [
@@ -653,11 +653,11 @@
     "leviers": [
       {
         "id": "gouvernance-des-projets-ouverts-verifiee",
-        "commentaire": "Vérifier la gouvernance avant d’adopter : fondation, accord de contributeur, marque."
+        "commentaire": "Vérifiez la gouvernance avant d’adopter : fondation, accord de contributeur, marque."
       },
       {
         "id": "fork-communautaire-et-miroir-de-repli",
-        "commentaire": "Suivre les forks (OpenTofu, Valkey, OpenSearch) et préparer le repli."
+        "commentaire": "Suivez les forks (OpenTofu, Valkey, OpenSearch) et préparer le repli."
       }
     ],
     "sources": [
@@ -692,15 +692,15 @@
     "leviers": [
       {
         "id": "gouvernance-des-projets-ouverts-verifiee",
-        "commentaire": "Surveiller la gouvernance du projet et la part des fonctions réservées à l’offre payante."
+        "commentaire": "Surveillez la gouvernance du projet et la part des fonctions réservées à l’offre payante."
       },
       {
         "id": "fork-communautaire-et-miroir-de-repli",
-        "commentaire": "Identifier le fork communautaire (OpenVox pour Puppet)."
+        "commentaire": "Identifiez le fork communautaire (OpenVox pour Puppet)."
       },
       {
         "id": "competences-sur-les-alternatives",
-        "commentaire": "Contribuer aux projets communautaires et former les équipes à l’alternative."
+        "commentaire": "Contribuez aux projets communautaires et former les équipes à l’alternative."
       }
     ],
     "sources": [
@@ -731,11 +731,11 @@
     "leviers": [
       {
         "id": "fin-des-frais-de-sortie-cloud-data-act",
-        "commentaire": "Anticiper la fin des frais de changement de fournisseur au 12 janvier 2027."
+        "commentaire": "Anticipez la fin des frais de changement de fournisseur au 12 janvier 2027."
       },
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Chiffrer le coût de sortie dès la signature."
+        "commentaire": "Chiffrez le coût de sortie dès la signature."
       }
     ],
     "sources": [
@@ -766,11 +766,11 @@
     "leviers": [
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Négocier un préavis, un recours et la continuité du service pendant un litige, et interdire la coupure arbitraire (clause Oméga 2)."
+        "commentaire": "Négociez un préavis, un recours et la continuité du service pendant un litige, et interdire la coupure arbitraire (clause Oméga 2)."
       },
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Intégrer cette vérification à la revue de chaque nouveau contrat."
+        "commentaire": "Intégrez cette vérification à la revue de chaque nouveau contrat."
       }
     ],
     "sources": [
@@ -793,11 +793,11 @@
     "leviers": [
       {
         "id": "gestion-des-actifs-logiciels",
-        "commentaire": "Vérifier ce que la licence perpétuelle couvre et conserver la preuve des droits."
+        "commentaire": "Vérifiez ce que la licence perpétuelle couvre et conserver la preuve des droits."
       },
       {
         "id": "support-tiers-pour-gagner-du-temps",
-        "commentaire": "Prévoir la sortie avant la fin du support, avec un support tiers si besoin."
+        "commentaire": "Prévoyez la sortie avant la fin du support, avec un support tiers si besoin."
       }
     ],
     "sources": [
@@ -820,11 +820,11 @@
     "leviers": [
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Prévoir des clauses de protection en cas de changement de contrôle."
+        "commentaire": "Prévoyez des clauses de protection en cas de changement de contrôle."
       },
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Suivre l’actionnariat des éditeurs critiques dans le registre."
+        "commentaire": "Suivez l’actionnariat des éditeurs critiques dans le registre."
       }
     ],
     "sources": [
@@ -847,7 +847,7 @@
     "leviers": [
       {
         "id": "sequestre-de-code-source-exploitable",
-        "commentaire": "Exiger un séquestre avec conditions de déclenchement, droit d’usage, de modification et d’hébergement, et vérifier qu’une équipe peut l’exploiter."
+        "commentaire": "Exigez un séquestre avec conditions de déclenchement, droit d’usage, de modification et d’hébergement, et vérifier qu’une équipe peut l’exploiter."
       }
     ],
     "sources": [
@@ -870,11 +870,11 @@
     "leviers": [
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Exiger et tenir à jour la liste des sous-traitants des fonctions critiques."
+        "commentaire": "Exigez et tenir à jour la liste des sous-traitants des fonctions critiques."
       },
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Négocier un droit d’opposition et d’audit sur la chaîne, et la responsabilité du fournisseur principal."
+        "commentaire": "Négociez un droit d’opposition et d’audit sur la chaîne, et la responsabilité du fournisseur principal."
       }
     ],
     "sources": [
@@ -897,15 +897,15 @@
     "leviers": [
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Cartographier les dépendances par fournisseur pour voir la concentration."
+        "commentaire": "Cartographiez les dépendances par fournisseur pour voir la concentration."
       },
       {
         "id": "indice-de-reversibilite-fonde-sur-la-preuve",
-        "commentaire": "Évaluer le risque de concentration avant de signer, avec un indice fondé sur la preuve."
+        "commentaire": "Évaluez le risque de concentration avant de signer, avec un indice fondé sur la preuve."
       },
       {
         "id": "mode-degrade-et-continuite-hors-fournisseur",
-        "commentaire": "Prévoir un mode dégradé hors fournisseur."
+        "commentaire": "Prévoyez un mode dégradé hors fournisseur."
       }
     ],
     "sources": [
@@ -932,11 +932,11 @@
     "leviers": [
       {
         "id": "tests-de-bascule-reguliers",
-        "commentaire": "Tester la restauration avant la résiliation."
+        "commentaire": "Testez la restauration avant la résiliation."
       },
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Négocier la durée de conservation après résiliation et planifier l’export complet."
+        "commentaire": "Négociez la durée de conservation après résiliation et planifier l’export complet."
       }
     ],
     "sources": [
@@ -959,7 +959,7 @@
     "leviers": [
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Comparer le prix d’achat direct et le prix via la place de marché."
+        "commentaire": "Comparez le prix d’achat direct et le prix via la place de marché."
       }
     ],
     "sources": [
@@ -982,11 +982,11 @@
     "leviers": [
       {
         "id": "mesurer-la-marge-de-manuvre",
-        "commentaire": "Planifier la migration avant la date d’arrêt et ne pas renouveler au-delà de la fin de vie."
+        "commentaire": "Planifiez la migration avant la date d’arrêt et ne pas renouveler au-delà de la fin de vie."
       },
       {
         "id": "support-tiers-pour-gagner-du-temps",
-        "commentaire": "Gagner du temps avec un support tiers si la migration n’est pas prête."
+        "commentaire": "Gagnez du temps avec un support tiers si la migration n’est pas prête."
       }
     ],
     "sources": [
@@ -1009,11 +1009,11 @@
     "leviers": [
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Comparer le coût du support étendu à celui de la migration."
+        "commentaire": "Comparez le coût du support étendu à celui de la migration."
       },
       {
         "id": "support-tiers-pour-gagner-du-temps",
-        "commentaire": "Envisager un support tiers pour éviter la surtaxe, avec un plan de sortie daté."
+        "commentaire": "Envisagez un support tiers pour éviter la surtaxe, avec un plan de sortie daté."
       }
     ],
     "sources": [
@@ -1040,11 +1040,11 @@
     "leviers": [
       {
         "id": "gestion-des-actifs-logiciels",
-        "commentaire": "Suivre les dates d’expiration des clés de licence."
+        "commentaire": "Suivez les dates d’expiration des clés de licence."
       },
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Signer les renouvellements avant l’échéance grâce au calendrier du registre."
+        "commentaire": "Signez les renouvellements avant l’échéance grâce au calendrier du registre."
       }
     ],
     "sources": [
@@ -1067,15 +1067,15 @@
     "leviers": [
       {
         "id": "achats-et-investissements-groupes",
-        "commentaire": "Recourir à une centrale d’achat informatique qui inclut des alternatives."
+        "commentaire": "Recourez à une centrale d’achat informatique qui inclut des alternatives."
       },
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Centraliser le calendrier des contrats pour exiger une comparaison avant tout achat."
+        "commentaire": "Centralisez le calendrier des contrats pour exiger une comparaison avant tout achat."
       },
       {
         "id": "indice-de-reversibilite-fonde-sur-la-preuve",
-        "commentaire": "Comparer les fournisseurs avec un indice commun avant l’achat sur accord-cadre."
+        "commentaire": "Comparez les fournisseurs avec un indice commun avant l’achat sur accord-cadre."
       }
     ],
     "sources": [
@@ -1098,11 +1098,11 @@
     "leviers": [
       {
         "id": "registre-des-contrats-et-des-prestataires",
-        "commentaire": "Centraliser le calendrier des contrats et la négociation."
+        "commentaire": "Centralisez le calendrier des contrats et la négociation."
       },
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Instituer un avis d’architecture sur les renouvellements importants."
+        "commentaire": "Instituez un avis d’architecture sur les renouvellements importants."
       }
     ],
     "sources": [
@@ -1129,11 +1129,11 @@
     "leviers": [
       {
         "id": "competences-sur-les-alternatives",
-        "commentaire": "Budgéter la formation et la conduite du changement avant le renouvellement."
+        "commentaire": "Budgétez la formation et la conduite du changement avant le renouvellement."
       },
       {
         "id": "pilote-de-sortie-sur-un-perimetre-reel",
-        "commentaire": "Mener un pilote d’alternative."
+        "commentaire": "Menez un pilote d’alternative."
       }
     ],
     "sources": [
@@ -1156,11 +1156,11 @@
     "leviers": [
       {
         "id": "pilotage-et-conseil-independants",
-        "commentaire": "Plafonner la sous-traitance et conserver en interne le pilotage et l’architecture."
+        "commentaire": "Plafonnez la sous-traitance et conserver en interne le pilotage et l’architecture."
       },
       {
         "id": "competences-sur-les-alternatives",
-        "commentaire": "Exiger la documentation et le transfert de compétences."
+        "commentaire": "Exigez la documentation et le transfert de compétences."
       }
     ],
     "sources": [
@@ -1183,11 +1183,11 @@
     "leviers": [
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Chiffrer le passage au payant avant que la limite s’applique."
+        "commentaire": "Chiffrez le passage au payant avant que la limite s’applique."
       },
       {
         "id": "formats-de-donnees-ouverts",
-        "commentaire": "Exporter régulièrement l’historique et les données dans un format ouvert."
+        "commentaire": "Exportez régulièrement l’historique et les données dans un format ouvert."
       }
     ],
     "sources": [
@@ -1214,11 +1214,11 @@
     "leviers": [
       {
         "id": "gouvernance-des-projets-ouverts-verifiee",
-        "commentaire": "Lister les fonctions nécessaires en production et vérifier la licence de chaque dossier du dépôt avant d’adopter."
+        "commentaire": "Listez les fonctions nécessaires en production et vérifier la licence de chaque dossier du dépôt avant d’adopter."
       },
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Chiffrer l’édition payante dès la décision."
+        "commentaire": "Chiffrez l’édition payante dès la décision."
       }
     ],
     "sources": [
@@ -1241,15 +1241,15 @@
     "leviers": [
       {
         "id": "gouvernance-des-projets-ouverts-verifiee",
-        "commentaire": "Surveiller l’activité des projets utilisés et préférer ceux portés par une fondation."
+        "commentaire": "Surveillez l’activité des projets utilisés et préférer ceux portés par une fondation."
       },
       {
         "id": "fork-communautaire-et-miroir-de-repli",
-        "commentaire": "Prévoir le fork ou l’alternative avant l’archivage."
+        "commentaire": "Prévoyez le fork ou l’alternative avant l’archivage."
       },
       {
         "id": "support-tiers-pour-gagner-du-temps",
-        "commentaire": "Gagner du temps avec un support tiers pendant la migration."
+        "commentaire": "Gagnez du temps avec un support tiers pendant la migration."
       }
     ],
     "sources": [
@@ -1280,11 +1280,11 @@
     "leviers": [
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Exiger au contrat l’interdiction d’entraîner des modèles sur les données du client, et relire les conditions à chaque évolution."
+        "commentaire": "Exigez au contrat l’interdiction d’entraîner des modèles sur les données du client, et relire les conditions à chaque évolution."
       },
       {
         "id": "modeles-dia-a-poids-ouverts",
-        "commentaire": "Disposer d’un modèle ouvert évalué comme alternative pour les usages sensibles."
+        "commentaire": "Disposez d’un modèle ouvert évalué comme alternative pour les usages sensibles."
       }
     ],
     "sources": [
@@ -1311,11 +1311,11 @@
     "leviers": [
       {
         "id": "cloud-europeen-qualifie",
-        "commentaire": "Comparer les offres qualifiées pour les données sensibles."
+        "commentaire": "Comparez les offres qualifiées pour les données sensibles."
       },
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Prévoir la réversibilité vers une autre offre qualifiée."
+        "commentaire": "Prévoyez la réversibilité vers une autre offre qualifiée."
       }
     ],
     "sources": [
@@ -1338,11 +1338,11 @@
     "leviers": [
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Faire inscrire les pénalités au contrat et en chiffrer le montant avant la signature."
+        "commentaire": "Faites inscrire les pénalités au contrat et en chiffrer le montant avant la signature."
       },
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Privilégier des durées courtes lors de la revue du contrat."
+        "commentaire": "Privilégiez des durées courtes lors de la revue du contrat."
       }
     ],
     "sources": [
@@ -1365,11 +1365,11 @@
     "leviers": [
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
-        "commentaire": "Faire qualifier le service au contrat et exiger les mêmes conditions de sortie qu’un service standard."
+        "commentaire": "Faites qualifier le service au contrat et exiger les mêmes conditions de sortie qu’un service standard."
       },
       {
         "id": "clauses-de-reversibilite",
-        "commentaire": "Conserver la documentation du développement et prévoir l’export."
+        "commentaire": "Conservez la documentation du développement et prévoir l’export."
       }
     ],
     "sources": [
@@ -1392,11 +1392,11 @@
     "leviers": [
       {
         "id": "tests-de-bascule-reguliers",
-        "commentaire": "Tester la bascule avant l’échéance."
+        "commentaire": "Testez la bascule avant l’échéance."
       },
       {
         "id": "mesurer-la-marge-de-manuvre",
-        "commentaire": "Inscrire la date de fin de support dans le plan de renouvellement dès l’adoption."
+        "commentaire": "Inscrivez la date de fin de support dans le plan de renouvellement dès l’adoption."
       }
     ],
     "sources": [
@@ -1419,11 +1419,11 @@
     "leviers": [
       {
         "id": "fork-communautaire-et-miroir-de-repli",
-        "commentaire": "Héberger un miroir des mises à jour critiques."
+        "commentaire": "Hébergez un miroir des mises à jour critiques."
       },
       {
         "id": "gestion-des-actifs-logiciels",
-        "commentaire": "Inventorier les extensions qui interrogent un serveur tiers."
+        "commentaire": "Inventoriez les extensions qui interrogent un serveur tiers."
       }
     ],
     "sources": [
@@ -1454,11 +1454,11 @@
     "leviers": [
       {
         "id": "gestion-des-actifs-logiciels",
-        "commentaire": "Faire confirmer par écrit la règle de comptage de votre hyperviseur et inventorier les bases concernées."
+        "commentaire": "Faites confirmer par écrit la règle de comptage de votre hyperviseur et inventorier les bases concernées."
       },
       {
         "id": "cout-total-de-la-dependance",
-        "commentaire": "Comparer le coût avec celui d’un hébergement en cloud public."
+        "commentaire": "Comparez le coût avec celui d’un hébergement en cloud public."
       }
     ],
     "sources": [

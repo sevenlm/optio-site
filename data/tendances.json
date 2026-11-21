@@ -5,12 +5,24 @@
     "quadrant": 1,
     "anneau": 0,
     "declencheur": "Après le rachat de VMware par Broadcom, puis l’annonce de la fin de vie d’Atlassian Data Center, la licence que l’on possède devient l’exception : la plupart des éditeurs basculent vers l’abonnement.",
-    "tendance": "Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. Atlassian ne vendra plus de licences Data Center aux clients existants après le 30 mars 2028, et les passera en lecture seule le 28 mars 2029.",
+    "tendance": "Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. Atlassian ne vendra plus de licences Data Center aux clients existants après le 30 mars 2028, et les passera en lecture seule le 28 mars 2029.",
     "risque": "Vous ne possédez plus, vous louez : le prix est revu à chaque échéance et le calendrier de migration est fixé par l’éditeur.",
-    "mitigations": [
-      "Recensez les licences sans date d’expiration qui vous restent, et leurs fins de support.",
-      "Chiffrez l’abonnement sur cinq ans, pas sur un an.",
-      "Préparez une alternative avant la date imposée."
+    "mecanismes": [
+      "meca-fin-des-licences-perpetuelles"
+    ],
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Recensez les licences sans date d’expiration qui vous restent, avec leurs fins de support, et comptez les mois avant l’échéance."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez l’abonnement sur cinq ans, pas sur un an."
+      },
+      {
+        "id": "alternatives-de-virtualisation-matures",
+        "commentaire": "Préparez une alternative avant la date imposée, par exemple en virtualisation."
+      }
     ],
     "technologies": [
       "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)",
@@ -41,12 +53,21 @@
     "quadrant": 1,
     "anneau": 0,
     "declencheur": "Les grandes suites ont profité de l’arrivée de l’IA pour revoir leurs prix : Microsoft a relevé les tarifs de Microsoft 365 au 1er juillet 2026, Salesforce a présenté de nouvelles éditions en septembre 2026.",
-    "tendance": "Les grandes suites collaboratives et les CRM relèvent leurs prix en incluant l’IA dans leurs offres. Microsoft a relevé les prix catalogue de Microsoft 365 au 1er juillet 2026, appliqués aux clients existants à leur renouvellement ; Salesforce a présenté le 3 septembre 2026 trois éditions (Core, Advanced, Max) qui intègrent toutes son IA Agentforce.",
+    "tendance": "Les grandes suites collaboratives et les CRM relèvent leurs prix en incluant l’IA dans leurs offres. Microsoft a relevé les prix catalogue de Microsoft 365 au 1er juillet 2026, appliqués aux clients existants à leur renouvellement ; Salesforce a présenté le 3 septembre 2026 trois éditions (Core, Advanced, Max) qui intègrent toutes son IA Agentforce.",
     "risque": "Vous payez des fonctions que vous n’utilisez pas forcément, et la hausse devient difficile à refuser.",
-    "mitigations": [
-      "Mesurez l’usage réel des fonctions d’IA.",
-      "Négociez sur le périmètre utile.",
-      "Évitez de se réengager longtemps juste après une hausse."
+    "mecanismes": [
+      "meca-offres-groupees",
+      "meca-hausses-unilaterales-et-indexation"
+    ],
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Mesurez l’usage réel des fonctions d’IA et négociez sur le périmètre utile."
+      },
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Évitez de vous réengager longtemps juste après une hausse."
+      }
     ],
     "technologies": [
       "Entra ID et Active Directory",
@@ -85,9 +106,18 @@
     "declencheur": "Selon une étude d’Asterès pour le Cigref publiée en mai 2026, les DSI européens anticipent 12 % de hausse par an sur cinq ans, et relèvent des mécanismes de verrouillage qui compliquent le changement de fournisseur.",
     "tendance": "Les DSI européens interrogés pour le Cigref ont constaté 8,7 % de hausse par an sur les trois dernières années et anticipent 12 % par an sur les cinq prochaines, soit environ +76 % cumulés sur cinq ans. Asterès en déduit un surcoût moyen de 140 Md€ par an sur 2026-2030 pour l’économie européenne.",
     "risque": "La trajectoire de coûts n’est plus pilotée par le client, et les mécanismes de verrouillage freinent le changement de fournisseur.",
-    "mitigations": [
-      "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans.",
-      "Arrivez aux échéances avec une alternative chiffrée."
+    "mecanismes": [
+      "meca-hausses-unilaterales-et-indexation"
+    ],
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Projetez le coût total de chacun de vos fournisseurs critiques sur cinq ans."
+      },
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Arrivez aux échéances avec une alternative chiffrée, appuyée par un pilote."
+      }
     ],
     "technologies": [
       "Ordonnanceurs Broadcom (AutoSys, Automic, Dollar Universe)",
@@ -119,9 +149,18 @@
     "declencheur": "Les rachats se sont accélérés en 2025 et 2026 : HashiCorp et Confluent par IBM, Informatica, Fin et Braze par Salesforce, PTC par Schneider Electric.",
     "tendance": "Les rachats se multiplient : IBM a finalisé celui de Confluent (environ 11 Md$) en mars 2026, Salesforce a annoncé ceux de Fin et de Braze (5,66 Md$), Schneider Electric celui de PTC (22,6 Md$).",
     "risque": "Quand votre éditeur change de propriétaire, sa roadmap et sa politique tarifaire changent avec lui.",
-    "mitigations": [
-      "Identifiez vos fournisseurs critiques susceptibles d’être rachetés.",
-      "Prévoyez des clauses en cas de changement de contrôle."
+    "mecanismes": [
+      "meca-changement-de-controle-de-lediteur"
+    ],
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Prévoyez des clauses en cas de changement de contrôle."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Repérez dans le registre les fournisseurs critiques susceptibles d’être rachetés."
+      }
     ],
     "technologies": [
       "Informatica",
@@ -163,9 +202,18 @@
     "declencheur": "Les éditeurs doivent rentabiliser des investissements massifs dans l’IA, et en répercutent le coût sur leurs clients, souvent sous forme de facturation à l’usage.",
     "tendance": "Selon Forrester (enquête auprès de plus de 2 600 décideurs, juillet 2026), 80 % des décideurs s’attendent à une hausse de leurs budgets données et logiciels en 2027, les éditeurs répercutant le coût de l’IA par des hausses de prix ou une facturation à l’usage.",
     "risque": "Une facture à l’usage est difficile à prévoir, et plus encore à comparer.",
-    "mitigations": [
-      "Exigez des plafonds et des alertes de consommation.",
-      "Suivez la consommation d’IA comme un poste à part entière."
+    "mecanismes": [
+      "meca-hausses-unilaterales-et-indexation"
+    ],
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Exigez des plafonds et des alertes de consommation."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Suivez la consommation d’IA comme un poste à part entière."
+      }
     ],
     "sources": [
       {
@@ -185,11 +233,26 @@
     "quadrant": 4,
     "anneau": 0,
     "declencheur": "Depuis le rachat de VMware par Broadcom fin 2023, les licences perpétuelles ont disparu, le catalogue a été réduit à quelques offres groupées, et les coûts ont souvent au moins doublé.",
-    "tendance": "Après le rachat de VMware par Broadcom, les licences perpétuelles ont été supprimées le 11 décembre 2023 et le catalogue ramené à deux offres principales, VMware Cloud Foundation et vSphere Foundation. Selon Gartner, les coûts ont au moins doublé pour un client type, et jusqu’à quintuplé dans certains cas.",
+    "tendance": "Après le rachat de VMware par Broadcom, les licences perpétuelles ont été supprimées le 11 décembre 2023 et le catalogue ramené à deux offres principales, VMware Cloud Foundation et vSphere Foundation. Selon Gartner, les coûts ont au moins doublé pour un client type, et jusqu’à quintuplé dans certains cas.",
     "risque": "La virtualisation porte une grande partie des systèmes critiques : en sortir demande des mois de préparation.",
-    "mitigations": [
-      "Mesurez le délai de sortie et le comparer à l’échéance.",
-      "Évaluez deux alternatives et lancez un pilote sur un périmètre limité."
+    "mecanismes": [
+      "meca-changement-de-metrique",
+      "meca-fin-des-licences-perpetuelles",
+      "meca-virtualisation-non-reconnue-comme-sous-capacite"
+    ],
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Mesurez le délai de sortie et comparez-le à l’échéance."
+      },
+      {
+        "id": "alternatives-de-virtualisation-matures",
+        "commentaire": "Évaluez deux alternatives sur vos usages réels."
+      },
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Lancez un pilote sur un périmètre limité."
+      }
     ],
     "technologies": [
       "IBM Power (AIX et IBM i)",
@@ -218,12 +281,21 @@
     "titre": "Concentration des régions cloud",
     "quadrant": 4,
     "anneau": 2,
-    "declencheur": "La panne d’AWS du 20 octobre 2025 a rappelé qu’une seule région cloud peut rendre indisponibles de très nombreux services dans le monde.",
-    "tendance": "Le 20 octobre 2025, une panne dans la région US-EAST-1 d’AWS a rendu indisponibles pendant plusieurs heures de nombreux services. Même des applications hébergées ailleurs ont été touchées, car elles dépendaient de cette région.",
+    "declencheur": "La panne d’AWS du 20 octobre 2025 a rappelé qu’une seule région cloud peut rendre indisponibles de très nombreux services dans le monde.",
+    "tendance": "Le 20 octobre 2025, une panne dans la région US-EAST-1 d’AWS a rendu indisponibles pendant plusieurs heures de nombreux services. Même des applications hébergées ailleurs ont été touchées, car elles dépendaient de cette région.",
     "risque": "Être réparti géographiquement ne signifie pas être indépendant : authentification, DNS ou pilotage peuvent créer des dépendances cachées.",
-    "mitigations": [
-      "Cartographiez les dépendances cachées : identité, DNS, outils de déploiement.",
-      "Testez une bascule réelle, pas seulement documentée."
+    "mecanismes": [
+      "meca-concentration-sur-un-prestataire-non-substituable"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Cartographiez les dépendances cachées : identité, DNS, outils de déploiement."
+      },
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Testez une bascule réelle, pas seulement documentée."
+      }
     ],
     "technologies": [
       "AWS Outposts",
@@ -246,11 +318,21 @@
     "quadrant": 0,
     "anneau": 2,
     "declencheur": "Entre 2023 et 2025, Terraform, Redis, Puppet et MinIO ont changé les règles du jeu, obligeant leurs utilisateurs à choisir entre payer, migrer ou suivre un fork.",
-    "tendance": "Des projets ouverts contrôlés par un seul éditeur changent de règles : Terraform est passé sous licence source disponible en 2023 ; début 2025, Perforce a réservé les paquets de Puppet à un dépôt privé ; en 2025, MinIO a retiré la console de son édition communautaire puis cessé d’en publier les binaires. À chaque fois, la communauté a dû créer un fork (OpenTofu, OpenVox). Le 30 septembre 2025, Liquibase a annoncé que sa version Community passait à la Functional Source License à partir de la version 5.0, licence « source disponible » qui n’est pas reconnue comme open source et interdit l’usage concurrent ; chaque version revient sous Apache 2.0 deux ans après sa sortie.",
+    "tendance": "Des projets ouverts contrôlés par un seul éditeur changent de règles : Terraform est passé sous licence source disponible en 2023 ; début 2025, Perforce a réservé les paquets de Puppet à un dépôt privé ; en 2025, MinIO a retiré la console de son édition communautaire puis cessé d’en publier les binaires. À chaque fois, la communauté a dû créer un fork (OpenTofu, OpenVox). Le 30 septembre 2025, Liquibase a annoncé que sa version Community passait à la Functional Source License à partir de la version 5.0, licence « source disponible » qui n’est pas reconnue comme open source et interdit l’usage concurrent ; chaque version revient sous Apache 2.0 deux ans après sa sortie.",
     "risque": "L’open source ne protège pas si un seul acteur contrôle le projet.",
-    "mitigations": [
-      "Privilégiez les projets à gouvernance ouverte ou portés par une fondation.",
-      "Identifiez les composants à éditeur unique."
+    "mecanismes": [
+      "meca-changement-de-licence-dun-projet-a-editeur-unique",
+      "meca-appauvrissement-de-ledition-communautaire"
+    ],
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Privilégiez les projets à gouvernance ouverte ou portés par une fondation, et identifiez les composants à éditeur unique."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Repérez à l’avance le fork de repli de chaque composant à éditeur unique."
+      }
     ],
     "technologies": [
       "CockroachDB",
@@ -283,7 +365,7 @@
         "url": "https://itsfoss.com/news/minio-moves-away-from-open-source.md"
       },
       {
-        "titre": "Liquibase, passage de Liquibase Community à la Functional Source License (30 septembre 2025)",
+        "titre": "Liquibase, passage de Liquibase Community à la Functional Source License (30 septembre 2025)",
         "url": "https://www.liquibase.com/blog/liquibase-community-for-the-future-fsl"
       }
     ]
@@ -296,9 +378,18 @@
     "declencheur": "Les organisations industrialisent leurs premiers usages d’IA, souvent autour d’un seul fournisseur de modèles : selon Menlo Ventures, seules 11 % des équipes en ont changé en 2025, alors que les prix et les conditions évoluent très vite.",
     "tendance": "Les organisations construisent prompts, outils et agents autour d’un modèle ou d’une API d’un seul fournisseur. Selon Menlo Ventures, les modèles fermés concentrent 87 % des usages en entreprise, et les fournisseurs retirent régulièrement leurs anciens modèles : OpenAI annonce ces retraits avec six mois de préavis au minimum pour ses modèles généraux.",
     "risque": "Changer de modèle peut demander de tout reconstruire, au moment où les prix de l’IA évoluent vite.",
-    "mitigations": [
-      "Prévoyez une couche d’abstraction entre vos applications et les modèles.",
-      "Testez régulièrement un modèle alternatif."
+    "mecanismes": [
+      "meca-entrainement-de-lia-de-lediteur-sur-les-donnees-clients"
+    ],
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Prévoyez une couche d’abstraction entre vos applications et les modèles."
+      },
+      {
+        "id": "modeles-dia-a-poids-ouverts",
+        "commentaire": "Testez régulièrement un modèle alternatif."
+      }
     ],
     "sources": [
       {
@@ -321,12 +412,25 @@
     "titre": "Plans de sortie testés (DORA)",
     "quadrant": 3,
     "anneau": 0,
-    "declencheur": "Applicable depuis le 17 janvier 2025, DORA a fait de la réversibilité une obligation réglementaire pour tout le secteur financier.",
-    "tendance": "Depuis le 17 janvier 2025, DORA impose aux entités financières des stratégies de sortie documentées, suffisamment testées et revues régulièrement pour les services qui supportent des fonctions critiques.",
+    "declencheur": "Applicable depuis le 17 janvier 2025, DORA a fait de la réversibilité une obligation réglementaire pour tout le secteur financier.",
+    "tendance": "Depuis le 17 janvier 2025, DORA impose aux entités financières des stratégies de sortie documentées, suffisamment testées et revues régulièrement pour les services qui supportent des fonctions critiques.",
     "risque": "Un plan écrit ne suffit plus : il faut pouvoir prouver qu’il fonctionne.",
-    "mitigations": [
-      "Identifiez les fonctions critiques et leurs prestataires.",
-      "Testez au moins une sortie sur un périmètre réel."
+    "mecanismes": [
+      "meca-clauses-de-reversibilite-absentes-ou-floues"
+    ],
+    "leviers": [
+      {
+        "id": "partir-des-processus-metier-critiques",
+        "commentaire": "Identifiez les fonctions critiques."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Identifiez leurs prestataires."
+      },
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Testez au moins une sortie sur un périmètre réel."
+      }
     ],
     "technologies": [
       "Amazon DynamoDB",
@@ -361,8 +465,19 @@
     "declencheur": "L’État a demandé à chaque ministère un plan de réduction des dépendances pour l’automne 2026, sur sept domaines prioritaires.",
     "tendance": "Coordonnés par la Dinum, les ministères et opérateurs doivent présenter à l’automne 2026 des plans d’action sur sept domaines : poste de travail, collaboratif, antivirus, IA, bases de données, virtualisation, réseau.",
     "risque": "La dépendance devient un sujet piloté au plus haut niveau de l’État.",
-    "mitigations": [
-      "Rendez le plan exécutable : chiffrage, priorités, preuve sur un périmètre."
+    "mecanismes": [
+      "meca-hebergeur-impose-par-la-loi-pour-les-donnees-sensibles",
+      "meca-droit-applicable-et-juridiction-etrangere"
+    ],
+    "leviers": [
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Rendez le plan exécutable : chiffrage, priorités, preuve sur un périmètre."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Appuyez-vous sur des offres qualifiées pour les données sensibles."
+      }
     ],
     "technologies": [
       "Cisco ACI",
@@ -403,9 +518,15 @@
     "declencheur": "Le texte de transposition de NIS 2 a été adopté par le Sénat en mars 2025, puis examiné par l’Assemblée nationale en novembre 2026 ; une commission mixte paritaire doit encore le rapprocher de la version du Sénat.",
     "tendance": "Entre 15 000 et 20 000 organisations seront concernées en France selon les estimations des rapporteurs et du gouvernement. L’ANSSI vise la conformité de toutes les entités d’ici fin 2028.",
     "risque": "La sécurité de la chaîne d’approvisionnement devient une obligation, et les dirigeants en deviennent responsables.",
-    "mitigations": [
-      "Cartographiez vos fournisseurs critiques dès maintenant.",
-      "Appuyez-vous sur le référentiel de l’ANSSI sans attendre le vote."
+    "mecanismes": [
+      "meca-sous-traitance-en-cascade",
+      "meca-concentration-sur-un-prestataire-non-substituable"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Cartographiez vos fournisseurs critiques dès maintenant, en vous appuyant sur le référentiel de l’ANSSI sans attendre le vote."
+      }
     ],
     "technologies": [
       "Entra ID et Active Directory",
@@ -437,9 +558,20 @@
     "declencheur": "En 2025, le procureur de la Cour pénale internationale a perdu l’accès à sa messagerie après des sanctions américaines : un risque jusque-là théorique est devenu concret.",
     "tendance": "Après des sanctions américaines en février 2025, le procureur de la Cour pénale internationale a perdu l’accès à sa messagerie Microsoft et a dû changer de fournisseur, selon l’Associated Press. Microsoft conteste avoir coupé les services de la Cour.",
     "risque": "Un service peut devenir inaccessible pour des raisons qui n’ont rien de technique ni de contractuel.",
-    "mitigations": [
-      "Identifiez les services critiques exposés à un droit étranger.",
-      "Prévoyez un mode dégradé pour les plus sensibles."
+    "mecanismes": [
+      "meca-extraterritorialite-et-sanctions",
+      "meca-suspension-ou-resiliation-unilaterale-du-service",
+      "meca-controles-a-lexportation"
+    ],
+    "leviers": [
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Identifiez les services critiques exposés à un droit étranger."
+      },
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoyez un mode dégradé pour les plus sensibles."
+      }
     ],
     "technologies": [
       "Entra ID et Active Directory",
@@ -469,10 +601,18 @@
     "declencheur": "En 2025, Broadcom a adressé des mises en demeure aux clients VMware dont le support avait expiré : l’audit est devenu un outil commercial à part entière.",
     "tendance": "Les audits de conformité se multiplient à l’approche des renouvellements. En 2025, Broadcom a adressé des mises en demeure aux détenteurs de licences perpétuelles VMware dont le support avait expiré, leur demandant de ne plus installer de mises à jour.",
     "risque": "Un audit crée un risque financier soudain, qui pousse à re-signer dans l’urgence et aux conditions de l’éditeur.",
-    "mitigations": [
-      "Tenez un inventaire à jour des licences et des usages réels.",
-      "Négociez des clauses d’audit encadrées : préavis, fréquence, périmètre.",
-      "Ne concluez jamais un renouvellement sous la pression d’un audit en cours."
+    "mecanismes": [
+      "meca-audits-de-conformite"
+    ],
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Tenez un inventaire à jour des licences et des usages réels."
+      },
+      {
+        "id": "clauses-daudit-encadrees",
+        "commentaire": "Négociez des clauses d’audit encadrées : préavis, fréquence, périmètre, et ne concluez jamais un renouvellement sous la pression d’un audit en cours."
+      }
     ],
     "technologies": [
       "IBM Power (AIX et IBM i)",
@@ -508,9 +648,18 @@
     "declencheur": "En mars 2025, un courrier de distributeur relayé par la presse évoquait un minimum de commande de 72 cœurs pour VMware, vite contredit en Europe ; depuis 2023, Java d’Oracle est facturé au nombre total de salariés de l’entreprise.",
     "tendance": "La façon de compter change : par cœur plutôt que par processeur, au nombre total de salariés, avec des minimums de commande. Fin mars 2025, un courrier du distributeur Arrow relayé par la presse annonçait pour VMware un minimum de commande de 72 cœurs et une majoration de 20 % en cas de renouvellement tardif. Le distributeur a ensuite indiqué que le minimum restait de 16 cœurs par processeur en Europe, Moyen-Orient et Afrique, et la mesure aurait été retirée : le changement de métrique est resté une menace, pas une règle uniforme.",
     "risque": "La facture augmente sans que l’usage change, et la nouvelle métrique pénalise souvent les petites infrastructures.",
-    "mitigations": [
-      "Modélisez l’impact de chaque changement de métrique avant l’échéance.",
-      "Négociez le maintien de la métrique sur toute la durée du contrat."
+    "mecanismes": [
+      "meca-changement-de-metrique"
+    ],
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Modélisez l’impact de chaque changement de métrique avant l’échéance."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négociez le maintien de la métrique sur toute la durée du contrat."
+      }
     ],
     "technologies": [
       "Mainframe IBM Z (z/OS)",
@@ -531,7 +680,7 @@
         "url": "https://systeme.developpez.com/actu/382026/Broadcom-voulait-rentabiliser-VMware-a-marche-forcee-il-a-surtout-offert-30-000-clients-a-Nutanix-et-ouvert-la-plus-grande-fenetre-de-migration-que-le-secteur-ait-connue-depuis-dix-ans/"
       },
       {
-        "titre": "Born’s Tech and Windows World, annonce puis retrait probable du minimum de 72 cœurs (11 avril 2025)",
+        "titre": "Born’s Tech and Windows World, annonce puis retrait probable du minimum de 72 cœurs (11 avril 2025)",
         "url": "https://borncity.com/win/2025/04/11/vmware-by-broadcom-72-core-licensing-claim-withdrawn/"
       }
     ]
@@ -544,10 +693,22 @@
     "declencheur": "Pour obtenir de meilleures remises, des organisations s’engagent sur une à plusieurs années de consommation chez un même fournisseur de cloud.",
     "tendance": "Les fournisseurs de cloud accordent des remises contre un engagement de dépense : jusqu’à 72 % chez AWS pour un engagement d’un ou trois ans, tandis que chez Microsoft la part non consommée d’un engagement Azure est facturée. En 2023, l’Ofcom relevait que ces remises sont conçues pour inciter à recourir à un seul fournisseur.",
     "risque": "La remise d’aujourd’hui crée l’obligation de consommer demain, et peut freiner la diversification vers un autre fournisseur.",
-    "mitigations": [
-      "Limitez la durée et le montant des engagements.",
-      "Gardez une part de la consommation non engagée.",
-      "Prévoyez une clause de réduction en cas de changement de stratégie."
+    "mecanismes": [
+      "meca-remises-conditionnelles-et-engagements-de-consommation"
+    ],
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Limitez la durée et le montant des engagements."
+      },
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Gardez une part de la consommation non engagée."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Prévoyez une clause de réduction en cas de changement de stratégie."
+      }
     ],
     "technologies": [
       "Amazon DynamoDB",
@@ -586,14 +747,25 @@
     "declencheur": "La plainte de CISPE contre Microsoft, réglée en 2024 par un accord, a mis en lumière l’impact des règles de licence sur le choix des hébergeurs.",
     "tendance": "Certaines licences coûtent plus cher, ou ne peuvent pas être transférées, chez des clouds concurrents de l’éditeur. Ces pratiques ont fait l’objet de plaintes en Europe, dont celle de CISPE contre Microsoft, réglée en 2024.",
     "risque": "Le choix de l’hébergeur est contraint par les licences, et non par l’offre technique.",
-    "mitigations": [
-      "Vérifiez les droits de transfert de chaque licence avant de choisir un hébergeur.",
-      "Chiffrez le coût des licences dans chaque scénario d’hébergement."
+    "mecanismes": [
+      "meca-restrictions-selon-lhebergeur",
+      "meca-virtualisation-non-reconnue-comme-sous-capacite"
+    ],
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Vérifiez les droits de transfert de chaque licence avant de choisir un hébergeur."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez le coût des licences dans chaque scénario d’hébergement."
+      }
     ],
     "technologies": [
       "Oracle Database",
       "Microsoft SQL Server",
-      "Windows Server"
+      "Windows Server",
+      "Azure Virtual Desktop"
     ],
     "sources": [
       {
@@ -614,9 +786,18 @@
     "declencheur": "La course à l’IA s’accompagne de programmes de crédits généreux, qui incitent à construire vite sur des services propriétaires.",
     "tendance": "Des crédits offerts, notamment pour l’IA ou les jeunes entreprises, incitent à construire sur des services propriétaires : en octobre 2025, AWS a offert jusqu’à 1 million de dollars de crédits à chacune des 40 jeunes entreprises de son accélérateur d’IA générative, et Google Cloud propose jusqu’à 350 000 dollars sur deux ans aux jeunes entreprises de l’IA.",
     "risque": "Le coût d’entrée est nul, le coût de sortie apparaît plus tard, quand l’architecture est déjà ancrée.",
-    "mitigations": [
-      "Évaluez le coût de sortie avant d’accepter des crédits.",
-      "Privilégiez des services standards, même pendant la période gratuite."
+    "mecanismes": [
+      "meca-cout-dentree-nul-cout-de-sortie-eleve"
+    ],
+    "leviers": [
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Évaluez le coût de sortie avant d’accepter des crédits."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Privilégiez des services standards, même pendant la période gratuite."
+      }
     ],
     "technologies": [
       "Amazon DynamoDB",
@@ -644,9 +825,19 @@
     "declencheur": "La promesse du cloud est de ne plus gérer l’infrastructure, mais chaque service managé spécifique ajoute une dépendance difficile à remplacer.",
     "tendance": "Bases de données, fonctions sans serveur, files de messages ou services d’IA propres à un seul cloud. L’Ofcom (2023) puis l’autorité britannique de la concurrence (2025) relèvent que ces barrières techniques obligent à reconfigurer données et applications pour changer de fournisseur. Et le fournisseur peut retirer un service : en juillet 2024, AWS a fermé CodeCommit, Cloud9 et SimpleDB aux nouveaux clients (CodeCommit a finalement été rouvert en novembre 2025).",
     "risque": "Ils font gagner du temps, mais chaque service est une API sans équivalent direct ailleurs.",
-    "mitigations": [
-      "Recensez les services managés propriétaires sur les chemins critiques.",
-      "Préférez des équivalents standards : PostgreSQL managé, Kubernetes, files de messages ouvertes."
+    "mecanismes": [
+      "meca-services-manages-sans-equivalent",
+      "meca-formats-et-api-proprietaires"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Recensez les services managés propriétaires sur les chemins critiques."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Préférez des équivalents standards : PostgreSQL managé, Kubernetes, files de messages ouvertes."
+      }
     ],
     "technologies": [
       "AWS Outposts",
@@ -658,7 +849,9 @@
       "Azure API Management",
       "Google BigQuery",
       "Snowflake",
-      "Kubernetes managé (EKS, AKS, GKE)"
+      "Kubernetes managé (EKS, AKS, GKE)",
+      "Amazon SageMaker AI",
+      "Azure Machine Learning"
     ],
     "sources": [
       {
@@ -685,11 +878,20 @@
     "quadrant": 4,
     "anneau": 0,
     "declencheur": "Avec la généralisation du SaaS, l’annuaire est devenu la porte d’entrée de la plupart des applications, et donc un point de dépendance critique.",
-    "tendance": "Postes de travail, applications SaaS et cloud s’authentifient auprès du même service d’identité, alors qu’une entreprise utilise en moyenne 101 applications selon Okta (2025). Le 29 octobre 2025, une panne chez Microsoft a suffi à perturber les connexions à Microsoft 365 et à Entra.",
+    "tendance": "Postes de travail, applications SaaS et cloud s’authentifient auprès du même service d’identité, alors qu’une entreprise utilise en moyenne 101 applications selon Okta (2025). Le 29 octobre 2025, une panne chez Microsoft a suffi à perturber les connexions à Microsoft 365 et à Entra.",
     "risque": "Si ce service est indisponible ou coupé, plus rien ne fonctionne : c’est le point de dépendance le plus central du système d’information.",
-    "mitigations": [
-      "Prévoyez un mode d’authentification de secours pour les accès critiques.",
-      "Appuyez-vous sur des protocoles standards (SAML, OpenID Connect) pour faciliter un changement."
+    "mecanismes": [
+      "meca-integrations-decosysteme"
+    ],
+    "leviers": [
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Prévoyez un mode d’authentification de secours pour les accès critiques."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Appuyez-vous sur des protocoles standards (SAML, OpenID Connect) pour faciliter un changement."
+      }
     ],
     "technologies": [
       "Entra ID et Active Directory",
@@ -699,7 +901,8 @@
       "Okta",
       "Windows Server",
       "FreeIPA",
-      "Samba"
+      "Samba",
+      "Azure Virtual Desktop"
     ],
     "sources": [
       {
@@ -718,11 +921,25 @@
     "quadrant": 4,
     "anneau": 1,
     "declencheur": "Les volumes de données explosent avec l’IA, et les déplacer prend désormais plus de temps que de changer d’application.",
-    "tendance": "Plus les données sont volumineuses chez un fournisseur, plus elles attirent les applications et les services autour d’elles. Google, AWS et Microsoft ont annoncé en 2024 la gratuité, sur demande, des transferts de données lors d’une migration vers un autre fournisseur ou sur site, et le Data Act supprime les frais de changement au 12 janvier 2027. Mais les frais de transfert d’usage courant demeurent, et migrer des pétaoctets prend du temps.",
+    "tendance": "Plus les données sont volumineuses chez un fournisseur, plus elles attirent les applications et les services autour d’elles. Google, AWS et Microsoft ont annoncé en 2024 la gratuité, sur demande, des transferts de données lors d’une migration vers un autre fournisseur ou sur site, et le Data Act supprime les frais de changement au 12 janvier 2027. Mais les frais de transfert d’usage courant demeurent, et migrer des pétaoctets prend du temps.",
     "risque": "Les données deviennent la partie la plus lourde à déplacer, et ce poids augmente avec l’IA.",
-    "mitigations": [
-      "Mesurez les volumes et le temps réel de leur transfert.",
-      "Concevez les architectures pour limiter les allers-retours de données entre fournisseurs."
+    "mecanismes": [
+      "meca-gravite-des-donnees",
+      "meca-frais-de-sortie-de-donnees"
+    ],
+    "leviers": [
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Mesurez les volumes et le temps réel de leur transfert."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Concevez les architectures pour limiter les allers-retours de données entre fournisseurs."
+      },
+      {
+        "id": "fin-des-frais-de-sortie-cloud-data-act",
+        "commentaire": "Préparez la sortie des données avant la fin des frais de changement de fournisseur, prévue le 12 janvier 2027."
+      }
     ],
     "technologies": [
       "Amazon DynamoDB",
@@ -767,9 +984,18 @@
     "declencheur": "La demande en puces pour l’IA reste très tendue (fin 2025, Nvidia déclarait ses GPU cloud « épuisés »), et un fabricant domine à la fois le matériel et l’environnement logiciel associé, CUDA.",
     "tendance": "Le calcul pour l’IA repose sur quelques fabricants de puces et leurs environnements logiciels propriétaires. En juin 2024, l’Autorité de la concurrence a constaté la domination des processeurs graphiques de Nvidia et un risque de dépendance à CUDA, son environnement logiciel.",
     "risque": "Une double dépendance, matérielle et logicielle, dans un marché où la ressource est rare.",
-    "mitigations": [
-      "Privilégiez des cadres logiciels portables entre fabricants.",
-      "Évaluez les alternatives matérielles sur un cas d’usage."
+    "mecanismes": [
+      "meca-formats-et-api-proprietaires"
+    ],
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Privilégiez des cadres logiciels portables entre fabricants."
+      },
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Évaluez les alternatives matérielles sur un cas d’usage."
+      }
     ],
     "sources": [
       {
@@ -791,10 +1017,23 @@
     "declencheur": "Les tensions géopolitiques et l’affaire de la CPI ont remis au premier plan l’accès des autorités étrangères aux données hébergées par des fournisseurs américains.",
     "tendance": "Le Cloud Act américain (2018) permet aux autorités des États-Unis de demander des données détenues par des fournisseurs américains, même hébergées en Europe : en juin 2025, devant le Sénat, Microsoft France a déclaré ne pas pouvoir garantir que les données ne seront jamais transmises. La section 702 du FISA, reconduite en 2024 pour deux ans, a expiré en juin 2026 faute d’accord au Congrès, mais la surveillance se poursuit jusqu’en mars 2027 sur la base d’autorisations déjà accordées.",
     "risque": "La localisation des données ne suffit pas : c’est la nationalité du fournisseur qui compte pour les données sensibles.",
-    "mitigations": [
-      "Classez vos données selon leur sensibilité.",
-      "Chiffrez avec des clés que vous maîtrisez.",
-      "Réservez les données les plus sensibles à des offres qualifiées SecNumCloud."
+    "mecanismes": [
+      "meca-extraterritorialite-et-sanctions",
+      "meca-droit-applicable-et-juridiction-etrangere"
+    ],
+    "leviers": [
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Classez vos données selon leur sensibilité."
+      },
+      {
+        "id": "chiffrement-avec-cles-maitrisees",
+        "commentaire": "Chiffrez avec des clés que vous maîtrisez."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Réservez les données les plus sensibles à des offres qualifiées SecNumCloud."
+      }
     ],
     "technologies": [
       "Amazon DynamoDB",
@@ -835,30 +1074,23 @@
     "quadrant": 3,
     "anneau": 1,
     "declencheur": "En 2025, les établissements financiers ont transmis pour la première fois leurs registres de prestataires aux autorités : la phase de contrôle commence.",
-    "tendance": "Les autorités de supervision contrôlent l’application de DORA : les registres d’informations sur les prestataires ont été transmis pour la première fois en 2025, et les régulateurs peuvent désormais exiger ce registre et vérifier les stratégies et clauses de sortie imposées par le règlement.",
+    "tendance": "Les autorités de supervision passent de la règle au contrôle : les registres d’informations sur les prestataires ont été transmis pour la première fois en 2025, et les régulateurs peuvent désormais exiger ce registre et vérifier les stratégies et clauses de sortie imposées par le règlement.",
     "risque": "Un plan de sortie non testé devient un risque de non-conformité, et plus seulement un risque opérationnel.",
-    "mitigations": [
-      "Conservez les preuves des tests de sortie et leurs résultats.",
-      "Tenez le registre des prestataires à jour en continu."
+    "mecanismes": [
+      "meca-sous-traitance-en-cascade",
+      "meca-concentration-sur-un-prestataire-non-substituable"
     ],
-    "technologies": [
-      "Amazon DynamoDB",
-      "Azure Cosmos DB",
-      "Entra ID et Active Directory",
-      "Mainframe IBM Z (z/OS)",
-      "Oracle Database",
-      "ServiceNow",
-      "CrowdStrike Falcon",
-      "Google BigQuery",
-      "Microsoft Defender",
-      "Snowflake",
-      "Veeam Backup",
-      "Amazon S3",
-      "IaaS européens (OVHcloud, Scaleway, Outscale)",
-      "Kubernetes managé (EKS, AKS, GKE)",
-      "Machines virtuelles AWS (EC2)",
-      "Machines virtuelles Azure"
+    "leviers": [
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Conservez les preuves des tests de sortie et leurs résultats."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Tenez le registre des prestataires à jour en continu, sous-traitants compris."
+      }
     ],
+    "technologies": [],
     "sources": [
       {
         "titre": "EUR-Lex, règlement (UE) 2022/2554 (DORA), articles 28 et 30, décembre 2022",
@@ -876,11 +1108,20 @@
     "quadrant": 3,
     "anneau": 2,
     "declencheur": "Les premières obligations de l’AI Act s’appliquent depuis 2025, et les organisations découvrent qu’une partie de leur conformité dépend de leur fournisseur de modèles.",
-    "tendance": "Entré en vigueur en août 2024, l’AI Act impose des obligations progressives : depuis août 2025 pour les modèles d’IA à usage général, puis pour les systèmes à haut risque, reportées par l’Omnibus numérique (juillet 2026) au 2 décembre 2027 et au 2 août 2028.",
+    "tendance": "Entré en vigueur en août 2024, l’AI Act impose des obligations progressives : depuis août 2025 pour les modèles d’IA à usage général, puis pour les systèmes à haut risque, reportées par l’Omnibus numérique (juillet 2026) au 2 décembre 2027 et au 2 août 2028.",
     "risque": "La conformité dépend de la documentation fournie par le fournisseur du modèle : changer de modèle peut imposer de refaire une partie de la démarche.",
-    "mitigations": [
-      "Exigez contractuellement la documentation nécessaire à la conformité.",
-      "Conservez la capacité de changer de modèle sans tout reconstruire."
+    "mecanismes": [
+      "meca-entrainement-de-lia-de-lediteur-sur-les-donnees-clients"
+    ],
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Exigez contractuellement la documentation nécessaire à la conformité."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Conservez la capacité de changer de modèle sans tout reconstruire."
+      }
     ],
     "sources": [
       {
@@ -900,11 +1141,20 @@
     "quadrant": 3,
     "anneau": 3,
     "declencheur": "Les États-Unis ajustent régulièrement leurs règles d’exportation sur les puces d’IA, avec des effets immédiats : en avril 2025, une licence a été imposée du jour au lendemain pour vendre les puces H20 de Nvidia en Chine.",
-    "tendance": "Les restrictions à l’exportation de puces et de technologies d’IA évoluent rapidement : une règle publiée le 15 janvier 2025 a vu son abrogation annoncée le 13 mai 2025, avant même son entrée en application. Elles peuvent limiter l’accès aux capacités de calcul, et par ricochet aux services qui en dépendent.",
+    "tendance": "Les restrictions à l’exportation de puces et de technologies d’IA évoluent rapidement : une règle publiée le 15 janvier 2025 a vu son abrogation annoncée le 13 mai 2025, avant même son entrée en application. Elles peuvent limiter l’accès aux capacités de calcul, et par ricochet aux services qui en dépendent.",
     "risque": "L’accès à une technologie peut changer pour des raisons qui échappent au client comme au fournisseur.",
-    "mitigations": [
-      "Identifiez vos services d’IA critiques et leur origine.",
-      "Prévoyez une alternative pour les usages essentiels."
+    "mecanismes": [
+      "meca-controles-a-lexportation"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Identifiez vos services d’IA critiques et leur origine."
+      },
+      {
+        "id": "modeles-dia-a-poids-ouverts",
+        "commentaire": "Prévoyez une alternative pour les usages essentiels."
+      }
     ],
     "sources": [
       {
@@ -926,10 +1176,15 @@
     "declencheur": "L’IA et le cloud absorbent l’essentiel des efforts de formation, et le départ à la retraite des spécialistes de technologies plus anciennes complique encore la situation.",
     "tendance": "Selon le rapport 2025 de la Linux Foundation sur les talents, les écarts de compétences les plus larges portent sur l’IA (68 %), la cybersécurité (65 %), le cloud (59 %) et le platform engineering (56 %). En France, la moitié des 55 DSI interrogés par Inop’s en 2025 peinent à recruter, sur les technologies récentes comme sur les plus anciennes.",
     "risque": "Sans personne capable d’opérer l’alternative, une sortie reste théorique : la dépendance au fournisseur devient une dépendance à ses experts.",
-    "mitigations": [
-      "Identifiez, pour chaque fournisseur critique, qui saurait opérer l’alternative.",
-      "Formez au moins deux personnes sur chaque alternative retenue.",
-      "Inscrivez ces compétences dans le plan de formation annuel."
+    "mecanismes": [
+      "meca-competences-et-certifications-specifiques",
+      "meca-inertie-culturelle-et-formation-insuffisante"
+    ],
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Identifiez, pour chaque fournisseur critique, qui saurait opérer l’alternative ; formez au moins deux personnes sur chaque alternative retenue et inscrivez ces compétences dans le plan de formation annuel."
+      }
     ],
     "technologies": [
       "IBM Power (AIX et IBM i)",
@@ -961,10 +1216,19 @@
     "declencheur": "Après des années d’externalisation, de nombreuses DSI cherchent à réinternaliser des compétences clés pour garder la maîtrise de leurs choix technologiques.",
     "tendance": "40 % des DSI interrogés par Inop’s en 2025 travaillent avec plus de la moitié d’externes, et 15 % avec plus de 70 %. 43 % veulent internaliser davantage, contre 9 % qui veulent externaliser plus.",
     "risque": "Quand le savoir-faire est chez le prestataire, changer de fournisseur, ou même évaluer une alternative, dépend d’un acteur qui n’y a pas forcément intérêt.",
-    "mitigations": [
-      "Repérez les compétences critiques détenues uniquement par des prestataires.",
-      "Exigez documentation et transfert de compétences dans les contrats d’infogérance.",
-      "Gardez en interne la capacité à piloter et à évaluer les choix techniques."
+    "mecanismes": [
+      "meca-maitrise-douvrage-externalisee",
+      "meca-dependance-aux-partenaires-de-lediteur"
+    ],
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Repérez les compétences critiques détenues uniquement par des prestataires."
+      },
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Exigez documentation et transfert de compétences dans les contrats d’infogérance, et gardez en interne la capacité à piloter et à évaluer les choix techniques."
+      }
     ],
     "technologies": [
       "Control-M",
@@ -988,12 +1252,24 @@
     "quadrant": 2,
     "anneau": 2,
     "declencheur": "Depuis le rachat de VMware, Broadcom a resserré à plusieurs reprises son réseau de partenaires au profit d’un petit nombre d’acteurs.",
-    "tendance": "En juillet 2025, Broadcom a notifié aux fournisseurs de cloud VMware non invités dans son nouveau programme, sur invitation seulement, le non-renouvellement de leur contrat. Depuis le 31 octobre 2025, ils ne peuvent plus signer de nouveaux engagements ni renouveler ceux en cours.",
+    "tendance": "En juillet 2025, Broadcom a notifié aux fournisseurs de cloud VMware non invités dans son nouveau programme, sur invitation seulement, le non-renouvellement de leur contrat. Depuis le 31 octobre 2025, ils ne peuvent plus signer de nouveaux engagements ni renouveler ceux en cours.",
     "risque": "Votre intégrateur ou votre hébergeur peut perdre le droit de vous vendre ou de renouveler une technologie : la relation et le support construits avec lui disparaissent, et le choix du partenaire revient à l’éditeur.",
-    "mitigations": [
-      "Vérifiez le statut de vos partenaires auprès de l’éditeur avant chaque renouvellement.",
-      "Prévoyez dans les contrats le cas où le partenaire perd son agrément.",
-      "Entretenez une relation avec un second partenaire ou un prestataire indépendant."
+    "mecanismes": [
+      "meca-dependance-aux-partenaires-de-lediteur"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Vérifiez le statut de vos partenaires auprès de l’éditeur avant chaque renouvellement."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Prévoyez dans les contrats le cas où le partenaire perd son agrément."
+      },
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Entretenez une relation avec un second partenaire ou un prestataire indépendant."
+      }
     ],
     "technologies": [
       "VMware vSphere et VCF",
@@ -1014,10 +1290,24 @@
     "declencheur": "Fin mai 2025, Salesforce a durci de son propre chef les conditions d’utilisation des API de Slack, privant des clients de l’usage de leurs propres données dans des outils tiers.",
     "tendance": "À propos des nouvelles conditions des API de Slack, le cabinet Hunton relève que, faute de contrat négocié, Salesforce peut modifier ces conditions sur simple préavis, et la poursuite de l’usage vaut acceptation. En octobre 2023, la Commission d’examen des pratiques commerciales a examiné un contrat SaaS reconduit tacitement avec une hausse de 48 %, que le client devait dénoncer deux mois avant l’échéance sans connaître le nouveau tarif.",
     "risque": "Le client s’engage sur des règles que l’éditeur peut réécrire en cours de contrat, sans toujours pouvoir partir à temps.",
-    "mitigations": [
-      "Recensez les clauses de modification unilatérale, de reconduction tacite et de préavis de vos contrats SaaS critiques.",
-      "Exigez un droit de résiliation sans frais en cas de modification substantielle des conditions ou des prix.",
-      "Appuyez-vous sur l’article 25 du Data Act, qui plafonne à deux mois le préavis de changement de fournisseur pour les services cloud."
+    "mecanismes": [
+      "meca-hausses-unilaterales-et-indexation",
+      "meca-engagement-long-et-reconduction-tacite",
+      "meca-suspension-ou-resiliation-unilaterale-du-service"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Recensez les clauses de modification unilatérale, de reconduction tacite et de préavis de vos contrats SaaS critiques."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Exigez un droit de résiliation sans frais en cas de modification substantielle des conditions ou des prix."
+      },
+      {
+        "id": "fin-des-frais-de-sortie-cloud-data-act",
+        "commentaire": "Appuyez-vous sur l’article 25 du Data Act, qui plafonne à deux mois le préavis de changement de fournisseur pour les services cloud."
+      }
     ],
     "technologies": [
       "MuleSoft",
@@ -1051,10 +1341,23 @@
     "declencheur": "En juillet 2025, l’autorité britannique de la concurrence (CMA) a conclu que la concurrence ne fonctionne pas bien dans le cloud, au moment où Synergy Research constatait que les fournisseurs européens ne pèsent que 15 % de leur propre marché.",
     "tendance": "Selon Synergy Research, Amazon, Microsoft et Google détiennent 70 % du marché européen du cloud, contre 2 % chacun pour SAP et Deutsche Telekom, premiers acteurs européens ; la part des fournisseurs européens est passée de 29 % en 2017 à 15 % en 2022 et n’a plus bougé. La CMA évalue la part de Microsoft et d’AWS entre 30 et 40 % chacun du marché de l’IaaS en 2024, celle de Google entre 5 et 10 %, et juge que cette concentration va durer. Elle relève que moins de 1 % des clients changent de fournisseur chaque année.",
     "risque": "Avec deux ou trois fournisseurs crédibles, le client perd à la fois son pouvoir de négociation et ses solutions de repli.",
-    "mitigations": [
-      "Identifiez, pour chaque charge critique, au moins un fournisseur de remplacement crédible, européen si possible.",
-      "Mettez réellement en concurrence vos fournisseurs à chaque renouvellement, même sur un périmètre partiel.",
-      "Évitez de concentrer infrastructure, plateforme et logiciels chez un même fournisseur."
+    "mecanismes": [
+      "meca-concentration-sur-un-prestataire-non-substituable",
+      "meca-conditions-de-place-de-marche-cloud"
+    ],
+    "leviers": [
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Identifiez, pour chaque charge critique, au moins un fournisseur de remplacement crédible, européen si possible."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Mettez réellement en concurrence vos fournisseurs à chaque renouvellement, même sur un périmètre partiel."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Évitez de concentrer infrastructure, plateforme et logiciels chez un même fournisseur."
+      }
     ],
     "technologies": [
       "Amazon S3",
@@ -1082,10 +1385,19 @@
     "declencheur": "En juillet 2025, l’enquête d’Atlassian sur l’expérience des développeurs place la recherche d’information parmi les premiers freins, et la moitié des répondants perdent plus de 10 heures par semaine.",
     "tendance": "Dans l’enquête Stack Overflow 2024, 45 % des développeurs professionnels estiment que les silos de connaissance empêchent leurs idées de circuler dans l’organisation, et près de 30 % s’y heurtent dix fois ou plus par semaine. L’étude Atlassian de juillet 2025, menée auprès de 3 500 développeurs et managers, relève que 50 % perdent plus de 10 heures par semaine en inefficacités d’organisation. Dans l’enquête Kyndryl 2025 auprès de 500 dirigeants d’entreprises utilisant des mainframes, 39 % citent les départs à la retraite, qui emportent les compétences.",
     "risque": "Quand le fonctionnement d’un système n’est connu que de quelques personnes ou de l’outil du fournisseur, en sortir oblige à reconstituer ce savoir, ce qui rend tout changement plus cher et plus risqué.",
-    "mitigations": [
-      "Recensez les systèmes critiques dont le fonctionnement n’est décrit nulle part ailleurs que dans les têtes ou dans l’outil du fournisseur.",
-      "Exigez une documentation à jour et exportable (architecture, paramétrage, flux) comme livrable de chaque projet et de chaque contrat.",
-      "Organisez le transfert de savoir avant chaque départ annoncé, qu’il s’agisse d’une retraite ou d’une fin de mission."
+    "mecanismes": [
+      "meca-processus-metier-construits-dans-loutil",
+      "meca-maitrise-douvrage-externalisee"
+    ],
+    "leviers": [
+      {
+        "id": "partir-des-processus-metier-critiques",
+        "commentaire": "Recensez les systèmes critiques dont le fonctionnement n’est décrit nulle part ailleurs que dans les têtes ou dans l’outil du fournisseur."
+      },
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Exigez une documentation à jour et exportable (architecture, paramétrage, flux) comme livrable de chaque projet et de chaque contrat, et organisez le transfert de savoir avant chaque départ annoncé."
+      }
     ],
     "sources": [
       {
@@ -1111,10 +1423,18 @@
     "declencheur": "Le rapport DORA de Google publié en octobre 2024 rappelle que l’IA n’améliore pas la livraison de logiciels sans les fondamentaux, dont des « mécanismes de test robustes ».",
     "tendance": "Dans le rapport DORA 2024, le groupe le moins performant réunit 25 % des répondants : 40 % de ses mises en production échouent, et le rétablissement prend entre une semaine et un mois, contre 5 % d’échecs et moins d’une heure pour le groupe le plus performant (19 % des répondants). Selon le World Quality Report d’OpenText, Capgemini et Sogeti publié en octobre 2024, 64 % des répondants citent la dépendance aux systèmes anciens et 57 % l’absence de stratégie globale d’automatisation des tests comme freins à l’automatisation.",
     "risque": "Sans tests automatisés pour vérifier qu’une alternative rend le même service, chaque migration devient un pari, et l’organisation reste sur le système en place.",
-    "mitigations": [
-      "Constituez des tests de non-régression automatisés sur les processus métier critiques, indépendants de l’outil en place.",
-      "Mesurez le taux d’échec de vos mises en production pour objectiver votre capacité à changer de solution.",
-      "Exigez de vos fournisseurs des jeux de tests et des environnements de recette réutilisables lors d’une sortie."
+    "mecanismes": [
+      "meca-inertie-culturelle-et-formation-insuffisante"
+    ],
+    "leviers": [
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Constituez des tests de non-régression automatisés sur les processus métier critiques, indépendants de l’outil en place, et mesurez le taux d’échec de vos mises en production."
+      },
+      {
+        "id": "pilote-de-sortie-sur-un-perimetre-reel",
+        "commentaire": "Exigez de vos fournisseurs des jeux de tests et des environnements de recette réutilisables lors d’une sortie."
+      }
     ],
     "sources": [
       {
@@ -1136,13 +1456,21 @@
     "titre": "Dépendance à quelques personnes clés",
     "quadrant": 2,
     "anneau": 2,
-    "declencheur": "Le 29 mars 2024, l’ingénieur Andres Freund a révélé une porte dérobée dans xz-utils, insérée par un contributeur qui avait gagné en deux ans la confiance du mainteneur bénévole.",
+    "declencheur": "Le 29 mars 2024, l’ingénieur Andres Freund a révélé une porte dérobée dans xz-utils, insérée par un contributeur qui avait gagné en deux ans la confiance du mainteneur bénévole.",
     "tendance": "Le mainteneur de xz décrivait le projet comme un « projet de loisir non rémunéré » et a subi une campagne de pression. Les versions piégées 5.6.0 et 5.6.1 ont été créées et signées par le compte « Jia Tan ». Une étude publiée fin novembre 2024 sur plus de 36 000 projets open source montre que 89 % ont perdu au moins une fois leur noyau de développeurs (les auteurs jugent cette perte fréquente, et pas toujours fatale au projet), et que seuls 27 % des projets abandonnés ont ensuite attiré un nouveau développeur clé. Le recensement Census III de la Linux Foundation (décembre 2024) constate qu’une grande partie des logiciels libres les plus utilisés n’est développée que par une poignée de contributeurs.",
     "risque": "Quand un produit, interne ou open source, repose sur une ou deux personnes, leur départ laisse l’organisation captive de ceux qui restent, ou d’un fournisseur qui reprend le sujet à ses conditions.",
-    "mitigations": [
-      "Comptez, pour chaque produit critique, les personnes capables de le maintenir, en interne comme chez les mainteneurs en amont.",
-      "Imposez au moins un binôme sur chaque expertise critique.",
-      "Suivez le nombre de mainteneurs actifs des projets open source dont vous dépendez le plus."
+    "mecanismes": [
+      "meca-competences-et-certifications-specifiques"
+    ],
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Comptez, pour chaque produit critique, les personnes capables de le maintenir, et imposez au moins un binôme sur chaque expertise critique."
+      },
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Suivez le nombre de mainteneurs actifs des projets open source dont vous dépendez le plus."
+      }
     ],
     "sources": [
       {
@@ -1171,13 +1499,25 @@
     "titre": "Certifications exigées des hébergeurs",
     "quadrant": 3,
     "anneau": 2,
-    "declencheur": "Depuis le 16 mai 2026, tous les hébergeurs de données de santé doivent être certifiés selon la version 2.0 du référentiel HDS, plus exigeante que la précédente.",
-    "tendance": "Le référentiel HDS v2, fixé par un arrêté du 26 avril 2024 publié au Journal officiel le 16 mai 2024, impose un hébergement exclusivement dans l’Espace économique européen et la publication d’une cartographie des transferts hors de cet espace. Il repose sur la norme ISO/IEC 27001, que l’hébergeur doit aussi détenir, et ajoute une clause de réversibilité obligatoire dans les contrats. La certification, délivrée après un audit documentaire puis un audit sur site, vaut trois ans avec un audit annuel.",
+    "declencheur": "Depuis le 16 mai 2026, tous les hébergeurs de données de santé doivent être certifiés selon la version 2.0 du référentiel HDS, plus exigeante que la précédente.",
+    "tendance": "Le référentiel HDS v2, fixé par un arrêté du 26 avril 2024 publié au Journal officiel le 16 mai 2024, impose un hébergement exclusivement dans l’Espace économique européen et la publication d’une cartographie des transferts hors de cet espace. Il repose sur la norme ISO/IEC 27001, que l’hébergeur doit aussi détenir, et ajoute une clause de réversibilité obligatoire dans les contrats. La certification, délivrée après un audit documentaire puis un audit sur site, vaut trois ans avec un audit annuel.",
     "risque": "Chaque exigence ajoutée restreint le nombre d’hébergeurs éligibles, et changer d’hébergeur impose de revérifier certification, périmètre et sous-traitants.",
-    "mitigations": [
-      "Vérifiez sur la liste de l’Agence du numérique en santé le périmètre et la validité des certificats HDS de vos hébergeurs et de leurs sous-traitants.",
-      "Identifiez dès maintenant un second hébergeur certifié pour vos données de santé.",
-      "Exigez la clause de réversibilité prévue par le référentiel et testez-la."
+    "mecanismes": [
+      "meca-hebergeur-impose-par-la-loi-pour-les-donnees-sensibles"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Vérifiez sur la liste de l’Agence du numérique en santé le périmètre et la validité des certificats HDS de vos hébergeurs et de leurs sous-traitants."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Identifiez dès maintenant un second hébergeur certifié pour vos données de santé."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Exigez la clause de réversibilité prévue par le référentiel et testez-la."
+      }
     ],
     "technologies": [
       "IaaS européens (OVHcloud, Scaleway, Outscale)",
@@ -1204,13 +1544,26 @@
     "titre": "Hébergement qualifié imposé",
     "quadrant": 3,
     "anneau": 1,
-    "declencheur": "Le décret n° 2026-272 du 14 avril 2026 rend applicable l’article 31 de la loi SREN du 21 mai 2024, qui impose un cloud qualifié aux administrations de l’État pour leurs données sensibles.",
-    "tendance": "Les administrations de l’État, leurs opérateurs et six groupements d’intérêt public doivent recourir à des offres qualifiées SecNumCloud, ou à une certification européenne équivalente, pour leurs données sensibles ; les projets engagés avant le décret chez un fournisseur non conforme ont 18 mois pour migrer si une offre conforme existe en France. Le cercle des offres qualifiées reste étroit : S3ns (Thales, technologies Google) a été qualifié en décembre 2025, tandis que Bleu (Orange et Capgemini, technologies Microsoft) était toujours en cours de qualification en octobre 2026. Au niveau européen, les critères de souveraineté ont été retirés du schéma de certification EUCS faute d’accord entre États, et la Commission propose depuis le 3 juin 2026 de les réintroduire dans le Cloud and AI Development Act.",
+    "declencheur": "Le décret n° 2026-272 du 14 avril 2026 rend applicable l’article 31 de la loi SREN du 21 mai 2024, qui impose un cloud qualifié aux administrations de l’État pour leurs données sensibles.",
+    "tendance": "Les administrations de l’État, leurs opérateurs et six groupements d’intérêt public doivent recourir à des offres qualifiées SecNumCloud, ou à une certification européenne équivalente, pour leurs données sensibles ; les projets engagés avant le décret chez un fournisseur non conforme ont 18 mois pour migrer si une offre conforme existe en France. Le cercle des offres qualifiées reste étroit : S3ns (Thales, technologies Google) a été qualifié en décembre 2025, tandis que Bleu (Orange et Capgemini, technologies Microsoft) était toujours en cours de qualification en octobre 2026. Au niveau européen, les critères de souveraineté ont été retirés du schéma EUCS faute d’accord entre États ; la Commission propose depuis le 3 juin 2026 de les réintroduire dans le Cloud and AI Development Act.",
     "risque": "L’obligation déplace la dépendance vers une poignée de fournisseurs qualifiés et impose des migrations à échéance fixe.",
-    "mitigations": [
-      "Classez vos données selon le niveau de sensibilité défini par l’État avant tout nouveau projet cloud.",
-      "Planifiez dès maintenant la migration des projets non conformes dans le délai de 18 mois.",
-      "Comparez plusieurs offres qualifiées et négociez la réversibilité, pour ne pas recréer un verrouillage."
+    "mecanismes": [
+      "meca-hebergeur-impose-par-la-loi-pour-les-donnees-sensibles",
+      "meca-droit-applicable-et-juridiction-etrangere"
+    ],
+    "leviers": [
+      {
+        "id": "cartographie-et-classification-des-donnees",
+        "commentaire": "Classez vos données selon le niveau de sensibilité défini par l’État avant tout nouveau projet cloud."
+      },
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Planifiez dès maintenant la migration des projets non conformes dans le délai de 18 mois."
+      },
+      {
+        "id": "cloud-europeen-qualifie",
+        "commentaire": "Comparez plusieurs offres qualifiées et négociez la réversibilité, pour ne pas recréer un verrouillage."
+      }
     ],
     "technologies": [
       "Azure Cosmos DB",
@@ -1242,14 +1595,25 @@
     "titre": "Composants open source peu maintenus",
     "quadrant": 4,
     "anneau": 1,
-    "declencheur": "Les obligations de signalement du Cyber Resilience Act européen s’appliquent depuis le 11 septembre 2026, et l’ensemble des obligations des fabricants entrera en application le 11 décembre 2027.",
-    "tendance": "Black Duck a audité 947 bases de code entre novembre 2024 et octobre 2025 : 93 % contiennent des composants sans activité de développement depuis plus de deux ans, et 92 % des composants en retard de quatre ans ou plus. Selon l’enquête Tidelift de septembre 2024 auprès de plus de 400 mainteneurs, 60 % se considèrent comme des bénévoles non rémunérés, et la part des 46-65 ans est passée de 11 % en 2021 à 21 % en 2024. Le Cyber Resilience Act (règlement 2024/2847) demande aux fabricants une diligence raisonnable sur les composants qu’ils intègrent.",
+    "declencheur": "Les obligations de signalement du Cyber Resilience Act européen s’appliquent depuis le 11 septembre 2026, et l’ensemble des obligations des fabricants entrera en application le 11 décembre 2027.",
+    "tendance": "Black Duck a audité 947 bases de code entre novembre 2024 et octobre 2025 : 93 % contiennent des composants sans activité de développement depuis plus de deux ans, et 92 % des composants en retard de quatre ans ou plus. Selon l’enquête Tidelift de septembre 2024 auprès de plus de 400 mainteneurs, 60 % se considèrent comme des bénévoles non rémunérés, et la part des 46-65 ans est passée de 11 % en 2021 à 21 % en 2024. Le Cyber Resilience Act (règlement 2024/2847) demande aux fabricants une diligence raisonnable sur les composants qu’ils intègrent.",
     "risque": "Un composant que plus personne ne corrige ne se remplace pas du jour au lendemain : l’organisation reste liée à des versions figées, ou doit payer un support étendu pour les maintenir.",
-    "mitigations": [
-      "Inventoriez vos composants open source et repérez ceux qui n’ont pas évolué depuis deux ans.",
-      "Prévoyez, pour chaque composant critique peu maintenu, un remplaçant ou un support identifié.",
-      "Préparez dès maintenant la diligence que le Cyber Resilience Act exige sur les composants intégrés.",
-      "Conservez un miroir interne des dépendances et des images que vous utilisez, pour que le retrait d’un composant en amont ne bloque pas vos builds."
+    "mecanismes": [
+      "meca-projet-ouvert-abandonne-par-son-editeur"
+    ],
+    "leviers": [
+      {
+        "id": "gouvernance-des-projets-ouverts-verifiee",
+        "commentaire": "Inventoriez vos composants open source et repérez ceux qui n’ont pas évolué depuis deux ans."
+      },
+      {
+        "id": "support-tiers-pour-gagner-du-temps",
+        "commentaire": "Prévoyez, pour chaque composant critique peu maintenu, un remplaçant ou un support identifié."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Conservez un miroir interne des dépendances et des images que vous utilisez, pour que le retrait d’un composant en amont ne bloque pas vos builds."
+      }
     ],
     "technologies": [
       "Talend",
@@ -1280,12 +1644,25 @@
     "quadrant": 4,
     "anneau": 1,
     "declencheur": "L’index de Zylo publié en janvier 2025 relève la première hausse de la dépense SaaS moyenne et du nombre d’applications depuis 2021.",
-    "tendance": "Gartner prévoyait en novembre 2024 que les dépenses mondiales en SaaS approcheraient 300 milliards de dollars en 2025, contre un peu plus de 250 milliards en 2024. Selon Zylo, la dépense SaaS atteint en moyenne 4 830 dollars par salarié, en hausse de 21,9 % sur un an, et les entreprises de plus de 10 000 salariés gèrent en moyenne 660 applications. Dans l’enquête de Parallels publiée en mars 2026, 94 % des organisations se disent préoccupées par le verrouillage fournisseur.",
+    "tendance": "Gartner prévoyait en novembre 2024 que les dépenses mondiales en SaaS approcheraient 300 milliards de dollars en 2025, contre un peu plus de 250 milliards en 2024. Selon Zylo, la dépense SaaS atteint en moyenne 4 830 dollars par salarié, en hausse de 21,9 % sur un an, et les entreprises de plus de 10 000 salariés gèrent en moyenne 660 applications. Dans l’enquête de Parallels publiée en mars 2026, 94 % des organisations se disent préoccupées par le verrouillage fournisseur.",
     "risque": "Chaque application SaaS confie à l’éditeur les données, les processus et le paramétrage, et chaque nouvelle application ajoute une sortie à préparer.",
-    "mitigations": [
-      "Recensez, pour chaque application SaaS critique, les données qu’elle détient et le format d’export disponible.",
-      "Exigez dans le contrat l’export complet des données et du paramétrage dans un format documenté.",
-      "Réservez le choix du SaaS par défaut aux usages non différenciants et justifiez-le au cas par cas pour les processus cœur."
+    "mecanismes": [
+      "meca-formats-et-api-proprietaires",
+      "meca-fenetre-de-recuperation-courte-apres-resiliation"
+    ],
+    "leviers": [
+      {
+        "id": "formats-de-donnees-ouverts",
+        "commentaire": "Recensez, pour chaque application SaaS critique, les données qu’elle détient et le format d’export disponible."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Exigez dans le contrat l’export complet des données et du paramétrage dans un format documenté."
+      },
+      {
+        "id": "partir-des-processus-metier-critiques",
+        "commentaire": "Réservez le choix du SaaS par défaut aux usages non différenciants et justifiez-le au cas par cas pour les processus cœur."
+      }
     ],
     "technologies": [
       "ServiceNow",
@@ -1326,10 +1703,23 @@
     "declencheur": "En février 2026, Retool rapporte que 35 % des équipes interrogées ont remplacé au moins un outil SaaS par un développement interne, mais son panel est composé de clients de sa propre plateforme.",
     "tendance": "Selon Futurum (juin 2026, 830 décideurs informatiques), 56,0 % des entreprises disent préférer développer en interne la plupart de leurs applications et n’acheter que le nécessaire. 53,3 % des entreprises interrogées indiquent que 20 à 40 % de leurs salariés hors DSI utilisent des outils no-code, low-code ou en langage naturel. Selon le rapport d’Onymos relayé par ITPro en décembre 2024, 84 % des responsables technologiques s’appuient sur des outils SaaS à capacités low-code ou no-code pour développer leurs logiciels.",
     "risque": "Acheter un progiciel ou construire sur une plateforme low-code propriétaire transfère à l’éditeur la feuille de route, le prix et les formats, et réduit d’autant les compétences de développement internes.",
-    "mitigations": [
-      "Faites de la réversibilité (export du code, des données et des règles métier) un critère de chaque arbitrage entre construire et acheter.",
-      "Conservez en interne la conception et le développement des briques qui vous différencient.",
-      "Recensez les applications construites sur des plateformes low-code et ce qu’il faudrait réécrire pour en sortir."
+    "mecanismes": [
+      "meca-processus-metier-construits-dans-loutil",
+      "meca-langages-et-extensions-proprietaires"
+    ],
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Faites de la réversibilité (export du code, des données et des règles métier) un critère de chaque arbitrage entre construire et acheter."
+      },
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Conservez en interne la conception et le développement des briques qui vous différencient."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Recensez les applications construites sur des plateformes low-code et ce qu’il faudrait réécrire pour en sortir."
+      }
     ],
     "sources": [
       {
@@ -1348,7 +1738,8 @@
     "technologies": [
       "MuleSoft",
       "ServiceNow",
-      "Boomi"
+      "Boomi",
+      "Dataiku"
     ]
   },
   {
@@ -1356,13 +1747,22 @@
     "titre": "Shadow IT et shadow AI",
     "quadrant": 4,
     "anneau": 0,
-    "declencheur": "L’index de Zylo publié le 29 janvier 2026 classe ChatGPT comme l’application la plus achetée en note de frais, signe que l’IA entre dans les entreprises hors des achats centralisés.",
+    "declencheur": "L’index de Zylo publié le 29 janvier 2026 classe ChatGPT comme l’application la plus achetée en note de frais, signe que l’IA entre dans les entreprises hors des achats centralisés.",
     "tendance": "Selon Zylo, les métiers contrôlent 81 % de la dépense SaaS et la DSI 15 %, et la dépense SaaS réglée en note de frais a augmenté de 267 % en un an. Dans une enquête de BlackFog auprès de 2 000 salariés, publiée en janvier 2026, 49 % disent utiliser des outils d’IA sans accord de leur employeur, 51 % les ont connectés à des systèmes de l’entreprise sans accord de la DSI, et 33 % y ont versé des travaux de recherche ou des jeux de données de l’entreprise. En France, une étude de YouGov pour Microsoft, relayée en février 2026, indique que 61 % des collaborateurs utilisent chaque semaine des IA génératives avec des comptes personnels.",
     "risque": "Ces services créent des dépendances que la DSI ne voit pas et placent des données de l’entreprise chez des fournisseurs sans contrat négocié ni plan de sortie.",
-    "mitigations": [
-      "Croisez notes de frais, relevés de cartes d’entreprise et journaux réseau pour recenser les services souscrits hors DSI.",
-      "Proposez une offre d’IA validée pour réduire le recours aux comptes personnels.",
-      "Inscrivez chaque service découvert au registre des fournisseurs, avec un responsable et une règle de sortie."
+    "mecanismes": [
+      "meca-renouvellements-decentralises-sans-avis-darchitecture",
+      "meca-achat-par-accord-cadre-sans-mise-en-concurrence-propre"
+    ],
+    "leviers": [
+      {
+        "id": "gestion-des-actifs-logiciels",
+        "commentaire": "Croisez notes de frais, relevés de cartes d’entreprise et journaux réseau pour recenser les services souscrits hors DSI."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Inscrivez chaque service découvert au registre des fournisseurs, avec un responsable et une règle de sortie."
+      }
     ],
     "technologies": [
       "Confluence",
@@ -1393,13 +1793,23 @@
     "titre": "Couplage fort à la plateforme",
     "quadrant": 4,
     "anneau": 2,
-    "declencheur": "Le rapport de MuleSoft publié le 5 février 2026 compte en moyenne 957 applications par entreprise, contre 897 un an plus tôt, dont seulement 27 % intégrées entre elles.",
+    "declencheur": "Le rapport de MuleSoft publié le 5 février 2026 compte en moyenne 957 applications par entreprise, contre 897 un an plus tôt, dont seulement 27 % intégrées entre elles.",
     "tendance": "En 2023, l’équipe de Prime Video chargée de surveiller la qualité des flux vidéo a abandonné une architecture distribuée fondée sur AWS Step Functions et Amazon S3. Les transitions d’état effectuées à chaque seconde de flux atteignaient les limites du compte, et le passage à une application monolithique a réduit le coût d’infrastructure de plus de 90 %. En août 2023, Datadog observait que plus de 70 % de ses clients AWS utilisaient au moins un service sans serveur.",
     "risque": "Chaque microservice bâti sur une file de messages, une fonction sans serveur ou un orchestrateur propre à un cloud ajoute un point d’adhérence, et la logique métier qui y est logée ne se transpose pas ailleurs sans réécriture.",
-    "mitigations": [
-      "Cartographiez, pour chaque microservice, les services propres au fournisseur qu’il appelle.",
-      "Isolez ces appels derrière des interfaces internes et gardez la logique métier dans votre code.",
-      "Remplacez les intégrations point à point par des API documentées et gouvernées."
+    "mecanismes": [
+      "meca-services-manages-sans-equivalent",
+      "meca-integrations-decosysteme",
+      "meca-langages-et-extensions-proprietaires"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Cartographiez, pour chaque microservice, les services propres au fournisseur qu’il appelle."
+      },
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Isolez ces appels derrière des interfaces internes, gardez la logique métier dans votre code et remplacez les intégrations point à point par des API documentées et gouvernées."
+      }
     ],
     "technologies": [
       "Amazon DynamoDB",
@@ -1435,13 +1845,26 @@
     "titre": "API fermées ou monétisées",
     "quadrant": 4,
     "anneau": 1,
-    "declencheur": "Le 29 mai 2025, Slack (Salesforce) a durci les conditions d’utilisation de ses API et réduit fortement l’accès des applications tierces à l’historique des messages.",
-    "tendance": "Depuis le 29 mai 2025, les nouvelles applications commerciales diffusées hors de la Marketplace Slack, et les nouvelles installations d’applications existantes, ne peuvent plus lire l’historique des conversations qu’à raison d’une requête par minute et de 15 messages par requête. Des éditeurs comme Glean ne peuvent plus indexer ni stocker durablement les données Slack, ce qui, selon Glean, complique leur usage avec la plateforme d’IA choisie par le client. En 2023, Reddit annonçait 12 000 $ pour 50 millions de requêtes, ce qui représentait, selon le développeur d’Apollo, environ 20 M$ par an ; l’application a fermé le 30 juin 2023.",
+    "declencheur": "Le 29 mai 2025, Slack (Salesforce) a durci les conditions d’utilisation de ses API et réduit fortement l’accès des applications tierces à l’historique des messages.",
+    "tendance": "Depuis le 29 mai 2025, les nouvelles applications commerciales diffusées hors de la Marketplace Slack, et les nouvelles installations d’applications existantes, ne peuvent plus lire l’historique des conversations qu’à raison d’une requête par minute et de 15 messages par requête. Des éditeurs comme Glean ne peuvent plus indexer ni stocker durablement les données Slack, ce qui, selon Glean, complique leur usage avec la plateforme d’IA choisie par le client. En 2023, Reddit annonçait 12 000 $ pour 50 millions de requêtes, ce qui représentait, selon le développeur d’Apollo, environ 20 M$ par an ; l’application a fermé le 30 juin 2023.",
     "risque": "L’éditeur contrôle seul l’accès aux données du client et peut à tout moment réduire les intégrations ou l’export, ou les faire payer.",
-    "mitigations": [
-      "Recensez les intégrations et les exports qui reposent sur des API tierces, avec leurs quotas actuels.",
-      "Exigez dans vos contrats un droit d’export complet dans un format ouvert et un préavis sur toute modification des conditions d’API.",
-      "Planifiez un export régulier de vos données critiques hors de l’outil, sans attendre une restriction."
+    "mecanismes": [
+      "meca-formats-et-api-proprietaires",
+      "meca-resserrement-de-loffre-gratuite"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Recensez les intégrations et les exports qui reposent sur des API tierces, avec leurs quotas actuels."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Exigez dans vos contrats un droit d’export complet dans un format ouvert et un préavis sur toute modification des conditions d’API."
+      },
+      {
+        "id": "formats-de-donnees-ouverts",
+        "commentaire": "Planifiez un export régulier de vos données critiques hors de l’outil, sans attendre une restriction."
+      }
     ],
     "technologies": [
       "ServiceNow",
@@ -1475,10 +1898,23 @@
     "declencheur": "En juillet 2026, Gartner a relevé que la maîtrise des coûts de télémétrie reste l’une des premières préoccupations des acheteurs et qu’OpenTelemetry est devenu une exigence de base.",
     "tendance": "Selon Gartner, 5 % de ses clients dépensent plus de 10 M$ par an chez un seul fournisseur d’observabilité. Dans l’enquête Grafana Labs publiée en 2026 (1 363 répondants), le coût est le premier critère de choix d’un outil (65 %) et 41 % utilisent OpenTelemetry en production, 37 % en attendant qu’il facilite le changement de fournisseur. En mai 2023, Datadog a évoqué une facture ponctuelle d’un client, estimée à 65 M$ et attribuée à Coinbase par The Pragmatic Engineer.",
     "risque": "Avec des agents, des formats et des langages de requête propres à l’outil, changer de fournisseur oblige à réinstrumenter les applications et à refaire tableaux de bord et alertes.",
-    "mitigations": [
-      "Instrumentez vos nouvelles applications avec OpenTelemetry plutôt qu’avec l’agent propre à l’outil.",
-      "Exigez de votre fournisseur l’ingestion native d’OpenTelemetry et l’export de vos données de télémétrie.",
-      "Suivez le coût d’observabilité par application et fixez des règles de rétention et d’échantillonnage."
+    "mecanismes": [
+      "meca-formats-et-api-proprietaires",
+      "meca-integrations-decosysteme"
+    ],
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Instrumentez vos nouvelles applications avec OpenTelemetry plutôt qu’avec l’agent propre à l’outil."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Exigez de votre fournisseur l’ingestion native d’OpenTelemetry et l’export de vos données de télémétrie."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Suivez le coût d’observabilité par application et fixez des règles de rétention et d’échantillonnage."
+      }
     ],
     "technologies": [
       "Datadog",
@@ -1506,13 +1942,28 @@
     "titre": "Fins de support imposées",
     "quadrant": 4,
     "anneau": 0,
-    "declencheur": "Windows 10 n’est plus supporté depuis le 14 octobre 2025, et la maintenance standard de SAP ECC 6.0 s’arrête fin 2027.",
-    "tendance": "Depuis le 14 octobre 2025, Microsoft ne publie plus de correctifs de sécurité pour Windows 10 hors du programme payant ESU : 61 $ par poste la première année pour les organisations, prix doublé chaque année, trois ans au maximum. Chez SAP, la maintenance standard de Business Suite 7 (dont ECC 6.0) s’arrête fin 2027 et la maintenance étendue, payante, fin 2030. Au-delà, seule une option de transition liée à un passage sur SAP ERP, private edition avant le 31 décembre 2030 permet de prolonger jusqu’en 2033, voire 2035 depuis octobre 2026. Côté Java, la branche 6.2 de Spring Framework, dernière de la génération 6, n’est plus maintenue en open source depuis juin 2026 ; seul un support commercial la prolonge. Chez Citrix, la licence par fichier annoncée en fin de vie le 8 septembre 2025 a cessé d’être supportée le 15 avril 2026 au profit d’un service d’activation dans le cloud : l’activation se revérifie chaque jour, avec 30 jours de tolérance si le service est injoignable. Chez Sonatype, Nexus Repository 2 est sorti du support le 30 juin 2025 (avis du 29 mai 2024), et l’éditeur recommande de migrer vers Nexus Repository 3.",
+    "declencheur": "Windows 10 n’est plus supporté depuis le 14 octobre 2025, et la maintenance standard de SAP ECC 6.0 s’arrête fin 2027.",
+    "tendance": "Depuis le 14 octobre 2025, Microsoft ne publie plus de correctifs de sécurité pour Windows 10 hors du programme payant ESU : 61 $ par poste la première année pour les organisations, prix doublé chaque année, trois ans au maximum. Chez SAP, la maintenance standard de Business Suite 7 (dont ECC 6.0) s’arrête fin 2027 et la maintenance étendue, payante, fin 2030 ; une option de transition permet de prolonger jusqu’en 2033, voire 2035 depuis octobre 2026. La branche 6.2 de Spring Framework n’est plus maintenue en open source depuis juin 2026. Citrix a cessé de supporter la licence par fichier le 15 avril 2026 au profit d’un service d’activation dans le cloud, revérifié chaque jour. Sonatype a mis fin au support de Nexus Repository 2 le 30 juin 2025.",
     "risque": "Le calendrier de migration est fixé par l’éditeur, et la prolongation se paie ou passe par son offre cloud.",
-    "mitigations": [
-      "Tenez un calendrier des fins de support de vos produits critiques sur cinq ans.",
-      "Chiffrez pour chacun le coût du support étendu face à celui d’une migration ou d’un support tiers.",
-      "Négociez les conditions de prolongation avant de signer la migration proposée par l’éditeur."
+    "mecanismes": [
+      "meca-fin-de-vie-programmee-du-produit-sur-site",
+      "meca-surtaxe-sur-les-versions-en-fin-de-support",
+      "meca-mises-a-jour-forcees-et-obsolescence",
+      "meca-fin-de-support-avancee-dune-distribution-communautaire"
+    ],
+    "leviers": [
+      {
+        "id": "mesurer-la-marge-de-manuvre",
+        "commentaire": "Tenez un calendrier des fins de support de vos produits critiques sur cinq ans."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez pour chacun le coût du support étendu face à celui d’une migration ou d’un support tiers."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Négociez les conditions de prolongation avant de signer la migration proposée par l’éditeur."
+      }
     ],
     "technologies": [
       "SAP HANA",
@@ -1548,7 +1999,7 @@
         "url": "https://support.citrix.com/external/article/CTX695107"
       },
       {
-        "titre": "Sonatype Community, avis de fin de support de Nexus Repository 2 (29 mai 2024)",
+        "titre": "Sonatype Community, avis de fin de support de Nexus Repository 2 (29 mai 2024)",
         "url": "https://community.sonatype.com/t/sunset-notice-sonatype-nexus-repository-2/12653"
       }
     ]
@@ -1558,13 +2009,26 @@
     "titre": "Pipelines liés à la forge",
     "quadrant": 4,
     "anneau": 2,
-    "declencheur": "Le 16 décembre 2025, GitHub a annoncé une facturation de 0,002 $ par minute pour les exécuteurs auto-hébergés de GitHub Actions dès le 1er mars 2026, avant de reporter cette mesure.",
-    "tendance": "Les pipelines de livraison s’écrivent dans le format de la forge qui les exécute. GitHub a montré qu’un service que l’on croyait gratuit parce qu’on fournit son propre matériel peut devenir payant : le 16 décembre 2025, il a annoncé un tarif de 0,002 $ par minute pour tous les travaux Actions des dépôts privés, y compris sur des exécuteurs auto-hébergés, à partir du 1er mars 2026. Sous la pression des utilisateurs, GitHub a ensuite reporté ce changement de facturation pour le réévaluer, tout en maintenant la baisse de prix de ses exécuteurs hébergés.",
+    "declencheur": "Le 16 décembre 2025, GitHub a annoncé une facturation de 0,002 $ par minute pour les exécuteurs auto-hébergés de GitHub Actions dès le 1er mars 2026, avant de reporter cette mesure.",
+    "tendance": "Les pipelines de livraison s’écrivent dans le format de la forge qui les exécute. GitHub a montré qu’un service que l’on croyait gratuit parce qu’on fournit son propre matériel peut devenir payant : le 16 décembre 2025, il a annoncé un tarif de 0,002 $ par minute pour tous les travaux Actions des dépôts privés, y compris sur des exécuteurs auto-hébergés, à partir du 1er mars 2026. Sous la pression des utilisateurs, GitHub a ensuite reporté ce changement de facturation pour le réévaluer, tout en maintenant la baisse de prix de ses exécuteurs hébergés.",
     "risque": "Les pipelines, les actions réutilisées et les secrets sont propres à la forge : la changer, ou subir une hausse, oblige à réécrire la chaîne de livraison.",
-    "mitigations": [
-      "Gardez la logique de build et de déploiement dans des scripts versionnés que la forge se contente d’appeler.",
-      "Inventoriez les pipelines et les actions tierces dont ils dépendent, et chiffrez leur coût mensuel d’exécution.",
-      "Testez l’exécution d’un pipeline critique sur un second outil de CI/CD."
+    "mecanismes": [
+      "meca-integrations-decosysteme",
+      "meca-cout-dentree-nul-cout-de-sortie-eleve"
+    ],
+    "leviers": [
+      {
+        "id": "couches-dabstraction",
+        "commentaire": "Gardez la logique de build et de déploiement dans des scripts versionnés que la forge se contente d’appeler."
+      },
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Inventoriez les pipelines et les actions tierces dont ils dépendent, et chiffrez leur coût mensuel d’exécution."
+      },
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Testez l’exécution d’un pipeline critique sur un second outil de CI/CD."
+      }
     ],
     "technologies": [
       "GitHub",
@@ -1577,7 +2041,7 @@
     ],
     "sources": [
       {
-        "titre": "GitHub, changements de tarification de GitHub Actions (annonce du 16 décembre 2025, report ultérieur)",
+        "titre": "GitHub, changements de tarification de GitHub Actions (annonce du 16 décembre 2025, report ultérieur)",
         "url": "https://resources.github.com/actions/2026-pricing-changes-for-github-actions/"
       }
     ]
@@ -1588,13 +2052,29 @@
     "quadrant": 1,
     "anneau": 1,
     "declencheur": "En mars 2026, Postman a limité son offre gratuite à un seul utilisateur : les équipes qui collaboraient gratuitement doivent désormais passer à une offre payante.",
-    "tendance": "Les outils SaaS en freemium s’installent gratuitement dans les équipes, puis resserrent l’offre gratuite une fois l’usage installé. Sur GitLab.com, les groupes privés de l’offre gratuite sont limités à cinq utilisateurs et passent en lecture seule au-delà : annoncée en mars 2022, la limite devait s’appliquer à tous les espaces gratuits restants à partir du 15 août 2026, et les comptes gratuits créés depuis le 27 janvier 2026 sont limités à trois groupes. Depuis le 26 août 2024, Slack supprime les messages de plus d’un an des espaces gratuits et ne donne accès qu’aux 90 derniers jours, le reste n’étant visible qu’en passant au payant. En décembre 2025, GitHub a annoncé une redevance de 0,002 $ par minute sur les runners Actions hébergés par les clients eux-mêmes, avant de la reporter. Le logiciel auto-hébergé n’y échappe pas : l’édition Community d’OpenFaaS est réservée à un usage individuel ou d’exploration, avec 60 jours d’essai commercial, et la production exige une offre payante.",
+    "tendance": "Les outils SaaS en freemium s’installent gratuitement dans les équipes, puis resserrent l’offre gratuite une fois l’usage installé. Sur GitLab.com, les groupes privés de l’offre gratuite sont limités à cinq utilisateurs : annoncée en mars 2022, la limite devait s’appliquer à tous les espaces gratuits restants à partir du 15 août 2026. Depuis le 26 août 2024, Slack supprime les messages de plus d’un an des espaces gratuits et ne donne accès qu’aux 90 derniers jours. En décembre 2025, GitHub a annoncé une redevance de 0,002 $ par minute sur les runners Actions auto-hébergés, avant de la reporter. Le logiciel auto-hébergé n’y échappe pas : l’édition Community d’OpenFaaS limite l’usage commercial à 60 jours et une installation par entreprise.",
     "risque": "L’outil devient indispensable avant d’avoir été choisi : le passage au payant se négocie sous contrainte, avec un historique, des dépôts ou des données que l’éditeur peut bloquer ou effacer.",
-    "mitigations": [
-      "Recensez les outils SaaS utilisés en offre gratuite par les équipes, avec le nombre d’utilisateurs et le volume de données qu’ils contiennent.",
-      "Traitez le passage d’un outil gratuit à un usage d’équipe comme un achat : contrat, export des données, coût sur trois ans.",
-      "Exportez régulièrement les dépôts, l’historique et les configurations dans un format ouvert, sans attendre une restriction.",
-      "Pour les outils de développement critiques, gardez la possibilité de les héberger vous-même."
+    "mecanismes": [
+      "meca-resserrement-de-loffre-gratuite",
+      "meca-cout-dentree-nul-cout-de-sortie-eleve"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Recensez les outils SaaS utilisés en offre gratuite par les équipes, avec le nombre d’utilisateurs et le volume de données qu’ils contiennent."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Traitez le passage d’un outil gratuit à un usage d’équipe comme un achat : contrat, export des données, coût sur trois ans."
+      },
+      {
+        "id": "formats-de-donnees-ouverts",
+        "commentaire": "Exportez régulièrement les dépôts, l’historique et les configurations dans un format ouvert, sans attendre une restriction."
+      },
+      {
+        "id": "fork-communautaire-et-miroir-de-repli",
+        "commentaire": "Pour les outils de développement critiques, gardez la possibilité de les héberger vous-même."
+      }
     ],
     "technologies": [
       "Azure DevOps",
@@ -1639,19 +2119,35 @@
     "titre": "Réversibilité absente de la conception",
     "quadrant": 2,
     "anneau": 2,
-    "declencheur": "Mis à jour le 3 septembre 2026, le guide du gouvernement britannique sur le verrouillage technique dans le cloud demande de décider en admettant qu’un changement de fournisseur pourra être nécessaire.",
+    "declencheur": "Mis à jour le 3 septembre 2026, le guide du gouvernement britannique sur le verrouillage technique dans le cloud demande de décider en admettant qu’un changement de fournisseur pourra être nécessaire.",
     "tendance": "Le guide du gouvernement britannique distingue le verrouillage commercial, né de contrats longs et rigides, et le verrouillage technique, né d’architectures construites autour d’un fournisseur, de l’absence de services équivalents ailleurs et de lacunes de compétences internes. Il demande de chiffrer, dans les analyses de rentabilité, le temps nécessaire pour quitter un hébergement, et cite des organisations qui vérifient leurs estimations de coût de sortie en reconstruisant ou en testant des composants critiques chez un autre fournisseur. Pour le secteur financier, DORA impose depuis le 17 janvier 2025 des stratégies de sortie documentées et testées.",
-    "risque": "Tant que la sortie n’est ni une exigence de conception ni un critère de décision, personne n’en porte la charge : on la découvre le jour où il faut partir, quand elle coûte le plus cher.",
-    "mitigations": [
-      "Inscrivez la réversibilité parmi les critères de choix et de revue d’architecture.",
-      "Chiffrez le temps et le coût de sortie dans chaque analyse de rentabilité.",
-      "Désignez un responsable de la sortie pour chaque service critique.",
-      "Testez la sortie d’un composant critique sur un autre environnement."
+    "risque": "Tant que la sortie n’est ni une exigence de conception ni un critère de décision, personne n’en porte la charge : on la découvre le jour où il faut partir, quand elle coûte le plus cher.",
+    "mecanismes": [
+      "meca-clauses-de-reversibilite-absentes-ou-floues",
+      "meca-cout-dentree-nul-cout-de-sortie-eleve"
+    ],
+    "leviers": [
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Inscrivez la réversibilité parmi les critères de choix et de revue d’architecture."
+      },
+      {
+        "id": "cout-total-de-la-dependance",
+        "commentaire": "Chiffrez le temps et le coût de sortie dans chaque analyse de rentabilité."
+      },
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Désignez un responsable de la sortie pour chaque service critique."
+      },
+      {
+        "id": "tests-de-bascule-reguliers",
+        "commentaire": "Testez la sortie d’un composant critique sur un autre environnement."
+      }
     ],
     "technologies": [],
     "sources": [
       {
-        "titre": "GOV.UK, Managing technical lock-in in the cloud, mise à jour du 3 septembre 2026",
+        "titre": "GOV.UK, Managing technical lock-in in the cloud, mise à jour du 3 septembre 2026",
         "url": "https://www.gov.uk/guidance/managing-technical-lock-in-in-the-cloud"
       },
       {
@@ -1667,11 +2163,16 @@
     "anneau": 2,
     "declencheur": "Le règlement d’exécution (UE) 2024/2956 fixe les modèles du registre que DORA impose de tenir sur les accords contractuels de services TIC.",
     "tendance": "L’article 28, paragraphe 3, de DORA oblige les entités financières à tenir et à mettre à jour un registre de leurs accords contractuels portant sur des services TIC, avec les sous-traitants des services qui soutiennent des fonctions critiques ou importantes. Dans l’enquête Anchore 2024 auprès de 106 responsables et praticiens de la sécurité de la chaîne d’approvisionnement logicielle, relayée le 7 novembre 2024, une organisation sur cinq seulement estime voir chaque composant et chaque dépendance de ses logiciels.",
-    "risque": "Une dépendance que l’on ne sait pas décrire ne peut être ni comparée ni négociée : la marge de manœuvre se découvre au moment du préavis, de l’audit ou de la panne.",
-    "mitigations": [
-      "Tenez un registre des services et licences : fonction soutenue, contrat, date de préavis, sous-traitants connus.",
-      "Rattachez chaque ligne à un responsable et à une alternative identifiée.",
-      "Revoyez le registre à chaque renouvellement."
+    "risque": "Une dépendance que l’on ne sait pas décrire ne peut être ni comparée ni négociée : la marge de manœuvre se découvre au moment du préavis, de l’audit ou de la panne.",
+    "mecanismes": [
+      "meca-renouvellements-decentralises-sans-avis-darchitecture",
+      "meca-achat-par-accord-cadre-sans-mise-en-concurrence-propre"
+    ],
+    "leviers": [
+      {
+        "id": "registre-des-contrats-et-des-prestataires",
+        "commentaire": "Tenez un registre des services et licences : fonction soutenue, contrat, date de préavis, sous-traitants connus ; rattachez chaque ligne à un responsable et à une alternative identifiée, et revoyez-le à chaque renouvellement."
+      }
     ],
     "technologies": [],
     "sources": [
@@ -1697,10 +2198,19 @@
     "declencheur": "Du 19 au 20 octobre 2025, une panne de plus de quatorze heures a touché la région AWS US-EAST-1 et une partie de ses services.",
     "tendance": "Selon le compte rendu d’AWS, une condition de concurrence dans l’automatisation DNS de DynamoDB a laissé le point d’accès régional sans adresse, ce qui a perturbé notamment DynamoDB, EC2, Lambda, IAM et Amazon Connect. Le 18 juillet 2024, la mise à jour défectueuse de CrowdStrike a touché environ 8,5 millions d’appareils Windows, selon Microsoft. Le modèle de responsabilité partagée d’AWS précise que la part du client dépend des services et des régions choisis et renvoie à une revue Well-Architected pour évaluer la fiabilité.",
     "risque": "Quand la continuité est supposée acquise par le contrat ou par la taille du fournisseur, aucun mode dégradé n’existe le jour où le service tombe, et la reprise dépend d’un acteur que l’on ne contrôle pas.",
-    "mitigations": [
-      "Définissez, pour chaque service critique, le fonctionnement minimal acceptable sans le fournisseur.",
-      "Documentez et testez un mode dégradé.",
-      "Distinguez dans le contrat et l’architecture ce qui relève de vous : régions, sauvegardes hors du fournisseur."
+    "mecanismes": [
+      "meca-concentration-sur-un-prestataire-non-substituable",
+      "meca-suspension-ou-resiliation-unilaterale-du-service"
+    ],
+    "leviers": [
+      {
+        "id": "mode-degrade-et-continuite-hors-fournisseur",
+        "commentaire": "Définissez, pour chaque service critique, le fonctionnement minimal acceptable sans le fournisseur, et documentez et testez un mode dégradé."
+      },
+      {
+        "id": "revue-de-reversibilite-des-nouveaux-contrats",
+        "commentaire": "Distinguez dans le contrat et l’architecture ce qui relève de vous : régions, sauvegardes hors du fournisseur."
+      }
     ],
     "technologies": [
       "Amazon DynamoDB",
@@ -1710,11 +2220,11 @@
     ],
     "sources": [
       {
-        "titre": "AWS, résumé de l’événement du 19 et 20 octobre 2025 en US-EAST-1",
+        "titre": "AWS, résumé de l’événement du 19 et 20 octobre 2025 en US-EAST-1",
         "url": "https://aws.amazon.com/message/101925/"
       },
       {
-        "titre": "Microsoft, panne CrowdStrike, 20 juillet 2024",
+        "titre": "Microsoft, panne CrowdStrike, 20 juillet 2024",
         "url": "https://blogs.microsoft.com/blog/2024/07/20/helping-our-customers-through-the-crowdstrike-outage/"
       },
       {
