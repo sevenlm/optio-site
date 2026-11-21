@@ -3737,5 +3737,202 @@
     ],
     "site": "https://securityonionsolutions.com/software",
     "pourquoi": "Code disponible et plateforme installable chez soi, mais licence Elastic 2.0 (non libre) et éditeur unique. Données dans Elasticsearch et règles aux formats standards, donc sortie maîtrisable."
+  },
+  {
+    "id": "jfrog-artifactory",
+    "nom": "JFrog Artifactory",
+    "editeur": "JFrog",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Dépôts d’artefacts et registres"
+    ],
+    "dependance": "Dépôt universel de binaires et de paquets, produit commercial de JFrog. L’édition libre annoncée par l’éditeur est limitée aux paquets Java (Artifactory OSS), le reste passe par les offres payantes.",
+    "alternatives": [
+      "Sonatype Nexus Repository",
+      "Harbor"
+    ],
+    "site": "https://jfrog.com/artifactory/",
+    "pourquoi": "Tous les artefacts de build et les dépendances transitent par lui, et les pipelines pointent vers ses URL. Le contenu se copie vers un autre dépôt, mais il faut réécrire les configurations des chaînes de build."
+  },
+  {
+    "id": "sonatype-nexus-repository",
+    "nom": "Sonatype Nexus Repository",
+    "editeur": "Sonatype",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Dépôts d’artefacts et registres"
+    ],
+    "dependance": "Gestionnaire de dépôts dont le code est publié par Sonatype sous Eclipse Public License 1.0 (miroir public « open-source codebase mirror »), avec des éditions commerciales de l’éditeur.",
+    "alternatives": [
+      "Harbor"
+    ],
+    "site": "https://www.sonatype.com/products/repository-oss-download",
+    "pourquoi": "Code consultable et dépôts exportables, mais l’éditeur reste unique et les pipelines pointent vers ses URL. Sortie réaliste en quelques semaines pour un parc d’artefacts modeste.",
+    "depot": "sonatype/nexus-public"
+  },
+  {
+    "id": "harbor",
+    "nom": "Harbor",
+    "editeur": "Projet Harbor (CNCF)",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Dépôts d’artefacts et registres"
+    ],
+    "dependance": "Registre d’images de conteneurs et d’artefacts OCI sous licence Apache 2.0, projet diplômé de la CNCF.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://goharbor.io/",
+    "pourquoi": "Gouvernance par une fondation neutre et licence Apache 2.0. Le format OCI est standard, donc les images se recopient vers n’importe quel autre registre.",
+    "depot": "goharbor/harbor"
+  },
+  {
+    "id": "octopus-deploy",
+    "nom": "Octopus Deploy",
+    "editeur": "Octopus Deploy",
+    "quadrant": 3,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Déploiement continu"
+    ],
+    "dependance": "Outil de déploiement commercial régi par le contrat client de l’éditeur. Gratuit jusqu’à 10 projets, 10 machines et 10 utilisateurs, ensuite abonnement annuel (Professional à partir de 2 080 USD par an en auto-hébergé, selon la grille publiée).",
+    "alternatives": [
+      "Argo CD"
+    ],
+    "site": "https://octopus.com/pricing",
+    "pourquoi": "Les processus de déploiement, variables et agents (Tentacle) sont propres à l’outil. Passé les seuils gratuits, le prix suit le nombre de projets et de machines."
+  },
+  {
+    "id": "argo-cd",
+    "nom": "Argo CD",
+    "editeur": "Projet Argo (CNCF)",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Déploiement continu"
+    ],
+    "dependance": "Outil de déploiement continu pour Kubernetes sous licence Apache 2.0.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://argo-cd.readthedocs.io/",
+    "pourquoi": "Licence Apache 2.0 et état désiré décrit dans Git, donc sortie lisible. Il ne couvre que Kubernetes, pas les serveurs classiques.",
+    "depot": "argoproj/argo-cd"
+  },
+  {
+    "id": "sonarqube",
+    "nom": "SonarQube",
+    "editeur": "SonarSource",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Qualité de code"
+    ],
+    "dependance": "Analyse statique de code. L’édition Community Build est libre (LGPL v3) ; les langages supplémentaires, l’analyse des branches et des pull requests, la détection de secrets et les rapports de conformité sont réservés aux éditions payantes de SonarSource.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://www.sonarsource.com/products/sonarqube/",
+    "pourquoi": "Le moteur gratuit existe, mais les règles de qualité, les historiques et les contrôles de conformité s’attachent à l’édition choisie. Changer d’outil force à reconstruire les seuils de qualité.",
+    "depot": "SonarSource/sonarqube"
+  },
+  {
+    "id": "selenium",
+    "nom": "Selenium",
+    "editeur": "Projet Selenium",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "o",
+    "categories": [
+      "Tests automatisés"
+    ],
+    "dependance": "Automatisation de navigateurs sous licence Apache 2.0, projet communautaire.",
+    "alternatives": [
+      "Playwright"
+    ],
+    "site": "https://www.selenium.dev/",
+    "pourquoi": "Standard WebDriver et licence Apache 2.0. Les scripts de test sont à réécrire en cas de changement d’outil.",
+    "depot": "SeleniumHQ/selenium"
+  },
+  {
+    "id": "playwright",
+    "nom": "Playwright",
+    "editeur": "Microsoft",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Tests automatisés"
+    ],
+    "dependance": "Test de bout en bout de navigateurs (Chromium, Firefox, WebKit) sous licence Apache 2.0, développé par Microsoft.",
+    "alternatives": [
+      "Selenium"
+    ],
+    "site": "https://playwright.dev/",
+    "pourquoi": "Licence Apache 2.0, mais feuille de route pilotée par Microsoft. Les scripts de test sont à réécrire en cas de changement d’outil.",
+    "depot": "microsoft/playwright"
+  },
+  {
+    "id": "unleash",
+    "nom": "Unleash",
+    "editeur": "Unleash",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Drapeaux de fonctionnalités"
+    ],
+    "dependance": "Plateforme de gestion de drapeaux de fonctionnalités sous licence AGPL 3.0.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://www.getunleash.io/",
+    "pourquoi": "Code publié sous AGPL 3.0, auto-hébergeable. Les SDK clients et les drapeaux existants sont propres à l’outil.",
+    "depot": "Unleash/unleash"
+  },
+  {
+    "id": "flyway",
+    "nom": "Flyway",
+    "editeur": "Redgate",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Migration de schémas de bases"
+    ],
+    "dependance": "Outil de migration de schémas de bases de données, dépôt public sous licence Apache 2.0, édité par Redgate.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://flywaydb.org/",
+    "pourquoi": "Migrations écrites en SQL, donc relisibles et réutilisables ailleurs. L’éditeur reste Redgate.",
+    "depot": "flyway/flyway"
+  },
+  {
+    "id": "liquibase",
+    "nom": "Liquibase",
+    "editeur": "Liquibase",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Migration de schémas de bases"
+    ],
+    "dependance": "Migration de schémas de bases de données. Le dépôt public est passé à la Functional Source License (FSL-1.1-ALv2), non reconnue comme libre à ce jour, avec une édition commerciale (Liquibase Secure).",
+    "alternatives": [
+      "Flyway"
+    ],
+    "site": "https://www.liquibase.com/",
+    "pourquoi": "Les changelogs au format de l’outil sont à convertir pour partir. La licence FSL n’autorise pas tous les usages concurrents.",
+    "depot": "liquibase/liquibase"
   }
 ]

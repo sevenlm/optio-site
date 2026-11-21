@@ -253,7 +253,7 @@
     "anneau": 2,
     "type": "risque",
     "declencheur": "Entre 2023 et 2025, Terraform, Redis, Puppet et MinIO ont changé les règles du jeu, obligeant leurs utilisateurs à choisir entre payer, migrer ou suivre un fork.",
-    "tendance": "Des projets ouverts contrôlés par un seul éditeur changent de règles : Terraform est passé sous licence source disponible en 2023 ; début 2025, Perforce a réservé les paquets de Puppet à un dépôt privé ; en 2025, MinIO a retiré la console de son édition communautaire puis cessé d’en publier les binaires. À chaque fois, la communauté a dû créer un fork (OpenTofu, OpenVox).",
+    "tendance": "Des projets ouverts contrôlés par un seul éditeur changent de règles : Terraform est passé sous licence source disponible en 2023 ; début 2025, Perforce a réservé les paquets de Puppet à un dépôt privé ; en 2025, MinIO a retiré la console de son édition communautaire puis cessé d’en publier les binaires. À chaque fois, la communauté a dû créer un fork (OpenTofu, OpenVox). Le 30 septembre 2025, Liquibase a annoncé que sa version Community passait à la Functional Source License à partir de la version 5.0, licence « source disponible » qui n’est pas reconnue comme open source et interdit l’usage concurrent ; chaque version revient sous Apache 2.0 deux ans après sa sortie.",
     "risque": "L’open source ne protège pas si un seul acteur contrôle le projet.",
     "mitigations": [
       "Privilégiez les projets à gouvernance ouverte ou portés par une fondation.",
@@ -277,7 +277,8 @@
       "Security Onion",
       "Terraform",
       "Grafana",
-      "Zitadel"
+      "Zitadel",
+      "Liquibase"
     ],
     "sources": [
       {
@@ -287,6 +288,10 @@
       {
         "titre": "It’s FOSS, l’édition communautaire de MinIO",
         "url": "https://itsfoss.com/news/minio-moves-away-from-open-source.md"
+      },
+      {
+        "titre": "Liquibase, passage de Liquibase Community à la Functional Source License (30 septembre 2025)",
+        "url": "https://www.liquibase.com/blog/liquibase-community-for-the-future-fsl"
       }
     ]
   },
@@ -1139,6 +1144,10 @@
         "titre": "Intelligent CIO, World Quality Report 2024, octobre 2024",
         "url": "https://www.intelligentcio.com/eu/2024/10/31/world-quality-report-2024-shows-68-of-organizations-now-utilizing-gen-ai-to-advance-quality-engineering/"
       }
+    ],
+    "technologies": [
+      "Selenium",
+      "Playwright"
     ]
   },
   {
@@ -1262,12 +1271,16 @@
     "mitigations": [
       "Inventoriez vos composants open source et repérez ceux qui n’ont pas évolué depuis deux ans.",
       "Prévoyez, pour chaque composant critique peu maintenu, un remplaçant ou un support identifié.",
-      "Préparez dès maintenant la diligence que le Cyber Resilience Act exige sur les composants intégrés."
+      "Préparez dès maintenant la diligence que le Cyber Resilience Act exige sur les composants intégrés.",
+      "Conservez un miroir interne des dépendances et des images que vous utilisez, pour que le retrait d’un composant en amont ne bloque pas vos builds."
     ],
     "technologies": [
       "Talend",
       "MinIO",
-      "Puppet"
+      "Puppet",
+      "JFrog Artifactory",
+      "Sonatype Nexus Repository",
+      "Harbor"
     ],
     "sources": [
       {
@@ -1517,7 +1530,7 @@
     "anneau": 0,
     "type": "risque",
     "declencheur": "Windows 10 n’est plus supporté depuis le 14 octobre 2025, et la maintenance standard de SAP ECC 6.0 s’arrête fin 2027.",
-    "tendance": "Depuis le 14 octobre 2025, Microsoft ne publie plus de correctifs de sécurité pour Windows 10 hors du programme payant ESU : 61 $ par poste la première année pour les organisations, prix doublé chaque année, trois ans au maximum. Chez SAP, la maintenance standard de Business Suite 7 (dont ECC 6.0) s’arrête fin 2027 et la maintenance étendue, payante, fin 2030. Au-delà, seule une option de transition liée à un passage sur SAP ERP, private edition avant le 31 décembre 2030 permet de prolonger jusqu’en 2033, voire 2035 depuis octobre 2026.",
+    "tendance": "Depuis le 14 octobre 2025, Microsoft ne publie plus de correctifs de sécurité pour Windows 10 hors du programme payant ESU : 61 $ par poste la première année pour les organisations, prix doublé chaque année, trois ans au maximum. Chez SAP, la maintenance standard de Business Suite 7 (dont ECC 6.0) s’arrête fin 2027 et la maintenance étendue, payante, fin 2030. Au-delà, seule une option de transition liée à un passage sur SAP ERP, private edition avant le 31 décembre 2030 permet de prolonger jusqu’en 2033, voire 2035 depuis octobre 2026. Côté Java, la branche 6.2 de Spring Framework, dernière de la génération 6, n’est plus maintenue en open source depuis juin 2026 ; seul un support commercial la prolonge.",
     "risque": "Le calendrier de migration est fixé par l’éditeur, et la prolongation se paie ou passe par son offre cloud.",
     "mitigations": [
       "Tenez un calendrier des fins de support de vos produits critiques sur cinq ans.",
@@ -1546,6 +1559,40 @@
       {
         "titre": "SAP News, mises à jour de l’option de transition SAP ERP, private edition, août 2025 (mise à jour octobre 2026)",
         "url": "https://news.sap.com/2025/08/rise-with-sap-journey-sap-erp-private-edition-transition-option-updates/"
+      },
+      {
+        "titre": "Spring Framework, politique de support des versions (wiki du projet)",
+        "url": "https://github.com/spring-projects/spring-framework/wiki/Spring-Framework-Versions"
+      }
+    ]
+  },
+  {
+    "id": "pipelines-lies-a-la-forge",
+    "titre": "Pipelines liés à la forge",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "risque",
+    "declencheur": "Le 16 décembre 2025, GitHub a annoncé une facturation de 0,002 $ par minute pour les exécuteurs auto-hébergés de GitHub Actions dès le 1er mars 2026, avant de reporter cette mesure.",
+    "tendance": "Les pipelines de livraison s’écrivent dans le format de la forge qui les exécute. GitHub a montré qu’un service que l’on croyait gratuit parce qu’on fournit son propre matériel peut devenir payant : le 16 décembre 2025, il a annoncé un tarif de 0,002 $ par minute pour tous les travaux Actions des dépôts privés, y compris sur des exécuteurs auto-hébergés, à partir du 1er mars 2026. Sous la pression des utilisateurs, GitHub a ensuite reporté ce changement de facturation pour le réévaluer, tout en maintenant la baisse de prix de ses exécuteurs hébergés.",
+    "risque": "Les pipelines, les actions réutilisées et les secrets sont propres à la forge : la changer, ou subir une hausse, oblige à réécrire la chaîne de livraison.",
+    "mitigations": [
+      "Gardez la logique de build et de déploiement dans des scripts versionnés que la forge se contente d’appeler.",
+      "Inventoriez les pipelines et les actions tierces dont ils dépendent, et chiffrez leur coût mensuel d’exécution.",
+      "Testez l’exécution d’un pipeline critique sur un second outil de CI/CD."
+    ],
+    "technologies": [
+      "GitHub",
+      "GitLab",
+      "Azure DevOps",
+      "Jenkins",
+      "Forgejo",
+      "Argo CD",
+      "Octopus Deploy"
+    ],
+    "sources": [
+      {
+        "titre": "GitHub, changements de tarification de GitHub Actions (annonce du 16 décembre 2025, report ultérieur)",
+        "url": "https://resources.github.com/actions/2026-pricing-changes-for-github-actions/"
       }
     ]
   },
@@ -1708,7 +1755,8 @@
     "tendance": "Conteneurs, Kubernetes, outils d’infrastructure as code ouverts : des couches qui rendent l’infrastructure sous-jacente plus interchangeable.",
     "risque": "Elles réduisent le coût d’un changement, à condition de prouver qu’elles fonctionnent sur deux plateformes.",
     "mitigations": [
-      "Testez le déploiement d’une application sur une seconde plateforme."
+      "Testez le déploiement d’une application sur une seconde plateforme.",
+      "Décrivez infrastructure, configuration et pipelines dans des fichiers versionnés (Git), pour pouvoir les rejouer sur une autre plateforme."
     ],
     "sources": [
       {
@@ -1722,7 +1770,8 @@
       "Terraform",
       "Ansible",
       "Kubernetes",
-      "OpenTofu"
+      "OpenTofu",
+      "Argo CD"
     ]
   },
   {
