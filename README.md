@@ -35,4 +35,4 @@ pour le format des fichiers et la façon de tester en local.
 | `scripts/check-links.py` | liens des sources (échoue sur 404, 410, domaine introuvable ; les sites qui bloquent les robots sont seulement signalés) | CI chaque lundi, prek à la demande |
 | `scripts/check-vitality.py` | activité des dépôts open source (API GitHub) | CI chaque lundi, prek à la demande |
 
-Avec [prek](https://github.com/j178/prek) (compatible `pre-commit`) : `prek install --hook-type pre-commit --hook-type pre-push` active `check-data` et `check-cases` avant chaque commit et chaque push ; `prek run check-links --hook-stage manual` lance un contrôle réseau.
+Avec [prek](https://github.com/j178/prek) (configuration dans `prek.toml`) : `prek install --hook-type pre-commit --hook-type pre-push` active `check-data` et `check-cases` avant chaque commit et chaque push ; `prek run check-links --hook-stage manual` lance un contrôle réseau.
