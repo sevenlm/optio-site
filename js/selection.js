@@ -10,9 +10,9 @@
   }
 
   function unique(liste) {
-    var vus = {}, sortie = [];
+    var vus = Object.create(null), sortie = [];
     for (var i = 0; i < liste.length; i++) {
-      if (liste[i] && !Object.prototype.hasOwnProperty.call(vus, liste[i])) {
+      if (liste[i] && !vus[liste[i]]) {
         vus[liste[i]] = true;
         sortie.push(liste[i]);
       }
@@ -28,6 +28,11 @@
     return parties.join("&");
   }
 
+  // valeur d’adresse décodée (%2C → « , ») ; encodage invalide : valeur brute
+  function decoder(valeur) {
+    try { return decodeURIComponent(valeur); } catch (e) { return valeur; }
+  }
+
   function decoderSelection(recherche) {
     var sel = selectionVide();
     var texte = String(recherche || "").replace(/^\?/, "");
@@ -35,7 +40,7 @@
     for (var i = 0; i < paires.length; i++) {
       var pos = paires[i].indexOf("=");
       if (pos < 0) continue;
-      var cle = paires[i].slice(0, pos), valeur = paires[i].slice(pos + 1);
+      var cle = paires[i].slice(0, pos), valeur = decoder(paires[i].slice(pos + 1));
       if (cle === "t") sel.tendances = unique(valeur.split(","));
       else if (cle === "x") sel.technologies = unique(valeur.split(","));
       else if (cle === "d" && /^\d{4}-\d{2}-\d{2}$/.test(valeur)) sel.date = valeur;
@@ -47,8 +52,13 @@
     return base + "?rapport=1&" + encoderSelection(sel);
   }
 
+  // index sans prototype : « constructor » ou « __proto__ » ne sont que des identifiants inconnus
+  function dico() {
+    return Object.create(null);
+  }
+
   function parId(liste) {
-    var index = {};
+    var index = dico();
     for (var i = 0; i < liste.length; i++) index[liste[i].id] = liste[i];
     return index;
   }
@@ -76,7 +86,7 @@
     var urgentes = 0;
     for (i = 0; i < tendances.length; i++) if (tendances[i].anneau <= 1) urgentes++;
 
-    var compteMeca = {}, mecanismes = [];
+    var compteMeca = dico(), mecanismes = [];
     for (i = 0; i < tendances.length; i++) {
       var ids = unique(tendances[i].mecanismes || []);
       for (j = 0; j < ids.length; j++) {
@@ -90,7 +100,7 @@
     }
     mecanismes.sort(function (a, b) { return b.nb - a.nb || comparer(a.meca.nom, b.meca.nom); });
 
-    var parLevier = {}, leviers = [];
+    var parLevier = dico(), leviers = [];
     function ajouter(refs) {
       for (var k = 0; k < (refs || []).length; k++) {
         var ref = refs[k];
@@ -111,11 +121,11 @@
   }
 
   function suggestions(sel, donnees) {
-    var idxTend = parId(donnees.tendances), retenues = {}, i, j;
+    var idxTend = parId(donnees.tendances), retenues = dico(), i, j;
     for (i = 0; i < sel.technologies.length; i++) retenues[sel.technologies[i]] = true;
-    var parNom = {};
+    var parNom = dico();
     for (i = 0; i < donnees.technologies.length; i++) parNom[donnees.technologies[i].nom] = donnees.technologies[i];
-    var compte = {}, candidates = [];
+    var compte = dico(), candidates = [];
     for (i = 0; i < sel.tendances.length; i++) {
       var t = idxTend[sel.tendances[i]];
       if (!t) continue;

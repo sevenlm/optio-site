@@ -90,3 +90,21 @@ test("stockage qui lève une exception", () => {
   assert.deepEqual(chargerSelection(casse), { tendances: [], technologies: [], date: "" });
   assert.equal(sauverSelection(casse, { tendances: ["a"], technologies: [], date: "" }), false);
 });
+test("décode des virgules encodées (%2C) et des caractères encodés", () => {
+  assert.deepEqual(decoderSelection("?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf%2Coracle-database&d=2026-11-23"),
+    { tendances: ["fin-des-licences-perpetuelles"], technologies: ["vmware-vsphere-et-vcf", "oracle-database"], date: "2026-11-23" });
+  // encodage invalide : valeur brute conservée
+  assert.deepEqual(decoderSelection("?x=a%E0%A4,b").technologies, ["a%E0%A4", "b"]);
+});
+test("identifiants égaux à des noms d’Object.prototype : comptés absents, sans erreur", () => {
+  const s = synthese({ tendances: ["constructor", "toString"], technologies: ["__proto__", "hasOwnProperty", "oracle-database"], date: "" }, donnees);
+  assert.equal(s.absents, 4);
+  assert.deepEqual(s.technos.map((x) => x.id), ["oracle-database"]);
+  assert.deepEqual(s.tendances, []);
+  assert.deepEqual(suggestions({ tendances: ["constructor", "__proto__"], technologies: ["toString"], date: "" }, donnees), []);
+});
+test("tous les identifiants inconnus : synthèse vide, absents comptés", () => {
+  const s = synthese({ tendances: ["t-disparue"], technologies: ["x-disparue", "y-disparue"], date: "2026-11-23" }, donnees);
+  assert.equal(s.absents, 3);
+  assert.deepEqual([s.technos, s.tendances, s.mecanismes, s.leviers, s.parAnneau, s.urgentes], [[], [], [], [], [0, 0, 0, 0], 0]);
+});
