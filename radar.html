@@ -509,6 +509,23 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .volet-chips{display:flex;flex-wrap:wrap;gap:6px}
 .volet-sugg{display:inline-flex;align-items:center;gap:6px;max-width:100%;border:1.5px dashed var(--line-2);background:var(--surface);border-radius:999px;padding:5px 12px;min-height:34px;font-size:13px;font-weight:600;color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
 .volet-sugg:hover{border-style:solid;border-color:var(--a1t);background:var(--a1)}
+.apercu{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--line-2);border-radius:14px;background:var(--surface-2)}
+.apercu h3{margin:0}
+.apercu-total{font-size:15px;font-weight:700;color:var(--ink)}
+.apercu-vide,.apercu-legende{font-size:14px;color:var(--text-2)}
+.barres-anneau{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.barre-anneau{display:grid;grid-template-columns:92px 1fr 24px;align-items:center;gap:8px;font-size:13px}
+.barre-nom{color:var(--text-2)}
+.barre-piste{display:block;height:10px;border-radius:999px;overflow:hidden}
+.barre-rempli{display:block;height:100%;border-radius:999px}
+.barre-anneau .n{font-weight:700;text-align:right;color:var(--ink)}
+.apercu-mecas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.apercu-mecas li{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:600;color:var(--ink)}
+.verrou{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1.5px dashed var(--line-2);border-radius:10px;background:var(--surface);color:var(--text-2);font-size:13.5px}
+.verrou-titre{font-weight:600;color:var(--ink);flex:1;min-width:0}
+.verrou-note{font-size:12px}
+.apercu .voir-radar{align-self:stretch;margin-top:6px;white-space:normal}
+.apercu .voir-radar:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
 @media (prefers-reduced-motion: reduce){.mon-radar,.ld-etoile{transition:none}.mon-radar.bump,.volet,.volet-fond{animation:none}}
 </style>
 </head>
@@ -1536,11 +1553,40 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var p=document.getElementById("mon-radar"); p.setAttribute("aria-expanded","false");
     if(rendreFocus!==false) p.focus();
   }
+  // Aperçu libre : chiffres d’exposition seulement, sans leviers, alternatives ni montants
+  function apercuLibre(n){
+    var sec=el("section",{class:"apercu","aria-labelledby":"apercu-titre"},[el("h3",{id:"apercu-titre",text:"Votre exposition, en aperçu"})]);
+    if(!n){
+      sec.appendChild(el("p",{class:"apercu-vide",text:"Retenez des tendances et des technologies pour voir leur exposition."}));
+    } else {
+      var sy=SEL.synthese(maSelection, DONNEES_BRUTES), noms=["Difficile","Exigeante","Maîtrisable","Facilitée"], nt=sy.technos.length, nd=sy.tendances.length, max=Math.max.apply(null,sy.parAnneau.concat([1]));
+      sec.appendChild(el("p",{class:"apercu-total",text:nt+" technologie"+(nt>1?"s":"")}));
+      sec.appendChild(el("ul",{class:"barres-anneau"},sy.parAnneau.map(function(k,i){
+        var rempli=el("span",{class:"barre-rempli"}); rempli.style.width=(k/max*100)+"%"; rempli.style.background="var(--x"+i+"t)";
+        var piste=el("span",{class:"barre-piste"},[rempli]); piste.style.background="var(--x"+i+")";
+        return el("li",{class:"barre-anneau"},[el("span",{class:"barre-nom",text:noms[i]}), piste, el("span",{class:"n",text:String(k)})]);
+      })));
+      sec.appendChild(el("p",{class:"apercu-total",text:nd+" tendance"+(nd>1?"s":"")+", dont "+sy.urgentes+" urgente"+(sy.urgentes>1?"s":"")}));
+      if(sy.mecanismes.length){
+        var ms=sy.mecanismes.slice(0,3).map(function(m){ return el("li",{class:"meca-nom",text:m.meca.court||m.meca.nom}); });
+        if(sy.mecanismes.length>3) ms.push(el("li",{class:"meca-plus",text:"+ "+(sy.mecanismes.length-3)}));
+        sec.appendChild(el("p",{class:"apercu-legende",text:"Mécanismes en jeu"}));
+        sec.appendChild(el("ul",{class:"apercu-mecas"},ms));
+      }
+      ["Alternatives mieux classées","Leviers et parades","Détail par technologie"].forEach(function(t){
+        sec.appendChild(el("div",{class:"verrou"},[el("span",{class:"verrou-icone","aria-hidden":"true",text:"🔒"}), el("span",{class:"verrou-titre",text:t}), el("span",{class:"verrou-note",text:"Dans le rapport complet"})]));
+      });
+    }
+    var b=el("button",{type:"button",id:"demander-rapport",class:"voir-radar"},["Recevoir mon rapport complet (PDF)"]); if(!n) b.disabled=true;
+    sec.appendChild(b);
+    return sec;
+  }
   // Contenu du volet : tendances puis technologies retenues, puis suggestions (Task 3 y ajoute l’aperçu)
   function rendreVolet(){
     var z=document.getElementById("volet-corps"); z.textContent="";
     var tends=T.filter(estRetenu), techs=TECH.filter(estRetenu), tri=function(a,b){ return a.a-b.a || a.t.localeCompare(b.t,"fr"); };
     tends.sort(tri); techs.sort(tri);
+    z.appendChild(apercuLibre(tends.length+techs.length));
     z.appendChild(el("p",{class:"volet-aide",text:tends.length+techs.length ? "Vos tendances et technologies retenues, enregistrées dans ce navigateur." : "Aucun élément retenu pour l’instant. Cliquez sur l’étoile ☆ d’une tendance ou d’une technologie pour la retenir."}));
     function bloc(titre,liste,ouvrir){
       if(!liste.length) return;
