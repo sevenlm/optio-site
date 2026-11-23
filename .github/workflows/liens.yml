@@ -1,0 +1,11 @@
+name: liens
+on:
+  schedule: [{cron: "0 7 * * 1"}]
+  workflow_dispatch:
+jobs:
+  sources:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      # Échoue sur les liens morts (404, 410, domaine introuvable) ; les sites qui bloquent les robots sont seulement signalés
+      - run: python3 scripts/check-links.py

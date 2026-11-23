@@ -1,0 +1,12 @@
+name: check
+on: [push, pull_request, workflow_dispatch]
+jobs:
+  donnees:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/check-data.py
+      - run: python3 scripts/check-cases.py
+      # Informatif : échoue tant que index.html contient des marqueurs [À COMPLÉTER]
+      - run: python3 scripts/check-data.py --placeholders
+        continue-on-error: true
