@@ -470,6 +470,46 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   .liste,.chev,.ic-rond,#etape-2{transition:none}
   .menu.ouvert .liste{animation:none}
 }
+
+/* Retenir : étoiles, pastille « Mon radar » et volet latéral */
+.mon-radar{flex:none;display:inline-flex;align-items:center;white-space:nowrap;border:1.5px solid var(--a1t);background:var(--a1);color:var(--a1t);border-radius:999px;padding:6px 14px;min-height:40px;font-size:13.5px;font-weight:700;cursor:pointer;transition:transform .18s,box-shadow .2s}
+.mon-radar:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px rgba(6,25,42,.45)}
+.mon-radar.bump{animation:bump .4s cubic-bezier(.2,.8,.25,1)}
+.filtres-bande.meca .mon-radar{display:none}
+.fiche-haut{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:-4px}
+.fiche-haut .retour-liste{margin-bottom:0}
+.retenir{border:1.5px solid var(--line-2);background:var(--surface);border-radius:999px;padding:5px 13px;min-height:34px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s}
+.retenir:hover{background:var(--surface-2)}
+.retenir[aria-pressed="true"]{background:var(--a1);border-color:var(--a1t);color:var(--a1t)}
+.ld-ligne{display:flex;align-items:center;gap:2px}
+.ld-ligne .ld-item{flex:1;min-width:0;width:auto}
+.ld-etoile{flex:none;width:36px;height:36px;border:none;background:none;border-radius:50%;font-size:19px;line-height:1;color:var(--text-3);cursor:pointer;transition:background .15s,color .15s,transform .15s}
+.ld-etoile:hover{background:var(--surface-2);color:var(--ink);transform:scale(1.1)}
+.ld-etoile[aria-pressed="true"],.ld-etoile[aria-pressed="true"]:hover{color:var(--a1t)}
+.volet-fond{position:fixed;inset:0;z-index:50;background:rgba(6,25,42,.45);animation:volet-fondu .25s}
+.volet{position:fixed;top:0;right:0;bottom:0;z-index:51;width:min(420px,100%);display:flex;flex-direction:column;background:var(--surface);color:var(--ink);border-left:1px solid var(--line);box-shadow:-24px 0 50px -24px rgba(6,25,42,.55);overflow-y:auto;overscroll-behavior:contain;padding:calc(env(safe-area-inset-top,0px) + 20px) 22px calc(env(safe-area-inset-bottom,0px) + 24px);animation:volet-entre .3s cubic-bezier(.2,.8,.25,1)}
+.volet:focus{outline:none}
+@keyframes volet-entre{from{transform:translateX(100%)}}
+@keyframes volet-fondu{from{opacity:0}}
+.volet-tete{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.volet-tete h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.15}
+.volet-fermer{flex:none;width:40px;height:40px;border:1px solid var(--line-2);background:var(--surface);border-radius:50%;font-size:22px;line-height:1;color:var(--ink);cursor:pointer}
+.volet-fermer:hover{background:var(--surface-2)}
+.volet-corps{display:flex;flex-direction:column;gap:18px;padding-top:14px}
+.volet-aide{font-size:14px;color:var(--text-2)}
+.volet h3{font-size:12px;font-weight:600;color:var(--text-3);margin:0 0 6px}
+.volet-liste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.volet-item{display:flex;align-items:center;gap:6px}
+.volet-ouvrir{flex:1;min-width:0;display:flex;align-items:center;gap:10px;text-align:left;border:none;background:none;padding:6px;border-radius:10px;font-size:14px;font-weight:600;line-height:1.3;color:var(--ink);cursor:pointer}
+.volet-ouvrir:hover{background:var(--surface-2)}
+.volet-retirer{flex:none;border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:4px 10px;min-height:32px;font-size:12.5px;font-weight:600;color:var(--text-2);cursor:pointer}
+.volet-retirer:hover{background:var(--surface-2);color:var(--ink)}
+.volet-suggestions{border-top:1px dashed var(--line-2);padding-top:14px;display:flex;flex-direction:column;gap:8px}
+.volet-suggestions p{font-size:14px;color:var(--text-2)}
+.volet-chips{display:flex;flex-wrap:wrap;gap:6px}
+.volet-sugg{display:inline-flex;align-items:center;gap:6px;max-width:100%;border:1.5px dashed var(--line-2);background:var(--surface);border-radius:999px;padding:5px 12px;min-height:34px;font-size:13px;font-weight:600;color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.volet-sugg:hover{border-style:solid;border-color:var(--a1t);background:var(--a1)}
+@media (prefers-reduced-motion: reduce){.mon-radar,.ld-etoile{transition:none}.mon-radar.bump,.volet,.volet-fond{animation:none}}
 </style>
 </head>
 <body>
@@ -498,6 +538,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 <button type="button" class="lien-tendance" id="lien" hidden></button>
 <div class="resume" aria-live="polite"><span id="resume"></span><button type="button" class="raz" id="raz" hidden><span aria-hidden="true">×</span> Réinitialiser</button></div>
 <label class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg><input id="recherche" type="search" aria-label="Rechercher"></label>
+<button type="button" class="mon-radar" id="mon-radar" aria-controls="volet" aria-expanded="false" hidden>Mon radar · 0</button>
 </div>
 </div>
 
@@ -538,7 +579,13 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 </section>
 <p class="pied">Prototype à valider avec des experts. Les classements des technologies sont indicatifs : ils décrivent la difficulté typique d’une sortie, pas la qualité des produits, et varient selon vos usages. Informations vérifiées en novembre 2026. Optio, une marque de Stratwise.</p>
 </main>
+<div class="volet-fond" id="volet-fond" hidden></div>
+<aside id="volet" class="volet" aria-label="Mon radar" tabindex="-1" hidden>
+<div class="volet-tete"><h2>Mon radar</h2><button type="button" class="volet-fermer" id="volet-fermer" aria-label="Fermer Mon radar"><span aria-hidden="true">×</span></button></div>
+<div class="volet-corps" id="volet-corps"></div>
+</aside>
 
+<script src="js/selection.js"></script>
 <script>
 (function(){
   "use strict";
@@ -851,7 +898,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var col=couleur(x.type), bande=el("div",{class:"fiche-bande"}); bande.style.background=col[0]; f.appendChild(bande);
     var corps=el("div",{class:"fiche-corps"});
     var nRet=DONNEES[vue].filter(function(y){ return visible(y); }).length;
-    corps.appendChild(el("button",{type:"button",class:"retour-liste",onclick:function(){ fermerFiche(); }},["‹ Liste · "+nRet+" "+V.nom[nRet>1?1:0]]));
+    corps.appendChild(el("div",{class:"fiche-haut"},[
+      el("button",{type:"button",class:"retour-liste",onclick:function(){ fermerFiche(); }},["‹ Liste · "+nRet+" "+V.nom[nRet>1?1:0]]),
+      boutonRetenir(x)
+    ]));
     var num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
     var typeLib=V.types.filter(function(t){ return t[0]===x.type; })[0][1];
     corps.appendChild(el("div",{class:"tags"},[num, (function(){ var tg=el("span",{class:"tag tag-axe"},[icone(V.quadrants[x.q].ic), V.quadrants[x.q].t]); tg.style.setProperty("--qc","var(--q"+x.q+")"); return tg; })(), el("span",{class:"tag",text:typeLib})]));
@@ -1322,7 +1372,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       b.style.setProperty("--qc","var(--q"+x.q+")");
       b.addEventListener("mouseenter",function(){ pointer(x.id,true); }); b.addEventListener("mouseleave",function(){ pointer(x.id,false); });
       b.addEventListener("focus",function(){ pointer(x.id,true); }); b.addEventListener("blur",function(){ pointer(x.id,false); });
-      ul.appendChild(el("li",null,[b]));
+      // l’étoile est un bouton voisin (pas imbriqué) : elle retient l’élément sans ouvrir sa fiche
+      var etoile=el("button",{type:"button",class:"ld-etoile","data-id":x.id,"aria-label":"Retenir « "+x.t+" »",onclick:function(e){ e.stopPropagation(); basculerRetenu(x); }});
+      majEtoile(etoile);
+      ul.appendChild(el("li",{class:"ld-ligne"},[b, etoile]));
     });
     var plus=el("button",{type:"button",class:"ld-plus",hidden:"",onclick:function(){ listeOuverte=!listeOuverte; fiche(); }});
     f.appendChild(el("div",{class:"ld"},[tete, ul, plus]));
@@ -1439,8 +1492,82 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   // passage au-dessus ou en dessous de 1000 px : la piste devient une colonne, et inversement
   (function(){ var etait=largeur(); window.addEventListener("resize",function(){ var l=largeur(); if(l!==etait){ etait=l; if(!l){ zoneLie=false; elsZone().zone.classList.remove("lie"); } majZoneLie(); } }); })();
   document.getElementById("lien").addEventListener("click",function(){ lien=null; rafraichir(true); });
+  // --- Retenir : sélection personnelle enregistrée dans le navigateur, pastille « Mon radar » et volet ---
+  var SEL=window.OptioSelection, DONNEES_BRUTES=null; // données brutes de data/*.json, attendues par OptioSelection
+  var maSelection={tendances:[], technologies:[], date:""};
+  function stockage(){ try{ return window.localStorage; }catch(e){ return null; } }
+  // charge la sélection et oublie les identifiants qui ne sont plus sur le radar
+  function initSelection(){
+    var s0=SEL.chargerSelection(stockage()), ids=function(liste){ var o={}; liste.forEach(function(x){ o[x.id]=1; }); return o; }, iT=ids(T), iX=ids(TECH);
+    maSelection={tendances:s0.tendances.filter(function(i){ return iT[i]; }), technologies:s0.technologies.filter(function(i){ return iX[i]; }), date:s0.date};
+    var p=document.getElementById("mon-radar"); p.hidden=false; majPastille(false);
+  }
+  function retenuId(id){ return maSelection.tendances.indexOf(id)>=0 || maSelection.technologies.indexOf(id)>=0; }
+  function estRetenu(x){ return retenuId(x.id); }
+  function basculerRetenu(x){
+    var l=maSelection[T.indexOf(x)>=0?"tendances":"technologies"], i=l.indexOf(x.id);
+    if(i>=0) l.splice(i,1); else l.push(x.id);
+    SEL.sauverSelection(stockage(), maSelection);
+    document.querySelectorAll(".retenir[data-id],.ld-etoile[data-id]").forEach(majEtoile);
+    majPastille(true);
+    if(voletOuvert()){ var dansVolet=document.getElementById("volet").contains(document.activeElement); rendreVolet(); if(dansVolet && !document.getElementById("volet").contains(document.activeElement)) document.getElementById("volet").focus(); }
+  }
+  function majEtoile(b){
+    var on=retenuId(b.getAttribute("data-id")); b.setAttribute("aria-pressed",String(on)); b.textContent="";
+    if(b.classList.contains("retenir")){ b.appendChild(el("span",{"aria-hidden":"true",text:on?"★":"☆"})); b.appendChild(document.createTextNode(on?" Retenu":" Retenir")); b.title=on?"Retirer de Mon radar":"Ajouter à Mon radar"; }
+    else { b.textContent=on?"★":"☆"; b.title=on?"Retenu : cliquer pour retirer de Mon radar":"Retenir dans Mon radar"; }
+  }
+  function boutonRetenir(x){ var b=el("button",{type:"button",class:"retenir","data-id":x.id,onclick:function(){ basculerRetenu(x); }}); majEtoile(b); return b; }
+  function majPastille(anim){
+    var p=document.getElementById("mon-radar"), n=maSelection.tendances.length+maSelection.technologies.length;
+    p.textContent="Mon radar · "+n; p.title=n?n+" élément"+(n>1?"s":"")+" retenu"+(n>1?"s":"")+" : ouvrir Mon radar":"Ouvrir Mon radar";
+    if(anim){ p.classList.remove("bump"); void p.offsetWidth; p.classList.add("bump"); }
+  }
+  function voletOuvert(){ return !document.getElementById("volet").hidden; }
+  function ouvrirVolet(){
+    rendreVolet();
+    document.getElementById("volet-fond").hidden=false; document.getElementById("volet").hidden=false;
+    document.getElementById("mon-radar").setAttribute("aria-expanded","true");
+    document.getElementById("volet-fermer").focus();
+  }
+  // rendreFocus=false quand on quitte le volet pour ouvrir une fiche
+  function fermerVolet(rendreFocus){
+    document.getElementById("volet-fond").hidden=true; document.getElementById("volet").hidden=true;
+    var p=document.getElementById("mon-radar"); p.setAttribute("aria-expanded","false");
+    if(rendreFocus!==false) p.focus();
+  }
+  // Contenu du volet : tendances puis technologies retenues, puis suggestions (Task 3 y ajoute l’aperçu)
+  function rendreVolet(){
+    var z=document.getElementById("volet-corps"); z.textContent="";
+    var tends=T.filter(estRetenu), techs=TECH.filter(estRetenu), tri=function(a,b){ return a.a-b.a || a.t.localeCompare(b.t,"fr"); };
+    tends.sort(tri); techs.sort(tri);
+    z.appendChild(el("p",{class:"volet-aide",text:tends.length+techs.length ? "Vos tendances et technologies retenues, enregistrées dans ce navigateur." : "Aucun élément retenu pour l’instant. Cliquez sur l’étoile ☆ d’une tendance ou d’une technologie pour la retenir."}));
+    function bloc(titre,liste,ouvrir){
+      if(!liste.length) return;
+      z.appendChild(el("section",null,[el("h3",{text:titre+" · "+liste.length}), el("ul",{class:"volet-liste"},liste.map(function(x){
+        var col=couleur(x.type), num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
+        return el("li",{class:"volet-item"},[
+          el("button",{type:"button",class:"volet-ouvrir",title:"Ouvrir la fiche",onclick:function(){ fermerVolet(false); ouvrir(x); }},[num, el("span",{text:x.t})]),
+          el("button",{type:"button",class:"volet-retirer","aria-label":"Retirer « "+x.t+" »",onclick:function(){ basculerRetenu(x); }},["Retirer"])
+        ]);
+      }))]));
+    }
+    bloc("Tendances retenues",tends,voirTendance);
+    bloc("Technologies retenues",techs,voirTechno);
+    var parId={}; TECH.forEach(function(y){ parId[y.id]=y; });
+    var sugg=SEL.suggestions(maSelection, DONNEES_BRUTES).map(function(i){ return parId[i]; }).filter(Boolean).slice(0,6);
+    if(sugg.length) z.appendChild(el("section",{class:"volet-suggestions"},[
+      el("p",{text:"Ces tendances concernent aussi :"}),
+      el("div",{class:"volet-chips"},sugg.map(function(y){ return el("button",{type:"button",class:"volet-sugg","aria-label":"Retenir « "+y.t+" »",onclick:function(){ basculerRetenu(y); }},[el("span",{"aria-hidden":"true",text:"☆"}), y.t]); })),
+      el("p",{text:"Les utilisez-vous ?"})
+    ]));
+  }
+  document.getElementById("mon-radar").addEventListener("click",function(){ if(voletOuvert()) fermerVolet(); else ouvrirVolet(); });
+  document.getElementById("volet-fermer").addEventListener("click",function(){ fermerVolet(); });
+  document.getElementById("volet-fond").addEventListener("click",function(){ fermerVolet(); });
   // Échap : retire les filtres axe et urgence
   document.addEventListener("keydown",function(e){
+    if(e.key==="Escape" && voletOuvert()){ e.preventDefault(); fermerVolet(); return; } // le volet passe avant les autres usages d’Échap
     if(e.key==="Escape" && vue==="tendances" && zoneLie && !document.querySelector("dialog[open]")){ setLie(false); return; }
     if(e.key!=="Escape" || vue==="mecanismes" || vue==="leviers" || (fAxe==="tous" && fAnneau==="tous" && !(vue==="technologies" && lien))) return;
     if(document.querySelector("dialog[open]") || (document.activeElement && document.activeElement.id==="recherche")) return;
@@ -1467,7 +1594,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     return fetch("data/"+nom+".json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("data/"+nom+".json introuvable (HTTP "+r.status+")"); return r.json().catch(function(e){ throw new Error("data/"+nom+".json n’est pas un JSON valide : "+e.message); }); });
   }
   Promise.all(["tendances","technologies","mecanismes","leviers"].map(charger)).then(function(r){
+    DONNEES_BRUTES={tendances:r[0], technologies:r[1], mecanismes:r[2], leviers:r[3]};
     preparer(r[0],r[1],r[2],r[3]);
+    initSelection();
     stats(); changerVue("tendances"); depuisHash();
   }).catch(function(err){
     console.error(err);
