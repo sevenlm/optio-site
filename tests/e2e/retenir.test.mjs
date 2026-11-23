@@ -65,6 +65,16 @@ test("volet : liste, retrait, Échap rend le focus sans toucher aux filtres", as
   await p.locator("#mon-radar").click();
   assert.equal(await p.locator("#volet").isVisible(), true);
   assert.equal(await p.locator("#volet .volet-item").count(), 2);
+  // piège du focus : Tab et Maj+Tab restent dans le volet
+  const actif = () => p.evaluate(() => ({ id: document.activeElement.id, dansVolet: document.getElementById("volet").contains(document.activeElement) }));
+  assert.equal((await actif()).id, "volet-fermer");
+  await p.keyboard.press("Shift+Tab");
+  let a = await actif();
+  assert.ok(a.dansVolet && a.id !== "volet-fermer", "Maj+Tab depuis le premier bouton va au dernier du volet");
+  await p.keyboard.press("Tab");
+  assert.equal((await actif()).id, "volet-fermer", "Tab depuis le dernier revient au premier");
+  for (let i = 0; i < 12; i++) await p.keyboard.press("Tab");
+  assert.ok((await actif()).dansVolet);
   await p.locator("#volet .volet-retirer").first().click();
   assert.equal(await p.locator("#volet .volet-item").count(), 1);
   assert.equal((await texteCompteur(p)).trim(), "Mon radar · 1");
@@ -82,9 +92,7 @@ test("volet : liste, retrait, Échap rend le focus sans toucher aux filtres", as
 });
 
 test("suggestions de technologies liées aux tendances retenues", async () => {
-  // Avec « Virtualisation propriétaire » seule, VMware vSphere arrive 7e (ex aequo, ordre alphabétique) :
-  // le rachat de VMware la fait remonter dans les 6 suggestions affichées.
-  const { p, errs, fermer } = await page({}, { tendances: ["virtualisation-proprietaire", "rachats-et-consolidation-des-editeurs"], technologies: [], date: "" });
+  const { p, errs, fermer } = await page({}, { tendances: ["virtualisation-proprietaire"], technologies: [], date: "" });
   await p.locator("#mon-radar").click();
   const sugg = p.locator("#volet .volet-sugg", { hasText: "VMware vSphere et VCF" });
   assert.equal(await sugg.count(), 1);
@@ -92,7 +100,7 @@ test("suggestions de technologies liées aux tendances retenues", async () => {
   assert.match(await p.locator("#volet").innerText(), /Ces tendances concernent aussi/);
   assert.match(await p.locator("#volet").innerText(), /Les utilisez-vous/);
   await sugg.click();
-  assert.equal((await texteCompteur(p)).trim(), "Mon radar · 3");
+  assert.equal((await texteCompteur(p)).trim(), "Mon radar · 2");
   assert.equal(await p.locator("#volet .volet-item", { hasText: "VMware vSphere et VCF" }).count(), 1);
   assert.equal(await p.locator("#volet .volet-sugg", { hasText: "VMware vSphere et VCF" }).count(), 0);
   const stocke = await p.evaluate((c) => JSON.parse(localStorage.getItem(c)), CLE);

@@ -76,6 +76,15 @@ test("suggestions : technologies des tendances retenues, hors sélection", () =>
   assert.ok(r.indexOf("vmware-vsphere-et-vcf") >= 0);
   assert.ok(r.indexOf("vmware-vsphere-et-vcf") < r.findIndex(id => compte(id) === 1));
 });
+test("suggestions : à égalité, sortie la plus difficile d’abord, puis nom", () => {
+  // les 9 technologies de « Virtualisation propriétaire » sont citées une fois chacune
+  const r = suggestions({ tendances: ["virtualisation-proprietaire"], technologies: [], date: "" }, donnees);
+  assert.deepEqual(r, [
+    "ibm-power-aix-et-ibm-i", "mainframe-ibm-z-z-os", "vmware-vsphere-et-vcf", // anneau 0
+    "huawei-dcs-fusioncompute", "hyper-v-et-azure-local", "nutanix-ahv", "vmware-tanzu", "windows-server", // anneau 1
+    "xenserver-ex-citrix-hypervisor" // anneau 2
+  ]);
+});
 test("stockage qui lève une exception", () => {
   const casse = { getItem(){ throw new Error("x"); }, setItem(){ throw new Error("x"); } };
   assert.deepEqual(chargerSelection(casse), { tendances: [], technologies: [], date: "" });

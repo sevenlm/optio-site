@@ -1565,6 +1565,15 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   document.getElementById("mon-radar").addEventListener("click",function(){ if(voletOuvert()) fermerVolet(); else ouvrirVolet(); });
   document.getElementById("volet-fermer").addEventListener("click",function(){ fermerVolet(); });
   document.getElementById("volet-fond").addEventListener("click",function(){ fermerVolet(); });
+  // piège du focus : Tab et Maj+Tab bouclent dans le volet tant qu’il est ouvert
+  document.getElementById("volet").addEventListener("keydown",function(e){
+    if(e.key!=="Tab") return;
+    var v=document.getElementById("volet"), f=[].slice.call(v.querySelectorAll("button,a[href],input,select,textarea,[tabindex]:not([tabindex='-1'])")).filter(function(n){ return !n.disabled && n.getClientRects().length; });
+    if(!f.length) return;
+    var premier=f[0], dernier=f[f.length-1], a=document.activeElement;
+    if(e.shiftKey && (a===premier || a===v)){ e.preventDefault(); dernier.focus(); }
+    else if(!e.shiftKey && a===dernier){ e.preventDefault(); premier.focus(); }
+  });
   // Échap : retire les filtres axe et urgence
   document.addEventListener("keydown",function(e){
     if(e.key==="Escape" && voletOuvert()){ e.preventDefault(); fermerVolet(); return; } // le volet passe avant les autres usages d’Échap

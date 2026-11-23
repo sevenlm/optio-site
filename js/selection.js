@@ -127,7 +127,8 @@
         compte[tech.id]++;
       }
     }
-    candidates.sort(function (a, b) { return compte[b.id] - compte[a.id] || comparer(a.nom, b.nom); });
+    // plus de tendances citantes d’abord, puis sortie la plus difficile (anneau), puis nom
+    candidates.sort(function (a, b) { return compte[b.id] - compte[a.id] || a.anneau - b.anneau || comparer(a.nom, b.nom); });
     return candidates.map(function (c) { return c.id; });
   }
 
