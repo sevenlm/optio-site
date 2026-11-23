@@ -1221,7 +1221,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   // Radar compact des technologies : toutes en filigrane, celles de la tendance en surbrillance
   function radarLie(t){
     var z=document.getElementById("radar-lie"); z.textContent=""; if(!t || !t.techs.length) return;
-    var VT=VUES.technologies, QA=angles(4), M=24;
+    // même géométrie que le radar principal : quatre quadrants ou n secteurs selon le nombre de domaines
+    var VT=VUES.technologies, nq=VT.quadrants.length, quad=nq===4, QA=angles(nq), M=quad?24:40;
     if(!deja.technologies){ var v0=vue; vue="technologies"; placer(TECH, rb()); deja.technologies=true; vue=v0; }
     var n=t.techs.length;
     z.appendChild(el("div",{class:"radar-lie-tete"},[
@@ -1230,11 +1231,25 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     ]));
     var g=s("svg",{viewBox:(-M)+" "+(-M)+" "+(760+2*M)+" "+(760+2*M),role:"img","aria-label":"Radar des technologies : "+n+" en surbrillance"});
     QA.forEach(function(a,qi){ [3,2,1,0].forEach(function(ai){ var pth=s("path",{d:segment(R[ai],R[ai+1],a[0],a[1]),"stroke-width":"2"}); pth.style.fill="var(--x"+ai+")"; pth.style.stroke="var(--surface)"; g.appendChild(pth); }); });
-    var QL=[[8,10,"start"],[752,10,"end"],[8,758,"start"],[752,758,"end"]];
-    VT.quadrants.forEach(function(qd,qi){ var tx=s("text",{x:QL[qi][0],y:QL[qi][1],"text-anchor":QL[qi][2],"font-size":"13","font-weight":"800","font-family":"Archivo, sans-serif"},qd.t); tx.style.fill="var(--text-3)"; g.appendChild(tx); });
-    [-1,1].forEach(function(sens){ VT.courts.forEach(function(nm,i){ var mx=C+sens*(R[i]+R[i+1])/2, w=nm.length*6+16;
-      var r0=s("rect",{x:mx-w/2,y:C-10,width:w,height:20,rx:10,"stroke-width":"1"}); r0.style.fill="var(--surface)"; r0.style.stroke="var(--x"+i+"t)"; r0.setAttribute("stroke-opacity","0.45"); g.appendChild(r0);
-      var tt=s("text",{x:mx,y:C+4,"text-anchor":"middle","font-size":"10.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},nm); tt.style.fill="var(--text-3)"; g.appendChild(tt); }); });
+    function etiquette(nm,i,x,y,w,cx,cy){
+      var r0=s("rect",{x:x,y:y,width:w,height:20,rx:10,"stroke-width":"1"}); r0.style.fill="var(--surface)"; r0.style.stroke="var(--x"+i+"t)"; r0.setAttribute("stroke-opacity","0.45"); g.appendChild(r0);
+      var tt=s("text",{x:cx,y:cy+4,"text-anchor":"middle","font-size":"10.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},nm); tt.style.fill="var(--text-3)"; g.appendChild(tt);
+    }
+    if(quad){
+      var QL=[[8,10,"start"],[752,10,"end"],[8,758,"start"],[752,758,"end"]];
+      VT.quadrants.forEach(function(qd,qi){ var tx=s("text",{x:QL[qi][0],y:QL[qi][1],"text-anchor":QL[qi][2],"font-size":"13","font-weight":"800","font-family":"Archivo, sans-serif"},qd.t); tx.style.fill="var(--text-3)"; g.appendChild(tx); });
+      [-1,1].forEach(function(sens){ VT.courts.forEach(function(nm,i){ var mx=C+sens*(R[i]+R[i+1])/2, w=nm.length*6+16; etiquette(nm,i,mx-w/2,C-10,w,mx,C); }); });
+    } else {
+      // titres en arc au-dessus du bord, lisibles de gauche à droite ; libellés d’anneaux sur le séparateur du haut
+      VT.quadrants.forEach(function(qd,qi){
+        var a0=QA[qi][0], a1=QA[qi][1], bas=Math.sin((a0+a1)/2)>0, rt=bas?R[4]+20:R[4]+9;
+        var p0=[C+rt*Math.cos(a0),C+rt*Math.sin(a0)], p1=[C+rt*Math.cos(a1),C+rt*Math.sin(a1)], id="lie-arc-"+qi;
+        g.appendChild(s("path",{id:id,fill:"none",d:bas?"M"+p1[0]+" "+p1[1]+" A"+rt+" "+rt+" 0 0 0 "+p0[0]+" "+p0[1]:"M"+p0[0]+" "+p0[1]+" A"+rt+" "+rt+" 0 0 1 "+p1[0]+" "+p1[1]}));
+        var tx=s("text",{"font-size":"13","font-weight":"800","font-family":"Archivo, sans-serif"}); tx.style.fill="var(--text-3)";
+        var tp=s("textPath",{href:"#"+id,startOffset:"50%","text-anchor":"middle"},qd.t); tx.appendChild(tp); g.appendChild(tx);
+      });
+      etiquettesAnneaux(VT).forEach(function(b){ etiquette(b.n,b.i,b.x,b.y,b.w,b.mx,b.my); });
+    }
     TECH.forEach(function(y){ if(t.techs.indexOf(y)>=0) return; var c=s("circle",{cx:y.x,cy:y.y,r:4}); c.style.fill="var(--text-3)"; c.setAttribute("opacity","0.22"); g.appendChild(c); });
     var tip=s("g",{"pointer-events":"none"});
     t.techs.forEach(function(y,k){
