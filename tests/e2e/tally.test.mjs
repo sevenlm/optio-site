@@ -25,6 +25,8 @@ async function volet({ config, tally, viewport, scheme, hote } = {}) {
   p.on("request", (r) => requetes.push(r.url()));
   if (config !== undefined) await p.route("**/js/config.js", (r) => r.fulfill({ contentType: "text/javascript", body: config }));
   if (tally === "simule") await p.route("**/tally.so/widgets/embed.js", (r) => r.fulfill({ contentType: "text/javascript", body: "window.Tally = { openPopup: function(id, opts){ window.__tally = {id: id, opts: opts}; } };" }));
+  if (tally === "vide") await p.route("**/tally.so/widgets/embed.js", (r) => r.fulfill({ contentType: "text/javascript", body: "/* sans Tally */" }));
+  if (tally === "lent") await p.route("**/tally.so/widgets/embed.js", async (r) => { await new Promise((ok) => setTimeout(ok, 700)); await r.fulfill({ contentType: "text/javascript", body: "window.Tally = { openPopup: function(id, opts){ window.__n = (window.__n || 0) + 1; } };" }); });
   if (tally === "echec") await p.route("**/tally.so/**", (r) => r.abort());
   // Hôte non local simulé : les requêtes vers exemple.test sont servies par localhost:8765.
   if (hote) await contexte.route("http://" + hote + ":8765/**", async (r) => r.fulfill({ response: await r.fetch({ url: r.request().url().replace(hote, "localhost") }) }));
@@ -49,7 +51,7 @@ test("aucune requête vers tally.so avant le clic", async () => {
 });
 
 test("en local avec tallyFormId vide : ouverture directe du rapport", async () => {
-  const { p, fermer } = await volet();
+  const { p, fermer } = await volet({ config: cfg("") });
   try {
     await Promise.all([p.waitForURL(/rapport=1/), p.locator("#demander-rapport").click()]);
     const u = new URL(p.url());
@@ -104,7 +106,7 @@ test("Tally simulé : champs cachés et redirection à l’envoi", async () => {
 });
 
 test("phrase d’information visible sous le bouton, mobile et mode sombre", async () => {
-  const { p, fermer } = await volet({ viewport: { width: 390, height: 800 }, scheme: "dark" });
+  const { p, fermer } = await volet({ config: cfg(""), viewport: { width: 390, height: 800 }, scheme: "dark" });
   try {
     const ph = p.locator(".rgpd-radar");
     await ph.scrollIntoViewIfNeeded();
@@ -115,5 +117,25 @@ test("phrase d’information visible sous le bouton, mobile et mode sombre", asy
     const phrase = await ph.boundingBox();
     assert.ok(phrase.y >= bouton.y + bouton.height - 1);
     assert.ok(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth));
+  } finally { await fermer(); }
+});
+
+test("script chargé sans Tally.openPopup : message de repli", async () => {
+  const { p, fermer } = await volet({ config: cfg("TEST"), tally: "vide" });
+  try {
+    await p.locator("#demander-rapport").click();
+    await p.locator(".tally-erreur").waitFor({ state: "visible" });
+    assert.equal(await p.locator("script[data-tally]").count(), 0);
+  } finally { await fermer(); }
+});
+
+test("double clic pendant le chargement : un seul script, une seule ouverture", async () => {
+  const { p, fermer } = await volet({ config: cfg("TEST"), tally: "lent" });
+  try {
+    await p.locator("#demander-rapport").dblclick();
+    await p.waitForFunction(() => window.__n >= 1);
+    await p.waitForTimeout(300);
+    assert.equal(await p.evaluate(() => window.__n), 1);
+    assert.equal(await p.locator("script[data-tally]").count(), 1);
   } finally { await fermer(); }
 });

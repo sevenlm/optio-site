@@ -1602,13 +1602,19 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       else erreurTally(sec,lien);
       return;
     }
-    function ouvrir(){ window.Tally.openPopup(cfg.tallyFormId,{hiddenFields:{selection:code,rapport:lien},onSubmit:function(){ location.href=lien; }}); }
-    if(window.Tally&&window.Tally.openPopup){ ouvrir(); return; }
-    var fini=false, s=document.createElement("script");
-    var echec=function(){ if(fini) return; fini=true; erreurTally(sec,lien); };
-    var delai=setTimeout(echec,8000);
-    s.src="https://tally.so/widgets/embed.js"; s.async=true;
-    s.onload=function(){ if(fini) return; fini=true; clearTimeout(delai); ouvrir(); };
+    var fini=false;
+    function echec(){ if(fini) return; fini=true; var c=document.querySelector("script[data-tally]"); if(c) c.remove(); erreurTally(sec,lien); }
+    function ouvrir(){
+      if(fini) return; fini=true;
+      try{ window.Tally.openPopup(cfg.tallyFormId,{hiddenFields:{selection:code,rapport:lien},onSubmit:function(){ location.href=lien; }}); }
+      catch(e){ fini=false; echec(); }
+    }
+    function pret(){ return window.Tally&&typeof window.Tally.openPopup==="function"; }
+    if(pret()){ ouvrir(); return; }
+    if(document.querySelector("script[data-tally]")) return; // chargement déjà en cours
+    var s=document.createElement("script"), delai=setTimeout(echec,8000);
+    s.src="https://tally.so/widgets/embed.js"; s.async=true; s.setAttribute("data-tally","");
+    s.onload=function(){ clearTimeout(delai); if(pret()) ouvrir(); else echec(); };
     s.onerror=function(){ clearTimeout(delai); echec(); };
     document.head.appendChild(s);
   }
