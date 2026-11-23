@@ -74,6 +74,7 @@ test("script Tally en échec : message avec le lien du rapport", async () => {
     assert.match(txt, /rapport=1/);
     assert.match(txt, new RegExp("d=" + aujourdhui()));
     assert.match(txt, /tibco/);
+    assert.match(txt, /contact@stratwise\.fr/);
     assert.ok(errs.every((e) => /tally|ERR_FAILED/i.test(e)), errs.join("\n"));
   } finally { await fermer(); }
 });
@@ -112,7 +113,7 @@ test("phrase d’information visible sous le bouton, mobile et mode sombre", asy
     await ph.scrollIntoViewIfNeeded();
     assert.ok(await ph.isVisible());
     const txt = await ph.innerText();
-    for (const mot of ["Tally", "adresse IP", "trois ans", "contact@[DOMAINE]"]) assert.ok(txt.includes(mot), mot);
+    for (const mot of ["Tally", "adresse IP", "trois ans", "contact@stratwise.fr"]) assert.ok(txt.includes(mot), mot);
     const bouton = await p.locator("#demander-rapport").boundingBox();
     const phrase = await ph.boundingBox();
     assert.ok(phrase.y >= bouton.y + bouton.height - 1);
@@ -137,5 +138,29 @@ test("double clic pendant le chargement : un seul script, une seule ouverture", 
     await p.waitForTimeout(300);
     assert.equal(await p.evaluate(() => window.__n), 1);
     assert.equal(await p.locator("script[data-tally]").count(), 1);
+  } finally { await fermer(); }
+});
+
+test("en local avec une vraie config : le lien du rapport reste local", async () => {
+  const prod = 'window.OPTIO_CONFIG = {tallyFormId:"TEST", calLien:"", urlSite:"https://optio.stratwise.fr/radar.html"};';
+  const { p, errs, fermer } = await volet({ config: prod, tally: "simule" });
+  try {
+    await p.locator("#demander-rapport").click();
+    await p.waitForFunction(() => window.__tally);
+    const h = await p.evaluate(() => window.__tally.opts.hiddenFields);
+    assert.ok(h.rapport.startsWith("http://localhost:8765/radar.html?rapport=1&"), h.rapport);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("hors local : le lien du rapport suit urlSite", async () => {
+  const prod = 'window.OPTIO_CONFIG = {tallyFormId:"", calLien:"", urlSite:"https://optio.stratwise.fr/radar.html"};';
+  const { p, fermer } = await volet({ config: prod, hote: "exemple.test" });
+  try {
+    await p.locator("#demander-rapport").click();
+    const m = p.locator(".tally-erreur");
+    await m.waitFor({ state: "visible" });
+    assert.match(await m.innerText(), /https:\/\/optio\.stratwise\.fr\/radar\.html\?rapport=1&/);
+    assert.match(await m.innerText(), /contact@stratwise\.fr/);
   } finally { await fermer(); }
 });

@@ -125,3 +125,77 @@ test("mobile 390 px : volet ouvert sans débordement", async () => {
   assert.deepEqual(errs, []);
   await fermer();
 });
+
+test("revoir mon dernier rapport : lien près du bouton de demande", async () => {
+  const dernier = "http://localhost:8765/radar.html?rapport=1&x=openstack&d=2026-11-23";
+  const { p, errs, fermer } = await page({}, { tendances: [], technologies: ["openstack"], date: "" });
+  try {
+    await p.locator("#mon-radar").click();
+    assert.equal(await p.locator("#volet .dernier-rapport").count(), 0, "aucun lien sans rapport gardé");
+    await p.keyboard.press("Escape");
+    await p.evaluate((u) => localStorage.setItem("optio-radar-dernier-rapport", u), dernier);
+    await p.locator("#mon-radar").click();
+    const lien = p.locator("#volet a.dernier-rapport");
+    assert.equal(await lien.isVisible(), true);
+    assert.match(await lien.innerText(), /Revoir mon dernier rapport/);
+    assert.equal(await lien.getAttribute("href"), dernier);
+    // près du bouton : dans la même section que #demander-rapport
+    assert.equal(await p.locator(".apercu a.dernier-rapport").count(), 1);
+    await Promise.all([p.waitForURL(/rapport=1&x=openstack/), lien.click()]);
+    await p.waitForSelector("#rapport[data-etat]");
+    // une valeur qui n’est pas un lien de rapport http(s) est ignorée
+    await p.evaluate(() => localStorage.setItem("optio-radar-dernier-rapport", "javascript:alert(1)"));
+    await p.goto("http://localhost:8765/radar.html"); await p.waitForSelector("#stats .stat");
+    await p.locator("#mon-radar").click();
+    assert.equal(await p.locator("#volet .dernier-rapport").count(), 0);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("ouvrir sa fiche depuis le volet : le focus va sur le titre de la fiche", async () => {
+  const { p, errs, fermer } = await page({}, { tendances: ["fin-des-licences-perpetuelles"], technologies: ["oracle-database"], date: "" });
+  try {
+    for (const [nom, id] of [["tendance", "fin-des-licences-perpetuelles"], ["technologie", "oracle-database"]]) {
+      await p.locator("#mon-radar").click();
+      const item = p.locator("#volet .volet-ouvrir").nth(nom === "tendance" ? 0 : 1);
+      const titre = (await item.innerText()).replace(/^\d+\s*/, "").trim();
+      await item.click();
+      await p.waitForFunction((t) => { const a = document.activeElement; return a && a.tagName === "H2" && document.getElementById("fiche").contains(a) && a.textContent.trim() === t; }, titre, { timeout: 3000 });
+      assert.equal(await p.locator("#volet").isVisible(), false);
+      assert.equal(await p.evaluate(() => document.activeElement.getAttribute("tabindex")), "-1");
+      assert.ok(p.url().endsWith("#" + id), p.url());
+    }
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("volet modal : rôle dialog, nom accessible, reste de la page inerte", async () => {
+  const { p, errs, fermer } = await page({}, { tendances: ["fin-des-licences-perpetuelles"], technologies: [], date: "" });
+  try {
+    const v = p.locator("#volet");
+    assert.equal(await v.getAttribute("role"), "dialog");
+    assert.equal(await v.getAttribute("aria-modal"), "true");
+    const nom = await p.evaluate(() => { const v = document.getElementById("volet"), l = v.getAttribute("aria-labelledby"); return l ? document.getElementById(l).textContent : v.getAttribute("aria-label"); });
+    assert.equal(nom.trim(), "Mon radar");
+    const inertes = () => p.evaluate(() => ["contenu", "bande"].map((i) => document.getElementById(i).inert).concat([document.querySelector(".entete").inert, document.querySelector(".skip").inert]));
+    assert.deepEqual(await inertes(), [false, false, false, false]);
+    await p.locator("#mon-radar").click();
+    assert.deepEqual(await inertes(), [true, true, true, true]);
+    assert.equal(await p.evaluate(() => document.getElementById("volet").inert || document.getElementById("volet-fond").inert), false);
+    await p.keyboard.press("Escape");
+    assert.deepEqual(await inertes(), [false, false, false, false]);
+    assert.equal(await p.evaluate(() => document.activeElement.id), "mon-radar");
+    assert.equal(await p.evaluate(() => document.getElementById("etape-2").inert), true, "l’inertie propre aux filtres est conservée");
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("identifiants égaux à des noms d’Object.prototype : pastille juste, sans erreur", async () => {
+  const { p, errs, fermer } = await page({}, { tendances: ["constructor", "fin-des-licences-perpetuelles"], technologies: ["__proto__", "toString"], date: "" });
+  try {
+    assert.equal((await texteCompteur(p)).trim(), "Mon radar · 1");
+    await p.locator("#mon-radar").click();
+    assert.equal(await p.locator("#volet .volet-item").count(), 1);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});

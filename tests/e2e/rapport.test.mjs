@@ -261,3 +261,44 @@ test("mobile 390 px : pas de débordement horizontal", async () => {
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
+
+test("identifiants égaux à des noms d’Object.prototype : pas de page blanche", async () => {
+  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=constructor&x=__proto__&d=2026-11-23");
+  try {
+    assert.equal(await p.locator("#rapport").getAttribute("data-etat"), "vide");
+    await p.getByText("2 éléments ne figurent plus dans le radar").waitFor({ state: "visible" });
+    assert.doesNotMatch(await p.locator("#rapport").innerText(), /Impossible de charger/);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("tous les identifiants inconnus : avertissement et rapport vide", async () => {
+  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=tendance-disparue&x=techno-disparue,toString&d=2026-11-23");
+  try {
+    assert.equal(await p.locator("#rapport").getAttribute("data-etat"), "vide");
+    await p.getByText("3 éléments ne figurent plus dans le radar").waitFor({ state: "visible" });
+    await p.getByText("Ce rapport ne contient aucune sélection").waitFor({ state: "visible" });
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("virgules encodées (%2C) dans l’adresse : sélection conservée", async () => {
+  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf%2Copenstack&d=2026-11-23");
+  try {
+    assert.equal(await p.locator(".rapport-techno").count(), 2);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("lien d’évitement : le focus va sur le rapport", async () => {
+  const { p, errs, fermer } = await rapport(ADRESSE);
+  try {
+    assert.equal(await p.locator("main#rapport").getAttribute("tabindex"), "-1");
+    assert.equal(await p.locator(".skip").getAttribute("href"), "#rapport");
+    await p.keyboard.press("Tab");
+    assert.equal(await p.evaluate(() => document.activeElement.className), "skip");
+    await p.keyboard.press("Enter");
+    await p.waitForFunction(() => document.activeElement && document.activeElement.id === "rapport");
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});

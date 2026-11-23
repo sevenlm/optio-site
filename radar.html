@@ -527,6 +527,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .apercu .voir-radar{align-self:stretch;margin-top:6px;white-space:normal}
 .apercu .voir-radar:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
 .rgpd-radar{margin:8px 0 0;font-size:12px;line-height:1.5;color:var(--text-3)}
+.dernier-rapport-ligne{margin:6px 0 0;font-size:14px}
+.fiche h2:focus:not(:focus-visible),#rapport:focus{outline:none}
 .tally-erreur{margin:8px 0 0;padding:10px 12px;border:1.5px solid var(--line-2);border-radius:10px;background:var(--surface);color:var(--text-2);font-size:13px;line-height:1.5;overflow-wrap:anywhere}
 .tally-erreur a{color:var(--ink);text-decoration:underline}
 @media (prefers-reduced-motion: reduce){.mon-radar,.ld-etoile{transition:none}.mon-radar.bump,.volet,.volet-fond{animation:none}}
@@ -674,8 +676,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 <p class="pied">Prototype à valider avec des experts. Les classements des technologies sont indicatifs : ils décrivent la difficulté typique d’une sortie, pas la qualité des produits, et varient selon vos usages. Informations vérifiées en novembre 2026. Optio, une marque de Stratwise.</p>
 </main>
 <div class="volet-fond" id="volet-fond" hidden></div>
-<aside id="volet" class="volet" aria-label="Mon radar" tabindex="-1" hidden>
-<div class="volet-tete"><h2>Mon radar</h2><button type="button" class="volet-fermer" id="volet-fermer" aria-label="Fermer Mon radar"><span aria-hidden="true">×</span></button></div>
+<aside id="volet" class="volet" role="dialog" aria-modal="true" aria-labelledby="volet-titre" tabindex="-1" hidden>
+<div class="volet-tete"><h2 id="volet-titre">Mon radar</h2><button type="button" class="volet-fermer" id="volet-fermer" aria-label="Fermer Mon radar"><span aria-hidden="true">×</span></button></div>
 <div class="volet-corps" id="volet-corps"></div>
 </aside>
 
@@ -1000,7 +1002,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
     var typeLib=V.types.filter(function(t){ return t[0]===x.type; })[0][1];
     corps.appendChild(el("div",{class:"tags"},[num, (function(){ var tg=el("span",{class:"tag tag-axe"},[icone(V.quadrants[x.q].ic), V.quadrants[x.q].t]); tg.style.setProperty("--qc","var(--q"+x.q+")"); return tg; })(), el("span",{class:"tag",text:typeLib})]));
-    corps.appendChild(el("h2",{text:x.t}));
+    corps.appendChild(el("h2",{tabindex:"-1",text:x.t}));
     if(x.ed || (x.sites && x.sites.length)){
       // éditeur et lien(s) vers le site officiel
       var ligneEd=el("p",{class:"editeur"},[x.ed||null]);
@@ -1521,8 +1523,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     bloc.appendChild(el("button",{type:"button",class:"voir-radar",onclick:function(){ glisser("technologies",function(){ lien=t; sel=null; changerVue("technologies",true); try{ history.replaceState(null,"","#technologies"); }catch(e){} }); }},["Les mettre en surbrillance sur le radar Technologies ", el("span",{"aria-hidden":"true",text:"→"})]));
     return bloc;
   }
-  function voirTechno(y){ glisser("technologies",function(){ sel=y.id; changerVue("technologies",true); choisir(y.id,true); }); }
-  function voirTendance(t){ glisser("tendances",function(){ sel=t.id; changerVue("tendances",true); choisir(t.id,true); }); }
+  // focus=true : le focus va au titre de la fiche ouverte (ouverture depuis le volet « Mon radar »)
+  function focusFiche(){ var h=document.querySelector("#fiche h2"); if(h) h.focus({preventScroll:window.innerWidth>=1000}); }
+  function voirTechno(y,focus){ glisser("technologies",function(){ sel=y.id; changerVue("technologies",true); choisir(y.id,true); if(focus) focusFiche(); }); }
+  function voirTendance(t,focus){ glisser("tendances",function(){ sel=t.id; changerVue("tendances",true); choisir(t.id,true); if(focus) focusFiche(); }); }
   // Défilement horizontal entre les vues (API View Transitions) : la vue suivante arrive par la droite, la précédente par la gauche.
   // Sans prise en charge du navigateur, ou si l’utilisateur limite les animations, la vue change simplement.
   var ORDRE=["tendances","technologies","mecanismes","leviers"];
@@ -1593,7 +1597,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function stockage(){ try{ return window.localStorage; }catch(e){ return null; } }
   // charge la sélection et oublie les identifiants qui ne sont plus sur le radar
   function initSelection(){
-    var s0=SEL.chargerSelection(stockage()), ids=function(liste){ var o={}; liste.forEach(function(x){ o[x.id]=1; }); return o; }, iT=ids(T), iX=ids(TECH);
+    var s0=SEL.chargerSelection(stockage()), ids=function(liste){ var o=Object.create(null); liste.forEach(function(x){ o[x.id]=1; }); return o; }, iT=ids(T), iX=ids(TECH);
     maSelection={tendances:s0.tendances.filter(function(i){ return iT[i]; }), technologies:s0.technologies.filter(function(i){ return iX[i]; }), date:s0.date};
     var p=document.getElementById("mon-radar"); p.hidden=false; majPastille(false);
   }
@@ -1619,17 +1623,32 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(anim){ p.classList.remove("bump"); void p.offsetWidth; p.classList.add("bump"); }
   }
   function voletOuvert(){ return !document.getElementById("volet").hidden; }
+  // volet modal : le reste de la page est inerte pendant l’ouverture (data-inerte-volet marque ce que le volet a rendu inerte)
+  function inerteHorsVolet(on){
+    [].forEach.call(document.body.children,function(n){
+      if(n.id==="volet"||n.id==="volet-fond"||n.tagName==="SCRIPT") return;
+      if(on){ if(!n.inert){ n.inert=true; n.setAttribute("data-inerte-volet",""); } }
+      else if(n.hasAttribute("data-inerte-volet")){ n.inert=false; n.removeAttribute("data-inerte-volet"); }
+    });
+  }
   function ouvrirVolet(){
     rendreVolet();
     document.getElementById("volet-fond").hidden=false; document.getElementById("volet").hidden=false;
+    inerteHorsVolet(true);
     document.getElementById("mon-radar").setAttribute("aria-expanded","true");
     document.getElementById("volet-fermer").focus();
   }
   // rendreFocus=false quand on quitte le volet pour ouvrir une fiche
   function fermerVolet(rendreFocus){
     document.getElementById("volet-fond").hidden=true; document.getElementById("volet").hidden=true;
+    inerteHorsVolet(false);
     var p=document.getElementById("mon-radar"); p.setAttribute("aria-expanded","false");
     if(rendreFocus!==false) p.focus();
+  }
+  // lien du dernier rapport ouvert dans ce navigateur (écrit par rendreRapport) ; seulement une adresse http(s) de rapport
+  function dernierRapport(){
+    var u=null; try{ var st=stockage(); u=st && st.getItem(SEL.CLE_DERNIER_RAPPORT); }catch(e){ return null; }
+    return typeof u==="string" && /^https?:\/\/[^?#]*\?(?:[^#]*&)?rapport=1(?:&|#|$)/.test(u) ? u : null;
   }
   // Aperçu libre : chiffres d’exposition seulement, sans leviers, alternatives ni montants
   function apercuLibre(n){
@@ -1658,21 +1677,24 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var b=el("button",{type:"button",id:"demander-rapport",class:"voir-radar"},["Recevoir mon rapport complet (PDF)"]); if(!n) b.disabled=true;
     b.addEventListener("click",function(){ demanderRapport(sec); });
     sec.appendChild(b);
-    sec.appendChild(el("p",{class:"rgpd-radar",text:"En cliquant, vous ouvrez un formulaire hébergé par Tally, qui reçoit votre adresse IP. Votre e-mail sert à vous envoyer ce rapport, à vous recontacter et à vous relancer dans le cadre de cette campagne ; il est conservé trois ans après notre dernier contact. Accès et suppression : contact@[DOMAINE]."}));
+    sec.appendChild(el("p",{class:"rgpd-radar",text:"En cliquant, vous ouvrez un formulaire hébergé par Tally, qui reçoit votre adresse IP. Votre e-mail sert à vous envoyer ce rapport, à vous recontacter et à vous relancer dans le cadre de cette campagne ; il est conservé trois ans après notre dernier contact. Accès et suppression : contact@stratwise.fr."}));
+    var dernier=dernierRapport();
+    if(dernier) sec.appendChild(el("p",{class:"dernier-rapport-ligne"},[el("a",{class:"dernier-rapport",href:dernier,text:"Revoir mon dernier rapport"})]));
     return sec;
   }
   // Demande du rapport : Tally n’est chargé qu’au clic, qui vaut consentement.
   function dateLocale(){ var d=new Date(), z=function(n){ return (n<10?"0":"")+n; }; return d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate()); }
   function erreurTally(sec,lien){
     var ancien=sec.querySelector(".tally-erreur"); if(ancien) ancien.remove();
-    sec.appendChild(el("p",{class:"tally-erreur",role:"alert"},["Le formulaire n’a pas pu s’ouvrir. Écrivez-nous à contact@[DOMAINE] en joignant ce lien : ", el("a",{href:lien,text:lien})]));
+    sec.appendChild(el("p",{class:"tally-erreur",role:"alert"},["Le formulaire n’a pas pu s’ouvrir. Écrivez-nous à contact@stratwise.fr en joignant ce lien : ", el("a",{href:lien,text:lien})]));
   }
   function demanderRapport(sec){
     var cfg=window.OPTIO_CONFIG||{};
     maSelection.date=dateLocale();
-    var lien=SEL.urlRapport(cfg.urlSite||location.origin+location.pathname, maSelection), code=SEL.encoderSelection(maSelection);
+    var local=location.hostname==="localhost"||location.hostname==="127.0.0.1", ici=location.origin+location.pathname;
+    var lien=SEL.urlRapport(local?ici:(cfg.urlSite||ici), maSelection), code=SEL.encoderSelection(maSelection); // en local, le lien reste local
     if(!cfg.tallyFormId){
-      if(location.hostname==="localhost"||location.hostname==="127.0.0.1") location.href=lien; // mode développement
+      if(local) location.href=lien; // mode développement
       else erreurTally(sec,lien);
       return;
     }
@@ -1692,26 +1714,26 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     s.onerror=function(){ clearTimeout(delai); echec(); };
     document.head.appendChild(s);
   }
-  // Contenu du volet : tendances puis technologies retenues, puis suggestions (Task 3 y ajoute l’aperçu)
+  // Contenu du volet : aperçu, tendances puis technologies retenues, puis suggestions
   function rendreVolet(){
     var z=document.getElementById("volet-corps"); z.textContent="";
     var tends=T.filter(estRetenu), techs=TECH.filter(estRetenu), tri=function(a,b){ return a.a-b.a || a.t.localeCompare(b.t,"fr"); };
     tends.sort(tri); techs.sort(tri);
     z.appendChild(apercuLibre(tends.length+techs.length));
     z.appendChild(el("p",{class:"volet-aide",text:tends.length+techs.length ? "Vos tendances et technologies retenues, enregistrées dans ce navigateur." : "Aucun élément retenu pour l’instant. Cliquez sur l’étoile ☆ d’une tendance ou d’une technologie pour la retenir."}));
-    function bloc(titre,liste,ouvrir){
+    function bloc(titre,liste,voir){
       if(!liste.length) return;
       z.appendChild(el("section",null,[el("h3",{text:titre+" · "+liste.length}), el("ul",{class:"volet-liste"},liste.map(function(x){
         var col=couleur(x.type), num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
         return el("li",{class:"volet-item"},[
-          el("button",{type:"button",class:"volet-ouvrir",title:"Ouvrir la fiche",onclick:function(){ fermerVolet(false); ouvrir(x); }},[num, el("span",{text:x.t})]),
+          el("button",{type:"button",class:"volet-ouvrir",title:"Ouvrir la fiche",onclick:function(){ fermerVolet(false); voir(x,true); }},[num, el("span",{text:x.t})]),
           el("button",{type:"button",class:"volet-retirer","aria-label":"Retirer « "+x.t+" »",onclick:function(){ basculerRetenu(x); }},["Retirer"])
         ]);
       }))]));
     }
     bloc("Tendances retenues",tends,voirTendance);
     bloc("Technologies retenues",techs,voirTechno);
-    var parId={}; TECH.forEach(function(y){ parId[y.id]=y; });
+    var parId=Object.create(null); TECH.forEach(function(y){ parId[y.id]=y; });
     var sugg=SEL.suggestions(maSelection, DONNEES_BRUTES).map(function(i){ return parId[i]; }).filter(Boolean).slice(0,6);
     if(sugg.length) z.appendChild(el("section",{class:"volet-suggestions"},[
       el("p",{text:"Ces tendances concernent aussi :"}),
@@ -1756,7 +1778,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function pluriel(n,mot){ return n+" "+mot+(n>1?"s":""); }
   function zoneRapport(){
     var z=document.getElementById("rapport");
-    if(!z){ z=el("main",{id:"rapport",class:"rapport"}); document.body.insertBefore(z,document.getElementById("contenu")); document.querySelector(".skip").setAttribute("href","#rapport"); }
+    if(!z){ z=el("main",{id:"rapport",class:"rapport",tabindex:"-1"}); document.body.insertBefore(z,document.getElementById("contenu")); document.querySelector(".skip").setAttribute("href","#rapport"); }
     return z;
   }
   function lienRdv(){
@@ -1790,7 +1812,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var z=zoneRapport(); z.textContent="";
     document.title="Mon rapport · Radar des dépendances · Optio";
     var sy=SEL.synthese(sel, DONNEES_BRUTES), nt=sy.technos.length, nd=sy.tendances.length, date=dateLongue(sel.date);
-    var techId={}, tendId={}, levId={};
+    var techId=Object.create(null), tendId=Object.create(null), levId=Object.create(null);
     TECH.forEach(function(x){ techId[x.id]=x; }); T.forEach(function(x){ tendId[x.id]=x; }); LEV.forEach(function(x){ levId[x.id]=x; });
 
     var garde=el("section",{class:"rapport-bloc rapport-garde","aria-labelledby":"rapport-titre"},[
@@ -1831,7 +1853,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(nt){
       var cartesX=el("div",{class:"rapport-cartes"});
       sy.technos.forEach(function(brut){
-        var x=techId[brut.id], c=carte("rapport-techno",x.a,"x");
+        var x=techId[brut.id]; if(!x) return;
+        var c=carte("rapport-techno",x.a,"x");
         c.appendChild(el("div",{class:"rapport-tete"},[el("h3",{text:x.t}), anneauTech(x.a)]));
         if(x.ed) c.appendChild(el("p",{class:"rapport-meta",text:"Éditeur : "+x.ed}));
         if(x.pourquoi) c.appendChild(el("div",{class:"pourquoi"},[el("h4",{text:"Pourquoi cet anneau"}), el("p",{text:x.pourquoi})]));
@@ -1856,7 +1879,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(nd){
       var cartesT=el("div",{class:"rapport-cartes"});
       sy.tendances.forEach(function(brut){
-        var t=tendId[brut.id], c=carte("rapport-tendance",t.a,"a");
+        var t=tendId[brut.id]; if(!t) return;
+        var c=carte("rapport-tendance",t.a,"a");
         c.appendChild(el("div",{class:"rapport-tete"},[el("h3",{text:t.t}), anneauTend(t.a)]));
         c.appendChild(el("div",{class:"pourquoi"},[el("h4",{text:"Le risque"}), el("p",{text:t.pourquoi})]));
         c.appendChild(el("h4",{text:"Leviers"}));
