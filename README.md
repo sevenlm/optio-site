@@ -46,7 +46,7 @@ Les réglages sont dans `js/config.js` (`window.OPTIO_CONFIG`) ; une valeur vide
 | Clé | Rôle |
 |---|---|
 | `tallyFormId` | identifiant du formulaire Tally (ex. `wXyZ12`). Vide : en local (`localhost`, `127.0.0.1`) le clic ouvre directement le rapport, ailleurs un message invite à écrire à Optio avec le lien du rapport |
-| `calLien` | lien de prise de rendez-vous Cal.com : boutons « Réserver 30 minutes » du rapport (le lien du rapport y est joint dans `notes=`) et e-mail envoyé au répondant. Vide : les boutons mènent à `index.html#contact` |
+| `calLien` | lien de prise de rendez-vous Cal.com : boutons « Réserver 15 minutes » du rapport (le lien du rapport y est joint dans `notes=`) et e-mail envoyé au répondant. Vide : les boutons mènent à `index.html#contact` |
 | `urlSite` | URL publique de `radar.html`, base du lien du rapport personnel (en local, `localhost` ou `127.0.0.1`, l'adresse de la page est utilisée à la place) |
 
 Tally n'est chargé qu'au clic sur « Recevoir mon rapport complet (PDF) » : le clic vaut consentement, la phrase d'information est affichée sous le bouton.

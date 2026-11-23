@@ -8,7 +8,7 @@ Le radar des dépendances (`radar.html`) devient le **lead magnet** d’une camp
 marketing d’Optio. Un DSI ou décideur y retient les tendances et les technologies
 qui le concernent, voit gratuitement un aperçu de son exposition, puis laisse son
 e-mail pour obtenir son **rapport complet**. Ce rapport n’est pas une fin en soi :
-c’est le support d’un **rendez-vous de 30 minutes** avec Optio pour l’analyser et
+c’est le support d’un **rendez-vous de 15 minutes** avec Optio pour l’analyser et
 étudier plus avant ses dépendances nocives. L’indicateur de succès est le nombre
 de rendez-vous pris, et la liste d’e-mails sert à relancer ceux qui n’en prennent
 pas tout de suite.
@@ -143,7 +143,7 @@ Radar → je retiens mes tendances et technologies
 - Redirection après envoi vers l’adresse du rapport complet construite avec la
   sélection.
 - E-mail de confirmation au répondant (Tally Pro) : message simple, lien vers son
-  rapport, appel à prendre rendez-vous (30 minutes) avec le lien Cal.com.
+  rapport, appel à prendre rendez-vous (15 minutes) avec le lien Cal.com.
 - Notification à Optio à chaque envoi.
 
 ### Rapport complet
@@ -159,7 +159,7 @@ l’impression (« Enregistrer en PDF » du navigateur) :
 4. Pour chaque tendance retenue : risque, leviers avec leur commentaire.
 5. Mécanismes probables et leurs parades (leviers reliés).
 6. Sources citées.
-7. Dernière page : appel au rendez-vous « Analysons ce rapport ensemble, 30 minutes »,
+7. Dernière page : appel au rendez-vous « Analysons ce rapport ensemble, 15 minutes »,
    avec le lien de réservation Cal.com (lien du rapport joint).
 
 Décisions du constructeur, validées dans la conversation :

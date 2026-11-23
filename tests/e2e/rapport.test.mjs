@@ -5,7 +5,7 @@ import assert from "node:assert/strict";
 import { chromium } from "playwright";
 import { BASE, erreurs } from "./outils.mjs";
 
-const CAL = "https://cal.example.test/optio/30min";
+const CAL = "https://cal.example.test/optio/15min";
 const cfg = (cal) => "window.OPTIO_CONFIG = {tallyFormId:\"\", calLien:" + JSON.stringify(cal) + ", urlSite:\"http://localhost:8765/radar.html\"};";
 // VMware (anneau 0) et OpenStack (anneau 2), une tendance d’urgence forte
 const ADRESSE = "radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23";
@@ -47,7 +47,7 @@ test("rapport : page de garde, synthèse, technologies, tendances, mécanismes, 
 
     const titres = (await p.locator("#rapport h2").allInnerTexts()).map((t) => t.trim());
     for (const t of ["Synthèse", "Mécanismes probables", "Sources"]) assert.ok(titres.includes(t), "section manquante : " + t + " dans " + titres);
-    assert.equal(titres[titres.length - 1], "Analysons ce rapport ensemble, 30 minutes");
+    assert.equal(titres[titres.length - 1], "Analysons ce rapport ensemble, 15 minutes");
 
     // Synthèse : mêmes nombres que l’aperçu (synthese() sur la même sélection)
     const sy = await p.evaluate(() => {
@@ -138,7 +138,7 @@ test("rendez-vous : lien Cal.com avec le lien du rapport dans notes=", async () 
     const href = await a.p.locator("a.rapport-rdv").getAttribute("href");
     assert.ok(href.startsWith(CAL + "?notes="), href);
     assert.ok(href.includes(encodeURIComponent("Mon rapport : " + a.p.url())), href);
-    assert.match(await a.p.locator("a.rapport-rdv").innerText(), /Réserver 30 minutes/);
+    assert.match(await a.p.locator("a.rapport-rdv").innerText(), /Réserver 15 minutes/);
   } finally { await a.fermer(); }
   const b = await rapport(ADRESSE, { cal: CAL + "?duree=30" });
   try {

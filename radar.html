@@ -1800,7 +1800,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var statut=el("p",{class:"rapport-statut",role:"status","aria-live":"polite"}), zone=el("div",{class:"rapport-actions"});
     zone.appendChild(el("button",{type:"button",class:"rapport-bouton",onclick:function(){ window.print(); }},["Télécharger en PDF"]));
     zone.appendChild(el("button",{type:"button",class:"rapport-bouton",onclick:function(){ copierLien(zone,statut); }},["Copier le lien de mon rapport"]));
-    zone.appendChild(el("a",{class:"rapport-bouton principal rapport-rdv-haut",href:lienRdv()},["Réserver 30 minutes"]));
+    zone.appendChild(el("a",{class:"rapport-bouton principal rapport-rdv-haut",href:lienRdv()},["Réserver 15 minutes"]));
     zone.appendChild(statut);
     return zone;
   }
@@ -1921,10 +1921,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     // Dernière page : appel au rendez-vous
     var cal=(window.OPTIO_CONFIG||{}).calLien||"", rdv=lienRdv();
     var fin=el("section",{class:"rapport-partie rapport-fin"},[
-      el("h2",{text:"Analysons ce rapport ensemble, 30 minutes"}),
-      el("p",{text:"Un échange de 30 minutes pour relire ce rapport avec vous : quelles dépendances pèsent réellement dans votre contexte, quels leviers activer en premier, et ce qu’il faut vérifier avant une échéance de contrat."}),
+      el("h2",{text:"Analysons ce rapport ensemble, 15 minutes"}),
+      el("p",{text:"Un échange de 15 minutes pour relire ce rapport avec vous : quelles dépendances pèsent réellement dans votre contexte, quels leviers activer en premier, et ce qu’il faut vérifier avant une échéance de contrat."}),
       el("p",{text:"Le lien de ce rapport est joint à la réservation : nous le lirons avant l’échange."}),
-      el("div",{class:"rapport-actions"},[el("a",{class:"rapport-bouton principal rapport-rdv",href:rdv},["Réserver 30 minutes"])]),
+      el("div",{class:"rapport-actions"},[el("a",{class:"rapport-bouton principal rapport-rdv",href:rdv},["Réserver 15 minutes"])]),
       el("p",{class:"imprime-seul"},["Pour réserver : ", el("a",{class:"sans-adresse",href:cal||new URL("index.html#contact",location.href).href,text:cal||new URL("index.html#contact",location.href).href})]),
       el("p",{class:"rapport-note ecran-seul"},[el("a",{href:"radar.html",text:"Explorer le radar complet"})])
     ]);
