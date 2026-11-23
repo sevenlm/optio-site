@@ -1,0 +1,1 @@
+{"private": true, "scripts": {"test": "node --test tests/unit/*.test.js", "test:e2e": "node --test tests/e2e/*.test.mjs"}, "devDependencies": {"playwright": "1.57.0"}}

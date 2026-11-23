@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Contrôle des données du radar et des marqueurs [À COMPLÉTER] restants dans index.html.
+"""Contrôle des données du radar et des marqueurs [À COMPLÉTER] restants dans index.html et radar.html.
 Usage : python3 scripts/check-data.py [--placeholders]   (code de sortie 1 si erreur)"""
 import json, re, sys, collections
 L = lambda n: json.load(open(f"data/{n}.json", encoding="utf-8"))
@@ -103,7 +103,7 @@ need(not re.search(r"\d [%€]", txt), "espace simple avant % ou € (utiliser u
 need("'" not in txt, "apostrophe droite dans les données (utiliser ’)")
 
 if "--placeholders" in sys.argv:
-    for f in ("index.html",):
+    for f in ("index.html", "radar.html"):
         for n, l in enumerate(open(f, encoding="utf-8"), 1):
             for m in re.findall(r"\[[A-ZÉÈÀ][A-ZÉÈÀ ’']{2,}\]", l): err.append(f"{f}:{n} marqueur à compléter {m}")
 

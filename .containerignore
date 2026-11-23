@@ -6,4 +6,5 @@
 !robots.txt
 !sitemap.xml
 !fonts/
+!js/
 !data/*.json

@@ -142,6 +142,26 @@ html{scroll-padding-top:96px}
 .fiche{position:sticky;top:20px;overflow:hidden}
 .fiche-bande{height:6px}
 .fiche-corps{padding:24px 26px 26px;display:flex;flex-direction:column;gap:16px}
+.fiche.mode-liste{display:flex;flex-direction:column}
+.ld{display:flex;flex-direction:column;min-height:0;flex:1;padding:20px 18px 14px}
+.ld-tete{padding:0 6px 10px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.ld-compte{font-size:14px;color:var(--text-2)}
+.ld-compte strong{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:28px;color:var(--ink);margin-right:2px}
+.ld-ctx{font-size:14px;font-weight:600;color:var(--ink);margin-top:2px}
+.ld-aide{font-size:12.5px;color:var(--text-3);margin-top:4px}
+.ld-liste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px;flex:1;min-height:0;overflow:hidden}
+.fiche:not([style*="height"]) .ld-liste{overflow:visible}
+.ld-item{display:flex;align-items:center;gap:10px;width:100%;text-align:left;border:none;background:none;padding:7px 6px;border-radius:10px;cursor:pointer;border-left:3px solid transparent;transition:background .15s,border-color .15s}
+.ld-item:hover,.ld-item:focus-visible{background:var(--surface-2);border-left-color:var(--qc)}
+.ld-item strong{display:block;font-size:14px;font-weight:600;line-height:1.3;color:var(--ink)}
+.ld-item small{display:flex;align-items:center;gap:5px;font-size:12px;color:var(--text-3);margin-top:1px}
+.ld-item small .ic{width:13px;height:13px;stroke:var(--qc)}
+.ld-item .numero{font-weight:700}
+.ld-plus{align-self:center;margin-top:8px;border:1.5px solid var(--line-2);background:var(--surface);border-radius:999px;padding:7px 16px;min-height:38px;font-size:13.5px;font-weight:700;color:var(--ink);cursor:pointer;box-shadow:0 -14px 18px -6px var(--surface);transition:transform .18s,border-color .2s}
+.ld-plus:hover{transform:translateY(-2px);border-color:var(--ink)}
+.retour-liste{align-self:flex-start;border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:5px 12px;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;margin-bottom:-4px}
+.retour-liste:hover{background:var(--surface-2)}
+
 .tags{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
 .tag{font-size:12.5px;font-weight:600;padding:4px 11px;border-radius:999px;background:var(--surface-2);color:var(--text-2)}
 .fiche h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:27px;line-height:1.12;letter-spacing:-0.01em}
@@ -450,7 +470,143 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   .liste,.chev,.ic-rond,#etape-2{transition:none}
   .menu.ouvert .liste{animation:none}
 }
+
+/* Retenir : étoiles, pastille « Mon radar » et volet latéral */
+.mon-radar{flex:none;display:inline-flex;align-items:center;white-space:nowrap;border:1.5px solid var(--a1t);background:var(--a1);color:var(--a1t);border-radius:999px;padding:6px 14px;min-height:40px;font-size:13.5px;font-weight:700;cursor:pointer;transition:transform .18s,box-shadow .2s}
+.mon-radar:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px rgba(6,25,42,.45)}
+.mon-radar.bump{animation:bump .4s cubic-bezier(.2,.8,.25,1)}
+.filtres-bande.meca .mon-radar{display:none}
+.fiche-haut{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px;margin-bottom:-4px}
+.fiche-haut .retour-liste{margin-bottom:0}
+.retenir{border:1.5px solid var(--line-2);background:var(--surface);border-radius:999px;padding:5px 13px;min-height:34px;font-size:13px;font-weight:700;color:var(--ink);cursor:pointer;white-space:nowrap;transition:background .2s,border-color .2s}
+.retenir:hover{background:var(--surface-2)}
+.retenir[aria-pressed="true"]{background:var(--a1);border-color:var(--a1t);color:var(--a1t)}
+.ld-ligne{display:flex;align-items:center;gap:2px}
+.ld-ligne .ld-item{flex:1;min-width:0;width:auto}
+.ld-etoile{flex:none;width:36px;height:36px;border:none;background:none;border-radius:50%;font-size:19px;line-height:1;color:var(--text-3);cursor:pointer;transition:background .15s,color .15s,transform .15s}
+.ld-etoile:hover{background:var(--surface-2);color:var(--ink);transform:scale(1.1)}
+.ld-etoile[aria-pressed="true"],.ld-etoile[aria-pressed="true"]:hover{color:var(--a1t)}
+.volet-fond{position:fixed;inset:0;z-index:50;background:rgba(6,25,42,.45);animation:volet-fondu .25s}
+.volet{position:fixed;top:0;right:0;bottom:0;z-index:51;width:min(420px,100%);display:flex;flex-direction:column;background:var(--surface);color:var(--ink);border-left:1px solid var(--line);box-shadow:-24px 0 50px -24px rgba(6,25,42,.55);overflow-y:auto;overscroll-behavior:contain;padding:calc(env(safe-area-inset-top,0px) + 20px) 22px calc(env(safe-area-inset-bottom,0px) + 24px);animation:volet-entre .3s cubic-bezier(.2,.8,.25,1)}
+.volet:focus{outline:none}
+@keyframes volet-entre{from{transform:translateX(100%)}}
+@keyframes volet-fondu{from{opacity:0}}
+.volet-tete{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+.volet-tete h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.15}
+.volet-fermer{flex:none;width:40px;height:40px;border:1px solid var(--line-2);background:var(--surface);border-radius:50%;font-size:22px;line-height:1;color:var(--ink);cursor:pointer}
+.volet-fermer:hover{background:var(--surface-2)}
+.volet-corps{display:flex;flex-direction:column;gap:18px;padding-top:14px}
+.volet-aide{font-size:14px;color:var(--text-2)}
+.volet h3{font-size:12px;font-weight:600;color:var(--text-3);margin:0 0 6px}
+.volet-liste{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.volet-item{display:flex;align-items:center;gap:6px}
+.volet-ouvrir{flex:1;min-width:0;display:flex;align-items:center;gap:10px;text-align:left;border:none;background:none;padding:6px;border-radius:10px;font-size:14px;font-weight:600;line-height:1.3;color:var(--ink);cursor:pointer}
+.volet-ouvrir:hover{background:var(--surface-2)}
+.volet-retirer{flex:none;border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:4px 10px;min-height:32px;font-size:12.5px;font-weight:600;color:var(--text-2);cursor:pointer}
+.volet-retirer:hover{background:var(--surface-2);color:var(--ink)}
+.volet-suggestions{border-top:1px dashed var(--line-2);padding-top:14px;display:flex;flex-direction:column;gap:8px}
+.volet-suggestions p{font-size:14px;color:var(--text-2)}
+.volet-chips{display:flex;flex-wrap:wrap;gap:6px}
+.volet-sugg{display:inline-flex;align-items:center;gap:6px;max-width:100%;border:1.5px dashed var(--line-2);background:var(--surface);border-radius:999px;padding:5px 12px;min-height:34px;font-size:13px;font-weight:600;color:var(--ink);text-align:left;cursor:pointer;transition:border-color .2s,background .2s}
+.volet-sugg:hover{border-style:solid;border-color:var(--a1t);background:var(--a1)}
+.apercu{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--line-2);border-radius:14px;background:var(--surface-2)}
+.apercu h3{margin:0}
+.apercu-total{font-size:15px;font-weight:700;color:var(--ink)}
+.apercu-vide,.apercu-legende{font-size:14px;color:var(--text-2)}
+.barres-anneau{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.barre-anneau{display:grid;grid-template-columns:92px 1fr 24px;align-items:center;gap:8px;font-size:13px}
+.barre-nom{color:var(--text-2)}
+.barre-piste{display:block;height:10px;border-radius:999px;overflow:hidden}
+.barre-rempli{display:block;height:100%;border-radius:999px}
+.barre-anneau .n{font-weight:700;text-align:right;color:var(--ink)}
+.apercu-mecas{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.apercu-mecas li{border:1px solid var(--line-2);background:var(--surface);border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:600;color:var(--ink)}
+.verrou{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1.5px dashed var(--line-2);border-radius:10px;background:var(--surface);color:var(--text-2);font-size:13.5px}
+.verrou-titre{font-weight:600;color:var(--ink);flex:1;min-width:0}
+.verrou-note{font-size:12px}
+.apercu .voir-radar{align-self:stretch;margin-top:6px;white-space:normal}
+.apercu .voir-radar:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.rgpd-radar{margin:8px 0 0;font-size:12px;line-height:1.5;color:var(--text-3)}
+.dernier-rapport-ligne{margin:6px 0 0;font-size:14px}
+.fiche h2:focus:not(:focus-visible),#rapport:focus{outline:none}
+.tally-erreur{margin:8px 0 0;padding:10px 12px;border:1.5px solid var(--line-2);border-radius:10px;background:var(--surface);color:var(--text-2);font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.tally-erreur a{color:var(--ink);text-decoration:underline}
+@media (prefers-reduced-motion: reduce){.mon-radar,.ld-etoile{transition:none}.mon-radar.bump,.volet,.volet-fond{animation:none}}
+
+/* ===== Rapport personnalisé (radar.html?rapport=1) : vue autonome, sans l’interface du radar ===== */
+.mode-rapport .entete h1,.mode-rapport #intro,.mode-rapport .stats,.mode-rapport .vues,.mode-rapport #bande,.mode-rapport #contenu,.mode-rapport #volet,.mode-rapport #volet-fond{display:none !important}
+.mode-rapport .entete-in{padding-top:18px;padding-bottom:18px}
+.rapport{max-width:900px;margin:0 auto;padding:28px 28px 48px;display:flex;flex-direction:column;gap:22px}
+.rapport-bloc,.rapport-partie{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
+.rapport h1{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:clamp(26px,5vw,38px);line-height:1.1;letter-spacing:-0.015em;color:var(--ink);margin-top:6px}
+.rapport h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.2;color:var(--ink);margin-bottom:14px}
+.rapport h3{font-size:17px;font-weight:700;line-height:1.3;color:var(--ink)}
+.rapport h4{margin:14px 0 4px;font-size:12px;font-weight:600;color:var(--text-3)}
+.rapport p,.rapport li{font-size:15px;line-height:1.55;color:var(--text-2)}
+.rapport ul,.rapport ol{margin:0;padding-left:18px}
+.rapport a{overflow-wrap:anywhere}
+.rapport .rapport-surtitre{font-family:var(--mesure);font-size:12.5px;color:var(--text-3)}
+.rapport .rapport-date{margin-top:8px;font-weight:600;color:var(--ink)}
+.rapport .rapport-absents{margin-top:12px;padding:8px 12px;border-left:4px solid var(--a1t);border-radius:4px 10px 10px 4px;background:var(--a1);color:var(--ink);font-size:14px}
+.rapport .rapport-note,.rapport .rapport-meta{font-size:13.5px;color:var(--text-2)}
+.rapport-selection{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px 24px;margin-top:18px}
+.rapport-garde .rapport-note{margin-top:14px}
+.rapport-selection h3{font-size:13px;font-weight:600;color:var(--text-3);margin-bottom:4px}
+.rapport-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px}
+.rapport-bouton{display:inline-flex;align-items:center;border:1.5px solid var(--line-2);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 16px;min-height:42px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer}
+.rapport-bouton:hover{background:var(--surface-2)}
+.rapport-bouton.principal{background:var(--c-o);border-color:var(--c-o);color:var(--on-o)}
+.rapport-bouton.principal:hover{background:var(--c-o);filter:brightness(1.06)}
+.rapport .rapport-statut{flex-basis:100%;font-size:13.5px;font-weight:600;color:var(--signal-text)}
+.rapport .rapport-statut:empty{display:none}
+.rapport-lien{flex-basis:100%;width:100%;min-width:0;min-height:40px;padding:0 10px;border:1px solid var(--line-2);border-radius:10px;background:var(--surface-2);color:var(--ink);font-family:var(--mesure);font-size:12.5px}
+.rapport-cartes{display:flex;flex-direction:column;gap:16px}
+.rapport-carte{border:1px solid var(--line);border-left:5px solid var(--lt);border-radius:6px 12px 12px 6px;padding:18px 20px;background:var(--surface)}
+.rapport-tete{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 12px;margin-bottom:6px}
+.rapport-anneau{display:inline-block;font-size:12.5px;font-weight:700;padding:2px 10px;border-radius:999px;background:var(--la);color:var(--lt);white-space:nowrap}
+.rapport .pourquoi{margin-top:10px}
+.rapport .pourquoi h4{margin-top:0;color:var(--lt)}
+.rapport .pourquoi p{color:var(--ink)}
+.rapport-alternatives ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.rapport .rapport-alternatives li{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;max-width:100%;border:1px solid var(--line-2);border-radius:999px;padding:3px 5px 3px 12px;font-size:14px;font-weight:600;color:var(--ink)}
+.rapport-synthese .barres-anneau{max-width:460px;margin:8px 0 14px}
+.rapport .rapport-chiffre{font-size:16px;font-weight:700;color:var(--ink)}
+.rapport-sources h3{font-size:14px;margin-top:12px}
+.rapport-sources li{font-size:14px}
+.rapport-fin{border:2px solid var(--c-o)}
+.rapport-fin .rapport-actions{margin-top:16px}
+.imprime-seul{display:none}
+@media (max-width:600px){
+  .rapport{padding:16px 16px 32px;gap:16px}
+  .rapport-bloc,.rapport-partie{padding:18px 16px}
+  .rapport-carte{padding:14px 14px}
+}
+@media print{
+  html:root.mode-rapport{color-scheme:light;
+    --bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F2F2F2;--ink:#000000;--text-2:#000000;--text-3:#333333;--line:#BBBBBB;--line-2:#999999;--signal-text:#000000;--c-o:#00A37A;--on-o:#062A1F;
+    --x0:#FBE2D8;--x0t:#9A3E26;--x1:#FBEFD0;--x1t:#7A5200;--x2:#E8F3D6;--x2t:#4A6A12;--x3:#D3F0E2;--x3t:#0E6B47;
+    --a0:#FBE2D8;--a0t:#9A3E26;--a1:#FBF0CC;--a1t:#7A5A00;--a2:#DCEDF7;--a2t:#2D6488;--a3:#ECE7F7;--a3t:#5B4E8A}
+  @page{margin:16mm 14mm}
+  html.mode-rapport,html.mode-rapport body{background:#FFFFFF;color:#000000}
+  .mode-rapport *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .mode-rapport .skip,.rapport-actions,.rapport button,.rapport a.rapport-rdv,.rapport a.rapport-rdv-haut{display:none !important}
+  .mode-rapport .entete{background:#FFFFFF;color:#000000;border-bottom:1px solid #BBBBBB}
+  .mode-rapport .entete-in{padding:0 0 8px}
+  .mode-rapport .edition,.mode-rapport .edition a{color:#000000}
+  .rapport{max-width:none;padding:0;gap:0}
+  .rapport-bloc,.rapport-partie{border:0;border-radius:0;padding:6mm 0 0;background:#FFFFFF}
+  .rapport-partie{break-before:page}
+  .rapport-carte,.rapport-selection,.rapport-synthese,.rapport-sources li{break-inside:avoid}
+  .rapport-cartes{gap:12px}
+  .rapport h2,.rapport h3,.rapport h4{break-after:avoid}
+  .rapport a{color:#000000}
+  .rapport a[href^="http"]::after{content:" (" attr(href) ")";font-size:10.5px;font-weight:400;word-break:break-all}
+  .rapport a.sans-adresse::after{content:none}
+  .imprime-seul{display:block}
+  .ecran-seul{display:none !important}
+}
 </style>
+<script>if(/[?&]rapport=1(&|$)/.test(location.search)) document.documentElement.classList.add("mode-rapport");</script>
 </head>
 <body>
 <a class="skip" href="#contenu">Aller au contenu</a>
@@ -478,6 +634,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 <button type="button" class="lien-tendance" id="lien" hidden></button>
 <div class="resume" aria-live="polite"><span id="resume"></span><button type="button" class="raz" id="raz" hidden><span aria-hidden="true">×</span> Réinitialiser</button></div>
 <label class="recherche"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5" stroke-linecap="round"/></svg><input id="recherche" type="search" aria-label="Rechercher"></label>
+<button type="button" class="mon-radar" id="mon-radar" aria-controls="volet" aria-expanded="false" hidden>Mon radar · 0</button>
 </div>
 </div>
 
@@ -518,7 +675,14 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 </section>
 <p class="pied">Prototype à valider avec des experts. Les classements des technologies sont indicatifs : ils décrivent la difficulté typique d’une sortie, pas la qualité des produits, et varient selon vos usages. Informations vérifiées en novembre 2026. Optio, une marque de Stratwise.</p>
 </main>
+<div class="volet-fond" id="volet-fond" hidden></div>
+<aside id="volet" class="volet" role="dialog" aria-modal="true" aria-labelledby="volet-titre" tabindex="-1" hidden>
+<div class="volet-tete"><h2 id="volet-titre">Mon radar</h2><button type="button" class="volet-fermer" id="volet-fermer" aria-label="Fermer Mon radar"><span aria-hidden="true">×</span></button></div>
+<div class="volet-corps" id="volet-corps"></div>
+</aside>
 
+<script src="js/selection.js"></script>
+<script src="js/config.js"></script>
 <script>
 (function(){
   "use strict";
@@ -808,7 +972,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function indice(qi,ai){
     var z=document.getElementById("indice"), V=VUES[vue]; if(!z||!V) return;
     var txt, actif=qi!=null;
-    if(!actif) txt = fAxe==="tous" ? "Cliquez un secteur du radar pour filtrer par "+(V.libAxe||"axe").toLowerCase()+"." : "Cliquez un anneau du secteur « "+V.quadrants[+fAxe].t+" » pour filtrer par "+(V.libAnneau||"anneau").toLowerCase()+", ou un autre secteur pour changer.";
+    if(!actif) txt = fAxe==="tous" ? "Cliquez un secteur du radar pour filtrer par "+(V.libAxe||"axe").toLowerCase()+"." : "Cliquez un anneau du secteur « "+V.quadrants[+fAxe].t+" » pour filtrer par "+(V.libAnneau||"anneau").toLowerCase()+", ou un autre secteur pour changer. Cliquez en dehors du radar pour tout afficher.";
     else {
       var n=DONNEES[vue].filter(function(x){ return x.q===qi && x.a===ai && visible(x,{axe:1,anneau:1}); }).length;
       if(fAxe!==String(qi)) txt="Cliquer pour afficher « "+V.quadrants[qi].t+" »";
@@ -822,17 +986,23 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function stats(){ var z=document.getElementById("stats"); z.textContent="";
     [[T.length,"tendances"],[LEV.length,"leviers"],[TECH.length,"technologies"],[MECA.length,"mécanismes d’enfermement"]].forEach(function(st){ z.appendChild(el("div",{class:"stat"},[el("strong",{text:String(st[0])}),el("span",{text:st[1]})])); }); }
   function fiche(){
-    var f=document.getElementById("fiche"), V=VUES[vue]; f.textContent="";
+    var f=document.getElementById("fiche"), V=VUES[vue]; f.textContent=""; f.style.height="";
     var x=DONNEES[vue].find(function(y){ return y.id===sel; });
-    if(vue==="tendances" && x){ lien=x.techs && x.techs.length ? x : null; majLien(); }
+    if(vue==="tendances"){ lien=x && x.techs && x.techs.length ? x : null; majLien(); } // fiche fermée : plus de tendance active
     majZoneLie();
-    if(!x){ f.appendChild(el("div",{class:"fiche-corps"},[el("p",{style:"color:var(--text-3)",text:"Sélectionnez un point du radar ou un élément des listes pour afficher sa fiche."})])); return; }
+    f.classList.toggle("mode-liste",!x);
+    if(!x){ listeDroite(f); return; }
     var col=couleur(x.type), bande=el("div",{class:"fiche-bande"}); bande.style.background=col[0]; f.appendChild(bande);
     var corps=el("div",{class:"fiche-corps"});
+    var nRet=DONNEES[vue].filter(function(y){ return visible(y); }).length;
+    corps.appendChild(el("div",{class:"fiche-haut"},[
+      el("button",{type:"button",class:"retour-liste",onclick:function(){ fermerFiche(); }},["‹ Liste · "+nRet+" "+V.nom[nRet>1?1:0]]),
+      boutonRetenir(x)
+    ]));
     var num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
     var typeLib=V.types.filter(function(t){ return t[0]===x.type; })[0][1];
     corps.appendChild(el("div",{class:"tags"},[num, (function(){ var tg=el("span",{class:"tag tag-axe"},[icone(V.quadrants[x.q].ic), V.quadrants[x.q].t]); tg.style.setProperty("--qc","var(--q"+x.q+")"); return tg; })(), el("span",{class:"tag",text:typeLib})]));
-    corps.appendChild(el("h2",{text:x.t}));
+    corps.appendChild(el("h2",{tabindex:"-1",text:x.t}));
     if(x.ed || (x.sites && x.sites.length)){
       // éditeur et lien(s) vers le site officiel
       var ligneEd=el("p",{class:"editeur"},[x.ed||null]);
@@ -1038,7 +1208,10 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(fAxe==="tous") fAnneau="tous"; // l’urgence n’existe qu’une fois l’axe choisi
     // la fiche suit le filtre : si l’élément affiché est masqué, on montre le premier élément retenu (urgence la plus forte d’abord)
     var cour=DONNEES[vue].find(function(x){ return x.id===sel; });
-    if(cour && !visible(cour) && q){ sel=null; fiche(); } else if(cour && !visible(cour)){ var prem=DONNEES[vue].filter(function(x){ return visible(x); }).sort(function(a,b){ return a.a-b.a || a.q-b.q || a.t.localeCompare(b.t,"fr"); })[0]; if(prem){ sel=prem.id; fiche(); } }
+    listeOuverte=false;
+    if(anim && sel){ sel=null; fiche(); } // changement d’axe ou d’urgence : la liste des éléments retenus remplace la fiche
+    else if(!sel){ fiche(); }
+    else if(cour && !visible(cour) && q){ sel=null; fiche(); } else if(cour && !visible(cour)){ var prem=DONNEES[vue].filter(function(x){ return visible(x); }).sort(function(a,b){ return a.a-b.a || a.q-b.q || a.t.localeCompare(b.t,"fr"); })[0]; if(prem){ sel=prem.id; fiche(); } }
     majBarre(anim); majRadar(); listes(anim); indice();
   }
   function filtres(){
@@ -1188,7 +1361,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     vue=v; fAxe="tous"; fAnneau="tous"; fType=typeDefaut(v,garderSel); q=""; apercu={q:null,a:null}; dernierTotal=null; var inp=document.getElementById("recherche"); inp.value=""; inp.placeholder=VUES[v].recherche;
     document.getElementById("intro").textContent=VUES[v].intro;
     if(!deja[v]){ placer(DONNEES[v], rb()); deja[v]=true; }
-    if(!garderSel) sel=v==="technologies" && lien && lien.techs.length ? lien.techs[0].id : null; // aucune sélection par défaut
+    if(!garderSel) sel=null; // aucune sélection par défaut : la liste des éléments retenus s’affiche à droite du radar
     construireBarre(); majBarre(); filtres(); legende(); methode(); dessiner(); fiche(); listes(); indice();
     if(v==="technologies" && lien) eclat();
   }
@@ -1267,8 +1440,75 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       g.appendChild(b);
     });
     g.appendChild(tip); z.appendChild(g);
-    z.appendChild(el("button",{type:"button",class:"voir-radar ouvrir",onclick:function(){ glisser("technologies",function(){ lien=t; sel=t.techs[0].id; changerVue("technologies",true); try{ history.replaceState(null,"","#technologies"); }catch(e){} }); }},["Ouvrir dans l’onglet Technologies ", el("span",{"aria-hidden":"true",text:"→"})]));
+    z.appendChild(el("button",{type:"button",class:"voir-radar ouvrir",onclick:function(){ glisser("technologies",function(){ lien=t; sel=null; changerVue("technologies",true); try{ history.replaceState(null,"","#technologies"); }catch(e){} }); }},["Ouvrir dans l’onglet Technologies ", el("span",{"aria-hidden":"true",text:"→"})]));
   }
+  // --- Liste à droite du radar : les éléments retenus par les filtres, à la hauteur du radar ---
+  var listeOuverte=false;
+  function fermerFiche(){
+    sel=null; try{ history.replaceState(null,"",location.pathname+location.search+"#"+vue); }catch(e){}
+    if(typeof setLie==="function") setLie(false);
+    majRadar(); fiche(); listes();
+  }
+  function listeDroite(f){
+    var V=VUES[vue], items=DONNEES[vue].filter(function(x){ return visible(x); }).sort(function(a,b){ return a.a-b.a || a.t.localeCompare(b.t,"fr"); });
+    var n=items.length, ctx=[];
+    if(fAxe!=="tous") ctx.push(V.quadrants[+fAxe].t);
+    if(fAnneau!=="tous") ctx.push(V.anneaux[+fAnneau]);
+    if(vue==="technologies" && lien) ctx.push("concernées par « "+lien.t+" »");
+    if(q) ctx.push("recherche « "+q+" »");
+    var tete=el("div",{class:"ld-tete"},[
+      el("p",{class:"ld-compte"},[el("strong",{text:String(n)}), " "+V.nom[n>1?1:0]]),
+      el("p",{class:"ld-ctx",text:ctx.length?ctx.join(" · "):"Tout le radar"}),
+      el("p",{class:"ld-aide",text:n?"Survolez pour repérer sur le radar, cliquez pour ouvrir la fiche.":"Aucun élément ne correspond à ces filtres."})
+    ]);
+    var ul=el("ul",{class:"ld-liste"});
+    items.forEach(function(x){
+      var num=el("span",{class:"numero",text:String(x.n)}); num.style.background="var(--a"+x.a+")"; num.style.color="var(--a"+x.a+"t)";
+      var qd=V.quadrants[x.q], sous=el("small",null,[qd.ic?icone(qd.ic):null, qd.t+" · "+V.courts[x.a]]);
+      var b=el("button",{type:"button",class:"ld-item",onclick:function(){ pointer(x.id,false); choisir(x.id,true); }},[num, el("span",{class:"ld-txt"},[el("strong",{text:x.t}), sous])]);
+      b.style.setProperty("--qc","var(--q"+x.q+")");
+      b.addEventListener("mouseenter",function(){ pointer(x.id,true); }); b.addEventListener("mouseleave",function(){ pointer(x.id,false); });
+      b.addEventListener("focus",function(){ pointer(x.id,true); }); b.addEventListener("blur",function(){ pointer(x.id,false); });
+      // l’étoile est un bouton voisin (pas imbriqué) : elle retient l’élément sans ouvrir sa fiche
+      var etoile=el("button",{type:"button",class:"ld-etoile","data-id":x.id,"aria-label":"Retenir « "+x.t+" »",onclick:function(e){ e.stopPropagation(); basculerRetenu(x); }});
+      majEtoile(etoile);
+      ul.appendChild(el("li",{class:"ld-ligne"},[b, etoile]));
+    });
+    var plus=el("button",{type:"button",class:"ld-plus",hidden:"",onclick:function(){ listeOuverte=!listeOuverte; fiche(); }});
+    f.appendChild(el("div",{class:"ld"},[tete, ul, plus]));
+    // à la hauteur du radar : ce qui dépasse est replié derrière la pastille « Afficher les N autres »
+    requestAnimationFrame(function(){ ajusterListe(f,ul,plus,n); });
+  }
+  function ajusterListe(f,ul,plus,n){
+    var rbox=document.querySelector(".piste > .radar-box:not(.radar-lie)"), lis=[].slice.call(ul.children);
+    f.style.height=""; lis.forEach(function(li){ li.hidden=false; });
+    var caches=0;
+    if(largeur() && rbox && rbox.offsetHeight){
+      if(!listeOuverte){
+        f.style.height=rbox.offsetHeight+"px";
+        plus.hidden=false; // réserve la place de la pastille avant de mesurer
+        var bas=ul.getBoundingClientRect().top+ul.clientHeight;
+        lis.forEach(function(li){ if(li.getBoundingClientRect().bottom>bas+1){ li.hidden=true; caches++; } });
+      } else caches=-1;
+    } else if(!listeOuverte && n>8){ lis.forEach(function(li,i){ if(i>=8){ li.hidden=true; caches++; } }); }
+    else if(listeOuverte) caches=-1;
+    if(caches>0){ plus.hidden=false; plus.textContent="Afficher les "+caches+" autres"; plus.classList.remove("moins"); }
+    else if(caches===-1 && n>0 && (largeur() ? true : n>8)){ plus.hidden=false; plus.textContent="Réduire la liste"; plus.classList.add("moins"); }
+    else { plus.hidden=true; if(!listeOuverte) f.style.height=largeur()&&rbox?rbox.offsetHeight+"px":""; }
+    if(caches===-1 && largeur()){ // repliée possible seulement si quelque chose dépassait : sinon pas de pastille
+      f.style.height=""; var tient=rbox && f.scrollHeight<=rbox.offsetHeight+2; if(tient){ plus.hidden=true; listeOuverte=false; f.style.height=rbox.offsetHeight+"px"; }
+    }
+  }
+  // la liste suit la hauteur du radar (texte d’aide qui s’allonge, police chargée, redimensionnement…)
+  if(window.ResizeObserver) new ResizeObserver(function(){ var f=document.getElementById("fiche"); if(!sel && DONNEES && f.classList.contains("mode-liste") && !listeOuverte){ var ul=f.querySelector(".ld-liste"), plus=f.querySelector(".ld-plus"); if(ul&&plus) ajusterListe(f,ul,plus,ul.children.length); } }).observe(document.querySelector(".piste > .radar-box:not(.radar-lie)"));
+  (function(){ var t=null; window.addEventListener("resize",function(){ clearTimeout(t); t=setTimeout(function(){ if(!sel && DONNEES && vue!=="mecanismes" && vue!=="leviers") fiche(); },150); }); })();
+  // Clic dans la zone du radar mais hors des secteurs : retour au radar complet
+  document.querySelector(".piste > .radar-box:not(.radar-lie)").addEventListener("click",function(e){
+    if(e.target.closest(".part,.blip,.picto-axe,button,a,input")) return;
+    if(fAxe==="tous" && fAnneau==="tous" && !sel) return;
+    fAxe="tous"; fAnneau="tous"; sel=null; rafraichir(true);
+    try{ history.replaceState(null,"",location.pathname+location.search+"#"+vue); }catch(err){}
+  });
   // --- Surbrillance des technologies concernées par une tendance ---
   // La tendance affichée dans la fiche devient la tendance active ; l’onglet Technologies indique combien de technologies elle concerne.
   function blocTechnosConcernees(t){
@@ -1280,11 +1520,13 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var bloc=el("div",{class:"technos-liees"},[el("h3",null,["Technologies concernées ", el("span",{class:"non-exh",text:t.techs.length?t.techs.length+" sur le radar Technologies":""})])]);
     if(!t.techs.length){ bloc.appendChild(el("p",{class:"alt-vide",text:"Cette tendance concerne l’ensemble du système d’information plutôt que des technologies précises."})); return bloc; }
     bloc.appendChild(z);
-    bloc.appendChild(el("button",{type:"button",class:"voir-radar",onclick:function(){ glisser("technologies",function(){ lien=t; sel=t.techs[0].id; changerVue("technologies",true); try{ history.replaceState(null,"","#technologies"); }catch(e){} }); }},["Les mettre en surbrillance sur le radar Technologies ", el("span",{"aria-hidden":"true",text:"→"})]));
+    bloc.appendChild(el("button",{type:"button",class:"voir-radar",onclick:function(){ glisser("technologies",function(){ lien=t; sel=null; changerVue("technologies",true); try{ history.replaceState(null,"","#technologies"); }catch(e){} }); }},["Les mettre en surbrillance sur le radar Technologies ", el("span",{"aria-hidden":"true",text:"→"})]));
     return bloc;
   }
-  function voirTechno(y){ glisser("technologies",function(){ sel=y.id; changerVue("technologies",true); choisir(y.id,true); }); }
-  function voirTendance(t){ glisser("tendances",function(){ sel=t.id; changerVue("tendances",true); choisir(t.id,true); }); }
+  // focus=true : le focus va au titre de la fiche ouverte (ouverture depuis le volet « Mon radar »)
+  function focusFiche(){ var h=document.querySelector("#fiche h2"); if(h) h.focus({preventScroll:window.innerWidth>=1000}); }
+  function voirTechno(y,focus){ glisser("technologies",function(){ sel=y.id; changerVue("technologies",true); choisir(y.id,true); if(focus) focusFiche(); }); }
+  function voirTendance(t,focus){ glisser("tendances",function(){ sel=t.id; changerVue("tendances",true); choisir(t.id,true); if(focus) focusFiche(); }); }
   // Défilement horizontal entre les vues (API View Transitions) : la vue suivante arrive par la droite, la précédente par la gauche.
   // Sans prise en charge du navigateur, ou si l’utilisateur limite les animations, la vue change simplement.
   var ORDRE=["tendances","technologies","mecanismes","leviers"];
@@ -1349,8 +1591,171 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   // passage au-dessus ou en dessous de 1000 px : la piste devient une colonne, et inversement
   (function(){ var etait=largeur(); window.addEventListener("resize",function(){ var l=largeur(); if(l!==etait){ etait=l; if(!l){ zoneLie=false; elsZone().zone.classList.remove("lie"); } majZoneLie(); } }); })();
   document.getElementById("lien").addEventListener("click",function(){ lien=null; rafraichir(true); });
+  // --- Retenir : sélection personnelle enregistrée dans le navigateur, pastille « Mon radar » et volet ---
+  var SEL=window.OptioSelection, DONNEES_BRUTES=null; // données brutes de data/*.json, attendues par OptioSelection
+  var maSelection={tendances:[], technologies:[], date:""};
+  function stockage(){ try{ return window.localStorage; }catch(e){ return null; } }
+  // charge la sélection et oublie les identifiants qui ne sont plus sur le radar
+  function initSelection(){
+    var s0=SEL.chargerSelection(stockage()), ids=function(liste){ var o=Object.create(null); liste.forEach(function(x){ o[x.id]=1; }); return o; }, iT=ids(T), iX=ids(TECH);
+    maSelection={tendances:s0.tendances.filter(function(i){ return iT[i]; }), technologies:s0.technologies.filter(function(i){ return iX[i]; }), date:s0.date};
+    var p=document.getElementById("mon-radar"); p.hidden=false; majPastille(false);
+  }
+  function retenuId(id){ return maSelection.tendances.indexOf(id)>=0 || maSelection.technologies.indexOf(id)>=0; }
+  function estRetenu(x){ return retenuId(x.id); }
+  function basculerRetenu(x){
+    var l=maSelection[T.indexOf(x)>=0?"tendances":"technologies"], i=l.indexOf(x.id);
+    if(i>=0) l.splice(i,1); else l.push(x.id);
+    SEL.sauverSelection(stockage(), maSelection);
+    document.querySelectorAll(".retenir[data-id],.ld-etoile[data-id]").forEach(majEtoile);
+    majPastille(true);
+    if(voletOuvert()){ var dansVolet=document.getElementById("volet").contains(document.activeElement); rendreVolet(); if(dansVolet && !document.getElementById("volet").contains(document.activeElement)) document.getElementById("volet").focus(); }
+  }
+  function majEtoile(b){
+    var on=retenuId(b.getAttribute("data-id")); b.setAttribute("aria-pressed",String(on)); b.textContent="";
+    if(b.classList.contains("retenir")){ b.appendChild(el("span",{"aria-hidden":"true",text:on?"★":"☆"})); b.appendChild(document.createTextNode(on?" Retenu":" Retenir")); b.title=on?"Retirer de Mon radar":"Ajouter à Mon radar"; }
+    else { b.textContent=on?"★":"☆"; b.title=on?"Retenu : cliquer pour retirer de Mon radar":"Retenir dans Mon radar"; }
+  }
+  function boutonRetenir(x){ var b=el("button",{type:"button",class:"retenir","data-id":x.id,onclick:function(){ basculerRetenu(x); }}); majEtoile(b); return b; }
+  function majPastille(anim){
+    var p=document.getElementById("mon-radar"), n=maSelection.tendances.length+maSelection.technologies.length;
+    p.textContent="Mon radar · "+n; p.title=n?n+" élément"+(n>1?"s":"")+" retenu"+(n>1?"s":"")+" : ouvrir Mon radar":"Ouvrir Mon radar";
+    if(anim){ p.classList.remove("bump"); void p.offsetWidth; p.classList.add("bump"); }
+  }
+  function voletOuvert(){ return !document.getElementById("volet").hidden; }
+  // volet modal : le reste de la page est inerte pendant l’ouverture (data-inerte-volet marque ce que le volet a rendu inerte)
+  function inerteHorsVolet(on){
+    [].forEach.call(document.body.children,function(n){
+      if(n.id==="volet"||n.id==="volet-fond"||n.tagName==="SCRIPT") return;
+      if(on){ if(!n.inert){ n.inert=true; n.setAttribute("data-inerte-volet",""); } }
+      else if(n.hasAttribute("data-inerte-volet")){ n.inert=false; n.removeAttribute("data-inerte-volet"); }
+    });
+  }
+  function ouvrirVolet(){
+    rendreVolet();
+    document.getElementById("volet-fond").hidden=false; document.getElementById("volet").hidden=false;
+    inerteHorsVolet(true);
+    document.getElementById("mon-radar").setAttribute("aria-expanded","true");
+    document.getElementById("volet-fermer").focus();
+  }
+  // rendreFocus=false quand on quitte le volet pour ouvrir une fiche
+  function fermerVolet(rendreFocus){
+    document.getElementById("volet-fond").hidden=true; document.getElementById("volet").hidden=true;
+    inerteHorsVolet(false);
+    var p=document.getElementById("mon-radar"); p.setAttribute("aria-expanded","false");
+    if(rendreFocus!==false) p.focus();
+  }
+  // lien du dernier rapport ouvert dans ce navigateur (écrit par rendreRapport) ; seulement une adresse http(s) de rapport
+  function dernierRapport(){
+    var u=null; try{ var st=stockage(); u=st && st.getItem(SEL.CLE_DERNIER_RAPPORT); }catch(e){ return null; }
+    return typeof u==="string" && /^https?:\/\/[^?#]*\?(?:[^#]*&)?rapport=1(?:&|#|$)/.test(u) ? u : null;
+  }
+  // Aperçu libre : chiffres d’exposition seulement, sans leviers, alternatives ni montants
+  function apercuLibre(n){
+    var sec=el("section",{class:"apercu","aria-labelledby":"apercu-titre"},[el("h3",{id:"apercu-titre",text:"Votre exposition, en aperçu"})]);
+    if(!n){
+      sec.appendChild(el("p",{class:"apercu-vide",text:"Retenez des tendances et des technologies pour voir leur exposition."}));
+    } else {
+      var sy=SEL.synthese(maSelection, DONNEES_BRUTES), noms=["Difficile","Exigeante","Maîtrisable","Facilitée"], nt=sy.technos.length, nd=sy.tendances.length, max=Math.max.apply(null,sy.parAnneau.concat([1]));
+      sec.appendChild(el("p",{class:"apercu-total",text:nt+" technologie"+(nt>1?"s":"")}));
+      sec.appendChild(el("ul",{class:"barres-anneau"},sy.parAnneau.map(function(k,i){
+        var rempli=el("span",{class:"barre-rempli"}); rempli.style.width=(k/max*100)+"%"; rempli.style.background="var(--x"+i+"t)";
+        var piste=el("span",{class:"barre-piste"},[rempli]); piste.style.background="var(--x"+i+")";
+        return el("li",{class:"barre-anneau"},[el("span",{class:"barre-nom",text:noms[i]}), piste, el("span",{class:"n",text:String(k)})]);
+      })));
+      sec.appendChild(el("p",{class:"apercu-total",text:nd+" tendance"+(nd>1?"s":"")+", dont "+sy.urgentes+" urgente"+(sy.urgentes>1?"s":"")}));
+      if(sy.mecanismes.length){
+        var ms=sy.mecanismes.slice(0,3).map(function(m){ return el("li",{class:"meca-nom",text:m.meca.court||m.meca.nom}); });
+        if(sy.mecanismes.length>3) ms.push(el("li",{class:"meca-plus",text:"+ "+(sy.mecanismes.length-3)}));
+        sec.appendChild(el("p",{class:"apercu-legende",text:"Mécanismes en jeu"}));
+        sec.appendChild(el("ul",{class:"apercu-mecas"},ms));
+      }
+      ["Alternatives mieux classées","Leviers et parades","Détail par technologie"].forEach(function(t){
+        sec.appendChild(el("div",{class:"verrou"},[el("span",{class:"verrou-icone","aria-hidden":"true",text:"🔒"}), el("span",{class:"verrou-titre",text:t}), el("span",{class:"verrou-note",text:"Dans le rapport complet"})]));
+      });
+    }
+    var b=el("button",{type:"button",id:"demander-rapport",class:"voir-radar"},["Recevoir mon rapport complet (PDF)"]); if(!n) b.disabled=true;
+    b.addEventListener("click",function(){ demanderRapport(sec); });
+    sec.appendChild(b);
+    sec.appendChild(el("p",{class:"rgpd-radar",text:"En cliquant, vous ouvrez un formulaire hébergé par Tally, qui reçoit votre adresse IP. Votre e-mail sert à vous envoyer ce rapport, à vous recontacter et à vous relancer dans le cadre de cette campagne ; il est conservé trois ans après notre dernier contact. Accès et suppression : contact@stratwise.fr."}));
+    var dernier=dernierRapport();
+    if(dernier) sec.appendChild(el("p",{class:"dernier-rapport-ligne"},[el("a",{class:"dernier-rapport",href:dernier,text:"Revoir mon dernier rapport"})]));
+    return sec;
+  }
+  // Demande du rapport : Tally n’est chargé qu’au clic, qui vaut consentement.
+  function dateLocale(){ var d=new Date(), z=function(n){ return (n<10?"0":"")+n; }; return d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate()); }
+  function erreurTally(sec,lien){
+    var ancien=sec.querySelector(".tally-erreur"); if(ancien) ancien.remove();
+    sec.appendChild(el("p",{class:"tally-erreur",role:"alert"},["Le formulaire n’a pas pu s’ouvrir. Écrivez-nous à contact@stratwise.fr en joignant ce lien : ", el("a",{href:lien,text:lien})]));
+  }
+  function demanderRapport(sec){
+    var cfg=window.OPTIO_CONFIG||{};
+    maSelection.date=dateLocale();
+    var local=location.hostname==="localhost"||location.hostname==="127.0.0.1", ici=location.origin+location.pathname;
+    var lien=SEL.urlRapport(local?ici:(cfg.urlSite||ici), maSelection), code=SEL.encoderSelection(maSelection); // en local, le lien reste local
+    if(!cfg.tallyFormId){
+      if(local) location.href=lien; // mode développement
+      else erreurTally(sec,lien);
+      return;
+    }
+    var fini=false;
+    function echec(){ if(fini) return; fini=true; var c=document.querySelector("script[data-tally]"); if(c) c.remove(); erreurTally(sec,lien); }
+    function ouvrir(){
+      if(fini) return; fini=true;
+      try{ window.Tally.openPopup(cfg.tallyFormId,{hiddenFields:{selection:code,rapport:lien},onSubmit:function(){ location.href=lien; }}); }
+      catch(e){ fini=false; echec(); }
+    }
+    function pret(){ return window.Tally&&typeof window.Tally.openPopup==="function"; }
+    if(pret()){ ouvrir(); return; }
+    if(document.querySelector("script[data-tally]")) return; // chargement déjà en cours
+    var s=document.createElement("script"), delai=setTimeout(echec,8000);
+    s.src="https://tally.so/widgets/embed.js"; s.async=true; s.setAttribute("data-tally","");
+    s.onload=function(){ clearTimeout(delai); if(pret()) ouvrir(); else echec(); };
+    s.onerror=function(){ clearTimeout(delai); echec(); };
+    document.head.appendChild(s);
+  }
+  // Contenu du volet : aperçu, tendances puis technologies retenues, puis suggestions
+  function rendreVolet(){
+    var z=document.getElementById("volet-corps"); z.textContent="";
+    var tends=T.filter(estRetenu), techs=TECH.filter(estRetenu), tri=function(a,b){ return a.a-b.a || a.t.localeCompare(b.t,"fr"); };
+    tends.sort(tri); techs.sort(tri);
+    z.appendChild(apercuLibre(tends.length+techs.length));
+    z.appendChild(el("p",{class:"volet-aide",text:tends.length+techs.length ? "Vos tendances et technologies retenues, enregistrées dans ce navigateur." : "Aucun élément retenu pour l’instant. Cliquez sur l’étoile ☆ d’une tendance ou d’une technologie pour la retenir."}));
+    function bloc(titre,liste,voir){
+      if(!liste.length) return;
+      z.appendChild(el("section",null,[el("h3",{text:titre+" · "+liste.length}), el("ul",{class:"volet-liste"},liste.map(function(x){
+        var col=couleur(x.type), num=el("span",{class:"numero",text:String(x.n)}); num.style.background=col[0]; num.style.color=col[1];
+        return el("li",{class:"volet-item"},[
+          el("button",{type:"button",class:"volet-ouvrir",title:"Ouvrir la fiche",onclick:function(){ fermerVolet(false); voir(x,true); }},[num, el("span",{text:x.t})]),
+          el("button",{type:"button",class:"volet-retirer","aria-label":"Retirer « "+x.t+" »",onclick:function(){ basculerRetenu(x); }},["Retirer"])
+        ]);
+      }))]));
+    }
+    bloc("Tendances retenues",tends,voirTendance);
+    bloc("Technologies retenues",techs,voirTechno);
+    var parId=Object.create(null); TECH.forEach(function(y){ parId[y.id]=y; });
+    var sugg=SEL.suggestions(maSelection, DONNEES_BRUTES).map(function(i){ return parId[i]; }).filter(Boolean).slice(0,6);
+    if(sugg.length) z.appendChild(el("section",{class:"volet-suggestions"},[
+      el("p",{text:"Ces tendances concernent aussi :"}),
+      el("div",{class:"volet-chips"},sugg.map(function(y){ return el("button",{type:"button",class:"volet-sugg","aria-label":"Retenir « "+y.t+" »",onclick:function(){ basculerRetenu(y); }},[el("span",{"aria-hidden":"true",text:"☆"}), y.t]); })),
+      el("p",{text:"Les utilisez-vous ?"})
+    ]));
+  }
+  document.getElementById("mon-radar").addEventListener("click",function(){ if(voletOuvert()) fermerVolet(); else ouvrirVolet(); });
+  document.getElementById("volet-fermer").addEventListener("click",function(){ fermerVolet(); });
+  document.getElementById("volet-fond").addEventListener("click",function(){ fermerVolet(); });
+  // piège du focus : Tab et Maj+Tab bouclent dans le volet tant qu’il est ouvert
+  document.getElementById("volet").addEventListener("keydown",function(e){
+    if(e.key!=="Tab") return;
+    var v=document.getElementById("volet"), f=[].slice.call(v.querySelectorAll("button,a[href],input,select,textarea,[tabindex]:not([tabindex='-1'])")).filter(function(n){ return !n.disabled && n.getClientRects().length; });
+    if(!f.length) return;
+    var premier=f[0], dernier=f[f.length-1], a=document.activeElement;
+    if(e.shiftKey && (a===premier || a===v)){ e.preventDefault(); dernier.focus(); }
+    else if(!e.shiftKey && a===dernier){ e.preventDefault(); premier.focus(); }
+  });
   // Échap : retire les filtres axe et urgence
   document.addEventListener("keydown",function(e){
+    if(e.key==="Escape" && voletOuvert()){ e.preventDefault(); fermerVolet(); return; } // le volet passe avant les autres usages d’Échap
     if(e.key==="Escape" && vue==="tendances" && zoneLie && !document.querySelector("dialog[open]")){ setLie(false); return; }
     if(e.key!=="Escape" || vue==="mecanismes" || vue==="leviers" || (fAxe==="tous" && fAnneau==="tous" && !(vue==="technologies" && lien))) return;
     if(document.querySelector("dialog[open]") || (document.activeElement && document.activeElement.id==="recherche")) return;
@@ -1360,7 +1765,176 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   (function(){ var bande=document.getElementById("bande"), tic=false;
     function maj(){ tic=false; bande.classList.toggle("colle",bande.getBoundingClientRect().top<=0 && window.scrollY>0); }
     window.addEventListener("scroll",function(){ if(!tic){ tic=true; requestAnimationFrame(maj); } },{passive:true}); })();
+  // ===== Rapport personnalisé (radar.html?rapport=1&t=…&x=…&d=…) : remplace l’interface du radar =====
+  // Factuel et sourcé : aucun chiffrage. Recalculé à partir des données du moment ; la date est celle de la demande.
+  var MODE_RAPPORT=document.documentElement.classList.contains("mode-rapport");
+  var MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
+  // « 2026-11-23 » → « 23 novembre 2026 », lu comme une date locale (pas de décalage de fuseau)
+  function dateLongue(d){
+    var m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(d||""); if(!m) return "";
+    var mois=+m[2], jour=+m[3]; if(mois<1||mois>12||jour<1||jour>31) return "";
+    return (jour===1?"1er":String(jour))+" "+MOIS[mois-1]+" "+m[1];
+  }
+  function pluriel(n,mot){ return n+" "+mot+(n>1?"s":""); }
+  function zoneRapport(){
+    var z=document.getElementById("rapport");
+    if(!z){ z=el("main",{id:"rapport",class:"rapport",tabindex:"-1"}); document.body.insertBefore(z,document.getElementById("contenu")); document.querySelector(".skip").setAttribute("href","#rapport"); }
+    return z;
+  }
+  function lienRdv(){
+    var cal=(window.OPTIO_CONFIG||{}).calLien||"";
+    return cal ? cal+(cal.indexOf("?")<0?"?":"&")+"notes="+encodeURIComponent("Mon rapport : "+location.href) : "index.html#contact";
+  }
+  // Copie du lien : presse-papiers si possible, sinon champ en lecture seule sélectionné
+  function copierLien(zone,statut){
+    var url=location.href;
+    function repli(){
+      var champ=zone.querySelector("input.rapport-lien");
+      if(!champ){ champ=el("input",{type:"text",class:"rapport-lien",readonly:"","aria-label":"Lien de mon rapport"}); zone.appendChild(champ); }
+      champ.value=url; statut.textContent="Copiez ce lien :"; champ.focus(); champ.select();
+    }
+    if(navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function(){ statut.textContent="Lien copié dans le presse-papiers."; },repli);
+    else repli();
+  }
+  function actionsRapport(){
+    var statut=el("p",{class:"rapport-statut",role:"status","aria-live":"polite"}), zone=el("div",{class:"rapport-actions"});
+    zone.appendChild(el("button",{type:"button",class:"rapport-bouton",onclick:function(){ window.print(); }},["Télécharger en PDF"]));
+    zone.appendChild(el("button",{type:"button",class:"rapport-bouton",onclick:function(){ copierLien(zone,statut); }},["Copier le lien de mon rapport"]));
+    zone.appendChild(el("a",{class:"rapport-bouton principal rapport-rdv-haut",href:lienRdv()},["Réserver 30 minutes"]));
+    zone.appendChild(statut);
+    return zone;
+  }
+  function anneauTech(a){ var s=el("span",{class:"rapport-anneau",text:VUES.technologies.anneaux[a]}); s.style.setProperty("--la","var(--x"+a+")"); s.style.setProperty("--lt","var(--x"+a+"t)"); return s; }
+  function anneauTend(a){ var s=el("span",{class:"rapport-anneau",text:VUES.tendances.anneaux[a]}); s.style.setProperty("--la","var(--a"+a+")"); s.style.setProperty("--lt","var(--a"+a+"t)"); return s; }
+  function carte(classe,a,palette){ var c=el("article",{class:"rapport-carte "+classe}); c.style.setProperty("--la","var(--"+palette+a+")"); c.style.setProperty("--lt","var(--"+palette+a+"t)"); return c; }
+  function liLevier(titre,commentaire){ return el("li",null,[el("strong",{text:titre}), commentaire?" : "+commentaire:""]); }
+  function rendreRapport(sel){
+    var z=zoneRapport(); z.textContent="";
+    document.title="Mon rapport · Radar des dépendances · Optio";
+    var sy=SEL.synthese(sel, DONNEES_BRUTES), nt=sy.technos.length, nd=sy.tendances.length, date=dateLongue(sel.date);
+    var techId=Object.create(null), tendId=Object.create(null), levId=Object.create(null);
+    TECH.forEach(function(x){ techId[x.id]=x; }); T.forEach(function(x){ tendId[x.id]=x; }); LEV.forEach(function(x){ levId[x.id]=x; });
+
+    var garde=el("section",{class:"rapport-bloc rapport-garde","aria-labelledby":"rapport-titre"},[
+      el("p",{class:"rapport-surtitre",text:"Radar des dépendances · rapport personnalisé"}),
+      el("h1",{id:"rapport-titre",text:"Votre exposition aux dépendances numériques"})
+    ]);
+    if(date) garde.appendChild(el("p",{class:"rapport-date",text:"Sélection du "+date}));
+    if(sy.absents) garde.appendChild(el("p",{class:"rapport-absents",text:sy.absents+(sy.absents>1?" éléments ne figurent":" élément ne figure")+" plus dans le radar."}));
+    z.appendChild(garde);
+    if(!nt && !nd){
+      z.setAttribute("data-etat","vide");
+      garde.appendChild(el("p",{class:"rapport-note",text:"Ce rapport ne contient aucune sélection."}));
+      garde.appendChild(el("p",null,[el("a",{href:"radar.html",text:"Ouvrir le radar"}), " et retenez les tendances et les technologies qui vous concernent."]));
+      return;
+    }
+    garde.appendChild(el("div",{class:"rapport-selection"},[
+      nd?el("div",null,[el("h3",{text:"Tendances retenues · "+nd}), el("ul",null,sy.tendances.map(function(t){ return el("li",{text:t.titre}); }))]):null,
+      nt?el("div",null,[el("h3",{text:"Technologies retenues · "+nt}), el("ul",null,sy.technos.map(function(x){ return el("li",{text:x.nom}); }))]):null
+    ]));
+    garde.appendChild(el("p",{class:"rapport-note",text:"Ce rapport est calculé à partir des données du radar au moment où vous l’ouvrez. Les classements décrivent la difficulté typique d’une sortie, pas la qualité des produits, et varient selon vos usages."}));
+    garde.appendChild(actionsRapport());
+
+    // Synthèse : les mêmes nombres que l’aperçu du volet « Mon radar »
+    var synth=el("section",{class:"rapport-bloc rapport-synthese"},[el("h2",{text:"Synthèse"})]);
+    synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(nt,"technologie")}));
+    var max=Math.max.apply(null,sy.parAnneau.concat([1]));
+    synth.appendChild(el("ul",{class:"barres-anneau"},sy.parAnneau.map(function(k,i){
+      var rempli=el("span",{class:"barre-rempli"}); rempli.style.width=(k/max*100)+"%"; rempli.style.background="var(--x"+i+"t)";
+      var piste=el("span",{class:"barre-piste"},[rempli]); piste.style.background="var(--x"+i+")";
+      return el("li",{class:"barre-anneau"},[el("span",{class:"barre-nom",text:VUES.technologies.courts[i]}), piste, el("span",{class:"n",text:String(k)})]);
+    })));
+    synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(nd,"tendance")+", dont "+pluriel(sy.urgentes,"urgente")}));
+    synth.appendChild(el("p",{class:"rapport-note",text:"Urgente : tendance classée en urgence forte ou élevée dans le radar."}));
+    synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(sy.mecanismes.length,"mécanisme")+" d’enfermement probable"+(sy.mecanismes.length>1?"s":"")}));
+    z.appendChild(synth);
+
+    // Une carte par technologie : anneau, pourquoi, dépendance, alternatives mieux classées, tendances, site officiel
+    if(nt){
+      var cartesX=el("div",{class:"rapport-cartes"});
+      sy.technos.forEach(function(brut){
+        var x=techId[brut.id]; if(!x) return;
+        var c=carte("rapport-techno",x.a,"x");
+        c.appendChild(el("div",{class:"rapport-tete"},[el("h3",{text:x.t}), anneauTech(x.a)]));
+        if(x.ed) c.appendChild(el("p",{class:"rapport-meta",text:"Éditeur : "+x.ed}));
+        if(x.pourquoi) c.appendChild(el("div",{class:"pourquoi"},[el("h4",{text:"Pourquoi cet anneau"}), el("p",{text:x.pourquoi})]));
+        c.appendChild(el("h4",{text:"Ce qui crée la dépendance"})); c.appendChild(el("p",{text:x.note}));
+        // mieux classée : anneau plus extérieur, ou même anneau quand la technologie est déjà en sortie facilitée
+        var mieux=x.alts.filter(function(al){ return al.cible && (al.cible.a>x.a || (x.a===3 && al.cible.a===3)); }), autres=x.alts.filter(function(al){ return mieux.indexOf(al)<0; });
+        var alt=el("div",{class:"rapport-alternatives"},[el("h4",{text:"Alternatives mieux classées"})]);
+        if(mieux.length) alt.appendChild(el("ul",null,mieux.map(function(al){ return el("li",null,[al.cible.t, anneauTech(al.cible.a)]); })));
+        else alt.appendChild(el("p",{text:"Aucune alternative mieux classée dans le radar."}));
+        if(autres.length) alt.appendChild(el("p",{class:"rapport-meta",text:"Autres pistes citées : "+autres.map(function(al){ return al.nom; }).join(", ")+"."}));
+        c.appendChild(alt);
+        var tends=x.tends.slice().sort(function(a,b){ return a.a-b.a || a.t.localeCompare(b.t,"fr"); });
+        c.appendChild(el("h4",{text:"Tendances qui la concernent"}));
+        c.appendChild(tends.length ? el("ul",null,tends.map(function(t){ return el("li",{text:t.t+" ("+VUES.tendances.anneaux[t.a].toLowerCase()+")"}); })) : el("p",{text:"Aucune tendance du radar ne la cite."}));
+        if(x.sites.length) c.appendChild(el("p",{class:"rapport-meta"},[x.sites.length>1?"Sites officiels : ":"Site officiel : "].concat(x.sites.reduce(function(acc,u,i){ if(i) acc.push(", "); acc.push(el("a",{class:"sans-adresse",href:u,text:u})); return acc; },[]))));
+        cartesX.appendChild(c);
+      });
+      z.appendChild(el("section",{class:"rapport-partie"},[el("h2",{text:"Technologies retenues"}), cartesX]));
+    }
+
+    // Une carte par tendance : risque, leviers avec leur commentaire
+    if(nd){
+      var cartesT=el("div",{class:"rapport-cartes"});
+      sy.tendances.forEach(function(brut){
+        var t=tendId[brut.id]; if(!t) return;
+        var c=carte("rapport-tendance",t.a,"a");
+        c.appendChild(el("div",{class:"rapport-tete"},[el("h3",{text:t.t}), anneauTend(t.a)]));
+        c.appendChild(el("div",{class:"pourquoi"},[el("h4",{text:"Le risque"}), el("p",{text:t.pourquoi})]));
+        c.appendChild(el("h4",{text:"Leviers"}));
+        c.appendChild(t.levs.length ? el("ul",null,t.levs.map(function(a){ return liLevier(a.l.t,a.c); })) : el("p",{text:"Aucun levier rattaché pour l’instant."}));
+        cartesT.appendChild(c);
+      });
+      z.appendChild(el("section",{class:"rapport-partie"},[el("h2",{text:"Tendances retenues"}), cartesT]));
+    }
+
+    // Mécanismes reliés aux tendances retenues, et leurs parades
+    var mecas=el("section",{class:"rapport-partie rapport-mecas"},[el("h2",{text:"Mécanismes probables"})]);
+    if(sy.mecanismes.length){
+      mecas.appendChild(el("p",{class:"rapport-note",text:"Les mécanismes d’enfermement reliés à vos tendances retenues, du plus cité au moins cité, avec les leviers qui permettent d’y répondre."}));
+      mecas.appendChild(el("div",{class:"rapport-cartes"},sy.mecanismes.map(function(m){
+        var c=el("article",{class:"rapport-carte rapport-meca"}); c.style.setProperty("--lt","var(--line-2)");
+        c.appendChild(el("h3",{text:m.meca.nom}));
+        c.appendChild(el("p",{class:"rapport-meta",text:"Relié à "+pluriel(m.nb,"tendance")+" retenue"+(m.nb>1?"s":"")}));
+        c.appendChild(el("p",{text:m.meca.fonctionnement}));
+        if(m.meca.signal){ c.appendChild(el("h4",{text:"Signal d’alerte"})); c.appendChild(el("p",{text:m.meca.signal})); }
+        var parades=(m.meca.leviers||[]).filter(function(a){ return levId[a.id]; });
+        if(parades.length){ c.appendChild(el("h4",{text:"Parades"})); c.appendChild(el("ul",null,parades.map(function(a){ return liLevier(levId[a.id].t,a.commentaire); }))); }
+        return c;
+      })));
+    } else mecas.appendChild(el("p",{text:"Aucun mécanisme d’enfermement n’est relié aux tendances retenues."}));
+    z.appendChild(mecas);
+
+    // Sources citées, par élément ; une même adresse n’est listée qu’une fois
+    var src=el("section",{class:"rapport-partie rapport-sources"},[el("h2",{text:"Sources"})]), vues={};
+    sy.tendances.map(function(t){ return [t.titre,t.sources]; }).concat(sy.technos.map(function(x){ return [x.nom,x.sources]; })).forEach(function(g){
+      var items=(g[1]||[]).filter(function(s2){ if(!s2.url) return true; if(vues[s2.url]) return false; vues[s2.url]=1; return true; });
+      if(!items.length) return;
+      src.appendChild(el("h3",{text:g[0]}));
+      src.appendChild(el("ul",null,items.map(function(s2){ return el("li",null,[s2.url?el("a",{href:s2.url,text:s2.titre}):s2.titre]); })));
+    });
+    src.appendChild(el("p",{class:"rapport-note",text:"Informations vérifiées en novembre 2026. Le radar est un prototype à valider avec des experts."}));
+    z.appendChild(src);
+
+    // Dernière page : appel au rendez-vous
+    var cal=(window.OPTIO_CONFIG||{}).calLien||"", rdv=lienRdv();
+    var fin=el("section",{class:"rapport-partie rapport-fin"},[
+      el("h2",{text:"Analysons ce rapport ensemble, 30 minutes"}),
+      el("p",{text:"Un échange de 30 minutes pour relire ce rapport avec vous : quelles dépendances pèsent réellement dans votre contexte, quels leviers activer en premier, et ce qu’il faut vérifier avant une échéance de contrat."}),
+      el("p",{text:"Le lien de ce rapport est joint à la réservation : nous le lirons avant l’échange."}),
+      el("div",{class:"rapport-actions"},[el("a",{class:"rapport-bouton principal rapport-rdv",href:rdv},["Réserver 30 minutes"])]),
+      el("p",{class:"imprime-seul"},["Pour réserver : ", el("a",{class:"sans-adresse",href:cal||new URL("index.html#contact",location.href).href,text:cal||new URL("index.html#contact",location.href).href})]),
+      el("p",{class:"rapport-note ecran-seul"},[el("a",{href:"radar.html",text:"Explorer le radar complet"})])
+    ]);
+    z.appendChild(fin);
+    z.setAttribute("data-etat","complet");
+    var st=stockage(); try{ if(st) st.setItem(SEL.CLE_DERNIER_RAPPORT, location.href); }catch(e){}
+  }
+  // ===== fin du rapport personnalisé =====
   function depuisHash(){
+    if(MODE_RAPPORT) return; // le rapport ignore les ancres du radar
     var h=location.hash.replace("#","");
     if(h==="technologies"||h==="tendances"||h==="mecanismes"||h==="leviers"){ if(vue!==h) changerVue(h); return; }
     var mi=MECAID.indexOf(h);
@@ -1377,13 +1951,17 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     return fetch("data/"+nom+".json",{cache:"no-cache"}).then(function(r){ if(!r.ok) throw new Error("data/"+nom+".json introuvable (HTTP "+r.status+")"); return r.json().catch(function(e){ throw new Error("data/"+nom+".json n’est pas un JSON valide : "+e.message); }); });
   }
   Promise.all(["tendances","technologies","mecanismes","leviers"].map(charger)).then(function(r){
+    DONNEES_BRUTES={tendances:r[0], technologies:r[1], mecanismes:r[2], leviers:r[3]};
     preparer(r[0],r[1],r[2],r[3]);
+    if(MODE_RAPPORT){ rendreRapport(SEL.decoderSelection(location.search)); return; }
+    initSelection();
     stats(); changerVue("tendances"); depuisHash();
   }).catch(function(err){
     console.error(err);
     var msg="Impossible de charger les données du radar : "+err.message+".";
     if(location.protocol==="file:") msg+=" Ouvrez la page via un serveur local (python3 -m http.server) plutôt qu’en double-cliquant sur le fichier.";
     document.getElementById("intro").textContent=msg;
+    if(MODE_RAPPORT){ var z=zoneRapport(); z.textContent=""; z.appendChild(el("p",{class:"rapport-bloc",role:"alert",text:msg})); }
   });
 })();
 </script>
