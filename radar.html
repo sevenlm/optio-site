@@ -526,6 +526,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .verrou-note{font-size:12px}
 .apercu .voir-radar{align-self:stretch;margin-top:6px;white-space:normal}
 .apercu .voir-radar:disabled{opacity:.5;cursor:not-allowed;transform:none;box-shadow:none}
+.rgpd-radar{margin:8px 0 0;font-size:12px;line-height:1.5;color:var(--text-3)}
+.tally-erreur{margin:8px 0 0;padding:10px 12px;border:1.5px solid var(--line-2);border-radius:10px;background:var(--surface);color:var(--text-2);font-size:13px;line-height:1.5;overflow-wrap:anywhere}
+.tally-erreur a{color:var(--ink);text-decoration:underline}
 @media (prefers-reduced-motion: reduce){.mon-radar,.ld-etoile{transition:none}.mon-radar.bump,.volet,.volet-fond{animation:none}}
 </style>
 </head>
@@ -603,6 +606,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 </aside>
 
 <script src="js/selection.js"></script>
+<script src="js/config.js"></script>
 <script>
 (function(){
   "use strict";
@@ -1578,8 +1582,35 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       });
     }
     var b=el("button",{type:"button",id:"demander-rapport",class:"voir-radar"},["Recevoir mon rapport complet (PDF)"]); if(!n) b.disabled=true;
+    b.addEventListener("click",function(){ demanderRapport(sec); });
     sec.appendChild(b);
+    sec.appendChild(el("p",{class:"rgpd-radar",text:"En cliquant, vous ouvrez un formulaire hébergé par Tally, qui reçoit votre adresse IP. Votre e-mail sert à vous envoyer ce rapport, à vous recontacter et à vous relancer dans le cadre de cette campagne ; il est conservé trois ans après notre dernier contact. Accès et suppression : contact@[DOMAINE]."}));
     return sec;
+  }
+  // Demande du rapport : Tally n’est chargé qu’au clic, qui vaut consentement.
+  function dateLocale(){ var d=new Date(), z=function(n){ return (n<10?"0":"")+n; }; return d.getFullYear()+"-"+z(d.getMonth()+1)+"-"+z(d.getDate()); }
+  function erreurTally(sec,lien){
+    var ancien=sec.querySelector(".tally-erreur"); if(ancien) ancien.remove();
+    sec.appendChild(el("p",{class:"tally-erreur",role:"alert"},["Le formulaire n’a pas pu s’ouvrir. Écrivez-nous à contact@[DOMAINE] en joignant ce lien : ", el("a",{href:lien,text:lien})]));
+  }
+  function demanderRapport(sec){
+    var cfg=window.OPTIO_CONFIG||{};
+    maSelection.date=dateLocale();
+    var lien=SEL.urlRapport(cfg.urlSite||location.origin+location.pathname, maSelection), code=SEL.encoderSelection(maSelection);
+    if(!cfg.tallyFormId){
+      if(location.hostname==="localhost"||location.hostname==="127.0.0.1") location.href=lien; // mode développement
+      else erreurTally(sec,lien);
+      return;
+    }
+    function ouvrir(){ window.Tally.openPopup(cfg.tallyFormId,{hiddenFields:{selection:code,rapport:lien},onSubmit:function(){ location.href=lien; }}); }
+    if(window.Tally&&window.Tally.openPopup){ ouvrir(); return; }
+    var fini=false, s=document.createElement("script");
+    var echec=function(){ if(fini) return; fini=true; erreurTally(sec,lien); };
+    var delai=setTimeout(echec,8000);
+    s.src="https://tally.so/widgets/embed.js"; s.async=true;
+    s.onload=function(){ if(fini) return; fini=true; clearTimeout(delai); ouvrir(); };
+    s.onerror=function(){ clearTimeout(delai); echec(); };
+    document.head.appendChild(s);
   }
   // Contenu du volet : tendances puis technologies retenues, puis suggestions (Task 3 y ajoute l’aperçu)
   function rendreVolet(){
