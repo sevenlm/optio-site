@@ -124,3 +124,92 @@ test("radars : mobile sans débordement", async () => {
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
+
+// Criticité calculée dans la page à partir des données brutes du radar
+const criticitesPage = (p) => p.evaluate(async () => {
+  const [technologies, tendances] = await Promise.all(["technologies", "tendances"].map((n) => fetch("data/" + n + ".json").then((r) => r.json())));
+  return { technologies, tendances, crit: { ...window.OptioSelection.criticites({ technologies, tendances, mecanismes: [], leviers: [] }) } };
+});
+
+test("matrice : position et criticité", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 1280, height: 900 } });
+  try {
+    const m = p.locator("#ch-synthese figure.rapport-figure.rapport-matrice");
+    assert.equal(await m.count(), 1);
+    assert.equal(await m.locator(".pt-matrice").count(), 2);
+    assert.equal(await m.locator("svg[role=\"img\"]").getAttribute("aria-label"), "Matrice criticité et réversibilité : 2 technologies");
+    const { crit } = await criticitesPage(p);
+    const pts = await m.locator(".pt-matrice").evaluateAll((gs) => gs.map((g) => ({ id: g.getAttribute("data-id"), crit: g.getAttribute("data-criticite"), cx: Number(g.querySelector("circle").getAttribute("cx")) })));
+    for (const pt of pts) assert.equal(Number(pt.crit), crit[pt.id].score, pt.id);
+    const cx = Object.fromEntries(pts.map((pt) => [pt.id, pt.cx]));
+    assert.ok(cx["vmware-vsphere-et-vcf"] < cx["openstack"], "VMware doit être à gauche d’OpenStack");
+    const leg = await m.locator("ol.rapport-legende").innerText();
+    assert.ok(leg.includes("OpenStack") && /VMware/.test(leg));
+    const cap = await m.locator("figcaption").innerText();
+    assert.ok(cap.startsWith("Positionnement indicatif, estimé à partir du radar — à affiner avec vous en rendez-vous"), cap);
+    assert.ok(cap.includes("Criticité estimée : urgence des tendances du radar qui citent la technologie (forte 3, élevée 2, moyenne 1, faible 0), ramenée de 1 à 5."), cap);
+    // après les radars
+    assert.equal(await p.evaluate(() => {
+      const r = document.querySelector("#ch-synthese .rapport-radars"), f = document.querySelector("#ch-synthese .rapport-matrice");
+      return !!(r.compareDocumentPosition(f) & Node.DOCUMENT_POSITION_FOLLOWING);
+    }), true);
+    // numéros lisibles : taille rendue ≥ 8 px
+    const taille = await m.locator(".pt-matrice text").first().evaluate((t) => {
+      const svg = t.ownerSVGElement; return parseFloat(t.getAttribute("font-size")) * svg.getBoundingClientRect().width / svg.viewBox.baseVal.width;
+    });
+    assert.ok(taille >= 8, "numéro rendu à " + taille + " px");
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("matrice : points sans recouvrement", async () => {
+  const technologies = await fetch(BASE + "data/technologies.json").then((r) => r.json());
+  const ids = technologies.filter((x) => x.anneau === 0).map((x) => x.id);
+  assert.ok(ids.length > 2);
+  const { p, errs, fermer } = await rapport("radar.html?rapport=1&x=" + ids.join(",") + "&d=2026-11-23");
+  try {
+    const cs = await p.locator(".rapport-matrice .pt-matrice circle").evaluateAll((l) => l.map((c) => ["cx", "cy", "r"].map((k) => Number(c.getAttribute(k)))));
+    assert.equal(cs.length, ids.length);
+    for (let i = 0; i < cs.length; i++) for (let j = i + 1; j < cs.length; j++) {
+      const d = Math.hypot(cs[i][0] - cs[j][0], cs[i][1] - cs[j][1]);
+      assert.ok(d >= 2 * cs[i][2] - 1e-6, "points " + i + " et " + j + " à " + d.toFixed(2));
+    }
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("matrice : technologie sans tendance", async (t) => {
+  const { p: q, fermer: f0 } = await rapport(COMPLET);
+  const { technologies, tendances } = await criticitesPage(q);
+  await f0();
+  const cites = new Set(tendances.filter((x) => x.type !== "levier").flatMap((x) => x.technologies || []));
+  const libre = technologies.find((x) => !cites.has(x.nom));
+  if (!libre) { t.skip("aucune technologie sans tendance dans les données"); return; }
+  const { p, errs, fermer } = await rapport("radar.html?rapport=1&x=vmware-vsphere-et-vcf,openstack," + libre.id + "&d=2026-11-23");
+  try {
+    const pts = await p.locator(".rapport-matrice .pt-matrice").evaluateAll((gs) => gs.map((g) => ({ id: g.getAttribute("data-id"), crit: g.getAttribute("data-criticite"), cy: Number(g.querySelector("circle").getAttribute("cy")) })));
+    const pt = pts.find((x) => x.id === libre.id);
+    assert.equal(pt.crit, "1");
+    assert.equal(pt.cy, Math.max(...pts.map((x) => x.cy)));
+    assert.ok(pts.every((x) => Number.isFinite(x.cy)));
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("matrice : absente sans technologie", async () => {
+  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=fin-des-licences-perpetuelles&d=2026-11-23");
+  try {
+    assert.equal(await p.locator(".rapport-matrice").count(), 0);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("matrice : mobile sans débordement", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 390, height: 844 } });
+  try {
+    assert.ok(await p.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
+    const b = await p.locator(".rapport-matrice svg").boundingBox();
+    assert.ok(b.width > 250 && b.x + b.width <= 390);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
