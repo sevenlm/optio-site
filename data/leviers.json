@@ -866,5 +866,231 @@
     "technologies": [
       "IaaS européens (OVHcloud, Scaleway, Outscale)"
     ]
+  },
+  {
+    "id": "routage-entre-modeles-dia",
+    "titre": "Passerelle et routage entre modèles d’IA",
+    "axe": 4,
+    "principe": "Faire passer les appels aux modèles d’IA par une passerelle à l’API unique, pour que changer de fournisseur ou de modèle soit un réglage, et le prouver par des évaluations.",
+    "mise_en_oeuvre": [
+      "Placez une passerelle d’IA entre les applications et les fournisseurs de modèles, et interdisez les appels directs.",
+      "Écrivez une batterie d’évaluations sur vos cas d’usage et faites-la passer à au moins deux modèles de fournisseurs différents, dont un à poids ouverts.",
+      "Réservez les modèles les plus puissants aux tâches qui en ont besoin : un petit modèle suffit souvent pour les tâches courtes et fréquentes."
+    ],
+    "verification": "Un cas d’usage en production a basculé d’un fournisseur de modèle à un autre par un simple réglage de la passerelle, après une évaluation écrite.",
+    "limites": "La passerelle devient elle-même un composant critique, à sécuriser et à maintenir. Les invites réglées pour un modèle perdent souvent en qualité sur un autre.",
+    "lies": [
+      "modeles-dia-a-poids-ouverts",
+      "couches-dabstraction",
+      "cout-total-de-la-dependance"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, LiteLLM (Trial)",
+        "url": "https://www.thoughtworks.com/radar/platforms/litellm"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Open-weight models (Trial)",
+        "url": "https://www.thoughtworks.com/radar/techniques/open-weight-models"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Blanket frontier model usage (Caution)",
+        "url": "https://www.thoughtworks.com/radar/techniques/blanket-frontier-model-usage"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Promptfoo (Trial)",
+        "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/promptfoo"
+      }
+    ],
+    "technologies": [
+      "LiteLLM",
+      "vLLM",
+      "Ollama",
+      "Amazon Bedrock",
+      "Azure OpenAI (Microsoft Foundry)",
+      "Mistral AI (La Plateforme)"
+    ]
+  },
+  {
+    "id": "actifs-dagents-de-code-portables",
+    "titre": "Actifs d’agents de code portables",
+    "axe": 4,
+    "principe": "Garder les instructions, compétences et serveurs d’outils des agents de code dans Git, dans des formats ouverts, pour pouvoir changer d’agent sans perdre ce que les équipes ont appris.",
+    "mise_en_oeuvre": [
+      "Écrivez les instructions des agents au format ouvert AGENTS.md plutôt que dans un fichier propre à un outil.",
+      "Rassemblez compétences, instructions et serveurs d’outils dans un dépôt Git partagé et versionné.",
+      "Faites tourner régulièrement un agent libre (par exemple OpenCode) sur le même dépôt pour vérifier que tout fonctionne hors de l’outil principal."
+    ],
+    "verification": "Une équipe a travaillé une semaine avec un second agent de code, en réutilisant sans réécriture les instructions et outils du dépôt partagé.",
+    "limites": "Les formats évoluent vite et chaque outil garde des extensions propres. L’habitude des développeurs pour un outil pèse autant que les fichiers.",
+    "lies": [
+      "formats-de-donnees-ouverts",
+      "competences-sur-les-alternatives",
+      "gestion-des-actifs-logiciels"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "AGENTS.md, format ouvert pour guider les agents de code, consulté en novembre 2026",
+        "url": "https://agents.md/"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Agent plugin marketplace (Trial)",
+        "url": "https://www.thoughtworks.com/radar/techniques/agent-plugin-marketplace"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Enterprise harness (Assess)",
+        "url": "https://www.thoughtworks.com/radar/techniques/enterprise-harness"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, OpenCode (Adopt)",
+        "url": "https://www.thoughtworks.com/radar/tools/opencode"
+      }
+    ],
+    "technologies": [
+      "OpenCode",
+      "GitHub Copilot",
+      "Cursor",
+      "Claude Code",
+      "OpenAI Codex"
+    ]
+  },
+  {
+    "id": "contrats-de-donnees-standardises",
+    "titre": "Contrats de données standardisés",
+    "axe": 4,
+    "principe": "Décrire chaque jeu de données partagé dans un contrat au format standard (schéma, sens, qualité, propriétaire), pour que les données restent compréhensibles et reprenables hors de l’outil qui les produit.",
+    "mise_en_oeuvre": [
+      "Rédigez les contrats des jeux de données critiques au format Open Data Contract Standard (ODCS) et versionnez-les avec le code.",
+      "Vérifiez les contrats automatiquement à chaque livraison des données."
+    ],
+    "verification": "Les jeux de données critiques ont un contrat ODCS versionné, vérifié automatiquement, et un export a été relu avec ce seul contrat.",
+    "limites": "Un contrat décrit les données sans les rendre portables : il faut aussi un format ouvert et un export réellement possible.",
+    "lies": [
+      "formats-de-donnees-ouverts",
+      "cartographie-et-classification-des-donnees"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Open Data Contract Standard (ODCS) (Adopt)",
+        "url": "https://www.thoughtworks.com/radar/languages-and-frameworks/open-data-contract-standard-odcs"
+      },
+      {
+        "titre": "Bitol (Linux Foundation AI & Data), Open Data Contract Standard, consulté en novembre 2026",
+        "url": "https://bitol.io/"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "cartographie-du-chemin-vers-la-production",
+    "titre": "Cartographie du chemin vers la production",
+    "axe": 4,
+    "principe": "Cartographier chaque étape entre le poste du développeur et la production, et noter pour chacune l’outil et le fournisseur qui la portent, pour voir où la livraison dépend d’un service qu’on ne contrôle pas.",
+    "mise_en_oeuvre": [
+      "Animez un atelier avec les équipes pour dessiner le chemin réel d’une modification jusqu’à la production.",
+      "Notez pour chaque étape le service utilisé, son offre (gratuite ou payante) et ce qui se passe s’il disparaît.",
+      "Gardez les définitions de pipelines exécutables hors de la forge, par exemple en lançant les workflows GitHub Actions en local avec Act."
+    ],
+    "verification": "Une carte à jour du chemin vers la production existe, chaque étape a un responsable et une solution de repli, et un pipeline critique a été rejoué hors de sa forge.",
+    "limites": "La carte vieillit vite si elle n’est pas revue à chaque changement d’outil. Rejouer un pipeline en local ne couvre pas les secrets ni les intégrations de la forge.",
+    "lies": [
+      "registre-des-contrats-et-des-prestataires",
+      "tests-de-bascule-reguliers",
+      "couches-dabstraction"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Path-to-production mapping (Adopt)",
+        "url": "https://www.thoughtworks.com/radar/techniques/path-to-production-mapping"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Act (Trial)",
+        "url": "https://www.thoughtworks.com/radar/tools/act"
+      }
+    ],
+    "technologies": [
+      "GitHub",
+      "GitLab",
+      "Azure DevOps",
+      "Bitbucket",
+      "Jenkins",
+      "Forgejo"
+    ]
+  },
+  {
+    "id": "agilite-cryptographique",
+    "titre": "Agilité cryptographique",
+    "axe": 4,
+    "principe": "Pouvoir changer d’algorithme de chiffrement et de fournisseur de gestion des clés sans réécrire les applications. La migration vers la cryptographie post-quantique est le moment où cette dépendance se révèle.",
+    "mise_en_oeuvre": [
+      "Inventoriez les algorithmes, bibliothèques et services de gestion des clés utilisés, application par application.",
+      "Faites passer le chiffrement par une couche ou un service commun, configurable, plutôt que par des appels directs à un service de clés propriétaire.",
+      "Exigez des algorithmes post-quantiques normalisés (ML-KEM, ML-DSA) pour les nouveaux projets, en commençant par l’échange de clés."
+    ],
+    "verification": "Un inventaire cryptographique existe et un algorithme a été changé sur une application par configuration, sans modification de code.",
+    "limites": "Les bibliothèques et matériels compatibles post-quantique sont encore inégaux. L’agilité ne protège pas des clés déjà confiées à un tiers.",
+    "lies": [
+      "chiffrement-avec-cles-maitrisees",
+      "couches-dabstraction"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, Post-quantum cryptography (Adopt)",
+        "url": "https://www.thoughtworks.com/radar/techniques/post-quantum-cryptography"
+      }
+    ],
+    "technologies": [
+      "HashiCorp Vault",
+      "OpenBao",
+      "Infisical"
+    ]
+  },
+  {
+    "id": "controles-automatiques-de-reversibilite",
+    "titre": "Contrôles automatiques de réversibilité",
+    "axe": 4,
+    "principe": "Traduire les règles de réversibilité en tests automatiques de l’architecture (fitness functions), exécutés à chaque livraison, pour que l’enfermement ne s’installe pas en silence.",
+    "mise_en_oeuvre": [
+      "Écrivez des règles vérifiables : aucun appel à une API propriétaire hors de la couche d’abstraction, données exportées dans un format ouvert, aucune dépendance sans alternative recensée.",
+      "Exécutez ces règles dans l’intégration continue et bloquez la livraison quand l’une échoue."
+    ],
+    "verification": "Au moins trois règles de réversibilité tournent dans l’intégration continue et ont déjà bloqué une livraison.",
+    "limites": "Les règles ne voient que ce qui est dans le code : contrats, compétences et processus métier échappent à ces tests.",
+    "lies": [
+      "couches-dabstraction",
+      "indice-de-reversibilite-fonde-sur-la-preuve",
+      "formats-de-donnees-ouverts"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar, Architectural fitness function (Trial, mai 2018, absent de l’édition actuelle)",
+        "url": "https://www.thoughtworks.com/radar/techniques/architectural-fitness-function"
+      }
+    ],
+    "technologies": []
   }
 ]

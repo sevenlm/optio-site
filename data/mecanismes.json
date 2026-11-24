@@ -98,6 +98,10 @@
       {
         "id": "cout-total-de-la-dependance",
         "commentaire": "Projetez la hausse sur cinq ans pour la comparer au coût d’un changement."
+      },
+      {
+        "id": "routage-entre-modeles-dia",
+        "commentaire": "Pour l’IA, une passerelle permet de basculer vers un autre modèle si le prix monte."
       }
     ],
     "sources": [
@@ -361,6 +365,10 @@
       {
         "id": "formats-de-donnees-ouverts",
         "commentaire": "Choisissez des formats ouverts (Iceberg, Parquet) et des API standards."
+      },
+      {
+        "id": "contrats-de-donnees-standardises",
+        "commentaire": "Décrivez schéma et sens des données dans un contrat ODCS, lisible hors de l’outil."
       }
     ],
     "sources": [
@@ -438,6 +446,10 @@
       {
         "id": "couches-dabstraction",
         "commentaire": "Contenez les usages spécifiques ; utilisez des outils de conversion et des standards."
+      },
+      {
+        "id": "controles-automatiques-de-reversibilite",
+        "commentaire": "Détectez automatiquement les usages propriétaires qui sortent de leur périmètre."
       }
     ],
     "sources": []
@@ -456,6 +468,10 @@
       {
         "id": "couches-dabstraction",
         "commentaire": "Utilisez des protocoles standards (SAML, OpenID Connect, OpenTelemetry)."
+      },
+      {
+        "id": "cartographie-du-chemin-vers-la-production",
+        "commentaire": "Cartographiez les intégrations dont dépend la livraison pour prévoir leur remplacement."
       }
     ],
     "sources": [

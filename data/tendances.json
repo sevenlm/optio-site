@@ -221,6 +221,10 @@
       {
         "id": "cout-total-de-la-dependance",
         "commentaire": "Suivez la consommation d’IA comme un poste à part entière."
+      },
+      {
+        "id": "routage-entre-modeles-dia",
+        "commentaire": "Orientez les tâches simples vers des modèles moins chers et mesurez la consommation à la passerelle."
       }
     ],
     "sources": [
@@ -400,6 +404,14 @@
       {
         "id": "modeles-dia-a-poids-ouverts",
         "commentaire": "Testez régulièrement un modèle alternatif."
+      },
+      {
+        "id": "routage-entre-modeles-dia",
+        "commentaire": "Rendez le changement de modèle aussi simple qu’un réglage, et prouvez-le par des évaluations."
+      },
+      {
+        "id": "actifs-dagents-de-code-portables",
+        "commentaire": "Gardez instructions et outils des agents de code dans des formats ouverts, indépendants du fournisseur."
       }
     ],
     "sources": [
@@ -415,7 +427,11 @@
     "technologies": [
       "Amazon Bedrock",
       "Azure OpenAI (Microsoft Foundry)",
-      "Google Vertex AI (Gemini platform)"
+      "Google Vertex AI (Gemini platform)",
+      "GitHub Copilot",
+      "Cursor",
+      "Claude Code",
+      "OpenAI Codex"
     ]
   },
   {
@@ -1054,6 +1070,10 @@
       {
         "id": "droit-et-juridiction-europeens-negocies",
         "commentaire": "Faites appliquer au contrat le droit d’un État membre et vérifiez le siège, le capital et les sous-traitants du fournisseur."
+      },
+      {
+        "id": "agilite-cryptographique",
+        "commentaire": "Gardez la possibilité de changer de service de clés et d’algorithme sans réécrire les applications."
       }
     ],
     "technologies": [
@@ -1791,6 +1811,10 @@
       {
         "id": "registre-des-contrats-et-des-prestataires",
         "commentaire": "Inscrivez chaque service découvert au registre des fournisseurs, avec un responsable et une règle de sortie."
+      },
+      {
+        "id": "routage-entre-modeles-dia",
+        "commentaire": "Une passerelle d’IA unique rend visibles les usages de modèles et leur coût."
       }
     ],
     "technologies": [
@@ -1838,6 +1862,10 @@
       {
         "id": "couches-dabstraction",
         "commentaire": "Isolez ces appels derrière des interfaces internes, gardez la logique métier dans votre code et remplacez les intégrations point à point par des API documentées et gouvernées."
+      },
+      {
+        "id": "controles-automatiques-de-reversibilite",
+        "commentaire": "Bloquez automatiquement les appels propriétaires qui contournent la couche d’abstraction."
       }
     ],
     "technologies": [
@@ -1893,6 +1921,10 @@
       {
         "id": "formats-de-donnees-ouverts",
         "commentaire": "Planifiez un export régulier de vos données critiques hors de l’outil, sans attendre une restriction."
+      },
+      {
+        "id": "contrats-de-donnees-standardises",
+        "commentaire": "Décrivez les données échangées dans un contrat standard, indépendant de l’API du fournisseur."
       }
     ],
     "technologies": [
@@ -2063,6 +2095,10 @@
       {
         "id": "tests-de-bascule-reguliers",
         "commentaire": "Testez l’exécution d’un pipeline critique sur un second outil de CI/CD."
+      },
+      {
+        "id": "cartographie-du-chemin-vers-la-production",
+        "commentaire": "Repérez les étapes de livraison qui ne tiennent qu’à la forge, et rejouez-les ailleurs."
       }
     ],
     "technologies": [
@@ -2109,6 +2145,10 @@
       {
         "id": "fork-communautaire-et-miroir-de-repli",
         "commentaire": "Pour les outils de développement critiques, gardez la possibilité de les héberger vous-même."
+      },
+      {
+        "id": "cartographie-du-chemin-vers-la-production",
+        "commentaire": "Notez l’offre de chaque outil du chemin vers la production pour voir où un quota gratuit peut bloquer la livraison."
       }
     ],
     "technologies": [
@@ -2181,6 +2221,10 @@
       {
         "id": "referentiel-de-reversibilite-partage",
         "commentaire": "Appuyez-vous sur une grille commune de réversibilité pour comparer les offres et les appels d’offres."
+      },
+      {
+        "id": "controles-automatiques-de-reversibilite",
+        "commentaire": "Faites vérifier les règles de réversibilité par l’intégration continue, à chaque livraison."
       }
     ],
     "technologies": [],

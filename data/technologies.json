@@ -2522,7 +2522,8 @@
     "alternatives": [
       "OpenSearch",
       "Grafana",
-      "Elasticsearch"
+      "Elasticsearch",
+      "VictoriaLogs"
     ],
     "site": "https://www.splunk.com/",
     "pourquoi": "Requêtes, tableaux de bord et alertes écrits dans un langage propriétaire, à réécrire : la migration est lourde.",
@@ -2548,7 +2549,8 @@
       "Prometheus",
       "Grafana",
       "SigNoz",
-      "Zabbix"
+      "Zabbix",
+      "VictoriaMetrics"
     ],
     "site": "https://www.datadoghq.com/",
     "pourquoi": "Agents et tableaux de bord propriétaires ; OpenTelemetry réduit la dépendance aux agents, mais les tableaux de bord restent à reconstruire.",
@@ -2626,7 +2628,8 @@
       "Alertmanager",
       "Zabbix",
       "SigNoz",
-      "Grafana"
+      "Grafana",
+      "VictoriaMetrics"
     ],
     "site": "https://prometheus.io/",
     "pourquoi": "Projet ouvert de la CNCF dont le format est devenu un standard repris par de nombreux outils.",
@@ -6097,7 +6100,8 @@
     "dependance": "Orchestration de plusieurs services AWS en flux de travail sans serveur. C’est le service dont l’usage à haute fréquence a poussé l’équipe de Prime Video à revoir son architecture (voir « Couplage fort à la plateforme »).",
     "alternatives": [
       "Temporal",
-      "Kestra"
+      "Kestra",
+      "Restate"
     ],
     "site": "https://aws.amazon.com/step-functions/",
     "pourquoi": "Les définitions d’états appellent directement les services AWS, donc le flux se réécrit entièrement avec un autre moteur d’orchestration.",
@@ -6202,7 +6206,7 @@
     ],
     "dependance": "Moteur d’inférence et de service de modèles de langage à haut débit, sous licence Apache 2.0, pour faire tourner des modèles à poids ouverts chez soi ou chez n’importe quel hébergeur.",
     "alternatives": [
-      "—"
+      "Ollama"
     ],
     "site": "https://github.com/vllm-project/vllm",
     "pourquoi": "Licence Apache 2.0 et modèles à poids ouverts. Demande des GPU et une équipe capable de les exploiter.",
@@ -7119,6 +7123,278 @@
       {
         "titre": "Mistral AI, Tarifs, consulté en novembre 2026",
         "url": "https://mistral.ai/pricing"
+      }
+    ]
+  },
+  {
+    "id": "github-copilot",
+    "nom": "GitHub Copilot",
+    "editeur": "Microsoft",
+    "quadrant": 4,
+    "anneau": 1,
+    "type": "p",
+    "categories": [
+      "Assistants de code IA"
+    ],
+    "dependance": "Assistant et agent de code intégré à GitHub et aux éditeurs, acheté avec les contrats GitHub et Microsoft ; l’agent de code s’exécute dans l’environnement GitHub.",
+    "alternatives": [
+      "OpenCode",
+      "Cursor",
+      "Claude Code",
+      "OpenAI Codex"
+    ],
+    "site": "https://github.com/features/copilot",
+    "pourquoi": "Les instructions au format ouvert AGENTS.md se reprennent, mais l’agent, la revue de code et les automatisations sont liés à la forge GitHub et au contrat Microsoft.",
+    "sources": [
+      {
+        "titre": "GitHub, page GitHub Copilot, consultée en novembre 2026",
+        "url": "https://github.com/features/copilot"
+      },
+      {
+        "titre": "AGENTS.md, format ouvert et liste des agents compatibles, consulté en novembre 2026",
+        "url": "https://agents.md/"
+      }
+    ]
+  },
+  {
+    "id": "cursor",
+    "nom": "Cursor",
+    "editeur": "Anysphere (SpaceX)",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "p",
+    "categories": [
+      "Assistants de code IA"
+    ],
+    "dependance": "Éditeur de code propriétaire avec agent intégré, abonnement par poste. Le site annonce en août 2026 que Cursor fait désormais partie de SpaceX.",
+    "alternatives": [
+      "OpenCode"
+    ],
+    "site": "https://cursor.com/",
+    "pourquoi": "Plusieurs fournisseurs de modèles et AGENTS.md pris en charge, mais l’éditeur est propriétaire et a changé de propriétaire en 2026.",
+    "sources": [
+      {
+        "titre": "Cursor, site officiel, consulté en novembre 2026",
+        "url": "https://cursor.com/"
+      }
+    ]
+  },
+  {
+    "id": "claude-code",
+    "nom": "Claude Code",
+    "editeur": "Anthropic",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "p",
+    "categories": [
+      "Assistants de code IA"
+    ],
+    "dependance": "Agent de code en ligne de commande et dans les éditeurs, sous licence propriétaire, qui utilise les modèles d’Anthropic.",
+    "alternatives": [
+      "OpenCode"
+    ],
+    "site": "https://claude.com/product/claude-code",
+    "pourquoi": "Logiciel propriétaire lié aux modèles d’un seul fournisseur ; instructions, compétences et serveurs d’outils restent des fichiers versionnables, à adapter pour un autre agent.",
+    "sources": [
+      {
+        "titre": "Claude Code, fichier LICENSE.md du dépôt anthropics/claude-code (tous droits réservés), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/anthropics/claude-code/HEAD/LICENSE.md"
+      },
+      {
+        "titre": "Claude, page Claude Code, consultée en novembre 2026",
+        "url": "https://claude.com/product/claude-code"
+      }
+    ]
+  },
+  {
+    "id": "openai-codex",
+    "nom": "OpenAI Codex",
+    "editeur": "OpenAI",
+    "quadrant": 4,
+    "anneau": 2,
+    "type": "p",
+    "categories": [
+      "Assistants de code IA"
+    ],
+    "dependance": "Agent de code d’OpenAI (ligne de commande, éditeurs, cloud), inclus dans les offres ChatGPT. L’outil en ligne de commande est sous licence Apache 2.0 ; le service et les modèles sont propriétaires.",
+    "alternatives": [
+      "OpenCode"
+    ],
+    "site": "https://openai.com/codex/",
+    "pourquoi": "Client ouvert et instructions au format AGENTS.md, mais le service cloud, la facturation et les modèles restent ceux d’OpenAI.",
+    "depot": "openai/codex",
+    "sources": [
+      {
+        "titre": "OpenAI Codex, fichier LICENSE du dépôt openai/codex (Apache 2.0), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/openai/codex/HEAD/LICENSE"
+      },
+      {
+        "titre": "OpenAI, page Codex, consultée en novembre 2026",
+        "url": "https://openai.com/codex/"
+      }
+    ]
+  },
+  {
+    "id": "opencode",
+    "nom": "OpenCode",
+    "editeur": "Anomaly",
+    "quadrant": 4,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Assistants de code IA"
+    ],
+    "dependance": "Agent de code libre (licence MIT) qui fonctionne avec le fournisseur de modèles de son choix, y compris des modèles à poids ouverts hébergés chez soi.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://opencode.ai",
+    "pourquoi": "Licence MIT, choix libre du fournisseur de modèles et instructions au format ouvert AGENTS.md. Thoughtworks le classe en Adopt en novembre 2026.",
+    "depot": "anomalyco/opencode",
+    "sources": [
+      {
+        "titre": "OpenCode, fichier LICENSE du dépôt anomalyco/opencode (MIT), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/anomalyco/opencode/HEAD/LICENSE"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, OpenCode (Adopt)",
+        "url": "https://www.thoughtworks.com/radar/tools/opencode"
+      }
+    ]
+  },
+  {
+    "id": "litellm",
+    "nom": "LiteLLM",
+    "editeur": "BerriAI",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Passerelles d’IA"
+    ],
+    "dependance": "Passerelle d’IA qui expose une API unique devant de nombreux fournisseurs de modèles. Cœur sous licence MIT ; le dossier enterprise a sa propre licence.",
+    "alternatives": [
+      "—"
+    ],
+    "site": "https://www.litellm.ai/",
+    "pourquoi": "Licence MIT et API compatible avec celle d’OpenAI, donc facile à remplacer. Thoughtworks la garde en Trial à cause de nombreuses failles de sécurité signalées en 2026.",
+    "depot": "BerriAI/litellm",
+    "sources": [
+      {
+        "titre": "LiteLLM, fichier LICENSE du dépôt BerriAI/litellm (MIT, hors dossier enterprise), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/BerriAI/litellm/HEAD/LICENSE"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, LiteLLM (Trial)",
+        "url": "https://www.thoughtworks.com/radar/platforms/litellm"
+      }
+    ]
+  },
+  {
+    "id": "ollama",
+    "nom": "Ollama",
+    "editeur": "Ollama",
+    "quadrant": 2,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Modèles d’IA managés et serveurs d’inférence"
+    ],
+    "dependance": "Outil sous licence MIT pour faire tourner des modèles à poids ouverts sur un poste ou un serveur.",
+    "alternatives": [
+      "vLLM"
+    ],
+    "site": "https://ollama.com",
+    "pourquoi": "Licence MIT et modèles à poids ouverts ; les modèles se rechargent dans un autre moteur d’inférence.",
+    "depot": "ollama/ollama",
+    "sources": [
+      {
+        "titre": "Ollama, fichier LICENSE du dépôt ollama/ollama (MIT), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/ollama/ollama/HEAD/LICENSE"
+      }
+    ]
+  },
+  {
+    "id": "victoriametrics",
+    "nom": "VictoriaMetrics",
+    "editeur": "VictoriaMetrics",
+    "quadrant": 3,
+    "anneau": 3,
+    "type": "e",
+    "categories": [
+      "Observabilité"
+    ],
+    "dependance": "Base de séries temporelles et supervision sous licence Apache 2.0, compatible avec Prometheus ; éditions Enterprise et Cloud payantes.",
+    "alternatives": [
+      "Prometheus"
+    ],
+    "site": "https://victoriametrics.com",
+    "pourquoi": "Licence Apache 2.0 et compatibilité avec les formats et requêtes de Prometheus. Thoughtworks le classe en Adopt en novembre 2026.",
+    "depot": "VictoriaMetrics/VictoriaMetrics",
+    "sources": [
+      {
+        "titre": "VictoriaMetrics, fichier LICENSE du dépôt VictoriaMetrics/VictoriaMetrics (Apache 2.0), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/VictoriaMetrics/VictoriaMetrics/HEAD/LICENSE"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, novembre 2026, page d’accueil (VictoriaMetrics en Adopt)",
+        "url": "https://www.thoughtworks.com/radar"
+      }
+    ]
+  },
+  {
+    "id": "victorialogs",
+    "nom": "VictoriaLogs",
+    "editeur": "VictoriaMetrics",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Observabilité"
+    ],
+    "dependance": "Base de journaux sous licence Apache 2.0 qui accepte les protocoles d’envoi courants (dont OpenTelemetry), avec son propre langage de requête, LogsQL.",
+    "alternatives": [
+      "SigNoz"
+    ],
+    "site": "https://docs.victoriametrics.com/victorialogs/",
+    "pourquoi": "Licence Apache 2.0 et collecte standard, mais requêtes et tableaux de bord écrits en LogsQL sont à réécrire ailleurs.",
+    "depot": "VictoriaMetrics/VictoriaLogs",
+    "sources": [
+      {
+        "titre": "VictoriaLogs, fichier LICENSE du dépôt VictoriaMetrics/VictoriaLogs (Apache 2.0), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/VictoriaMetrics/VictoriaLogs/HEAD/LICENSE"
+      },
+      {
+        "titre": "VictoriaMetrics, documentation VictoriaLogs, consultée en novembre 2026",
+        "url": "https://docs.victoriametrics.com/victorialogs/"
+      }
+    ]
+  },
+  {
+    "id": "restate",
+    "nom": "Restate",
+    "editeur": "Restate",
+    "quadrant": 3,
+    "anneau": 2,
+    "type": "e",
+    "categories": [
+      "Ordonnancement"
+    ],
+    "dependance": "Moteur d’exécution durable pour services et agents. Le serveur est sous Business Source License 1.1 (Apache 2.0 quatre ans après chaque version) ; les SDK sont sous MIT.",
+    "alternatives": [
+      "Temporal"
+    ],
+    "site": "https://restate.dev/",
+    "pourquoi": "Usage en production permis, mais la licence interdit d’en faire un service public pour des tiers et le code des flux suit le modèle de programmation de Restate.",
+    "depot": "restatedev/restate",
+    "sources": [
+      {
+        "titre": "Restate, fichier LICENSE du dépôt restatedev/restate (Business Source License 1.1), consulté en novembre 2026",
+        "url": "https://raw.githubusercontent.com/restatedev/restate/HEAD/LICENSE"
+      },
+      {
+        "titre": "Restate, site officiel (FAQ sur la licence), consulté en novembre 2026",
+        "url": "https://restate.dev/"
       }
     ]
   }
