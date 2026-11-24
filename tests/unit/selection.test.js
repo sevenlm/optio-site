@@ -4,7 +4,7 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { encoderSelection, decoderSelection, urlRapport, synthese, suggestions,
-  chargerSelection, sauverSelection } = require("../../js/selection.js");
+  chargerSelection, sauverSelection, criticites } = require("../../js/selection.js");
 
 function lire(nom) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, "../../data", nom + ".json"), "utf8"));
@@ -107,4 +107,29 @@ test("tous les identifiants inconnus : synthèse vide, absents comptés", () => 
   const s = synthese({ tendances: ["t-disparue"], technologies: ["x-disparue", "y-disparue"], date: "2026-11-23" }, donnees);
   assert.equal(s.absents, 3);
   assert.deepEqual([s.technos, s.tendances, s.mecanismes, s.leviers, s.parAnneau, s.urgentes], [[], [], [], [], [0, 0, 0, 0], 0]);
+});
+
+const D = {
+  technologies: [{ id: "a", nom: "A" }, { id: "b", nom: "B" }, { id: "c", nom: "C" }],
+  tendances: [
+    { id: "t1", anneau: 0, technologies: ["A", "B"] },
+    { id: "t2", anneau: 1, technologies: ["A", "A"] },
+    { id: "t3", anneau: 3, technologies: ["B"] },
+    { id: "t4", anneau: 0, type: "levier", technologies: ["C"] },
+    { id: "t5", anneau: 2 }
+  ]
+};
+test("criticites : poids par urgence, nom cité une seule fois par tendance, leviers ignorés", () => {
+  const c = criticites(D);
+  assert.deepEqual({ ...c.a }, { poids: 5, score: 5 });
+  assert.deepEqual({ ...c.b }, { poids: 3, score: 3.4 });
+  assert.deepEqual({ ...c.c }, { poids: 0, score: 1 });
+});
+test("criticites : aucune tendance ne cite rien, tout vaut 1", () => {
+  const c = criticites({ technologies: D.technologies, tendances: [] });
+  assert.equal(c.a.score, 1); assert.equal(c.b.score, 1);
+});
+test("criticites : identifiant « constructor » sans collision avec le prototype", () => {
+  const c = criticites({ technologies: [{ id: "constructor", nom: "X" }], tendances: [{ id: "t", anneau: 1, technologies: ["X"] }] });
+  assert.equal(c.constructor.score, 5);
 });

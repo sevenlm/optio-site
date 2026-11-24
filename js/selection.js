@@ -167,11 +167,34 @@
     }
   }
 
+  // criticité estimée : somme des urgences (3 - anneau) des tendances qui citent la technologie,
+  // ramenée sur une échelle de 1 à 5 ; les leviers ne comptent pas
+  function criticites(donnees) {
+    var poids = dico(), max = 0, sortie = dico(), i, j;
+    var techs = donnees.technologies, tendances = donnees.tendances;
+    for (i = 0; i < tendances.length; i++) {
+      if (tendances[i].type === "levier") continue;
+      var noms = unique(tendances[i].technologies || []);
+      for (j = 0; j < noms.length; j++) {
+        poids[noms[j]] = (poids[noms[j]] || 0) + (3 - tendances[i].anneau);
+      }
+    }
+    for (i = 0; i < techs.length; i++) {
+      if ((poids[techs[i].nom] || 0) > max) max = poids[techs[i].nom];
+    }
+    for (i = 0; i < techs.length; i++) {
+      var p = poids[techs[i].nom] || 0;
+      sortie[techs[i].id] = { poids: p, score: max === 0 ? 1 : Math.round((1 + 4 * p / max) * 10) / 10 };
+    }
+    return sortie;
+  }
+
   var api = {
     CLE_DERNIER_RAPPORT: CLE_DERNIER_RAPPORT,
     encoderSelection: encoderSelection, decoderSelection: decoderSelection, urlRapport: urlRapport,
     synthese: synthese, suggestions: suggestions,
-    chargerSelection: chargerSelection, sauverSelection: sauverSelection
+    chargerSelection: chargerSelection, sauverSelection: sauverSelection,
+    criticites: criticites
   };
   racine.OptioSelection = api;
   if (typeof module !== "undefined" && module.exports) module.exports = api;
