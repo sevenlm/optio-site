@@ -605,6 +605,14 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .rapport-figure{margin:0;break-inside:avoid;page-break-inside:avoid;min-width:0}
 .rapport-radar svg{display:block;width:100%;max-width:560px;height:auto;margin:0 auto}
 .rapport .rapport-figure figcaption{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--ink)}
+.rapport-table{margin:14px 0 18px}
+.rt-defile{overflow-x:auto;max-width:100%}
+.rt-grille{display:grid;grid-template-columns:150px repeat(4,minmax(110px,1fr));gap:4px;min-width:600px}
+.rt-moment{font-size:12px;font-weight:700;color:var(--text-2);padding:2px 4px;align-self:end}
+.rt-couche{display:flex;align-items:center;padding:6px 8px;border-radius:8px;font-size:12px;font-weight:600;line-height:1.2}
+.rt-case{display:flex;flex-wrap:wrap;gap:3px;align-content:center;padding:3px;border-radius:8px;border:1px solid var(--line-2);min-height:34px}
+.rt-tuile{display:inline-flex;align-items:center;justify-content:center;min-width:28px;height:28px;padding:0 4px;border-radius:6px;font-family:var(--titre);font-weight:800;font-size:12px;line-height:1;opacity:.45;print-color-adjust:exact;-webkit-print-color-adjust:exact}
+.rt-tuile.allume{opacity:1;box-shadow:0 0 0 2px var(--ink)}
 .rapport-matrice{margin-top:24px}
 .rapport-matrice svg{display:block;width:100%;max-width:720px;height:auto;margin:0 auto}
 .rapport .rapport-matrice figcaption{max-width:720px;margin:0 auto 8px}
@@ -1984,6 +1992,33 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       el("ol",{class:"rapport-legende"},liste.map(function(y){ return el("li",null,[el("span",{class:"rapport-legende-num",text:String(y.n)}), el("span",{text:y.t})]); }))
     ]);
   }
+  // Table de l’enfermement : 7 couches x 4 moments, mécanismes probables allumés (grille statique)
+  function figureTable(probables){
+    var ids={}, couchesTouchees={};
+    probables.forEach(function(m){ ids[m.meca.id]=true; couchesTouchees[m.meca.couche]=true; });
+    var nbCouches=Object.keys(couchesTouchees).length, n=probables.length;
+    var grille=el("div",{class:"rt-grille"});
+    grille.appendChild(el("div",{class:"rt-coin"}));
+    MOMENTS.forEach(function(m){ grille.appendChild(el("div",{class:"rt-moment",text:m})); });
+    COUCHES.forEach(function(fi){
+      var lab=el("div",{class:"rt-couche",text:COUCHE_LIB[fi]}); lab.style.background="var(--fam"+fi+")"; lab.style.color="var(--fam"+fi+"t)"; grille.appendChild(lab);
+      for(var mo=0;mo<4;mo++){
+        var case_=el("div",{class:"rt-case"});
+        DONNEES_BRUTES.mecanismes.forEach(function(me){
+          if(me.couche!==fi||me.moment!==mo) return;
+          var on=!!ids[me.id], t=el("span",{class:"rt-tuile"+(on?" allume":""),title:me.nom,text:me.symbole});
+          if(on) t.setAttribute("aria-label",me.nom);
+          t.style.background=on?"var(--fam"+fi+"t)":"var(--fam"+fi+")"; t.style.color=on?"var(--fam"+fi+")":"var(--fam"+fi+"t)";
+          case_.appendChild(t);
+        });
+        grille.appendChild(case_);
+      }
+    });
+    return el("figure",{class:"rapport-figure rapport-table"},[
+      el("figcaption",{text:n+" mécanisme"+(n>1?"s":"")+" probable"+(n>1?"s":"")+", "+nbCouches+" / 7 couches touchées"}),
+      el("div",{class:"rt-defile"},[grille])
+    ]);
+  }
   function rendreRapport(sel){
     var z=zoneRapport(); z.textContent=""; var corps=el("div",{class:"rapport-corps"}); z.appendChild(corps);
     document.title="Mon rapport · Radar des dépendances · Optio";
@@ -2074,7 +2109,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 
     // Mécanismes reliés aux tendances retenues, et leurs parades
     if(sy.mecanismes.length){
-      var mecas=el("section",{class:"rapport-partie rapport-chap rapport-mecas",id:"ch-mecanismes"},[el("h2",{text:"Mécanismes probables"})]);
+      var mecas=el("section",{class:"rapport-partie rapport-chap rapport-mecas",id:"ch-mecanismes"},[el("h2",{text:"Mécanismes probables"}), figureTable(sy.mecanismes)]);
       mecas.appendChild(el("p",{class:"rapport-note",text:"Les mécanismes d’enfermement reliés à vos tendances retenues, du plus cité au moins cité, avec les leviers qui permettent d’y répondre."}));
       mecas.appendChild(el("div",{class:"rapport-cartes"},sy.mecanismes.map(function(m){
         var c=el("article",{class:"rapport-carte rapport-meca"}); c.style.setProperty("--lt","var(--line-2)");

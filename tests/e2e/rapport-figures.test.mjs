@@ -213,3 +213,52 @@ test("matrice : mobile sans débordement", async () => {
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
+
+// Table de l’enfermement : mécanismes probables allumés
+const mecasPage = (p) => p.evaluate(async () => {
+  const tous = await fetch("data/mecanismes.json").then((r) => r.json());
+  const noms = [...document.querySelectorAll("#ch-mecanismes .rapport-meca h3")].map((h) => h.textContent);
+  const probables = tous.filter((m) => noms.includes(m.nom));
+  return { total: tous.length, probables: probables.length, couches: new Set(probables.map((m) => m.couche)).size };
+});
+
+test("table : mécanismes probables allumés", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 1280, height: 900 } });
+  try {
+    const t = p.locator("#ch-mecanismes figure.rapport-figure.rapport-table");
+    assert.equal(await t.count(), 1);
+    assert.equal(await p.evaluate(() => document.querySelector("#ch-mecanismes > h2").nextElementSibling.classList.contains("rapport-table")), true);
+    assert.equal(await t.locator(".rt-moment").count(), 4);
+    assert.equal(await t.locator(".rt-couche").count(), 7);
+    const m = await mecasPage(p);
+    assert.ok(m.probables > 0);
+    assert.equal(await t.locator(".allume").count(), m.probables);
+    assert.equal(await t.locator(".rt-tuile").count(), m.total);
+    const noms = await t.locator(".allume").evaluateAll((l) => l.map((x) => x.getAttribute("aria-label")));
+    assert.ok(noms.every(Boolean));
+    const cap = await t.locator("figcaption").innerText();
+    const attendu = m.probables + (m.probables > 1 ? " mécanismes probables, " : " mécanisme probable, ") + m.couches + " / 7 couches touchées";
+    assert.equal(cap.trim(), attendu);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("table : mobile", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 390, height: 844 } });
+  try {
+    assert.equal(await p.locator(".rapport-table").count(), 1);
+    assert.ok(await p.evaluate(() => document.documentElement.scrollWidth <= 390));
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("table : impression", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 1280, height: 900 } });
+  try {
+    await p.emulateMedia({ media: "print" });
+    assert.equal(await p.locator(".rapport-table").evaluate((f) => getComputedStyle(f).breakInside), "avoid");
+    const fond = (s) => p.locator(s).first().evaluate((x) => getComputedStyle(x).backgroundColor);
+    assert.notEqual(await fond(".rapport-table .rt-tuile.allume"), await fond(".rapport-table .rt-tuile:not(.allume)"));
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
