@@ -39,7 +39,7 @@ Avec [prek](https://github.com/j178/prek) (configuration dans `prek.toml`) : `pr
 
 ## Rapport personnalisé : réglages
 
-> **À faire avant de fusionner sur `main`** : renseigner `tallyFormId` et `calLien` dans `js/config.js`. Tant que `tallyFormId` est vide, le bouton « Recevoir mon rapport complet (PDF) » n'ouvre aucun formulaire en production : il affiche seulement le message de repli (écrire à contact@stratwise.fr avec le lien du rapport). Une fois les valeurs renseignées, faire un essai de bout en bout avec le vrai formulaire : demande depuis « Mon radar », réception de l'e-mail, ouverture du rapport, réservation Cal.com.
+> **Réglages de production** : renseigner `tallyFormId` et `calLien` dans `js/config.js`. Tant que `tallyFormId` est vide, le bouton « Recevoir mon rapport complet (PDF) » n'ouvre aucun formulaire en production : il affiche seulement le message de repli (écrire à contact@stratwise.fr avec le lien du rapport). Une fois les valeurs renseignées, faire un essai de bout en bout avec le vrai formulaire : demande depuis « Mon radar », réception de l'e-mail, ouverture du rapport, réservation Cal.com.
 
 Les réglages sont dans `js/config.js` (`window.OPTIO_CONFIG`) ; une valeur vide signifie « non configuré ».
 

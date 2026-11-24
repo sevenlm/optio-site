@@ -3,5 +3,5 @@
 window.OPTIO_CONFIG = {
   tallyFormId: "5XZprM",
   calLien: "https://cal.com/slemesle/15min",
-  urlSite: "https://optio.stratwise.fr/radar.html"
+  urlSite: "https://www.weareoptio.fr/radar.html"
 };
