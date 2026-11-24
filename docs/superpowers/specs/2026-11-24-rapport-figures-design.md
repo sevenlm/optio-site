@@ -1,6 +1,6 @@
-# Figures du rapport personnalisé — conception courte
+# Figures, chapitrage et sommaire du rapport personnalisé — conception courte
 
-Date : 24 novembre 2026 · Complète `2026-11-23-rapport-personnalise-design.md`
+Date : 24 novembre 2026 · Statut : validée · Complète `2026-11-23-rapport-personnalise-design.md`
 
 ## Intention
 
@@ -28,6 +28,20 @@ projeté pendant le rendez-vous de 15 minutes.
    7 couches × 4 moments de la vue Mécanismes, avec les mécanismes probables de la
    sélection allumés et les autres en pâle, plus le décompte « N mécanismes, M / 7
    couches touchées ».
+
+4. **Chapitrage et sommaire** (demandé par le porteur du projet) :
+   - Le rapport est découpé en chapitres numérotés : 1 Synthèse (avec les radars et la
+     matrice), 2 Technologies retenues, 3 Tendances retenues, 4 Mécanismes probables
+     (avec la table), 5 Sources, 6 Analysons ce rapport ensemble. Un chapitre sans
+     contenu (par exemple aucune tendance retenue) est omis et la numérotation suit.
+   - **À l’écran** : un volet de navigation (choix du constructeur : à gauche, collant,
+     sur écran large) liste les chapitres et leurs sous-parties (fiches), surligne le
+     chapitre en cours de lecture, et se replie en un bouton « Sommaire » sur mobile.
+     Il n’apparaît pas à l’impression.
+   - **À l’impression seulement** : une page « Sommaire » juste après la page de garde,
+     avec les chapitres et leurs liens (cliquables dans le PDF). Sans numéros de page :
+     les navigateurs ne savent pas les calculer de façon fiable.
+   - Chaque chapitre commence sur une nouvelle page à l’impression.
 
 ## Approches
 
