@@ -536,7 +536,33 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 /* ===== Rapport personnalisé (radar.html?rapport=1) : vue autonome, sans l’interface du radar ===== */
 .mode-rapport .entete h1,.mode-rapport #intro,.mode-rapport .stats,.mode-rapport .vues,.mode-rapport #bande,.mode-rapport #contenu,.mode-rapport #volet,.mode-rapport #volet-fond{display:none !important}
 .mode-rapport .entete-in{padding-top:18px;padding-bottom:18px}
-.rapport{max-width:900px;margin:0 auto;padding:28px 28px 48px;display:flex;flex-direction:column;gap:22px}
+.rapport{max-width:900px;margin:0 auto;padding:28px 28px 48px;counter-reset:chap}
+.rapport-corps{display:flex;flex-direction:column;gap:22px;min-width:0}
+.rapport-chap{counter-increment:chap;scroll-margin-top:16px}
+/* --chap (posé par sommaireRapport) rend le numéro lisible dans le style calculé ; le compteur reste en repli ; « / "" » le retire du nom accessible */
+.rapport-chap>h2::before{content:counter(chap) ". ";content:var(--chap,counter(chap)) ". " / ""}
+.rapport-carte[id]{scroll-margin-top:16px}
+/* Volet de navigation : bouton « Sommaire » sous 1100 px, colonne collante à gauche au-delà */
+.rapport-nav{margin-bottom:16px;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:10px 12px}
+.rapport-nav-bouton{display:flex;align-items:center;justify-content:space-between;width:100%;min-height:42px;border:0;background:none;color:var(--ink);font:inherit;font-size:15px;font-weight:700;cursor:pointer;padding:0 6px}
+.rapport-nav-bouton::after{content:"";width:8px;height:8px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg);margin:-4px 4px 0 0}
+.rapport-nav-bouton[aria-expanded="true"]::after{transform:rotate(-135deg);margin-top:4px}
+.rapport-nav-titre{display:none}
+.rapport .rapport-nav-liste{display:none;margin:6px 0 4px;padding-left:24px}
+.rapport-nav.ouvert .rapport-nav-liste{display:block}
+.rapport .rapport-nav li{font-size:14px;line-height:1.4;margin:4px 0}
+.rapport .rapport-nav ul{list-style:none;padding-left:0;margin:2px 0 6px}
+.rapport .rapport-nav ul li{font-size:13px;margin:2px 0}
+.rapport-nav a{color:var(--text-2);text-decoration:none;border-radius:4px}
+.rapport-nav a:hover{color:var(--ink);text-decoration:underline}
+.rapport-nav a[aria-current="location"]{color:var(--ink);font-weight:700}
+@media (min-width:1100px){
+  .rapport{max-width:1228px;display:grid;grid-template-columns:240px minmax(0,900px);column-gap:32px;align-items:start;justify-content:center}
+  .rapport-nav{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow:auto;margin-bottom:0;padding:14px 14px 14px 10px}
+  .rapport-nav-bouton{display:none}
+  .rapport .rapport-nav-titre{display:block;margin:0 0 6px 6px;font-size:13px;font-weight:600;color:var(--text-3)}
+  .rapport .rapport-nav-liste{display:block}
+}
 .rapport-bloc,.rapport-partie{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:26px}
 .rapport h1{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:clamp(26px,5vw,38px);line-height:1.1;letter-spacing:-0.015em;color:var(--ink);margin-top:6px}
 .rapport h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.2;color:var(--ink);margin-bottom:14px}
@@ -577,7 +603,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .rapport-fin .rapport-actions{margin-top:16px}
 .imprime-seul{display:none}
 @media (max-width:600px){
-  .rapport{padding:16px 16px 32px;gap:16px}
+  .rapport{padding:16px 16px 32px}
+  .rapport-corps{gap:16px}
   .rapport-bloc,.rapport-partie{padding:18px 16px}
   .rapport-carte{padding:14px 14px}
 }
@@ -593,10 +620,14 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   .mode-rapport .entete{background:#FFFFFF;color:#000000;border-bottom:1px solid #BBBBBB}
   .mode-rapport .entete-in{padding:0 0 8px}
   .mode-rapport .edition,.mode-rapport .edition a{color:#000000}
-  .rapport{max-width:none;padding:0;gap:0}
+  .rapport{max-width:none;padding:0;display:block}
+  .rapport-corps{gap:0}
   .rapport-bloc,.rapport-partie{border:0;border-radius:0;padding:6mm 0 0;background:#FFFFFF}
-  .rapport-partie{break-before:page}
-  .rapport-carte,.rapport-selection,.rapport-synthese,.rapport-sources li{break-inside:avoid}
+  .rapport-partie,.rapport-chap,.rapport-sommaire{break-before:page}
+  .rapport-carte,.rapport-selection,.rapport-sources li{break-inside:avoid}
+  .rapport-sommaire ol{padding-left:22px}
+  .rapport-sommaire li{margin:6px 0;font-size:16px}
+  .rapport-sommaire a{text-decoration:none}
   .rapport-cartes{gap:12px}
   .rapport h2,.rapport h3,.rapport h4{break-after:avoid}
   .rapport a{color:#000000}
@@ -1808,8 +1839,48 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function anneauTend(a){ var s=el("span",{class:"rapport-anneau",text:VUES.tendances.anneaux[a]}); s.style.setProperty("--la","var(--a"+a+")"); s.style.setProperty("--lt","var(--a"+a+"t)"); return s; }
   function carte(classe,a,palette){ var c=el("article",{class:"rapport-carte "+classe}); c.style.setProperty("--la","var(--"+palette+a+")"); c.style.setProperty("--lt","var(--"+palette+a+"t)"); return c; }
   function liLevier(titre,commentaire){ return el("li",null,[el("strong",{text:titre}), commentaire?" : "+commentaire:""]); }
+  // Sommaire du rapport : volet de navigation à l’écran, page « Sommaire » à l’impression.
+  // chapitres = [{id, titre, fiches:[{id, titre}]}], seulement les chapitres présents, dans l’ordre.
+  function sommaireRapport(chapitres){
+    var z=zoneRapport(), garde=z.querySelector(".rapport-garde"), liens={};
+    chapitres.forEach(function(ch,i){ document.getElementById(ch.id).style.setProperty("--chap",'"'+(i+1)+'"'); });
+    function liste(avecFiches){
+      return el("ol",null,chapitres.map(function(ch){
+        var a=el("a",{href:"#"+ch.id,text:ch.titre}); if(avecFiches) liens[ch.id]=a;
+        return el("li",null,[a, avecFiches && ch.fiches.length ? el("ul",null,ch.fiches.map(function(f){ return el("li",null,[el("a",{href:"#"+f.id,text:f.titre})]); })) : null]);
+      }));
+    }
+    // Page imprimée, juste après la page de garde
+    var imprime=el("nav",{class:"rapport-bloc rapport-sommaire imprime-seul","aria-labelledby":"rapport-sommaire-titre"},[el("h2",{id:"rapport-sommaire-titre",text:"Sommaire"}), liste(false)]);
+    garde.parentNode.insertBefore(imprime,garde.nextSibling);
+    // Volet écran : bouton « Sommaire » sous 1100 px, colonne collante au-delà
+    var ol=liste(true); ol.id="rapport-nav-liste"; ol.className="rapport-nav-liste";
+    var nav=el("nav",{class:"rapport-nav ecran-seul","aria-label":"Sommaire du rapport"});
+    var bouton=el("button",{type:"button",class:"rapport-nav-bouton","aria-expanded":"false","aria-controls":"rapport-nav-liste",onclick:function(){
+      var ouvert=bouton.getAttribute("aria-expanded")!=="true";
+      bouton.setAttribute("aria-expanded",String(ouvert)); nav.classList.toggle("ouvert",ouvert);
+    }},["Sommaire"]);
+    nav.appendChild(bouton);
+    nav.appendChild(el("p",{class:"rapport-nav-titre","aria-hidden":"true",text:"Sommaire"}));
+    nav.appendChild(ol);
+    // sur mobile, le volet se referme après le choix d’un lien
+    ol.addEventListener("click",function(e){ if(e.target.closest("a") && nav.classList.contains("ouvert")){ bouton.setAttribute("aria-expanded","false"); nav.classList.remove("ouvert"); } });
+    z.insertBefore(nav,z.firstChild);
+    // Chapitre en cours : le dernier dont le haut a passé 30 % de la fenêtre
+    if(!("IntersectionObserver" in window)) return;
+    var sections=chapitres.map(function(ch){ return document.getElementById(ch.id); }), actuel=null;
+    function marquer(){
+      var limite=window.innerHeight*0.3, id=chapitres[0].id;
+      sections.forEach(function(s,i){ if(s.getBoundingClientRect().top<=limite) id=chapitres[i].id; });
+      if(id===actuel) return;
+      if(actuel) liens[actuel].removeAttribute("aria-current");
+      liens[id].setAttribute("aria-current","location"); actuel=id;
+    }
+    var io=new IntersectionObserver(marquer,{rootMargin:"0px 0px -70% 0px"});
+    sections.forEach(function(s){ io.observe(s); });
+  }
   function rendreRapport(sel){
-    var z=zoneRapport(); z.textContent="";
+    var z=zoneRapport(); z.textContent=""; var corps=el("div",{class:"rapport-corps"}); z.appendChild(corps);
     document.title="Mon rapport · Radar des dépendances · Optio";
     var sy=SEL.synthese(sel, DONNEES_BRUTES), nt=sy.technos.length, nd=sy.tendances.length, date=dateLongue(sel.date);
     var techId=Object.create(null), tendId=Object.create(null), levId=Object.create(null);
@@ -1821,7 +1892,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     ]);
     if(date) garde.appendChild(el("p",{class:"rapport-date",text:"Sélection du "+date}));
     if(sy.absents) garde.appendChild(el("p",{class:"rapport-absents",text:sy.absents+(sy.absents>1?" éléments ne figurent":" élément ne figure")+" plus dans le radar."}));
-    z.appendChild(garde);
+    corps.appendChild(garde);
     if(!nt && !nd){
       z.setAttribute("data-etat","vide");
       garde.appendChild(el("p",{class:"rapport-note",text:"Ce rapport ne contient aucune sélection."}));
@@ -1836,7 +1907,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     garde.appendChild(actionsRapport());
 
     // Synthèse : les mêmes nombres que l’aperçu du volet « Mon radar »
-    var synth=el("section",{class:"rapport-bloc rapport-synthese"},[el("h2",{text:"Synthèse"})]);
+    var synth=el("section",{class:"rapport-partie rapport-chap rapport-synthese",id:"ch-synthese"},[el("h2",{text:"Synthèse"})]);
     synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(nt,"technologie")}));
     var max=Math.max.apply(null,sy.parAnneau.concat([1]));
     synth.appendChild(el("ul",{class:"barres-anneau"},sy.parAnneau.map(function(k,i){
@@ -1847,14 +1918,15 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(nd,"tendance")+", dont "+pluriel(sy.urgentes,"urgente")}));
     synth.appendChild(el("p",{class:"rapport-note",text:"Urgente : tendance classée en urgence forte ou élevée dans le radar."}));
     synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(sy.mecanismes.length,"mécanisme")+" d’enfermement probable"+(sy.mecanismes.length>1?"s":"")}));
-    z.appendChild(synth);
+    corps.appendChild(synth);
+    var chapitres=[{id:"ch-synthese",titre:"Synthèse",fiches:[]}];
 
     // Une carte par technologie : anneau, pourquoi, dépendance, alternatives mieux classées, tendances, site officiel
     if(nt){
-      var cartesX=el("div",{class:"rapport-cartes"});
+      var cartesX=el("div",{class:"rapport-cartes"}), fichesX=[];
       sy.technos.forEach(function(brut){
         var x=techId[brut.id]; if(!x) return;
-        var c=carte("rapport-techno",x.a,"x");
+        var c=carte("rapport-techno",x.a,"x"); c.id="fiche-"+x.id; fichesX.push({id:c.id,titre:x.t});
         c.appendChild(el("div",{class:"rapport-tete"},[el("h3",{text:x.t}), anneauTech(x.a)]));
         if(x.ed) c.appendChild(el("p",{class:"rapport-meta",text:"Éditeur : "+x.ed}));
         if(x.pourquoi) c.appendChild(el("div",{class:"pourquoi"},[el("h4",{text:"Pourquoi cet anneau"}), el("p",{text:x.pourquoi})]));
@@ -1872,27 +1944,29 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
         if(x.sites.length) c.appendChild(el("p",{class:"rapport-meta"},[x.sites.length>1?"Sites officiels : ":"Site officiel : "].concat(x.sites.reduce(function(acc,u,i){ if(i) acc.push(", "); acc.push(el("a",{class:"sans-adresse",href:u,text:u})); return acc; },[]))));
         cartesX.appendChild(c);
       });
-      z.appendChild(el("section",{class:"rapport-partie"},[el("h2",{text:"Technologies retenues"}), cartesX]));
+      corps.appendChild(el("section",{class:"rapport-partie rapport-chap",id:"ch-technologies"},[el("h2",{text:"Technologies retenues"}), cartesX]));
+      chapitres.push({id:"ch-technologies",titre:"Technologies retenues",fiches:fichesX});
     }
 
     // Une carte par tendance : risque, leviers avec leur commentaire
     if(nd){
-      var cartesT=el("div",{class:"rapport-cartes"});
+      var cartesT=el("div",{class:"rapport-cartes"}), fichesT=[];
       sy.tendances.forEach(function(brut){
         var t=tendId[brut.id]; if(!t) return;
-        var c=carte("rapport-tendance",t.a,"a");
+        var c=carte("rapport-tendance",t.a,"a"); c.id="fiche-"+t.id; fichesT.push({id:c.id,titre:t.t});
         c.appendChild(el("div",{class:"rapport-tete"},[el("h3",{text:t.t}), anneauTend(t.a)]));
         c.appendChild(el("div",{class:"pourquoi"},[el("h4",{text:"Le risque"}), el("p",{text:t.pourquoi})]));
         c.appendChild(el("h4",{text:"Leviers"}));
         c.appendChild(t.levs.length ? el("ul",null,t.levs.map(function(a){ return liLevier(a.l.t,a.c); })) : el("p",{text:"Aucun levier rattaché pour l’instant."}));
         cartesT.appendChild(c);
       });
-      z.appendChild(el("section",{class:"rapport-partie"},[el("h2",{text:"Tendances retenues"}), cartesT]));
+      corps.appendChild(el("section",{class:"rapport-partie rapport-chap",id:"ch-tendances"},[el("h2",{text:"Tendances retenues"}), cartesT]));
+      chapitres.push({id:"ch-tendances",titre:"Tendances retenues",fiches:fichesT});
     }
 
     // Mécanismes reliés aux tendances retenues, et leurs parades
-    var mecas=el("section",{class:"rapport-partie rapport-mecas"},[el("h2",{text:"Mécanismes probables"})]);
     if(sy.mecanismes.length){
+      var mecas=el("section",{class:"rapport-partie rapport-chap rapport-mecas",id:"ch-mecanismes"},[el("h2",{text:"Mécanismes probables"})]);
       mecas.appendChild(el("p",{class:"rapport-note",text:"Les mécanismes d’enfermement reliés à vos tendances retenues, du plus cité au moins cité, avec les leviers qui permettent d’y répondre."}));
       mecas.appendChild(el("div",{class:"rapport-cartes"},sy.mecanismes.map(function(m){
         var c=el("article",{class:"rapport-carte rapport-meca"}); c.style.setProperty("--lt","var(--line-2)");
@@ -1904,11 +1978,12 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
         if(parades.length){ c.appendChild(el("h4",{text:"Parades"})); c.appendChild(el("ul",null,parades.map(function(a){ return liLevier(levId[a.id].t,a.commentaire); }))); }
         return c;
       })));
-    } else mecas.appendChild(el("p",{text:"Aucun mécanisme d’enfermement n’est relié aux tendances retenues."}));
-    z.appendChild(mecas);
+      corps.appendChild(mecas);
+      chapitres.push({id:"ch-mecanismes",titre:"Mécanismes probables",fiches:[]});
+    }
 
     // Sources citées, par élément ; une même adresse n’est listée qu’une fois
-    var src=el("section",{class:"rapport-partie rapport-sources"},[el("h2",{text:"Sources"})]), vues={};
+    var src=el("section",{class:"rapport-partie rapport-chap rapport-sources",id:"ch-sources"},[el("h2",{text:"Sources"})]), vues={};
     sy.tendances.map(function(t){ return [t.titre,t.sources]; }).concat(sy.technos.map(function(x){ return [x.nom,x.sources]; })).forEach(function(g){
       var items=(g[1]||[]).filter(function(s2){ if(!s2.url) return true; if(vues[s2.url]) return false; vues[s2.url]=1; return true; });
       if(!items.length) return;
@@ -1916,11 +1991,12 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       src.appendChild(el("ul",null,items.map(function(s2){ return el("li",null,[s2.url?el("a",{href:s2.url,text:s2.titre}):s2.titre]); })));
     });
     src.appendChild(el("p",{class:"rapport-note",text:"Informations vérifiées en novembre 2026. Le radar est un prototype à valider avec des experts."}));
-    z.appendChild(src);
+    corps.appendChild(src);
+    chapitres.push({id:"ch-sources",titre:"Sources",fiches:[]});
 
     // Dernière page : appel au rendez-vous
     var cal=(window.OPTIO_CONFIG||{}).calLien||"", rdv=lienRdv();
-    var fin=el("section",{class:"rapport-partie rapport-fin"},[
+    var fin=el("section",{class:"rapport-partie rapport-chap rapport-fin",id:"ch-rdv"},[
       el("h2",{text:"Analysons ce rapport ensemble, 15 minutes"}),
       el("p",{text:"Un échange de 15 minutes pour relire ce rapport avec vous : quelles dépendances pèsent réellement dans votre contexte, quels leviers activer en premier, et ce qu’il faut vérifier avant une échéance de contrat."}),
       el("p",{text:"Le lien de ce rapport est joint à la réservation : nous le lirons avant l’échange."}),
@@ -1928,7 +2004,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       el("p",{class:"imprime-seul"},["Pour réserver : ", el("a",{class:"sans-adresse",href:cal||new URL("index.html#contact",location.href).href,text:cal||new URL("index.html#contact",location.href).href})]),
       el("p",{class:"rapport-note ecran-seul"},[el("a",{href:"radar.html",text:"Explorer le radar complet"})])
     ]);
-    z.appendChild(fin);
+    corps.appendChild(fin);
+    chapitres.push({id:"ch-rdv",titre:"Analysons ce rapport ensemble, 15 minutes",fiches:[]});
+    sommaireRapport(chapitres);
     z.setAttribute("data-etat","complet");
     var st=stockage(); try{ if(st) st.setItem(SEL.CLE_DERNIER_RAPPORT, location.href); }catch(e){}
   }
