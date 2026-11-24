@@ -45,9 +45,11 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 [hidden]{display:none !important}
-:root{--a0:#FBE2D8;--a0t:#9A3E26;--a1:#FBF0CC;--a1t:#7A5A00;--a2:#DCEDF7;--a2t:#2D6488;--a3:#ECE7F7;--a3t:#5B4E8A}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--a0:#3B2620;--a0t:#F2B8A5;--a1:#3A3217;--a1t:#F2D27A;--a2:#16374B;--a2t:#9CCBEA;--a3:#2B2742;--a3t:#C7BDF0}}
-:root[data-theme="dark"]{--a0:#3B2620;--a0t:#F2B8A5;--a1:#3A3217;--a1t:#F2D27A;--a2:#16374B;--a2t:#9CCBEA;--a3:#2B2742;--a3t:#C7BDF0}
+/* Palette d’urgence des tendances (--u*), disponible quelle que soit la vue ; --a* = palette des anneaux de la vue courante */
+:root{--u0:#FBE2D8;--u0t:#9A3E26;--u1:#FBF0CC;--u1t:#7A5A00;--u2:#DCEDF7;--u2t:#2D6488;--u3:#ECE7F7;--u3t:#5B4E8A}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--u0:#3B2620;--u0t:#F2B8A5;--u1:#3A3217;--u1t:#F2D27A;--u2:#16374B;--u2t:#9CCBEA;--u3:#2B2742;--u3t:#C7BDF0}}
+:root[data-theme="dark"]{--u0:#3B2620;--u0t:#F2B8A5;--u1:#3A3217;--u1t:#F2D27A;--u2:#16374B;--u2t:#9CCBEA;--u3:#2B2742;--u3t:#C7BDF0}
+:root{--a0:var(--u0);--a0t:var(--u0t);--a1:var(--u1);--a1t:var(--u1t);--a2:var(--u2);--a2t:var(--u2t);--a3:var(--u3);--a3t:var(--u3t)}
 /* Palette des anneaux Technologies, disponible dans toutes les vues (pastilles de technologies dans les fiches tendances) */
 :root{--x0:#FBE2D8;--x0t:#9A3E26;--x1:#FBEFD0;--x1t:#7A5200;--x2:#E8F3D6;--x2t:#4A6A12;--x3:#D3F0E2;--x3t:#0E6B47}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--x0:#3B2620;--x0t:#F2B8A5;--x1:#3A3217;--x1t:#F2D27A;--x2:#26361A;--x2t:#C2E08F;--x3:#123A2B;--x3t:#7FE0B5}}
@@ -597,6 +599,15 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .rapport .rapport-alternatives li{display:inline-flex;flex-wrap:wrap;align-items:center;gap:8px;max-width:100%;border:1px solid var(--line-2);border-radius:999px;padding:3px 5px 3px 12px;font-size:14px;font-weight:600;color:var(--ink)}
 .rapport-synthese .barres-anneau{max-width:460px;margin:8px 0 14px}
 .rapport .rapport-chiffre{font-size:16px;font-weight:700;color:var(--ink)}
+/* Radars de la sélection : figures statiques, côte à côte sur écran large */
+.rapport-radars{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin-top:18px}
+@media (min-width:900px){.rapport-radars{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.rapport-figure{margin:0;break-inside:avoid;page-break-inside:avoid;min-width:0}
+.rapport-radar svg{display:block;width:100%;max-width:560px;height:auto;margin:0 auto}
+.rapport .rapport-figure figcaption{margin:0 0 8px;font-size:14px;font-weight:700;color:var(--ink)}
+.rapport .rapport-legende{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-direction:column;gap:4px}
+.rapport .rapport-legende li{display:flex;align-items:baseline;gap:8px;font-size:13.5px;line-height:1.4;color:var(--text-2)}
+.rapport-legende-num{flex:none;min-width:26px;padding:1px 6px;border-radius:999px;background:var(--ink);color:var(--surface);font-family:var(--mesure);font-size:11.5px;font-weight:600;text-align:center}
 .rapport-sources h3{font-size:14px;margin-top:12px}
 .rapport-sources li{font-size:14px}
 .rapport-fin{border:2px solid var(--c-o)}
@@ -612,7 +623,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   html:root.mode-rapport{color-scheme:light;
     --bg:#FFFFFF;--surface:#FFFFFF;--surface-2:#F2F2F2;--ink:#000000;--text-2:#000000;--text-3:#333333;--line:#BBBBBB;--line-2:#999999;--signal-text:#000000;--c-o:#00A37A;--on-o:#062A1F;
     --x0:#FBE2D8;--x0t:#9A3E26;--x1:#FBEFD0;--x1t:#7A5200;--x2:#E8F3D6;--x2t:#4A6A12;--x3:#D3F0E2;--x3t:#0E6B47;
-    --a0:#FBE2D8;--a0t:#9A3E26;--a1:#FBF0CC;--a1t:#7A5A00;--a2:#DCEDF7;--a2t:#2D6488;--a3:#ECE7F7;--a3t:#5B4E8A}
+    --a0:#FBE2D8;--a0t:#9A3E26;--a1:#FBF0CC;--a1t:#7A5A00;--a2:#DCEDF7;--a2t:#2D6488;--a3:#ECE7F7;--a3t:#5B4E8A;
+    --u0:#FBE2D8;--u0t:#9A3E26;--u1:#FBF0CC;--u1t:#7A5A00;--u2:#DCEDF7;--u2t:#2D6488;--u3:#ECE7F7;--u3t:#5B4E8A}
   @page{margin:16mm 14mm}
   html.mode-rapport,html.mode-rapport body{background:#FFFFFF;color:#000000}
   .mode-rapport *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
@@ -624,7 +636,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   .rapport-corps{gap:0}
   .rapport-bloc,.rapport-partie{border:0;border-radius:0;padding:6mm 0 0;background:#FFFFFF}
   .rapport-partie,.rapport-chap,.rapport-sommaire{break-before:page}
-  .rapport-carte,.rapport-selection,.rapport-sources li{break-inside:avoid}
+  .rapport-carte,.rapport-selection,.rapport-sources li,.rapport-figure{break-inside:avoid}
   .rapport-sommaire ol{padding-left:22px}
   .rapport-sommaire li{margin:6px 0;font-size:16px}
   .rapport-sommaire a{text-decoration:none}
@@ -1422,6 +1434,31 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     else if(!zoneLie){ Z.lie.hidden=true; Z.lie.inert=true; }
     majTirettes();
   }
+  // Fond statique d’un radar (sans interaction) : segments d’anneaux à la palette pal (« x » technologies, « u » urgence des tendances),
+  // titres des secteurs et libellés des anneaux ; idArc préfixe les identifiants des arcs de titres
+  function fondStatique(g,V,pal,idArc){
+    var nq=V.quadrants.length, quad=nq===4, QA=angles(nq);
+    QA.forEach(function(a,qi){ [3,2,1,0].forEach(function(ai){ var pth=s("path",{d:segment(R[ai],R[ai+1],a[0],a[1]),"stroke-width":"2"}); pth.style.fill="var(--"+pal+ai+")"; pth.style.stroke="var(--surface)"; pth.setAttribute("class","anneau-"+ai); g.appendChild(pth); }); });
+    function etiquette(nm,i,x,y,w,cx,cy){
+      var r0=s("rect",{x:x,y:y,width:w,height:20,rx:10,"stroke-width":"1"}); r0.style.fill="var(--surface)"; r0.style.stroke="var(--"+pal+i+"t)"; r0.setAttribute("stroke-opacity","0.45"); g.appendChild(r0);
+      var tt=s("text",{x:cx,y:cy+4,"text-anchor":"middle","font-size":"10.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},nm); tt.style.fill="var(--text-3)"; g.appendChild(tt);
+    }
+    if(quad){
+      var QL=[[8,10,"start"],[752,10,"end"],[8,758,"start"],[752,758,"end"]];
+      V.quadrants.forEach(function(qd,qi){ var tx=s("text",{x:QL[qi][0],y:QL[qi][1],"text-anchor":QL[qi][2],"font-size":"13","font-weight":"800","font-family":"Archivo, sans-serif"},qd.t); tx.style.fill="var(--text-3)"; g.appendChild(tx); });
+      [-1,1].forEach(function(sens){ V.courts.forEach(function(nm,i){ var mx=C+sens*(R[i]+R[i+1])/2, w=nm.length*6+16; etiquette(nm,i,mx-w/2,C-10,w,mx,C); }); });
+    } else {
+      // titres en arc au-dessus du bord, lisibles de gauche à droite ; libellés d’anneaux sur le séparateur du haut
+      V.quadrants.forEach(function(qd,qi){
+        var a0=QA[qi][0], a1=QA[qi][1], bas=Math.sin((a0+a1)/2)>0, rt=bas?R[4]+20:R[4]+9;
+        var p0=[C+rt*Math.cos(a0),C+rt*Math.sin(a0)], p1=[C+rt*Math.cos(a1),C+rt*Math.sin(a1)], id=idArc+qi;
+        g.appendChild(s("path",{id:id,fill:"none",d:bas?"M"+p1[0]+" "+p1[1]+" A"+rt+" "+rt+" 0 0 0 "+p0[0]+" "+p0[1]:"M"+p0[0]+" "+p0[1]+" A"+rt+" "+rt+" 0 0 1 "+p1[0]+" "+p1[1]}));
+        var tx=s("text",{"font-size":"13","font-weight":"800","font-family":"Archivo, sans-serif"}); tx.style.fill="var(--text-3)";
+        var tp=s("textPath",{href:"#"+id,startOffset:"50%","text-anchor":"middle"},qd.t); tx.appendChild(tp); g.appendChild(tx);
+      });
+      etiquettesAnneaux(V).forEach(function(b){ etiquette(b.n,b.i,b.x,b.y,b.w,b.mx,b.my); });
+    }
+  }
   // Radar compact des technologies : toutes en filigrane, celles de la tendance en surbrillance
   function radarLie(t){
     var z=document.getElementById("radar-lie"); z.textContent=""; if(!t || !t.techs.length) return;
@@ -1434,26 +1471,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       el("button",{type:"button",class:"retour",onclick:function(){ setLie(false); }},["‹ Radar des tendances"])
     ]));
     var g=s("svg",{viewBox:(-M)+" "+(-M)+" "+(760+2*M)+" "+(760+2*M),role:"img","aria-label":"Radar des technologies : "+n+" en surbrillance"});
-    QA.forEach(function(a,qi){ [3,2,1,0].forEach(function(ai){ var pth=s("path",{d:segment(R[ai],R[ai+1],a[0],a[1]),"stroke-width":"2"}); pth.style.fill="var(--x"+ai+")"; pth.style.stroke="var(--surface)"; g.appendChild(pth); }); });
-    function etiquette(nm,i,x,y,w,cx,cy){
-      var r0=s("rect",{x:x,y:y,width:w,height:20,rx:10,"stroke-width":"1"}); r0.style.fill="var(--surface)"; r0.style.stroke="var(--x"+i+"t)"; r0.setAttribute("stroke-opacity","0.45"); g.appendChild(r0);
-      var tt=s("text",{x:cx,y:cy+4,"text-anchor":"middle","font-size":"10.5","font-weight":"600","font-family":"Instrument Sans, sans-serif"},nm); tt.style.fill="var(--text-3)"; g.appendChild(tt);
-    }
-    if(quad){
-      var QL=[[8,10,"start"],[752,10,"end"],[8,758,"start"],[752,758,"end"]];
-      VT.quadrants.forEach(function(qd,qi){ var tx=s("text",{x:QL[qi][0],y:QL[qi][1],"text-anchor":QL[qi][2],"font-size":"13","font-weight":"800","font-family":"Archivo, sans-serif"},qd.t); tx.style.fill="var(--text-3)"; g.appendChild(tx); });
-      [-1,1].forEach(function(sens){ VT.courts.forEach(function(nm,i){ var mx=C+sens*(R[i]+R[i+1])/2, w=nm.length*6+16; etiquette(nm,i,mx-w/2,C-10,w,mx,C); }); });
-    } else {
-      // titres en arc au-dessus du bord, lisibles de gauche à droite ; libellés d’anneaux sur le séparateur du haut
-      VT.quadrants.forEach(function(qd,qi){
-        var a0=QA[qi][0], a1=QA[qi][1], bas=Math.sin((a0+a1)/2)>0, rt=bas?R[4]+20:R[4]+9;
-        var p0=[C+rt*Math.cos(a0),C+rt*Math.sin(a0)], p1=[C+rt*Math.cos(a1),C+rt*Math.sin(a1)], id="lie-arc-"+qi;
-        g.appendChild(s("path",{id:id,fill:"none",d:bas?"M"+p1[0]+" "+p1[1]+" A"+rt+" "+rt+" 0 0 0 "+p0[0]+" "+p0[1]:"M"+p0[0]+" "+p0[1]+" A"+rt+" "+rt+" 0 0 1 "+p1[0]+" "+p1[1]}));
-        var tx=s("text",{"font-size":"13","font-weight":"800","font-family":"Archivo, sans-serif"}); tx.style.fill="var(--text-3)";
-        var tp=s("textPath",{href:"#"+id,startOffset:"50%","text-anchor":"middle"},qd.t); tx.appendChild(tp); g.appendChild(tx);
-      });
-      etiquettesAnneaux(VT).forEach(function(b){ etiquette(b.n,b.i,b.x,b.y,b.w,b.mx,b.my); });
-    }
+    fondStatique(g,VT,"x","lie-arc-");
     TECH.forEach(function(y){ if(t.techs.indexOf(y)>=0) return; var c=s("circle",{cx:y.x,cy:y.y,r:4}); c.style.fill="var(--text-3)"; c.setAttribute("opacity","0.22"); g.appendChild(c); });
     var tip=s("g",{"pointer-events":"none"});
     t.techs.forEach(function(y,k){
@@ -1879,6 +1897,28 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var io=new IntersectionObserver(marquer,{rootMargin:"0px 0px -70% 0px"});
     sections.forEach(function(s){ io.observe(s); });
   }
+  // Radar statique de la sélection pour le rapport : tous les éléments en points pâles, les retenus numérotés comme sur le radar interactif
+  function figureRadar(nomVue, retenus){
+    var V=VUES[nomVue], items=DONNEES[nomVue], tech=nomVue==="technologies", M=V.quadrants.length===4?24:40;
+    // mêmes positions que le radar interactif
+    if(!deja[nomVue]){ var v0=vue; vue=nomVue; placer(items, rb()); deja[nomVue]=true; vue=v0; }
+    var liste=retenus.slice().sort(function(a,b){ return a.n-b.n; }), n=liste.length;
+    var titre="Radar des "+(tech?"technologies":"tendances"), compte=n+" retenue"+(n>1?"s":"")+" sur "+items.length;
+    var g=s("svg",{viewBox:(-M)+" "+(-M)+" "+(760+2*M)+" "+(760+2*M),role:"img","aria-label":titre+" : "+compte});
+    fondStatique(g,V,tech?"x":"u","rapport-"+nomVue+"-arc-");
+    items.forEach(function(y){ if(liste.indexOf(y)>=0) return; var c=s("circle",{cx:y.x,cy:y.y,r:4}); c.style.fill="var(--text-3)"; c.setAttribute("opacity","0.22"); g.appendChild(c); });
+    var r=tech?15:17, fs=tech?"12":"13";
+    liste.forEach(function(y){
+      var b=s("g",{class:"pt-retenu"}), c=s("circle",{cx:y.x,cy:y.y,r:r,"stroke-width":"2"}); c.style.fill="var(--ink)"; c.style.stroke="var(--surface)"; b.appendChild(c);
+      var tx=s("text",{x:y.x,y:y.y+(tech?4.3:4.7),"text-anchor":"middle","font-size":fs,"font-weight":"600","font-family":"JetBrains Mono, monospace"},String(y.n)); tx.style.fill="var(--surface)"; b.appendChild(tx);
+      g.appendChild(b);
+    });
+    return el("figure",{class:"rapport-figure rapport-radar","data-vue":nomVue},[
+      el("figcaption",{text:titre+" · "+compte}),
+      g,
+      el("ol",{class:"rapport-legende"},liste.map(function(y){ return el("li",null,[el("span",{class:"rapport-legende-num",text:String(y.n)}), el("span",{text:y.t})]); }))
+    ]);
+  }
   function rendreRapport(sel){
     var z=zoneRapport(); z.textContent=""; var corps=el("div",{class:"rapport-corps"}); z.appendChild(corps);
     document.title="Mon rapport · Radar des dépendances · Optio";
@@ -1918,6 +1958,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(nd,"tendance")+", dont "+pluriel(sy.urgentes,"urgente")}));
     synth.appendChild(el("p",{class:"rapport-note",text:"Urgente : tendance classée en urgence forte ou élevée dans le radar."}));
     synth.appendChild(el("p",{class:"rapport-chiffre",text:pluriel(sy.mecanismes.length,"mécanisme")+" d’enfermement probable"+(sy.mecanismes.length>1?"s":"")}));
+    var retX=sy.technos.map(function(b){ return techId[b.id]; }).filter(Boolean), retT=sy.tendances.map(function(b){ return tendId[b.id]; }).filter(Boolean);
+    if(retX.length||retT.length) synth.appendChild(el("div",{class:"rapport-radars"},[retX.length?figureRadar("technologies",retX):null, retT.length?figureRadar("tendances",retT):null]));
     corps.appendChild(synth);
     var chapitres=[{id:"ch-synthese",titre:"Synthèse",fiches:[]}];
 
