@@ -14,8 +14,8 @@ let navigateur;
 before(async () => { navigateur = await chromium.launch({ channel: "chrome" }); });
 after(async () => { await navigateur.close(); });
 
-async function rapport(chemin, { viewport } = {}) {
-  const contexte = await navigateur.newContext({ viewport });
+async function rapport(chemin, options = {}) {
+  const contexte = await navigateur.newContext(options);
   const p = await contexte.newPage();
   const errs = erreurs(p);
   await p.route("**/js/config.js", (r) => r.fulfill({ contentType: "text/javascript", body: cfg }));
@@ -68,9 +68,9 @@ test("volet écran large", async () => {
     const bn = await nav.boundingBox(), bc = await p.locator("#ch-synthese").boundingBox();
     assert.ok(bn.x + bn.width <= bc.x, "volet pas à gauche du contenu");
     assert.ok(bc.width <= 900);
-    await p.evaluate(() => document.getElementById("ch-sources").scrollIntoView());
-    await p.waitForTimeout(500);
-    await p.waitForFunction(() => document.querySelector(".rapport-nav a[href=\"#ch-sources\"]").getAttribute("aria-current") === "location", null, { timeout: 3000 });
+    // chapitre au milieu du rapport (en bas de page, c’est le dernier chapitre qui est marqué)
+    await p.evaluate(() => document.getElementById("ch-mecanismes").scrollIntoView());
+    await p.waitForFunction(() => document.querySelector(".rapport-nav a[href=\"#ch-mecanismes\"]").getAttribute("aria-current") === "location", null, { timeout: 3000 });
     assert.equal(await p.locator(".rapport-nav a[aria-current]").count(), 1);
     await p.evaluate(() => window.scrollTo(0, 0));
     await p.waitForFunction(() => document.querySelector(".rapport-nav a[href=\"#ch-synthese\"]").getAttribute("aria-current") === "location", null, { timeout: 3000 });
@@ -132,6 +132,54 @@ test("grande sélection", async () => {
     await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight / 2));
     const h2 = await p.locator(".rapport-nav").evaluate((n) => { const r = n.getBoundingClientRect(); return { top: r.top, bas: r.bottom }; });
     assert.ok(h2.top >= 0 && h2.bas <= 900, "volet pas collant : " + JSON.stringify(h2));
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+// Sans sommaire (rapport vide, identifiants inconnus, données absentes) : pas de colonne de volet sur écran large
+for (const [nom, chemin, panne] of [
+  ["vide", "radar.html?rapport=1", false],
+  ["identifiant inconnu", "radar.html?rapport=1&x=inconnu", false],
+  ["données absentes", "radar.html?rapport=1&x=vmware-vsphere-et-vcf", true],
+]) {
+  test("écran large sans sommaire : " + nom, async () => {
+    const contexte = await navigateur.newContext({ viewport: { width: 1280, height: 900 } });
+    const p = await contexte.newPage();
+    try {
+      await p.route("**/js/config.js", (r) => r.fulfill({ contentType: "text/javascript", body: cfg }));
+      if (panne) await p.route("**/data/tendances.json*", (r) => r.fulfill({ status: 500, body: "" }));
+      await p.goto(BASE + chemin);
+      await p.waitForSelector(panne ? "#rapport .rapport-bloc[role=alert]" : "#rapport[data-etat]");
+      assert.equal(await p.locator(".rapport-nav").count(), 0);
+      const w = await p.locator("#rapport > *").first().evaluate((x) => x.getBoundingClientRect().width);
+      assert.ok(w > 600, "contenu trop étroit : " + w);
+    } finally { await contexte.close(); }
+  });
+}
+
+test("volet : dernier chapitre marqué en bas de page", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 1280, height: 900 } });
+  try {
+    await p.evaluate(() => window.scrollTo(0, document.documentElement.scrollHeight));
+    await p.waitForFunction(() => document.querySelector(".rapport-nav a[href=\"#ch-rdv\"]").getAttribute("aria-current") === "location", null, { timeout: 3000 });
+    assert.equal(await p.locator(".rapport-nav a[aria-current]").count(), 1);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("lien copié et lien de rendez-vous sans ancre", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET + "#ch-sources", { viewport: { width: 1280, height: 900 }, permissions: ["clipboard-read", "clipboard-write"] });
+  try {
+    for (const sel of ["a.rapport-rdv", "a.rapport-rdv-haut"]) {
+      const notes = new URL(await p.locator(sel).getAttribute("href")).searchParams.get("notes");
+      assert.ok(notes.includes("rapport=1") && !notes.includes("#"), sel + " : " + notes);
+    }
+    await p.locator(".rapport-nav a[href=\"#ch-mecanismes\"]").click();
+    await p.waitForFunction(() => location.hash === "#ch-mecanismes");
+    await p.getByRole("button", { name: "Copier le lien de mon rapport" }).click();
+    await p.waitForFunction(() => /copié/.test(document.querySelector(".rapport-statut").textContent));
+    const copie = await p.evaluate(() => navigator.clipboard.readText());
+    assert.equal(copie, BASE + COMPLET);
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });

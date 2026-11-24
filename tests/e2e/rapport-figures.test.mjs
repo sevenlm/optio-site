@@ -262,3 +262,71 @@ test("table : impression", async () => {
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
+
+// Taille de texte rendue à l’écran : font-size SVG × échelle de la matrice écran
+const tailleRendue = (loc) => loc.first().evaluate((t) => parseFloat(t.getAttribute("font-size")) * t.getScreenCTM().a);
+
+test("radars : texte lisible sur écran large et mobile", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 1280, height: 900 } });
+  try {
+    // radars empilés, un par rangée
+    const [a, b] = await p.locator(".rapport-radar").evaluateAll((l) => l.map((f) => f.getBoundingClientRect().top));
+    assert.ok(b > a + 300, "radars côte à côte");
+    for (const vue of ["technologies", "tendances"]) {
+      const f = p.locator(".rapport-radar[data-vue=\"" + vue + "\"]");
+      const num = await tailleRendue(f.locator(".pt-retenu text"));
+      const anneau = await tailleRendue(f.locator("text.etiquette-anneau"));
+      assert.ok(num >= 12, vue + " : numéro " + num);
+      assert.ok(anneau >= 9, vue + " : anneau " + anneau);
+    }
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+  const m = await rapport(COMPLET, { viewport: { width: 390, height: 844 } });
+  try {
+    for (const vue of ["technologies", "tendances"]) {
+      const num = await tailleRendue(m.p.locator(".rapport-radar[data-vue=\"" + vue + "\"] .pt-retenu text"));
+      assert.ok(num >= 7, vue + " mobile : numéro " + num);
+    }
+    assert.ok(await m.p.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth));
+    assert.deepEqual(m.errs, []);
+  } finally { await m.fermer(); }
+});
+
+test("radars : chacun tient dans une page imprimée", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET, { viewport: { width: 794, height: 1123 } });
+  try {
+    await p.emulateMedia({ media: "print" });
+    // A4 moins les marges (16 mm haut et bas) : environ 1000 px
+    for (const h of await p.locator(".rapport-radar").evaluateAll((l) => l.map((f) => f.getBoundingClientRect().height))) assert.ok(h < 1000, "radar trop haut : " + h);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("table : tuiles accessibles", async () => {
+  const { p, errs, fermer } = await rapport(COMPLET);
+  try {
+    const t = p.locator(".rapport-table");
+    const allumees = await t.locator(".rt-tuile.allume").evaluateAll((l) => l.map((x) => [x.getAttribute("role"), x.getAttribute("aria-label"), x.getAttribute("aria-hidden")]));
+    assert.ok(allumees.length > 0);
+    for (const [role, nom, cache] of allumees) { assert.equal(role, "img"); assert.ok(nom); assert.equal(cache, null); }
+    const pales = await t.locator(".rt-tuile:not(.allume)").evaluateAll((l) => l.map((x) => x.getAttribute("aria-hidden")));
+    assert.ok(pales.length > 0 && pales.every((v) => v === "true"));
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("table : impression depuis le mode sombre", async () => {
+  const fonds = async (colorScheme) => {
+    const { p, errs, fermer } = await rapport(COMPLET, { colorScheme, viewport: { width: 1280, height: 900 } });
+    try {
+      await p.emulateMedia({ media: "print" });
+      const r = await p.evaluate(() => {
+        const f = (s) => getComputedStyle(document.querySelector(s)).backgroundColor;
+        return [f(".rapport-table .rt-tuile.allume"), f(".rapport-table .rt-tuile:not(.allume)"), f(".rapport-table .rt-couche")];
+      });
+      assert.deepEqual(errs, []);
+      return r;
+    } finally { await fermer(); }
+  };
+  assert.deepEqual(await fonds("dark"), await fonds("light"));
+});
