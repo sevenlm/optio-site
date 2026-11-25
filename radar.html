@@ -297,6 +297,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 @media (prefers-reduced-motion: reduce){.tuile{transition:none}.tuile:hover{transform:none}}
 .tp-dialog{border:none;border-radius:18px;padding:26px;max-width:560px;width:calc(100% - 32px);background:var(--surface);color:var(--ink);box-shadow:0 24px 60px rgba(6,25,42,.35)}
 .tp-dialog::backdrop{background:rgba(6,25,42,.5)}
+.tp-fermer{position:sticky;top:0;float:right;z-index:2;margin:-12px -12px 6px 12px;width:40px;height:40px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%;background:var(--surface);color:var(--ink);cursor:pointer;transition:background .15s,border-color .15s}
+.tp-fermer:hover,.tp-fermer:focus-visible{background:var(--surface-2);border-color:var(--line-2)}
+.tp-fermer svg{width:18px;height:18px}
 .tp-dialog h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px;line-height:1.15}
 .tp-dialog-pied{display:flex;flex-wrap:wrap;gap:12px 18px;align-items:center;justify-content:space-between;margin-top:18px;padding-top:14px;border-top:1px solid var(--line)}
 .tp-dialog-pied .plus{margin-top:0}
@@ -1193,7 +1196,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     donnees:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/>',
     operations:'<path d="M22 12h-4l-3 9L9 3l-3 9H2"/>',
     chevron:'<path d="m6 9 6 6 6-6"/>',
-    coche:'<path d="M20 6 9 17l-5-5"/>'
+    coche:'<path d="M20 6 9 17l-5-5"/>',
+    croix:'<path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>'
   };
   function icone(nom,cls){ var sv=document.createElementNS(NS,"svg"); sv.setAttribute("viewBox","0 0 24 24"); sv.setAttribute("class",cls||"ic"); sv.setAttribute("aria-hidden","true"); sv.innerHTML=ICONES[nom]||""; return sv; }
   function visuel(op){
@@ -1322,8 +1326,20 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   var COUCHES=[5,0,1,2,4,3,6], COUCHE_LIB={5:"Juridique et géopolitique",0:"Contrat",1:"Licences",2:"Commercial",4:"Organisation",3:"Technique",6:"Open source"};
   var MOMENTS=["À la signature","Pendant l’usage","Au renouvellement","Au moment de partir"];
   var mSel=0, atelier=false, coches={};
+  // Fenêtres « mécanisme » et « levier » : croix de fermeture en haut à droite, fermeture au clic en dehors
+  function preparerDialogue(d){
+    d.appendChild(el("button",{type:"button",class:"tp-fermer","aria-label":"Fermer",title:"Fermer",onclick:function(){ d.close(); }},[icone("croix")]));
+    if(d._clicExterieur) return;
+    d._clicExterieur=true;
+    // un clic sur le fond assombri arrive sur le dialogue lui-même, hors de son cadre ; un clic au clavier vise un bouton intérieur
+    d.addEventListener("click",function(e){
+      if(e.target!==d) return;
+      var r=d.getBoundingClientRect();
+      if(e.clientX<r.left || e.clientX>r.right || e.clientY<r.top || e.clientY>r.bottom) d.close();
+    });
+  }
   function ouvrirMeca(k){
-    var d=document.getElementById("meca-dialog"); d.textContent="";
+    var d=document.getElementById("meca-dialog"); d.textContent=""; preparerDialogue(d);
     var me=MECA[k], fi=me[0], meta=META[k];
     var gros=el("div",{class:"tuile tuile-grande"},[el("span",{class:"tuile-num",text:String(k+1)}), el("span",{class:"tuile-sym",text:meta[0]}), el("span",{class:"tuile-nom",text:COUCHE_LIB[fi]})]);
     gros.style.background="var(--fam"+fi+")"; gros.style.color="var(--fam"+fi+"t)";
@@ -1360,7 +1376,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(!vus) z.appendChild(el("p",{class:"lv-vide",text:"Aucun levier ne correspond à cette recherche."}));
   }
   function ouvrirLevier(l){
-    var d=document.getElementById("lev-dialog"); d.textContent="";
+    var d=document.getElementById("lev-dialog"); d.textContent=""; preparerDialogue(d);
     var lien=function(txt,href,fn){ return el("a",{class:"tp-lien",href:href,onclick:fn||function(){ d.close(); }},[txt]); };
     d.appendChild(el("div",{class:"tp-fiche-tete"},[el("div",null,[el("h2",{id:"lev-titre",text:l.t}), el("p",{class:"tp-quand",text:"Levier · axe "+VUES.tendances.quadrants[l.axe].t})])]));
     var dl=el("dl",{class:"tp-dl"});
