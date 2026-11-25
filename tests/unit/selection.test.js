@@ -4,7 +4,8 @@ const assert = require("node:assert/strict");
 const fs = require("node:fs");
 const path = require("node:path");
 const { encoderSelection, decoderSelection, urlRapport, synthese, suggestions,
-  chargerSelection, sauverSelection, criticites } = require("../../js/selection.js");
+  chargerSelection, sauverSelection, criticites, jetonSelection, lireJeton,
+  selectionDepuisAdresse } = require("../../js/selection.js");
 
 function lire(nom) {
   return JSON.parse(fs.readFileSync(path.join(__dirname, "../../data", nom + ".json"), "utf8"));
@@ -21,9 +22,47 @@ test("décode une adresse mal formée", () => {
   assert.deepEqual(decoderSelection("?rapport=1&t=a,,a,b&x=&d=pas-une-date"), { tendances: ["a","b"], technologies: [], date: "" });
   assert.deepEqual(decoderSelection(""), { tendances: [], technologies: [], date: "" });
 });
-test("urlRapport", () => {
-  assert.equal(urlRapport("https://optio.stratwise.fr/radar.html", { tendances: [], technologies: ["x1"], date: "2026-11-23" }),
-    "https://optio.stratwise.fr/radar.html?rapport=1&x=x1&d=2026-11-23");
+test("urlRapport : jeton opaque, sans identifiant lisible", () => {
+  const sel = { tendances: ["fin-des-licences-perpetuelles"], technologies: ["vmware-vsphere-et-vcf"], date: "2026-11-23" };
+  const u = urlRapport("https://www.weareoptio.fr/radar.html", sel);
+  assert.match(u, /^https:\/\/www\.weareoptio\.fr\/radar\.html\?rapport=1&r=2\.[A-Za-z0-9_-]+\.[a-z0-9]+$/);
+  const jeton = u.split("&r=")[1];
+  assert.ok(!/vmware|licences|t=|x=|d=|2026-11-23/.test(jeton), jeton);
+  assert.deepEqual(selectionDepuisAdresse(u.slice(u.indexOf("?"))), sel);
+});
+test("jeton : aller-retour, y compris identifiants inattendus", () => {
+  for (const sel of [
+    { tendances: [], technologies: ["x1"], date: "" },
+    { tendances: ["a", "b"], technologies: ["c"], date: "2026-11-25" },
+    { tendances: ["éàü-ok"], technologies: ["constructor", "__proto__"], date: "" }
+  ]) assert.deepEqual(lireJeton(jetonSelection(sel)), sel);
+});
+test("jeton modifié, tronqué, vide ou d’une autre version : refusé", () => {
+  const j = jetonSelection({ tendances: ["fin-des-licences-perpetuelles"], technologies: ["vmware-vsphere-et-vcf"], date: "2026-11-23" });
+  const [v, charge, emp] = j.split(".");
+  const autre = charge.slice(0, 5) + (charge[5] === "A" ? "B" : "A") + charge.slice(6);
+  for (const mauvais of [v + "." + autre + "." + emp, v + "." + charge + "." + emp + "x", j.slice(0, j.length - 3),
+    "3." + charge + "." + emp, "", "2..", "n’importe quoi", "2.%%%." + emp, null, undefined])
+    assert.equal(lireJeton(mauvais), null, String(mauvais));
+});
+// Jetons figés : changer le sel, le mélange, l’empreinte ou l’encodage casserait les liens déjà envoyés
+test("jeton : format figé (liens déjà envoyés)", () => {
+  const sel = { tendances: ["fin-des-licences-perpetuelles"], technologies: ["vmware-vsphere-et-vcf", "openstack"], date: "2026-11-23" };
+  const fige = "2.ey1yYGEgdmR3LH5kcWR-c2phOX91ZnlqeWdkaG13fjR5LWZiZXV9dTl_fH16ZHZkP2hmLGZzaT57f3V6entscWoiZS8_IjMmPT4jOT0j.iuoiae";
+  assert.equal(jetonSelection(sel), fige);
+  assert.deepEqual(lireJeton(fige), sel);
+  assert.deepEqual(lireJeton("2..x79m2a"), { tendances: [], technologies: [], date: "" });
+});
+test("selectionDepuisAdresse : r absent ou ancien format refusé", () => {
+  assert.equal(selectionDepuisAdresse("?rapport=1"), null);
+  assert.equal(selectionDepuisAdresse("?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf"), null);
+  assert.equal(selectionDepuisAdresse(""), null);
+});
+test("jeton : longueur raisonnable même avec tout le radar retenu", () => {
+  const sel = { tendances: donnees.tendances.map((t) => t.id), technologies: donnees.technologies.map((x) => x.id), date: "2026-11-25" };
+  const brut = encoderSelection(sel).length, jeton = jetonSelection(sel).length;
+  assert.ok(jeton < brut * 1.5, jeton + " vs " + brut);
+  assert.deepEqual(lireJeton(jetonSelection(sel)), sel);
 });
 test("synthèse : tri, anneaux, absents, urgentes", () => {
   // anneau 2 puis 0 ; technos : anneau 3, 0, 1 (+ un identifiant inconnu)

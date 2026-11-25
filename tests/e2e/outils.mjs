@@ -18,3 +18,11 @@ export function erreurs(page) {
   page.on("console", (m) => { if (m.type() === "error") liste.push(m.text()); });
   return liste;
 }
+
+// Adresse d’un rapport au format camouflé, à partir d’une sélection lisible « t=…&x=…&d=… ».
+import { createRequire } from "node:module";
+const SELECTION = createRequire(import.meta.url)("../../js/selection.js");
+export function adresseRapport(lisible, base = "radar.html") {
+  return SELECTION.urlRapport(base, SELECTION.decoderSelection("?" + lisible));
+}
+export const lireJeton = SELECTION.lireJeton;

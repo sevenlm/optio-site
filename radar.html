@@ -1714,7 +1714,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   // lien du dernier rapport ouvert dans ce navigateur (écrit par rendreRapport) ; seulement une adresse http(s) de rapport
   function dernierRapport(){
     var u=null; try{ var st=stockage(); u=st && st.getItem(SEL.CLE_DERNIER_RAPPORT); }catch(e){ return null; }
-    return typeof u==="string" && /^https?:\/\/[^?#]*\?(?:[^#]*&)?rapport=1(?:&|#|$)/.test(u) ? u : null;
+    // adresse http(s) de rapport, au format camouflé valide (un ancien lien lisible est ignoré)
+    return typeof u==="string" && /^https?:\/\/[^?#]*\?(?:[^#]*&)?rapport=1(?:&|#|$)/.test(u) && SEL.selectionDepuisAdresse(u.split("#")[0].slice(u.indexOf("?")))!==null ? u : null;
   }
   // Aperçu libre : chiffres d’exposition seulement, sans leviers, alternatives ni montants
   function apercuLibre(n){
@@ -1831,7 +1832,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   (function(){ var bande=document.getElementById("bande"), tic=false;
     function maj(){ tic=false; bande.classList.toggle("colle",bande.getBoundingClientRect().top<=0 && window.scrollY>0); }
     window.addEventListener("scroll",function(){ if(!tic){ tic=true; requestAnimationFrame(maj); } },{passive:true}); })();
-  // ===== Rapport personnalisé (radar.html?rapport=1&t=…&x=…&d=…) : remplace l’interface du radar =====
+  // ===== Rapport personnalisé (radar.html?rapport=1&r=<jeton>) : remplace l’interface du radar =====
   // Factuel et sourcé : aucun chiffrage. Recalculé à partir des données du moment ; la date est celle de la demande.
   var MODE_RAPPORT=document.documentElement.classList.contains("mode-rapport");
   var MOIS=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];
@@ -2035,6 +2036,18 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function rendreRapport(sel){
     var z=zoneRapport(); z.textContent=""; var corps=el("div",{class:"rapport-corps"}); z.appendChild(corps);
     document.title="Mon rapport · Radar des dépendances · Optio";
+    // jeton absent, abîmé ou modifié : aucun rapport n’est calculé
+    if(!sel){
+      document.title="Lien de rapport non valide · Radar des dépendances · Optio";
+      z.setAttribute("data-etat","invalide");
+      corps.appendChild(el("section",{class:"rapport-bloc rapport-garde","aria-labelledby":"rapport-titre"},[
+        el("p",{class:"rapport-surtitre",text:"Radar des dépendances · rapport personnalisé"}),
+        el("h1",{id:"rapport-titre",text:"Ce lien de rapport n’est pas valide"}),
+        el("p",{class:"rapport-note",text:"Il est incomplet ou a été modifié. Ouvrez le lien tel que vous l’avez reçu, ou composez un nouveau rapport."}),
+        el("p",null,[el("a",{href:"radar.html",text:"Ouvrir le radar"})])
+      ]));
+      return;
+    }
     var sy=SEL.synthese(sel, DONNEES_BRUTES), nt=sy.technos.length, nd=sy.tendances.length, date=dateLongue(sel.date);
     var techId=Object.create(null), tendId=Object.create(null), levId=Object.create(null);
     TECH.forEach(function(x){ techId[x.id]=x; }); T.forEach(function(x){ tendId[x.id]=x; }); LEV.forEach(function(x){ levId[x.id]=x; });
@@ -2187,7 +2200,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   Promise.all(["tendances","technologies","mecanismes","leviers"].map(charger)).then(function(r){
     DONNEES_BRUTES={tendances:r[0], technologies:r[1], mecanismes:r[2], leviers:r[3]};
     preparer(r[0],r[1],r[2],r[3]);
-    if(MODE_RAPPORT){ rendreRapport(SEL.decoderSelection(location.search)); return; }
+    if(MODE_RAPPORT){ rendreRapport(SEL.selectionDepuisAdresse(location.search)); return; }
     initSelection();
     stats(); changerVue("tendances"); depuisHash();
   }).catch(function(err){

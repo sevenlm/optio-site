@@ -3,11 +3,11 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { BASE, erreurs } from "./outils.mjs";
+import { BASE, erreurs, adresseRapport } from "./outils.mjs";
 
 const cfg = "window.OPTIO_CONFIG = {tallyFormId:\"\", calLien:\"https://cal.example.test/optio/15min\", urlSite:\"http://localhost:8765/radar.html\"};";
-const COMPLET = "radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23";
-const TECHNOS_SEULES = "radar.html?rapport=1&x=vmware-vsphere-et-vcf&d=2026-11-23";
+const COMPLET = adresseRapport("t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23");
+const TECHNOS_SEULES = adresseRapport("x=vmware-vsphere-et-vcf&d=2026-11-23");
 const TOUS = ["ch-synthese", "ch-technologies", "ch-tendances", "ch-mecanismes", "ch-sources", "ch-rdv"];
 
 let navigateur;
@@ -117,12 +117,13 @@ test("impression", async () => {
 
 test("grande sélection", async () => {
   const { p: p0, fermer: f0 } = await rapport("radar.html?rapport=1");
-  const adresse = await p0.evaluate(async () => {
+  const lisible = await p0.evaluate(async () => {
     const tech = await fetch("data/technologies.json").then((x) => x.json());
     const tend = await fetch("data/tendances.json").then((x) => x.json());
-    return "radar.html?rapport=1&t=" + tend.slice(0, 20).map((t) => t.id).join(",") + "&x=" + tech.slice(0, 60).map((t) => t.id).join(",") + "&d=2026-11-23";
+    return "t=" + tend.slice(0, 20).map((t) => t.id).join(",") + "&x=" + tech.slice(0, 60).map((t) => t.id).join(",") + "&d=2026-11-23";
   });
   await f0();
+  const adresse = adresseRapport(lisible);
   const { p, errs, fermer } = await rapport(adresse, { viewport: { width: 1280, height: 900 } });
   try {
     assert.equal(await p.locator("#rapport").getAttribute("data-etat"), "complet");
@@ -138,9 +139,10 @@ test("grande sélection", async () => {
 
 // Sans sommaire (rapport vide, identifiants inconnus, données absentes) : pas de colonne de volet sur écran large
 for (const [nom, chemin, panne] of [
-  ["vide", "radar.html?rapport=1", false],
-  ["identifiant inconnu", "radar.html?rapport=1&x=inconnu", false],
-  ["données absentes", "radar.html?rapport=1&x=vmware-vsphere-et-vcf", true],
+  ["vide", adresseRapport(""), false],
+  ["lien non valide", "radar.html?rapport=1", false],
+  ["identifiant inconnu", adresseRapport("x=inconnu"), false],
+  ["données absentes", adresseRapport("x=vmware-vsphere-et-vcf"), true],
 ]) {
   test("écran large sans sommaire : " + nom, async () => {
     const contexte = await navigateur.newContext({ viewport: { width: 1280, height: 900 } });

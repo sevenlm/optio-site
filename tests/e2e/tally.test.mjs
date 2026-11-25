@@ -3,7 +3,9 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { ouvrir, erreurs } from "./outils.mjs";
+import { ouvrir, erreurs, lireJeton } from "./outils.mjs";
+import { createRequire } from "node:module";
+const decoderSelectionLisible = (q) => createRequire(import.meta.url)("../../js/selection.js").decoderSelection("?" + q);
 
 const CLE = "optio-radar-selection";
 const SEL = { technologies: ["tibco", "openstack"], tendances: ["fin-des-licences-perpetuelles"], date: "" };
@@ -57,9 +59,10 @@ test("en local avec tallyFormId vide : ouverture directe du rapport", async () =
     const u = new URL(p.url());
     assert.equal(u.pathname, "/radar.html");
     assert.equal(u.searchParams.get("rapport"), "1");
-    assert.equal(u.searchParams.get("d"), aujourdhui());
-    for (const id of ["tibco", "openstack"]) assert.ok(u.searchParams.get("x").split(",").includes(id), id);
-    assert.ok(u.searchParams.get("t").split(",").includes("fin-des-licences-perpetuelles"));
+    const sel = lireJeton(u.searchParams.get("r"));
+    assert.equal(sel.date, aujourdhui());
+    for (const id of ["tibco", "openstack"]) assert.ok(sel.technologies.includes(id), id);
+    assert.ok(sel.tendances.includes("fin-des-licences-perpetuelles"));
   } finally { await fermer(); }
 });
 
@@ -71,9 +74,9 @@ test("script Tally en échec : message avec le lien du rapport", async () => {
     await m.waitFor({ state: "visible" });
     const txt = await m.innerText();
     assert.match(txt, /n’a pas pu s’ouvrir/);
-    assert.match(txt, /rapport=1/);
-    assert.match(txt, new RegExp("d=" + aujourdhui()));
-    assert.match(txt, /tibco/);
+    const sel = lireJeton(/[?&]r=([^\s&]+)/.exec(txt)[1]);
+    assert.equal(sel.date, aujourdhui());
+    assert.ok(sel.technologies.includes("tibco"));
     assert.match(txt, /contact@stratwise\.fr/);
     assert.ok(errs.every((e) => /tally|ERR_FAILED/i.test(e)), errs.join("\n"));
   } finally { await fermer(); }
@@ -96,10 +99,11 @@ test("Tally simulé : champs cachés et redirection à l’envoi", async () => {
     await p.waitForFunction(() => window.__tally);
     const t = await p.evaluate(() => ({ id: window.__tally.id, h: window.__tally.opts.hiddenFields }));
     assert.equal(t.id, "TEST");
-    assert.ok(t.h.rapport.startsWith("http://localhost:8765/radar.html?rapport=1&"));
-    assert.ok(t.h.rapport.endsWith("&d=" + aujourdhui()));
-    assert.equal(t.h.rapport, "http://localhost:8765/radar.html?rapport=1&" + t.h.selection);
+    // rapport : lien camouflé ; selection : lisible, réservée à Optio dans les réponses Tally
+    assert.match(t.h.rapport, /^http:\/\/localhost:8765\/radar\.html\?rapport=1&r=2\.[A-Za-z0-9_-]+\.[a-z0-9]+$/);
     assert.match(t.h.selection, /^t=.*&x=.*&d=\d{4}-\d{2}-\d{2}$/);
+    assert.ok(t.h.selection.endsWith("&d=" + aujourdhui()));
+    assert.deepEqual(lireJeton(t.h.rapport.split("&r=")[1]), decoderSelectionLisible(t.h.selection));
     assert.ok(requetes.some((u) => u.includes("tally.so/widgets/embed.js")));
     await Promise.all([p.waitForURL(/rapport=1/), p.evaluate(() => window.__tally.opts.onSubmit({}))]);
     assert.deepEqual(errs, []);

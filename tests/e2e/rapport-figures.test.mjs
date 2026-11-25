@@ -3,11 +3,11 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { BASE, erreurs, ouvrir } from "./outils.mjs";
+import { BASE, erreurs, ouvrir, adresseRapport } from "./outils.mjs";
 
 const cfg = "window.OPTIO_CONFIG = {tallyFormId:\"\", calLien:\"https://cal.example.test/optio/15min\", urlSite:\"http://localhost:8765/radar.html\"};";
-const COMPLET = "radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23";
-const TECHNOS_SEULES = "radar.html?rapport=1&x=vmware-vsphere-et-vcf&d=2026-11-23";
+const COMPLET = adresseRapport("t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23");
+const TECHNOS_SEULES = adresseRapport("x=vmware-vsphere-et-vcf&d=2026-11-23");
 
 let navigateur;
 before(async () => { navigateur = await chromium.launch({ channel: "chrome" }); });
@@ -166,7 +166,7 @@ test("matrice : points sans recouvrement", async () => {
   const technologies = await fetch(BASE + "data/technologies.json").then((r) => r.json());
   const ids = technologies.filter((x) => x.anneau === 0).map((x) => x.id);
   assert.ok(ids.length > 2);
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1&x=" + ids.join(",") + "&d=2026-11-23");
+  const { p, errs, fermer } = await rapport(adresseRapport("x=" + ids.join(",") + "&d=2026-11-23"));
   try {
     const cs = await p.locator(".rapport-matrice .pt-matrice circle").evaluateAll((l) => l.map((c) => ["cx", "cy", "r"].map((k) => Number(c.getAttribute(k)))));
     assert.equal(cs.length, ids.length);
@@ -185,7 +185,7 @@ test("matrice : technologie sans tendance", async (t) => {
   const cites = new Set(tendances.filter((x) => x.type !== "levier").flatMap((x) => x.technologies || []));
   const libre = technologies.find((x) => !cites.has(x.nom));
   if (!libre) { t.skip("aucune technologie sans tendance dans les données"); return; }
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1&x=vmware-vsphere-et-vcf,openstack," + libre.id + "&d=2026-11-23");
+  const { p, errs, fermer } = await rapport(adresseRapport("x=vmware-vsphere-et-vcf,openstack," + libre.id + "&d=2026-11-23"));
   try {
     const pts = await p.locator(".rapport-matrice .pt-matrice").evaluateAll((gs) => gs.map((g) => ({ id: g.getAttribute("data-id"), crit: g.getAttribute("data-criticite"), cy: Number(g.querySelector("circle").getAttribute("cy")) })));
     const pt = pts.find((x) => x.id === libre.id);
@@ -197,7 +197,7 @@ test("matrice : technologie sans tendance", async (t) => {
 });
 
 test("matrice : absente sans technologie", async () => {
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=fin-des-licences-perpetuelles&d=2026-11-23");
+  const { p, errs, fermer } = await rapport(adresseRapport("t=fin-des-licences-perpetuelles&d=2026-11-23"));
   try {
     assert.equal(await p.locator(".rapport-matrice").count(), 0);
     assert.deepEqual(errs, []);

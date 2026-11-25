@@ -1,14 +1,14 @@
-// Rapport personnalisé (radar.html?rapport=1&t=…&x=…&d=…) : contenu, rendez-vous, copie du lien, impression.
+// Rapport personnalisé (radar.html?rapport=1&r=<jeton>) : contenu, rendez-vous, copie du lien, impression.
 // Prérequis : python3 -m http.server 8765 à la racine du dépôt (voir outils.mjs).
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { BASE, erreurs } from "./outils.mjs";
+import { BASE, erreurs, adresseRapport } from "./outils.mjs";
 
 const CAL = "https://cal.example.test/optio/15min";
 const cfg = (cal) => "window.OPTIO_CONFIG = {tallyFormId:\"\", calLien:" + JSON.stringify(cal) + ", urlSite:\"http://localhost:8765/radar.html\"};";
 // VMware (anneau 0) et OpenStack (anneau 2), une tendance d’urgence forte
-const ADRESSE = "radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23";
+const ADRESSE = adresseRapport("t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23");
 
 let navigateur;
 before(async () => { navigateur = await chromium.launch({ channel: "chrome" }); });
@@ -51,7 +51,7 @@ test("rapport : page de garde, synthèse, technologies, tendances, mécanismes, 
 
     // Synthèse : mêmes nombres que l’aperçu (synthese() sur la même sélection)
     const sy = await p.evaluate(() => {
-      const sel = OptioSelection.decoderSelection(location.search);
+      const sel = OptioSelection.selectionDepuisAdresse(location.search);
       return Promise.all(["tendances", "technologies", "mecanismes", "leviers"].map((n) => fetch("data/" + n + ".json").then((x) => x.json())))
         .then((r) => { const s = OptioSelection.synthese(sel, { tendances: r[0], technologies: r[1], mecanismes: r[2], leviers: r[3] }); return { parAnneau: s.parAnneau, urgentes: s.urgentes, nm: s.mecanismes.length }; });
     });
@@ -151,7 +151,7 @@ test("rendez-vous : lien Cal.com avec le lien du rapport dans notes=", async () 
 });
 
 test("identifiant inconnu : une ligne d’avertissement, le reste s’affiche", async () => {
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,techno-disparue&d=2026-11-23");
+  const { p, errs, fermer } = await rapport(adresseRapport("t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,techno-disparue&d=2026-11-23"));
   try {
     await p.getByText("1 élément ne figure plus dans le radar").waitFor({ state: "visible" });
     assert.equal(await p.locator(".rapport-techno").count(), 1);
@@ -161,7 +161,7 @@ test("identifiant inconnu : une ligne d’avertissement, le reste s’affiche", 
 });
 
 test("rapport sans sélection : message et lien vers le radar", async () => {
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1");
+  const { p, errs, fermer } = await rapport(adresseRapport(""));
   try {
     assert.equal(await p.locator("#rapport").getAttribute("data-etat"), "vide");
     await p.getByText("Ce rapport ne contient aucune sélection").waitFor({ state: "visible" });
@@ -263,7 +263,7 @@ test("mobile 390 px : pas de débordement horizontal", async () => {
 });
 
 test("identifiants égaux à des noms d’Object.prototype : pas de page blanche", async () => {
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=constructor&x=__proto__&d=2026-11-23");
+  const { p, errs, fermer } = await rapport(adresseRapport("t=constructor&x=__proto__&d=2026-11-23"));
   try {
     assert.equal(await p.locator("#rapport").getAttribute("data-etat"), "vide");
     await p.getByText("2 éléments ne figurent plus dans le radar").waitFor({ state: "visible" });
@@ -273,7 +273,7 @@ test("identifiants égaux à des noms d’Object.prototype : pas de page blanche
 });
 
 test("tous les identifiants inconnus : avertissement et rapport vide", async () => {
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=tendance-disparue&x=techno-disparue,toString&d=2026-11-23");
+  const { p, errs, fermer } = await rapport(adresseRapport("t=tendance-disparue&x=techno-disparue,toString&d=2026-11-23"));
   try {
     assert.equal(await p.locator("#rapport").getAttribute("data-etat"), "vide");
     await p.getByText("3 éléments ne figurent plus dans le radar").waitFor({ state: "visible" });
@@ -282,13 +282,35 @@ test("tous les identifiants inconnus : avertissement et rapport vide", async () 
   } finally { await fermer(); }
 });
 
-test("virgules encodées (%2C) dans l’adresse : sélection conservée", async () => {
-  const { p, errs, fermer } = await rapport("radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf%2Copenstack&d=2026-11-23");
+test("lien camouflé : l’adresse ne montre aucun identifiant", async () => {
+  const { p, errs, fermer } = await rapport(ADRESSE);
   try {
+    assert.ok(!/vmware|openstack|licences|[?&][txd]=/.test(p.url()), p.url());
     assert.equal(await p.locator(".rapport-techno").count(), 2);
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
+
+// Lien bricolé, tronqué, ancien format ou sans jeton : page « lien non valide », aucun rapport calculé
+for (const [nom, chemin] of [
+  ["jeton modifié", ADRESSE.replace(/(r=2\.)(.)/, (m, a, c) => a + (c === "A" ? "B" : "A"))],
+  ["jeton tronqué", ADRESSE.slice(0, -4)],
+  ["ancien format lisible", "radar.html?rapport=1&t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23"],
+  ["sans jeton", "radar.html?rapport=1"],
+]) {
+  test("lien non valide : " + nom, async () => {
+    const { p, errs, fermer } = await rapport(chemin);
+    try {
+      assert.equal(await p.locator("#rapport").getAttribute("data-etat"), "invalide");
+      assert.equal((await p.locator("#rapport h1").innerText()).trim(), "Ce lien de rapport n’est pas valide");
+      assert.match(await p.title(), /^Lien de rapport non valide/);
+      assert.equal(await p.locator('#rapport a[href="radar.html"]').count(), 1);
+      assert.equal(await p.locator(".rapport-techno, .rapport-chap, .rapport-nav").count(), 0);
+      assert.equal(await p.evaluate(() => localStorage.getItem("optio-radar-dernier-rapport")), null);
+      assert.deepEqual(errs, []);
+    } finally { await fermer(); }
+  });
+}
 
 test("lien d’évitement : le focus va sur le rapport", async () => {
   const { p, errs, fermer } = await rapport(ADRESSE);

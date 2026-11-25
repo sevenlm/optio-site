@@ -3,7 +3,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { ouvrir, erreurs } from "./outils.mjs";
+import { ouvrir, erreurs, adresseRapport } from "./outils.mjs";
 
 const CLE = "optio-radar-selection";
 let navigateur;
@@ -127,7 +127,7 @@ test("mobile 390 px : volet ouvert sans débordement", async () => {
 });
 
 test("revoir mon dernier rapport : lien près du bouton de demande", async () => {
-  const dernier = "http://localhost:8765/radar.html?rapport=1&x=openstack&d=2026-11-23";
+  const dernier = adresseRapport("x=openstack&d=2026-11-23", "http://localhost:8765/radar.html");
   const { p, errs, fermer } = await page({}, { tendances: [], technologies: ["openstack"], date: "" });
   try {
     await p.locator("#mon-radar").click();
@@ -141,7 +141,7 @@ test("revoir mon dernier rapport : lien près du bouton de demande", async () =>
     assert.equal(await lien.getAttribute("href"), dernier);
     // près du bouton : dans la même section que #demander-rapport
     assert.equal(await p.locator(".apercu a.dernier-rapport").count(), 1);
-    await Promise.all([p.waitForURL(/rapport=1&x=openstack/), lien.click()]);
+    await Promise.all([p.waitForURL(/rapport=1&r=2\./), lien.click()]);
     await p.waitForSelector("#rapport[data-etat]");
     // une valeur qui n’est pas un lien de rapport http(s) est ignorée
     await p.evaluate(() => localStorage.setItem("optio-radar-dernier-rapport", "javascript:alert(1)"));

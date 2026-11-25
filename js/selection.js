@@ -48,8 +48,57 @@
     return sel;
   }
 
+  // Lien du rapport camouflé : la sélection n’est ni lisible ni modifiable à la main dans l’adresse.
+  // Ce n’est pas une protection : le sel et la méthode sont publics (voir la conception du 25 novembre 2026).
+  var VERSION_JETON = "2", SEL_JETON = "optio-radar-rapport";
+
+  function empreinte(texte) {
+    var h = 2166136261;
+    for (var i = 0; i < texte.length; i++) { h ^= texte.charCodeAt(i); h = Math.imul(h, 16777619); }
+    return (h >>> 0).toString(36);
+  }
+  // OU exclusif avec le sel : réversible, et reste dans l’intervalle 0-255 accepté par btoa
+  function melanger(texte) {
+    var sortie = "";
+    for (var i = 0; i < texte.length; i++) sortie += String.fromCharCode(texte.charCodeAt(i) ^ (SEL_JETON.charCodeAt(i % SEL_JETON.length) & 31));
+    return sortie;
+  }
+  function versBase64(texte) {
+    var b = typeof btoa === "function" ? btoa(texte) : Buffer.from(texte, "binary").toString("base64");
+    return b.replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+  }
+  function depuisBase64(texte) {
+    var b = texte.replace(/-/g, "+").replace(/_/g, "/");
+    while (b.length % 4) b += "=";
+    return typeof atob === "function" ? atob(b) : Buffer.from(b, "base64").toString("binary");
+  }
+
+  function jetonSelection(sel) {
+    var clair = unescape(encodeURIComponent(encoderSelection(sel))); // UTF-8, un caractère par octet
+    return VERSION_JETON + "." + versBase64(melanger(clair)) + "." + empreinte(SEL_JETON + clair);
+  }
+
+  // sélection, ou null si le jeton est absent, abîmé, modifié ou d’une autre version
+  function lireJeton(jeton) {
+    if (typeof jeton !== "string") return null;
+    var parties = jeton.split(".");
+    if (parties.length !== 3 || parties[0] !== VERSION_JETON || !/^[A-Za-z0-9_-]*$/.test(parties[1])) return null;
+    try {
+      var clair = melanger(depuisBase64(parties[1]));
+      if (empreinte(SEL_JETON + clair) !== parties[2]) return null;
+      return decoderSelection(decodeURIComponent(escape(clair)));
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function selectionDepuisAdresse(recherche) {
+    var m = /[?&]r=([^&#]*)/.exec(String(recherche || ""));
+    return m ? lireJeton(decoder(m[1])) : null;
+  }
+
   function urlRapport(base, sel) {
-    return base + "?rapport=1&" + encoderSelection(sel);
+    return base + "?rapport=1&r=" + jetonSelection(sel);
   }
 
   // index sans prototype : « constructor » ou « __proto__ » ne sont que des identifiants inconnus
@@ -192,6 +241,7 @@
   var api = {
     CLE_DERNIER_RAPPORT: CLE_DERNIER_RAPPORT,
     encoderSelection: encoderSelection, decoderSelection: decoderSelection, urlRapport: urlRapport,
+    jetonSelection: jetonSelection, lireJeton: lireJeton, selectionDepuisAdresse: selectionDepuisAdresse,
     synthese: synthese, suggestions: suggestions,
     chargerSelection: chargerSelection, sauverSelection: sauverSelection,
     criticites: criticites

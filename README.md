@@ -54,7 +54,7 @@ Tally n'est chargé qu'au clic sur « Recevoir mon rapport complet (PDF) » : le
 Création du formulaire Tally :
 
 - champs visibles : e-mail et consentement ;
-- champs cachés : `selection` (sélection encodée) et `rapport` (lien du rapport personnel) ;
+- champs cachés : `selection` (sélection lisible `t=…&x=…&d=…`, réservée à Optio) et `rapport` (lien du rapport personnel, au format camouflé `radar.html?rapport=1&r=<jeton>` : la sélection n’y est ni lisible ni modifiable à la main ; un lien modifié affiche « Ce lien de rapport n’est pas valide ». Ce n’est pas une protection d’accès : la méthode est dans `js/selection.js`) ;
 - e-mail au répondant (offre Pro) contenant le lien `@rapport` et le lien Cal.com ;
 - notification à Optio à chaque envoi ;
 - si Tally est utilisé en pleine page plutôt qu'en popup, « Redirect on completion » doit pointer vers le champ caché `@rapport`.
