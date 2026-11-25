@@ -125,6 +125,13 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 /* Blocs générés */
 .liste-generee{margin-top:32px}
 .suite{margin-top:24px;font-size:16px;color:var(--texte-2)}
+.grille-gen{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px}
+.carte-gen{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.carte-gen h3,.carte-gen h4{margin:0;font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:19px;line-height:1.2}
+.carte-gen p{font-size:16px;color:var(--texte-2)}
+.carte-gen .axe-gen{font-size:14px;font-weight:600;color:var(--texte-3)}
+.anneau-gen{margin:32px 0 14px;font-size:18px}
+.anneau-gen:first-child{margin-top:0}
 
 /* Rapport */
 .pages{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -317,7 +324,24 @@ footer a:hover{color:#fff}
 <h2>Les tendances les plus urgentes</h2>
 <p class="chapo">Celles dont l’effet est attendu dans les 12 mois. Chaque titre ouvre sa fiche dans le radar, avec ses sources.</p>
 <div class="liste-generee">
-<!-- debut:urgentes --><!-- fin:urgentes -->
+<!-- debut:urgentes -->
+<ul class="grille-gen">
+<li class="carte-gen"><p class="axe-gen">Juridique</p><h3><a href="radar.html#audits-de-licence-comme-levier-commercial">Audits de licence comme levier commercial</a></h3><p>Un audit crée un risque financier soudain, qui pousse à re-signer dans l’urgence et aux conditions de l’éditeur.</p></li>
+<li class="carte-gen"><p class="axe-gen">Financier</p><h3><a href="radar.html#changements-de-metrique-de-licence">Changements de métrique de licence</a></h3><p>La facture augmente sans que l’usage change, et la nouvelle métrique pénalise souvent les petites infrastructures.</p></li>
+<li class="carte-gen"><p class="axe-gen">Financier</p><h3><a href="radar.html#fin-des-licences-perpetuelles">Fin des licences perpétuelles</a></h3><p>Vous ne possédez plus, vous louez : le prix est revu à chaque échéance et le calendrier de migration est fixé par l’éditeur.</p></li>
+<li class="carte-gen"><p class="axe-gen">Financier</p><h3><a href="radar.html#ia-integree-doffice-dans-les-suites">IA intégrée d’office dans les suites</a></h3><p>Vous payez des fonctions que vous n’utilisez pas forcément, et la hausse devient difficile à refuser.</p></li>
+<li class="carte-gen"><p class="axe-gen">Humain</p><h3><a href="radar.html#dependance-cognitive-a-lassistant-ia">Dépendance cognitive à l’assistant IA de l’éditeur</a></h3><p>Des équipes qui ne savent plus déboguer, relire ni maintenir sans l’assistant d’un éditeur rendent un changement d’outil, une hausse de prix ou une coupure d’accès aussi graves qu’une panne.</p></li>
+<li class="carte-gen"><p class="axe-gen">Humain</p><h3><a href="radar.html#effondrement-du-vivier-junior">Effondrement du vivier junior</a></h3><p>Sans juniors aujourd’hui, pas de seniors internes demain : le savoir tacite ne se transmet plus, et l’organisation dépend des éditeurs, des ESN et des agents d’IA pour comprendre ses propres systèmes.</p></li>
+<li class="carte-gen"><p class="axe-gen">Humain</p><h3><a href="radar.html#penurie-de-competences-cyber-face-a-nis2">Pénurie de compétences cyber face à NIS2</a></h3><p>Pour se mettre en conformité, beaucoup d’organisations confieront supervision, audits et gestion de crise à des prestataires de sécurité et à leurs plateformes : la compétence devient captive d’un marché sous tension, à prix élevés.</p></li>
+<li class="carte-gen"><p class="axe-gen">Réglementaire</p><h3><a href="radar.html#plans-de-reduction-des-dependances-de-letat">Plans de réduction des dépendances de l’État</a></h3><p>La dépendance devient un sujet piloté au plus haut niveau de l’État.</p></li>
+<li class="carte-gen"><p class="axe-gen">Réglementaire</p><h3><a href="radar.html#plans-de-sortie-testes-dora">Plans de sortie testés (DORA)</a></h3><p>Un plan écrit ne suffit plus : il faut pouvoir prouver qu’il fonctionne.</p></li>
+<li class="carte-gen"><p class="axe-gen">Pratiques technologiques</p><h3><a href="radar.html#fins-de-support-imposees">Fins de support imposées</a></h3><p>Le calendrier de migration est fixé par l’éditeur, et la prolongation se paie ou passe par son offre cloud.</p></li>
+<li class="carte-gen"><p class="axe-gen">Pratiques technologiques</p><h3><a href="radar.html#lannuaire-point-central-de-dependance">L’annuaire, point central de dépendance</a></h3><p>Si ce service est indisponible ou coupé, plus rien ne fonctionne : c’est le point de dépendance le plus central du système d’information.</p></li>
+<li class="carte-gen"><p class="axe-gen">Pratiques technologiques</p><h3><a href="radar.html#services-manages-proprietaires">Services managés propriétaires</a></h3><p>Ils font gagner du temps, mais chaque service est une API sans équivalent direct ailleurs.</p></li>
+<li class="carte-gen"><p class="axe-gen">Pratiques technologiques</p><h3><a href="radar.html#shadow-it-et-shadow-ai">Shadow IT et shadow AI</a></h3><p>Ces services créent des dépendances que la DSI ne voit pas et placent des données de l’entreprise chez des fournisseurs sans contrat négocié ni plan de sortie.</p></li>
+<li class="carte-gen"><p class="axe-gen">Pratiques technologiques</p><h3><a href="radar.html#virtualisation-proprietaire">Virtualisation propriétaire</a></h3><p>La virtualisation porte une grande partie des systèmes critiques : en sortir demande des mois de préparation.</p></li>
+</ul>
+<!-- fin:urgentes -->
 </div>
 <p class="suite">Toutes les tendances, leurs axes et leurs sources : <a href="radar.html#tendances">la vue Tendances du radar</a>.</p>
 </div>
@@ -329,7 +353,26 @@ footer a:hover{color:#fff}
 <h2>Exemples de technologies classées</h2>
 <p class="chapo">Quelques technologies par anneau de sortie, avec une alternative mieux classée.</p>
 <div class="liste-generee">
-<!-- debut:exemples --><!-- fin:exemples -->
+<!-- debut:exemples -->
+<h3 class="anneau-gen">Sortie difficile</h3>
+<ul class="grille-gen">
+<li class="exemple carte-gen" data-anneau="0" data-alt="3"><h4><a href="radar.html#vmware-vsphere-et-vcf">VMware vSphere et VCF</a></h4><p class="axe-gen">Sortie difficile · cité par 10 tendances</p><p>Alternative mieux classée : <a href="radar.html#proxmox-ve">Proxmox VE</a> (facilitée).</p></li>
+<li class="exemple carte-gen" data-anneau="0" data-alt="1"><h4><a href="radar.html#amazon-dynamodb">Amazon DynamoDB</a></h4><p class="axe-gen">Sortie difficile · cité par 9 tendances</p><p>Alternative mieux classée : <a href="radar.html#scylladb">ScyllaDB</a> (exigeante).</p></li>
+<li class="exemple carte-gen" data-anneau="0" data-alt="3"><h4><a href="radar.html#servicenow">ServiceNow</a></h4><p class="axe-gen">Sortie difficile · cité par 9 tendances</p><p>Alternative mieux classée : <a href="radar.html#glpi">GLPI</a> (facilitée).</p></li>
+</ul>
+<h3 class="anneau-gen">Exigeante</h3>
+<ul class="grille-gen">
+<li class="exemple carte-gen" data-anneau="1" data-alt="3"><h4><a href="radar.html#confluence">Confluence</a></h4><p class="axe-gen">Exigeante · cité par 10 tendances</p><p>Alternative mieux classée : <a href="radar.html#xwiki">XWiki</a> (facilitée).</p></li>
+<li class="exemple carte-gen" data-anneau="1" data-alt="3"><h4><a href="radar.html#jira-et-jira-service-management">Jira et Jira Service Management</a></h4><p class="axe-gen">Exigeante · cité par 9 tendances</p><p>Alternative mieux classée : <a href="radar.html#openproject">OpenProject</a> (facilitée).</p></li>
+<li class="exemple carte-gen" data-anneau="1" data-alt="3"><h4><a href="radar.html#microsoft-defender">Microsoft Defender</a></h4><p class="axe-gen">Exigeante · cité par 8 tendances</p><p>Alternative mieux classée : <a href="radar.html#wazuh">Wazuh</a> (facilitée).</p></li>
+</ul>
+<h3 class="anneau-gen">Maîtrisable</h3>
+<ul class="grille-gen">
+<li class="exemple carte-gen" data-anneau="2" data-alt="3"><h4><a href="radar.html#machines-virtuelles-aws-ec2">Machines virtuelles AWS (EC2)</a></h4><p class="axe-gen">Maîtrisable · cité par 11 tendances</p><p>Alternative mieux classée : <a href="radar.html#proxmox-ve">Proxmox VE</a> (facilitée).</p></li>
+<li class="exemple carte-gen" data-anneau="2" data-alt="3"><h4><a href="radar.html#machines-virtuelles-azure">Machines virtuelles Azure</a></h4><p class="axe-gen">Maîtrisable · cité par 9 tendances</p><p>Alternative mieux classée : <a href="radar.html#proxmox-ve">Proxmox VE</a> (facilitée).</p></li>
+<li class="exemple carte-gen" data-anneau="2" data-alt="3"><h4><a href="radar.html#amazon-s3">Amazon S3</a></h4><p class="axe-gen">Maîtrisable · cité par 8 tendances</p><p>Alternative mieux classée : <a href="radar.html#ceph">Ceph</a> (facilitée).</p></li>
+</ul>
+<!-- fin:exemples -->
 </div>
 <p class="suite">Les <span class="nb" data-compteur="technologies">279</span> technologies, avec la raison de leur classement : <a href="radar.html#technologies">la vue Technologies du radar</a>.</p>
 </div>
