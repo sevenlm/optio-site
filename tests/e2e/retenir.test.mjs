@@ -199,3 +199,55 @@ test("identifiants égaux à des noms d’Object.prototype : pastille juste, san
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
+
+test("tout retenir : la liste filtrée entre d’un coup dans Mon radar, puis en sort", async () => {
+  const { p, errs, fermer } = await page({}, { tendances: [], technologies: [], date: "" });
+  try {
+    // une tendance déjà retenue hors filtre reste retenue
+    // filtre sur l’axe Humain ; une tendance d’un autre axe, déjà retenue, doit rester retenue
+    const ligne = p.locator(".ld-ligne:visible").filter({ hasNotText: /Humain/ }).first();
+    const horsFiltre = await ligne.locator(".ld-etoile").getAttribute("data-id");
+    await ligne.locator(".ld-etoile").click();
+    await p.locator("#menu-axe-btn").click();
+    await p.locator("#menu-axe-liste .option", { hasText: "Humain" }).click();
+    await p.waitForFunction(() => document.querySelectorAll(".ld-ligne").length > 1 && document.querySelectorAll(".ld-ligne").length < 20);
+    const n = await p.locator(".ld-ligne").count();
+    const tout = p.locator(".ld-tout");
+    assert.equal(await tout.getAttribute("aria-pressed"), "false");
+    assert.match(await tout.innerText(), new RegExp("Tout retenir \\(" + n + "\\)"));
+    await tout.click();
+    assert.equal(await tout.getAttribute("aria-pressed"), "true");
+    assert.match(await tout.innerText(), new RegExp("Tout retirer \\(" + n + "\\)"));
+    assert.deepEqual(await p.locator(".ld-etoile").evaluateAll((l) => l.map((b) => b.getAttribute("aria-pressed"))), Array(n).fill("true"));
+    const avecHors = (await p.evaluate((c) => JSON.parse(localStorage.getItem(c)).tendances, CLE));
+    assert.ok(avecHors.includes(horsFiltre));
+    assert.equal((await texteCompteur(p)).trim(), "Mon radar · " + (avecHors.length));
+    // retirer : seuls les éléments listés sortent
+    await tout.click();
+    assert.equal(await tout.getAttribute("aria-pressed"), "false");
+    assert.deepEqual(await p.evaluate((c) => JSON.parse(localStorage.getItem(c)).tendances, CLE), [horsFiltre]);
+    assert.equal((await texteCompteur(p)).trim(), "Mon radar · 1");
+    // un retrait individuel repasse le bouton en « Tout retenir »
+    await tout.click();
+    await p.locator(".ld-etoile").first().click();
+    assert.equal(await tout.getAttribute("aria-pressed"), "false");
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});
+
+test("tout retenir : vue Technologies", async () => {
+  const { p, errs, fermer } = await page({}, { tendances: [], technologies: [], date: "" });
+  try {
+    await p.locator("#v-technologies").click();
+    await p.locator("#menu-axe-btn").click();
+    const total = await p.locator(".ld-ligne").count();
+    await p.locator("#menu-axe-liste .option").nth(1).click();
+    await p.waitForFunction((t) => { const n = document.querySelectorAll(".ld-ligne").length; return n > 1 && n < t; }, total);
+    const n = await p.locator(".ld-ligne").count();
+    await p.locator(".ld-tout").click();
+    const sel = await p.evaluate((c) => JSON.parse(localStorage.getItem(c)), CLE);
+    assert.equal(sel.technologies.length, n);
+    assert.equal(sel.tendances.length, 0);
+    assert.deepEqual(errs, []);
+  } finally { await fermer(); }
+});

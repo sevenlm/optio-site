@@ -148,6 +148,8 @@ html{scroll-padding-top:96px}
 .ld{display:flex;flex-direction:column;min-height:0;flex:1;padding:20px 18px 14px}
 .ld-tete{padding:0 6px 10px;border-bottom:1px solid var(--line);margin-bottom:6px}
 .ld-compte{font-size:14px;color:var(--text-2)}
+.ld-tete-ligne{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.ld-tout{min-height:30px;padding:3px 11px;font-size:12.5px}
 .ld-compte strong{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:28px;color:var(--ink);margin-right:2px}
 .ld-ctx{font-size:14px;font-weight:600;color:var(--ink);margin-top:2px}
 .ld-aide{font-size:12.5px;color:var(--text-3);margin-top:4px}
@@ -1164,7 +1166,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       });
       if(nbq>LIMITE && fn===null){
         var reste=nbq-LIMITE;
-        p.appendChild(el("button",{type:"button",class:"plus","aria-expanded":String(ouvert),onclick:function(){ ouverts[cle]=!ouvert; listes(); }, text: ouvert ? "Réduire la liste" : "Afficher les "+reste+" autres"}));
+        p.appendChild(el("button",{type:"button",class:"plus","aria-expanded":String(ouvert),onclick:function(){ ouverts[cle]=!ouvert; listes(); }, text: ouvert ? "Réduire la liste" : (reste>1?"Afficher les "+reste+" autres":"Afficher l’autre")}));
       }
       if(!nbq) p.appendChild(el("p",{class:"desc",text:DONNEES[vue].some(function(x){ return x.q===qi; })?"Aucun élément ne correspond aux filtres.":"Aucun élément pour l’instant."}));
       // urgence filtrée : raccourcis vers les autres anneaux de cet axe
@@ -1559,8 +1561,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(fAnneau!=="tous") ctx.push(V.anneaux[+fAnneau]);
     if(vue==="technologies" && lien) ctx.push("concernées par « "+lien.t+" »");
     if(q) ctx.push("recherche « "+q+" »");
+    // « Tout retenir » : ajoute (ou retire) d’un coup tous les éléments de la liste filtrée
+    var tout=null;
+    if(n){ tout=el("button",{type:"button",class:"retenir ld-tout",onclick:function(){ retenirTous(items,!items.every(estRetenu)); }}); tout._items=items; majTout(tout); }
     var tete=el("div",{class:"ld-tete"},[
-      el("p",{class:"ld-compte"},[el("strong",{text:String(n)}), " "+V.nom[n>1?1:0]]),
+      el("div",{class:"ld-tete-ligne"},[el("p",{class:"ld-compte"},[el("strong",{text:String(n)}), " "+V.nom[n>1?1:0]]), tout]),
       el("p",{class:"ld-ctx",text:ctx.length?ctx.join(" · "):"Tout le radar"}),
       el("p",{class:"ld-aide",text:n?"Survolez pour repérer sur le radar, cliquez pour ouvrir la fiche.":"Aucun élément ne correspond à ces filtres."})
     ]);
@@ -1595,7 +1600,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       } else caches=-1;
     } else if(!listeOuverte && n>8){ lis.forEach(function(li,i){ if(i>=8){ li.hidden=true; caches++; } }); }
     else if(listeOuverte) caches=-1;
-    if(caches>0){ plus.hidden=false; plus.textContent="Afficher les "+caches+" autres"; plus.classList.remove("moins"); }
+    if(caches>0){ plus.hidden=false; plus.textContent=caches>1?"Afficher les "+caches+" autres":"Afficher l’autre"; plus.classList.remove("moins"); }
     else if(caches===-1 && n>0 && (largeur() ? true : n>8)){ plus.hidden=false; plus.textContent="Réduire la liste"; plus.classList.add("moins"); }
     else { plus.hidden=true; if(!listeOuverte) f.style.height=largeur()&&rbox?rbox.offsetHeight+"px":""; }
     if(caches===-1 && largeur()){ // repliée possible seulement si quelque chose dépassait : sinon pas de pastille
@@ -1706,11 +1711,28 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   }
   function retenuId(id){ return maSelection.tendances.indexOf(id)>=0 || maSelection.technologies.indexOf(id)>=0; }
   function estRetenu(x){ return retenuId(x.id); }
+  function listeDe(x){ return maSelection[T.indexOf(x)>=0?"tendances":"technologies"]; }
   function basculerRetenu(x){
-    var l=maSelection[T.indexOf(x)>=0?"tendances":"technologies"], i=l.indexOf(x.id);
+    var l=listeDe(x), i=l.indexOf(x.id);
     if(i>=0) l.splice(i,1); else l.push(x.id);
+    apresRetenu();
+  }
+  // retient (oui) ou retire (non) tous les éléments donnés
+  function retenirTous(items,oui){
+    items.forEach(function(x){ var l=listeDe(x), i=l.indexOf(x.id); if(oui && i<0) l.push(x.id); else if(!oui && i>=0) l.splice(i,1); });
+    apresRetenu();
+  }
+  function majTout(b){
+    var items=b._items||[], tous=items.length>0 && items.every(estRetenu), n=items.length;
+    b.setAttribute("aria-pressed",String(tous)); b.textContent="";
+    b.appendChild(el("span",{"aria-hidden":"true",text:tous?"★":"☆"}));
+    b.appendChild(document.createTextNode(tous?" Tout retirer ("+n+")":" Tout retenir ("+n+")"));
+    b.title=tous?"Retirer de Mon radar les "+n+" éléments de cette liste":"Ajouter à Mon radar les "+n+" éléments de cette liste";
+  }
+  function apresRetenu(){
     SEL.sauverSelection(stockage(), maSelection);
     document.querySelectorAll(".retenir[data-id],.ld-etoile[data-id]").forEach(majEtoile);
+    document.querySelectorAll(".ld-tout").forEach(majTout);
     majPastille(true);
     if(voletOuvert()){ var dansVolet=document.getElementById("volet").contains(document.activeElement); rendreVolet(); if(dansVolet && !document.getElementById("volet").contains(document.activeElement)) document.getElementById("volet").focus(); }
   }
