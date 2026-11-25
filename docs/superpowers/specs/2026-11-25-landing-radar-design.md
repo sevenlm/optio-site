@@ -93,7 +93,7 @@ demander son rapport, puis de prendre rendez-vous.
    radars et matrice, leviers), ce qu’il contient, gratuit en échange d’un e-mail.
 8. **Pourquoi s’y fier** : sources citées pour chaque élément, indépendance vis-à-vis des
    éditeurs, classements expliqués, mise à jour régulière, prototype à valider avec des experts.
-9. **Questions fréquentes** : gratuit ? quelles données sont collectées ? combien de temps ?
+9. **Contribuez au radar** (voir plus bas), puis **Questions fréquentes** : gratuit ? quelles données sont collectées ? combien de temps ?
    que devient ma sélection ? qui est Optio ?
 10. **Appel final** : « Ouvrir le radar ».
 11. **Pied de page** : comme la landing Optio (marque, liens, mentions).
@@ -115,6 +115,41 @@ demander son rapport, puis de prendre rendez-vous.
 - Tous les boutons d’action de la page mènent à `radar.html`.
 - Le lien « Radar » du menu et du pied de `index.html` mène à la nouvelle page.
 - `radar.html` ajoute un lien discret « Découvrir le radar » vers la page.
+
+### Contribuer (demandé par le porteur du projet)
+
+Section « Contribuez au radar », avant la FAQ : le radar est un prototype qui s’améliore avec
+ses lecteurs. Quatre façons de contribuer, chacune par un lien `mailto:contact@stratwise.fr`
+avec un objet prérempli : proposer une tendance, signaler une erreur ou une source plus
+récente, proposer une technologie ou une alternative, relire en tant qu’expert d’un domaine.
+Lien aussi dans la FAQ et le pied de page.
+
+### Référencement naturel (demandé par le porteur du projet : « super fort »)
+
+Le radar est rendu par JavaScript : son contenu est peu lisible par les moteurs. La page
+d’accueil porte donc le texte indexable.
+- **Ciblage** : requêtes « dépendances numériques », « verrouillage fournisseur » / « vendor
+  lock-in », « réversibilité », « souveraineté numérique », « sortir de VMware », « plan de
+  sortie DORA », « radar » + « DSI ». Un seul `h1`, `h2`/`h3` hiérarchisés et descriptifs,
+  `lang="fr"`, `title` de 60 caractères au plus, `meta description` de 155 au plus.
+- **Contenu indexable généré depuis les données** : un bloc HTML statique « Les tendances les
+  plus urgentes » (anneau Fort, titre + une phrase + lien profond `radar.html#<id>`) et
+  « Exemples de technologies classées » (quelques technologies par anneau avec leur alternative),
+  écrit dans la page par un script (`scripts/landing.mjs`, entre deux commentaires repères) à
+  partir de `data/*.json`, relancé quand les données changent ; un contrôle vérifie qu’il est
+  à jour.
+- **Glossaire en clair** : la section « Comprendre le radar » en texte (pas seulement en image).
+- **Données structurées JSON-LD** : `WebPage`, `WebApplication` (gratuite, `offers` à 0 €),
+  `Organization` (Optio, marque de Stratwise), `BreadcrumbList`, `FAQPage` (FAQ visible dans la
+  page), `DefinedTermSet` pour le glossaire. Validées par un test (JSON valide, types attendus).
+- **Partage** : canonique, Open Graph et Twitter Card complets, image 1200 × 630.
+- **Performance (Core Web Vitals)** : aucun JavaScript bloquant ; polices préchargées ; image
+  principale prioritaire (`fetchpriority="high"`), les autres en chargement différé ;
+  `width`/`height` sur toutes les images ; compteurs sans saut de mise en page.
+- **Maillage** : liens depuis `index.html` (menu, pied et une mention dans le corps) et depuis
+  `radar.html` ; ancres descriptives ; `sitemap.xml` avec `lastmod`.
+- **Vérification** : un test contrôle la présence et la longueur des balises, l’unicité du `h1`,
+  les `alt`, la validité du JSON-LD et l’absence de liens cassés internes.
 
 ### Précisions (relecture du constructeur ; choix du concepteur, signalés au porteur)
 
