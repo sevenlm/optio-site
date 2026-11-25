@@ -652,7 +652,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   .rapport-corps{gap:0}
   .rapport-bloc,.rapport-partie{border:0;border-radius:0;padding:6mm 0 0;background:#FFFFFF}
   .rapport-partie,.rapport-chap,.rapport-sommaire{break-before:page}
-  .rapport-carte,.rapport-selection,.rapport-sources li,.rapport-figure{break-inside:avoid}
+  .rapport-carte,.rapport-sources li,.rapport-figure{break-inside:avoid}
+  /* page de garde : les listes de sélection peuvent continuer sur la page suivante, sans laisser la page de garde à moitié vide */
+  .rapport-selection{display:block;columns:2;column-gap:24px}
+  .rapport-selection > div{break-inside:auto;margin-bottom:12px}
+  .rapport-selection li{break-inside:avoid}
   .rapport-radar svg{max-width:150mm}
   .rapport-sommaire ol{padding-left:22px}
   .rapport-sommaire li{margin:6px 0;font-size:16px}
