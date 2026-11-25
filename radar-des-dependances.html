@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Radar des dépendances numériques — gratuit, pour les DSI</title>
+<meta name="description" content="Repérez en quelques minutes ce qui rend votre SI captif de ses fournisseurs : tendances, technologies, mécanismes d’enfermement et leviers. Rapport gratuit.">
+<link rel="canonical" href="https://www.weareoptio.fr/radar-des-dependances.html">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 28'%3E%3Ccircle cx='12' cy='14' r='8.5' fill='none' stroke='%230B2A3C' stroke-width='3'/%3E%3Cpath d='M20.5 14H27L35 7' fill='none' stroke='%2300A37A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M27 14L35 21' fill='none' stroke='%235A6E7A' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+:root{
+  color-scheme:light;
+  --fond:#FFFFFF; --calque:#F3F6F7; --carte:#FFFFFF; --trait:#DCE4E7;
+  --texte:#0B2A3C; --texte-2:#41576A; --texte-3:#5F7280; --lien:#00775A;
+  --nuit:#0B2A3C; --nuit-trait:#1E4255; --pied:#07202E;
+  --signal:#00A37A; --vert:#00775A; --gris:#8A9BA6; --accent:#2BD49B;
+  --u0:#FBE2D8; --u1:#FBF0CC; --u2:#DCEDF7; --u3:#ECE7F7;
+  --titre:'Archivo','Helvetica Neue',sans-serif; --corps:'Instrument Sans','Helvetica Neue',sans-serif; --mesure:'JetBrains Mono',ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --fond:#06192A; --calque:#0B2A3C; --carte:#113346; --trait:#1C3F53;
+    --texte:#EEF3F5; --texte-2:#C9D6DC; --texte-3:#A9BCC6; --lien:#2BD49B;
+    --nuit:#041420; --nuit-trait:#163447; --pied:#020E17;
+    --u0:#3B2620; --u1:#3A3217; --u2:#16374B; --u3:#2B2742;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --fond:#06192A; --calque:#0B2A3C; --carte:#113346; --trait:#1C3F53;
+  --texte:#EEF3F5; --texte-2:#C9D6DC; --texte-3:#A9BCC6; --lien:#2BD49B;
+  --nuit:#041420; --nuit-trait:#163447; --pied:#020E17;
+  --u0:#3B2620; --u1:#3A3217; --u2:#16374B; --u3:#2B2742;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;font-family:var(--corps);color:var(--texte);background:var(--fond);line-height:1.55;font-size:17px}
+h1,h2,h3,p,ul,ol,dl,dd,figure,blockquote{margin:0}
+a{color:inherit}
+main a:not(.btn){color:var(--lien);text-underline-offset:2px}
+:focus-visible{outline:3px solid var(--signal);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:12px;top:-100px;z-index:20;background:var(--signal);color:#0B2A3C;padding:12px 16px;border-radius:6px;font-weight:600;text-decoration:none}
+.skip:focus{top:12px}
+.c{max-width:1120px;margin:0 auto;padding:0 24px}
+section{padding:88px 0;scroll-margin-top:84px}
+.alt{background:var(--calque)}
+.sur{font-size:14px;font-weight:600;color:var(--lien);margin-bottom:12px}
+h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:clamp(28px,3.2vw,40px);line-height:1.1;letter-spacing:-0.02em;max-width:760px}
+h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:21px;line-height:1.2}
+.chapo{margin-top:14px;color:var(--texte-2);max-width:680px}
+.nb{font-variant-numeric:tabular-nums}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:6px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--texte);background:transparent;color:var(--texte);cursor:pointer}
+.btn-v{background:var(--signal);border-color:var(--signal);color:#0B2A3C}
+.btn-v:hover{background:#00B386;border-color:#00B386}
+.btn-clair{border-color:#fff;color:#fff}
+.btn-clair:hover{background:#fff;color:#0B2A3C}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.sombre{background:var(--nuit);color:#fff}
+.sombre .sur{color:var(--accent)}
+.sombre .chapo{color:#C9D6DC}
+.sombre a:not(.btn){color:var(--accent)}
+.capture{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--trait);background:var(--calque)}
+
+/* En-tête */
+.entete{position:sticky;top:0;z-index:10;background:var(--nuit);border-bottom:1px solid var(--nuit-trait)}
+.entete .c{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:10px;padding-bottom:10px}
+.marque{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff;min-width:0}
+.marque span{font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:23px;letter-spacing:-0.02em}
+.marque small{font-family:var(--corps);font-stretch:100%;font-weight:400;font-size:14px;color:#C9D6DC;letter-spacing:0;padding-left:10px;border-left:1px solid var(--nuit-trait);white-space:nowrap}
+nav{display:flex;align-items:center;gap:22px;font-size:15px}
+nav a{text-decoration:none;color:#C9D6DC}
+nav a:hover{color:#fff}
+nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
+@media (max-width:760px){nav a:not(.btn){display:none}.marque small{display:none}}
+
+/* Accroche */
+.hero{padding:88px 0 0;overflow:hidden}
+.hero h1{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:clamp(36px,5.4vw,66px);line-height:1.04;letter-spacing:-0.03em;max-width:880px}
+.hero .chapo{font-size:19px;max-width:700px;margin-top:22px}
+.hero .chapo strong{color:#fff;font-weight:600}
+.hero figure{margin-top:56px;max-height:clamp(220px,42vw,500px);overflow:hidden;border-radius:10px 10px 0 0}
+.hero .capture{border:1px solid var(--nuit-trait);border-bottom:0;border-radius:10px 10px 0 0;background:#113346;color:#C9D6DC}
+
+/* Bandeau de crédibilité */
+.credits{padding:26px 0;border-bottom:1px solid var(--trait)}
+.credits p{font-size:15px;color:var(--texte-2)}
+.credits strong{color:var(--texte);font-weight:600}
+
+/* Constat */
+.faits{list-style:none;padding:0;margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
+.fait{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.fait .chiffre{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:30px;line-height:1;color:var(--lien)}
+.fait blockquote p{font-size:16px;color:var(--texte)}
+.fait .source{margin-top:auto;padding-top:8px;font-size:14px;color:var(--texte-3)}
+
+/* Comment ça marche */
+.etapes{list-style:none;padding:0;margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:28px;counter-reset:etape}
+.etapes li{border-top:4px solid var(--signal);padding-top:18px;counter-increment:etape}
+.etapes li::before{content:counter(etape);display:block;font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:40px;line-height:1;color:var(--lien);margin-bottom:10px}
+.etapes p{margin-top:8px;color:var(--texte-2);font-size:16px}
+.note{margin-top:28px;font-size:15px;color:var(--texte-3)}
+
+/* Comprendre le radar */
+.notions{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media (max-width:760px){.notions{grid-template-columns:1fr}}
+.notion{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.notion p{font-size:16px;color:var(--texte-2)}
+.notion .visuel{margin-top:auto;padding-top:6px}
+.notion svg{display:block;width:100%;height:auto;max-height:240px}
+.notion.large{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
+.notion.large .texte{display:flex;flex-direction:column;gap:12px}
+@media (max-width:760px){.notion.large{grid-template-columns:1fr}}
+.pastilles{display:flex;flex-wrap:wrap;gap:6px;list-style:none;padding:0}
+.pastilles li{font-size:13px;font-weight:600;padding:3px 10px;border-radius:999px;background:var(--calque);color:var(--texte)}
+.svg-trait{stroke:var(--trait)}
+.svg-texte{fill:var(--texte-2);font-family:var(--corps)}
+.svg-fort{fill:var(--texte);font-family:var(--corps);font-weight:600}
+.svg-u0{fill:var(--u0)} .svg-u1{fill:var(--u1)} .svg-u2{fill:var(--u2)} .svg-u3{fill:var(--u3)}
+.svg-zone{fill:var(--signal);opacity:.18}
+.svg-point{fill:var(--texte)}
+
+/* Blocs générés */
+.liste-generee{margin-top:32px}
+.suite{margin-top:24px;font-size:16px;color:var(--texte-2)}
+
+/* Rapport */
+.pages{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.pages figcaption{margin-top:10px;font-size:14px;color:#C9D6DC}
+.pages .capture{border-color:var(--nuit-trait);background:#fff}
+@media (max-width:760px){.pages{grid-template-columns:repeat(3,minmax(64%,1fr));overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:8px}.pages figure{scroll-snap-align:start}}
+.contenu{margin-top:44px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:12px 40px;list-style:none;padding:0}
+.contenu li{padding-left:28px;position:relative;color:#E3EBEE;font-size:16px}
+.contenu li::before{content:"";position:absolute;left:0;top:.45em;width:12px;height:12px;border-radius:50%;background:var(--signal)}
+.contenu strong{color:#fff}
+
+/* Confiance, contribution */
+.garanties{margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:28px 40px}
+.garanties div{border-top:1px solid var(--trait);padding-top:16px}
+.garanties dt{font-weight:600;font-size:17px}
+.garanties dd{margin-top:6px;color:var(--texte-2);font-size:16px}
+.contribs{list-style:none;padding:0;margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px}
+.contribs li{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.contribs h3{font-size:18px}
+.contribs p{font-size:15px;color:var(--texte-2)}
+.contribs a{margin-top:auto;padding-top:8px;font-weight:600;font-size:15px}
+
+/* FAQ */
+.faq{max-width:780px;margin-top:32px}
+details{border-bottom:1px solid var(--trait);padding:16px 0}
+details:first-of-type{border-top:1px solid var(--trait)}
+summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-family:var(--mesure);color:var(--lien)}
+details[open] summary::after{content:"−"}
+details p{margin-top:8px;color:var(--texte-2);font-size:16px}
+
+/* Appel final, pied */
+.final{text-align:center}
+.final h2{margin:0 auto}
+.final .chapo{margin:14px auto 0}
+.final .actions{justify-content:center}
+footer{background:var(--pied);padding:36px 0;font-size:13px;color:#A3B4BD}
+footer .c{display:flex;flex-direction:column;gap:12px}
+footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;color:#C9D6DC;font-size:14px}
+footer .haut span:last-child{display:flex;flex-wrap:wrap;gap:6px 14px}
+footer a{color:#C9D6DC}
+footer a:hover{color:#fff}
+</style>
+</head>
+<body>
+<a class="skip" href="#haut">Aller au contenu</a>
+
+<header class="entete">
+<div class="c">
+<a class="marque" href="index.html" aria-label="Optio, page d’accueil">
+<svg width="38" height="27" viewBox="0 0 40 28" aria-hidden="true"><circle cx="12" cy="14" r="8.5" fill="none" stroke="#FFFFFF" stroke-width="3"/><path d="M20.5 14 H27 L35 7" fill="none" stroke="#00A37A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><path d="M27 14 L35 21" fill="none" stroke="#8A9BA6" stroke-width="3" stroke-linecap="round"/></svg>
+<span>Optio</span><small>Radar des dépendances</small>
+</a>
+<nav aria-label="Navigation de la page">
+<a href="#fonctionnement">Comment ça marche</a>
+<a href="#rapport">Le rapport</a>
+<a href="#faq">Questions</a>
+<a class="btn btn-v" href="radar.html">Ouvrir le radar</a>
+</nav>
+</div>
+</header>
+
+<main id="haut">
+
+<section class="hero sombre" aria-labelledby="titre-page">
+<div class="c">
+<p class="sur">Radar des dépendances numériques · gratuit</p>
+<h1 id="titre-page">Où votre système d’information est-il enfermé ?</h1>
+<p class="chapo"><strong><span class="nb" data-compteur="tendances">53</span> tendances, <span class="nb" data-compteur="technologies">279</span> technologies, <span class="nb" data-compteur="mecanismes">53</span> mécanismes d’enfermement et <span class="nb" data-compteur="leviers">37</span> leviers</strong>, sourcés et classés pour un DSI. Repérez en quelques minutes ce qui vous rend captif, et recevez un rapport personnalisé gratuit.</p>
+<div class="actions">
+<a class="btn btn-v" href="radar.html">Ouvrir le radar</a>
+<a class="btn btn-clair" href="#rapport">Voir un exemple de rapport</a>
+</div>
+<figure>
+<img id="img-radar" class="capture" src="img/radar/radar.jpg" width="1280" height="800" fetchpriority="high" alt="Le radar des tendances : cinq axes, quatre anneaux d’urgence et la fiche d’une tendance ouverte à droite, avec ses sources.">
+</figure>
+</div>
+</section>
+
+<div class="credits">
+<div class="c">
+<p><strong>Chaque fiche cite ses sources.</strong> Parmi elles : ANSSI, Banque de France, Cour des comptes, Autorité de la concurrence, Commission européenne, Cigref, les textes DORA, NIS 2 et Data Act, le Technology Radar de Thoughtworks, Gartner.</p>
+</div>
+</div>
+
+<section id="constat">
+<div class="c">
+<p class="sur">Le constat</p>
+<h2>Vos fournisseurs changent les règles. Votre marge de manœuvre se réduit.</h2>
+<p class="chapo">Trois faits tirés du radar, parmi les tendances d’urgence forte.</p>
+<ul class="faits">
+<li class="fait">
+<p class="chiffre">Plus de 80 %</p>
+<blockquote><p>« Les éditeurs remplacent les licences sans date d’expiration par des abonnements. Plus de 80 % y sont déjà passés selon Elée. »</p></blockquote>
+<p class="source">Tendance <a href="radar.html#fin-des-licences-perpetuelles">Fin des licences perpétuelles</a> · Source : <a href="https://www.lemondeinformatique.fr/actualites/lire-les-recettes-des-dsi-face-au-casse-tete-du-budget-it-2026-97982.html" rel="noopener">Le Monde Informatique, septembre 2025</a></p>
+</li>
+<li class="fait">
+<p class="chiffre">Au moins doublé</p>
+<blockquote><p>« Selon Gartner, les coûts ont au moins doublé pour un client type, et jusqu’à quintuplé dans certains cas. »</p></blockquote>
+<p class="source">Tendance <a href="radar.html#virtualisation-proprietaire">Virtualisation propriétaire</a>, après le rachat de VMware par Broadcom · Source : <a href="https://www.lemondeinformatique.fr/actualites/lire-vmware-decider-de-rester-ou-partir-96384.html" rel="noopener">Le Monde Informatique, mars 2025</a></p>
+</li>
+<li class="fait">
+<p class="chiffre">95 %</p>
+<blockquote><p>« Selon l’étude ISC2 publiée en décembre 2025 (plus de 16 000 répondants), 95 % des équipes de cybersécurité ont au moins un manque de compétences et 59 % le jugent critique ou important, contre 44 % un an plus tôt »</p></blockquote>
+<p class="source">Tendance <a href="radar.html#penurie-de-competences-cyber-face-a-nis2">Pénurie de compétences cyber face à NIS2</a> · Source : <a href="https://www.isc2.org/insights/2025/12/isc2-publishes-2025-cybersecurity-workforce-study" rel="noopener">ISC2, décembre 2025</a></p>
+</li>
+</ul>
+</div>
+</section>
+
+<section id="fonctionnement" class="alt">
+<div class="c">
+<p class="sur">Comment ça marche</p>
+<h2>Trois étapes, quelques minutes, sans compte.</h2>
+<ol class="etapes">
+<li><h3>Explorez le radar</h3><p>Parcourez les tendances, les technologies, les mécanismes d’enfermement et les leviers. Filtrez par axe, par urgence ou par domaine ; chaque fiche dit pourquoi et cite ses sources.</p></li>
+<li><h3>Retenez ce qui vous concerne</h3><p>Un clic sur « Retenir » ajoute une tendance ou une technologie à « Mon radar ». Votre sélection reste dans votre navigateur.</p></li>
+<li><h3>Recevez votre rapport</h3><p>Demandez votre rapport personnalisé : il s’affiche aussitôt et s’enregistre en PDF. Si vous le souhaitez, nous le relisons avec vous en 15 minutes.</p></li>
+</ol>
+</div>
+</section>
+
+<section id="comprendre">
+<div class="c">
+<p class="sur">Comprendre le radar</p>
+<h2>Cinq notions pour lire vos dépendances.</h2>
+<p class="chapo">Le radar va du contexte à l’action : ce qui change autour de vous, ce que vous utilisez, comment vous êtes retenu, et comment desserrer l’étau.</p>
+<div class="notions">
+
+<article class="notion">
+<h3>Les tendances</h3>
+<p>Ce qui, sur le marché, dans la réglementation ou dans les pratiques, renforce la dépendance des organisations à leurs fournisseurs. Elles sont rangées selon cinq axes et classées selon l’urgence pour un DSI, de forte au centre à faible au bord.</p>
+<ul class="pastilles" aria-label="Les cinq axes"><li>Juridique</li><li>Financier</li><li>Humain</li><li>Réglementaire</li><li>Pratiques technologiques</li></ul>
+<p>Forte : effet dans les 12 mois. Élevée : 12 à 24 mois. Moyenne : la tendance se confirme. Faible : un signal à garder à l’œil.</p>
+<div class="visuel">
+<svg viewBox="0 0 320 180" role="img" aria-label="Quatre anneaux d’urgence, du centre vers le bord : fort, élevé, moyen, faible.">
+<circle class="svg-u3" cx="160" cy="176" r="160"/><circle class="svg-u2" cx="160" cy="176" r="120"/><circle class="svg-u1" cx="160" cy="176" r="80"/><circle class="svg-u0" cx="160" cy="176" r="40"/>
+<g class="svg-trait" stroke-width="1.5"><line x1="160" y1="176" x2="8" y2="126"/><line x1="160" y1="176" x2="66" y2="47"/><line x1="160" y1="176" x2="254" y2="47"/><line x1="160" y1="176" x2="312" y2="126"/></g>
+<g font-size="13" text-anchor="middle"><text class="svg-fort" x="160" y="164">Fort</text><text class="svg-fort" x="160" y="122">Élevé</text><text class="svg-fort" x="160" y="82">Moyen</text><text class="svg-fort" x="160" y="42">Faible</text></g>
+</svg>
+</div>
+</article>
+
+<article class="notion">
+<h3>Les technologies</h3>
+<p><span class="nb" data-compteur="technologies">279</span> technologies d’éditeurs et projets ouverts, de l’infrastructure aux applications du quotidien, classées selon la difficulté typique d’une sortie : difficile, exigeante, maîtrisable ou facilitée.</p>
+<p>Chaque fiche explique pourquoi cet anneau, et propose des alternatives toujours mieux classées.</p>
+<div class="visuel"><img id="img-technologies" class="capture" src="img/radar/technologies.jpg" width="1280" height="800" loading="lazy" alt="La vue Technologies : anneaux de sortie du rouge (difficile) au vert (facilitée) et fiche d’une technologie avec ses alternatives."></div>
+</article>
+
+<article class="notion">
+<h3>Les mécanismes d’enfermement</h3>
+<p>Comment on vous retient : <span class="nb" data-compteur="mecanismes">53</span> mécanismes rangés dans une table de 7 couches (du contrat à l’open source) sur 4 moments : à la signature, pendant l’usage, au renouvellement, au moment de partir.</p>
+<p>Les pièges se posent à la signature et ne se révèlent souvent qu’au renouvellement.</p>
+<div class="visuel"><img id="img-mecanismes" class="capture" src="img/radar/mecanismes.jpg" width="1280" height="800" loading="lazy" alt="La table de l’enfermement : sept couches en lignes, quatre moments en colonnes, un mécanisme par case."></div>
+</article>
+
+<article class="notion">
+<h3>Les leviers</h3>
+<p>Les parades : <span class="nb" data-compteur="leviers">37</span> leviers, chacun relié aux mécanismes qu’il contre. Pour chacun, les étapes de mise en œuvre, la façon de vérifier qu’il est vraiment en place, et ses limites.</p>
+<div class="visuel"><img id="img-leviers" class="capture" src="img/radar/leviers.jpg" width="1280" height="800" loading="lazy" alt="La vue Leviers : cartes des leviers et fiche détaillée avec mise en œuvre, vérification et limites."></div>
+</article>
+
+<article class="notion large">
+<div class="texte">
+<h3>La matrice criticité × réversibilité</h3>
+<p>Dans votre rapport, chaque technologie retenue est placée selon deux axes. En abscisse, sa réversibilité : son anneau de sortie, de difficile à facilitée. En ordonnée, sa criticité estimée, de 1 à 5, selon l’urgence des tendances du radar qui la concernent.</p>
+<p>En haut à gauche, ce qui est à la fois critique et difficile à quitter : à traiter en premier. La criticité est une estimation ; elle s’affine avec votre contexte, en rendez-vous.</p>
+</div>
+<div class="visuel">
+<svg viewBox="0 0 360 230" role="img" aria-label="Matrice : réversibilité en abscisse, de sortie difficile à facilitée ; criticité estimée en ordonnée, de 1 à 5. La zone critique et difficile à quitter est en haut à gauche.">
+<rect class="svg-zone" x="40" y="10" width="140" height="96"/>
+<g class="svg-trait" stroke-width="1" fill="none"><rect x="40" y="10" width="310" height="180"/><line x1="117.5" y1="10" x2="117.5" y2="190"/><line x1="195" y1="10" x2="195" y2="190"/><line x1="272.5" y1="10" x2="272.5" y2="190"/><line x1="40" y1="46" x2="350" y2="46"/><line x1="40" y1="82" x2="350" y2="82"/><line x1="40" y1="118" x2="350" y2="118"/><line x1="40" y1="154" x2="350" y2="154"/></g>
+<g class="svg-point"><circle cx="70" cy="30" r="7"/><circle cx="92" cy="64" r="7"/><circle cx="150" cy="40" r="7"/><circle cx="230" cy="100" r="7"/><circle cx="300" cy="170" r="7"/></g>
+<g font-size="12" text-anchor="middle"><text class="svg-texte" x="78.75" y="208">Difficile</text><text class="svg-texte" x="156.25" y="208">Exigeante</text><text class="svg-texte" x="233.75" y="208">Maîtrisable</text><text class="svg-texte" x="311.25" y="208">Facilitée</text><text class="svg-fort" x="195" y="226">Réversibilité →</text></g>
+<g font-size="12" text-anchor="end"><text class="svg-texte" x="32" y="32">5</text><text class="svg-texte" x="32" y="176">1</text></g>
+<text class="svg-fort" font-size="12" text-anchor="middle" transform="translate(14 100) rotate(-90)">Criticité estimée →</text>
+</svg>
+</div>
+</article>
+
+</div>
+</div>
+</section>
+
+<section id="urgentes" class="alt">
+<div class="c">
+<p class="sur">Urgence forte</p>
+<h2>Les tendances les plus urgentes</h2>
+<p class="chapo">Celles dont l’effet est attendu dans les 12 mois. Chaque titre ouvre sa fiche dans le radar, avec ses sources.</p>
+<div class="liste-generee">
+<!-- debut:urgentes --><!-- fin:urgentes -->
+</div>
+<p class="suite">Toutes les tendances, leurs axes et leurs sources : <a href="radar.html#tendances">la vue Tendances du radar</a>.</p>
+</div>
+</section>
+
+<section id="exemples">
+<div class="c">
+<p class="sur">Technologies</p>
+<h2>Exemples de technologies classées</h2>
+<p class="chapo">Quelques technologies par anneau de sortie, avec une alternative mieux classée.</p>
+<div class="liste-generee">
+<!-- debut:exemples --><!-- fin:exemples -->
+</div>
+<p class="suite">Les <span class="nb" data-compteur="technologies">279</span> technologies, avec la raison de leur classement : <a href="radar.html#technologies">la vue Technologies du radar</a>.</p>
+</div>
+</section>
+
+<section id="rapport" class="sombre">
+<div class="c">
+<p class="sur">Votre rapport personnalisé</p>
+<h2>Un rapport à votre mesure, gratuit.</h2>
+<p class="chapo">À partir de votre sélection, le radar compose un rapport que vous pouvez partager avec votre direction. Il est gratuit, en échange de votre e-mail.</p>
+<div class="pages" role="group" tabindex="0" aria-label="Trois pages du rapport d’exemple">
+<figure><img id="img-rapport-garde" class="capture" src="img/radar/rapport-garde.jpg" width="794" height="1123" loading="lazy" alt="Page de garde du rapport d’exemple, aux couleurs d’Optio."><figcaption>La page de garde</figcaption></figure>
+<figure><img id="img-rapport-synthese" class="capture" src="img/radar/rapport-synthese.jpg" width="794" height="1123" loading="lazy" alt="Synthèse du rapport d’exemple : les tendances et technologies retenues sur leurs radars, et la matrice criticité × réversibilité."><figcaption>La synthèse : radars et matrice</figcaption></figure>
+<figure><img id="img-rapport-leviers" class="capture" src="img/radar/rapport-leviers.jpg" width="794" height="1123" loading="lazy" alt="Chapitre « Leviers possibles » du rapport d’exemple : chaque levier avec sa mise en œuvre et sa vérification."><figcaption>Les leviers possibles</figcaption></figure>
+</div>
+<ul class="contenu">
+<li><strong>Une synthèse</strong> : vos tendances et vos technologies sur leurs radars, et la matrice criticité × réversibilité.</li>
+<li><strong>Les mécanismes probables</strong> : ceux qui vous retiennent vraisemblablement, d’après votre sélection.</li>
+<li><strong>Les leviers possibles</strong>, du plus au moins concerné, avec leur mise en œuvre et leur vérification.</li>
+<li><strong>Mesurer avant de décider</strong> : le coût total de la dépendance et l’indice de réversibilité, pour chiffrer votre marge de manœuvre.</li>
+<li><strong>Un PDF aux couleurs d’Optio</strong>, prêt à transmettre.</li>
+<li><strong>15 minutes pour en parler</strong>, si vous le souhaitez : quelles dépendances pèsent vraiment, et par quel levier commencer.</li>
+</ul>
+<div class="actions">
+<a class="btn btn-clair" href="radar.html?rapport=1&amp;r=2.ey1yYGEgdmR3LH5kcWR-c2phOX91ZnlqeWdkaG13fj5ldWBqfHBufndsIm59ZmpoZmRkZD1xIn51fGN9entsfHUpaHMhYmR-ZX17cSJ0cSRsYn9xYXV3Y3FkYz1sa3ZqYjlvbm53LGUsfGRhMzZoMmR5eHFmbCJ7YXFsZGBoP2RkPXlxciN_ZmhsYXcsYGBmbHBgY3Ujf31sYnt6YGtmLDc3JyF1aGR4enA5bH9kYGNiZidgPCA9IDc9IT4_Jjo.fp42gr">Ouvrir le rapport d’exemple</a>
+</div>
+<p class="chapo" style="font-size:15px">Exemple construit sur une sélection type : VMware vSphere, Oracle Database, Microsoft 365, GitHub Copilot, et trois tendances. Il ne contient aucune donnée d’entreprise.</p>
+</div>
+</section>
+
+<section id="confiance">
+<div class="c">
+<p class="sur">Pourquoi s’y fier</p>
+<h2>Des faits sourcés, pas une note des fournisseurs.</h2>
+<dl class="garanties">
+<div><dt>Une source pour chaque élément</dt><dd>Chaque tendance, technologie, mécanisme et levier renvoie à ses sources : textes officiels, autorités, études, presse spécialisée.</dd></div>
+<div><dt>Indépendant des éditeurs</dt><dd>Aucune commission d’éditeur, aucun classement payé. Les alternatives proposées comptent des projets ouverts comme des offres commerciales.</dd></div>
+<div><dt>Des classements expliqués</dt><dd>Chaque anneau est justifié sur la fiche : « pourquoi cet anneau », selon des critères publiés dans le radar.</dd></div>
+<div><dt>Mis à jour régulièrement</dt><dd>Le radar suit l’actualité des éditeurs et des régulateurs ; chaque fait porte sa date.</dd></div>
+<div><dt>Un prototype, ouvert à la critique</dt><dd>Cette première édition est à valider avec des experts de chaque domaine. Vos retours la corrigent et l’enrichissent.</dd></div>
+</dl>
+</div>
+</section>
+
+<section id="contribuer" class="alt">
+<div class="c">
+<p class="sur">Contribuez au radar</p>
+<h2>Le radar s’améliore avec ses lecteurs.</h2>
+<p class="chapo">Une tendance manque, une source a vieilli, une alternative mérite d’y figurer ? Écrivez-nous : chaque contribution est relue et sourcée avant publication.</p>
+<ul class="contribs">
+<li><h3>Proposer une tendance</h3><p>Un changement de marché, de réglementation ou de pratique qui renforce la dépendance.</p><a href="mailto:contact@stratwise.fr?subject=Radar%20%3A%20proposer%20une%20tendance">Proposer une tendance</a></li>
+<li><h3>Signaler une erreur</h3><p>Un fait inexact, une source plus récente ou plus solide.</p><a href="mailto:contact@stratwise.fr?subject=Radar%20%3A%20signaler%20une%20erreur%20ou%20une%20source">Signaler une erreur ou une source</a></li>
+<li><h3>Proposer une technologie</h3><p>Une technologie à classer, ou une alternative qui a fait ses preuves.</p><a href="mailto:contact@stratwise.fr?subject=Radar%20%3A%20proposer%20une%20technologie%20ou%20une%20alternative">Proposer une technologie ou une alternative</a></li>
+<li><h3>Relire en expert</h3><p>Juriste, acheteur, architecte, RSSI : relisez les fiches de votre domaine.</p><a href="mailto:contact@stratwise.fr?subject=Radar%20%3A%20relecture%20d%E2%80%99expert">Proposer une relecture</a></li>
+</ul>
+</div>
+</section>
+
+<section id="faq">
+<div class="c">
+<p class="sur">Questions fréquentes</p>
+<h2>Ce que vous voulez savoir avant de commencer.</h2>
+<div class="faq">
+<details><summary>Le radar et le rapport sont-ils gratuits ?</summary><p>Oui. Le radar se consulte librement, sans compte. Le rapport personnalisé est gratuit, en échange de votre e-mail.</p></details>
+<details><summary>Quelles données collectez-vous ?</summary><p>Pour consulter le radar et faire votre sélection, aucune. Votre e-mail n’est demandé qu’au moment du rapport, par un formulaire Tally, un service tiers qui reçoit aussi votre adresse IP. Il sert à vous envoyer le rapport et à vous recontacter, et il est conservé trois ans après notre dernier contact. Accès et suppression : <a href="mailto:contact@stratwise.fr">contact@stratwise.fr</a>.</p></details>
+<details><summary>Combien de temps faut-il ?</summary><p>Quelques minutes suffisent : retenez les tendances et les technologies qui vous concernent, puis demandez le rapport. Vous pouvez aussi revenir compléter votre sélection plus tard.</p></details>
+<details><summary>Que devient ma sélection ?</summary><p>Elle reste dans votre navigateur, qui la garde d’une visite à l’autre. Elle ne nous est transmise que si vous demandez le rapport.</p></details>
+<details><summary>Qui est derrière le radar ?</summary><p>Optio, une marque de Stratwise. Optio aide les organisations à mesurer leurs dépendances numériques et à garder la liberté de choisir leurs technologies. <a href="index.html">Découvrir Optio</a>.</p></details>
+<details><summary>Comment signaler une erreur ou proposer un ajout ?</summary><p>Écrivez à <a href="mailto:contact@stratwise.fr">contact@stratwise.fr</a>, ou passez par <a href="#contribuer">Contribuez au radar</a>.</p></details>
+</div>
+</div>
+</section>
+
+<section class="final sombre" aria-labelledby="titre-final">
+<div class="c">
+<h2 id="titre-final">Voyez où vous êtes enfermé, en quelques minutes.</h2>
+<p class="chapo">Gratuit, sans compte. Votre rapport personnalisé en fin de parcours.</p>
+<div class="actions"><a class="btn btn-v" href="radar.html">Ouvrir le radar</a></div>
+</div>
+</section>
+
+</main>
+
+<footer>
+<div class="c">
+<div class="haut"><span><strong>Optio</strong> · Indépendance numérique, par la preuve. Une marque de <strong>Stratwise</strong>.</span><span><a href="index.html">Optio</a><a href="radar.html">Le radar</a><a href="mailto:contact@stratwise.fr">contact@stratwise.fr</a><a href="index.html">Mentions légales</a></span></div>
+<p>Radar des dépendances numériques, édition 1 (prototype). Faits repris des fiches du radar, avec leurs sources. © 2026 Stratwise</p>
+</div>
+</footer>
+
+<script>
+/* Compteurs : nombre d’entrées de data/*.json. Les valeurs écrites dans la page servent de repli
+   (ouverture hors serveur, réseau coupé, données illisibles) : en cas d’échec, rien ne change. */
+(function(){
+  "use strict";
+  function lancer(){
+    var els=document.querySelectorAll("[data-compteur]"), noms={}, i;
+    if(!window.XMLHttpRequest) return;
+    for(i=0;i<els.length;i++) noms[els[i].getAttribute("data-compteur")]=true;
+    Object.keys(noms).forEach(function(nom){
+      if(!/^[a-z]+$/.test(nom)) return;
+      var x=new XMLHttpRequest();
+      x.onload=function(){
+        var d;
+        if(x.status!==200) return;
+        try{ d=JSON.parse(x.responseText); }catch(e){ return; }
+        if(!Array.isArray(d)||!d.length) return;
+        for(var j=0;j<els.length;j++) if(els[j].getAttribute("data-compteur")===nom) els[j].textContent=String(d.length);
+      };
+      try{ x.open("GET","data/"+nom+".json"); x.send(); }catch(e){}
+    });
+  }
+  if(document.readyState==="complete") lancer(); else window.addEventListener("load",lancer);
+})();
+</script>
+</body>
+</html>
