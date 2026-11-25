@@ -522,6 +522,10 @@
       {
         "id": "competences-sur-les-alternatives",
         "commentaire": "Formez au moins deux personnes sur l’alternative et s’appuyer sur des communautés."
+      },
+      {
+        "id": "filiere-junior-et-compagnonnage",
+        "commentaire": "Formez en interne, en binôme, plutôt que de dépendre des certifications d’un éditeur."
       }
     ],
     "sources": [
@@ -1160,6 +1164,10 @@
       {
         "id": "pilote-de-sortie-sur-un-perimetre-reel",
         "commentaire": "Menez un pilote d’alternative."
+      },
+      {
+        "id": "competences-entretenues-sans-assistant",
+        "commentaire": "Entretenez les fondamentaux par des exercices réguliers, indépendants de l’outil du moment."
       }
     ],
     "sources": [
@@ -1187,6 +1195,10 @@
       {
         "id": "competences-sur-les-alternatives",
         "commentaire": "Exigez la documentation et le transfert de compétences."
+      },
+      {
+        "id": "filiere-junior-et-compagnonnage",
+        "commentaire": "Reconstituez une relève interne capable de reprendre le savoir-faire des prestataires."
       }
     ],
     "sources": [

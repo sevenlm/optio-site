@@ -1092,5 +1092,84 @@
       }
     ],
     "technologies": []
+  },
+  {
+    "id": "filiere-junior-et-compagnonnage",
+    "titre": "Filière junior et compagnonnage",
+    "axe": 2,
+    "principe": "Continuer à recruter et former des juniors sur les systèmes critiques, en binôme avec des seniors, pour que le savoir tacite reste dans l’organisation plutôt que chez un prestataire ou dans un outil.",
+    "mise_en_oeuvre": [
+      "Réservez chaque année des postes de juniors et d’alternants sur les systèmes les plus critiques.",
+      "Associez chaque junior à un senior référent, avec des tâches réelles de maintenance et de débogage, pas seulement de la supervision d’outils.",
+      "Faites documenter par le binôme ce qui n’est écrit nulle part."
+    ],
+    "verification": "Chaque système critique a au moins un junior formé en binôme depuis plus de six mois, et un plan de recrutement junior figure au budget de l’année suivante.",
+    "limites": "Le compagnonnage coûte du temps aux seniors et ne paie qu’à plusieurs années ; il demande un engagement de la direction au-delà d’un budget annuel.",
+    "lies": [
+      "competences-sur-les-alternatives",
+      "competences-entretenues-sans-assistant"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "Banque de France, Bloc-notes Éco n° 463, IA générative : les premiers changements du marché du travail touchent les jeunes, 8 octobre 2026",
+        "url": "https://www.banque-france.fr/en/publications-and-statistics/publications/generative-ai-first-changes-labour-market-are-affecting-young-people"
+      },
+      {
+        "titre": "HEC Paris, L’embauche des jeunes recule davantage dans les métiers exposés à l’IA, 9 octobre 2026",
+        "url": "https://www.hec.edu/fr/dare/technologie-ia/l-embauche-des-jeunes-recule-davantage-dans-les-metiers-exposes-l-ia"
+      },
+      {
+        "titre": "Stanford Digital Economy Lab, Canaries in the Coal Mine? (révision), 12 août 2026",
+        "url": "https://digitaleconomy.stanford.edu/news/canariesaug26/"
+      }
+    ],
+    "technologies": []
+  },
+  {
+    "id": "competences-entretenues-sans-assistant",
+    "titre": "Compétences entretenues sans assistant",
+    "axe": 2,
+    "principe": "Garder la capacité des équipes à comprendre, déboguer et relire le code et les configurations sans l’assistant d’un éditeur, pour que changer d’outil ou subir une coupure ne soit pas un arrêt.",
+    "mise_en_oeuvre": [
+      "Organisez régulièrement des exercices de débogage et de revue sans assistant IA sur les systèmes critiques.",
+      "Exigez qu’un humain capable de l’expliquer valide chaque changement critique produit avec un agent.",
+      "Gardez les instructions et outils des agents dans des formats ouverts, pour pouvoir changer d’assistant."
+    ],
+    "verification": "Un exercice sans assistant a eu lieu dans le semestre sur un système critique, et les changements critiques portent la validation nominative d’un relecteur.",
+    "limites": "Ces exercices paraissent coûteux face aux gains de vitesse annoncés ; ils doivent être protégés dans le planning pour ne pas disparaître.",
+    "lies": [
+      "actifs-dagents-de-code-portables",
+      "filiere-junior-et-compagnonnage",
+      "routage-entre-modeles-dia"
+    ],
+    "sources": [
+      {
+        "titre": "Observation Optio",
+        "url": null
+      },
+      {
+        "titre": "Anthropic, How AI assistance impacts the formation of coding skills, 29 janvier 2026",
+        "url": "https://www.anthropic.com/research/AI-assistance-coding-skills"
+      },
+      {
+        "titre": "Microsoft Research et Carnegie Mellon, The Impact of Generative AI on Critical Thinking, CHI 2025",
+        "url": "https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, Agent skill cognitive surrender (Caution), novembre 2026",
+        "url": "https://www.thoughtworks.com/radar/techniques/agent-skill-cognitive-surrender"
+      }
+    ],
+    "technologies": [
+      "GitHub Copilot",
+      "Cursor",
+      "Claude Code",
+      "OpenAI Codex",
+      "OpenCode"
+    ]
   }
 ]

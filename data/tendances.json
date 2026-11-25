@@ -1255,7 +1255,7 @@
     "quadrant": 2,
     "anneau": 1,
     "declencheur": "Après des années d’externalisation, de nombreuses DSI cherchent à réinternaliser des compétences clés pour garder la maîtrise de leurs choix technologiques.",
-    "tendance": "40 % des DSI interrogés par Inop’s en 2025 travaillent avec plus de la moitié d’externes, et 15 % avec plus de 70 %. 43 % veulent internaliser davantage, contre 9 % qui veulent externaliser plus.",
+    "tendance": "40 % des DSI interrogés par Inop’s en 2025 travaillent avec plus de la moitié d’externes, et 15 % avec plus de 70 %. 43 % veulent internaliser davantage, contre 9 % qui veulent externaliser plus. Sur le mainframe, 77 % des organisations interrogées par Kyndryl en 2025 passent par un prestataire pour moderniser, et environ un tiers manquent de compétences COBOL, RPG ou CICS.",
     "risque": "Quand le savoir-faire est chez le prestataire, changer de fournisseur, ou même évaluer une alternative, dépend d’un acteur qui n’y a pas forcément intérêt.",
     "mecanismes": [
       "meca-maitrise-douvrage-externalisee",
@@ -1284,6 +1284,10 @@
       {
         "titre": "Le Monde Informatique, étude Inop’s auprès de 55 DSI (octobre 2025)",
         "url": "https://www.lemondeinformatique.fr/actualites/lire-la-dsi-confrontee-a-l-obsolescence-des-competences-it-98134.html"
+      },
+      {
+        "titre": "Kyndryl, Mainframe skills gap, 26 mars 2025",
+        "url": "https://www.kyndryl.com/us/en/perspectives/articles/2025/03/mainframe-skills-gap"
       }
     ]
   },
@@ -2317,6 +2321,213 @@
       {
         "titre": "AWS, modèle de responsabilité partagée",
         "url": "https://aws.amazon.com/compliance/shared-responsibility-model/"
+      }
+    ]
+  },
+  {
+    "id": "dependance-cognitive-a-lassistant-ia",
+    "titre": "Dépendance cognitive à l’assistant IA de l’éditeur",
+    "quadrant": 2,
+    "anneau": 0,
+    "declencheur": "Le 4 novembre 2026, le Technology Radar de Thoughtworks met en garde contre l’adoption de compétences et d’agents d’IA sans les comprendre (« agent skill cognitive surrender »), alors que GitHub Copilot facture à l’usage depuis le 1er juin 2026.",
+    "tendance": "Dans un essai randomisé publié par Anthropic en janvier 2026, les développeurs aidés par l’IA obtiennent 50 % au test de compréhension contre 67 % sans IA, l’écart le plus fort portant sur le débogage. L’étude de METR (juillet 2025) mesurait des tâches 19 % plus longues avec l’IA, quand les développeurs croyaient avoir gagné 20 %. Selon Microsoft Research et Carnegie Mellon (2025), plus la confiance dans l’IA est grande, moins l’esprit critique s’exerce. 84 % des développeurs utilisent ou vont utiliser l’IA (Stack Overflow, 2025). En juin 2025, Anthropic a coupé à l’éditeur Windsurf l’essentiel de son accès direct aux modèles Claude avec moins de cinq jours de préavis.",
+    "risque": "Des équipes qui ne savent plus déboguer, relire ni maintenir sans l’assistant d’un éditeur rendent un changement d’outil, une hausse de prix ou une coupure d’accès aussi graves qu’une panne.",
+    "mecanismes": [
+      "meca-competences-et-certifications-specifiques",
+      "meca-changement-de-metrique",
+      "meca-suspension-ou-resiliation-unilaterale-du-service"
+    ],
+    "leviers": [
+      {
+        "id": "competences-entretenues-sans-assistant",
+        "commentaire": "Entraînez régulièrement les équipes à déboguer et relire sans assistant, et faites valider les changements critiques par un humain."
+      },
+      {
+        "id": "actifs-dagents-de-code-portables",
+        "commentaire": "Gardez instructions et outils des agents dans des formats ouverts pour pouvoir changer d’assistant."
+      },
+      {
+        "id": "routage-entre-modeles-dia",
+        "commentaire": "Ne dépendez pas d’un seul fournisseur de modèles : prévoyez la bascule et mesurez la consommation."
+      }
+    ],
+    "technologies": [
+      "GitHub Copilot",
+      "Cursor",
+      "Claude Code",
+      "OpenAI Codex"
+    ],
+    "sources": [
+      {
+        "titre": "Anthropic, How AI assistance impacts the formation of coding skills, 29 janvier 2026",
+        "url": "https://www.anthropic.com/research/AI-assistance-coding-skills"
+      },
+      {
+        "titre": "METR, Measuring the Impact of Early-2025 AI on Experienced Open-Source Developer Productivity, 10 juillet 2025",
+        "url": "https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/"
+      },
+      {
+        "titre": "Microsoft Research et Carnegie Mellon, The Impact of Generative AI on Critical Thinking, CHI 2025",
+        "url": "https://www.microsoft.com/en-us/research/publication/the-impact-of-generative-ai-on-critical-thinking-self-reported-reductions-in-cognitive-effort-and-confidence-effects-from-a-survey-of-knowledge-workers/"
+      },
+      {
+        "titre": "Thoughtworks, Technology Radar vol. 35, Agent skill cognitive surrender (Caution), novembre 2026",
+        "url": "https://www.thoughtworks.com/radar/techniques/agent-skill-cognitive-surrender"
+      },
+      {
+        "titre": "GitHub Blog, GitHub Copilot is moving to usage-based billing, 27 avril 2026",
+        "url": "https://github.blog/news-insights/product-news/github-copilot-is-moving-to-usage-based-billing/"
+      },
+      {
+        "titre": "Stack Overflow, Developer Survey 2025, 29 juillet 2025",
+        "url": "https://stackoverflow.co/company/press/archive/stack-overflow-2025-developer-survey/"
+      },
+      {
+        "titre": "TechCrunch, Windsurf says Anthropic is limiting its direct access to Claude AI models, 3 juin 2025",
+        "url": "https://techcrunch.com/2025/06/03/windsurf-says-anthropic-is-limiting-its-direct-access-to-claude-ai-models"
+      }
+    ]
+  },
+  {
+    "id": "effondrement-du-vivier-junior",
+    "titre": "Effondrement du vivier junior",
+    "quadrant": 2,
+    "anneau": 0,
+    "declencheur": "Le 8 octobre 2026, la Banque de France montre que l’embauche en CDI des jeunes recule nettement plus dans les métiers les plus exposés à l’IA générative, développeurs en tête.",
+    "tendance": "En France, entre novembre 2022 et mars 2026, les embauches en CDI des 21-29 ans baissent de 28,3 % dans les métiers les plus exposés à l’IA, contre 7,5 % dans les moins exposés ; pour les jeunes développeurs et ingénieurs informatiques, la baisse atteint environ 42 % (HEC Paris). 33 % des ESN ont réduit leurs embauches de jeunes diplômés (Observatoire Numeum-Xerfi, 2026). Aux États-Unis, l’emploi des 22-25 ans dans ces métiers est environ 19 % sous sa trajectoire attendue en juin 2026 (Stanford), surtout faute d’embauches. Les auteurs relèvent que l’automatisation des tâches de débutant peut réduire l’apprentissage par la pratique.",
+    "risque": "Sans juniors aujourd’hui, pas de seniors internes demain : le savoir tacite ne se transmet plus, et l’organisation dépend des éditeurs, des ESN et des agents d’IA pour comprendre ses propres systèmes.",
+    "mecanismes": [
+      "meca-maitrise-douvrage-externalisee",
+      "meca-competences-et-certifications-specifiques",
+      "meca-concentration-sur-un-prestataire-non-substituable"
+    ],
+    "leviers": [
+      {
+        "id": "filiere-junior-et-compagnonnage",
+        "commentaire": "Maintenez des recrutements juniors et des binômes avec les seniors sur les systèmes critiques."
+      },
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Comptez les personnes capables de maintenir chaque système critique, à cinq ans et pas seulement aujourd’hui."
+      },
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Gardez en interne la capacité à piloter et évaluer les prestataires qui remplacent les recrutements."
+      }
+    ],
+    "technologies": [],
+    "sources": [
+      {
+        "titre": "Banque de France, Bloc-notes Éco n° 463, IA générative : les premiers changements du marché du travail touchent les jeunes, 8 octobre 2026",
+        "url": "https://www.banque-france.fr/en/publications-and-statistics/publications/generative-ai-first-changes-labour-market-are-affecting-young-people"
+      },
+      {
+        "titre": "HEC Paris, L’embauche des jeunes recule davantage dans les métiers exposés à l’IA, 9 octobre 2026",
+        "url": "https://www.hec.edu/fr/dare/technologie-ia/l-embauche-des-jeunes-recule-davantage-dans-les-metiers-exposes-l-ia"
+      },
+      {
+        "titre": "Blog du Modérateur, Observatoire Numeum-Xerfi du numérique, 4 septembre 2026",
+        "url": "https://www.blogdumoderateur.com/numerique-pourquoi-rebond-ne-profite-pas-encore-rentabilite-entreprises/"
+      },
+      {
+        "titre": "Stanford Digital Economy Lab, Canaries in the Coal Mine? (révision), 12 août 2026",
+        "url": "https://digitaleconomy.stanford.edu/news/canariesaug26/"
+      }
+    ]
+  },
+  {
+    "id": "penurie-de-competences-cyber-face-a-nis2",
+    "titre": "Pénurie de compétences cyber face à NIS2",
+    "quadrant": 2,
+    "anneau": 0,
+    "declencheur": "Le 17 novembre 2026, l’Assemblée nationale adopte le projet de loi Résilience, qui transpose NIS2, par 464 voix contre 64.",
+    "tendance": "Le nombre d’entités soumises aux obligations passe d’environ 600 à plus de 15 000, dont les collectivités de plus de 30 000 habitants. Selon l’étude ISC2 publiée en décembre 2025 (plus de 16 000 répondants), 95 % des équipes de cybersécurité ont au moins un manque de compétences et 59 % le jugent critique ou important, contre 44 % un an plus tôt ; 29 % n’ont pas les moyens d’embaucher les profils nécessaires. En France, l’observatoire des métiers de l’ANSSI relève une hausse de 49 % des offres d’emploi entre 2019 et 2024.",
+    "risque": "Pour se mettre en conformité, beaucoup d’organisations confieront supervision, audits et gestion de crise à des prestataires de sécurité et à leurs plateformes : la compétence devient captive d’un marché sous tension, à prix élevés.",
+    "mecanismes": [
+      "meca-concentration-sur-un-prestataire-non-substituable",
+      "meca-maitrise-douvrage-externalisee",
+      "meca-offres-groupees"
+    ],
+    "leviers": [
+      {
+        "id": "pilotage-et-conseil-independants",
+        "commentaire": "Gardez en interne le pilotage de la sécurité et la capacité à évaluer les prestataires."
+      },
+      {
+        "id": "clauses-de-reversibilite",
+        "commentaire": "Prévoyez dans les contrats de sécurité managée la restitution des règles, journaux et procédures."
+      },
+      {
+        "id": "filiere-junior-et-compagnonnage",
+        "commentaire": "Formez des profils internes en binôme avec les prestataires plutôt que de tout externaliser."
+      }
+    ],
+    "technologies": [
+      "CrowdStrike Falcon",
+      "Microsoft Defender",
+      "Splunk",
+      "Elastic Security",
+      "Wazuh",
+      "Security Onion"
+    ],
+    "sources": [
+      {
+        "titre": "Leto, NIS 2 : l’Assemblée adopte la loi Résilience par 464 voix contre 64, 17 novembre 2026",
+        "url": "https://www.leto.legal/news/nis-2-loi-resilience-adoptee-assemblee-464-voix-17-novembre-2026"
+      },
+      {
+        "titre": "Next, Dernière ligne droite pour le projet de loi Résilience, novembre 2026",
+        "url": "https://next.ink/268104/derniere-ligne-droite-pour-le-pjl-resilience-qui-passe-le-vote-solennel-a-lassemblee/"
+      },
+      {
+        "titre": "ISC2, Cybersecurity Workforce Study 2025, 4 décembre 2025",
+        "url": "https://www.isc2.org/insights/2025/12/isc2-publishes-2025-cybersecurity-workforce-study"
+      },
+      {
+        "titre": "Le Monde Informatique, L’évolution des métiers de la cybersécurité étudiée par l’ANSSI, 12 juin 2025",
+        "url": "https://www.lemondeinformatique.fr/actualites/lire-l-evolution-des-metiers-de-la-cybersecurite-etudiee-par-l-anssi-97127.html"
+      }
+    ]
+  },
+  {
+    "id": "formation-et-certifications-financees-par-les-editeurs",
+    "titre": "Formation et certifications IA financées par les éditeurs",
+    "quadrant": 2,
+    "anneau": 2,
+    "declencheur": "Le 9 juillet 2025, Microsoft lance Microsoft Elevate : plus de 4 milliards de dollars sur cinq ans pour les écoles et la formation, avec l’objectif de faire certifier 20 millions de personnes à l’IA en deux ans.",
+    "tendance": "Microsoft France vise un million de Français formés à l’IA d’ici 2027 ; en novembre 2025, 700 000 avaient commencé un parcours, avec France Travail parmi les partenaires. Selon Gartner (octobre 2025), d’ici 2027, 75 % des processus de recrutement incluront des certifications et des tests de maîtrise de l’IA, largement délivrées par les éditeurs.",
+    "risque": "Quand juniors, reconversions et équipes se forment sur l’outil d’un éditeur, recruter ou former sur une alternative coûte plus cher, et la réversibilité recule avant même le premier contrat.",
+    "mecanismes": [
+      "meca-competences-et-certifications-specifiques",
+      "meca-cout-dentree-nul-cout-de-sortie-eleve",
+      "meca-inertie-culturelle-et-formation-insuffisante"
+    ],
+    "leviers": [
+      {
+        "id": "competences-sur-les-alternatives",
+        "commentaire": "Financez aussi des formations sur les alternatives ouvertes, pas seulement sur l’outil en place."
+      },
+      {
+        "id": "filiere-junior-et-compagnonnage",
+        "commentaire": "Formez les juniors aux principes avant les outils, en binôme sur vos systèmes."
+      }
+    ],
+    "technologies": [
+      "Microsoft 365",
+      "GitHub Copilot"
+    ],
+    "sources": [
+      {
+        "titre": "Microsoft On the Issues, Microsoft Elevate: Putting people first, 9 juillet 2025",
+        "url": "https://blogs.microsoft.com/on-the-issues/2025/07/09/elevate/"
+      },
+      {
+        "titre": "Siècle Digital, Microsoft veut former un million de Français à l’IA, 6 novembre 2025",
+        "url": "https://siecledigital.fr/2025/11/06/microsoft-veut-former-un-million-de-francais-a-lia-et-renforcer-son-ancrage-territorial/"
+      },
+      {
+        "titre": "CIO Dive, 5 Gartner predictions about IT’s future, 21 octobre 2025",
+        "url": "https://www.ciodive.com/news/gartner-top-predictions-skills-loss/803409/"
       }
     ]
   }
