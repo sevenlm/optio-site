@@ -538,6 +538,12 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 /* ===== Rapport personnalisé (radar.html?rapport=1) : vue autonome, sans l’interface du radar ===== */
 .mode-rapport .entete h1,.mode-rapport #intro,.mode-rapport .stats,.mode-rapport .vues,.mode-rapport #bande,.mode-rapport #contenu,.mode-rapport #volet,.mode-rapport #volet-fond{display:none !important}
 .mode-rapport .entete-in{padding-top:18px;padding-bottom:18px}
+.mode-rapport .entete-in{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.rapport-retour{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.35);color:#FFFFFF;font-weight:600;font-size:14px;text-decoration:none}
+.rapport-retour:hover,.rapport-retour:focus-visible{background:rgba(255,255,255,.12);border-color:#FFFFFF}
+.rapport-nav-retour{display:none;margin:0 0 8px 4px;font-size:14px;font-weight:600;color:var(--c-levier);text-decoration:none}
+.rapport-nav-retour:hover,.rapport-nav-retour:focus-visible{text-decoration:underline}
+@media (min-width:1100px){.avec-sommaire .rapport-nav-retour{display:block}}
 .rapport{max-width:900px;margin:0 auto;padding:28px 28px 48px;counter-reset:chap}
 .rapport-corps{display:flex;flex-direction:column;gap:22px;min-width:0}
 .rapport-chap{counter-increment:chap;scroll-margin-top:16px}
@@ -579,6 +585,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .rapport .rapport-note,.rapport .rapport-meta{font-size:13.5px;color:var(--text-2)}
 .rapport-selection{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(260px,100%),1fr));gap:12px 24px;margin-top:18px}
 .rapport-garde .rapport-note{margin-top:14px}
+.rapport-intertitre{margin:22px 0 10px;font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:17px;color:var(--ink)}
+.rapport-repond .repond-selection{font-weight:600}
 .rapport-selection h3{font-size:13px;font-weight:600;color:var(--text-3);margin-bottom:4px}
 .rapport-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:20px}
 .rapport-bouton{display:inline-flex;align-items:center;border:1.5px solid var(--line-2);background:var(--surface);color:var(--ink);border-radius:999px;padding:9px 16px;min-height:42px;font-size:14px;font-weight:600;text-decoration:none;cursor:pointer}
@@ -1929,6 +1937,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       var ouvert=bouton.getAttribute("aria-expanded")!=="true";
       bouton.setAttribute("aria-expanded",String(ouvert)); nav.classList.toggle("ouvert",ouvert);
     }},["Sommaire"]);
+    nav.appendChild(el("a",{class:"rapport-nav-retour",href:"radar.html"},["‹ Retour au radar"]));
     nav.appendChild(bouton);
     nav.appendChild(el("p",{class:"rapport-nav-titre","aria-hidden":"true",text:"Sommaire"}));
     nav.appendChild(ol);
@@ -2082,6 +2091,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function rendreRapport(sel){
     var z=zoneRapport(); z.textContent=""; var corps=el("div",{class:"rapport-corps"}); z.appendChild(corps);
     document.title="Mon rapport · Radar des dépendances · Optio";
+    // retour au radar, toujours visible en haut de page à l’écran
+    var bandeauHaut=document.querySelector(".entete-in");
+    if(bandeauHaut && !bandeauHaut.querySelector(".rapport-retour")) bandeauHaut.appendChild(el("a",{class:"rapport-retour ecran-seul",href:"radar.html"},["‹ Retour au radar"]));
     // jeton absent, abîmé ou modifié : aucun rapport n’est calculé
     if(!sel){
       document.title="Lien de rapport non valide · Radar des dépendances · Optio";
@@ -2109,6 +2121,18 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     sy.mecanismes.forEach(function(m){ (m.meca.leviers||[]).forEach(function(a){ repond(a.id,"Mécanisme",m.meca.nom,a.commentaire); }); });
     sy.technos.forEach(function(x){ LEV.forEach(function(l){ if(l.techNoms.indexOf(x.nom)>=0) repond(l.id,"Technologie",x.nom,""); }); });
     levListe.sort(function(a,b){ return b.rep.length-a.rep.length || a.l.t.localeCompare(b.l.t,"fr"); });
+    // « Mesurer avant de décider » : coût total de la dépendance et indice de réversibilité, toujours proposés en tête
+    var MESURES=["cout-total-de-la-dependance","indice-de-reversibilite-fonde-sur-la-preuve"], levMesures=[];
+    if(nt||nd) MESURES.forEach(function(id){
+      var l=levId[id]; if(!l) return;
+      var e=levRep[id]; if(!e){ e=levRep[id]={l:l,rep:[]}; } else levListe.splice(levListe.indexOf(e),1);
+      levMesures.push(e);
+    });
+    var resumeSelection=[nt?pluriel(nt,"technologie")+" retenue"+(nt>1?"s":"")+(sy.parAnneau[0]?", dont "+sy.parAnneau[0]+" en sortie difficile":""):"",
+      nd?pluriel(nd,"tendance")+" retenue"+(nd>1?"s":"")+(sy.urgentes?", dont "+pluriel(sy.urgentes,"urgente"):""):""].filter(Boolean).join(" ; ");
+    var plusieurs=nt+nd>1;
+    var CONSEIL_MESURE={"cout-total-de-la-dependance":"chiffrez sur cinq ans ce que coûte "+(plusieurs?"chacune de ces dépendances":"cette dépendance")+", face au coût d’un changement.",
+      "indice-de-reversibilite-fonde-sur-la-preuve":"mesurez, preuves à l’appui, la réversibilité "+(plusieurs?"de chacune":"de cette dépendance")+" avant de décider."};
     function ancreLevier(id){ return levRep[id]?id:null; }
 
     var garde=el("section",{class:"rapport-bloc rapport-garde","aria-labelledby":"rapport-titre"},[
@@ -2214,24 +2238,35 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     }
 
     // Une carte par levier possible : axe, éléments de la sélection auxquels il répond, principe, mise en œuvre, vérification, limites
-    if(levListe.length){
-      var cartesL=el("div",{class:"rapport-cartes"}), fichesL=[];
-      levListe.forEach(function(e){
-        var l=e.l, c=el("article",{class:"rapport-carte rapport-levier",id:"levier-"+l.id}); c.style.setProperty("--lt","var(--c-levier)");
+    if(levListe.length || levMesures.length){
+      var fichesL=[];
+      function carteLevier(e,mesure){
+        var l=e.l, c=el("article",{class:"rapport-carte rapport-levier"+(mesure?" rapport-mesure":""),id:"levier-"+l.id}); c.style.setProperty("--lt","var(--c-levier)");
         fichesL.push({id:c.id,titre:l.t});
         c.appendChild(el("h3",{text:l.t}));
         c.appendChild(el("p",{class:"rapport-meta",text:"Axe : "+VUES.tendances.quadrants[l.axe].t}));
         c.appendChild(el("h4",{text:"Répond à"}));
-        c.appendChild(el("ul",{class:"rapport-repond"},e.rep.map(function(r){ return el("li",null,[r.type+" · ", el("strong",{text:r.nom}), r.c?" : "+r.c:""]); })));
+        var items=e.rep.map(function(r){ return el("li",null,[r.type+" · ", el("strong",{text:r.nom}), r.c?" : "+r.c:""]); });
+        if(mesure) items.unshift(el("li",{class:"repond-selection"},["Votre sélection · "+resumeSelection+" : "+CONSEIL_MESURE[l.id]]));
+        c.appendChild(el("ul",{class:"rapport-repond"},items));
         c.appendChild(el("h4",{text:"Principe"})); c.appendChild(el("p",{text:l.principe}));
         if(l.faire.length){ c.appendChild(el("h4",{text:"Mise en œuvre"})); c.appendChild(el("ul",null,l.faire.map(function(f){ return el("li",{text:f}); }))); }
         c.appendChild(el("h4",{text:"Comment vérifier"})); c.appendChild(el("p",{text:l.verif}));
         c.appendChild(el("h4",{text:"Limites"})); c.appendChild(el("p",{text:l.limites}));
         if(l.lies.length){ c.appendChild(el("h4",{text:"À associer avec"})); c.appendChild(el("ul",null,l.lies.map(function(x){ return el("li",null,[levRep[x.id]?el("a",{href:"#levier-"+x.id,text:x.t}):x.t]); }))); }
-        cartesL.appendChild(c);
-      });
-      corps.appendChild(el("section",{class:"rapport-partie rapport-chap rapport-leviers",id:"ch-leviers"},[el("h2",{text:"Leviers possibles"}),
-        el("p",{class:"rapport-note",text:"Les leviers qui répondent à vos tendances, à vos technologies et aux mécanismes probables, du plus au moins concerné. Chacun indique comment le mettre en œuvre et comment vérifier qu’il est en place."}), cartesL]));
+        return c;
+      }
+      var chapL=el("section",{class:"rapport-partie rapport-chap rapport-leviers",id:"ch-leviers"},[el("h2",{text:"Leviers possibles"}),
+        el("p",{class:"rapport-note",text:"Les leviers qui répondent à vos tendances, à vos technologies et aux mécanismes probables, du plus au moins concerné. Chacun indique comment le mettre en œuvre et comment vérifier qu’il est en place."})]);
+      if(levMesures.length){
+        chapL.appendChild(el("p",{class:"rapport-intertitre",text:"Mesurer avant de décider"}));
+        chapL.appendChild(el("div",{class:"rapport-cartes rapport-mesures"},levMesures.map(function(e){ return carteLevier(e,true); })));
+      }
+      if(levListe.length){
+        if(levMesures.length) chapL.appendChild(el("p",{class:"rapport-intertitre",text:"Agir sur vos dépendances"}));
+        chapL.appendChild(el("div",{class:"rapport-cartes"},levListe.map(function(e){ return carteLevier(e,false); })));
+      }
+      corps.appendChild(chapL);
       chapitres.push({id:"ch-leviers",titre:"Leviers possibles",fiches:fichesL});
     }
 

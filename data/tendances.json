@@ -265,6 +265,10 @@
       {
         "id": "pilote-de-sortie-sur-un-perimetre-reel",
         "commentaire": "Lancez un pilote sur un périmètre limité."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Notez la réversibilité de votre hyperviseur actuel et des alternatives, preuves à l’appui, avant le prochain renouvellement."
       }
     ],
     "technologies": [
@@ -457,6 +461,10 @@
       {
         "id": "tests-de-bascule-reguliers",
         "commentaire": "Testez au moins une sortie sur un périmètre réel."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Appuyez le plan de sortie exigé par DORA sur un indice daté et prouvé pour chaque prestataire critique."
       }
     ],
     "technologies": [
@@ -504,6 +512,10 @@
       {
         "id": "cloud-europeen-qualifie",
         "commentaire": "Appuyez-vous sur des offres qualifiées pour les données sensibles."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Mesurez la réversibilité de chaque fournisseur critique pour prioriser le plan de réduction."
       }
     ],
     "technologies": [
@@ -870,6 +882,10 @@
       {
         "id": "couches-dabstraction",
         "commentaire": "Préférez des équivalents standards : PostgreSQL managé, Kubernetes, files de messages ouvertes."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Notez chaque service managé critique : sans équivalent prouvé, l’indice reste plafonné."
       }
     ],
     "technologies": [
@@ -1129,6 +1145,10 @@
       {
         "id": "registre-des-contrats-et-des-prestataires",
         "commentaire": "Tenez le registre des prestataires à jour en continu, sous-traitants compris."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Présentez au régulateur un indice prouvé plutôt qu’une déclaration d’intention."
       }
     ],
     "technologies": [],
@@ -1710,6 +1730,10 @@
       {
         "id": "partir-des-processus-metier-critiques",
         "commentaire": "Réservez le choix du SaaS par défaut aux usages non différenciants et justifiez-le au cas par cas pour les processus cœur."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Notez la réversibilité d’un SaaS avant de le choisir, pas au moment de le quitter."
       }
     ],
     "technologies": [
@@ -1870,6 +1894,10 @@
       {
         "id": "controles-automatiques-de-reversibilite",
         "commentaire": "Bloquez automatiquement les appels propriétaires qui contournent la couche d’abstraction."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Mesurez le couplage réel de chaque application critique à sa plateforme, preuves à l’appui."
       }
     ],
     "technologies": [
@@ -2229,6 +2257,10 @@
       {
         "id": "controles-automatiques-de-reversibilite",
         "commentaire": "Faites vérifier les règles de réversibilité par l’intégration continue, à chaque livraison."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Faites de l’indice un critère de décision dès la conception, revu à chaque étape."
       }
     ],
     "technologies": [],
@@ -2301,6 +2333,10 @@
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
         "commentaire": "Distinguez dans le contrat et l’architecture ce qui relève de vous : régions, sauvegardes hors du fournisseur."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Ne notez à 5 l’axe continuité que si une bascule a réellement été testée."
       }
     ],
     "technologies": [

@@ -67,6 +67,10 @@
       {
         "id": "clauses-de-reversibilite",
         "commentaire": "Exigez la restitution dans un format standard, une assistance et des délais chiffrés, en s’appuyant sur les clauses types européennes et les clauses Oméga de Libralis."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Notez l’axe contractuel à partir des clauses réellement signées, pas des intentions."
       }
     ],
     "sources": [
@@ -392,6 +396,10 @@
       {
         "id": "couches-dabstraction",
         "commentaire": "Préférez des équivalents standards et isoler les services spécifiques derrière une couche."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Rendez visible l’absence d’équivalent : l’axe technique reste bas tant qu’aucune alternative n’est prouvée."
       }
     ],
     "sources": [
@@ -572,6 +580,10 @@
       {
         "id": "partir-des-processus-metier-critiques",
         "commentaire": "Documentez les processus hors de l’outil et limiter les développements spécifiques."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Notez la dépendance des processus métier à l’outil, pour mesurer l’effort réel de sortie."
       }
     ],
     "sources": [
@@ -1133,6 +1145,10 @@
       {
         "id": "revue-de-reversibilite-des-nouveaux-contrats",
         "commentaire": "Instituez un avis d’architecture sur les renouvellements importants."
+      },
+      {
+        "id": "indice-de-reversibilite-fonde-sur-la-preuve",
+        "commentaire": "Exigez un indice à jour avant chaque renouvellement, quelle que soit l’entité qui signe."
       }
     ],
     "sources": [

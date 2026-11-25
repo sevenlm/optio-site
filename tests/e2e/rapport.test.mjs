@@ -324,3 +324,24 @@ test("lien d’évitement : le focus va sur le rapport", async () => {
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
+
+test("retour au radar : en haut de page à l’écran, absent à l’impression", async () => {
+  for (const [chemin, vp] of [[ADRESSE, { width: 1280, height: 800 }], [ADRESSE, { width: 390, height: 844 }], ["radar.html?rapport=1", { width: 1280, height: 800 }]]) {
+    const { p, errs, fermer } = await rapport(chemin, { viewport: vp });
+    try {
+      const haut = p.locator(".entete a.rapport-retour");
+      assert.equal(await haut.count(), 1);
+      assert.equal(await haut.isVisible(), true);
+      assert.equal(await haut.getAttribute("href"), "radar.html");
+      assert.ok((await haut.boundingBox()).y < 120, "lien de retour pas en haut");
+      // sur mobile, un seul lien de retour visible en haut
+      const visibles = await p.locator("a.rapport-retour, a.rapport-nav-retour").evaluateAll((l) => l.filter((a) => a.offsetParent !== null).length);
+      if (vp.width < 1100) assert.equal(visibles, 1);
+      await p.emulateMedia({ media: "print" });
+      assert.equal(await haut.isVisible(), false);
+      await Promise.all([p.waitForURL(/radar\.html$/), (async () => { await p.emulateMedia({ media: "screen" }); await haut.click(); })()]);
+      await p.waitForSelector("#stats .stat");
+      assert.deepEqual(errs, []);
+    } finally { await fermer(); }
+  }
+});
