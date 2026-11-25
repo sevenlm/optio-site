@@ -1876,7 +1876,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   function anneauTech(a){ var s=el("span",{class:"rapport-anneau",text:VUES.technologies.anneaux[a]}); s.style.setProperty("--la","var(--x"+a+")"); s.style.setProperty("--lt","var(--x"+a+"t)"); return s; }
   function anneauTend(a){ var s=el("span",{class:"rapport-anneau",text:VUES.tendances.anneaux[a]}); s.style.setProperty("--la","var(--a"+a+")"); s.style.setProperty("--lt","var(--a"+a+"t)"); return s; }
   function carte(classe,a,palette){ var c=el("article",{class:"rapport-carte "+classe}); c.style.setProperty("--la","var(--"+palette+a+")"); c.style.setProperty("--lt","var(--"+palette+a+"t)"); return c; }
-  function liLevier(titre,commentaire){ return el("li",null,[el("strong",{text:titre}), commentaire?" : "+commentaire:""]); }
+  // id : identifiant du levier quand sa carte figure dans le chapitre « Leviers possibles » (le titre devient un lien)
+  function liLevier(titre,commentaire,id){ var nom=el("strong",{text:titre}); return el("li",null,[id?el("a",{href:"#levier-"+id},[nom]):nom, commentaire?" : "+commentaire:""]); }
   // Sommaire du rapport : volet de navigation à l’écran, page « Sommaire » à l’impression.
   // chapitres = [{id, titre, fiches:[{id, titre}]}], seulement les chapitres présents, dans l’ordre.
   function sommaireRapport(chapitres){
@@ -2051,6 +2052,19 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     var sy=SEL.synthese(sel, DONNEES_BRUTES), nt=sy.technos.length, nd=sy.tendances.length, date=dateLongue(sel.date);
     var techId=Object.create(null), tendId=Object.create(null), levId=Object.create(null);
     TECH.forEach(function(x){ techId[x.id]=x; }); T.forEach(function(x){ tendId[x.id]=x; }); LEV.forEach(function(x){ levId[x.id]=x; });
+    // Leviers possibles : ceux des tendances retenues, les parades des mécanismes probables, ceux qui citent une technologie retenue.
+    // levRep[id] = {l, rep:[{type, nom, c}]} ; trié par nombre d’éléments de la sélection auxquels le levier répond, puis par titre
+    var levRep=Object.create(null), levListe=[];
+    function repond(id,type,nom,c){
+      var l=levId[id]; if(!l) return;
+      var e=levRep[id]; if(!e){ e=levRep[id]={l:l,rep:[]}; levListe.push(e); }
+      if(!e.rep.some(function(r){ return r.type===type && r.nom===nom; })) e.rep.push({type:type,nom:nom,c:c||""});
+    }
+    sy.tendances.forEach(function(t){ (t.leviers||[]).forEach(function(a){ repond(a.id,"Tendance",t.titre,a.commentaire); }); });
+    sy.mecanismes.forEach(function(m){ (m.meca.leviers||[]).forEach(function(a){ repond(a.id,"Mécanisme",m.meca.nom,a.commentaire); }); });
+    sy.technos.forEach(function(x){ LEV.forEach(function(l){ if(l.techNoms.indexOf(x.nom)>=0) repond(l.id,"Technologie",x.nom,""); }); });
+    levListe.sort(function(a,b){ return b.rep.length-a.rep.length || a.l.t.localeCompare(b.l.t,"fr"); });
+    function ancreLevier(id){ return levRep[id]?id:null; }
 
     var garde=el("section",{class:"rapport-bloc rapport-garde","aria-labelledby":"rapport-titre"},[
       el("p",{class:"rapport-surtitre",text:"Radar des dépendances · rapport personnalisé"}),
@@ -2126,7 +2140,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
         c.appendChild(el("div",{class:"rapport-tete"},[el("h3",{text:t.t}), anneauTend(t.a)]));
         c.appendChild(el("div",{class:"pourquoi"},[el("h4",{text:"Le risque"}), el("p",{text:t.pourquoi})]));
         c.appendChild(el("h4",{text:"Leviers"}));
-        c.appendChild(t.levs.length ? el("ul",null,t.levs.map(function(a){ return liLevier(a.l.t,a.c); })) : el("p",{text:"Aucun levier rattaché pour l’instant."}));
+        c.appendChild(t.levs.length ? el("ul",null,t.levs.map(function(a){ return liLevier(a.l.t,a.c,ancreLevier(a.l.id)); })) : el("p",{text:"Aucun levier rattaché pour l’instant."}));
         cartesT.appendChild(c);
       });
       corps.appendChild(el("section",{class:"rapport-partie rapport-chap",id:"ch-tendances"},[el("h2",{text:"Tendances retenues"}), cartesT]));
@@ -2144,16 +2158,38 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
         c.appendChild(el("p",{text:m.meca.fonctionnement}));
         if(m.meca.signal){ c.appendChild(el("h4",{text:"Signal d’alerte"})); c.appendChild(el("p",{text:m.meca.signal})); }
         var parades=(m.meca.leviers||[]).filter(function(a){ return levId[a.id]; });
-        if(parades.length){ c.appendChild(el("h4",{text:"Parades"})); c.appendChild(el("ul",null,parades.map(function(a){ return liLevier(levId[a.id].t,a.commentaire); }))); }
+        if(parades.length){ c.appendChild(el("h4",{text:"Parades"})); c.appendChild(el("ul",null,parades.map(function(a){ return liLevier(levId[a.id].t,a.commentaire,ancreLevier(a.id)); }))); }
         return c;
       })));
       corps.appendChild(mecas);
       chapitres.push({id:"ch-mecanismes",titre:"Mécanismes probables",fiches:[]});
     }
 
+    // Une carte par levier possible : axe, éléments de la sélection auxquels il répond, principe, mise en œuvre, vérification, limites
+    if(levListe.length){
+      var cartesL=el("div",{class:"rapport-cartes"}), fichesL=[];
+      levListe.forEach(function(e){
+        var l=e.l, c=el("article",{class:"rapport-carte rapport-levier",id:"levier-"+l.id}); c.style.setProperty("--lt","var(--c-levier)");
+        fichesL.push({id:c.id,titre:l.t});
+        c.appendChild(el("h3",{text:l.t}));
+        c.appendChild(el("p",{class:"rapport-meta",text:"Axe : "+VUES.tendances.quadrants[l.axe].t}));
+        c.appendChild(el("h4",{text:"Répond à"}));
+        c.appendChild(el("ul",{class:"rapport-repond"},e.rep.map(function(r){ return el("li",null,[r.type+" · ", el("strong",{text:r.nom}), r.c?" : "+r.c:""]); })));
+        c.appendChild(el("h4",{text:"Principe"})); c.appendChild(el("p",{text:l.principe}));
+        if(l.faire.length){ c.appendChild(el("h4",{text:"Mise en œuvre"})); c.appendChild(el("ul",null,l.faire.map(function(f){ return el("li",{text:f}); }))); }
+        c.appendChild(el("h4",{text:"Comment vérifier"})); c.appendChild(el("p",{text:l.verif}));
+        c.appendChild(el("h4",{text:"Limites"})); c.appendChild(el("p",{text:l.limites}));
+        if(l.lies.length){ c.appendChild(el("h4",{text:"À associer avec"})); c.appendChild(el("ul",null,l.lies.map(function(x){ return el("li",null,[levRep[x.id]?el("a",{href:"#levier-"+x.id,text:x.t}):x.t]); }))); }
+        cartesL.appendChild(c);
+      });
+      corps.appendChild(el("section",{class:"rapport-partie rapport-chap rapport-leviers",id:"ch-leviers"},[el("h2",{text:"Leviers possibles"}),
+        el("p",{class:"rapport-note",text:"Les leviers qui répondent à vos tendances, à vos technologies et aux mécanismes probables, du plus au moins concerné. Chacun indique comment le mettre en œuvre et comment vérifier qu’il est en place."}), cartesL]));
+      chapitres.push({id:"ch-leviers",titre:"Leviers possibles",fiches:fichesL});
+    }
+
     // Sources citées, par élément ; une même adresse n’est listée qu’une fois
     var src=el("section",{class:"rapport-partie rapport-chap rapport-sources",id:"ch-sources"},[el("h2",{text:"Sources"})]), vues={};
-    sy.tendances.map(function(t){ return [t.titre,t.sources]; }).concat(sy.technos.map(function(x){ return [x.nom,x.sources]; })).forEach(function(g){
+    sy.tendances.map(function(t){ return [t.titre,t.sources]; }).concat(sy.technos.map(function(x){ return [x.nom,x.sources]; })).concat(levListe.map(function(e){ return [e.l.t,e.l.src.map(function(s2){ return {titre:s2[0],url:s2[1]}; })]; })).forEach(function(g){
       var items=(g[1]||[]).filter(function(s2){ if(!s2.url) return true; if(vues[s2.url]) return false; vues[s2.url]=1; return true; });
       if(!items.length) return;
       src.appendChild(el("h3",{text:g[0]}));

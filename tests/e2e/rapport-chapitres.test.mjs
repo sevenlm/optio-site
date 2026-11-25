@@ -8,7 +8,7 @@ import { BASE, erreurs, adresseRapport } from "./outils.mjs";
 const cfg = "window.OPTIO_CONFIG = {tallyFormId:\"\", calLien:\"https://cal.example.test/optio/15min\", urlSite:\"http://localhost:8765/radar.html\"};";
 const COMPLET = adresseRapport("t=fin-des-licences-perpetuelles&x=vmware-vsphere-et-vcf,openstack&d=2026-11-23");
 const TECHNOS_SEULES = adresseRapport("x=vmware-vsphere-et-vcf&d=2026-11-23");
-const TOUS = ["ch-synthese", "ch-technologies", "ch-tendances", "ch-mecanismes", "ch-sources", "ch-rdv"];
+const TOUS = ["ch-synthese", "ch-technologies", "ch-tendances", "ch-mecanismes", "ch-leviers", "ch-sources", "ch-rdv"];
 
 let navigateur;
 before(async () => { navigateur = await chromium.launch({ channel: "chrome" }); });
@@ -31,7 +31,8 @@ test("chapitres complets dans l’ordre", async () => {
   const { p, errs, fermer } = await rapport(COMPLET);
   try {
     assert.deepEqual(await ids(p), TOUS);
-    assert.match(await numero(p, "ch-sources"), /5/);
+    assert.match(await numero(p, "ch-leviers"), /5/);
+    assert.match(await numero(p, "ch-sources"), /6/);
     assert.match(await numero(p, "ch-synthese"), /1/);
     // le numéro n’est pas dans le texte du titre
     assert.equal((await p.locator("#ch-sources > h2").innerText()).trim(), "Sources");
@@ -46,10 +47,10 @@ test("chapitres complets dans l’ordre", async () => {
 test("technologies seules : chapitres omis et numérotation continue", async () => {
   const { p, errs, fermer } = await rapport(TECHNOS_SEULES);
   try {
-    assert.deepEqual(await ids(p), ["ch-synthese", "ch-technologies", "ch-sources", "ch-rdv"]);
-    assert.match(await numero(p, "ch-sources"), /3/);
-    assert.match(await numero(p, "ch-rdv"), /4/);
-    assert.equal(await p.locator(".rapport-nav a[href^=\"#ch-\"]").count(), 4);
+    assert.deepEqual(await ids(p), ["ch-synthese", "ch-technologies", "ch-leviers", "ch-sources", "ch-rdv"]);
+    assert.match(await numero(p, "ch-sources"), /4/);
+    assert.match(await numero(p, "ch-rdv"), /5/);
+    assert.equal(await p.locator(".rapport-nav a[href^=\"#ch-\"]").count(), 5);
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
