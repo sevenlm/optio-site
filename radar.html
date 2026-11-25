@@ -625,6 +625,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .rapport-fin{border:2px solid var(--c-o)}
 .rapport-fin .rapport-actions{margin-top:16px}
 .imprime-seul{display:none}
+/* Identité Optio du rapport imprimé : en-tête et pied répétés, bandeaux (éléments imprime-seul, invisibles à l’écran) */
+.rapport-logo{display:block;flex:none}
+.rapport-marque{font-family:var(--titre);font-stretch:112%;font-weight:800;letter-spacing:-0.01em}
 @media (max-width:600px){
   .rapport{padding:16px 16px 32px}
   .rapport-corps{gap:16px}
@@ -638,14 +641,14 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     --a0:#FBE2D8;--a0t:#9A3E26;--a1:#FBF0CC;--a1t:#7A5A00;--a2:#DCEDF7;--a2t:#2D6488;--a3:#ECE7F7;--a3t:#5B4E8A;
     --u0:#FBE2D8;--u0t:#9A3E26;--u1:#FBF0CC;--u1t:#7A5A00;--u2:#DCEDF7;--u2t:#2D6488;--u3:#ECE7F7;--u3t:#5B4E8A;
     --fam0:#FBE2D8;--fam0t:#8A3520;--fam1:#FBF0CC;--fam1t:#6E5100;--fam2:#F8E1EC;--fam2t:#86295A;--fam3:#DCEDF7;--fam3t:#245878;--fam4:#DDF3EA;--fam4t:#1B5E46;--fam5:#ECE7F7;--fam5t:#51447E;--fam6:#E6ECE3;--fam6t:#435537}
-  @page{margin:16mm 14mm}
+  /* Pages sans marge : l’en-tête et le pied fixes (répétés par Chrome sur chaque page) occupent le haut et le bas ;
+     le rapport leur laisse la place sur chaque page grâce à un retrait recopié à chaque fragment (box-decoration-break) */
+  @page{margin:0}
   html.mode-rapport,html.mode-rapport body{background:#FFFFFF;color:#000000}
   .mode-rapport *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .mode-rapport .skip,.rapport-actions,.rapport button,.rapport a.rapport-rdv,.rapport a.rapport-rdv-haut{display:none !important}
-  .mode-rapport .entete{background:#FFFFFF;color:#000000;border-bottom:1px solid #BBBBBB}
-  .mode-rapport .entete-in{padding:0 0 8px}
-  .mode-rapport .edition,.mode-rapport .edition a{color:#000000}
-  .rapport{max-width:none;padding:0;display:block}
+  .mode-rapport .entete{display:none}
+  .rapport{max-width:none;padding:20mm 15mm 16mm;display:block;-webkit-box-decoration-break:clone;box-decoration-break:clone}
   .rapport-corps{gap:0}
   .rapport-bloc,.rapport-partie{border:0;border-radius:0;padding:6mm 0 0;background:#FFFFFF}
   .rapport-partie,.rapport-chap,.rapport-sommaire{break-before:page}
@@ -656,10 +659,32 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
   .rapport-sommaire a{text-decoration:none}
   .rapport-cartes{gap:12px}
   .rapport h2,.rapport h3,.rapport h4{break-after:avoid}
-  .rapport a{color:#000000}
+  .rapport a{color:#00775A}
+  .rapport-sommaire a{color:#0B2A3C}
+  .rapport h1,.rapport h2,.rapport h3{color:#0B2A3C}
+  .rapport-chap>h2::before{color:#00775A}
+  .rapport-impr-entete,.rapport-impr-pied{position:fixed;left:0;right:0;z-index:1;display:flex;align-items:center;gap:8px;padding:0 15mm;background:#FFFFFF;font-family:var(--corps);font-size:9pt;color:#41576A}
+  .rapport-impr-entete{top:0;height:13mm;border-bottom:.5pt solid #DCE4E7}
+  .rapport-impr-entete .rapport-marque{color:#0B2A3C;font-size:9.5pt}
+  .rapport-impr-entete a{margin-left:auto;color:#00775A;text-decoration:none}
+  .rapport-impr-pied{bottom:0;height:11mm;border-top:.5pt solid #DCE4E7;font-size:8.5pt}
+  .rapport-bandeau{background:#0B2A3C;color:#FFFFFF}
+  .rapport-bandeau .rapport-marque{color:#FFFFFF}
+  .rapport-garde .rapport-bandeau{position:relative;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:5mm;height:92mm;margin:-26mm -15mm 12mm;padding:0 15mm 12mm}
+  .rapport-garde .rapport-bandeau .rapport-marque{display:flex;align-items:center;gap:4mm;font-size:34pt;line-height:1}
+  .rapport-garde .rapport-bandeau .rapport-signature{margin:0;font-family:var(--mesure);font-size:10pt;letter-spacing:.02em;color:#C9D6DC}
+  .rapport-garde .rapport-bandeau::after{content:"";position:absolute;left:15mm;bottom:0;width:28mm;height:2.2mm;background:#00A37A}
+  .rapport .rapport-site{margin-top:6px;font-weight:600}
+  .rapport-fin .rapport-bandeau{display:grid;grid-template-columns:auto 1fr;align-items:center;gap:5mm 8mm;margin-top:10mm;padding:9mm 10mm;border-radius:4mm;break-inside:avoid}
+  .rapport-fin .rapport-bandeau .rapport-marque{display:flex;align-items:center;gap:3mm;font-size:20pt;grid-row:span 2}
+  .rapport-fin .rapport-bandeau p{margin:0;color:#FFFFFF;font-size:11pt}
+  .rapport .rapport-bandeau a{color:#FFFFFF}
+  .rapport .rapport-bandeau a.rapport-bouton-impr{display:inline-block;padding:2.6mm 6mm;border-radius:999px;background:#00A37A;color:#062A1F;font-weight:700;text-decoration:none}
   .rapport a[href^="http"]::after{content:" (" attr(href) ")";font-size:10.5px;font-weight:400;word-break:break-all}
   .rapport a.sans-adresse::after{content:none}
   .imprime-seul{display:block}
+  .rapport-impr-entete.imprime-seul,.rapport-impr-pied.imprime-seul,.rapport-garde .rapport-bandeau.imprime-seul{display:flex}
+  .rapport-fin .rapport-bandeau.imprime-seul{display:grid}
   .ecran-seul{display:none !important}
 }
 </style>
@@ -2034,6 +2059,22 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       el("div",{class:"rt-defile"},[grille])
     ]);
   }
+  // Identité Optio du rapport imprimé : logo (cercle encre ou blanc, branche haute verte, branche basse grise), comme sur index.html
+  var SITE_OPTIO="https://www.weareoptio.fr";
+  function logoOptio(cercle,largeur){
+    var g=s("svg",{class:"rapport-logo",width:largeur,height:Math.round(largeur*0.7),viewBox:"0 0 40 28","aria-hidden":"true",focusable:"false"});
+    g.appendChild(s("circle",{cx:"12",cy:"14",r:"8.5",fill:"none",stroke:cercle,"stroke-width":"3"}));
+    g.appendChild(s("path",{d:"M20.5 14 H27 L35 7",fill:"none",stroke:"#00A37A","stroke-width":"3","stroke-linecap":"round","stroke-linejoin":"round"}));
+    g.appendChild(s("path",{d:"M27 14 L35 21",fill:"none",stroke:"#8A9BA6","stroke-width":"3","stroke-linecap":"round"}));
+    return g;
+  }
+  function marqueOptio(cercle,largeur){ return el("span",{class:"rapport-marque"},[logoOptio(cercle,largeur),"Optio"]); }
+  function lienSite(){ return el("a",{class:"sans-adresse",href:SITE_OPTIO,text:"www.weareoptio.fr"}); }
+  // En-tête et pied répétés sur chaque page imprimée (position fixe), invisibles à l’écran
+  function cadreImpression(z,date){
+    z.appendChild(el("div",{class:"rapport-impr-entete imprime-seul"},[logoOptio("#0B2A3C",20), el("span",null,[el("strong",{class:"rapport-marque",text:"Optio"})," · Radar des dépendances"]), lienSite()]));
+    z.appendChild(el("div",{class:"rapport-impr-pied imprime-seul",text:date?"Rapport personnalisé du "+date:"Rapport personnalisé"}));
+  }
   function rendreRapport(sel){
     var z=zoneRapport(); z.textContent=""; var corps=el("div",{class:"rapport-corps"}); z.appendChild(corps);
     document.title="Mon rapport · Radar des dépendances · Optio";
@@ -2067,10 +2108,13 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     function ancreLevier(id){ return levRep[id]?id:null; }
 
     var garde=el("section",{class:"rapport-bloc rapport-garde","aria-labelledby":"rapport-titre"},[
+      el("div",{class:"rapport-bandeau imprime-seul"},[marqueOptio("#FFFFFF",64), el("p",{class:"rapport-signature",text:"Radar des dépendances numériques"})]),
       el("p",{class:"rapport-surtitre",text:"Radar des dépendances · rapport personnalisé"}),
       el("h1",{id:"rapport-titre",text:"Votre exposition aux dépendances numériques"})
     ]);
     if(date) garde.appendChild(el("p",{class:"rapport-date",text:"Sélection du "+date}));
+    garde.appendChild(el("p",{class:"rapport-site imprime-seul"},[lienSite()]));
+    cadreImpression(z,date);
     if(sy.absents) garde.appendChild(el("p",{class:"rapport-absents",text:sy.absents+(sy.absents>1?" éléments ne figurent":" élément ne figure")+" plus dans le radar."}));
     corps.appendChild(garde);
     if(!nt && !nd){
@@ -2207,6 +2251,11 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
       el("p",{text:"Le lien de ce rapport est joint à la réservation : nous le lirons avant l’échange."}),
       el("div",{class:"rapport-actions"},[el("a",{class:"rapport-bouton principal rapport-rdv",href:rdv},["Réserver 15 minutes"])]),
       el("p",{class:"imprime-seul"},["Pour réserver : ", el("a",{class:"sans-adresse",href:cal||new URL("index.html#contact",location.href).href,text:cal||new URL("index.html#contact",location.href).href})]),
+      el("div",{class:"rapport-bandeau imprime-seul"},[
+        marqueOptio("#FFFFFF",40),
+        el("p",null,[el("a",{class:"rapport-bouton-impr sans-adresse",href:new URL(rdv,location.href).href,text:"Réserver 15 minutes"})]),
+        el("p",null,[lienSite()])
+      ]),
       el("p",{class:"rapport-note ecran-seul"},[el("a",{href:"radar.html",text:"Explorer le radar complet"})])
     ]);
     corps.appendChild(fin);
