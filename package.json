@@ -1,1 +1,1 @@
-{"private": true, "scripts": {"test": "node --test tests/unit/*.test.js tests/unit/*.test.mjs", "test:e2e": "node --test tests/e2e/*.test.mjs", "landing": "node scripts/landing.mjs"}, "devDependencies": {"playwright": "1.57.0"}}
+{"private": true, "scripts": {"test": "node --test tests/unit/*.test.js tests/unit/*.test.mjs", "test:e2e": "node --test tests/e2e/*.test.mjs", "landing": "node scripts/landing.mjs", "captures": "node scripts/captures.mjs"}, "devDependencies": {"playwright": "1.57.0"}}

@@ -1,12 +1,14 @@
 // Page d’accueil du radar (radar-des-dependances.html) : structure, actions, contribution,
 // compteurs lus dans data/*.json (avec repli), ancres sous l’en-tête collant, mobile, mode sombre.
 // Prérequis : python3 -m http.server 8765 à la racine du dépôt (voir outils.mjs).
-// Les captures (img/radar/*.jpg) arrivent en Tâche 3 : ces tests ne dépendent pas de leur chargement.
+// Captures (img/radar/*) : générées par scripts/captures.mjs, vérifiées par les tests « images ».
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync, statSync } from "node:fs";
+import { createRequire } from "node:module";
 import { chromium } from "playwright";
 import { BASE, lireJeton } from "./outils.mjs";
+const SELECTION = createRequire(import.meta.url)("../../js/selection.js");
 
 const PAGE = "radar-des-dependances.html";
 const lireJson = (nom) => JSON.parse(readFileSync(new URL("../../data/" + nom + ".json", import.meta.url), "utf8"));
@@ -203,4 +205,48 @@ test("contrastes AA en clair et en sombre : textes de section et boutons", async
       assert.deepEqual(errs, []);
     } finally { await contexte.close(); }
   }
+});
+
+// Captures générées par scripts/captures.mjs (npm run captures).
+test("images : chargées, dimensionnées, priorités, image de partage 1200 × 630, JPEG < 250 Ko", async () => {
+  const { contexte, page, errs } = await ouvrirAccueil();
+  try {
+    const ids = await page.$$eval("img", (l) => l.map((i) => i.id));
+    assert.ok(ids.length >= 7, JSON.stringify(ids));
+    for (const id of ids) {
+      const im = page.locator("#" + id);
+      await im.scrollIntoViewIfNeeded();
+      await page.waitForFunction((i) => { const e = document.getElementById(i); return e.complete; }, id);
+      const d = await im.evaluate((i) => ({ nw: i.naturalWidth, nh: i.naturalHeight, w: i.getAttribute("width"), h: i.getAttribute("height"),
+        alt: (i.getAttribute("alt") || "").trim(), prio: i.getAttribute("fetchpriority"), lazy: i.getAttribute("loading"), hero: !!i.closest(".hero") }));
+      assert.ok(d.nw > 0, id + " ne se charge pas");
+      assert.ok(d.alt.length > 0, id + " sans alt");
+      assert.equal(+d.w, d.nw, id + " : width ≠ largeur réelle");
+      assert.equal(+d.h, d.nh, id + " : height ≠ hauteur réelle");
+      if (d.hero) { assert.equal(d.prio, "high", id); assert.notEqual(d.lazy, "lazy", id); }
+      else assert.equal(d.lazy, "lazy", id);
+    }
+    assert.equal(await page.locator(".hero img[fetchpriority='high']").count(), 1);
+    // image de partage : en-tête PNG (IHDR) 1200 × 630
+    const png = readFileSync(new URL("../../img/radar/partage.png", import.meta.url));
+    assert.equal(png.toString("latin1", 1, 4), "PNG");
+    assert.deepEqual([png.readUInt32BE(16), png.readUInt32BE(20)], [1200, 630]);
+    const dossier = new URL("../../img/radar/", import.meta.url);
+    const jpegs = readdirSync(dossier).filter((f) => f.endsWith(".jpg"));
+    assert.ok(jpegs.length >= 7, JSON.stringify(jpegs));
+    for (const f of jpegs) {
+      const ko = statSync(new URL(f, dossier)).size / 1024;
+      assert.ok(ko < 250, f + " : " + ko.toFixed(0) + " Ko");
+    }
+    assert.deepEqual(errs, []);
+  } finally { await contexte.close(); }
+});
+
+test("images : le lien du rapport d’exemple utilise la sélection des captures", async () => {
+  const { SELECTION_EXEMPLE } = await import("../../scripts/captures.mjs");
+  const { contexte, page } = await ouvrirAccueil();
+  try {
+    const href = await page.$eval("#rapport a[href^='radar.html?rapport=1&r=']", (a) => a.getAttribute("href"));
+    assert.equal(href, SELECTION.urlRapport("radar.html", SELECTION_EXEMPLE));
+  } finally { await contexte.close(); }
 });
