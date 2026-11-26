@@ -2,6 +2,7 @@
 // Prérequis : un serveur statique sur le port 8765, lancé à la racine du dépôt :
 //   python3 -m http.server 8765
 // Usage : npm run captures  →  img/radar/*.jpg (JPEG qualité 80) et img/radar/partage.png (1200 × 630).
+//         npm run captures -- leviers partage  →  seulement les images nommées.
 import fs from "node:fs";
 import path from "node:path";
 import { createRequire } from "node:module";
@@ -21,16 +22,20 @@ export const SELECTION_EXEMPLE = {
 };
 
 // Vues du radar, fenêtre de 1280 px ; l’ancre ouvre la fiche d’un élément de la sélection d’exemple.
-// cadre : « vue » = des onglets jusqu’au bas du radar ou de la table ; « fenetre » = la fenêtre entière
-// (la fiche d’un levier est une fenêtre modale centrée).
+// cadre : « vue » = des onglets jusqu’au bas du radar ou de la table ; « fiche » = la fenêtre modale
+// de la fiche seule (sans le voile ni la page derrière), du titre jusqu’au bloc qui précède l’intitulé « jusque ».
 const VUES = [
   { nom: "radar", chemin: "radar.html#fin-des-licences-perpetuelles", bas: "#radar", cadre: "vue" },
   { nom: "technologies", chemin: "radar.html#vmware-vsphere-et-vcf", bas: "#radar", cadre: "vue" },
   { nom: "mecanismes", chemin: "radar.html#mecanismes", bas: ".tp-defil", marge: 12, cadre: "vue" },
-  { nom: "leviers", chemin: "radar.html#alternatives-de-virtualisation-matures", cadre: "fenetre" },
+  { nom: "leviers", chemin: "radar.html#alternatives-de-virtualisation-matures", cadre: "fiche", fiche: "#lev-dialog",
+    jusque: "Les mécanismes qu’il permet de contrer" },
 ];
 // La table des mécanismes (min-width 1300 px) déborde à 1280 px : on la réduit pour montrer ses quatre colonnes.
 const STYLE_VUES = ".tp{zoom:.9}";
+// Fiche capturée seule : fenêtre assez haute pour l’afficher sans défilement interne, ni voile, ni ombre, ni coins arrondis.
+const STYLE_FICHE = ".tp-dialog{max-height:none!important;border-radius:0!important;box-shadow:none!important}.tp-dialog::backdrop{background:transparent!important}";
+const HAUTEUR_FICHE = 2400;
 
 // Pages du rapport en mode impression : largeur A4 à 96 ppp, hauteur d’une page. Chaque capture
 // isole un bloc (les autres sont masqués sans changer la mise en page), comme sur sa page imprimée.
@@ -43,6 +48,10 @@ const PAGES = [
 ];
 
 const dimensions = {}; // nom → { width, height } des images produites
+
+// Images demandées en argument (aucune : toutes).
+const NOMS = process.argv.slice(2).filter((a) => !a.startsWith("-"));
+const voulu = (nom) => !NOMS.length || NOMS.includes(nom);
 
 async function serveurDisponible() {
   try { return (await fetch(BASE + "radar.html")).ok; } catch { return false; }
@@ -63,14 +72,29 @@ async function enregistrer(page, nom, clip, options = {}) {
 async function capturerVues(navigateur) {
   for (const v of VUES) {
     // contexte neuf à chaque vue : aucun filtre ni sélection hérité de la vue précédente
-    const contexte = await navigateur.newContext({ viewport: { width: 1280, height: 800 }, colorScheme: "light", deviceScaleFactor: 1, reducedMotion: "reduce" });
+    if (!voulu(v.nom)) continue;
+    const hauteur = v.cadre === "fiche" ? HAUTEUR_FICHE : 800;
+    const contexte = await navigateur.newContext({ viewport: { width: 1280, height: hauteur }, colorScheme: "light", deviceScaleFactor: 1, reducedMotion: "reduce" });
     const page = await contexte.newPage();
     await page.goto(BASE + v.chemin);
     await page.waitForSelector("#stats .stat");
-    await page.addStyleTag({ content: STYLE_VUES });
+    await page.addStyleTag({ content: STYLE_VUES + (v.cadre === "fiche" ? STYLE_FICHE : "") });
     await attendreRendu(page);
-    if (v.cadre === "fenetre") {
-      await enregistrer(page, v.nom, { x: 0, y: 0, width: 1280, height: 800 });
+    if (v.cadre === "fiche") {
+      const clip = await page.evaluate(({ fiche, jusque }) => {
+        const d = document.querySelector(fiche);
+        if (!d || !d.open) return null;
+        const b = d.getBoundingClientRect();
+        const fin = [...d.querySelectorAll("dt")].find((e) => e.textContent.trim() === jusque);
+        if (!fin) return null;
+        // l’intitulé et ce qui suit sont masqués : le bas de la capture garde la marge intérieure de la fiche
+        for (let e = fin; e; e = e.nextElementSibling) e.style.visibility = "hidden";
+        for (let e = fin.parentElement.nextElementSibling; e; e = e.nextElementSibling) e.style.visibility = "hidden";
+        const marge = parseFloat(getComputedStyle(d).paddingTop);
+        return { x: Math.round(b.left), y: Math.round(b.top), width: Math.round(b.width), height: Math.round(fin.previousElementSibling.getBoundingClientRect().bottom - b.top + marge) };
+      }, { fiche: v.fiche, jusque: v.jusque });
+      if (!clip) throw new Error("fiche introuvable ou fermée : " + v.fiche + " / " + v.jusque);
+      await enregistrer(page, v.nom, clip);
     } else {
       const haut = (await page.locator("[role=tablist]").first().boundingBox()).y - 16;
       const bas = await page.locator(v.bas).first().evaluate((e) => e.getBoundingClientRect().bottom + scrollY);
@@ -82,6 +106,7 @@ async function capturerVues(navigateur) {
 }
 
 async function capturerRapport(navigateur) {
+  if (!PAGES.some((p) => voulu(p.nom))) return;
   const contexte = await navigateur.newContext({ viewport: A4, colorScheme: "light", deviceScaleFactor: 1, reducedMotion: "reduce" });
   const page = await contexte.newPage();
   await page.emulateMedia({ media: "print", colorScheme: "light" });
@@ -91,6 +116,7 @@ async function capturerRapport(navigateur) {
   await page.addStyleTag({ content: ".rapport-impr-entete,.rapport-impr-pied{visibility:hidden!important}" });
   await attendreRendu(page);
   for (const p of PAGES) {
+    if (!voulu(p.nom)) continue;
     const y = await page.evaluate(({ selecteur, haut, marge, hauteur }) => {
       const cible = document.querySelector(selecteur);
       if (!cible) return null;
@@ -126,7 +152,7 @@ function reporterDimensions() {
 
 const LOGO = fs.readFileSync(path.join(RACINE, "index.html"), "utf8").match(/<svg width="38"[\s\S]*?<\/svg>/)[0];
 
-function pagePartage() {
+export function pagePartage() {
   const logo = LOGO.replace('width="38" height="27"', 'width="76" height="54"');
   return `<!doctype html><html lang="fr"><head><meta charset="utf-8">
 <base href="${BASE}"><link rel="stylesheet" href="fonts/fonts.css">
@@ -150,11 +176,12 @@ p{margin-top:26px;font-size:25px;line-height:1.35;color:#C9D6DC}
 <p>Repérez ce qui rend votre système d’information captif, et recevez un rapport personnalisé.</p>
 </div>
 <div class="capture" role="img" aria-label="Le radar des tendances"></div>
-<div class="pied">weareoptio.fr/radar-des-dependances</div>
+<div class="pied">www.weareoptio.fr</div>
 </body></html>`;
 }
 
 async function capturerPartage(navigateur) {
+  if (!voulu("partage")) return;
   const contexte = await navigateur.newContext({ viewport: { width: 1200, height: 630 }, colorScheme: "light", deviceScaleFactor: 1 });
   const page = await contexte.newPage();
   // la page est servie depuis le serveur local pour charger polices et capture

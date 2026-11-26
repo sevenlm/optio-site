@@ -5,7 +5,6 @@ import { fileURLToPath } from "node:url";
 
 const AXES = ["Juridique", "Financier", "Humain", "Réglementaire", "Pratiques technologiques"];
 const ANNEAUX = ["Sortie difficile", "Exigeante", "Maîtrisable", "Facilitée"];
-const FIN = " ";
 
 export function lireDonnees(racine) {
   const lire = nom => JSON.parse(fs.readFileSync(path.join(racine, "data", nom + ".json"), "utf8"));

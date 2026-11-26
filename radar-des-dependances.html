@@ -130,6 +130,7 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 .notion{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px}
 .notion p{font-size:16px;color:var(--texte-2)}
 .notion .visuel{margin-top:auto;padding-top:6px}
+.notion.leviers .visuel{margin-top:0}
 .notion svg{display:block;width:100%;height:auto;max-height:240px}
 .notion.large{grid-column:1 / -1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center}
 .notion.large .texte{display:flex;flex-direction:column;gap:12px}
@@ -153,6 +154,14 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 .carte-gen .axe-gen{font-size:14px;font-weight:600;color:var(--texte-3)}
 .anneau-gen{margin:32px 0 14px;font-size:18px}
 .anneau-gen:first-child{margin-top:0}
+/* Mobile : liste dense (titre et lien) ; le reste du texte reste dans la page */
+@media (max-width:760px){
+  #urgentes .carte-gen > p:not(.axe-gen),#exemples .carte-gen > .axe-gen{display:none}
+  #urgentes .grille-gen,#exemples .grille-gen{gap:8px}
+  #urgentes .carte-gen,#exemples .carte-gen{padding:14px 16px;gap:4px}
+  .carte-gen h3,.carte-gen h4{font-size:17px}
+  .anneau-gen{margin:24px 0 10px}
+}
 
 /* Rapport */
 .pages{margin-top:44px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
@@ -320,7 +329,7 @@ footer a:hover{color:#fff}
      "name": "Quelles données collectez-vous ?",
      "acceptedAnswer": {
       "@type": "Answer",
-      "text": "Pour consulter le radar et faire votre sélection, aucune. Votre e-mail n’est demandé qu’au moment du rapport, par un formulaire Tally, un service tiers qui reçoit aussi votre adresse IP. Il sert à vous envoyer le rapport et à vous recontacter, et il est conservé trois ans après notre dernier contact. Accès et suppression : contact@stratwise.fr."
+      "text": "Pour consulter le radar et faire votre sélection, aucune. Votre e-mail n’est demandé qu’au moment du rapport, par un formulaire Tally, un service tiers qui reçoit aussi votre adresse IP. Il sert à vous envoyer ce rapport, à vous recontacter et à vous relancer dans le cadre de cette campagne ; il est conservé trois ans après notre dernier contact. Accès et suppression : contact@stratwise.fr."
      }
     },
     {
@@ -438,7 +447,7 @@ footer a:hover{color:#fff}
 <div class="c">
 <p class="sur">Radar des dépendances numériques · gratuit</p>
 <h1 id="titre-page">Où votre système d’information est-il enfermé ?</h1>
-<p class="chapo"><strong><span class="nb" data-compteur="tendances">53</span> tendances, <span class="nb" data-compteur="technologies">279</span> technologies, <span class="nb" data-compteur="mecanismes">53</span> mécanismes d’enfermement et <span class="nb" data-compteur="leviers">37</span> leviers</strong>, sourcés et classés pour un DSI. Repérez en quelques minutes ce qui vous rend captif, et recevez un rapport personnalisé gratuit.</p>
+<p class="chapo"><strong><span class="nb" data-compteur="tendances">53</span>&nbsp;tendances, <span class="nb" data-compteur="technologies">279</span>&nbsp;technologies, <span class="nb" data-compteur="mecanismes">53</span>&nbsp;mécanismes d’enfermement et <span class="nb" data-compteur="leviers">37</span>&nbsp;leviers</strong>, sourcés et classés pour un DSI. Repérez en quelques minutes ce qui vous rend captif, et recevez un rapport personnalisé gratuit.</p>
 <div class="actions">
 <a class="btn btn-v" href="radar.html">Ouvrir le radar</a>
 <a class="btn btn-clair" href="#rapport">Voir un exemple de rapport</a>
@@ -473,7 +482,7 @@ footer a:hover{color:#fff}
 </li>
 <li class="fait">
 <p class="chiffre">95 %</p>
-<blockquote><p>« Selon l’étude ISC2 publiée en décembre 2025 (plus de 16 000 répondants), 95 % des équipes de cybersécurité ont au moins un manque de compétences et 59 % le jugent critique ou important, contre 44 % un an plus tôt »</p></blockquote>
+<blockquote><p>« Selon l’étude ISC2 publiée en décembre 2025 (plus de 16 000 répondants), 95 % des équipes de cybersécurité ont au moins un manque de compétences et 59 % le jugent critique ou important, contre 44 % un an plus tôt […] »</p></blockquote>
 <p class="source">Tendance <a href="radar.html#penurie-de-competences-cyber-face-a-nis2">Pénurie de compétences cyber face à NIS2</a> · Source : <a href="https://www.isc2.org/insights/2025/12/isc2-publishes-2025-cybersecurity-workforce-study" rel="noopener">ISC2, décembre 2025</a></p>
 </li>
 </ul>
@@ -515,22 +524,22 @@ footer a:hover{color:#fff}
 
 <article class="notion">
 <h3>Les technologies</h3>
-<p><span class="nb" data-compteur="technologies">279</span> technologies d’éditeurs et projets ouverts, de l’infrastructure aux applications du quotidien, classées selon la difficulté typique d’une sortie : difficile, exigeante, maîtrisable ou facilitée.</p>
+<p><span class="nb" data-compteur="technologies">279</span>&nbsp;technologies d’éditeurs et projets ouverts, de l’infrastructure aux applications du quotidien, classées selon la difficulté typique d’une sortie : difficile, exigeante, maîtrisable ou facilitée.</p>
 <p>Chaque fiche explique pourquoi cet anneau, et propose des alternatives toujours mieux classées.</p>
 <div class="visuel"><img id="img-technologies" class="capture" src="img/radar/technologies.jpg" width="1280" height="842" loading="lazy" alt="La vue Technologies : anneaux de sortie du rouge (difficile) au vert (facilitée) et fiche d’une technologie avec ses alternatives."></div>
 </article>
 
 <article class="notion">
 <h3>Les mécanismes d’enfermement</h3>
-<p>Comment on vous retient : <span class="nb" data-compteur="mecanismes">53</span> mécanismes rangés dans une table de 7 couches (du contrat à l’open source) sur 4 moments : à la signature, pendant l’usage, au renouvellement, au moment de partir.</p>
+<p>Comment on vous retient : <span class="nb" data-compteur="mecanismes">53</span>&nbsp;mécanismes rangés dans une table de 7 couches (du contrat à l’open source) sur 4 moments : à la signature, pendant l’usage, au renouvellement, au moment de partir.</p>
 <p>Les pièges se posent à la signature et ne se révèlent souvent qu’au renouvellement.</p>
 <div class="visuel"><img id="img-mecanismes" class="capture" src="img/radar/mecanismes.jpg" width="1280" height="955" loading="lazy" alt="La table de l’enfermement : sept couches en lignes, quatre moments en colonnes, un mécanisme par case."></div>
 </article>
 
-<article class="notion">
+<article class="notion leviers">
 <h3>Les leviers</h3>
-<p>Les parades : <span class="nb" data-compteur="leviers">37</span> leviers, chacun relié aux mécanismes qu’il contre. Pour chacun, les étapes de mise en œuvre, la façon de vérifier qu’il est vraiment en place, et ses limites.</p>
-<div class="visuel"><img id="img-leviers" class="capture" src="img/radar/leviers.jpg" width="1280" height="800" loading="lazy" alt="La vue Leviers : cartes des leviers et fiche détaillée avec mise en œuvre, vérification et limites."></div>
+<p>Les parades : <span class="nb" data-compteur="leviers">37</span>&nbsp;leviers, chacun relié aux mécanismes qu’il contre. Pour chacun, les étapes de mise en œuvre, la façon de vérifier qu’il est vraiment en place, et ses limites.</p>
+<div class="visuel"><img id="img-leviers" class="capture" src="img/radar/leviers.jpg" width="680" height="410" loading="lazy" alt="La fiche d’un levier dans le radar : son principe, sa mise en œuvre, la façon de vérifier qu’il est en place et ses limites."></div>
 </article>
 
 <article class="notion large">
@@ -541,7 +550,7 @@ footer a:hover{color:#fff}
 </div>
 <div class="visuel">
 <svg viewBox="0 0 360 230" role="img" aria-label="Matrice : réversibilité en abscisse, de sortie difficile à facilitée ; criticité estimée en ordonnée, de 1 à 5. La zone critique et difficile à quitter est en haut à gauche.">
-<rect class="svg-zone" x="40" y="10" width="140" height="96"/>
+<rect class="svg-zone" x="40" y="10" width="155" height="108"/>
 <g class="svg-trait" stroke-width="1" fill="none"><rect x="40" y="10" width="310" height="180"/><line x1="117.5" y1="10" x2="117.5" y2="190"/><line x1="195" y1="10" x2="195" y2="190"/><line x1="272.5" y1="10" x2="272.5" y2="190"/><line x1="40" y1="46" x2="350" y2="46"/><line x1="40" y1="82" x2="350" y2="82"/><line x1="40" y1="118" x2="350" y2="118"/><line x1="40" y1="154" x2="350" y2="154"/></g>
 <g class="svg-point"><circle cx="70" cy="30" r="7"/><circle cx="92" cy="64" r="7"/><circle cx="150" cy="40" r="7"/><circle cx="230" cy="100" r="7"/><circle cx="300" cy="170" r="7"/></g>
 <g font-size="12" text-anchor="middle"><text class="svg-texte" x="78.75" y="208">Difficile</text><text class="svg-texte" x="156.25" y="208">Exigeante</text><text class="svg-texte" x="233.75" y="208">Maîtrisable</text><text class="svg-texte" x="311.25" y="208">Facilitée</text><text class="svg-fort" x="195" y="226">Réversibilité →</text></g>
@@ -552,6 +561,46 @@ footer a:hover{color:#fff}
 </article>
 
 </div>
+</div>
+</section>
+
+<section id="rapport" class="sombre">
+<div class="c">
+<p class="sur">Votre rapport personnalisé</p>
+<h2>Un rapport à votre mesure, gratuit.</h2>
+<p class="chapo">À partir de votre sélection, le radar compose un rapport que vous pouvez partager avec votre direction. Il est gratuit, en échange de votre e-mail.</p>
+<div class="pages" role="group" tabindex="0" aria-label="Trois pages du rapport d’exemple">
+<figure><img id="img-rapport-garde" class="capture" src="img/radar/rapport-garde.jpg" width="794" height="1123" loading="lazy" alt="Page de garde du rapport d’exemple, aux couleurs d’Optio."><figcaption>La page de garde</figcaption></figure>
+<figure><img id="img-rapport-synthese" class="capture" src="img/radar/rapport-synthese.jpg" width="794" height="1123" loading="lazy" alt="Synthèse du rapport d’exemple : les technologies retenues réparties par anneau de sortie, puis placées sur le radar des technologies."><figcaption>La synthèse : votre radar des technologies</figcaption></figure>
+<figure><img id="img-rapport-leviers" class="capture" src="img/radar/rapport-leviers.jpg" width="794" height="1123" loading="lazy" alt="Chapitre « Leviers possibles » du rapport d’exemple : chaque levier avec sa mise en œuvre et sa vérification."><figcaption>Les leviers possibles</figcaption></figure>
+</div>
+<ul class="contenu">
+<li><strong>Une synthèse</strong> : vos tendances et vos technologies sur leurs radars, et la matrice criticité × réversibilité.</li>
+<li><strong>Les mécanismes probables</strong> : ceux qui vous retiennent vraisemblablement, d’après votre sélection.</li>
+<li><strong>Les leviers possibles</strong>, du plus au moins concerné, avec leur mise en œuvre et leur vérification.</li>
+<li><strong>Mesurer avant de décider</strong> : le coût total de la dépendance et l’indice de réversibilité, pour chiffrer votre marge de manœuvre.</li>
+<li><strong>Un PDF aux couleurs d’Optio</strong>, prêt à transmettre.</li>
+<li><strong>15 minutes pour en parler</strong>, si vous le souhaitez : quelles dépendances pèsent vraiment, et par quel levier commencer.</li>
+</ul>
+<div class="actions">
+<a class="btn btn-v" href="radar.html">Ouvrir le radar</a>
+<a class="btn btn-clair" href="radar.html?rapport=1&amp;r=2.ey1yYGEgdmR3LH5kcWR-c2phOX91ZnlqeWdkaG13fj5ldWBqfHBufndsIm59ZmpoZmRkZD1xIn51fGN9entsfHUpaHMhYmR-ZX17cSJ0cSRsYn9xYXV3Y3FkYz1sa3ZqYjlvbm53LGUsfGRhMzZoMmR5eHFmbCJ7YXFsZGBoP2RkPXlxciN_ZmhsYXcsYGBmbHBgY3Ujf31sYnt6YGtmLDc3JyF1aGR4enA5bH9kYGNiZidgPCA9IDc9IT4_Jjo.fp42gr">Ouvrir le rapport d’exemple</a>
+</div>
+<p class="chapo" style="font-size:15px">Exemple construit sur une sélection type : VMware vSphere, Oracle Database, Microsoft 365, GitHub Copilot, et trois tendances. Il ne contient aucune donnée d’entreprise.</p>
+</div>
+</section>
+
+<section id="confiance">
+<div class="c">
+<p class="sur">Pourquoi s’y fier</p>
+<h2>Des faits sourcés, pas une note des fournisseurs.</h2>
+<dl class="garanties">
+<div><dt>Une source pour chaque élément</dt><dd>Chaque tendance, technologie, mécanisme et levier renvoie à ses sources : textes officiels, autorités, études, presse spécialisée.</dd></div>
+<div><dt>Indépendant des éditeurs</dt><dd>Aucune commission d’éditeur, aucun classement payé. Les alternatives proposées comptent des projets ouverts comme des offres commerciales.</dd></div>
+<div><dt>Des classements expliqués</dt><dd>Chaque anneau est justifié sur la fiche : « pourquoi cet anneau », selon des critères publiés dans le radar.</dd></div>
+<div><dt>Mis à jour régulièrement</dt><dd>Le radar suit l’actualité des éditeurs et des régulateurs ; chaque fait porte sa date.</dd></div>
+<div><dt>Un prototype, ouvert à la critique</dt><dd>Cette première édition est à valider avec des experts de chaque domaine. Vos retours la corrigent et l’enrichissent.</dd></div>
+</dl>
 </div>
 </section>
 
@@ -611,46 +660,7 @@ footer a:hover{color:#fff}
 </ul>
 <!-- fin:exemples -->
 </div>
-<p class="suite">Les <span class="nb" data-compteur="technologies">279</span> technologies, avec la raison de leur classement : <a href="radar.html#technologies">la vue Technologies du radar</a>.</p>
-</div>
-</section>
-
-<section id="rapport" class="sombre">
-<div class="c">
-<p class="sur">Votre rapport personnalisé</p>
-<h2>Un rapport à votre mesure, gratuit.</h2>
-<p class="chapo">À partir de votre sélection, le radar compose un rapport que vous pouvez partager avec votre direction. Il est gratuit, en échange de votre e-mail.</p>
-<div class="pages" role="group" tabindex="0" aria-label="Trois pages du rapport d’exemple">
-<figure><img id="img-rapport-garde" class="capture" src="img/radar/rapport-garde.jpg" width="794" height="1123" loading="lazy" alt="Page de garde du rapport d’exemple, aux couleurs d’Optio."><figcaption>La page de garde</figcaption></figure>
-<figure><img id="img-rapport-synthese" class="capture" src="img/radar/rapport-synthese.jpg" width="794" height="1123" loading="lazy" alt="Synthèse du rapport d’exemple : les technologies retenues réparties par anneau de sortie, puis placées sur le radar des technologies."><figcaption>La synthèse : votre radar des technologies</figcaption></figure>
-<figure><img id="img-rapport-leviers" class="capture" src="img/radar/rapport-leviers.jpg" width="794" height="1123" loading="lazy" alt="Chapitre « Leviers possibles » du rapport d’exemple : chaque levier avec sa mise en œuvre et sa vérification."><figcaption>Les leviers possibles</figcaption></figure>
-</div>
-<ul class="contenu">
-<li><strong>Une synthèse</strong> : vos tendances et vos technologies sur leurs radars, et la matrice criticité × réversibilité.</li>
-<li><strong>Les mécanismes probables</strong> : ceux qui vous retiennent vraisemblablement, d’après votre sélection.</li>
-<li><strong>Les leviers possibles</strong>, du plus au moins concerné, avec leur mise en œuvre et leur vérification.</li>
-<li><strong>Mesurer avant de décider</strong> : le coût total de la dépendance et l’indice de réversibilité, pour chiffrer votre marge de manœuvre.</li>
-<li><strong>Un PDF aux couleurs d’Optio</strong>, prêt à transmettre.</li>
-<li><strong>15 minutes pour en parler</strong>, si vous le souhaitez : quelles dépendances pèsent vraiment, et par quel levier commencer.</li>
-</ul>
-<div class="actions">
-<a class="btn btn-clair" href="radar.html?rapport=1&amp;r=2.ey1yYGEgdmR3LH5kcWR-c2phOX91ZnlqeWdkaG13fj5ldWBqfHBufndsIm59ZmpoZmRkZD1xIn51fGN9entsfHUpaHMhYmR-ZX17cSJ0cSRsYn9xYXV3Y3FkYz1sa3ZqYjlvbm53LGUsfGRhMzZoMmR5eHFmbCJ7YXFsZGBoP2RkPXlxciN_ZmhsYXcsYGBmbHBgY3Ujf31sYnt6YGtmLDc3JyF1aGR4enA5bH9kYGNiZidgPCA9IDc9IT4_Jjo.fp42gr">Ouvrir le rapport d’exemple</a>
-</div>
-<p class="chapo" style="font-size:15px">Exemple construit sur une sélection type : VMware vSphere, Oracle Database, Microsoft 365, GitHub Copilot, et trois tendances. Il ne contient aucune donnée d’entreprise.</p>
-</div>
-</section>
-
-<section id="confiance">
-<div class="c">
-<p class="sur">Pourquoi s’y fier</p>
-<h2>Des faits sourcés, pas une note des fournisseurs.</h2>
-<dl class="garanties">
-<div><dt>Une source pour chaque élément</dt><dd>Chaque tendance, technologie, mécanisme et levier renvoie à ses sources : textes officiels, autorités, études, presse spécialisée.</dd></div>
-<div><dt>Indépendant des éditeurs</dt><dd>Aucune commission d’éditeur, aucun classement payé. Les alternatives proposées comptent des projets ouverts comme des offres commerciales.</dd></div>
-<div><dt>Des classements expliqués</dt><dd>Chaque anneau est justifié sur la fiche : « pourquoi cet anneau », selon des critères publiés dans le radar.</dd></div>
-<div><dt>Mis à jour régulièrement</dt><dd>Le radar suit l’actualité des éditeurs et des régulateurs ; chaque fait porte sa date.</dd></div>
-<div><dt>Un prototype, ouvert à la critique</dt><dd>Cette première édition est à valider avec des experts de chaque domaine. Vos retours la corrigent et l’enrichissent.</dd></div>
-</dl>
+<p class="suite">Les <span class="nb" data-compteur="technologies">279</span>&nbsp;technologies, avec la raison de leur classement : <a href="radar.html#technologies">la vue Technologies du radar</a>.</p>
 </div>
 </section>
 
@@ -674,7 +684,7 @@ footer a:hover{color:#fff}
 <h2>Ce que vous voulez savoir avant de commencer.</h2>
 <div class="faq">
 <details><summary>Le radar et le rapport sont-ils gratuits ?</summary><p>Oui. Le radar se consulte librement, sans compte. Le rapport personnalisé est gratuit, en échange de votre e-mail.</p></details>
-<details><summary>Quelles données collectez-vous ?</summary><p>Pour consulter le radar et faire votre sélection, aucune. Votre e-mail n’est demandé qu’au moment du rapport, par un formulaire Tally, un service tiers qui reçoit aussi votre adresse IP. Il sert à vous envoyer le rapport et à vous recontacter, et il est conservé trois ans après notre dernier contact. Accès et suppression : <a href="mailto:contact@stratwise.fr">contact@stratwise.fr</a>.</p></details>
+<details><summary>Quelles données collectez-vous ?</summary><p>Pour consulter le radar et faire votre sélection, aucune. Votre e-mail n’est demandé qu’au moment du rapport, par un formulaire Tally, un service tiers qui reçoit aussi votre adresse IP. Il sert à vous envoyer ce rapport, à vous recontacter et à vous relancer dans le cadre de cette campagne ; il est conservé trois ans après notre dernier contact. Accès et suppression : <a href="mailto:contact@stratwise.fr">contact@stratwise.fr</a>.</p></details>
 <details><summary>Combien de temps faut-il ?</summary><p>Quelques minutes suffisent : retenez les tendances et les technologies qui vous concernent, puis demandez le rapport. Vous pouvez aussi revenir compléter votre sélection plus tard.</p></details>
 <details><summary>Que devient ma sélection ?</summary><p>Elle reste dans votre navigateur, qui la garde d’une visite à l’autre. Elle ne nous est transmise que si vous demandez le rapport.</p></details>
 <details><summary>Qui est derrière le radar ?</summary><p>Optio, une marque de Stratwise. Optio aide les organisations à mesurer leurs dépendances numériques et à garder la liberté de choisir leurs technologies. <a href="index.html">Découvrir Optio</a>.</p></details>

@@ -89,6 +89,10 @@ test("json-ld : JSON valide, types attendus, FAQ et glossaire fidèles à la pag
       assert.equal(q.acceptedAnswer["@type"], "Answer");
       assert.equal(net(q.acceptedAnswer.text), net(visibles[i].r));
     });
+    // confidentialité : la finalité de l’e-mail, mot pour mot comme sous le bouton du radar
+    const finalite = lire("radar.html").match(/Votre e-mail sert à ([^.]+)\./)[1];
+    const conf = faq.find((q) => /données/.test(q.name));
+    assert.ok(net(conf.acceptedAnswer.text).includes("sert à " + finalite), "FAQ : finalité absente : " + finalite);
     // glossaire : les cinq notions de #comprendre
     const notions = await page.$$eval("#comprendre h3", (l) => l.map((h) => h.textContent));
     const termes = deType(objets, "DefinedTermSet")[0].hasDefinedTerm;

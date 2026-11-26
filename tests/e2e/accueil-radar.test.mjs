@@ -62,7 +62,7 @@ test("structure : un h1, sections dans l’ordre, notions de « Comprendre le ra
   try {
     const h1 = await page.$$eval("h1", (l) => l.map((h) => h.textContent.trim()));
     assert.deepEqual(h1, ["Où votre système d’information est-il enfermé ?"]);
-    const ordre = ["constat", "fonctionnement", "comprendre", "urgentes", "exemples", "rapport", "confiance", "contribuer", "faq"];
+    const ordre = ["constat", "fonctionnement", "comprendre", "rapport", "confiance", "urgentes", "exemples", "contribuer", "faq"];
     const trouves = await page.$$eval("section[id]", (l) => l.map((s) => s.id));
     assert.deepEqual(trouves.filter((id) => ordre.includes(id)), ordre);
     const titres = await page.$$eval("#comprendre h3, #comprendre dt", (l) => l.map((x) => x.textContent.toLowerCase()));
@@ -72,7 +72,7 @@ test("structure : un h1, sections dans l’ordre, notions de « Comprendre le ra
     // repères du contenu généré (Tâche 2), dans leurs sections
     const html = await page.content();
     assert.match(html, /<section[^>]*id="urgentes"[\s\S]*<!-- debut:urgentes -->[\s\S]*<!-- fin:urgentes -->[\s\S]*<section[^>]*id="exemples"/);
-    assert.match(html, /<section[^>]*id="exemples"[\s\S]*<!-- debut:exemples -->[\s\S]*<!-- fin:exemples -->[\s\S]*<section[^>]*id="rapport"/);
+    assert.match(html, /<section[^>]*id="exemples"[\s\S]*<!-- debut:exemples -->[\s\S]*<!-- fin:exemples -->[\s\S]*<section[^>]*id="contribuer"/);
     // emplacements d’images (Tâche 3)
     for (const id of ["img-radar", "img-technologies", "img-mecanismes", "img-leviers", "img-rapport-garde", "img-rapport-synthese", "img-rapport-leviers"]) {
       const im = await page.$eval("#" + id, (i) => ({ tag: i.tagName, src: i.getAttribute("src"), w: i.getAttribute("width"), h: i.getAttribute("height"), alt: i.getAttribute("alt") }));
@@ -88,15 +88,19 @@ test("actions : « Ouvrir le radar » partout vers radar.html, exemple de rappor
   const { contexte, page, errs } = await ouvrirAccueil();
   try {
     const liens = await page.$$eval("a", (l) => l.filter((a) => a.textContent.trim() === "Ouvrir le radar")
-      .map((a) => ({ href: a.getAttribute("href"), zone: a.closest("header") ? "entete" : a.closest(".hero") ? "accroche" : a.closest(".final") ? "final" : "autre" })));
-    assert.ok(liens.length >= 3, JSON.stringify(liens));
+      .map((a) => ({ href: a.getAttribute("href"), zone: a.closest("header") ? "entete" : a.closest(".hero") ? "accroche" : a.closest(".final") ? "final" : a.closest("#rapport") ? "rapport" : "autre" })));
+    assert.ok(liens.length >= 4, JSON.stringify(liens));
     for (const l of liens) assert.equal(l.href, "radar.html");
-    for (const zone of ["entete", "accroche", "final"]) assert.ok(liens.some((l) => l.zone === zone), "« Ouvrir le radar » absent : " + zone);
+    for (const zone of ["entete", "accroche", "rapport", "final"]) assert.ok(liens.some((l) => l.zone === zone), "« Ouvrir le radar » absent : " + zone);
     const exemple = await page.$$eval("a", (l) => l.filter((a) => a.textContent.trim() === "Voir un exemple de rapport").map((a) => a.getAttribute("href")));
     assert.ok(exemple.length >= 1);
     for (const h of exemple) assert.equal(h, "#rapport");
     const rapport = await page.$$eval("#rapport a[href^='radar.html?rapport=1&r=']", (l) => l.map((a) => a.getAttribute("href")));
     assert.equal(rapport.length, 1);
+    // dans #rapport : bouton principal « Ouvrir le radar », puis le rapport d’exemple
+    const boutons = await page.$$eval("#rapport .actions a", (l) => l.map((a) => [a.textContent.trim(), a.className]));
+    assert.deepEqual(boutons.map((b) => b[0]), ["Ouvrir le radar", "Ouvrir le rapport d’exemple"]);
+    assert.match(boutons[0][1], /\bbtn-v\b/);
     const sel = lireJeton(new URL(rapport[0], BASE).searchParams.get("r"));
     assert.deepEqual(sel, {
       tendances: ["fin-des-licences-perpetuelles", "dependance-cognitive-a-lassistant-ia", "penurie-de-competences-cyber-face-a-nis2"],
@@ -159,6 +163,58 @@ test("compteurs : données injoignables,valeurs écrites dans la page et aucune 
   try {
     assert.deepEqual(await lireCompteurs(page), ecrits);
     assert.deepEqual(errs, []);
+  } finally { await contexte.close(); }
+});
+
+test("compteurs : espace insécable entre le nombre et son nom (pas de « 53 » seul en fin de ligne)", async () => {
+  const { contexte, page, errs } = await ouvrirAccueil();
+  try {
+    const suites = await page.$$eval("[data-compteur]", (l) => l.map((x) => [x.dataset.compteur, x.nextSibling && x.nextSibling.nodeType === 3 ? x.nextSibling.textContent.slice(0, 12) : null]));
+    assert.ok(suites.length >= 4);
+    for (const [k, t] of suites) assert.match(t || "", /^[\u00A0\u202F]\S/, k + " suivi de " + JSON.stringify(t));
+    assert.deepEqual(errs, []);
+  } finally { await contexte.close(); }
+});
+
+test("constat : chaque citation se termine par une ponctuation ou « […] » avant le guillemet", async () => {
+  const { contexte, page } = await ouvrirAccueil();
+  try {
+    const cits = await page.$$eval("#constat blockquote p", (l) => l.map((p) => p.textContent.trim()));
+    assert.equal(cits.length, 3);
+    for (const c of cits) assert.match(c, /(?:[.!?…]|\[…\]) »$/, c);
+  } finally { await contexte.close(); }
+});
+
+test("matrice : la zone en surbrillance suit les lignes de la grille", async () => {
+  const { contexte, page } = await ouvrirAccueil();
+  try {
+    const m = await page.$eval("#comprendre .notion.large svg", (svg) => {
+      const z = svg.querySelector(".svg-zone"), cadre = svg.querySelector(".svg-trait rect");
+      const n = (e, a) => +e.getAttribute(a);
+      const xs = [n(cadre, "x"), n(cadre, "x") + n(cadre, "width"), ...[...svg.querySelectorAll(".svg-trait line")].filter((l) => n(l, "x1") === n(l, "x2")).map((l) => n(l, "x1"))];
+      const ys = [n(cadre, "y"), n(cadre, "y") + n(cadre, "height"), ...[...svg.querySelectorAll(".svg-trait line")].filter((l) => n(l, "y1") === n(l, "y2")).map((l) => n(l, "y1"))];
+      return { x: n(z, "x"), y: n(z, "y"), x2: n(z, "x") + n(z, "width"), y2: n(z, "y") + n(z, "height"), xs, ys };
+    });
+    for (const k of ["x", "x2"]) assert.ok(m.xs.includes(m[k]), k + "=" + m[k] + " hors grille " + JSON.stringify(m.xs));
+    for (const k of ["y", "y2"]) assert.ok(m.ys.includes(m[k]), k + "=" + m[k] + " hors grille " + JSON.stringify(m.ys));
+  } finally { await contexte.close(); }
+});
+
+test("mobile 390 px : tendances urgentes et exemples en liste dense, texte gardé dans la page", async () => {
+  const masques = ["#urgentes .carte-gen > p:not(.axe-gen)", "#exemples .carte-gen > .axe-gen"];
+  const etat = (page) => page.evaluate((sels) => sels.map((s) => [...document.querySelectorAll(s)].map((e) => [getComputedStyle(e).display, e.textContent.trim().length])), masques);
+  let { contexte, page } = await ouvrirAccueil();
+  try {
+    for (const liste of await etat(page)) {
+      assert.ok(liste.length >= 9, JSON.stringify(liste));
+      for (const [d] of liste) assert.notEqual(d, "none", "masqué sur ordinateur");
+    }
+  } finally { await contexte.close(); }
+  ({ contexte, page } = await ouvrirAccueil({ viewport: { width: 390, height: 844 } }));
+  try {
+    for (const liste of await etat(page)) for (const [d, n] of liste) { assert.equal(d, "none"); assert.ok(n > 0, "texte retiré du HTML"); }
+    // titres et liens toujours visibles
+    for (const s of ["#urgentes .carte-gen h3 a", "#exemples .carte-gen h4 a"]) assert.ok(await page.locator(s).first().isVisible(), s);
   } finally { await contexte.close(); }
 });
 
@@ -233,6 +289,14 @@ test("images : chargées, dimensionnées, priorités, image de partage 1200 × 6
     const png = readFileSync(new URL("../../img/radar/partage.png", import.meta.url));
     assert.equal(png.toString("latin1", 1, 4), "PNG");
     assert.deepEqual([png.readUInt32BE(16), png.readUInt32BE(20)], [1200, 630]);
+    // capture des leviers : la fiche seule, sans le voile sombre de la fenêtre modale (coins clairs)
+    const coins = await page.evaluate(async () => {
+      const i = new Image(); i.src = "img/radar/leviers.jpg"; await i.decode();
+      const c = document.createElement("canvas"); c.width = i.naturalWidth; c.height = i.naturalHeight;
+      const x = c.getContext("2d"); x.drawImage(i, 0, 0);
+      return [[2, 2], [c.width - 3, 2], [2, c.height - 3], [c.width - 3, c.height - 3]].map(([a, b]) => { const d = x.getImageData(a, b, 1, 1).data; return (d[0] + d[1] + d[2]) / 3; });
+    });
+    for (const l of coins) assert.ok(l > 200, "leviers.jpg : coin sombre (voile ?) " + JSON.stringify(coins));
     const dossier = new URL("../../img/radar/", import.meta.url);
     const jpegs = readdirSync(dossier).filter((f) => f.endsWith(".jpg"));
     assert.ok(jpegs.length >= 7, JSON.stringify(jpegs));
@@ -245,7 +309,11 @@ test("images : chargées, dimensionnées, priorités, image de partage 1200 × 6
 });
 
 test("images : le lien du rapport d’exemple utilise la sélection des captures", async () => {
-  const { SELECTION_EXEMPLE } = await import("../../scripts/captures.mjs");
+  const { SELECTION_EXEMPLE, pagePartage } = await import("../../scripts/captures.mjs");
+  // image de partage : l’adresse du site, sans chemin
+  const partage = pagePartage();
+  assert.match(partage, />www\.weareoptio\.fr</);
+  assert.doesNotMatch(partage, /weareoptio\.fr\//);
   const { contexte, page } = await ouvrirAccueil();
   try {
     const href = await page.$eval("#rapport a[href^='radar.html?rapport=1&r=']", (a) => a.getAttribute("href"));
