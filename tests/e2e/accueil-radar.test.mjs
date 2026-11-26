@@ -163,7 +163,9 @@ test("compteurs : données injoignables,valeurs écrites dans la page et aucune 
 });
 
 test("ancres : le titre de la section atteinte reste sous l’en-tête collant", async () => {
-  const { contexte, page, errs } = await ouvrirAccueil();
+  // défilement instantané (prefers-reduced-motion) : on vérifie la position d’arrivée, pas
+  // l’animation, qui dépasse le délai quand toute la suite tourne en parallèle
+  const { contexte, page, errs } = await ouvrirAccueil({ reducedMotion: "reduce" });
   try {
     for (const id of ["faq", "rapport", "comprendre"]) {
       await page.evaluate((h) => { location.hash = h; }, "#" + id);

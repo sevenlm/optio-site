@@ -3,8 +3,10 @@
 *
 !index.html
 !radar.html
+!radar-des-dependances.html
 !robots.txt
 !sitemap.xml
 !fonts/
+!img/
 !js/
 !data/*.json
