@@ -146,7 +146,7 @@ test("matrice : position et criticité", async () => {
     const leg = await m.locator("ol.rapport-legende").innerText();
     assert.ok(leg.includes("OpenStack") && /VMware/.test(leg));
     const cap = await m.locator("figcaption").innerText();
-    assert.ok(cap.startsWith("Positionnement indicatif, estimé à partir du radar — à affiner avec vous en rendez-vous"), cap);
+    assert.ok(cap.startsWith("Positionnement indicatif, estimé à partir du radar et à affiner avec vous en rendez-vous"), cap);
     assert.ok(cap.includes("Criticité estimée : urgence des tendances du radar qui citent la technologie (forte 3, élevée 2, moyenne 1, faible 0), ramenée de 1 à 5."), cap);
     // après les radars
     assert.equal(await p.evaluate(() => {
