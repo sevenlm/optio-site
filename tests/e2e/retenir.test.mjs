@@ -34,7 +34,7 @@ test("retenir depuis la fiche", async () => {
   assert.match(await bouton.innerText(), /Retenir/);
   await bouton.click();
   assert.equal(await bouton.getAttribute("aria-pressed"), "true");
-  assert.match(await bouton.innerText(), /Retenu/);
+  assert.match(await bouton.innerText(), /★ Retenir/);
   assert.equal((await texteCompteur(p)).trim(), "Mon radar · 1");
   assert.deepEqual(errs, []);
   await fermer();
@@ -213,10 +213,11 @@ test("tout retenir : la liste filtrée entre d’un coup dans Mon radar, puis en
     await p.waitForFunction(() => document.querySelectorAll(".ld-ligne").length > 1 && document.querySelectorAll(".ld-ligne").length < 20);
     const n = await p.locator(".ld-ligne").count();
     const tout = p.locator(".ld-tout");
-    assert.equal(await tout.getAttribute("aria-pressed"), "false");
+    assert.equal(await tout.getAttribute("aria-pressed"), null);
+    assert.doesNotMatch(await tout.getAttribute("class"), /\bactif\b/);
     assert.match(await tout.innerText(), new RegExp("Tout retenir \\(" + n + "\\)"));
     await tout.click();
-    assert.equal(await tout.getAttribute("aria-pressed"), "true");
+    assert.match(await tout.getAttribute("class"), /\bactif\b/);
     assert.match(await tout.innerText(), new RegExp("Tout retirer \\(" + n + "\\)"));
     assert.deepEqual(await p.locator(".ld-etoile").evaluateAll((l) => l.map((b) => b.getAttribute("aria-pressed"))), Array(n).fill("true"));
     const avecHors = (await p.evaluate((c) => JSON.parse(localStorage.getItem(c)).tendances, CLE));
@@ -224,13 +225,13 @@ test("tout retenir : la liste filtrée entre d’un coup dans Mon radar, puis en
     assert.equal((await texteCompteur(p)).trim(), "Mon radar · " + (avecHors.length));
     // retirer : seuls les éléments listés sortent
     await tout.click();
-    assert.equal(await tout.getAttribute("aria-pressed"), "false");
+    assert.doesNotMatch(await tout.getAttribute("class"), /\bactif\b/);
     assert.deepEqual(await p.evaluate((c) => JSON.parse(localStorage.getItem(c)).tendances, CLE), [horsFiltre]);
     assert.equal((await texteCompteur(p)).trim(), "Mon radar · 1");
     // un retrait individuel repasse le bouton en « Tout retenir »
     await tout.click();
     await p.locator(".ld-etoile").first().click();
-    assert.equal(await tout.getAttribute("aria-pressed"), "false");
+    assert.doesNotMatch(await tout.getAttribute("class"), /\bactif\b/);
     assert.deepEqual(errs, []);
   } finally { await fermer(); }
 });
