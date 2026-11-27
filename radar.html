@@ -16,7 +16,7 @@
 <style>
 :root{
   color-scheme: light;
-  --bg:#F4F7F8; --surface:#FFFFFF; --surface-2:#EEF3F5; --ink:#0B2A3C; --text-2:#41576A; --text-3:#5F7280; --line:#DCE4E8; --line-2:#C9D5DB;
+  --bg:#F4F7F8; --surface:#FFFFFF; --surface-2:#EEF3F5; --ink:#0B2A3C; --text-2:#41576A; --text-3:#586B79; --line:#DCE4E8; --line-2:#C9D5DB;
   --c-risque:#0B2A3C; --on-risque:#FFFFFF; --c-levier:#00A37A; --on-levier:#062A1F;
   --c-p:#0B2A3C; --on-p:#FFFFFF; --c-e:#E0AE1B; --on-e:#2B2100; --c-o:#00A37A; --on-o:#062A1F;
   --q0:#0B2A3C; --q1:#00A37A; --q2:#E0AE1B; --q3:#3E7CB1; --q4:#C4572F;
@@ -72,7 +72,7 @@ a{color:var(--signal-text)}
 button,input{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px;border-radius:6px}
 .entete :focus-visible,.cta-rapport :focus-visible,.astuce :focus-visible{outline-color:#2BD49B}
-html{scroll-padding-top:96px}
+html{scroll-padding-top:calc(var(--h-bande,84px) + 12px)}
 .skip{position:absolute;left:12px;top:-100px;z-index:30;background:var(--c-o);color:var(--on-o);padding:12px 16px;border-radius:8px;font-weight:600;text-decoration:none}
 .skip:focus{top:12px}
 .entete{background:var(--header);color:var(--on-header);border-bottom:1px solid var(--header-line)}
@@ -145,7 +145,7 @@ html{scroll-padding-top:96px}
 .legende{display:flex;flex-wrap:wrap;gap:8px 18px;padding:6px 6px 8px;font-size:13px;color:var(--text-2);border-top:1px solid var(--line);margin-top:6px}
 .legende span{display:inline-flex;align-items:center;gap:8px}
 .legende i{width:12px;height:12px;border-radius:50%;display:inline-block;box-shadow:0 0 0 2px var(--surface),0 0 0 3px var(--line-2)}
-.fiche{position:sticky;top:20px;overflow:hidden}
+.fiche{position:sticky;top:calc(var(--h-bande,0px) + 12px);overflow:hidden}
 .fiche-bande{height:6px}
 .fiche-corps{padding:24px 26px 26px;display:flex;flex-direction:column;gap:16px}
 .fiche.mode-liste{display:flex;flex-direction:column}
@@ -288,7 +288,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .tp-moment{font-size:12.5px;font-weight:600;color:var(--text-2);text-align:center;padding:8px 4px;border-bottom:2px solid var(--line-2);cursor:default}
 .tp-couche{display:flex;align-items:center;padding:8px 12px;border-radius:10px;font-weight:600;font-size:13px;line-height:1.25;cursor:default}
 .tp-cellule{display:flex;flex-wrap:nowrap;gap:6px;align-items:flex-start;padding:5px;border-radius:10px;background:var(--surface-2);min-height:92px}
-.tuile{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;flex:none;width:86px;height:80px;padding:6px 7px 7px;border:none;border-radius:10px;text-align:left;cursor:pointer;transition:opacity .15s,transform .15s;box-shadow:inset 0 0 0 1px rgba(11,42,60,.08)}
+.tuile{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;flex:none;width:86px;height:80px;padding:6px 7px 7px;border:none;border-radius:10px;text-align:left;cursor:pointer;transition:opacity .15s,transform .15s;box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 10%,transparent)}
 .tuile:hover{transform:translateY(-2px)}
 .tuile.pale{opacity:.22}
 .tp-vide{align-self:center;max-width:140px;font-size:12px;line-height:1.35;font-style:italic;color:var(--text-3)}
@@ -336,7 +336,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .lv-carte .lv-n{font-size:12.5px;color:var(--text-3)}
 .lv-carte .lv-n.vide{font-style:italic}
 .lv-chips{display:flex;flex-wrap:wrap;gap:4px}
-.lv-chip{font-family:var(--mono,ui-monospace,monospace);font-size:11.5px;font-weight:700;padding:2px 6px;border-radius:6px}
+.lv-chip{font-family:var(--mesure);font-size:11.5px;font-weight:700;padding:2px 6px;border-radius:6px}
 .lv-vide{font-size:14px;color:var(--text-3);font-style:italic}
 .tp-lien{font-weight:600;font-size:14px}
 .tp-aide{font-size:14px;color:var(--text-2)}
@@ -409,7 +409,8 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .option[aria-selected="true"]{color:var(--ink)}
 .option .coche{width:16px;height:16px;fill:none;stroke:var(--pc);stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round;opacity:0;flex:none}
 .option[aria-selected="true"] .coche{opacity:1}
-.option.vide{opacity:.45}
+.option.vide{color:var(--text-3);font-weight:500}
+.option.vide .dot,.option.vide .ic-rond{opacity:.45}
 .option .dot{margin:0 8px}
 .menu.ouvert .option{animation:entre .32s cubic-bezier(.2,.8,.25,1) backwards}
 #etape-2{max-width:0;opacity:0;visibility:hidden;overflow:hidden;transform:translateX(-14px);margin-left:-14px;transition:max-width .55s cubic-bezier(.2,.8,.25,1),opacity .35s,transform .45s,margin .45s,visibility 0s .55s}
@@ -463,8 +464,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 
 /* Listes : axe en avant, le reste grisé */
 .quadrant{transition:opacity .35s,filter .35s,box-shadow .35s}
-.quadrant.eteint{opacity:.42;filter:grayscale(.9)}
-.quadrant.eteint:hover{opacity:.8;filter:none}
+/* axe non retenu : grisé sans baisser le contraste du texte */
+.quadrant.eteint{filter:grayscale(1);background:var(--bg);border-top-color:var(--line-2)}
+.quadrant.eteint:hover{filter:none}
 .quadrant.focus{order:-1;box-shadow:0 0 0 2px var(--qc),0 22px 44px -26px rgba(6,25,42,.55)}
 .quadrant.pop{animation:pop .55s cubic-bezier(.2,.8,.25,1)}
 @keyframes pop{from{transform:translateY(10px) scale(.96);opacity:.3}to{transform:none;opacity:1}}
@@ -475,7 +477,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .tag-axe .ic{width:15px;height:15px;stroke:var(--qc)}
 .titre-axe small{font-family:var(--mesure);font-size:12px;color:var(--text-3);font-weight:500}
 .autres{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin-top:12px;padding-top:10px;border-top:1px dashed var(--line-2);font-size:12px;color:var(--text-3)}
-.autres button{border:1px dashed var(--lt);background:none;color:var(--lt);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer;opacity:.75;transition:opacity .2s,background .2s}
+.autres button{border:1px dashed var(--lt);background:none;color:var(--lt);border-radius:999px;padding:3px 10px;min-height:28px;font-size:12px;font-weight:600;cursor:pointer;opacity:.75;transition:opacity .2s,background .2s}
 .autres button:hover{opacity:1;background:var(--la)}
 @media (prefers-reduced-motion: reduce){
   .secteur,.part,.puce,.quadrant,.blip{transition:none}
@@ -565,8 +567,16 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
 .cta-rapport button:hover{transform:translateY(-2px)}
 .cta-rapport a{color:var(--on-header);text-underline-offset:3px}
 @media print{.astuce,.cta-rapport,.fiche-cta{display:none !important}}
+/* Écrans tactiles : cibles d’au moins 44 px */
+@media (pointer:coarse),(max-width:860px){
+  .retenir,.raz,.volet-retirer,.ld-tout,.retour-liste,.radar-lie-tete .retour,.autres button,.plus,.ld-plus,.volet-sugg{min-height:44px}
+  .astuce .astuce-fermer,.ld-etoile{width:44px;height:44px}
+  .seg button{min-height:44px}
+}
 @media (prefers-reduced-motion: reduce){.mon-radar,.ld-etoile{transition:none}.mon-radar.bump,.volet,.volet-fond{animation:none}}
-@media (prefers-reduced-motion: reduce){.astuce{animation:none}.cta-rapport button{transition:none}}
+@media (prefers-reduced-motion: reduce){.astuce{animation:none}.cta-rapport button{transition:none}
+  :is(.alt-radar,.lien-tendance,.voir-radar,.voir-radar span,.raz,.tirette,.ld-plus,.puce,.mon-radar,.cta-rapport button,.picto-axe,.ld-etoile):is(:hover,:focus-visible,:active){transform:none}
+  .puce:hover .ic-rond,.puce:hover .dot,.voir-radar:hover span{transform:none}}
 
 /* ===== Rapport personnalisé (radar.html?rapport=1) : vue autonome, sans l’interface du radar ===== */
 .mode-rapport .entete h1,.mode-rapport .decouvrir,.mode-rapport #intro,.mode-rapport .stats,.mode-rapport .vues,.mode-rapport #bande,.mode-rapport #contenu,.mode-rapport #volet,.mode-rapport #volet-fond{display:none !important}
@@ -1746,7 +1756,7 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(lien && lien.techs.indexOf(y)<0) lien=null; // l’alternative sort de la surbrillance : on la retire
     if(!visible(y)){ fAxe=String(y.q); fAnneau="tous"; fType="tous"; q=""; document.getElementById("recherche").value=""; filtres(); sel=y.id; rafraichir("axe"); }
     choisir(y.id,true);
-    var f=document.getElementById("fiche"); if(f.scrollIntoView && f.getBoundingClientRect().top<0) f.scrollIntoView({behavior:"smooth",block:"start"});
+    var f=document.getElementById("fiche"); if(f.scrollIntoView && f.getBoundingClientRect().top<0) f.scrollIntoView({behavior:doux(),block:"start"});
   }
   // recherche : sélectionne le résultat le plus pertinent (nom exact, début du nom, début d’un mot, nom contenant, éditeur, reste), puis l’anneau le plus exposé
   function meilleur(){
@@ -1758,11 +1768,12 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     });
     if(best && best.id!==sel) choisir(best.id,false);
   }
+  function doux(){ return window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"; }
   function choisir(id,maj){
     sel=id; if(maj){ try{ history.replaceState(null,"","#"+id); }catch(e){} }
     majRadar(); fiche(); listes();
     if(maj && vue==="tendances") setLie(!!lien);
-    if(maj && window.innerWidth<1000){ var f=document.getElementById("fiche"); if(f.scrollIntoView) f.scrollIntoView({behavior:"smooth",block:"start"}); }
+    if(maj && window.innerWidth<1000){ var f=document.getElementById("fiche"); if(f.scrollIntoView) f.scrollIntoView({behavior:doux(),block:"start"}); }
   }
   ORDRE.forEach(function(n){ document.getElementById("v-"+n).addEventListener("click",function(){ glisser(n,function(){ changerVue(n); try{ history.replaceState(null,"","#"+n); }catch(e){} }); }); });
   document.querySelector(".vues").addEventListener("keydown",function(e){ if(e.key==="ArrowRight"||e.key==="ArrowLeft"){ var i=ORDRE.indexOf(vue), n=ORDRE[(i+(e.key==="ArrowRight"?1:ORDRE.length-1))%ORDRE.length]; glisser(n,function(){ changerVue(n); }); document.getElementById("v-"+n).focus(); } });
@@ -1999,6 +2010,9 @@ html[data-sens="precedent"]::view-transition-new(contenu),html[data-sens="preced
     if(document.querySelector("dialog[open]") || (document.activeElement && document.activeElement.id==="recherche")) return;
     toutEffacer();
   });
+  // hauteur de la barre de filtres collante : la fiche collante et les ancres se placent dessous
+  (function(){ var bande=document.getElementById("bande"); function maj(){ document.documentElement.style.setProperty("--h-bande",bande.offsetHeight+"px"); }
+    maj(); if(window.ResizeObserver) new ResizeObserver(maj).observe(bande); else window.addEventListener("resize",maj); })();
   // ombre sous la barre de filtres quand elle colle en haut
   (function(){ var bande=document.getElementById("bande"), tic=false;
     function maj(){ tic=false; bande.classList.toggle("colle",bande.getBoundingClientRect().top<=0 && window.scrollY>0); }
