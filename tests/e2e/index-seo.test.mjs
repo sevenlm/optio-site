@@ -109,3 +109,8 @@ test("sections : pas de défilement horizontal à 390 px", async () => {
   assert.ok(await p.evaluate(() => document.documentElement.scrollWidth) <= 390);
   await ctx.close();
 });
+
+test("frise LIBRE : lettres vertes lisibles (contraste ≥ 3, grand texte)", async () => {
+  const r = await page.$$eval(".libre h3 b", (l, f) => l.map((x) => new Function("return " + f)()(x)), contrasteDe.toString());
+  for (const c of r) assert.ok(c >= 3, "contraste " + c.toFixed(2));
+});
