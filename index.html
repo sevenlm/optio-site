@@ -60,9 +60,15 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .btn-clair{border-color:#fff;color:#fff}
 .btn-clair:hover{background:#fff;color:var(--encre)}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.chiffres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:24px;margin-top:64px;padding-top:28px;border-top:1px solid #1E4255}
-.chiffres strong{display:block;font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:34px;line-height:1;color:#fff}
-.chiffres span{display:block;margin-top:8px;font-size:15px;color:#AFC0C9}
+.hero-grille{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:56px;align-items:center}
+@media (max-width:900px){.hero-grille{grid-template-columns:1fr;gap:40px}}
+.panneau{background:#0f3347;border:1px solid #22465b;font-size:14px}
+.panneau-tete{margin:0!important;padding:12px 18px;border-bottom:1px solid #22465b;font-size:13px!important;color:#a9bcc8!important}
+.panneau .ligne{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 18px;border-bottom:1px solid #22465b}
+.panneau .ligne span{color:#c6d4dc}
+.panneau .ligne strong{font-family:var(--mesure);font-weight:500;font-size:22px;color:#fff;white-space:nowrap}
+.panneau .echelle{margin:14px 18px 16px;color:#c6d4dc;border-color:#22465b}
+.sources-hero{margin-top:56px!important;padding-top:18px;border-top:1px solid #1E4255;font-size:14px!important;color:#a9bcc8!important;max-width:none!important}
 .sombre{background:var(--encre);color:#fff}
 .sombre .sur{color:#2BD49B}
 .sombre .chapo{color:#C9D6DC}
@@ -312,18 +318,18 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <section class="hero">
 <div class="c">
+<div class="hero-grille">
+<div class="hero-texte">
 <h1>Gardez la liberté de <em>choisir vos technologies</em>.</h1>
 <p>Quitter une technologie est toujours possible. Reste à savoir combien de temps cela prendra et combien cela coûtera. Nous le chiffrons avec vous, puis nous le vérifions sur un périmètre réel.</p>
 <div class="actions">
 <a class="btn btn-v" href="#exemples">Voir des exemples chiffrés</a>
 <a class="btn btn-clair" href="#offres">Voir nos offres</a>
 </div>
-<div class="chiffres">
-<div><strong>+76 %</strong><span>En cinq ans, si la hausse de 12 % par an que les DSI européens interrogés anticipent se confirme sur leurs coûts de cloud et de logiciels</span></div>
-<div><strong>×2 ou plus</strong><span>Les coûts d’exploitation VMware d’un client type depuis le rachat par Broadcom, selon Gartner (mars 2025)</span></div>
-<div><strong>Plus de 80 %</strong><span>Des éditeurs sont passés de la licence perpétuelle à l’abonnement, selon Elée (septembre 2025)</span></div>
-<div><strong>140 Md€</strong><span>Le surcoût annuel moyen estimé sur 2026-2030 pour les organisations européennes</span></div>
 </div>
+<aside class="panneau" id="hero-panneau" aria-label="Portefeuille d’exemple"><p class="panneau-tete">Portefeuille d’exemple · tableau de bord Optio</p></aside>
+</div>
+<p class="sources-hero">+76 % en cinq ans si la hausse anticipée par les DSI européens se confirme (Cigref et Asterès, mai 2026) · coûts VMware ×2 ou plus depuis le rachat par Broadcom (Gartner, mars 2025) · plus de 80 % des éditeurs passés à l’abonnement (Elée, septembre 2025) · 140 Md€ de surcoût annuel estimé pour les organisations européennes sur 2026-2030.</p>
 </div>
 </section>
 
@@ -526,8 +532,12 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   /* Tableau de bord illustratif */
   var F=[{n:"Virtualisation",c:5,i:30,m:-4,tcd:5.0},{n:"Identité",c:5,i:38,m:-6,tcd:1.9},{n:"Collaboratif",c:4,i:46,m:2,tcd:2.5},{n:"Base de données",c:4,i:55,m:5,tcd:8.2},{n:"Réseau",c:3,i:63,m:9,tcd:0.6},{n:"Sauvegarde",c:3,i:71,m:14,tcd:0.4}];
   var moy=Math.round(F.reduce(function(a,f){ return a+f.i; },0)/F.length), verrous=F.filter(function(f){ return f.m<0; }).length, tot=F.reduce(function(a,f){ return a+f.tcd; },0);
-  [["Fournisseurs critiques suivis",String(F.length)],["Indice moyen",moy+" / 100"],["Verrous actifs",String(verrous)],["TCD à 5 ans",tot.toLocaleString("fr-FR",{maximumFractionDigits:1})+"\u202fM€"]].forEach(function(k){
-    var d=document.createElement("div"); d.className="kpi"; d.innerHTML="<span>"+k[0]+"</span><strong>"+k[1]+"</strong>"; $("dash-kpis").appendChild(d); });
+  function kpisDe(F){ var moy=Math.round(F.reduce(function(a,f){ return a+f.i; },0)/F.length), verrous=F.filter(function(f){ return f.m<0; }).length, tot=F.reduce(function(a,f){ return a+f.tcd; },0);
+    return [["Fournisseurs critiques suivis",String(F.length)],["Indice moyen",moy+" / 100"],["Verrous actifs",String(verrous)],["TCD à 5 ans",tot.toLocaleString("fr-FR",{maximumFractionDigits:1})+"\u202fM€"]]; }
+  kpisDe(F).forEach(function(k){
+    var d=document.createElement("div"); d.className="kpi"; d.innerHTML="<span>"+k[0]+"</span><strong>"+k[1]+"</strong>"; $("dash-kpis").appendChild(d);
+    var l=document.createElement("div"); l.className="ligne"; l.innerHTML="<span>"+k[0]+"</span><strong>"+k[1]+"</strong>"; $("hero-panneau").appendChild(l); });
+  (function(){ var e=document.createElement("p"); e.className="echelle"; e.innerHTML="Estimation pour une entreprise de 2&nbsp;000 à 20&nbsp;000 salariés"; $("hero-panneau").appendChild(e); })();
   (function(){ var W=340,H=270,pl=26,pb=26,pt=8, g=svg(W,H,"Matrice : la virtualisation et l’identité sont critiques et peu réversibles");
     function X(i){ return pl+i/100*(W-pl-8); } function Y(c){ return H-pb-12-(c-2)/3.3*(H-pb-pt-40); }
     [[0,40,C.gris],[40,70,C.balise],[70,100,C.signal]].forEach(function(b){ g.appendChild(s("rect",{x:X(b[0]),y:pt,width:X(b[1])-X(b[0]),height:H-pb-pt,fill:b[2],"fill-opacity":"0.08"})); });

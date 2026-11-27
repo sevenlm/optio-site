@@ -4,7 +4,7 @@
 import { test, before, after } from "node:test";
 import assert from "node:assert/strict";
 import { chromium } from "playwright";
-import { BASE } from "./outils.mjs";
+import { BASE, contrasteDe } from "./outils.mjs";
 
 const SITE = "https://www.weareoptio.fr/";
 const net = (s) => String(s).replace(/\s+/g, " ").trim();
@@ -66,4 +66,26 @@ test("montants : indicateur de taille et cas 1 à l’échelle", async () => {
   }
   const cas1 = net(await page.$eval("#exemples .cas", (e) => e.textContent));
   for (const t of ["600 k€ par an", "5,0 M€", "3,7 M€", "3,3 M€", "1,8 M€ économisés"]) assert.ok(cas1.includes(t), "cas 1 sans « " + t + " » : " + cas1.slice(0, 200));
+});
+
+test("haut de page : panneau d’indicateurs, plus de gros chiffres", async () => {
+  assert.equal(await page.locator(".hero .chiffres").count(), 0);
+  const panneau = await page.$$eval("#hero-panneau .ligne strong", (l) => l.map((e) => e.textContent));
+  const kpis = await page.$$eval("#dash-kpis .kpi strong", (l) => l.map((e) => e.textContent));
+  assert.equal(panneau.length, 4);
+  assert.deepEqual(panneau, kpis);
+  assert.equal(net(await page.$eval(".hero .echelle", (e) => e.textContent)), ECHELLE);
+  const sources = await page.$eval(".hero .sources-hero", (e) => e.textContent);
+  for (const s of ["Cigref", "Gartner", "Elée"]) assert.ok(sources.includes(s), s);
+});
+
+test("haut de page : contrastes AA du panneau en clair et en sombre", async () => {
+  for (const colorScheme of ["light", "dark"]) {
+    const ctx = await navigateur.newContext({ colorScheme, viewport: { width: 1280, height: 900 } });
+    const p = await ctx.newPage();
+    await p.goto(BASE + "index.html"); await p.waitForSelector("#hero-panneau .ligne");
+    const r = await p.$$eval("#hero-panneau span, #hero-panneau strong, .hero .sources-hero, .hero .echelle", (l, f) => l.map((x) => [x.textContent.slice(0, 30), new Function("return " + f)()(x)]), contrasteDe.toString());
+    for (const [t, c] of r) assert.ok(c >= 4.5, colorScheme + " « " + t + " » : " + c.toFixed(2));
+    await ctx.close();
+  }
 });
