@@ -206,17 +206,17 @@ Le modèle fait plusieurs simplifications. Le coût de l’alternative `A` et le
 
 ### 3.9 Exemple de calcul
 
-Prenons une plateforme de virtualisation avec les valeurs suivantes : `C0` = 2 M€, `h` = 60 %, `mE` = 14 mois, `I` = 150 k€, `K` = 290 k€, `hN` = 15 %, `P` = 105 k€, `M` = 800 k€, `T` = 18 mois, `A` = 1,2 M€, `D` = 6 mois, `R` = 6 mois. Il n’y a ni indexation ni actualisation, et l’horizon est de 5 ans.
+Prenons une plateforme de virtualisation avec les valeurs suivantes : `C0` = 600 k€, `h` = 60 %, `mE` = 14 mois, `I` = 45 k€, `K` = 87 k€, `hN` = 15 %, `P` = 60 k€, `M` = 240 k€, `T` = 18 mois, `A` = 360 k€, `D` = 6 mois, `R` = 6 mois. Il n’y a ni indexation ni actualisation, et l’horizon est de 5 ans. Les montants sont à l’échelle d’une entreprise de 2 000 à 20 000 salariés.
 
 | Scénario | TCD sur 5 ans |
 |---|---|
-| S0, rester sous contrainte | 16,8 M€ |
-| S1, renégocier avec une alternative prouvée | 12,3 M€ |
-| S3, sortir | 10,8 M€ |
+| S0, rester sous contrainte | 5,0 M€ |
+| S1, renégocier avec une alternative prouvée | 3,7 M€ |
+| S3, sortir | 3,3 M€ |
 
 Le verrou est actif, puisque la sortie prend 18 mois et que l’échéance tombe dans 14 mois. L’organisation doit donc re-signer au mois 14 pour au moins 6 mois, et paie l’ancien fournisseur jusqu’au mois 20.
 
-La sortie fait gagner 6,0 M€ sur cinq ans par rapport au statu quo et devient rentable au bout de 29 mois. Le ratio coût de sortie / coût annuel vaut (0,105 + 0,8 + 0,6) ÷ 2, soit 0,75.
+La sortie fait gagner 1,8 M€ sur cinq ans par rapport au statu quo et devient rentable au bout de 30 mois. Le ratio coût de sortie / coût annuel vaut (0,06 + 0,24 + 0,18) ÷ 0,6, soit 0,8.
 
 ### 3.10 Restitution
 
@@ -386,14 +386,14 @@ Il s’enrichit des retours de missions, des entretiens avec des DSI et des cont
   },
   "tcd": {
     "horizon_ans": 5,
-    "cout_direct_annuel": 2000000,
+    "cout_direct_annuel": 600000,
     "hausse_echeance": 0.60,
-    "couts_operationnels_annuels": 150000,
-    "cout_risque_annuel": 290000,
+    "couts_operationnels_annuels": 45000,
+    "cout_risque_annuel": 87000,
     "hausse_negociee": 0.15,
-    "cout_preparation": 105000,
-    "cout_migration": 800000,
-    "cout_annuel_alternative": 1200000,
+    "cout_preparation": 60000,
+    "cout_migration": 240000,
+    "cout_annuel_alternative": 360000,
     "part_migree": null,
     "duree_double_exploitation_mois": 6,
     "duree_reengagement_mois": 6,

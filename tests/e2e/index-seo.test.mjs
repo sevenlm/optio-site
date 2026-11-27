@@ -57,3 +57,13 @@ test("accueil : JSON-LD valide, organisation et FAQ fidèle à la page", async (
     assert.equal(net(q.acceptedAnswer.text), net(visibles[i].r));
   });
 });
+
+const ECHELLE = "Estimation pour une entreprise de 2 000 à 20 000 salariés";
+
+test("montants : indicateur de taille et cas 1 à l’échelle", async () => {
+  for (const zone of ["#exemples", "#tableau"]) {
+    assert.equal(net(await page.$eval(zone + " .echelle", (e) => e.textContent)), ECHELLE, zone);
+  }
+  const cas1 = net(await page.$eval("#exemples .cas", (e) => e.textContent));
+  for (const t of ["600 k€ par an", "5,0 M€", "3,7 M€", "3,3 M€", "1,8 M€ économisés"]) assert.ok(cas1.includes(t), "cas 1 sans « " + t + " » : " + cas1.slice(0, 200));
+});

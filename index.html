@@ -173,6 +173,9 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .paroles blockquote p{font-size:17px;line-height:1.5}
 .paroles figcaption{margin-top:10px;font-size:14px;color:var(--texte-3)}
 .illus{margin-top:20px;font-size:13px;color:var(--texte-3)}
+.echelle{display:inline-flex;gap:8px;align-items:center;margin-top:12px;font-size:13px;color:var(--texte-2);border:1px solid var(--trait);padding:4px 10px}
+.echelle:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--signal)}
+.sombre .echelle{color:#c6d4dc;border-color:#22465b}
 details{border-bottom:1px solid var(--trait);padding:16px 0}
 details:first-of-type{border-top:1px solid var(--trait)}
 summary{cursor:pointer;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px}
@@ -359,15 +362,15 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <div class="piste" id="cas-piste" tabindex="0">
 <article class="cas" role="group" aria-roledescription="cas" aria-label="Cas 1 sur 4 : Virtualisation">
 <p class="cas-num">Cas 1 · Virtualisation</p>
-<p class="cas-situation">Un établissement financier paie 2 M€ par an pour sa virtualisation. Une hausse de 60 % est annoncée à l’échéance, dans 14 mois ; il en faudrait 18 pour partir.</p>
-<div class="comps"><div class="comp"><span class="comp-lib">Coûts directs</span><span class="comp-val">2 M€ par an, puis 3,2 M€ après l’échéance</span></div><div class="comp"><span class="comp-lib">Coûts opérationnels</span><span class="comp-val">150 k€ par an</span></div><div class="comp"><span class="comp-lib">Coûts de risque</span><span class="comp-val">290 k€ par an</span></div></div>
+<p class="cas-situation">Un établissement financier paie 600 k€ par an pour sa virtualisation. Une hausse de 60 % est annoncée à l’échéance, dans 14 mois ; il en faudrait 18 pour partir.</p>
+<div class="comps"><div class="comp"><span class="comp-lib">Coûts directs</span><span class="comp-val">600 k€ par an, puis 960 k€ après l’échéance</span></div><div class="comp"><span class="comp-lib">Coûts opérationnels</span><span class="comp-val">45 k€ par an</span></div><div class="comp"><span class="comp-lib">Coûts de risque</span><span class="comp-val">87 k€ par an</span></div></div>
 <p class="cas-sous">Coût total sur cinq ans</p>
-<div class="barres"><div class="barre-cas"><span class="barre-lib">Rester sous contrainte</span><span class="barre-piste"><span class="barre-val" style="width:100%"></span></span><span class="barre-chiffre">16,8 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Renégocier avec une alternative prouvée</span><span class="barre-piste"><span class="barre-val" style="width:80%"></span></span><span class="barre-chiffre">13,5 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Sortir</span><span class="barre-piste"><span class="barre-val meilleur" style="width:64%"></span></span><span class="barre-chiffre">10,7 M€</span></div>
+<div class="barres"><div class="barre-cas"><span class="barre-lib">Rester sous contrainte</span><span class="barre-piste"><span class="barre-val" style="width:100%"></span></span><span class="barre-chiffre">5,0 M€</span></div>
+<div class="barre-cas"><span class="barre-lib">Renégocier avec une alternative prouvée</span><span class="barre-piste"><span class="barre-val" style="width:74%"></span></span><span class="barre-chiffre">3,7 M€</span></div>
+<div class="barre-cas"><span class="barre-lib">Sortir</span><span class="barre-piste"><span class="barre-val meilleur" style="width:65%"></span></span><span class="barre-chiffre">3,3 M€</span></div>
 </div>
-<div class="decision"><p><strong>Décision :</strong> Sortir, en lançant le pilote dès maintenant, car la sortie prendra plus de temps qu’il n’en reste avant l’échéance.</p><p class="gain">6,1 M€ économisés sur cinq ans</p></div>
-<p class="hyp">Hypothèses : préparation 105 k€, migration 800 k€, alternative 1,2 M€ par an dès la fin de la migration, hausse renégociée de 15 %. Les coûts opérationnels et de risque sont supposés inchangés.</p>
+<div class="decision"><p><strong>Décision :</strong> Sortir, en lançant le pilote dès maintenant, car la sortie prendra plus de temps qu’il n’en reste avant l’échéance.</p><p class="gain">1,8 M€ économisés sur cinq ans</p></div>
+<p class="hyp">Hypothèses : préparation 60 k€, migration 240 k€, alternative 360 k€ par an, six mois de double exploitation, réengagement de six mois à l’échéance, hausse renégociée de 15 %. Une alternative prouvée réduit le coût de risque de 80 %, et la sortie divise par deux les coûts opérationnels.</p>
 </article>
 <article class="cas" role="group" aria-roledescription="cas" aria-label="Cas 2 sur 4 : Outils collaboratifs">
 <p class="cas-num">Cas 2 · Outils collaboratifs</p>
@@ -406,6 +409,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 </article>
 </div>
 <p class="illus">Cas illustratifs construits à partir de situations types, montants arrondis.</p>
+<p class="echelle">Estimation pour une entreprise de 2&nbsp;000 à 20&nbsp;000 salariés</p>
 </div>
 <div class="actions"><a class="btn btn-v" href="#contact">Votre situation ressemble à l’un de ces cas ? Parlons-en.</a></div>
 </div>
@@ -426,6 +430,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <div class="panel"><h3>Coût total de la dépendance à 5 ans</h3><div id="dash-tcd"></div></div>
 </div>
 </div>
+<p class="echelle">Estimation pour une entreprise de 2&nbsp;000 à 20&nbsp;000 salariés</p>
 </div>
 </section>
 
@@ -519,7 +524,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   })();
 
   /* Tableau de bord illustratif */
-  var F=[{n:"Virtualisation",c:5,i:30,m:-4,tcd:16.8},{n:"Identité",c:5,i:38,m:-6,tcd:6.2},{n:"Collaboratif",c:4,i:46,m:2,tcd:2.5},{n:"Base de données",c:4,i:55,m:5,tcd:8.2},{n:"Réseau",c:3,i:63,m:9,tcd:2.1},{n:"Sauvegarde",c:3,i:71,m:14,tcd:1.3}];
+  var F=[{n:"Virtualisation",c:5,i:30,m:-4,tcd:5.0},{n:"Identité",c:5,i:38,m:-6,tcd:1.9},{n:"Collaboratif",c:4,i:46,m:2,tcd:2.5},{n:"Base de données",c:4,i:55,m:5,tcd:8.2},{n:"Réseau",c:3,i:63,m:9,tcd:0.6},{n:"Sauvegarde",c:3,i:71,m:14,tcd:0.4}];
   var moy=Math.round(F.reduce(function(a,f){ return a+f.i; },0)/F.length), verrous=F.filter(function(f){ return f.m<0; }).length, tot=F.reduce(function(a,f){ return a+f.tcd; },0);
   [["Fournisseurs critiques suivis",String(F.length)],["Indice moyen",moy+" / 100"],["Verrous actifs",String(verrous)],["TCD à 5 ans",tot.toLocaleString("fr-FR",{maximumFractionDigits:1})+"\u202fM€"]].forEach(function(k){
     var d=document.createElement("div"); d.className="kpi"; d.innerHTML="<span>"+k[0]+"</span><strong>"+k[1]+"</strong>"; $("dash-kpis").appendChild(d); });
