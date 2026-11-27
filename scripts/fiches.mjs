@@ -1,6 +1,6 @@
 // Génère une page statique par technologie (technologies/<id>.html) et par tendance (tendances/<id>.html)
 // depuis data/*.json, deux pages d’index et le bloc « fiches » de sitemap.xml.
-// Usage : npm run fiches  (écrit les pages)  ·  npm run fiches -- --verifier  (échoue si une page est périmée)
+// Usage : npm run fiches (écrit les pages, non versionnées) · --sitemap remplit aussi le bloc fiches de sitemap.xml (déploiement)
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -157,7 +157,8 @@ if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import
   const f = fichiers(lireDonnees(racine));
   const plan = path.join(racine, "sitemap.xml");
   const planActuel = fs.readFileSync(plan, "utf8");
-  f.set("sitemap.xml", remplacerBloc(planActuel, "fiches", blocSitemap([...f.keys()].sort())));
+  // Le sitemap versionné garde un bloc vide ; il n’est rempli qu’au déploiement (--sitemap, voir pages.yml).
+  if (process.argv.includes("--sitemap")) f.set("sitemap.xml", remplacerBloc(planActuel, "fiches", blocSitemap([...f.keys()].sort())));
   const perimes = [];
   for (const dossier of ["technologies", "tendances"]) {
     const attendus = new Set([...f.keys()].filter(k => k.startsWith(dossier + "/")).map(k => k.slice(dossier.length + 1)));
@@ -175,5 +176,5 @@ if (process.argv[1] && fs.realpathSync(process.argv[1]) === fileURLToPath(import
     if (!verifier) { fs.mkdirSync(path.dirname(p), { recursive: true }); fs.writeFileSync(p, contenu); }
   }
   if (verifier && perimes.length) { console.error(`Fiches périmées (${perimes.length}) : lancez npm run fiches\n` + perimes.slice(0, 10).join("\n")); process.exit(1); }
-  console.log(verifier ? "Fiches à jour" : `${f.size - 1} pages générées, ${perimes.length} fichier(s) écrit(s) ou supprimé(s)`);
+  console.log(verifier ? "Fiches à jour" : `${[...f.keys()].filter(k => k.endsWith(".html")).length} pages générées, ${perimes.length} fichier(s) écrit(s) ou supprimé(s)`);
 }

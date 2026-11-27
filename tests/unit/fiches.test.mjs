@@ -6,7 +6,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { lireDonnees } from "../../scripts/landing.mjs";
-import { fichiers, couper, titreTechnologie, SITE } from "../../scripts/fiches.mjs";
+import { fichiers, couper, titreTechnologie, blocSitemap, SITE } from "../../scripts/fiches.mjs";
 
 const RACINE = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..");
 const d = lireDonnees(RACINE);
@@ -50,10 +50,8 @@ test("couper et titres : bornes respectées", () => {
   assert.ok(titreTechnologie("x".repeat(80)).length <= 60);
 });
 
-test("sitemap.xml et pages sur disque à jour", () => {
-  const plan = fs.readFileSync(path.join(RACINE, "sitemap.xml"), "utf8");
-  for (const chemin of f.keys()) {
-    assert.ok(plan.includes(`<loc>${SITE}${chemin.replace(/index\.html$/, "")}</loc>`), "absent du sitemap : " + chemin);
-    assert.equal(fs.readFileSync(path.join(RACINE, chemin), "utf8"), f.get(chemin), "périmée : " + chemin + " (npm run fiches)");
-  }
+test("bloc du sitemap : une entrée par page générée", () => {
+  const bloc = blocSitemap([...f.keys()]);
+  for (const chemin of f.keys()) assert.ok(bloc.includes(`<loc>${SITE}${chemin.replace(/index\.html$/, "")}</loc>`), chemin);
+  assert.match(fs.readFileSync(path.join(RACINE, "sitemap.xml"), "utf8"), /<!-- debut:fiches -->[\s\S]*<!-- fin:fiches -->/);
 });

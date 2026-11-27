@@ -1,3 +1,4 @@
+# Lancer d’abord npm run fiches : technologies/ et tendances/ sont générés, pas versionnés.
 FROM docker.io/library/busybox:musl
 COPY index.html radar.html radar-des-dependances.html fiches.css robots.txt sitemap.xml /www/
 COPY technologies/ /www/technologies/
