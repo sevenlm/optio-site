@@ -303,3 +303,15 @@ test("images : le lien du rapport d’exemple utilise la sélection des captures
     assert.equal(href, SELECTION.urlRapport("radar.html", SELECTION_EXEMPLE));
   } finally { await contexte.close(); }
 });
+
+test("sobriété : sans étiquettes ni cartes arrondies", async () => {
+  const { contexte, page, errs } = await ouvrirAccueil();
+  try {
+    assert.equal(await page.locator("main p.sur").count(), 0);
+    for (const sel of [".fait", ".notion", ".carte-gen", ".contribs li", ".garanties > div", ".etapes li"]) {
+      const st = await page.$eval(sel, (e) => { const s = getComputedStyle(e); return [s.borderTopLeftRadius, s.boxShadow]; });
+      assert.deepEqual(st, ["0px", "none"], sel);
+    }
+    assert.deepEqual(errs, []);
+  } finally { await contexte.close(); }
+});

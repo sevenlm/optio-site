@@ -68,7 +68,6 @@ main a:not(.btn){color:var(--lien);text-underline-offset:2px}
 .c{max-width:1120px;margin:0 auto;padding:0 24px}
 section{padding:88px 0;scroll-margin-top:84px}
 .alt{background:var(--calque)}
-.sur{font-size:14px;font-weight:600;color:var(--lien);margin-bottom:12px}
 h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:clamp(28px,3.2vw,40px);line-height:1.1;letter-spacing:-0.02em;max-width:760px}
 h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:21px;line-height:1.2}
 .chapo{margin-top:14px;color:var(--texte-2);max-width:680px}
@@ -80,7 +79,6 @@ h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:21px;lin
 .btn-clair:hover{background:#fff;color:#0B2A3C}
 .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
 .sombre{background:var(--nuit);color:#fff}
-.sombre .sur{color:var(--accent)}
 .sombre .chapo{color:#C9D6DC}
 .sombre a:not(.btn){color:var(--accent)}
 .capture{display:block;width:100%;height:auto;border-radius:8px;border:1px solid var(--trait);background:var(--calque)}
@@ -112,7 +110,7 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 
 /* Constat */
 .faits{list-style:none;padding:0;margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(300px,100%),1fr));gap:16px}
-.fait{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:26px;display:flex;flex-direction:column;gap:12px}
+.fait{background:transparent;border:0;border-top:1px solid var(--trait);border-radius:0;padding:22px 0 0;display:flex;flex-direction:column;gap:12px}
 .fait .chiffre{font-family:var(--titre);font-stretch:116%;font-weight:800;font-size:30px;line-height:1;color:var(--lien)}
 .fait blockquote p{font-size:16px;color:var(--texte)}
 .fait .source{margin-top:auto;padding-top:8px;font-size:14px;color:var(--texte-3)}
@@ -125,9 +123,9 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 .note{margin-top:28px;font-size:15px;color:var(--texte-3)}
 
 /* Comprendre le radar */
-.notions{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.notions{margin-top:40px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 48px}
 @media (max-width:760px){.notions{grid-template-columns:1fr}}
-.notion{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.notion{background:transparent;border:0;border-top:1px solid var(--trait);border-radius:0;padding:22px 0 8px;display:flex;flex-direction:column;gap:12px}
 .notion p{font-size:16px;color:var(--texte-2)}
 .notion .visuel{margin-top:auto;padding-top:6px}
 .notion.leviers .visuel{margin-top:0}
@@ -148,7 +146,7 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 .liste-generee{margin-top:32px}
 .suite{margin-top:24px;font-size:16px;color:var(--texte-2)}
 .grille-gen{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px}
-.carte-gen{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.carte-gen{background:transparent;border:0;border-top:1px solid var(--trait);border-radius:0;padding:16px 0 4px;display:flex;flex-direction:column;gap:8px}
 .carte-gen h3,.carte-gen h4{margin:0;font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:19px;line-height:1.2}
 .carte-gen p{font-size:16px;color:var(--texte-2)}
 .carte-gen .axe-gen{font-size:14px;font-weight:600;color:var(--texte-3)}
@@ -179,7 +177,7 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 .garanties dt{font-weight:600;font-size:17px}
 .garanties dd{margin-top:6px;color:var(--texte-2);font-size:16px}
 .contribs{list-style:none;padding:0;margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px}
-.contribs li{background:var(--carte);border:1px solid var(--trait);border-radius:10px;padding:22px;display:flex;flex-direction:column;gap:8px}
+.contribs li{background:transparent;border:0;border-top:1px solid var(--trait);border-radius:0;padding:18px 0 0;display:flex;flex-direction:column;gap:8px}
 .contribs h3{font-size:18px}
 .contribs p{font-size:15px;color:var(--texte-2)}
 .contribs a{margin-top:auto;padding-top:8px;font-weight:600;font-size:15px}
@@ -445,9 +443,8 @@ footer a:hover{color:#fff}
 
 <section class="hero sombre" aria-labelledby="titre-page">
 <div class="c">
-<p class="sur">Radar des dépendances numériques · gratuit</p>
 <h1 id="titre-page">Où votre système d’information est-il enfermé ?</h1>
-<p class="chapo"><strong><span class="nb" data-compteur="tendances">53</span>&nbsp;tendances, <span class="nb" data-compteur="technologies">279</span>&nbsp;technologies, <span class="nb" data-compteur="mecanismes">53</span>&nbsp;mécanismes d’enfermement et <span class="nb" data-compteur="leviers">37</span>&nbsp;leviers</strong>, sourcés et classés pour un DSI. Repérez en quelques minutes ce qui vous rend captif, et recevez un rapport personnalisé gratuit.</p>
+<p class="chapo">Gratuit, le radar des dépendances numériques réunit <strong><span class="nb" data-compteur="tendances">53</span>&nbsp;tendances, <span class="nb" data-compteur="technologies">279</span>&nbsp;technologies, <span class="nb" data-compteur="mecanismes">53</span>&nbsp;mécanismes d’enfermement et <span class="nb" data-compteur="leviers">37</span>&nbsp;leviers</strong>, sourcés et classés pour un DSI. Repérez en quelques minutes ce qui vous rend captif, et recevez un rapport personnalisé gratuit.</p>
 <div class="actions">
 <a class="btn btn-v" href="radar.html">Ouvrir le radar</a>
 <a class="btn btn-clair" href="#rapport">Voir un exemple de rapport</a>
@@ -466,7 +463,6 @@ footer a:hover{color:#fff}
 
 <section id="constat">
 <div class="c">
-<p class="sur">Le constat</p>
 <h2>Vos fournisseurs changent les règles. Votre marge de manœuvre se réduit.</h2>
 <p class="chapo">Voici trois faits tirés des tendances que le radar classe en urgence forte.</p>
 <ul class="faits">
@@ -491,8 +487,8 @@ footer a:hover{color:#fff}
 
 <section id="fonctionnement" class="alt">
 <div class="c">
-<p class="sur">Comment ça marche</p>
-<h2>Quelques minutes suffisent, et il n’y a pas de compte à créer.</h2>
+<h2>Comment ça marche</h2>
+<p class="chapo">Quelques minutes suffisent, et il n’y a pas de compte à créer.</p>
 <ol class="etapes">
 <li><h3>Explorez le radar</h3><p>Parcourez les tendances, les technologies, les mécanismes d’enfermement et les leviers. Vous pouvez filtrer par axe, par urgence ou par domaine. Chaque fiche explique son classement et cite ses sources.</p></li>
 <li><h3>Retenez ce qui vous concerne</h3><p>Un clic sur « Retenir » ajoute une tendance ou une technologie à « Mon radar ». Votre sélection reste dans votre navigateur.</p></li>
@@ -503,7 +499,6 @@ footer a:hover{color:#fff}
 
 <section id="comprendre">
 <div class="c">
-<p class="sur">Comprendre le radar</p>
 <h2>Cinq notions pour lire vos dépendances.</h2>
 <p class="chapo">Le radar part de ce qui change autour de vous et de ce que vous utilisez, montre comment vous êtes retenu, puis propose de quoi vous dégager.</p>
 <div class="notions">
@@ -566,7 +561,6 @@ footer a:hover{color:#fff}
 
 <section id="rapport" class="sombre">
 <div class="c">
-<p class="sur">Votre rapport personnalisé</p>
 <h2>Un rapport à votre mesure, gratuit.</h2>
 <p class="chapo">À partir de votre sélection, le radar compose un rapport que vous pouvez partager avec votre direction. Il est gratuit, en échange de votre e-mail.</p>
 <div class="pages" role="group" tabindex="0" aria-label="Trois pages du rapport d’exemple">
@@ -592,7 +586,6 @@ footer a:hover{color:#fff}
 
 <section id="confiance">
 <div class="c">
-<p class="sur">Pourquoi s’y fier</p>
 <h2>Le radar s’appuie sur des faits sourcés et ne note pas les fournisseurs.</h2>
 <dl class="garanties">
 <div><dt>Une source pour chaque élément</dt><dd>Chaque tendance, technologie, mécanisme et levier renvoie à ses sources : textes officiels, autorités, études, presse spécialisée.</dd></div>
@@ -606,7 +599,6 @@ footer a:hover{color:#fff}
 
 <section id="urgentes" class="alt">
 <div class="c">
-<p class="sur">Urgence forte</p>
 <h2>Les tendances les plus urgentes</h2>
 <p class="chapo">Leur effet est attendu dans les 12 mois. Cliquez sur un titre pour ouvrir sa fiche dans le radar, avec ses sources.</p>
 <div class="liste-generee">
@@ -635,7 +627,6 @@ footer a:hover{color:#fff}
 
 <section id="exemples">
 <div class="c">
-<p class="sur">Technologies</p>
 <h2>Exemples de technologies classées</h2>
 <p class="chapo">Quelques technologies par anneau de sortie, avec une alternative mieux classée.</p>
 <div class="liste-generee">
@@ -666,7 +657,6 @@ footer a:hover{color:#fff}
 
 <section id="contribuer" class="alt">
 <div class="c">
-<p class="sur">Contribuez au radar</p>
 <h2>Le radar s’améliore avec ses lecteurs.</h2>
 <p class="chapo">Une tendance manque, une source a vieilli, une alternative mérite d’y figurer ? Écrivez-nous. Nous relisons et sourçons chaque contribution avant de la publier.</p>
 <ul class="contribs">
@@ -680,8 +670,7 @@ footer a:hover{color:#fff}
 
 <section id="faq">
 <div class="c">
-<p class="sur">Questions fréquentes</p>
-<h2>Avant de commencer</h2>
+<h2>Questions fréquentes</h2>
 <div class="faq">
 <details><summary>Le radar et le rapport sont-ils gratuits ?</summary><p>Oui. Le radar se consulte librement, sans compte. Le rapport personnalisé est gratuit, en échange de votre e-mail.</p></details>
 <details><summary>Quelles données collectez-vous ?</summary><p>Pour consulter le radar et faire votre sélection, aucune. Votre e-mail n’est demandé qu’au moment du rapport, par un formulaire Tally, un service tiers qui reçoit aussi votre adresse IP. Il sert à vous envoyer ce rapport, à vous recontacter et à vous relancer dans le cadre de cette campagne ; il est conservé trois ans après notre dernier contact. Accès et suppression : <a href="mailto:contact@stratwise.fr">contact@stratwise.fr</a>.</p></details>
