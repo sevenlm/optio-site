@@ -68,7 +68,7 @@ function page({ chemin, titre, description, h1, fil, corps }) {
 ${corps}
 <aside class="appel"><p>Vous voulez savoir combien coûte votre dépendance et en combien de temps vous pourriez partir ?</p><p><a class="btn" href="../index.html#contact">Parlons-en trente minutes</a> <a href="../radar-des-dependances.html">ou explorez le radar gratuit</a></p></aside>
 </main>
-<footer><div class="c"><p><a href="../index.html">Optio</a>, dépendances numériques et réversibilité. Une marque de Stratwise. Fiche tirée du <a href="../radar-des-dependances.html">radar des dépendances numériques</a>, édition 1 (prototype).</p></div></footer>
+<footer><div class="c"><p><a href="../index.html">Optio</a>, dépendances numériques et réversibilité. Une marque de Stratwise. Fiche tirée du <a href="../radar-des-dependances.html">radar des dépendances numériques</a>, édition 1 (prototype). <a href="../mentions-legales.html">Mentions légales</a>.</p></div></footer>
 </body>
 </html>
 `;
