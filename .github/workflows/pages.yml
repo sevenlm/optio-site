@@ -24,7 +24,7 @@ jobs:
       - name: Assembler le site publié (mêmes fichiers que la Containerfile, plus CNAME)
         run: |
           mkdir -p _site/data
-          cp index.html radar.html radar-des-dependances.html fiches.css robots.txt sitemap.xml CNAME _site/
+          cp index.html radar.html radar-des-dependances.html fiches.css robots.txt sitemap.xml CNAME google6121f93008f950b0.html _site/
           cp -R fonts img js technologies tendances _site/
           cp data/*.json _site/data/
           touch _site/.nojekyll
