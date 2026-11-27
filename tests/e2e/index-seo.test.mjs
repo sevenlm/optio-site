@@ -89,3 +89,22 @@ test("haut de page : contrastes AA du panneau en clair et en sombre", async () =
     await ctx.close();
   }
 });
+
+test("sections : sans étiquettes ni cartes, frise LIBRE, cas en tableaux", async () => {
+  assert.equal(await page.locator("main p.sur").count(), 0);
+  assert.deepEqual(await page.$$eval(".libre h3 b", (l) => l.map((b) => b.textContent)), ["L", "I", "B", "R", "E"]);
+  const cas = await page.$$eval(".cas", (l) => l.map((c) => !!c.querySelector("table.scenarios")));
+  assert.ok(cas.length === 4 && cas.every(Boolean), JSON.stringify(cas));
+  for (const sel of [".cas", ".offre", ".libre li"]) {
+    const st = await page.$eval(sel, (e) => { const s = getComputedStyle(e); return [s.borderTopLeftRadius, s.boxShadow]; });
+    assert.deepEqual(st, ["0px", "none"], sel);
+  }
+});
+
+test("sections : pas de défilement horizontal à 390 px", async () => {
+  const ctx = await navigateur.newContext({ viewport: { width: 390, height: 844 } });
+  const p = await ctx.newPage();
+  await p.goto(BASE + "index.html"); await p.waitForLoadState("networkidle");
+  assert.ok(await p.evaluate(() => document.documentElement.scrollWidth) <= 390);
+  await ctx.close();
+});

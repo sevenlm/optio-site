@@ -34,7 +34,6 @@ a{color:inherit}
 .c{max-width:1120px;margin:0 auto;padding:0 24px}
 section{padding:88px 0}
 .alt{background:var(--calque)}
-.sur{font-size:14px;font-weight:600;color:var(--vert);margin-bottom:12px}
 h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:clamp(28px,3.2vw,40px);line-height:1.1;letter-spacing:-0.02em;max-width:760px}
 .chapo{margin-top:14px;color:var(--texte-2);max-width:640px}
 .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:6px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--encre);background:transparent;color:var(--encre);cursor:pointer}
@@ -70,15 +69,16 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .panneau .echelle{margin:14px 18px 16px;color:#c6d4dc;border-color:#22465b}
 .sources-hero{margin-top:56px!important;padding-top:18px;border-top:1px solid #1E4255;font-size:14px!important;color:#a9bcc8!important;max-width:none!important}
 .sombre{background:var(--encre);color:#fff}
-.sombre .sur{color:#2BD49B}
 .sombre .chapo{color:#C9D6DC}
 
 /* Méthode */
-.libre{list-style:none;padding:0;margin-top:40px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(190px,100%),1fr));gap:12px}
-.libre li{background:var(--fond);border:1px solid var(--trait);border-radius:8px;padding:22px}
-.libre b{display:block;font-family:var(--titre);font-stretch:122%;font-weight:800;font-size:40px;line-height:1;color:var(--vert)}
-.libre h3{margin-top:10px;font-size:17px;font-weight:600}
-.libre p{margin-top:4px;font-size:15px;color:var(--texte-3)}
+.libre{list-style:none;padding:0;margin-top:44px;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border-top:2px solid var(--encre)}
+.libre li{position:relative;padding:22px 20px 0 0}
+.libre li::before{content:"";position:absolute;top:-7px;left:0;width:12px;height:12px;border-radius:50%;background:var(--signal)}
+.libre h3{font-family:var(--titre);font-size:21px;font-weight:600;letter-spacing:-0.01em}
+.libre h3 b{font-weight:800;font-size:29px;color:var(--signal)}
+.libre p{margin-top:6px;font-size:15px;color:var(--texte-2)}
+@media (max-width:760px){.libre{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--encre);padding-left:22px}.libre li{padding:0 0 22px}.libre li::before{top:6px;left:-29px}}
 .note-libre{margin-top:18px;font-size:15px;color:var(--texte-3)}
 
 /* Simulateurs */
@@ -129,7 +129,7 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .piste{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 16px)/2);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-bottom:6px;scrollbar-width:thin}
 @media (max-width:820px){.piste{grid-auto-columns:88%}}
 @media (prefers-reduced-motion: reduce){.piste{scroll-behavior:auto}}
-.cas{scroll-snap-align:start;background:var(--fond);border:1px solid var(--trait);border-radius:12px;padding:26px;display:flex;flex-direction:column;gap:14px}
+.cas{scroll-snap-align:start;background:var(--fond);border-top:2px solid var(--encre);padding:22px 0 0;display:flex;flex-direction:column;gap:14px}
 .alt .cas{background:var(--fond)}
 .cas-num{font-family:var(--mesure);font-size:13px;color:var(--vert)}
 .cas-situation{font-size:16px;line-height:1.5}
@@ -138,19 +138,18 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .comp-lib{font-weight:600}
 .comp-val{color:var(--texte-2)}
 .cas-sous{font-size:13px;font-weight:600;color:var(--texte-3);margin-top:4px}
-.barres{display:flex;flex-direction:column;gap:8px}
-.barre-cas{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr) 64px;gap:10px;align-items:center;font-size:13.5px}
-.barre-lib{color:var(--texte-2);line-height:1.3}
-.barre-piste{height:12px;border-radius:6px;background:var(--calque)}
-.barre-val{display:block;height:100%;border-radius:6px;background:var(--gris)}
-.barre-val.meilleur{background:var(--signal)}
-.barre-chiffre{font-family:var(--mesure);font-size:13px;text-align:right}
-.decision{background:var(--encre);color:#fff;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;margin-top:auto}
+.scenarios{width:100%;border-collapse:collapse;font-size:14.5px}
+.scenarios th{text-align:left;font-weight:500;font-size:12.5px;color:var(--texte-3);padding:6px 0;border-bottom:1px solid var(--encre)}
+.scenarios th+th,.scenarios td+td{text-align:right;white-space:nowrap;padding-left:12px}
+.scenarios td{padding:9px 0;border-bottom:1px solid var(--trait);color:var(--texte-2)}
+.scenarios td+td{font-family:var(--mesure);color:var(--encre)}
+.scenarios tr.meilleur td{color:var(--vert);font-weight:600}
+.decision{border-left:3px solid var(--signal);padding:4px 0 4px 14px;display:flex;flex-direction:column;gap:4px;margin-top:auto}
 .decision p{font-size:14.5px;line-height:1.45}
-.decision .gain{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px;color:#2BD49B}
+.decision .gain{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px;color:var(--vert)}
 .hyp{font-size:12.5px;color:var(--texte-3)}
 #exemples .actions{margin-top:32px}
-@media (max-width:640px){.comp{grid-template-columns:118px 1fr}.barre-cas{grid-template-columns:minmax(0,1fr) 70px 58px}nav a:not(.btn){display:none}}
+@media (max-width:640px){.comp{grid-template-columns:118px 1fr}nav a:not(.btn){display:none}}
 
 /* Tableau de bord */
 .dash{margin-top:36px;color:var(--encre);background:var(--fond);border:1px solid var(--trait);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:20px}
@@ -163,9 +162,9 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .panel h3{font-size:14px;font-weight:600;color:var(--texte-2);margin-bottom:8px}
 
 /* Offres */
-.offres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px;margin-top:40px}
-.offre{border:1px solid var(--trait);border-radius:10px;padding:28px;display:flex;flex-direction:column;gap:10px;background:var(--fond)}
-.offre.mis{border-color:var(--signal);border-width:2px}
+.offres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:0 32px;margin-top:40px}
+.offre{border-top:1px solid var(--encre);padding:20px 0 28px;display:flex;flex-direction:column;gap:10px}
+.offre.mis{border-top:3px solid var(--signal)}
 .offre .d{font-family:var(--mesure);font-size:13px;color:var(--vert)}
 .offre h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:23px}
 .offre p{font-size:15px;color:var(--texte-2)}
@@ -335,15 +334,14 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <section id="methode" class="alt">
 <div class="c">
-<p class="sur">La méthode LIBRE</p>
-<h2>De la lecture de vos dépendances numériques à l’entretien de votre réversibilité.</h2>
+<h2>La méthode LIBRE, de la lecture de vos dépendances numériques à l’entretien de votre réversibilité.</h2>
 <p class="chapo">Vos dépendances viennent de choix qui étaient rationnels au moment où vous les avez faits. Le contexte a changé, et nous vous aidons à retrouver la possibilité de choisir.</p>
 <ol class="libre">
-<li><b>L</b><h3>Lire</h3><p>Coûts, irritants, impact métier et risques de chaque dépendance.</p></li>
-<li><b>I</b><h3>Identifier</h3><p>Les alternatives possibles, chiffrées puis classées par priorité.</p></li>
-<li><b>B</b><h3>Bâtir la preuve</h3><p>Un pilote de sortie sur un périmètre réel.</p></li>
-<li><b>R</b><h3>Réaliser</h3><p>La migration, menée par étapes sans interrompre le service.</p></li>
-<li><b>E</b><h3>Entretenir</h3><p>Un indice revu chaque trimestre et une sortie testée chaque année.</p></li>
+<li><h3><b>L</b>ire</h3><p>Coûts, irritants, impact métier et risques de chaque dépendance.</p></li>
+<li><h3><b>I</b>dentifier</h3><p>Les alternatives possibles, chiffrées puis classées par priorité.</p></li>
+<li><h3><b>B</b>âtir la preuve</h3><p>Un pilote de sortie sur un périmètre réel.</p></li>
+<li><h3><b>R</b>éaliser</h3><p>La migration, menée par étapes sans interrompre le service.</p></li>
+<li><h3><b>E</b>ntretenir</h3><p>Un indice revu chaque trimestre et une sortie testée chaque année.</p></li>
 </ol>
 <p class="note-libre">Nous utilisons l’IA pour aller plus vite à chaque étape. Vous gardez la main sur les décisions, y compris celle de rester chez votre fournisseur à de meilleures conditions. Pour faire seul une première lecture, consultez notre <a href="radar-des-dependances.html">radar des dépendances numériques</a>, gratuit.</p>
 </div>
@@ -351,7 +349,6 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <section id="exemples">
 <div class="c">
-<p class="sur">Le coût total de la dépendance</p>
 <h2>Ce que coûte vraiment une dépendance numérique.</h2>
 <p class="chapo">La facture du fournisseur ne montre qu’une partie du coût. Le coût total de la dépendance additionne trois composantes, sur cinq ans.</p>
 <div class="tcd">
@@ -370,11 +367,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <p class="cas-num">Cas 1 · Virtualisation</p>
 <p class="cas-situation">Un établissement financier paie 600 k€ par an pour sa virtualisation. Une hausse de 60 % est annoncée à l’échéance, dans 14 mois ; il en faudrait 18 pour partir.</p>
 <div class="comps"><div class="comp"><span class="comp-lib">Coûts directs</span><span class="comp-val">600 k€ par an, puis 960 k€ après l’échéance</span></div><div class="comp"><span class="comp-lib">Coûts opérationnels</span><span class="comp-val">45 k€ par an</span></div><div class="comp"><span class="comp-lib">Coûts de risque</span><span class="comp-val">87 k€ par an</span></div></div>
-<p class="cas-sous">Coût total sur cinq ans</p>
-<div class="barres"><div class="barre-cas"><span class="barre-lib">Rester sous contrainte</span><span class="barre-piste"><span class="barre-val" style="width:100%"></span></span><span class="barre-chiffre">5,0 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Renégocier avec une alternative prouvée</span><span class="barre-piste"><span class="barre-val" style="width:74%"></span></span><span class="barre-chiffre">3,7 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Sortir</span><span class="barre-piste"><span class="barre-val meilleur" style="width:65%"></span></span><span class="barre-chiffre">3,3 M€</span></div>
-</div>
+<table class="scenarios"><thead><tr><th scope="col">Scénario</th><th scope="col">Coût total sur cinq ans</th></tr></thead><tbody><tr><td>Rester sous contrainte</td><td>5,0 M€</td></tr><tr><td>Renégocier avec une alternative prouvée</td><td>3,7 M€</td></tr><tr class="meilleur"><td>Sortir</td><td>3,3 M€</td></tr></tbody></table>
 <div class="decision"><p><strong>Décision :</strong> Sortir, en lançant le pilote dès maintenant, car la sortie prendra plus de temps qu’il n’en reste avant l’échéance.</p><p class="gain">1,8 M€ économisés sur cinq ans</p></div>
 <p class="hyp">Hypothèses : préparation 60 k€, migration 240 k€, alternative 360 k€ par an, six mois de double exploitation, réengagement de six mois à l’échéance, hausse renégociée de 15 %. Une alternative prouvée réduit le coût de risque de 80 %, et la sortie divise par deux les coûts opérationnels.</p>
 </article>
@@ -382,10 +375,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <p class="cas-num">Cas 2 · Outils collaboratifs</p>
 <p class="cas-situation">Un groupe industriel utilise sur site, pour 4 000 personnes, un outil collaboratif dont la version installée arrive en fin de vie, et l’éditeur impose de passer à son cloud.</p>
 <div class="comps"><div class="comp"><span class="comp-lib">Coûts directs</span><span class="comp-val">300 k€ par an, puis 420 k€ dans le cloud imposé</span></div><div class="comp"><span class="comp-lib">Coûts opérationnels</span><span class="comp-val">60 k€ par an</span></div><div class="comp"><span class="comp-lib">Coûts de risque</span><span class="comp-val">20 k€ par an</span></div></div>
-<p class="cas-sous">Coût total sur cinq ans</p>
-<div class="barres"><div class="barre-cas"><span class="barre-lib">Passer au cloud de l’éditeur</span><span class="barre-piste"><span class="barre-val" style="width:100%"></span></span><span class="barre-chiffre">2,5 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Migrer vers une alternative ouverte</span><span class="barre-piste"><span class="barre-val meilleur" style="width:68%"></span></span><span class="barre-chiffre">1,7 M€</span></div>
-</div>
+<table class="scenarios"><thead><tr><th scope="col">Scénario</th><th scope="col">Coût total sur cinq ans</th></tr></thead><tbody><tr><td>Passer au cloud de l’éditeur</td><td>2,5 M€</td></tr><tr class="meilleur"><td>Migrer vers une alternative ouverte</td><td>1,7 M€</td></tr></tbody></table>
 <div class="decision"><p><strong>Décision :</strong> Migrer avant la date imposée, pour choisir son calendrier.</p><p class="gain">0,8 M€ économisés sur cinq ans</p></div>
 <p class="hyp">Hypothèses : fin de vie imposée à la fin de l’année 2 ; migration vers le cloud imposé 250 k€ ; migration vers l’alternative dès l’année 1 pour 400 k€, puis 180 k€ par an.</p>
 </article>
@@ -393,11 +383,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <p class="cas-num">Cas 3 · Observabilité</p>
 <p class="cas-situation">Une plateforme numérique paie 600 k€ par an un outil de supervision facturé au volume. Ses volumes de données augmentent de 25 % par an.</p>
 <div class="comps"><div class="comp"><span class="comp-lib">Coûts directs</span><span class="comp-val">600 k€ par an, en hausse de 25 % par an</span></div><div class="comp"><span class="comp-lib">Coûts opérationnels</span><span class="comp-val">50 k€ par an</span></div><div class="comp"><span class="comp-lib">Coûts de risque</span><span class="comp-val">30 k€ par an</span></div></div>
-<p class="cas-sous">Coût total sur cinq ans</p>
-<div class="barres"><div class="barre-cas"><span class="barre-lib">Rester</span><span class="barre-piste"><span class="barre-val" style="width:100%"></span></span><span class="barre-chiffre">5,3 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Renégocier en standardisant la collecte</span><span class="barre-piste"><span class="barre-val" style="width:79%"></span></span><span class="barre-chiffre">4,2 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Migrer progressivement</span><span class="barre-piste"><span class="barre-val meilleur" style="width:46%"></span></span><span class="barre-chiffre">2,4 M€</span></div>
-</div>
+<table class="scenarios"><thead><tr><th scope="col">Scénario</th><th scope="col">Coût total sur cinq ans</th></tr></thead><tbody><tr><td>Rester</td><td>5,3 M€</td></tr><tr><td>Renégocier en standardisant la collecte</td><td>4,2 M€</td></tr><tr class="meilleur"><td>Migrer progressivement</td><td>2,4 M€</td></tr></tbody></table>
 <div class="decision"><p><strong>Décision :</strong> Standardiser la collecte sur un format ouvert, puis migrer par étapes.</p><p class="gain">2,9 M€ économisés sur cinq ans</p></div>
 <p class="hyp">Hypothèses : collecte standardisée 150 k€, hausse ramenée à 10 % par an ; migration 350 k€, puis 250 k€ par an en hausse de 15 %.</p>
 </article>
@@ -405,11 +391,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <p class="cas-num">Cas 4 · Base de données</p>
 <p class="cas-situation">Un organisme public paie 1,2 M€ par an de licences et de support pour sa base de données, avec un risque d’audit et beaucoup de code spécifique.</p>
 <div class="comps"><div class="comp"><span class="comp-lib">Coûts directs</span><span class="comp-val">1,2 M€ par an, support en hausse de 8 % par an</span></div><div class="comp"><span class="comp-lib">Coûts opérationnels</span><span class="comp-val">80 k€ par an</span></div><div class="comp"><span class="comp-lib">Coûts de risque</span><span class="comp-val">150 k€ par an, dont l’audit</span></div></div>
-<p class="cas-sous">Coût total sur cinq ans</p>
-<div class="barres"><div class="barre-cas"><span class="barre-lib">Rester</span><span class="barre-piste"><span class="barre-val" style="width:100%"></span></span><span class="barre-chiffre">8,2 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Sortie complète</span><span class="barre-piste"><span class="barre-val" style="width:100%"></span></span><span class="barre-chiffre">8,2 M€</span></div>
-<div class="barre-cas"><span class="barre-lib">Sortie partielle et renégociation</span><span class="barre-piste"><span class="barre-val meilleur" style="width:81%"></span></span><span class="barre-chiffre">6,6 M€</span></div>
-</div>
+<table class="scenarios"><thead><tr><th scope="col">Scénario</th><th scope="col">Coût total sur cinq ans</th></tr></thead><tbody><tr><td>Rester</td><td>8,2 M€</td></tr><tr><td>Sortie complète</td><td>8,2 M€</td></tr><tr class="meilleur"><td>Sortie partielle et renégociation</td><td>6,6 M€</td></tr></tbody></table>
 <div class="decision"><p><strong>Décision :</strong> La sortie complète ne se rentabilise pas sur cinq ans. Mieux vaut migrer les applications simples, garder les plus complexes et renégocier.</p><p class="gain">1,6 M€ économisés sur cinq ans</p></div>
 <p class="hyp">Hypothèses : sortie complète 4 M€ sur deux ans, puis 200 k€ par an pour la base de remplacement ; sortie partielle de 40 % des applications pour 900 k€, 80 k€ par an ensuite, et hausse du support renégociée à 4 % par an sur le reste.</p>
 </article>
@@ -423,7 +405,6 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <section id="tableau" class="sombre">
 <div class="c">
-<p class="sur">Ce que vous recevez</p>
 <h2>La réversibilité de vos fournisseurs critiques, dans un tableau de bord pour votre direction.</h2>
 <p class="chapo">Tous vos fournisseurs critiques sur une même grille, avec leur réversibilité, votre marge de manœuvre et leur évolution d’un trimestre à l’autre.</p>
 <div class="dash">
@@ -442,7 +423,6 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <section id="offres">
 <div class="c">
-<p class="sur">Nos offres</p>
 <h2>Commencez par trois heures.</h2>
 <div class="offres">
 <article class="offre"><p class="d">3 heures</p><h3>Atelier de découverte</h3><p>Nous passons en revue votre contexte, vos irritants et les options possibles, puis nous choisissons ensemble par où commencer.</p><a class="lien-offre" href="#contact">Discutons-en</a></article>
@@ -456,7 +436,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <section class="alt">
 <div class="c">
-<p class="sur">Ce que nous voulons vous entendre dire</p>
+<h2>Ce que nous voulons vous entendre dire</h2>
 <div class="paroles">
 <figure><blockquote><p>« Je sais enfin en combien de temps nous pourrions partir. La discussion avec notre fournisseur a changé. »</p></blockquote><figcaption>Le DSI</figcaption></figure>
 <figure><blockquote><p>« Pour la première fois, je négocie avec une alternative chiffrée sur la table. »</p></blockquote><figcaption>La responsable des achats</figcaption></figure>
@@ -478,7 +458,6 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <section id="contact" class="contact">
 <div class="c">
 <div>
-<p class="sur">Contact</p>
 <h2>Quelle est votre prochaine échéance ?</h2>
 <p class="chapo">Prenons trente minutes pour en parler, sans engagement. Vous pouvez aussi nous écrire à <a href="mailto:contact@stratwise.fr">contact@stratwise.fr</a></p>
 <p class="chapo" style="font-size:15px">Vous êtes expert de l’infrastructure ? Optio se construit aussi comme un collectif, et vous pouvez <a href="mailto:contact@stratwise.fr?subject=Rejoindre%20Optio">nous rejoindre</a>.</p>
