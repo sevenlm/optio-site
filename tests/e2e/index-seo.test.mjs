@@ -114,3 +114,28 @@ test("frise LIBRE : lettres vertes lisibles (contraste ≥ 3, grand texte)", asy
   const r = await page.$$eval(".libre h3 b", (l, f) => l.map((x) => new Function("return " + f)()(x)), contrasteDe.toString());
   for (const c of r) assert.ok(c >= 3, "contraste " + c.toFixed(2));
 });
+
+test("cas : navigation aux flèches dans le carrousel", async () => {
+  const piste = page.locator("#cas-piste");
+  await piste.evaluate((e) => { e.scrollLeft = 0; });
+  await piste.focus();
+  await page.keyboard.press("ArrowRight");
+  await page.waitForFunction(() => document.getElementById("cas-piste").scrollLeft > 0);
+  await page.keyboard.press("ArrowLeft");
+  await page.waitForFunction(() => document.getElementById("cas-piste").scrollLeft === 0);
+});
+
+test("haut de page : panneau rempli même sans JavaScript", async () => {
+  const ctx = await navigateur.newContext({ javaScriptEnabled: false });
+  const p = await ctx.newPage();
+  await p.goto(BASE + "index.html");
+  assert.equal(await p.locator("#hero-panneau .ligne").count(), 4);
+  assert.equal(await p.locator("#hero-panneau .echelle").count(), 1);
+  await ctx.close();
+});
+
+test("tableau de bord : montants TCD avec une décimale", async () => {
+  const t = await page.$$eval("#dash-tcd text", (l) => l.map((x) => x.textContent).filter((x) => /M€/.test(x)));
+  assert.ok(t.length >= 6, JSON.stringify(t));
+  for (const x of t) assert.match(x, /^\d+,\d\s?M€$/u, x);
+});

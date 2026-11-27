@@ -162,8 +162,7 @@ html,body{width:1200px;height:630px;overflow:hidden}
 body{background:#0B2A3C;color:#fff;font-family:'Instrument Sans',sans-serif;position:relative}
 .texte{position:absolute;left:80px;top:72px;width:560px}
 .marque{display:flex;align-items:center;gap:16px;font-family:'Archivo',sans-serif;font-weight:800;font-size:34px;letter-spacing:-.01em}
-.sur{margin-top:78px;font-family:'JetBrains Mono',monospace;font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:#2BD49B}
-h1{margin-top:18px;font-family:'Archivo',sans-serif;font-weight:800;font-size:64px;line-height:1.02;letter-spacing:-.02em}
+h1{margin-top:110px;font-family:'Archivo',sans-serif;font-weight:800;font-size:64px;line-height:1.02;letter-spacing:-.02em}
 p{margin-top:26px;font-size:25px;line-height:1.35;color:#C9D6DC}
 .capture{position:absolute;left:690px;top:66px;width:540px;height:498px;border-radius:14px 0 0 14px;border:1px solid #1E4255;border-right:0;
   background:#F3F6F7 url("img/radar/radar.jpg") 4px -100px/900px auto no-repeat;box-shadow:0 30px 60px rgba(0,0,0,.35)}
@@ -171,7 +170,6 @@ p{margin-top:26px;font-size:25px;line-height:1.35;color:#C9D6DC}
 </style></head><body>
 <div class="texte">
 <div class="marque">${logo}<span>Optio</span></div>
-<p class="sur">Gratuit · pour les DSI</p>
 <h1>Radar des dépendances numériques</h1>
 <p>Repérez ce qui rend votre système d’information captif, et recevez un rapport personnalisé.</p>
 </div>

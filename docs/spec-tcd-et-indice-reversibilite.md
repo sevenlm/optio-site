@@ -1,6 +1,6 @@
 # Coût total de la dépendance et indice de réversibilité
 
-*Spécification Optio (marque de Stratwise), version 0.2, proposition du 26 novembre 2026*
+*Spécification Optio (marque de Stratwise), version 0.2.1, proposition du 27 novembre 2026*
 
 ---
 
@@ -369,6 +369,7 @@ Il s’enrichit des retours de missions, des entretiens avec des DSI et des cont
 |---|---|---|
 | 0.1 | Octobre 2026 | Sept axes, échelle 0-1-3-5, plafond à 69 sans preuve, TCD en trois composantes et quatre scénarios |
 | 0.2 | Novembre 2026 | Neuf axes en quatre familles (les compétences deviennent un axe standard, le contrat et le cadre juridique sont séparés) ; validité de la preuve limitée à 12 mois ; dimensions qualitatives du TCD ; repères de coûts de changement ; scénario S2 « réduire ou hybrider » ; double exploitation, réengagement en cas de verrou actif, indexation et actualisation ajoutés au modèle de calcul |
+| 0.2.1 | Novembre 2026 | Exemple de calcul (§ 3.9) recalé à l’échelle d’une entreprise de 2 000 à 20 000 salariés ; référentiel de l’indice inchangé |
 
 ---
 

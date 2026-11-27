@@ -326,9 +326,9 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <a class="btn btn-clair" href="#offres">Voir nos offres</a>
 </div>
 </div>
-<aside class="panneau" id="hero-panneau" aria-label="Portefeuille d’exemple"><p class="panneau-tete">Portefeuille d’exemple · tableau de bord Optio</p></aside>
+<aside class="panneau" id="hero-panneau" aria-label="Portefeuille d’exemple"><p class="panneau-tete">Portefeuille d’exemple · tableau de bord Optio</p><div class="ligne"><span>Fournisseurs critiques suivis</span><strong>6</strong></div><div class="ligne"><span>Indice moyen</span><strong>51 / 100</strong></div><div class="ligne"><span>Verrous actifs</span><strong>2</strong></div><div class="ligne"><span>TCD à 5 ans</span><strong>18,6 M€</strong></div><p class="echelle">Estimation pour une entreprise de 2&nbsp;000 à 20&nbsp;000 salariés</p></aside>
 </div>
-<p class="sources-hero">+76 % en cinq ans si la hausse anticipée par les DSI européens se confirme (Cigref et Asterès, mai 2026) · coûts VMware ×2 ou plus depuis le rachat par Broadcom (Gartner, mars 2025) · plus de 80 % des éditeurs passés à l’abonnement (Elée, septembre 2025) · 140 Md€ de surcoût annuel estimé pour les organisations européennes sur 2026-2030.</p>
+<p class="sources-hero">+76 % en cinq ans si la hausse anticipée par les DSI européens se confirme (Cigref et Asterès, mai 2026) · coûts VMware ×2 ou plus depuis le rachat par Broadcom (Gartner, mars 2025) · plus de 80 % des éditeurs passés à l’abonnement (Elée, septembre 2025) · 140 Md€ de surcoût annuel estimé pour les organisations européennes sur 2026-2030 (Cigref et Asterès, mai 2026).</p>
 </div>
 </section>
 
@@ -510,13 +510,14 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
   /* Tableau de bord illustratif */
   var F=[{n:"Virtualisation",c:5,i:30,m:-4,tcd:5.0},{n:"Identité",c:5,i:38,m:-6,tcd:1.9},{n:"Collaboratif",c:4,i:46,m:2,tcd:2.5},{n:"Base de données",c:4,i:55,m:5,tcd:8.2},{n:"Réseau",c:3,i:63,m:9,tcd:0.6},{n:"Sauvegarde",c:3,i:71,m:14,tcd:0.4}];
-  var moy=Math.round(F.reduce(function(a,f){ return a+f.i; },0)/F.length), verrous=F.filter(function(f){ return f.m<0; }).length, tot=F.reduce(function(a,f){ return a+f.tcd; },0);
-  function kpisDe(F){ var moy=Math.round(F.reduce(function(a,f){ return a+f.i; },0)/F.length), verrous=F.filter(function(f){ return f.m<0; }).length, tot=F.reduce(function(a,f){ return a+f.tcd; },0);
-    return [["Fournisseurs critiques suivis",String(F.length)],["Indice moyen",moy+" / 100"],["Verrous actifs",String(verrous)],["TCD à 5 ans",tot.toLocaleString("fr-FR",{maximumFractionDigits:1})+"\u202fM€"]]; }
-  kpisDe(F).forEach(function(k){
+  function statsDe(F){ return { moy:Math.round(F.reduce(function(a,f){ return a+f.i; },0)/F.length), verrous:F.filter(function(f){ return f.m<0; }).length, tot:F.reduce(function(a,f){ return a+f.tcd; },0) }; }
+  var moy=statsDe(F).moy;
+  function kpisDe(F){ var st=statsDe(F);
+    return [["Fournisseurs critiques suivis",String(F.length)],["Indice moyen",st.moy+" / 100"],["Verrous actifs",String(st.verrous)],["TCD à 5 ans",st.tot.toLocaleString("fr-FR",{maximumFractionDigits:1})+"\u202fM€"]]; }
+  var lignes=$("hero-panneau").querySelectorAll(".ligne");
+  kpisDe(F).forEach(function(k,i){
     var d=document.createElement("div"); d.className="kpi"; d.innerHTML="<span>"+k[0]+"</span><strong>"+k[1]+"</strong>"; $("dash-kpis").appendChild(d);
-    var l=document.createElement("div"); l.className="ligne"; l.innerHTML="<span>"+k[0]+"</span><strong>"+k[1]+"</strong>"; $("hero-panneau").appendChild(l); });
-  (function(){ var e=document.createElement("p"); e.className="echelle"; e.innerHTML="Estimation pour une entreprise de 2&nbsp;000 à 20&nbsp;000 salariés"; $("hero-panneau").appendChild(e); })();
+    lignes[i].innerHTML="<span>"+k[0]+"</span><strong>"+k[1]+"</strong>"; });
   (function(){ var W=340,H=270,pl=26,pb=26,pt=8, g=svg(W,H,"Matrice : la virtualisation et l’identité sont critiques et peu réversibles");
     function X(i){ return pl+i/100*(W-pl-8); } function Y(c){ return H-pb-12-(c-2)/3.3*(H-pb-pt-40); }
     [[0,40,C.gris],[40,70,C.balise],[70,100,C.signal]].forEach(function(b){ g.appendChild(s("rect",{x:X(b[0]),y:pt,width:X(b[1])-X(b[0]),height:H-pb-pt,fill:b[2],"fill-opacity":"0.08"})); });
@@ -542,7 +543,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   (function(){ var W=340,H=210,lab=104,max=Math.max.apply(null,F.map(function(f){ return f.tcd; })), g=svg(W,H,"Coût total de la dépendance à cinq ans par fournisseur");
     F.forEach(function(f,k){ var y=10+k*32, w=f.tcd/max*(W-lab-56); g.appendChild(s("text",{x:lab-6,y:y+14,"text-anchor":"end","font-size":"11",fill:C.encre},f.n));
       g.appendChild(s("rect",{x:lab,y:y+2,width:w,height:16,rx:3,fill:C.encre,"fill-opacity":"0.75"}));
-      g.appendChild(s("text",{x:lab+w+4,y:y+14,"font-size":"10.5",fill:C.t3},f.tcd.toLocaleString("fr-FR")+"\u202fM€")); });
+      g.appendChild(s("text",{x:lab+w+4,y:y+14,"font-size":"10.5",fill:C.t3},f.tcd.toLocaleString("fr-FR",{minimumFractionDigits:1,maximumFractionDigits:1})+"\u202fM€")); });
     $("dash-tcd").appendChild(g); })();
 
   /* Tally : chargé seulement après un clic */
