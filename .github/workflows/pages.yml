@@ -1,0 +1,42 @@
+name: pages
+# Génère les fiches (technologies/, tendances/, sitemap) puis publie le site sur GitHub Pages.
+# Prérequis : Settings > Pages > Build and deployment > Source = « GitHub Actions ».
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: true
+jobs:
+  construire:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+      - run: node scripts/fiches.mjs --sitemap
+      - name: Assembler le site publié (mêmes fichiers que la Containerfile, plus CNAME)
+        run: |
+          mkdir -p _site/data
+          cp index.html radar.html radar-des-dependances.html fiches.css robots.txt sitemap.xml CNAME _site/
+          cp -R fonts img js technologies tendances _site/
+          cp data/*.json _site/data/
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+  publier:
+    needs: construire
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploiement.outputs.page_url }}
+    steps:
+      - id: deploiement
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,40 @@
+/* Fiches statiques du radar (technologies/, tendances/), générées par scripts/fiches.mjs */
+:root{
+  --encre:#0B2A3C; --fond:#FFFFFF; --calque:#F3F6F7; --trait:#DCE4E7; --texte-2:#41576A;
+  --vert:#00775A; --rouge:#B3261E; --orange:#8A5300; --bleu:#1F5F8B; --lien:#00775A;
+  --titre:'Archivo','Helvetica Neue',sans-serif; --corps:'Instrument Sans','Helvetica Neue',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --encre:#E8EEF1; --fond:#0B2A3C; --calque:#12354A; --trait:#2A4B5E; --texte-2:#B5C4CD;
+    --vert:#4FD1A8; --rouge:#FF8A80; --orange:#F2C46B; --bleu:#8CC4EE; --lien:#4FD1A8; }
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--corps);color:var(--encre);background:var(--fond);line-height:1.6;font-size:17px}
+.c{max-width:760px;margin:0 auto;padding:0 20px}
+a{color:var(--lien)}
+.entete{border-bottom:1px solid var(--trait)}
+.entete .c{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:center;justify-content:space-between;padding:16px 20px}
+.marque{font-family:var(--titre);font-weight:700;font-size:22px;color:var(--encre);text-decoration:none}
+.entete nav{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:15px}
+.entete nav a{color:var(--texte-2);text-decoration:none}
+.entete nav a:hover{color:var(--encre);text-decoration:underline}
+main{padding:24px 20px 56px}
+.ariane{font-size:14px;color:var(--texte-2);margin-bottom:20px}
+h1{font-family:var(--titre);font-size:clamp(30px,5vw,42px);line-height:1.15;margin:0 0 10px}
+h2{font-family:var(--titre);font-size:22px;line-height:1.25;margin:36px 0 10px}
+p,ul{margin:0 0 14px}
+ul{padding-left:22px}
+li{margin-bottom:6px}
+.meta,.doux,.chapo{color:var(--texte-2)}
+.chapo{font-size:19px}
+.anneau{display:inline-block;font-weight:600;font-size:15px;padding:4px 10px;border:1px solid currentColor;border-radius:4px}
+.a0{color:var(--rouge)} .a1{color:var(--orange)} .a2{color:var(--bleu)} .a3{color:var(--vert)}
+.colonnes{columns:2 240px;column-gap:32px}
+.colonnes li{break-inside:avoid}
+.sources{font-size:15px}
+.suite{margin-top:24px}
+.appel{margin-top:44px;padding:20px 22px;background:var(--calque);border-left:3px solid var(--vert)}
+.appel p:last-child{margin:0}
+.btn{display:inline-block;background:var(--vert);color:var(--fond);font-weight:600;padding:9px 16px;border-radius:4px;text-decoration:none;margin-right:12px}
+footer{border-top:1px solid var(--trait);font-size:14px;color:var(--texte-2)}
+footer .c{padding:20px}

@@ -146,7 +146,8 @@ test("liens internes : chaque href et src relatif répond 200, chaque ancre a sa
 test("maillage : sitemap, menu et pied de index.html, en-tête de radar.html", async () => {
   const sitemap = lire("sitemap.xml");
   assert.match(sitemap, new RegExp("<url><loc>" + CANONIQUE.replace(/\./g, "\\.") + "</loc><lastmod>\\d{4}-\\d{2}-\\d{2}</lastmod></url>"));
-  for (const loc of sitemap.match(/<url>.*?<\/url>/g)) assert.match(loc, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, loc);
+  // pages principales datées ; les fiches générées (technologies/, tendances/) n’ont pas de lastmod
+  for (const loc of sitemap.match(/<url>.*?<\/url>/g).filter((l) => !/\/(technologies|tendances)\//.test(l))) assert.match(loc, /<lastmod>\d{4}-\d{2}-\d{2}<\/lastmod>/, loc);
 
   let { contexte, page } = await ouvrir("index.html");
   try {

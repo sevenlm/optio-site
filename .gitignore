@@ -1,3 +1,6 @@
 tmp/
 .playwright-mcp/
 node_modules/
+# Fiches générées par scripts/fiches.mjs (npm run fiches), publiées par .github/workflows/pages.yml
+/technologies/
+/tendances/
