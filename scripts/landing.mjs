@@ -27,7 +27,7 @@ export function blocUrgentes(donnees) {
     .sort((a, b) => a.quadrant - b.quadrant || cmp(a.titre, b.titre));
   const items = liste.map(t =>
     `<li class="carte-gen"><p class="axe-gen">${esc(AXES[t.quadrant])}</p>` +
-    `<h3><a href="radar.html#${esc(t.id)}">${esc(t.titre)}</a></h3>` +
+    `<h3><a href="tendances/${esc(t.id)}.html">${esc(t.titre)}</a></h3>` +
     `<p>${esc(premierePhrase(t.risque))}</p></li>`);
   return `<ul class="grille-gen">\n${items.join("\n")}\n</ul>`;
 }
@@ -46,9 +46,9 @@ export function blocExemples(donnees) {
     const items = choisies.map(({ t, alt }) => {
       const n = citations.get(t.nom) || 0;
       return `<li class="exemple carte-gen" data-anneau="${t.anneau}" data-alt="${alt.anneau}">` +
-        `<h4><a href="radar.html#${esc(t.id)}">${esc(t.nom)}</a></h4>` +
+        `<h4><a href="technologies/${esc(t.id)}.html">${esc(t.nom)}</a></h4>` +
         `<p class="axe-gen">${esc(ANNEAUX[t.anneau])} · cité par ${n} tendance${n > 1 ? "s" : ""}</p>` +
-        `<p>Alternative mieux classée : <a href="radar.html#${esc(alt.id)}">${esc(alt.nom)}</a> (${esc(ANNEAUX[alt.anneau].toLowerCase())}).</p></li>`;
+        `<p>Alternative mieux classée : <a href="technologies/${esc(alt.id)}.html">${esc(alt.nom)}</a> (${esc(ANNEAUX[alt.anneau].toLowerCase())}).</p></li>`;
     });
     groupes.push(`<h3 class="anneau-gen">${esc(ANNEAUX[anneau])}</h3>\n<ul class="grille-gen">\n${items.join("\n")}\n</ul>`);
   }

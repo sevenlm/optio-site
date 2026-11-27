@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API fermées ou monétisées | Radar des dépendances</title>
+<meta name="description" content="L’éditeur contrôle seul l’accès aux données du client et peut à tout moment réduire les intégrations ou l’export, ou les faire payer.">
+<link rel="canonical" href="https://www.weareoptio.fr/tendances/api-fermees-ou-monetisees.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Optio">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://www.weareoptio.fr/tendances/api-fermees-ou-monetisees.html">
+<meta property="og:title" content="API fermées ou monétisées | Radar des dépendances">
+<meta property="og:description" content="L’éditeur contrôle seul l’accès aux données du client et peut à tout moment réduire les intégrations ou l’export, ou les faire payer.">
+<meta property="og:image" content="https://www.weareoptio.fr/img/radar/partage.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../fiches.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Optio","item":"https://www.weareoptio.fr/index.html"},{"@type":"ListItem","position":2,"name":"Tendances","item":"https://www.weareoptio.fr/tendances/"},{"@type":"ListItem","position":3,"name":"API fermées ou monétisées","item":"https://www.weareoptio.fr/tendances/api-fermees-ou-monetisees.html"}]}</script>
+</head>
+<body>
+<header class="entete"><div class="c"><a class="marque" href="../index.html">Optio</a><nav aria-label="Navigation"><a href="../radar-des-dependances.html">Radar des dépendances</a><a href="../technologies/">Technologies</a><a href="../tendances/">Tendances</a></nav></div></header>
+<main class="c">
+<nav class="ariane" aria-label="Fil d’Ariane"><a href="../index.html">Optio</a> › <a href="../tendances/">Tendances</a> › <span aria-current="page">API fermées ou monétisées</span></nav>
+<h1>API fermées ou monétisées</h1>
+<p class="meta">Axe pratiques technologiques · urgence élevée</p>
+<h2>Ce qui se passe</h2>
+<p>Depuis le 29 mai 2025, les nouvelles applications commerciales diffusées hors de la Marketplace Slack, et les nouvelles installations d’applications existantes, ne peuvent plus lire l’historique des conversations qu’à raison d’une requête par minute et de 15 messages par requête. Des éditeurs comme Glean ne peuvent plus indexer ni stocker durablement les données Slack, ce qui, selon Glean, complique leur usage avec la plateforme d’IA choisie par le client. En 2023, Reddit annonçait 12 000 $ pour 50 millions de requêtes, ce qui représentait, selon le développeur d’Apollo, environ 20 M$ par an ; l’application a fermé le 30 juin 2023.</p>
+<h2>Le déclencheur</h2>
+<p>Le 29 mai 2025, Slack (Salesforce) a durci les conditions d’utilisation de ses API et réduit fortement l’accès des applications tierces à l’historique des messages.</p>
+<h2>Le risque pour votre organisation</h2>
+<p>L’éditeur contrôle seul l’accès aux données du client et peut à tout moment réduire les intégrations ou l’export, ou les faire payer.</p>
+<h2>Technologies concernées</h2>
+<ul class="colonnes"><li><a href="../technologies/confluence.html">Confluence</a></li><li><a href="../technologies/datadog.html">Datadog</a></li><li><a href="../technologies/jira-et-jira-service-management.html">Jira et Jira Service Management</a></li><li><a href="../technologies/new-relic.html">New Relic</a></li><li><a href="../technologies/okta.html">Okta</a></li><li><a href="../technologies/power-bi.html">Power BI</a></li><li><a href="../technologies/servicenow.html">ServiceNow</a></li></ul>
+<h2>Comment l’enfermement se met en place</h2>
+<ul><li><strong>Formats et API propriétaires.</strong> Les données et les échanges utilisent des formats que seul le fournisseur sait lire.</li><li><strong>Resserrement de l’offre gratuite.</strong> L’outil s’installe gratuitement, puis l’éditeur limite l’offre gratuite une fois l’usage installé ; le passage au payant se négocie sous contrainte.</li></ul>
+<h2>Les leviers pour garder le choix</h2>
+<ul><li><strong>Registre des contrats et des prestataires.</strong> Recensez les intégrations et les exports qui reposent sur des API tierces, avec leurs quotas actuels.</li><li><strong>Clauses de réversibilité.</strong> Exigez dans vos contrats un droit d’export complet dans un format ouvert et un préavis sur toute modification des conditions d’API.</li><li><strong>Formats de données ouverts.</strong> Planifiez un export régulier de vos données critiques hors de l’outil, sans attendre une restriction.</li><li><strong>Contrats de données standardisés.</strong> Décrivez les données échangées dans un contrat standard, indépendant de l’API du fournisseur.</li></ul>
+<h2>Sources</h2>
+<ul class="sources"><li><a href="https://docs.slack.dev/changelog/2025/05/29/rate-limit-changes-for-non-marketplace-apps" rel="noopener">Slack, changement des limites d’API pour les applications hors Marketplace, mai 2025</a></li><li><a href="https://www.techzine.eu/news/applications/132144/salesforce-restricts-access-to-slack-data-for-ai-use" rel="noopener">Techzine, Salesforce restreint l’accès aux données Slack, juin 2025</a></li><li><a href="https://techcrunch.com/2023/06/08/popular-third-party-reddit-app-apollo-is-shutting-down-as-a-result-of-reddits-new-api-pricing/" rel="noopener">TechCrunch, fermeture d’Apollo après la tarification de l’API Reddit, juin 2023</a></li></ul>
+<p class="suite"><a href="../radar.html#api-fermees-ou-monetisees">Ouvrir cette tendance dans le radar</a></p>
+<aside class="appel"><p>Vous voulez savoir combien coûte votre dépendance et en combien de temps vous pourriez partir ?</p><p><a class="btn" href="../index.html#contact">Parlons-en trente minutes</a> <a href="../radar-des-dependances.html">ou explorez le radar gratuit</a></p></aside>
+</main>
+<footer><div class="c"><p><a href="../index.html">Optio</a>, dépendances numériques et réversibilité. Une marque de Stratwise. Fiche tirée du <a href="../radar-des-dependances.html">radar des dépendances numériques</a>, édition 1 (prototype).</p></div></footer>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sortir de Amazon SQS et SNS : alternatives | Optio</title>
+<meta name="description" content="Amazon SQS et SNS (Amazon Web Services) : sortie exigeante. Les files se remplacent par un courtier ouvert, mais les applications utilisent les API et…">
+<link rel="canonical" href="https://www.weareoptio.fr/technologies/amazon-sqs-sns.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Optio">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://www.weareoptio.fr/technologies/amazon-sqs-sns.html">
+<meta property="og:title" content="Sortir de Amazon SQS et SNS : alternatives | Optio">
+<meta property="og:description" content="Amazon SQS et SNS (Amazon Web Services) : sortie exigeante. Les files se remplacent par un courtier ouvert, mais les applications utilisent les API et…">
+<meta property="og:image" content="https://www.weareoptio.fr/img/radar/partage.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../fiches.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Optio","item":"https://www.weareoptio.fr/index.html"},{"@type":"ListItem","position":2,"name":"Technologies","item":"https://www.weareoptio.fr/technologies/"},{"@type":"ListItem","position":3,"name":"Amazon SQS et SNS","item":"https://www.weareoptio.fr/technologies/amazon-sqs-sns.html"}]}</script>
+</head>
+<body>
+<header class="entete"><div class="c"><a class="marque" href="../index.html">Optio</a><nav aria-label="Navigation"><a href="../radar-des-dependances.html">Radar des dépendances</a><a href="../technologies/">Technologies</a><a href="../tendances/">Tendances</a></nav></div></header>
+<main class="c">
+<nav class="ariane" aria-label="Fil d’Ariane"><a href="../index.html">Optio</a> › <a href="../technologies/">Technologies</a> › <span aria-current="page">Amazon SQS et SNS</span></nav>
+<h1>Sortir de Amazon SQS et SNS</h1>
+<p class="meta">Amazon Web Services · Middleware · Propriétaire</p>
+<p class="anneau a1">Sortie exigeante</p>
+<h2>Pourquoi la sortie est exigeante</h2>
+<p>Les files se remplacent par un courtier ouvert, mais les applications utilisent les API et les droits IAM d’AWS, et les déclencheurs Lambda en dépendent.</p>
+<h2>Ce qui crée la dépendance</h2>
+<p>Files de messages et notifications gérées par AWS pour découpler microservices, systèmes distribués et applications sans serveur, avec envoi vers SMS, notifications mobiles et courriel pour SNS.</p>
+<h2>Alternatives à Amazon SQS et SNS</h2>
+<ul><li><a href="apache-kafka.html">Apache Kafka</a> <span class="doux">(sortie facilitée)</span></li><li><a href="rabbitmq.html">RabbitMQ</a> <span class="doux">(sortie maîtrisable)</span></li><li><a href="nats-jetstream.html">NATS JetStream</a> <span class="doux">(sortie facilitée)</span></li></ul>
+<h2>Tendances qui concernent Amazon SQS et SNS</h2>
+<ul><li><a href="../tendances/couplage-fort-a-la-plateforme.html">Couplage fort à la plateforme</a> <span class="doux">(urgence moyenne)</span></li></ul>
+<h2>Sources</h2>
+<ul class="sources"><li><a href="https://aws.amazon.com/sqs/" rel="noopener">AWS, page Amazon SQS, consulté en novembre 2026</a></li><li><a href="https://aws.amazon.com/sns/" rel="noopener">AWS, page Amazon SNS, consulté en novembre 2026</a></li></ul>
+<p class="suite"><a href="../radar.html#amazon-sqs-sns">Ouvrir Amazon SQS et SNS dans le radar</a></p>
+<aside class="appel"><p>Vous voulez savoir combien coûte votre dépendance et en combien de temps vous pourriez partir ?</p><p><a class="btn" href="../index.html#contact">Parlons-en trente minutes</a> <a href="../radar-des-dependances.html">ou explorez le radar gratuit</a></p></aside>
+</main>
+<footer><div class="c"><p><a href="../index.html">Optio</a>, dépendances numériques et réversibilité. Une marque de Stratwise. Fiche tirée du <a href="../radar-des-dependances.html">radar des dépendances numériques</a>, édition 1 (prototype).</p></div></footer>
+</body>
+</html>

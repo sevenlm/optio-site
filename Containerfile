@@ -1,5 +1,7 @@
 FROM docker.io/library/busybox:musl
-COPY index.html radar.html radar-des-dependances.html robots.txt sitemap.xml /www/
+COPY index.html radar.html radar-des-dependances.html fiches.css robots.txt sitemap.xml /www/
+COPY technologies/ /www/technologies/
+COPY tendances/ /www/tendances/
 COPY fonts/ /www/fonts/
 COPY img/ /www/img/
 COPY js/ /www/js/

@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Observabilité propriétaire | Radar des dépendances</title>
+<meta name="description" content="Avec des agents, des formats et des langages de requête propres à l’outil, changer de fournisseur oblige à réinstrumenter les applications et à refaire…">
+<link rel="canonical" href="https://www.weareoptio.fr/tendances/observabilite-proprietaire.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Optio">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://www.weareoptio.fr/tendances/observabilite-proprietaire.html">
+<meta property="og:title" content="Observabilité propriétaire | Radar des dépendances">
+<meta property="og:description" content="Avec des agents, des formats et des langages de requête propres à l’outil, changer de fournisseur oblige à réinstrumenter les applications et à refaire…">
+<meta property="og:image" content="https://www.weareoptio.fr/img/radar/partage.png">
+<link rel="stylesheet" href="../fonts/fonts.css">
+<link rel="stylesheet" href="../fiches.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Optio","item":"https://www.weareoptio.fr/index.html"},{"@type":"ListItem","position":2,"name":"Tendances","item":"https://www.weareoptio.fr/tendances/"},{"@type":"ListItem","position":3,"name":"Observabilité propriétaire","item":"https://www.weareoptio.fr/tendances/observabilite-proprietaire.html"}]}</script>
+</head>
+<body>
+<header class="entete"><div class="c"><a class="marque" href="../index.html">Optio</a><nav aria-label="Navigation"><a href="../radar-des-dependances.html">Radar des dépendances</a><a href="../technologies/">Technologies</a><a href="../tendances/">Tendances</a></nav></div></header>
+<main class="c">
+<nav class="ariane" aria-label="Fil d’Ariane"><a href="../index.html">Optio</a> › <a href="../tendances/">Tendances</a> › <span aria-current="page">Observabilité propriétaire</span></nav>
+<h1>Observabilité propriétaire</h1>
+<p class="meta">Axe pratiques technologiques · urgence moyenne</p>
+<h2>Ce qui se passe</h2>
+<p>Selon Gartner, 5 % de ses clients dépensent plus de 10 M$ par an chez un seul fournisseur d’observabilité. Dans l’enquête Grafana Labs publiée en 2026 (1 363 répondants), le coût est le premier critère de choix d’un outil (65 %) et 41 % utilisent OpenTelemetry en production, 37 % en attendant qu’il facilite le changement de fournisseur. En mai 2023, Datadog a évoqué une facture ponctuelle d’un client, estimée à 65 M$ et attribuée à Coinbase par The Pragmatic Engineer.</p>
+<h2>Le déclencheur</h2>
+<p>En juillet 2026, Gartner a relevé que la maîtrise des coûts de télémétrie reste l’une des premières préoccupations des acheteurs et qu’OpenTelemetry est devenu une exigence de base.</p>
+<h2>Le risque pour votre organisation</h2>
+<p>Avec des agents, des formats et des langages de requête propres à l’outil, changer de fournisseur oblige à réinstrumenter les applications et à refaire tableaux de bord et alertes.</p>
+<h2>Technologies concernées</h2>
+<ul class="colonnes"><li><a href="../technologies/datadog.html">Datadog</a></li><li><a href="../technologies/dynatrace.html">Dynatrace</a></li><li><a href="../technologies/new-relic.html">New Relic</a></li><li><a href="../technologies/splunk.html">Splunk</a></li></ul>
+<h2>Comment l’enfermement se met en place</h2>
+<ul><li><strong>Formats et API propriétaires.</strong> Les données et les échanges utilisent des formats que seul le fournisseur sait lire.</li><li><strong>Intégrations d’écosystème.</strong> L’identité, la supervision et les outils annexes sont imposés par le fournisseur.</li></ul>
+<h2>Les leviers pour garder le choix</h2>
+<ul><li><strong>Couches d’abstraction.</strong> Instrumentez vos nouvelles applications avec OpenTelemetry plutôt qu’avec l’agent propre à l’outil.</li><li><strong>Clauses de réversibilité.</strong> Exigez de votre fournisseur l’ingestion native d’OpenTelemetry et l’export de vos données de télémétrie.</li><li><strong>Coût total de la dépendance.</strong> Suivez le coût d’observabilité par application et fixez des règles de rétention et d’échantillonnage.</li></ul>
+<h2>Sources</h2>
+<ul class="sources"><li><a href="https://www.networkworld.com/article/4197973/ai-workloads-shake-up-observability-market.html" rel="noopener">Network World, Gartner sur le marché de l’observabilité, juillet 2026</a></li><li><a href="https://grafana.com/observability-survey/2026/" rel="noopener">Grafana Labs, Observability Survey 2026</a></li><li><a href="https://blog.pragmaticengineer.com/datadog-65m-year-customer-mystery/" rel="noopener">The Pragmatic Engineer, le client Datadog à 65 M$, mai 2023</a></li></ul>
+<p class="suite"><a href="../radar.html#observabilite-proprietaire">Ouvrir cette tendance dans le radar</a></p>
+<aside class="appel"><p>Vous voulez savoir combien coûte votre dépendance et en combien de temps vous pourriez partir ?</p><p><a class="btn" href="../index.html#contact">Parlons-en trente minutes</a> <a href="../radar-des-dependances.html">ou explorez le radar gratuit</a></p></aside>
+</main>
+<footer><div class="c"><p><a href="../index.html">Optio</a>, dépendances numériques et réversibilité. Une marque de Stratwise. Fiche tirée du <a href="../radar-des-dependances.html">radar des dépendances numériques</a>, édition 1 (prototype).</p></div></footer>
+</body>
+</html>

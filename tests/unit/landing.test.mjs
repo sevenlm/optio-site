@@ -27,8 +27,8 @@ test("blocUrgentes : tendances d’anneau 0, liens et échappement", () => {
   ], technologies: [] };
   const h = blocUrgentes(d);
   assert.equal((h.match(/<li/g) || []).length, 2);
-  assert.ok(h.includes('href="radar.html#a"') && h.includes('href="radar.html#b"'));
-  assert.ok(!h.includes("radar.html#c"));
+  assert.ok(h.includes('href="tendances/a.html"') && h.includes('href="tendances/b.html"'));
+  assert.ok(!h.includes("tendances/c.html"));
   assert.ok(h.includes("Alpha &lt;b&gt;"));
   assert.ok(h.includes("Premier &amp; fort."));
   assert.ok(!h.includes("Second."));
@@ -47,10 +47,9 @@ test("blocExemples : 9 entrées au plus, alternatives mieux classées", () => {
   assert.ok(parNom.size > 0);
 });
 
-test("chaque lien radar.html#id généré correspond à un id existant", () => {
+test("chaque lien de fiche généré correspond à un id existant", () => {
   const ids = new Set([...donnees.tendances, ...donnees.technologies].map(x => x.id));
-  const liens = [...genererPage(page, donnees).matchAll(/radar\.html#([\w-]+)/g)].map(m => m[1])
-    .filter(id => !["tendances", "technologies"].includes(id));
+  const liens = [...genererPage(page, donnees).matchAll(/(?:tendances|technologies)\/([\w-]+)\.html/g)].map(m => m[1]);
   assert.ok(liens.length > 0);
   for (const id of liens) assert.ok(ids.has(id), "id inconnu : " + id);
 });
