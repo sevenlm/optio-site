@@ -26,6 +26,7 @@
 html{scroll-behavior:smooth;scroll-padding-top:88px}
 .skip{position:absolute;left:12px;top:-100px;z-index:20;background:var(--signal);color:var(--encre);padding:12px 16px;border-radius:6px;font-weight:600;text-decoration:none}
 .skip:focus{top:12px}
+.sr{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
 body{margin:0;font-family:var(--corps);color:var(--encre);background:var(--fond);line-height:1.55;font-size:17px}
 h1,h2,h3,p,ul,figure,blockquote{margin:0}
@@ -35,9 +36,10 @@ a{color:inherit}
 section{padding:88px 0}
 .alt{background:var(--calque)}
 .sur{font-size:14px;font-weight:600;color:var(--vert);margin-bottom:12px}
+h2.sur{font-family:var(--corps);font-stretch:100%;line-height:1.55;letter-spacing:0;max-width:none}
 h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:clamp(28px,3.2vw,40px);line-height:1.1;letter-spacing:-0.02em;max-width:760px}
 .chapo{margin-top:14px;color:var(--texte-2);max-width:640px}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:6px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--encre);background:transparent;color:var(--encre);cursor:pointer}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:10px 22px;text-align:center;border-radius:6px;font-weight:600;font-size:16px;text-decoration:none;border:1.5px solid var(--encre);background:transparent;color:var(--encre);cursor:pointer}
 .btn-v{background:var(--signal);border-color:var(--signal);color:var(--encre)}
 .btn-v:hover{background:#00B386}
 .btn:hover{border-color:var(--signal)}
@@ -50,7 +52,7 @@ h2{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:clamp(28
 nav{display:flex;flex-wrap:wrap;align-items:center;gap:22px;font-size:15px}
 nav a{text-decoration:none;color:#C9D6DC}
 nav a:hover{color:#fff}
-nav .btn{min-height:44px;padding:0 16px;font-size:14px}
+nav .btn{min-height:44px;padding:0 16px;font-size:14px;white-space:nowrap}
 
 /* Accroche */
 .hero{padding:104px 0 80px;background:var(--encre);color:#fff}
@@ -111,7 +113,7 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .doux{color:var(--texte-3)}
 .tcd-face{margin-top:22px;font-size:16px;color:var(--texte-2);max-width:760px}
 .carrousel{margin-top:48px}
-.carrousel-tete{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-bottom:16px}
+.carrousel-tete{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px 16px;margin-bottom:16px}
 .carrousel-tete h3{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:22px}
 .carrousel-nav{display:flex;align-items:center;gap:12px}
 .nav-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--encre);background:var(--fond);font-size:18px;cursor:pointer}
@@ -142,9 +144,8 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .decision{background:var(--encre);color:#fff;border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;margin-top:auto}
 .decision p{font-size:14.5px;line-height:1.45}
 .decision .gain{font-family:var(--titre);font-stretch:112%;font-weight:800;font-size:18px;color:#2BD49B}
-.hyp{font-size:12.5px;color:var(--texte-3)}
 #exemples .actions{margin-top:32px}
-@media (max-width:640px){.comp{grid-template-columns:118px 1fr}.barre-cas{grid-template-columns:minmax(0,1fr) 70px 58px}nav a:not(.btn){display:none}}
+@media (max-width:640px){.comp{grid-template-columns:1fr;gap:2px}.barre-cas{grid-template-columns:minmax(0,1fr) 70px 58px}nav{gap:14px}nav a:not(.btn):not(.nav-radar){display:none}.cas{padding:20px}}
 
 /* Tableau de bord */
 .dash{margin-top:36px;color:var(--encre);background:var(--fond);border:1px solid var(--trait);border-radius:12px;padding:24px;display:flex;flex-direction:column;gap:20px}
@@ -155,6 +156,8 @@ nav .btn{min-height:44px;padding:0 16px;font-size:14px}
 .panels{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(440px,100%),1fr));gap:16px}
 .panel{border:1px solid var(--trait);border-radius:8px;padding:16px}
 .panel h3{font-size:14px;font-weight:600;color:var(--texte-2);margin-bottom:8px}
+.panel svg{display:block;max-width:420px;margin:0 auto}
+@media (max-width:640px){.dash{padding:16px 12px}.panel{padding:12px 8px}}
 
 /* Offres */
 .offres{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(240px,100%),1fr));gap:16px;margin-top:40px}
@@ -299,7 +302,7 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 <a href="#exemples">Exemples</a>
 <a href="#tableau">Tableau de bord</a>
 <a href="#offres">Offres</a>
-<a href="radar-des-dependances.html">Radar</a>
+<a class="nav-radar" href="radar-des-dependances.html">Radar</a>
 <a class="btn btn-v" href="#contact">Nous contacter</a>
 </nav>
 </div>
@@ -445,13 +448,14 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
 
 <section class="alt">
 <div class="c">
-<p class="sur">Ce que nous voulons vous entendre dire</p>
+<h2 class="sur">Ce que nous voulons vous entendre dire</h2>
 <div class="paroles">
 <figure><blockquote><p>« Je sais enfin en combien de temps nous pourrions partir. La discussion avec notre fournisseur a changé. »</p></blockquote><figcaption>Le DSI</figcaption></figure>
 <figure><blockquote><p>« Pour la première fois, je négocie avec une alternative chiffrée sur la table. »</p></blockquote><figcaption>La responsable des achats</figcaption></figure>
 <figure><blockquote><p>« Le pilote a tranché un débat qui durait depuis trois ans. Nous savons maintenant ce que l’alternative couvre. »</p></blockquote><figcaption>L’architecte infrastructure</figcaption></figure>
 </div>
 <p class="illus">Citations illustratives, en attendant les retours de nos premiers clients.</p>
+<h2 class="sr">Questions fréquentes</h2>
 <div class="faq">
 <details><summary>Faut-il forcément quitter notre fournisseur ?</summary><p>Non. Une alternative chiffrée et testée sert aussi à renégocier un meilleur prix, un engagement plus court ou des clauses de sortie.</p></details>
 <details><summary>Intervenez-vous sur notre production ?</summary><p>Le pilote porte sur un périmètre limité et représentatif, sans risque pour votre production.</p></details>
@@ -526,29 +530,29 @@ footer .haut{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;
   (function(){ var W=340,H=270,pl=26,pb=26,pt=8, g=svg(W,H,"Matrice : la virtualisation et l’identité sont critiques et peu réversibles");
     function X(i){ return pl+i/100*(W-pl-8); } function Y(c){ return H-pb-12-(c-2)/3.3*(H-pb-pt-40); }
     [[0,40,C.gris],[40,70,C.balise],[70,100,C.signal]].forEach(function(b){ g.appendChild(s("rect",{x:X(b[0]),y:pt,width:X(b[1])-X(b[0]),height:H-pb-pt,fill:b[2],"fill-opacity":"0.08"})); });
-    [0,40,70,100].forEach(function(t){ g.appendChild(s("text",{x:X(t),y:H-8,"text-anchor":"middle","font-size":"10",fill:C.t3},t)); });
-    g.appendChild(s("text",{x:4,y:H-pb-4,"font-size":"10",fill:C.t3},"Criticité ↑  ·  Indice →"));
+    [0,40,70,100].forEach(function(t){ g.appendChild(s("text",{x:X(t),y:H-8,"text-anchor":t===100?"end":t===0?"start":"middle","font-size":"12",fill:C.t3},t)); });
+    g.appendChild(s("text",{x:4,y:H-pb-4,"font-size":"12",fill:C.t3},"Criticité ↑  ·  Indice →"));
     F.forEach(function(f,k){ var col=zoneDe(f.i)[1], haut=k%2===0; g.appendChild(s("circle",{cx:X(f.i),cy:Y(f.c),r:6,fill:col}));
-      g.appendChild(s("text",{x:X(f.i)+(haut?-4:4),y:Y(f.c)+(haut?-10:18),"text-anchor":haut?"end":"start","font-size":"10",fill:C.encre},f.n)); });
+      g.appendChild(s("text",{x:X(f.i)+(haut?-4:4),y:Y(f.c)+(haut?-10:18),"text-anchor":haut?"end":"start","font-size":"12",fill:C.encre},f.n)); });
     $("dash-matrice").appendChild(g); })();
-  (function(){ var W=340,H=210,lab=104,zero=190,u=6, g=svg(W,H,"Marge de manœuvre : deux fournisseurs sont en verrou actif");
+  (function(){ var W=340,H=210,lab=112,zero=200,u=6, g=svg(W,H,"Marge de manœuvre : deux fournisseurs sont en verrou actif");
     g.appendChild(s("line",{x1:zero,x2:zero,y1:0,y2:H,stroke:C.encre,"stroke-width":"1"}));
-    F.forEach(function(f,k){ var y=10+k*32; g.appendChild(s("text",{x:lab-6,y:y+14,"text-anchor":"end","font-size":"11",fill:C.encre},f.n));
+    F.forEach(function(f,k){ var y=10+k*32; g.appendChild(s("text",{x:lab-6,y:y+14,"text-anchor":"end","font-size":"12.5",fill:C.encre},f.n));
       var w=Math.abs(f.m)*u; g.appendChild(s("rect",{x:f.m<0?zero-w:zero,y:y+2,width:w,height:16,rx:3,fill:f.m<0?C.rouge:C.signal,"fill-opacity":f.m<0?"0.85":"0.8"}));
-      g.appendChild(s("text",{x:f.m<0?zero-w-4:zero+w+4,y:y+14,"text-anchor":f.m<0?"end":"start","font-size":"10.5",fill:C.t3},(f.m>0?"+":"")+f.m+" mois")); });
+      g.appendChild(s("text",{x:f.m<0?zero-w-4:zero+w+4,y:y+14,"text-anchor":f.m<0?"end":"start","font-size":"12.5",fill:C.t3},(f.m>0?"+":"")+f.m+" mois")); });
     $("dash-marges").appendChild(g); })();
   (function(){ var Q=[["T1",38],["T2",41],["T3",46],["T4",moy]], W=340,H=200,pl=30,pb=26,pt=16, g=svg(W,H,"Indice moyen en hausse de 38 à "+moy+" sur quatre trimestres");
     function X(i){ return pl+i*(W-pl-24)/3; } function Y(val){ return H-pb-val/100*(H-pb-pt); }
-    [40,70].forEach(function(t){ g.appendChild(s("line",{x1:pl,x2:W-10,y1:Y(t),y2:Y(t),stroke:C.trait,"stroke-dasharray":"3 3"})); g.appendChild(s("text",{x:pl-6,y:Y(t)+4,"text-anchor":"end","font-size":"10",fill:C.t3},t)); });
+    [40,70].forEach(function(t){ g.appendChild(s("line",{x1:pl,x2:W-10,y1:Y(t),y2:Y(t),stroke:C.trait,"stroke-dasharray":"3 3"})); g.appendChild(s("text",{x:pl-6,y:Y(t)+4,"text-anchor":"end","font-size":"12",fill:C.t3},t)); });
     g.appendChild(s("polyline",{points:Q.map(function(q,i){ return X(i)+","+Y(q[1]); }).join(" "),fill:"none",stroke:C.signal,"stroke-width":"2.5"}));
-    Q.forEach(function(q,i){ g.appendChild(s("circle",{cx:X(i),cy:Y(q[1]),r:4,fill:C.signal})); g.appendChild(s("text",{x:X(i),y:Y(q[1])-9,"text-anchor":"middle","font-size":"10.5",fill:C.encre},q[1]));
-      g.appendChild(s("text",{x:X(i),y:H-8,"text-anchor":"middle","font-size":"10",fill:C.t3},q[0])); });
-    g.appendChild(s("text",{x:(X(1)+X(2))/2,y:Y(30),"text-anchor":"middle","font-size":"10",fill:C.vert},"pilote de sortie"));
+    Q.forEach(function(q,i){ g.appendChild(s("circle",{cx:X(i),cy:Y(q[1]),r:4,fill:C.signal})); g.appendChild(s("text",{x:i?X(i):X(i)+8,y:Y(q[1])-9,"text-anchor":i?"middle":"start","font-size":"12.5",fill:C.encre},q[1]));
+      g.appendChild(s("text",{x:X(i),y:H-8,"text-anchor":"middle","font-size":"12",fill:C.t3},q[0])); });
+    g.appendChild(s("text",{x:(X(1)+X(2))/2,y:Y(30),"text-anchor":"middle","font-size":"12",fill:C.vert},"pilote de sortie"));
     $("dash-evol").appendChild(g); })();
-  (function(){ var W=340,H=210,lab=104,max=Math.max.apply(null,F.map(function(f){ return f.tcd; })), g=svg(W,H,"Coût total de la dépendance à cinq ans par fournisseur");
-    F.forEach(function(f,k){ var y=10+k*32, w=f.tcd/max*(W-lab-56); g.appendChild(s("text",{x:lab-6,y:y+14,"text-anchor":"end","font-size":"11",fill:C.encre},f.n));
+  (function(){ var W=340,H=210,lab=112,max=Math.max.apply(null,F.map(function(f){ return f.tcd; })), g=svg(W,H,"Coût total de la dépendance à cinq ans par fournisseur");
+    F.forEach(function(f,k){ var y=10+k*32, w=f.tcd/max*(W-lab-56); g.appendChild(s("text",{x:lab-6,y:y+14,"text-anchor":"end","font-size":"12.5",fill:C.encre},f.n));
       g.appendChild(s("rect",{x:lab,y:y+2,width:w,height:16,rx:3,fill:C.encre,"fill-opacity":"0.75"}));
-      g.appendChild(s("text",{x:lab+w+4,y:y+14,"font-size":"10.5",fill:C.t3},f.tcd.toLocaleString("fr-FR")+"\u202fM€")); });
+      g.appendChild(s("text",{x:lab+w+4,y:y+14,"font-size":"12.5",fill:C.t3},f.tcd.toLocaleString("fr-FR")+"\u202fM€")); });
     $("dash-tcd").appendChild(g); })();
 
   /* Tally : chargé seulement après un clic */
