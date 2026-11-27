@@ -75,6 +75,7 @@ test("haut de page : panneau d’indicateurs, plus de gros chiffres", async () =
   assert.equal(panneau.length, 4);
   assert.deepEqual(panneau, kpis);
   assert.equal(net(await page.$eval(".hero .echelle", (e) => e.textContent)), ECHELLE);
+  assert.equal(await page.$eval(".hero .echelle", (e) => getComputedStyle(e).fontSize), await page.$eval("#exemples .echelle", (e) => getComputedStyle(e).fontSize));
   const sources = await page.$eval(".hero .sources-hero", (e) => e.textContent);
   for (const s of ["Cigref", "Gartner", "Elée"]) assert.ok(sources.includes(s), s);
 });
