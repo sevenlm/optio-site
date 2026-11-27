@@ -5,12 +5,19 @@ import re, sys
 f = lambda x: f"{x:.1f}".replace(".", ",")
 def croissance(base, taux, n=5): return sum(base * (1 + taux) ** k for k in range(n))
 C = {}
-# Cas 1 : 2 M€/an, +60 % à l'échéance (mois 14), 18 mois pour partir ; exploitation 0,15 et risque 0,29 par an
-ex1 = 5 * (0.15 + 0.29)
-rester = 2 * 14 / 12 + 3.2 * 46 / 12 + ex1
-C[1] = dict(rester=rester,
-            renegocier=2 * 14 / 12 + 2.3 * 46 / 12 + 0.105 + ex1,                          # hausse ramenée à 15 %, preuve 105 k€
-            sortir=2 * 14 / 12 + 3.2 * 4 / 12 + 1.2 * 42 / 12 + 0.8 + 0.105 + ex1)        # 18 mois sous contrat, puis alternative
+def tcd_spec(C0, h, hN, mE, I, K, P, M, T, A, D=6, R=6, rho=0.8, iota=0.5, H=5):
+    """Modèle de calcul de la spec TCD (§ 3.6), mois par mois, sans indexation ni actualisation. Montants en M€."""
+    contrat = lambda t, hausse: C0 * (1 + hausse if t >= mE else 1) / 12
+    F = T if T <= mE else max(T, mE + R)
+    mois = range(H * 12)
+    rester = sum(contrat(t, h) + I / 12 + K / 12 for t in mois)
+    renegocier = P + sum(contrat(t, hN) + I / 12 + (1 - rho) * K / 12 for t in mois)
+    sortir = P + sum(contrat(t, h) + M / T + I / 12 + K / 12 + (A / 12 if t >= T - D else 0) if t < T
+                     else A / 12 + (1 - iota) * I / 12 + (1 - rho) * K / 12 + (contrat(t, h) if t < F else 0) for t in mois)
+    return dict(rester=rester, renegocier=renegocier, sortir=sortir)
+# Cas 1 : 600 k€/an, +60 % à l'échéance (mois 14), 18 mois pour partir ; exploitation 45 k€ et risque 87 k€ par an ;
+# préparation 60 k€, migration 240 k€, alternative 360 k€/an, double exploitation et réengagement de 6 mois (spec § 3.9)
+C[1] = tcd_spec(0.6, .6, .15, 14, 0.045, 0.087, 0.06, 0.24, 18, 0.36)
 # Cas 2 : échéance imposée à la fin de l'année 2 ; alternative dès l'année 1
 ex2 = 5 * (0.06 + 0.02)
 C[2] = dict(cloud=0.3 * 2 + 0.42 * 3 + 0.25 + ex2, alternative=0.4 + 0.18 * 5 + ex2)

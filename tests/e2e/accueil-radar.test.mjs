@@ -7,7 +7,7 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync, statSync } from "node:fs";
 import { createRequire } from "node:module";
 import { chromium } from "playwright";
-import { BASE, lireJeton } from "./outils.mjs";
+import { BASE, lireJeton, contrasteDe } from "./outils.mjs";
 const SELECTION = createRequire(import.meta.url)("../../js/selection.js");
 
 const PAGE = "radar-des-dependances.html";
@@ -39,23 +39,6 @@ async function ouvrirAccueil(options = {}, preparer) {
 }
 
 // Rapport de contraste WCAG entre la couleur du texte et le fond du plus proche ancêtre opaque.
-function contrasteDe(el) {
-  function rgb(s) { const m = s.match(/[\d.]+/g).map(Number); return { r: m[0], g: m[1], b: m[2], a: m.length > 3 ? m[3] : 1 }; }
-  function lum(c) {
-    const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4); };
-    return 0.2126 * f(c.r) + 0.7152 * f(c.g) + 0.0722 * f(c.b);
-  }
-  let n = el, fond = null;
-  while (n && n.nodeType === 1) {
-    const c = rgb(getComputedStyle(n).backgroundColor);
-    if (c.a > 0) { fond = c; break; }
-    n = n.parentElement;
-  }
-  if (!fond) fond = { r: 255, g: 255, b: 255 };
-  const t = rgb(getComputedStyle(el).color);
-  const l1 = lum(t), l2 = lum(fond);
-  return (Math.max(l1, l2) + 0.05) / (Math.min(l1, l2) + 0.05);
-}
 
 test("structure : un h1, sections dans l’ordre, notions de « Comprendre le radar »", async () => {
   const { contexte, page, errs } = await ouvrirAccueil();
@@ -318,5 +301,17 @@ test("images : le lien du rapport d’exemple utilise la sélection des captures
   try {
     const href = await page.$eval("#rapport a[href^='radar.html?rapport=1&r=']", (a) => a.getAttribute("href"));
     assert.equal(href, SELECTION.urlRapport("radar.html", SELECTION_EXEMPLE));
+  } finally { await contexte.close(); }
+});
+
+test("sobriété : sans étiquettes ni cartes arrondies", async () => {
+  const { contexte, page, errs } = await ouvrirAccueil();
+  try {
+    assert.equal(await page.locator("main p.sur").count(), 0);
+    for (const sel of [".fait", ".notion", ".carte-gen", ".contribs li", ".garanties > div", ".etapes li"]) {
+      const st = await page.$eval(sel, (e) => { const s = getComputedStyle(e); return [s.borderTopLeftRadius, s.boxShadow]; });
+      assert.deepEqual(st, ["0px", "none"], sel);
+    }
+    assert.deepEqual(errs, []);
   } finally { await contexte.close(); }
 });
